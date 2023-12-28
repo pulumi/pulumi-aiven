@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.FlinkFlinkArgs;
 import com.pulumi.aiven.inputs.FlinkFlinkUserConfigArgs;
 import com.pulumi.aiven.inputs.FlinkServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.FlinkTagArgs;
+import com.pulumi.aiven.inputs.FlinkTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -392,14 +393,14 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Optional<Output<List<String>>> staticIps() {
@@ -419,6 +420,21 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<FlinkTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<FlinkTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Optional<Output<List<FlinkTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
     }
 
     /**
@@ -465,6 +481,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         this.state = $.state;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -1019,7 +1036,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -1030,7 +1047,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -1040,7 +1057,7 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -1078,6 +1095,37 @@ public final class FlinkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(FlinkTagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<FlinkTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<FlinkTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(FlinkTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
         }
 
         /**

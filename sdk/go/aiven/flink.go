@@ -108,10 +108,12 @@ type Flink struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags FlinkTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails FlinkTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
@@ -210,10 +212,12 @@ type flinkState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []FlinkTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []FlinkTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -269,10 +273,12 @@ type FlinkState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags FlinkTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails FlinkTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -308,10 +314,12 @@ type flinkArgs struct {
 	ServiceIntegrations []FlinkServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []FlinkTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []FlinkTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -344,10 +352,12 @@ type FlinkArgs struct {
 	ServiceIntegrations FlinkServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Use static public IP addresses.
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags FlinkTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails FlinkTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -561,7 +571,7 @@ func (o FlinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Use static public IP addresses.
 func (o FlinkOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
@@ -569,6 +579,11 @@ func (o FlinkOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o FlinkOutput) Tags() FlinkTagArrayOutput {
 	return o.ApplyT(func(v *Flink) FlinkTagArrayOutput { return v.Tags }).(FlinkTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o FlinkOutput) TechEmails() FlinkTechEmailArrayOutput {
+	return o.ApplyT(func(v *Flink) FlinkTechEmailArrayOutput { return v.TechEmails }).(FlinkTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

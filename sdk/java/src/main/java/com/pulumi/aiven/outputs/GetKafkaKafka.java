@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,27 +59,42 @@ public final class GetKafkaKafka {
 
         @CustomType.Setter
         public Builder accessCert(String accessCert) {
-            this.accessCert = Objects.requireNonNull(accessCert);
+            if (accessCert == null) {
+              throw new MissingRequiredPropertyException("GetKafkaKafka", "accessCert");
+            }
+            this.accessCert = accessCert;
             return this;
         }
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("GetKafkaKafka", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder connectUri(String connectUri) {
-            this.connectUri = Objects.requireNonNull(connectUri);
+            if (connectUri == null) {
+              throw new MissingRequiredPropertyException("GetKafkaKafka", "connectUri");
+            }
+            this.connectUri = connectUri;
             return this;
         }
         @CustomType.Setter
         public Builder restUri(String restUri) {
-            this.restUri = Objects.requireNonNull(restUri);
+            if (restUri == null) {
+              throw new MissingRequiredPropertyException("GetKafkaKafka", "restUri");
+            }
+            this.restUri = restUri;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistryUri(String schemaRegistryUri) {
-            this.schemaRegistryUri = Objects.requireNonNull(schemaRegistryUri);
+            if (schemaRegistryUri == null) {
+              throw new MissingRequiredPropertyException("GetKafkaKafka", "schemaRegistryUri");
+            }
+            this.schemaRegistryUri = schemaRegistryUri;
             return this;
         }
         public GetKafkaKafka build() {

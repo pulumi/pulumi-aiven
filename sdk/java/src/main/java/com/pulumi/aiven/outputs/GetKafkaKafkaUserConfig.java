@@ -12,6 +12,7 @@ import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPublicAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigTieredStorage;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -23,6 +24,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaKafkaUserConfig {
     private @Nullable String additionalBackupRegions;
+    private @Nullable Boolean aivenKafkaTopicMessages;
     private @Nullable String customDomain;
     private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
     private @Nullable List<String> ipFilterStrings;
@@ -46,11 +48,16 @@ public final class GetKafkaKafkaUserConfig {
     private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
     private @Nullable Boolean schemaRegistry;
     private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
+    private @Nullable Boolean serviceLog;
     private @Nullable Boolean staticIps;
+    private @Nullable GetKafkaKafkaUserConfigTieredStorage tieredStorage;
 
     private GetKafkaKafkaUserConfig() {}
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
+    }
+    public Optional<Boolean> aivenKafkaTopicMessages() {
+        return Optional.ofNullable(this.aivenKafkaTopicMessages);
     }
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
@@ -109,8 +116,14 @@ public final class GetKafkaKafkaUserConfig {
     public Optional<GetKafkaKafkaUserConfigSchemaRegistryConfig> schemaRegistryConfig() {
         return Optional.ofNullable(this.schemaRegistryConfig);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
+    }
+    public Optional<GetKafkaKafkaUserConfigTieredStorage> tieredStorage() {
+        return Optional.ofNullable(this.tieredStorage);
     }
 
     public static Builder builder() {
@@ -123,6 +136,7 @@ public final class GetKafkaKafkaUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String additionalBackupRegions;
+        private @Nullable Boolean aivenKafkaTopicMessages;
         private @Nullable String customDomain;
         private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -140,11 +154,14 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
         private @Nullable Boolean schemaRegistry;
         private @Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
+        private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
+        private @Nullable GetKafkaKafkaUserConfigTieredStorage tieredStorage;
         public Builder() {}
         public Builder(GetKafkaKafkaUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalBackupRegions = defaults.additionalBackupRegions;
+    	      this.aivenKafkaTopicMessages = defaults.aivenKafkaTopicMessages;
     	      this.customDomain = defaults.customDomain;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -162,21 +179,32 @@ public final class GetKafkaKafkaUserConfig {
     	      this.publicAccess = defaults.publicAccess;
     	      this.schemaRegistry = defaults.schemaRegistry;
     	      this.schemaRegistryConfig = defaults.schemaRegistryConfig;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
+    	      this.tieredStorage = defaults.tieredStorage;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
+        public Builder aivenKafkaTopicMessages(@Nullable Boolean aivenKafkaTopicMessages) {
+
+            this.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
+            return this;
+        }
+        @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
+
             this.customDomain = customDomain;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -185,6 +213,7 @@ public final class GetKafkaKafkaUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -193,6 +222,7 @@ public final class GetKafkaKafkaUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -201,77 +231,104 @@ public final class GetKafkaKafkaUserConfig {
         }
         @CustomType.Setter
         public Builder kafka(@Nullable GetKafkaKafkaUserConfigKafka kafka) {
+
             this.kafka = kafka;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaAuthenticationMethods(@Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods) {
+
             this.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnectConfig(@Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig) {
+
             this.kafkaConnectConfig = kafkaConnectConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRest(@Nullable Boolean kafkaRest) {
+
             this.kafkaRest = kafkaRest;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRestAuthorization(@Nullable Boolean kafkaRestAuthorization) {
+
             this.kafkaRestAuthorization = kafkaRestAuthorization;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRestConfig(@Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig) {
+
             this.kafkaRestConfig = kafkaRestConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaVersion(@Nullable String kafkaVersion) {
+
             this.kafkaVersion = kafkaVersion;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
+
             this.schemaRegistry = schemaRegistry;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistryConfig(@Nullable GetKafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig) {
+
             this.schemaRegistryConfig = schemaRegistryConfig;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tieredStorage(@Nullable GetKafkaKafkaUserConfigTieredStorage tieredStorage) {
+
+            this.tieredStorage = tieredStorage;
             return this;
         }
         public GetKafkaKafkaUserConfig build() {
             final var _resultValue = new GetKafkaKafkaUserConfig();
             _resultValue.additionalBackupRegions = additionalBackupRegions;
+            _resultValue.aivenKafkaTopicMessages = aivenKafkaTopicMessages;
             _resultValue.customDomain = customDomain;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
@@ -289,7 +346,9 @@ public final class GetKafkaKafkaUserConfig {
             _resultValue.publicAccess = publicAccess;
             _resultValue.schemaRegistry = schemaRegistry;
             _resultValue.schemaRegistryConfig = schemaRegistryConfig;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
+            _resultValue.tieredStorage = tieredStorage;
             return _resultValue;
         }
     }

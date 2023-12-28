@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.FlinkFlinkUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.FlinkFlinkUserConfigPrivatelinkAccess;
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -15,6 +16,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FlinkFlinkUserConfig {
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
+    private @Nullable String additionalBackupRegions;
     /**
      * @return Flink major version.
      * 
@@ -49,8 +55,25 @@ public final class FlinkFlinkUserConfig {
      * 
      */
     private @Nullable FlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    private @Nullable Boolean serviceLog;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
+    private @Nullable Boolean staticIps;
 
     private FlinkFlinkUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
+    public Optional<String> additionalBackupRegions() {
+        return Optional.ofNullable(this.additionalBackupRegions);
+    }
     /**
      * @return Flink major version.
      * 
@@ -97,6 +120,20 @@ public final class FlinkFlinkUserConfig {
     public Optional<FlinkFlinkUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
+    public Optional<Boolean> staticIps() {
+        return Optional.ofNullable(this.staticIps);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -107,30 +144,44 @@ public final class FlinkFlinkUserConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String additionalBackupRegions;
         private @Nullable String flinkVersion;
         private @Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
         private @Nullable List<String> ipFilters;
         private @Nullable Integer numberOfTaskSlots;
         private @Nullable FlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess;
+        private @Nullable Boolean serviceLog;
+        private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(FlinkFlinkUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalBackupRegions = defaults.additionalBackupRegions;
     	      this.flinkVersion = defaults.flinkVersion;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
     	      this.ipFilters = defaults.ipFilters;
     	      this.numberOfTaskSlots = defaults.numberOfTaskSlots;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
+    	      this.serviceLog = defaults.serviceLog;
+    	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
+        public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
+            this.additionalBackupRegions = additionalBackupRegions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder flinkVersion(@Nullable String flinkVersion) {
+
             this.flinkVersion = flinkVersion;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<FlinkFlinkUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -139,6 +190,7 @@ public final class FlinkFlinkUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -147,6 +199,7 @@ public final class FlinkFlinkUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -155,22 +208,39 @@ public final class FlinkFlinkUserConfig {
         }
         @CustomType.Setter
         public Builder numberOfTaskSlots(@Nullable Integer numberOfTaskSlots) {
+
             this.numberOfTaskSlots = numberOfTaskSlots;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable FlinkFlinkUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder staticIps(@Nullable Boolean staticIps) {
+
+            this.staticIps = staticIps;
             return this;
         }
         public FlinkFlinkUserConfig build() {
             final var _resultValue = new FlinkFlinkUserConfig();
+            _resultValue.additionalBackupRegions = additionalBackupRegions;
             _resultValue.flinkVersion = flinkVersion;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;
             _resultValue.ipFilters = ipFilters;
             _resultValue.numberOfTaskSlots = numberOfTaskSlots;
             _resultValue.privatelinkAccess = privatelinkAccess;
+            _resultValue.serviceLog = serviceLog;
+            _resultValue.staticIps = staticIps;
             return _resultValue;
         }
     }

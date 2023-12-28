@@ -32,6 +32,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    private @Nullable Boolean serviceLog;
     private @Nullable Boolean staticIps;
 
     private KafkaConnectKafkaConnectUserConfig() {}
@@ -65,6 +66,9 @@ public final class KafkaConnectKafkaConnectUserConfig {
     public Optional<KafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -86,6 +90,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+        private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(KafkaConnectKafkaConnectUserConfig defaults) {
@@ -98,16 +103,19 @@ public final class KafkaConnectKafkaConnectUserConfig {
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -116,6 +124,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -124,6 +133,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -132,26 +142,37 @@ public final class KafkaConnectKafkaConnectUserConfig {
         }
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -165,6 +186,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
             return _resultValue;
         }

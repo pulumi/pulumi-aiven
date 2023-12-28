@@ -224,6 +224,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFlinkTagResult> Tags;
         /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetFlinkTechEmailResult> TechEmails;
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         public readonly bool TerminationProtection;
@@ -284,6 +288,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetFlinkTagResult> tags,
 
+            ImmutableArray<Outputs.GetFlinkTechEmailResult> techEmails,
+
             bool terminationProtection)
         {
             AdditionalDiskSpace = additionalDiskSpace;
@@ -313,6 +319,7 @@ namespace Pulumi.Aiven
             State = state;
             StaticIps = staticIps;
             Tags = tags;
+            TechEmails = techEmails;
             TerminationProtection = terminationProtection;
         }
     }

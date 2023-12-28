@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GetTransitGatewayVpcAttachmentArgs extends com.pulumi.resourc
         }
 
         public GetTransitGatewayVpcAttachmentArgs build() {
-            $.peerCloudAccount = Objects.requireNonNull($.peerCloudAccount, "expected parameter 'peerCloudAccount' to be non-null");
-            $.peerVpc = Objects.requireNonNull($.peerVpc, "expected parameter 'peerVpc' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.peerCloudAccount == null) {
+                throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentArgs", "peerCloudAccount");
+            }
+            if ($.peerVpc == null) {
+                throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentArgs", "peerVpc");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("GetTransitGatewayVpcAttachmentArgs", "vpcId");
+            }
             return $;
         }
     }

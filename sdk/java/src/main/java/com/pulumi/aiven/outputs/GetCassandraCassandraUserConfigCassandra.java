@@ -49,16 +49,19 @@ public final class GetCassandraCassandraUserConfigCassandra {
 
         @CustomType.Setter
         public Builder batchSizeFailThresholdInKb(@Nullable Integer batchSizeFailThresholdInKb) {
+
             this.batchSizeFailThresholdInKb = batchSizeFailThresholdInKb;
             return this;
         }
         @CustomType.Setter
         public Builder batchSizeWarnThresholdInKb(@Nullable Integer batchSizeWarnThresholdInKb) {
+
             this.batchSizeWarnThresholdInKb = batchSizeWarnThresholdInKb;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }

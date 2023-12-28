@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -80,41 +81,55 @@ public final class GetGrafanaGrafanaUserConfigSmtpServer {
 
         @CustomType.Setter
         public Builder fromAddress(String fromAddress) {
-            this.fromAddress = Objects.requireNonNull(fromAddress);
+            if (fromAddress == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigSmtpServer", "fromAddress");
+            }
+            this.fromAddress = fromAddress;
             return this;
         }
         @CustomType.Setter
         public Builder fromName(@Nullable String fromName) {
+
             this.fromName = fromName;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigSmtpServer", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigSmtpServer", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder skipVerify(@Nullable Boolean skipVerify) {
+
             this.skipVerify = skipVerify;
             return this;
         }
         @CustomType.Setter
         public Builder starttlsPolicy(@Nullable String starttlsPolicy) {
+
             this.starttlsPolicy = starttlsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

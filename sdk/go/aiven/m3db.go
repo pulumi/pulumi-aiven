@@ -138,6 +138,9 @@ type M3Db struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags M3DbTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails M3DbTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -262,6 +265,9 @@ type m3dbState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []M3DbTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []M3DbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -343,6 +349,9 @@ type M3DbState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags M3DbTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails M3DbTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -400,6 +409,9 @@ type m3dbArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []M3DbTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []M3DbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -454,6 +466,9 @@ type M3DbArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags M3DbTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails M3DbTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -697,6 +712,12 @@ func (o M3DbOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o M3DbOutput) Tags() M3DbTagArrayOutput {
 	return o.ApplyT(func(v *M3Db) M3DbTagArrayOutput { return v.Tags }).(M3DbTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+// instability.
+func (o M3DbOutput) TechEmails() M3DbTechEmailArrayOutput {
+	return o.ApplyT(func(v *M3Db) M3DbTechEmailArrayOutput { return v.TechEmails }).(M3DbTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

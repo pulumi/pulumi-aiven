@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
         }
 
         public GcpPrivatelinkConnectionApprovalArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.userIpAddress = Objects.requireNonNull($.userIpAddress, "expected parameter 'userIpAddress' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GcpPrivatelinkConnectionApprovalArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GcpPrivatelinkConnectionApprovalArgs", "serviceName");
+            }
+            if ($.userIpAddress == null) {
+                throw new MissingRequiredPropertyException("GcpPrivatelinkConnectionApprovalArgs", "userIpAddress");
+            }
             return $;
         }
     }

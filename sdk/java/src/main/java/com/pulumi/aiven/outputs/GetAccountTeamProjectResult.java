@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -98,27 +99,42 @@ public final class GetAccountTeamProjectResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamProjectResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder projectName(String projectName) {
-            this.projectName = Objects.requireNonNull(projectName);
+            if (projectName == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamProjectResult", "projectName");
+            }
+            this.projectName = projectName;
             return this;
         }
         @CustomType.Setter
         public Builder teamId(String teamId) {
-            this.teamId = Objects.requireNonNull(teamId);
+            if (teamId == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamProjectResult", "teamId");
+            }
+            this.teamId = teamId;
             return this;
         }
         @CustomType.Setter
         public Builder teamType(String teamType) {
-            this.teamType = Objects.requireNonNull(teamType);
+            if (teamType == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamProjectResult", "teamType");
+            }
+            this.teamType = teamType;
             return this;
         }
         public GetAccountTeamProjectResult build() {

@@ -19,6 +19,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
+        /// Allow access to read Kafka topic messages in the Aiven Console and REST API.
+        /// </summary>
+        [Input("aivenKafkaTopicMessages")]
+        public Input<bool>? AivenKafkaTopicMessages { get; set; }
+
+        /// <summary>
         /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         /// </summary>
         [Input("customDomain")]
@@ -140,10 +146,22 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs>? SchemaRegistryConfig { get; set; }
 
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
+        /// <summary>
         /// Use static public IP addresses.
         /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
+
+        /// <summary>
+        /// Tiered storage configuration.
+        /// </summary>
+        [Input("tieredStorage")]
+        public Input<Inputs.KafkaKafkaUserConfigTieredStorageArgs>? TieredStorage { get; set; }
 
         public KafkaKafkaUserConfigArgs()
         {

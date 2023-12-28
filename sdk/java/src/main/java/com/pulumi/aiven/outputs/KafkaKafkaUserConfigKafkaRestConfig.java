@@ -29,6 +29,11 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer consumerRequestTimeoutMs;
     /**
+     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * 
+     */
+    private @Nullable Boolean nameStrategyValidation;
+    /**
      * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      * 
      */
@@ -75,6 +80,13 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     public Optional<Integer> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
+    }
+    /**
+     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * 
+     */
+    public Optional<Boolean> nameStrategyValidation() {
+        return Optional.ofNullable(this.nameStrategyValidation);
     }
     /**
      * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
@@ -124,6 +136,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         private @Nullable Boolean consumerEnableAutoCommit;
         private @Nullable Integer consumerRequestMaxBytes;
         private @Nullable Integer consumerRequestTimeoutMs;
+        private @Nullable Boolean nameStrategyValidation;
         private @Nullable String producerAcks;
         private @Nullable String producerCompressionType;
         private @Nullable Integer producerLingerMs;
@@ -135,6 +148,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     	      this.consumerEnableAutoCommit = defaults.consumerEnableAutoCommit;
     	      this.consumerRequestMaxBytes = defaults.consumerRequestMaxBytes;
     	      this.consumerRequestTimeoutMs = defaults.consumerRequestTimeoutMs;
+    	      this.nameStrategyValidation = defaults.nameStrategyValidation;
     	      this.producerAcks = defaults.producerAcks;
     	      this.producerCompressionType = defaults.producerCompressionType;
     	      this.producerLingerMs = defaults.producerLingerMs;
@@ -144,41 +158,55 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
 
         @CustomType.Setter
         public Builder consumerEnableAutoCommit(@Nullable Boolean consumerEnableAutoCommit) {
+
             this.consumerEnableAutoCommit = consumerEnableAutoCommit;
             return this;
         }
         @CustomType.Setter
         public Builder consumerRequestMaxBytes(@Nullable Integer consumerRequestMaxBytes) {
+
             this.consumerRequestMaxBytes = consumerRequestMaxBytes;
             return this;
         }
         @CustomType.Setter
         public Builder consumerRequestTimeoutMs(@Nullable Integer consumerRequestTimeoutMs) {
+
             this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
             return this;
         }
         @CustomType.Setter
+        public Builder nameStrategyValidation(@Nullable Boolean nameStrategyValidation) {
+
+            this.nameStrategyValidation = nameStrategyValidation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder producerAcks(@Nullable String producerAcks) {
+
             this.producerAcks = producerAcks;
             return this;
         }
         @CustomType.Setter
         public Builder producerCompressionType(@Nullable String producerCompressionType) {
+
             this.producerCompressionType = producerCompressionType;
             return this;
         }
         @CustomType.Setter
         public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
+
             this.producerLingerMs = producerLingerMs;
             return this;
         }
         @CustomType.Setter
         public Builder producerMaxRequestSize(@Nullable Integer producerMaxRequestSize) {
+
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }
         @CustomType.Setter
         public Builder simpleconsumerPoolSizeMax(@Nullable Integer simpleconsumerPoolSizeMax) {
+
             this.simpleconsumerPoolSizeMax = simpleconsumerPoolSizeMax;
             return this;
         }
@@ -187,6 +215,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
             _resultValue.consumerEnableAutoCommit = consumerEnableAutoCommit;
             _resultValue.consumerRequestMaxBytes = consumerRequestMaxBytes;
             _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            _resultValue.nameStrategyValidation = nameStrategyValidation;
             _resultValue.producerAcks = producerAcks;
             _resultValue.producerCompressionType = producerCompressionType;
             _resultValue.producerLingerMs = producerLingerMs;

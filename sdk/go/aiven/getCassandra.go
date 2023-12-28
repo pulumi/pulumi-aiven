@@ -113,6 +113,8 @@ type LookupCassandraResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetCassandraTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []GetCassandraTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -290,6 +292,11 @@ func (o LookupCassandraResultOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o LookupCassandraResultOutput) Tags() GetCassandraTagArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraTag { return v.Tags }).(GetCassandraTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o LookupCassandraResultOutput) TechEmails() GetCassandraTechEmailArrayOutput {
+	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraTechEmail { return v.TechEmails }).(GetCassandraTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

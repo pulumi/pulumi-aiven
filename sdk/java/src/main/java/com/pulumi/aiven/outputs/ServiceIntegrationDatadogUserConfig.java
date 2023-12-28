@@ -176,11 +176,13 @@ public final class ServiceIntegrationDatadogUserConfig {
 
         @CustomType.Setter
         public Builder datadogDbmEnabled(@Nullable Boolean datadogDbmEnabled) {
+
             this.datadogDbmEnabled = datadogDbmEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder datadogTags(@Nullable List<ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags) {
+
             this.datadogTags = datadogTags;
             return this;
         }
@@ -189,6 +191,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder excludeConsumerGroups(@Nullable List<String> excludeConsumerGroups) {
+
             this.excludeConsumerGroups = excludeConsumerGroups;
             return this;
         }
@@ -197,6 +200,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder excludeTopics(@Nullable List<String> excludeTopics) {
+
             this.excludeTopics = excludeTopics;
             return this;
         }
@@ -205,6 +209,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder includeConsumerGroups(@Nullable List<String> includeConsumerGroups) {
+
             this.includeConsumerGroups = includeConsumerGroups;
             return this;
         }
@@ -213,6 +218,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder includeTopics(@Nullable List<String> includeTopics) {
+
             this.includeTopics = includeTopics;
             return this;
         }
@@ -221,6 +227,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder kafkaCustomMetrics(@Nullable List<String> kafkaCustomMetrics) {
+
             this.kafkaCustomMetrics = kafkaCustomMetrics;
             return this;
         }
@@ -229,16 +236,19 @@ public final class ServiceIntegrationDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder maxJmxMetrics(@Nullable Integer maxJmxMetrics) {
+
             this.maxJmxMetrics = maxJmxMetrics;
             return this;
         }
         @CustomType.Setter
         public Builder opensearch(@Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch) {
+
             this.opensearch = opensearch;
             return this;
         }
         @CustomType.Setter
         public Builder redis(@Nullable ServiceIntegrationDatadogUserConfigRedis redis) {
+
             this.redis = redis;
             return this;
         }

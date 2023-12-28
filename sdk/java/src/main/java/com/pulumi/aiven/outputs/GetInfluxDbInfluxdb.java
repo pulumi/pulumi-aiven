@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetInfluxDbInfluxdb {
 
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetInfluxDbInfluxdb", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         public GetInfluxDbInfluxdb build() {

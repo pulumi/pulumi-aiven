@@ -15,6 +15,7 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly bool? Clickhouse;
         public readonly bool? ClickhouseHttps;
+        public readonly bool? ClickhouseMysql;
         public readonly bool? Prometheus;
 
         [OutputConstructor]
@@ -23,10 +24,13 @@ namespace Pulumi.Aiven.Outputs
 
             bool? clickhouseHttps,
 
+            bool? clickhouseMysql,
+
             bool? prometheus)
         {
             Clickhouse = clickhouse;
             ClickhouseHttps = clickhouseHttps;
+            ClickhouseMysql = clickhouseMysql;
             Prometheus = prometheus;
         }
     }

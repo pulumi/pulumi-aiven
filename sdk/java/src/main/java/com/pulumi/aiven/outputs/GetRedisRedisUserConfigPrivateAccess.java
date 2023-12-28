@@ -42,11 +42,13 @@ public final class GetRedisRedisUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }
         @CustomType.Setter
         public Builder redis(@Nullable Boolean redis) {
+
             this.redis = redis;
             return this;
         }

@@ -44,6 +44,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysql {
 
         @CustomType.Setter
         public Builder telegraf(@Nullable ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf) {
+
             this.telegraf = telegraf;
             return this;
         }

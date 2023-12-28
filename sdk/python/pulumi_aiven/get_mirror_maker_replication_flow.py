@@ -21,7 +21,10 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+        if emit_backward_heartbeats_enabled and not isinstance(emit_backward_heartbeats_enabled, bool):
+            raise TypeError("Expected argument 'emit_backward_heartbeats_enabled' to be a bool")
+        pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
         if emit_heartbeats_enabled and not isinstance(emit_heartbeats_enabled, bool):
             raise TypeError("Expected argument 'emit_heartbeats_enabled' to be a bool")
         pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
@@ -63,10 +66,18 @@ class GetMirrorMakerReplicationFlowResult:
         pulumi.set(__self__, "topics_blacklists", topics_blacklists)
 
     @property
+    @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
+    def emit_backward_heartbeats_enabled(self) -> bool:
+        """
+        Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        """
+        return pulumi.get(self, "emit_backward_heartbeats_enabled")
+
+    @property
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> bool:
         """
-        Emit heartbeats enabled. The default value is `false`.
+        Whether to emit heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -173,6 +184,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
         if False:
             yield self
         return GetMirrorMakerReplicationFlowResult(
+            emit_backward_heartbeats_enabled=self.emit_backward_heartbeats_enabled,
             emit_heartbeats_enabled=self.emit_heartbeats_enabled,
             enable=self.enable,
             id=self.id,
@@ -223,6 +235,7 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult).value
 
     return AwaitableGetMirrorMakerReplicationFlowResult(
+        emit_backward_heartbeats_enabled=pulumi.get(__ret__, 'emit_backward_heartbeats_enabled'),
         emit_heartbeats_enabled=pulumi.get(__ret__, 'emit_heartbeats_enabled'),
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),

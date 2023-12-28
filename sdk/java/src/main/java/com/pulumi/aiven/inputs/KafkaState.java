@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.KafkaKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.KafkaServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.KafkaTagArgs;
+import com.pulumi.aiven.inputs.KafkaTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -460,6 +461,21 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<KafkaTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Optional<Output<List<KafkaTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
+    }
+
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
@@ -505,6 +521,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         this.state = $.state;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -1178,6 +1195,37 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(KafkaTagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<KafkaTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<KafkaTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(KafkaTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
         }
 
         /**

@@ -43,11 +43,13 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
 
         @CustomType.Setter
         public Builder clusterAlias(@Nullable String clusterAlias) {
+
             this.clusterAlias = clusterAlias;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaMirrormaker(@Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker) {
+
             this.kafkaMirrormaker = kafkaMirrormaker;
             return this;
         }

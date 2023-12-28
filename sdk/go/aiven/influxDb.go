@@ -114,6 +114,8 @@ type InfluxDb struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails InfluxDbTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
@@ -216,6 +218,8 @@ type influxDbState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []InfluxDbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -275,6 +279,8 @@ type InfluxDbState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails InfluxDbTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -312,6 +318,8 @@ type influxDbArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []InfluxDbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -346,6 +354,8 @@ type InfluxDbArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails InfluxDbTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -567,6 +577,11 @@ func (o InfluxDbOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o InfluxDbOutput) Tags() InfluxDbTagArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbTagArrayOutput { return v.Tags }).(InfluxDbTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o InfluxDbOutput) TechEmails() InfluxDbTechEmailArrayOutput {
+	return o.ApplyT(func(v *InfluxDb) InfluxDbTechEmailArrayOutput { return v.TechEmails }).(InfluxDbTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

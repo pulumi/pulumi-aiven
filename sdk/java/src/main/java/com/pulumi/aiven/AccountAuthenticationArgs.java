@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.AccountAuthenticationSamlFieldMappingArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -522,8 +523,12 @@ public final class AccountAuthenticationArgs extends com.pulumi.resources.Resour
         }
 
         public AccountAuthenticationArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AccountAuthenticationArgs", "accountId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("AccountAuthenticationArgs", "type");
+            }
             return $;
         }
     }

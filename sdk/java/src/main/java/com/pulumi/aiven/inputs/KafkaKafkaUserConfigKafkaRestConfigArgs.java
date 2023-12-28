@@ -63,6 +63,21 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
+     * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * 
+     */
+    @Import(name="nameStrategyValidation")
+    private @Nullable Output<Boolean> nameStrategyValidation;
+
+    /**
+     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> nameStrategyValidation() {
+        return Optional.ofNullable(this.nameStrategyValidation);
+    }
+
+    /**
      * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      * 
      */
@@ -143,6 +158,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         this.consumerEnableAutoCommit = $.consumerEnableAutoCommit;
         this.consumerRequestMaxBytes = $.consumerRequestMaxBytes;
         this.consumerRequestTimeoutMs = $.consumerRequestTimeoutMs;
+        this.nameStrategyValidation = $.nameStrategyValidation;
         this.producerAcks = $.producerAcks;
         this.producerCompressionType = $.producerCompressionType;
         this.producerLingerMs = $.producerLingerMs;
@@ -229,6 +245,27 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
          */
         public Builder consumerRequestTimeoutMs(Integer consumerRequestTimeoutMs) {
             return consumerRequestTimeoutMs(Output.of(consumerRequestTimeoutMs));
+        }
+
+        /**
+         * @param nameStrategyValidation If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameStrategyValidation(@Nullable Output<Boolean> nameStrategyValidation) {
+            $.nameStrategyValidation = nameStrategyValidation;
+            return this;
+        }
+
+        /**
+         * @param nameStrategyValidation If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameStrategyValidation(Boolean nameStrategyValidation) {
+            return nameStrategyValidation(Output.of(nameStrategyValidation));
         }
 
         /**

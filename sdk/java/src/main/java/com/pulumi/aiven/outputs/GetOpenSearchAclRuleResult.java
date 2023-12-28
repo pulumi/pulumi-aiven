@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetOpenSearchAclRuleResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchAclRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder index(String index) {
-            this.index = Objects.requireNonNull(index);
+            if (index == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchAclRuleResult", "index");
+            }
+            this.index = index;
             return this;
         }
         @CustomType.Setter
         public Builder permission(String permission) {
-            this.permission = Objects.requireNonNull(permission);
+            if (permission == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchAclRuleResult", "permission");
+            }
+            this.permission = permission;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchAclRuleResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchAclRuleResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchAclRuleResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetOpenSearchAclRuleResult build() {

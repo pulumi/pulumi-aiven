@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -14,14 +15,14 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetProjectUserArgs Empty = new GetProjectUserArgs();
 
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
-     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> email() {
@@ -69,7 +70,7 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -80,7 +81,7 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -111,8 +112,12 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetProjectUserArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("GetProjectUserArgs", "email");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectUserArgs", "project");
+            }
             return $;
         }
     }

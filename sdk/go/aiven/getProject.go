@@ -82,7 +82,7 @@ type LookupProjectResult struct {
 	Project string `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []GetProjectTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	UseSourceProjectBillingGroup bool `pulumi:"useSourceProjectBillingGroup"`
@@ -191,7 +191,7 @@ func (o LookupProjectResultOutput) Tags() GetProjectTagArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []GetProjectTag { return v.Tags }).(GetProjectTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 func (o LookupProjectResultOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProjectResult) []string { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
 }

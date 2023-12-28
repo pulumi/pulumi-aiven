@@ -36,6 +36,7 @@ public final class M3DbM3dbUserConfigM3 {
 
         @CustomType.Setter
         public Builder tagOptions(@Nullable M3DbM3dbUserConfigM3TagOptions tagOptions) {
+
             this.tagOptions = tagOptions;
             return this;
         }

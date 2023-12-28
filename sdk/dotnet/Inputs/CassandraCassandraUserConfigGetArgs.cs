@@ -104,6 +104,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.CassandraCassandraUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]

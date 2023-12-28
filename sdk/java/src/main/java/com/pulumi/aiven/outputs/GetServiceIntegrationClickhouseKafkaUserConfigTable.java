@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -112,11 +113,13 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
 
         @CustomType.Setter
         public Builder autoOffsetReset(@Nullable String autoOffsetReset) {
+
             this.autoOffsetReset = autoOffsetReset;
             return this;
         }
         @CustomType.Setter
         public Builder columns(@Nullable List<GetServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns) {
+
             this.columns = columns;
             return this;
         }
@@ -125,56 +128,73 @@ public final class GetServiceIntegrationClickhouseKafkaUserConfigTable {
         }
         @CustomType.Setter
         public Builder dataFormat(String dataFormat) {
-            this.dataFormat = Objects.requireNonNull(dataFormat);
+            if (dataFormat == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationClickhouseKafkaUserConfigTable", "dataFormat");
+            }
+            this.dataFormat = dataFormat;
             return this;
         }
         @CustomType.Setter
         public Builder dateTimeInputFormat(@Nullable String dateTimeInputFormat) {
+
             this.dateTimeInputFormat = dateTimeInputFormat;
             return this;
         }
         @CustomType.Setter
         public Builder groupName(String groupName) {
-            this.groupName = Objects.requireNonNull(groupName);
+            if (groupName == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationClickhouseKafkaUserConfigTable", "groupName");
+            }
+            this.groupName = groupName;
             return this;
         }
         @CustomType.Setter
         public Builder handleErrorMode(@Nullable String handleErrorMode) {
+
             this.handleErrorMode = handleErrorMode;
             return this;
         }
         @CustomType.Setter
         public Builder maxBlockSize(@Nullable Integer maxBlockSize) {
+
             this.maxBlockSize = maxBlockSize;
             return this;
         }
         @CustomType.Setter
         public Builder maxRowsPerMessage(@Nullable Integer maxRowsPerMessage) {
+
             this.maxRowsPerMessage = maxRowsPerMessage;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationClickhouseKafkaUserConfigTable", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder numConsumers(@Nullable Integer numConsumers) {
+
             this.numConsumers = numConsumers;
             return this;
         }
         @CustomType.Setter
         public Builder pollMaxBatchSize(@Nullable Integer pollMaxBatchSize) {
+
             this.pollMaxBatchSize = pollMaxBatchSize;
             return this;
         }
         @CustomType.Setter
         public Builder skipBrokenMessages(@Nullable Integer skipBrokenMessages) {
+
             this.skipBrokenMessages = skipBrokenMessages;
             return this;
         }
         @CustomType.Setter
         public Builder topics(@Nullable List<GetServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics) {
+
             this.topics = topics;
             return this;
         }

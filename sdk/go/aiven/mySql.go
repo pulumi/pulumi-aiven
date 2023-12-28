@@ -139,6 +139,9 @@ type MySql struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags MySqlTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails MySqlTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -263,6 +266,9 @@ type mySqlState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []MySqlTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []MySqlTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -344,6 +350,9 @@ type MySqlState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags MySqlTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails MySqlTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -401,6 +410,9 @@ type mySqlArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []MySqlTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails []MySqlTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -455,6 +467,9 @@ type MySqlArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags MySqlTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+	// instability.
+	TechEmails MySqlTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
 	// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -698,6 +713,12 @@ func (o MySqlOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o MySqlOutput) Tags() MySqlTagArrayOutput {
 	return o.ApplyT(func(v *MySql) MySqlTagArrayOutput { return v.Tags }).(MySqlTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+// instability.
+func (o MySqlOutput) TechEmails() MySqlTechEmailArrayOutput {
+	return o.ApplyT(func(v *MySql) MySqlTechEmailArrayOutput { return v.TechEmails }).(MySqlTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

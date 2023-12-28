@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -374,10 +375,18 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         public ServiceIntegrationEndpointRsyslogUserConfigArgs build() {
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.server = Objects.requireNonNull($.server, "expected parameter 'server' to be non-null");
-            $.tls = Objects.requireNonNull($.tls, "expected parameter 'tls' to be non-null");
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointRsyslogUserConfigArgs", "format");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointRsyslogUserConfigArgs", "port");
+            }
+            if ($.server == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointRsyslogUserConfigArgs", "server");
+            }
+            if ($.tls == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointRsyslogUserConfigArgs", "tls");
+            }
             return $;
         }
     }

@@ -43,11 +43,13 @@ public final class KafkaConnectorTask {
 
         @CustomType.Setter
         public Builder connector(@Nullable String connector) {
+
             this.connector = connector;
             return this;
         }
         @CustomType.Setter
         public Builder task(@Nullable Integer task) {
+
             this.task = task;
             return this;
         }

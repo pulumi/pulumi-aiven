@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -299,8 +300,12 @@ public final class GetServiceComponentArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetServiceComponentArgs build() {
-            $.component = Objects.requireNonNull($.component, "expected parameter 'component' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.component == null) {
+                throw new MissingRequiredPropertyException("GetServiceComponentArgs", "component");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetServiceComponentArgs", "project");
+            }
             return $;
         }
     }

@@ -71,6 +71,7 @@ class _OrganizationUserGroupState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
@@ -78,6 +79,7 @@ class _OrganizationUserGroupState:
         Input properties used for looking up and filtering OrganizationUserGroup resources.
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] description: The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] group_id: The unique organization user group ID
         :param pulumi.Input[str] name: The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] update_time: Time of last update
@@ -86,6 +88,8 @@ class _OrganizationUserGroupState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if organization_id is not None:
@@ -116,6 +120,18 @@ class _OrganizationUserGroupState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique organization user group ID
+        """
+        return pulumi.get(self, "group_id")
+
+    @group_id.setter
+    def group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_id", value)
 
     @property
     @pulumi.getter
@@ -214,6 +230,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["group_id"] = None
             __props__.__dict__["update_time"] = None
         super(OrganizationUserGroup, __self__).__init__(
             'aiven:index/organizationUserGroup:OrganizationUserGroup',
@@ -227,6 +244,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            group_id: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'OrganizationUserGroup':
@@ -239,6 +257,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] description: The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] group_id: The unique organization user group ID
         :param pulumi.Input[str] name: The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] update_time: Time of last update
@@ -249,6 +268,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
+        __props__.__dict__["group_id"] = group_id
         __props__.__dict__["name"] = name
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["update_time"] = update_time
@@ -269,6 +289,14 @@ class OrganizationUserGroup(pulumi.CustomResource):
         The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Output[str]:
+        """
+        The unique organization user group ID
+        """
+        return pulumi.get(self, "group_id")
 
     @property
     @pulumi.getter

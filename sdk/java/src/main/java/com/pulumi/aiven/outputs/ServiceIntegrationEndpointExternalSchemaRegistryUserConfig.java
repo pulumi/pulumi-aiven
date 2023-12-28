@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,30 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
 
         @CustomType.Setter
         public Builder authentication(String authentication) {
-            this.authentication = Objects.requireNonNull(authentication);
+            if (authentication == null) {
+              throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalSchemaRegistryUserConfig", "authentication");
+            }
+            this.authentication = authentication;
             return this;
         }
         @CustomType.Setter
         public Builder basicAuthPassword(@Nullable String basicAuthPassword) {
+
             this.basicAuthPassword = basicAuthPassword;
             return this;
         }
         @CustomType.Setter
         public Builder basicAuthUsername(@Nullable String basicAuthUsername) {
+
             this.basicAuthUsername = basicAuthUsername;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalSchemaRegistryUserConfig", "url");
+            }
+            this.url = url;
             return this;
         }
         public ServiceIntegrationEndpointExternalSchemaRegistryUserConfig build() {

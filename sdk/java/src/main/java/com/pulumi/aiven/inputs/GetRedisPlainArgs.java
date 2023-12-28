@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetRedisPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRedisPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetRedisPlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetRedisPlainArgs", "serviceName");
+            }
             return $;
         }
     }

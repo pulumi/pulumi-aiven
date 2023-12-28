@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -49,16 +50,23 @@ public final class GetOpenSearchOpensearchUserConfigIndexPattern {
 
         @CustomType.Setter
         public Builder maxIndexCount(Integer maxIndexCount) {
-            this.maxIndexCount = Objects.requireNonNull(maxIndexCount);
+            if (maxIndexCount == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigIndexPattern", "maxIndexCount");
+            }
+            this.maxIndexCount = maxIndexCount;
             return this;
         }
         @CustomType.Setter
         public Builder pattern(String pattern) {
-            this.pattern = Objects.requireNonNull(pattern);
+            if (pattern == null) {
+              throw new MissingRequiredPropertyException("GetOpenSearchOpensearchUserConfigIndexPattern", "pattern");
+            }
+            this.pattern = pattern;
             return this;
         }
         @CustomType.Setter
         public Builder sortingAlgorithm(@Nullable String sortingAlgorithm) {
+
             this.sortingAlgorithm = sortingAlgorithm;
             return this;
         }

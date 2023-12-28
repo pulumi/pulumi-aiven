@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDropp
         }
 
         public ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs build() {
-            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
-            $.metric = Objects.requireNonNull($.metric, "expected parameter 'metric' to be non-null");
+            if ($.field == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs", "field");
+            }
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs", "metric");
+            }
             return $;
         }
     }

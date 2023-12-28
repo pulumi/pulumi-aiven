@@ -69,14 +69,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")
 public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResource {
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    @Export(name="emitBackwardHeartbeatsEnabled", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> emitBackwardHeartbeatsEnabled;
+
+    /**
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    public Output<Optional<Boolean>> emitBackwardHeartbeatsEnabled() {
+        return Codegen.optional(this.emitBackwardHeartbeatsEnabled);
+    }
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     @Export(name="emitHeartbeatsEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> emitHeartbeatsEnabled;
 
     /**
-     * @return Emit heartbeats enabled. The default value is `false`.
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Output<Optional<Boolean>> emitHeartbeatsEnabled() {

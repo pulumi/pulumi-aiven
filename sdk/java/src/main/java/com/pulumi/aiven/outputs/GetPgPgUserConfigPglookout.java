@@ -36,6 +36,7 @@ public final class GetPgPgUserConfigPglookout {
 
         @CustomType.Setter
         public Builder maxFailoverReplicationTimeLag(@Nullable Integer maxFailoverReplicationTimeLag) {
+
             this.maxFailoverReplicationTimeLag = maxFailoverReplicationTimeLag;
             return this;
         }

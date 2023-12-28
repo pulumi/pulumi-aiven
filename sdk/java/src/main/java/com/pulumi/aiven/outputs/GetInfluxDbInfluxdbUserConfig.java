@@ -35,6 +35,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
     private @Nullable String projectToForkFrom;
     private @Nullable GetInfluxDbInfluxdbUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryBasebackupName;
+    private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable Boolean staticIps;
 
@@ -78,6 +79,9 @@ public final class GetInfluxDbInfluxdbUserConfig {
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -105,6 +109,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable GetInfluxDbInfluxdbUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryBasebackupName;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -121,27 +126,32 @@ public final class GetInfluxDbInfluxdbUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryBasebackupName = defaults.recoveryBasebackupName;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
+
             this.customDomain = customDomain;
             return this;
         }
         @CustomType.Setter
         public Builder influxdb(@Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb) {
+
             this.influxdb = influxdb;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -150,6 +160,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -158,6 +169,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -166,36 +178,49 @@ public final class GetInfluxDbInfluxdbUserConfig {
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetInfluxDbInfluxdbUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetInfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetInfluxDbInfluxdbUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryBasebackupName(@Nullable String recoveryBasebackupName) {
+
             this.recoveryBasebackupName = recoveryBasebackupName;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -212,6 +237,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryBasebackupName = recoveryBasebackupName;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
             return _resultValue;

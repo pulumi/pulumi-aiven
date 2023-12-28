@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -43,14 +44,14 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="userEmail", required=true)
     private String userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String userEmail() {
@@ -106,7 +107,7 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -117,9 +118,15 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
         }
 
         public GetAccountTeamMemberPlainArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
-            $.teamId = Objects.requireNonNull($.teamId, "expected parameter 'teamId' to be non-null");
-            $.userEmail = Objects.requireNonNull($.userEmail, "expected parameter 'userEmail' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetAccountTeamMemberPlainArgs", "accountId");
+            }
+            if ($.teamId == null) {
+                throw new MissingRequiredPropertyException("GetAccountTeamMemberPlainArgs", "teamId");
+            }
+            if ($.userEmail == null) {
+                throw new MissingRequiredPropertyException("GetAccountTeamMemberPlainArgs", "userEmail");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -186,10 +187,18 @@ public final class KafkaConnectorArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public KafkaConnectorArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.connectorName = Objects.requireNonNull($.connectorName, "expected parameter 'connectorName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("KafkaConnectorArgs", "config");
+            }
+            if ($.connectorName == null) {
+                throw new MissingRequiredPropertyException("KafkaConnectorArgs", "connectorName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("KafkaConnectorArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KafkaConnectorArgs", "serviceName");
+            }
             return $;
         }
     }

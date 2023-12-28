@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -172,51 +173,71 @@ public final class GetServiceComponentResult {
 
         @CustomType.Setter
         public Builder component(String component) {
-            this.component = Objects.requireNonNull(component);
+            if (component == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "component");
+            }
+            this.component = component;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
+
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetServiceComponentResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder route(@Nullable String route) {
+
             this.route = route;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(@Nullable String serviceName) {
+
             this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder usage(@Nullable String usage) {
+
             this.usage = usage;
             return this;
         }

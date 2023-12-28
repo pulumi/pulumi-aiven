@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetM3DbServiceIntegration {
 
         @CustomType.Setter
         public Builder integrationType(String integrationType) {
-            this.integrationType = Objects.requireNonNull(integrationType);
+            if (integrationType == null) {
+              throw new MissingRequiredPropertyException("GetM3DbServiceIntegration", "integrationType");
+            }
+            this.integrationType = integrationType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceServiceName(String sourceServiceName) {
-            this.sourceServiceName = Objects.requireNonNull(sourceServiceName);
+            if (sourceServiceName == null) {
+              throw new MissingRequiredPropertyException("GetM3DbServiceIntegration", "sourceServiceName");
+            }
+            this.sourceServiceName = sourceServiceName;
             return this;
         }
         public GetM3DbServiceIntegration build() {

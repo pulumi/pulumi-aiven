@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetProjectTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -78,7 +79,7 @@ public final class GetProjectResult {
      */
     private List<GetProjectTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     private List<String> technicalEmails;
@@ -181,7 +182,7 @@ public final class GetProjectResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     public List<String> technicalEmails() {
@@ -241,67 +242,106 @@ public final class GetProjectResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder addAccountOwnersAdminAccess(Boolean addAccountOwnersAdminAccess) {
-            this.addAccountOwnersAdminAccess = Objects.requireNonNull(addAccountOwnersAdminAccess);
+            if (addAccountOwnersAdminAccess == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "addAccountOwnersAdminAccess");
+            }
+            this.addAccountOwnersAdminAccess = addAccountOwnersAdminAccess;
             return this;
         }
         @CustomType.Setter
         public Builder availableCredits(String availableCredits) {
-            this.availableCredits = Objects.requireNonNull(availableCredits);
+            if (availableCredits == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "availableCredits");
+            }
+            this.availableCredits = availableCredits;
             return this;
         }
         @CustomType.Setter
         public Builder billingGroup(String billingGroup) {
-            this.billingGroup = Objects.requireNonNull(billingGroup);
+            if (billingGroup == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "billingGroup");
+            }
+            this.billingGroup = billingGroup;
             return this;
         }
         @CustomType.Setter
         public Builder caCert(String caCert) {
-            this.caCert = Objects.requireNonNull(caCert);
+            if (caCert == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "caCert");
+            }
+            this.caCert = caCert;
             return this;
         }
         @CustomType.Setter
         public Builder copyFromProject(String copyFromProject) {
-            this.copyFromProject = Objects.requireNonNull(copyFromProject);
+            if (copyFromProject == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "copyFromProject");
+            }
+            this.copyFromProject = copyFromProject;
             return this;
         }
         @CustomType.Setter
         public Builder defaultCloud(String defaultCloud) {
-            this.defaultCloud = Objects.requireNonNull(defaultCloud);
+            if (defaultCloud == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "defaultCloud");
+            }
+            this.defaultCloud = defaultCloud;
             return this;
         }
         @CustomType.Setter
         public Builder estimatedBalance(String estimatedBalance) {
-            this.estimatedBalance = Objects.requireNonNull(estimatedBalance);
+            if (estimatedBalance == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "estimatedBalance");
+            }
+            this.estimatedBalance = estimatedBalance;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(String parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder paymentMethod(String paymentMethod) {
-            this.paymentMethod = Objects.requireNonNull(paymentMethod);
+            if (paymentMethod == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "paymentMethod");
+            }
+            this.paymentMethod = paymentMethod;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<GetProjectTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetProjectTag... tags) {
@@ -309,7 +349,10 @@ public final class GetProjectResult {
         }
         @CustomType.Setter
         public Builder technicalEmails(List<String> technicalEmails) {
-            this.technicalEmails = Objects.requireNonNull(technicalEmails);
+            if (technicalEmails == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "technicalEmails");
+            }
+            this.technicalEmails = technicalEmails;
             return this;
         }
         public Builder technicalEmails(String... technicalEmails) {
@@ -317,7 +360,10 @@ public final class GetProjectResult {
         }
         @CustomType.Setter
         public Builder useSourceProjectBillingGroup(Boolean useSourceProjectBillingGroup) {
-            this.useSourceProjectBillingGroup = Objects.requireNonNull(useSourceProjectBillingGroup);
+            if (useSourceProjectBillingGroup == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "useSourceProjectBillingGroup");
+            }
+            this.useSourceProjectBillingGroup = useSourceProjectBillingGroup;
             return this;
         }
         public GetProjectResult build() {

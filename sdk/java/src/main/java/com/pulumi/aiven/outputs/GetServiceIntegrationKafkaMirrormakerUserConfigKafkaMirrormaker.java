@@ -67,31 +67,37 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormak
 
         @CustomType.Setter
         public Builder consumerFetchMinBytes(@Nullable Integer consumerFetchMinBytes) {
+
             this.consumerFetchMinBytes = consumerFetchMinBytes;
             return this;
         }
         @CustomType.Setter
         public Builder producerBatchSize(@Nullable Integer producerBatchSize) {
+
             this.producerBatchSize = producerBatchSize;
             return this;
         }
         @CustomType.Setter
         public Builder producerBufferMemory(@Nullable Integer producerBufferMemory) {
+
             this.producerBufferMemory = producerBufferMemory;
             return this;
         }
         @CustomType.Setter
         public Builder producerCompressionType(@Nullable String producerCompressionType) {
+
             this.producerCompressionType = producerCompressionType;
             return this;
         }
         @CustomType.Setter
         public Builder producerLingerMs(@Nullable Integer producerLingerMs) {
+
             this.producerLingerMs = producerLingerMs;
             return this;
         }
         @CustomType.Setter
         public Builder producerMaxRequestSize(@Nullable Integer producerMaxRequestSize) {
+
             this.producerMaxRequestSize = producerMaxRequestSize;
             return this;
         }

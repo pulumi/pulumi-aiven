@@ -85,7 +85,7 @@ class GetOrganizationUserResult:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> str:
         """
-        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 
@@ -112,7 +112,7 @@ def get_organization_user(organization_id: Optional[str] = None,
 
 
     :param str organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
-    :param str user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+    :param str user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['organizationId'] = organization_id
@@ -138,6 +138,6 @@ def get_organization_user_output(organization_id: Optional[pulumi.Input[str]] = 
 
 
     :param str organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
-    :param str user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+    :param str user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

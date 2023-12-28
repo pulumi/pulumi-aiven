@@ -62,6 +62,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigPublicAccess? PublicAccess;
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
@@ -100,6 +104,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.CassandraCassandraUserConfigPublicAccess? publicAccess,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             string? serviceToJoinWith,
@@ -118,6 +124,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             ServiceToJoinWith = serviceToJoinWith;
             StaticIps = staticIps;

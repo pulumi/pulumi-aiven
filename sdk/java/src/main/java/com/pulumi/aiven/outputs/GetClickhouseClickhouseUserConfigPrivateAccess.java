@@ -13,6 +13,7 @@ import javax.annotation.Nullable;
 public final class GetClickhouseClickhouseUserConfigPrivateAccess {
     private @Nullable Boolean clickhouse;
     private @Nullable Boolean clickhouseHttps;
+    private @Nullable Boolean clickhouseMysql;
     private @Nullable Boolean prometheus;
 
     private GetClickhouseClickhouseUserConfigPrivateAccess() {}
@@ -21,6 +22,9 @@ public final class GetClickhouseClickhouseUserConfigPrivateAccess {
     }
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
+    }
+    public Optional<Boolean> clickhouseMysql() {
+        return Optional.ofNullable(this.clickhouseMysql);
     }
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
@@ -37,27 +41,38 @@ public final class GetClickhouseClickhouseUserConfigPrivateAccess {
     public static final class Builder {
         private @Nullable Boolean clickhouse;
         private @Nullable Boolean clickhouseHttps;
+        private @Nullable Boolean clickhouseMysql;
         private @Nullable Boolean prometheus;
         public Builder() {}
         public Builder(GetClickhouseClickhouseUserConfigPrivateAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clickhouse = defaults.clickhouse;
     	      this.clickhouseHttps = defaults.clickhouseHttps;
+    	      this.clickhouseMysql = defaults.clickhouseMysql;
     	      this.prometheus = defaults.prometheus;
         }
 
         @CustomType.Setter
         public Builder clickhouse(@Nullable Boolean clickhouse) {
+
             this.clickhouse = clickhouse;
             return this;
         }
         @CustomType.Setter
         public Builder clickhouseHttps(@Nullable Boolean clickhouseHttps) {
+
             this.clickhouseHttps = clickhouseHttps;
             return this;
         }
         @CustomType.Setter
+        public Builder clickhouseMysql(@Nullable Boolean clickhouseMysql) {
+
+            this.clickhouseMysql = clickhouseMysql;
+            return this;
+        }
+        @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }
@@ -65,6 +80,7 @@ public final class GetClickhouseClickhouseUserConfigPrivateAccess {
             final var _resultValue = new GetClickhouseClickhouseUserConfigPrivateAccess();
             _resultValue.clickhouse = clickhouse;
             _resultValue.clickhouseHttps = clickhouseHttps;
+            _resultValue.clickhouseMysql = clickhouseMysql;
             _resultValue.prometheus = prometheus;
             return _resultValue;
         }

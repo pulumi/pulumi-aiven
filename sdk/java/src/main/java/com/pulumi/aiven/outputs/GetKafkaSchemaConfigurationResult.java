@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -141,42 +142,66 @@ public final class GetKafkaSchemaConfigurationResult {
 
         @CustomType.Setter
         public Builder compatibilityLevel(String compatibilityLevel) {
-            this.compatibilityLevel = Objects.requireNonNull(compatibilityLevel);
+            if (compatibilityLevel == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "compatibilityLevel");
+            }
+            this.compatibilityLevel = compatibilityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder schema(String schema) {
-            this.schema = Objects.requireNonNull(schema);
+            if (schema == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "schema");
+            }
+            this.schema = schema;
             return this;
         }
         @CustomType.Setter
         public Builder schemaType(String schemaType) {
-            this.schemaType = Objects.requireNonNull(schemaType);
+            if (schemaType == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "schemaType");
+            }
+            this.schemaType = schemaType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder subjectName(String subjectName) {
-            this.subjectName = Objects.requireNonNull(subjectName);
+            if (subjectName == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "subjectName");
+            }
+            this.subjectName = subjectName;
             return this;
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetKafkaSchemaConfigurationResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetKafkaSchemaConfigurationResult build() {

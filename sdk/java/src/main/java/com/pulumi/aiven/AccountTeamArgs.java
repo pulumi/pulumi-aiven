@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class AccountTeamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccountTeamArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("AccountTeamArgs", "accountId");
+            }
             return $;
         }
     }

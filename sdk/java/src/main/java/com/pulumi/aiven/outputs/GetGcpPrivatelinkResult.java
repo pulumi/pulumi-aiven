@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -72,32 +73,50 @@ public final class GetGcpPrivatelinkResult {
 
         @CustomType.Setter
         public Builder googleServiceAttachment(String googleServiceAttachment) {
-            this.googleServiceAttachment = Objects.requireNonNull(googleServiceAttachment);
+            if (googleServiceAttachment == null) {
+              throw new MissingRequiredPropertyException("GetGcpPrivatelinkResult", "googleServiceAttachment");
+            }
+            this.googleServiceAttachment = googleServiceAttachment;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGcpPrivatelinkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetGcpPrivatelinkResult", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetGcpPrivatelinkResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetGcpPrivatelinkResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetGcpPrivatelinkResult", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetGcpPrivatelinkResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -19,14 +20,29 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     public static final MirrorMakerReplicationFlowArgs Empty = new MirrorMakerReplicationFlowArgs();
 
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    @Import(name="emitBackwardHeartbeatsEnabled")
+    private @Nullable Output<Boolean> emitBackwardHeartbeatsEnabled;
+
+    /**
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> emitBackwardHeartbeatsEnabled() {
+        return Optional.ofNullable(this.emitBackwardHeartbeatsEnabled);
+    }
+
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     @Import(name="emitHeartbeatsEnabled")
     private @Nullable Output<Boolean> emitHeartbeatsEnabled;
 
     /**
-     * @return Emit heartbeats enabled. The default value is `false`.
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> emitHeartbeatsEnabled() {
@@ -201,6 +217,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     private MirrorMakerReplicationFlowArgs() {}
 
     private MirrorMakerReplicationFlowArgs(MirrorMakerReplicationFlowArgs $) {
+        this.emitBackwardHeartbeatsEnabled = $.emitBackwardHeartbeatsEnabled;
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
         this.offsetSyncsTopicLocation = $.offsetSyncsTopicLocation;
@@ -234,7 +251,28 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param emitHeartbeatsEnabled Emit heartbeats enabled. The default value is `false`.
+         * @param emitBackwardHeartbeatsEnabled Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emitBackwardHeartbeatsEnabled(@Nullable Output<Boolean> emitBackwardHeartbeatsEnabled) {
+            $.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
+            return this;
+        }
+
+        /**
+         * @param emitBackwardHeartbeatsEnabled Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emitBackwardHeartbeatsEnabled(Boolean emitBackwardHeartbeatsEnabled) {
+            return emitBackwardHeartbeatsEnabled(Output.of(emitBackwardHeartbeatsEnabled));
+        }
+
+        /**
+         * @param emitHeartbeatsEnabled Whether to emit heartbeats to the target cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -245,7 +283,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param emitHeartbeatsEnabled Emit heartbeats enabled. The default value is `false`.
+         * @param emitHeartbeatsEnabled Whether to emit heartbeats to the target cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -506,11 +544,21 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         public MirrorMakerReplicationFlowArgs build() {
-            $.enable = Objects.requireNonNull($.enable, "expected parameter 'enable' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.sourceCluster = Objects.requireNonNull($.sourceCluster, "expected parameter 'sourceCluster' to be non-null");
-            $.targetCluster = Objects.requireNonNull($.targetCluster, "expected parameter 'targetCluster' to be non-null");
+            if ($.enable == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "enable");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "serviceName");
+            }
+            if ($.sourceCluster == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "sourceCluster");
+            }
+            if ($.targetCluster == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "targetCluster");
+            }
             return $;
         }
     }

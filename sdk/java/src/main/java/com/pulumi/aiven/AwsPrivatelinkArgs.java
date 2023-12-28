@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -159,9 +160,15 @@ public final class AwsPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AwsPrivatelinkArgs build() {
-            $.principals = Objects.requireNonNull($.principals, "expected parameter 'principals' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.principals == null) {
+                throw new MissingRequiredPropertyException("AwsPrivatelinkArgs", "principals");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("AwsPrivatelinkArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("AwsPrivatelinkArgs", "serviceName");
+            }
             return $;
         }
     }

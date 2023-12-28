@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         public OrganizationUserGroupArgs build() {
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("OrganizationUserGroupArgs", "organizationId");
+            }
             return $;
         }
     }

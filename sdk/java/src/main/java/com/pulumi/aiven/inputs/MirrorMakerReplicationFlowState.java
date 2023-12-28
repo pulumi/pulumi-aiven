@@ -19,14 +19,29 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
     public static final MirrorMakerReplicationFlowState Empty = new MirrorMakerReplicationFlowState();
 
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    @Import(name="emitBackwardHeartbeatsEnabled")
+    private @Nullable Output<Boolean> emitBackwardHeartbeatsEnabled;
+
+    /**
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> emitBackwardHeartbeatsEnabled() {
+        return Optional.ofNullable(this.emitBackwardHeartbeatsEnabled);
+    }
+
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     @Import(name="emitHeartbeatsEnabled")
     private @Nullable Output<Boolean> emitHeartbeatsEnabled;
 
     /**
-     * @return Emit heartbeats enabled. The default value is `false`.
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> emitHeartbeatsEnabled() {
@@ -201,6 +216,7 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
     private MirrorMakerReplicationFlowState() {}
 
     private MirrorMakerReplicationFlowState(MirrorMakerReplicationFlowState $) {
+        this.emitBackwardHeartbeatsEnabled = $.emitBackwardHeartbeatsEnabled;
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
         this.offsetSyncsTopicLocation = $.offsetSyncsTopicLocation;
@@ -234,7 +250,28 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
         }
 
         /**
-         * @param emitHeartbeatsEnabled Emit heartbeats enabled. The default value is `false`.
+         * @param emitBackwardHeartbeatsEnabled Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emitBackwardHeartbeatsEnabled(@Nullable Output<Boolean> emitBackwardHeartbeatsEnabled) {
+            $.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
+            return this;
+        }
+
+        /**
+         * @param emitBackwardHeartbeatsEnabled Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder emitBackwardHeartbeatsEnabled(Boolean emitBackwardHeartbeatsEnabled) {
+            return emitBackwardHeartbeatsEnabled(Output.of(emitBackwardHeartbeatsEnabled));
+        }
+
+        /**
+         * @param emitHeartbeatsEnabled Whether to emit heartbeats to the target cluster. The default value is `false`.
          * 
          * @return builder
          * 
@@ -245,7 +282,7 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
         }
 
         /**
-         * @param emitHeartbeatsEnabled Emit heartbeats enabled. The default value is `false`.
+         * @param emitHeartbeatsEnabled Whether to emit heartbeats to the target cluster. The default value is `false`.
          * 
          * @return builder
          * 

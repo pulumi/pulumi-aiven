@@ -29,6 +29,7 @@ class RedisArgs:
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['RedisServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Redis resource.
@@ -63,6 +64,8 @@ class RedisArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -93,6 +96,8 @@ class RedisArgs:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -274,6 +279,19 @@ class RedisArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -317,6 +335,7 @@ class _RedisState:
                  state: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Redis resources.
@@ -366,6 +385,8 @@ class _RedisState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['RedisTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -425,6 +446,8 @@ class _RedisState:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -764,6 +787,19 @@ class _RedisState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RedisTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -796,6 +832,7 @@ class Redis(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -861,6 +898,8 @@ class Redis(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -929,6 +968,7 @@ class Redis(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -958,6 +998,7 @@ class Redis(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tech_emails"] = tech_emails
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["components"] = None
             __props__.__dict__["disk_space_cap"] = None
@@ -1010,6 +1051,7 @@ class Redis(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTagArgs']]]]] = None,
+            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTechEmailArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'Redis':
         """
         Get an existing Redis resource's state with the given name, id, and optional extra
@@ -1064,6 +1106,8 @@ class Redis(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RedisTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1098,6 +1142,7 @@ class Redis(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tech_emails"] = tech_emails
         __props__.__dict__["termination_protection"] = termination_protection
         return Redis(resource_name, opts=opts, __props__=__props__)
 
@@ -1331,6 +1376,15 @@ class Redis(pulumi.CustomResource):
         Tags are key-value pairs that allow you to categorize services.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.RedisTechEmail']]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        instability.
+        """
+        return pulumi.get(self, "tech_emails")
 
     @property
     @pulumi.getter(name="terminationProtection")

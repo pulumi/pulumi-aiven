@@ -68,31 +68,37 @@ public final class M3DbM3dbUserConfigLimits {
 
         @CustomType.Setter
         public Builder maxRecentlyQueriedSeriesBlocks(@Nullable Integer maxRecentlyQueriedSeriesBlocks) {
+
             this.maxRecentlyQueriedSeriesBlocks = maxRecentlyQueriedSeriesBlocks;
             return this;
         }
         @CustomType.Setter
         public Builder maxRecentlyQueriedSeriesDiskBytesRead(@Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead) {
+
             this.maxRecentlyQueriedSeriesDiskBytesRead = maxRecentlyQueriedSeriesDiskBytesRead;
             return this;
         }
         @CustomType.Setter
         public Builder maxRecentlyQueriedSeriesLookback(@Nullable String maxRecentlyQueriedSeriesLookback) {
+
             this.maxRecentlyQueriedSeriesLookback = maxRecentlyQueriedSeriesLookback;
             return this;
         }
         @CustomType.Setter
         public Builder queryDocs(@Nullable Integer queryDocs) {
+
             this.queryDocs = queryDocs;
             return this;
         }
         @CustomType.Setter
         public Builder queryRequireExhaustive(@Nullable Boolean queryRequireExhaustive) {
+
             this.queryRequireExhaustive = queryRequireExhaustive;
             return this;
         }
         @CustomType.Setter
         public Builder querySeries(@Nullable Integer querySeries) {
+
             this.querySeries = querySeries;
             return this;
         }

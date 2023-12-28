@@ -230,6 +230,12 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.KafkaTag>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        [Output("techEmails")]
+        public Output<ImmutableArray<Outputs.KafkaTechEmail>> TechEmails { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
@@ -392,6 +398,18 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.KafkaTagArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.KafkaTechEmailArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public InputList<Inputs.KafkaTechEmailArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.KafkaTechEmailArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>
@@ -624,6 +642,18 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.KafkaTagGetArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.KafkaTechEmailGetArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// </summary>
+        public InputList<Inputs.KafkaTechEmailGetArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.KafkaTechEmailGetArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>

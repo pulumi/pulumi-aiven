@@ -58,6 +58,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
@@ -90,6 +94,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryBasebackupName,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -105,6 +111,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

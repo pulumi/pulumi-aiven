@@ -23,7 +23,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IgnoreDbs;
         /// <summary>
-        /// The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+        /// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         /// </summary>
         public readonly string? Method;
         /// <summary>

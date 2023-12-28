@@ -6,8 +6,10 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigArgs;
 import com.pulumi.aiven.inputs.MySqlServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.MySqlTagArgs;
+import com.pulumi.aiven.inputs.MySqlTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -260,6 +262,23 @@ public final class MySqlArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<MySqlTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Optional<Output<List<MySqlTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
+    }
+
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
      * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
      * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -294,6 +313,7 @@ public final class MySqlArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceName = $.serviceName;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -664,6 +684,40 @@ public final class MySqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<MySqlTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<MySqlTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+         * instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(MySqlTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
+        }
+
+        /**
          * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
          * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
          * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -689,9 +743,15 @@ public final class MySqlArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MySqlArgs build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("MySqlArgs", "plan");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("MySqlArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("MySqlArgs", "serviceName");
+            }
             return $;
         }
     }

@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.FlinkFlink;
 import com.pulumi.aiven.outputs.FlinkFlinkUserConfig;
 import com.pulumi.aiven.outputs.FlinkServiceIntegration;
 import com.pulumi.aiven.outputs.FlinkTag;
+import com.pulumi.aiven.outputs.FlinkTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -414,14 +415,14 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Output<Optional<List<String>>> staticIps() {
@@ -440,6 +441,20 @@ public class Flink extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<FlinkTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,FlinkTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<FlinkTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Output<Optional<List<FlinkTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

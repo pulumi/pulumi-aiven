@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetKafkaConnectorTask {
 
         @CustomType.Setter
         public Builder connector(String connector) {
-            this.connector = Objects.requireNonNull(connector);
+            if (connector == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorTask", "connector");
+            }
+            this.connector = connector;
             return this;
         }
         @CustomType.Setter
         public Builder task(Integer task) {
-            this.task = Objects.requireNonNull(task);
+            if (task == null) {
+              throw new MissingRequiredPropertyException("GetKafkaConnectorTask", "task");
+            }
+            this.task = task;
             return this;
         }
         public GetKafkaConnectorTask build() {

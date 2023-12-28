@@ -21,6 +21,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult? PrivateAccess;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         public readonly Outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult? PublicAccess;
+        public readonly bool? ServiceLog;
         public readonly bool? StaticIps;
 
         [OutputConstructor]
@@ -41,6 +42,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult? publicAccess,
 
+            bool? serviceLog,
+
             bool? staticIps)
         {
             AdditionalBackupRegions = additionalBackupRegions;
@@ -51,6 +54,7 @@ namespace Pulumi.Aiven.Outputs
             PrivateAccess = privateAccess;
             PrivatelinkAccess = privatelinkAccess;
             PublicAccess = publicAccess;
+            ServiceLog = serviceLog;
             StaticIps = staticIps;
         }
     }

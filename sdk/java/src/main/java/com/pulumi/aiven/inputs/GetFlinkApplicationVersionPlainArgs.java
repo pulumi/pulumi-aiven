@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -144,10 +145,18 @@ public final class GetFlinkApplicationVersionPlainArgs extends com.pulumi.resour
         }
 
         public GetFlinkApplicationVersionPlainArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.applicationVersionId = Objects.requireNonNull($.applicationVersionId, "expected parameter 'applicationVersionId' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationVersionPlainArgs", "applicationId");
+            }
+            if ($.applicationVersionId == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationVersionPlainArgs", "applicationVersionId");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationVersionPlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetFlinkApplicationVersionPlainArgs", "serviceName");
+            }
             return $;
         }
     }

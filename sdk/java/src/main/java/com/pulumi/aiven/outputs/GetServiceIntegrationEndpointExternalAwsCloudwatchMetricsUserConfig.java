@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUser
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         public GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig build() {

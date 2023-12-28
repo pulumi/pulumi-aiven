@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetMySqlPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetMySqlPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetMySqlPlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetMySqlPlainArgs", "serviceName");
+            }
             return $;
         }
     }

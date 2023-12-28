@@ -46,6 +46,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.ClickhouseClickhouseUserConfigPublicAccess? PublicAccess;
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
@@ -72,6 +76,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.ClickhouseClickhouseUserConfigPublicAccess? publicAccess,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -84,6 +90,7 @@ namespace Pulumi.Aiven.Outputs
             PrivatelinkAccess = privatelinkAccess;
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

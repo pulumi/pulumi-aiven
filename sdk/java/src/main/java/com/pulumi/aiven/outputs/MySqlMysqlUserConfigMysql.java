@@ -213,151 +213,181 @@ public final class MySqlMysqlUserConfigMysql {
 
         @CustomType.Setter
         public Builder connectTimeout(@Nullable Integer connectTimeout) {
+
             this.connectTimeout = connectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTimeZone(@Nullable String defaultTimeZone) {
+
             this.defaultTimeZone = defaultTimeZone;
             return this;
         }
         @CustomType.Setter
         public Builder groupConcatMaxLen(@Nullable Integer groupConcatMaxLen) {
+
             this.groupConcatMaxLen = groupConcatMaxLen;
             return this;
         }
         @CustomType.Setter
         public Builder informationSchemaStatsExpiry(@Nullable Integer informationSchemaStatsExpiry) {
+
             this.informationSchemaStatsExpiry = informationSchemaStatsExpiry;
             return this;
         }
         @CustomType.Setter
         public Builder innodbChangeBufferMaxSize(@Nullable Integer innodbChangeBufferMaxSize) {
+
             this.innodbChangeBufferMaxSize = innodbChangeBufferMaxSize;
             return this;
         }
         @CustomType.Setter
         public Builder innodbFlushNeighbors(@Nullable Integer innodbFlushNeighbors) {
+
             this.innodbFlushNeighbors = innodbFlushNeighbors;
             return this;
         }
         @CustomType.Setter
         public Builder innodbFtMinTokenSize(@Nullable Integer innodbFtMinTokenSize) {
+
             this.innodbFtMinTokenSize = innodbFtMinTokenSize;
             return this;
         }
         @CustomType.Setter
         public Builder innodbFtServerStopwordTable(@Nullable String innodbFtServerStopwordTable) {
+
             this.innodbFtServerStopwordTable = innodbFtServerStopwordTable;
             return this;
         }
         @CustomType.Setter
         public Builder innodbLockWaitTimeout(@Nullable Integer innodbLockWaitTimeout) {
+
             this.innodbLockWaitTimeout = innodbLockWaitTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder innodbLogBufferSize(@Nullable Integer innodbLogBufferSize) {
+
             this.innodbLogBufferSize = innodbLogBufferSize;
             return this;
         }
         @CustomType.Setter
         public Builder innodbOnlineAlterLogMaxSize(@Nullable Integer innodbOnlineAlterLogMaxSize) {
+
             this.innodbOnlineAlterLogMaxSize = innodbOnlineAlterLogMaxSize;
             return this;
         }
         @CustomType.Setter
         public Builder innodbPrintAllDeadlocks(@Nullable Boolean innodbPrintAllDeadlocks) {
+
             this.innodbPrintAllDeadlocks = innodbPrintAllDeadlocks;
             return this;
         }
         @CustomType.Setter
         public Builder innodbReadIoThreads(@Nullable Integer innodbReadIoThreads) {
+
             this.innodbReadIoThreads = innodbReadIoThreads;
             return this;
         }
         @CustomType.Setter
         public Builder innodbRollbackOnTimeout(@Nullable Boolean innodbRollbackOnTimeout) {
+
             this.innodbRollbackOnTimeout = innodbRollbackOnTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder innodbThreadConcurrency(@Nullable Integer innodbThreadConcurrency) {
+
             this.innodbThreadConcurrency = innodbThreadConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder innodbWriteIoThreads(@Nullable Integer innodbWriteIoThreads) {
+
             this.innodbWriteIoThreads = innodbWriteIoThreads;
             return this;
         }
         @CustomType.Setter
         public Builder interactiveTimeout(@Nullable Integer interactiveTimeout) {
+
             this.interactiveTimeout = interactiveTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder internalTmpMemStorageEngine(@Nullable String internalTmpMemStorageEngine) {
+
             this.internalTmpMemStorageEngine = internalTmpMemStorageEngine;
             return this;
         }
         @CustomType.Setter
         public Builder longQueryTime(@Nullable Double longQueryTime) {
+
             this.longQueryTime = longQueryTime;
             return this;
         }
         @CustomType.Setter
         public Builder maxAllowedPacket(@Nullable Integer maxAllowedPacket) {
+
             this.maxAllowedPacket = maxAllowedPacket;
             return this;
         }
         @CustomType.Setter
         public Builder maxHeapTableSize(@Nullable Integer maxHeapTableSize) {
+
             this.maxHeapTableSize = maxHeapTableSize;
             return this;
         }
         @CustomType.Setter
         public Builder netBufferLength(@Nullable Integer netBufferLength) {
+
             this.netBufferLength = netBufferLength;
             return this;
         }
         @CustomType.Setter
         public Builder netReadTimeout(@Nullable Integer netReadTimeout) {
+
             this.netReadTimeout = netReadTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder netWriteTimeout(@Nullable Integer netWriteTimeout) {
+
             this.netWriteTimeout = netWriteTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder slowQueryLog(@Nullable Boolean slowQueryLog) {
+
             this.slowQueryLog = slowQueryLog;
             return this;
         }
         @CustomType.Setter
         public Builder sortBufferSize(@Nullable Integer sortBufferSize) {
+
             this.sortBufferSize = sortBufferSize;
             return this;
         }
         @CustomType.Setter
         public Builder sqlMode(@Nullable String sqlMode) {
+
             this.sqlMode = sqlMode;
             return this;
         }
         @CustomType.Setter
         public Builder sqlRequirePrimaryKey(@Nullable Boolean sqlRequirePrimaryKey) {
+
             this.sqlRequirePrimaryKey = sqlRequirePrimaryKey;
             return this;
         }
         @CustomType.Setter
         public Builder tmpTableSize(@Nullable Integer tmpTableSize) {
+
             this.tmpTableSize = tmpTableSize;
             return this;
         }
         @CustomType.Setter
         public Builder waitTimeout(@Nullable Integer waitTimeout) {
+
             this.waitTimeout = waitTimeout;
             return this;
         }

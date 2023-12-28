@@ -28,6 +28,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
         public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly bool? StaticIps;
 
@@ -63,6 +64,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.M3DbM3dbUserConfigRules? rules,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -82,6 +85,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             Rules = rules;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

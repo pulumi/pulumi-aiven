@@ -73,14 +73,14 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
         return this.accepted;
     }
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
-     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> email() {

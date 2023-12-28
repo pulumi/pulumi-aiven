@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.OpenSearchOpensearch;
 import com.pulumi.aiven.outputs.OpenSearchOpensearchUserConfig;
 import com.pulumi.aiven.outputs.OpenSearchServiceIntegration;
 import com.pulumi.aiven.outputs.OpenSearchTag;
+import com.pulumi.aiven.outputs.OpenSearchTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -450,6 +451,20 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<OpenSearchTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,OpenSearchTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<OpenSearchTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Output<Optional<List<OpenSearchTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

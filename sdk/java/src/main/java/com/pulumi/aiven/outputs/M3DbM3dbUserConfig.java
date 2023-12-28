@@ -47,6 +47,7 @@ public final class M3DbM3dbUserConfig {
     private @Nullable String projectToForkFrom;
     private @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
     private @Nullable M3DbM3dbUserConfigRules rules;
+    private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable Boolean staticIps;
 
@@ -108,6 +109,9 @@ public final class M3DbM3dbUserConfig {
     public Optional<M3DbM3dbUserConfigRules> rules() {
         return Optional.ofNullable(this.rules);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -139,6 +143,7 @@ public final class M3DbM3dbUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
         private @Nullable M3DbM3dbUserConfigRules rules;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -159,22 +164,26 @@ public final class M3DbM3dbUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.rules = defaults.rules;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
+
             this.customDomain = customDomain;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -183,6 +192,7 @@ public final class M3DbM3dbUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -191,6 +201,7 @@ public final class M3DbM3dbUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -199,31 +210,37 @@ public final class M3DbM3dbUserConfig {
         }
         @CustomType.Setter
         public Builder limits(@Nullable M3DbM3dbUserConfigLimits limits) {
+
             this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder m3(@Nullable M3DbM3dbUserConfigM3 m3) {
+
             this.m3 = m3;
             return this;
         }
         @CustomType.Setter
         public Builder m3Version(@Nullable String m3Version) {
+
             this.m3Version = m3Version;
             return this;
         }
         @CustomType.Setter
         public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest) {
+
             this.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             return this;
         }
         @CustomType.Setter
         public Builder m3dbVersion(@Nullable String m3dbVersion) {
+
             this.m3dbVersion = m3dbVersion;
             return this;
         }
         @CustomType.Setter
         public Builder namespaces(@Nullable List<M3DbM3dbUserConfigNamespace> namespaces) {
+
             this.namespaces = namespaces;
             return this;
         }
@@ -232,31 +249,43 @@ public final class M3DbM3dbUserConfig {
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable M3DbM3dbUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable M3DbM3dbUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder rules(@Nullable M3DbM3dbUserConfigRules rules) {
+
             this.rules = rules;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -277,6 +306,7 @@ public final class M3DbM3dbUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.rules = rules;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
             return _resultValue;

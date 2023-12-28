@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -240,11 +241,21 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
         }
 
         public GrafanaGrafanaUserConfigAuthGenericOauthArgs build() {
-            $.apiUrl = Objects.requireNonNull($.apiUrl, "expected parameter 'apiUrl' to be non-null");
-            $.authUrl = Objects.requireNonNull($.authUrl, "expected parameter 'authUrl' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.tokenUrl = Objects.requireNonNull($.tokenUrl, "expected parameter 'tokenUrl' to be non-null");
+            if ($.apiUrl == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauthArgs", "apiUrl");
+            }
+            if ($.authUrl == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauthArgs", "authUrl");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauthArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauthArgs", "clientSecret");
+            }
+            if ($.tokenUrl == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauthArgs", "tokenUrl");
+            }
             return $;
         }
     }

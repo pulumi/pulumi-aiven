@@ -62,26 +62,31 @@ public final class GetServiceIntegrationMetricsUserConfig {
 
         @CustomType.Setter
         public Builder database(@Nullable String database) {
+
             this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder retentionDays(@Nullable Integer retentionDays) {
+
             this.retentionDays = retentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder roUsername(@Nullable String roUsername) {
+
             this.roUsername = roUsername;
             return this;
         }
         @CustomType.Setter
         public Builder sourceMysql(@Nullable GetServiceIntegrationMetricsUserConfigSourceMysql sourceMysql) {
+
             this.sourceMysql = sourceMysql;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

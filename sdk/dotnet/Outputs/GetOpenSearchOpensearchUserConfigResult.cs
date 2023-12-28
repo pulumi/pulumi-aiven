@@ -33,6 +33,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetOpenSearchOpensearchUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryBasebackupName;
         public readonly Outputs.GetOpenSearchOpensearchUserConfigSamlResult? Saml;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly bool? StaticIps;
 
@@ -78,6 +79,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetOpenSearchOpensearchUserConfigSamlResult? saml,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -102,6 +105,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             Saml = saml;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

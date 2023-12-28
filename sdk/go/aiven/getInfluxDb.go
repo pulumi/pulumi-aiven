@@ -113,6 +113,8 @@ type LookupInfluxDbResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetInfluxDbTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []GetInfluxDbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -290,6 +292,11 @@ func (o LookupInfluxDbResultOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o LookupInfluxDbResultOutput) Tags() GetInfluxDbTagArrayOutput {
 	return o.ApplyT(func(v LookupInfluxDbResult) []GetInfluxDbTag { return v.Tags }).(GetInfluxDbTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o LookupInfluxDbResultOutput) TechEmails() GetInfluxDbTechEmailArrayOutput {
+	return o.ApplyT(func(v LookupInfluxDbResult) []GetInfluxDbTechEmail { return v.TechEmails }).(GetInfluxDbTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

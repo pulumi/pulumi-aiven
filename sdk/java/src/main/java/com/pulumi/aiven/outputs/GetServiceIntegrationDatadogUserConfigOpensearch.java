@@ -48,16 +48,19 @@ public final class GetServiceIntegrationDatadogUserConfigOpensearch {
 
         @CustomType.Setter
         public Builder indexStatsEnabled(@Nullable Boolean indexStatsEnabled) {
+
             this.indexStatsEnabled = indexStatsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder pendingTaskStatsEnabled(@Nullable Boolean pendingTaskStatsEnabled) {
+
             this.pendingTaskStatsEnabled = pendingTaskStatsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder pshardStatsEnabled(@Nullable Boolean pshardStatsEnabled) {
+
             this.pshardStatsEnabled = pshardStatsEnabled;
             return this;
         }

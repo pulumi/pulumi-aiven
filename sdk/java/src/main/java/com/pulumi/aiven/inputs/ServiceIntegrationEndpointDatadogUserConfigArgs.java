@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -312,7 +313,9 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         public ServiceIntegrationEndpointDatadogUserConfigArgs build() {
-            $.datadogApiKey = Objects.requireNonNull($.datadogApiKey, "expected parameter 'datadogApiKey' to be non-null");
+            if ($.datadogApiKey == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointDatadogUserConfigArgs", "datadogApiKey");
+            }
             return $;
         }
     }

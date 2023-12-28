@@ -46,6 +46,21 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
+     * Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    @Import(name="clickhouseMysql")
+    private @Nullable Output<Boolean> clickhouseMysql;
+
+    /**
+     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
+    public Optional<Output<Boolean>> clickhouseMysql() {
+        return Optional.ofNullable(this.clickhouseMysql);
+    }
+
+    /**
      * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
@@ -65,6 +80,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     private ClickhouseClickhouseUserConfigPrivatelinkAccessArgs(ClickhouseClickhouseUserConfigPrivatelinkAccessArgs $) {
         this.clickhouse = $.clickhouse;
         this.clickhouseHttps = $.clickhouseHttps;
+        this.clickhouseMysql = $.clickhouseMysql;
         this.prometheus = $.prometheus;
     }
 
@@ -126,6 +142,27 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
          */
         public Builder clickhouseHttps(Boolean clickhouseHttps) {
             return clickhouseHttps(Output.of(clickhouseHttps));
+        }
+
+        /**
+         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseMysql(@Nullable Output<Boolean> clickhouseMysql) {
+            $.clickhouseMysql = clickhouseMysql;
+            return this;
+        }
+
+        /**
+         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouseMysql(Boolean clickhouseMysql) {
+            return clickhouseMysql(Output.of(clickhouseMysql));
         }
 
         /**

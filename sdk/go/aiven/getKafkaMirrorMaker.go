@@ -113,6 +113,8 @@ type LookupKafkaMirrorMakerResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetKafkaMirrorMakerTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []GetKafkaMirrorMakerTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -294,6 +296,11 @@ func (o LookupKafkaMirrorMakerResultOutput) StaticIps() pulumi.StringArrayOutput
 // Tags are key-value pairs that allow you to categorize services.
 func (o LookupKafkaMirrorMakerResultOutput) Tags() GetKafkaMirrorMakerTagArrayOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerTag { return v.Tags }).(GetKafkaMirrorMakerTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o LookupKafkaMirrorMakerResultOutput) TechEmails() GetKafkaMirrorMakerTechEmailArrayOutput {
+	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerTechEmail { return v.TechEmails }).(GetKafkaMirrorMakerTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

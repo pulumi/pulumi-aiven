@@ -280,6 +280,13 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
@@ -299,6 +306,13 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
 
     public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
+    }
+
+    @Import(name="unifiedAlertingEnabled")
+    private @Nullable Output<Boolean> unifiedAlertingEnabled;
+
+    public Optional<Output<Boolean>> unifiedAlertingEnabled() {
+        return Optional.ofNullable(this.unifiedAlertingEnabled);
     }
 
     @Import(name="userAutoAssignOrg")
@@ -359,9 +373,11 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         this.projectToForkFrom = $.projectToForkFrom;
         this.publicAccess = $.publicAccess;
         this.recoveryBasebackupName = $.recoveryBasebackupName;
+        this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.smtpServer = $.smtpServer;
         this.staticIps = $.staticIps;
+        this.unifiedAlertingEnabled = $.unifiedAlertingEnabled;
         this.userAutoAssignOrg = $.userAutoAssignOrg;
         this.userAutoAssignOrgRole = $.userAutoAssignOrgRole;
         this.viewersCanEdit = $.viewersCanEdit;
@@ -727,6 +743,15 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
             return recoveryBasebackupName(Output.of(recoveryBasebackupName));
         }
 
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
+        }
+
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
@@ -752,6 +777,15 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
 
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
+        }
+
+        public Builder unifiedAlertingEnabled(@Nullable Output<Boolean> unifiedAlertingEnabled) {
+            $.unifiedAlertingEnabled = unifiedAlertingEnabled;
+            return this;
+        }
+
+        public Builder unifiedAlertingEnabled(Boolean unifiedAlertingEnabled) {
+            return unifiedAlertingEnabled(Output.of(unifiedAlertingEnabled));
         }
 
         public Builder userAutoAssignOrg(@Nullable Output<Boolean> userAutoAssignOrg) {

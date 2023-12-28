@@ -54,7 +54,13 @@ namespace Pulumi.Aiven
     public partial class MirrorMakerReplicationFlow : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Emit heartbeats enabled. The default value is `false`.
+        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// </summary>
+        [Output("emitBackwardHeartbeatsEnabled")]
+        public Output<bool?> EmitBackwardHeartbeatsEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         [Output("emitHeartbeatsEnabled")]
         public Output<bool?> EmitHeartbeatsEnabled { get; private set; } = null!;
@@ -172,7 +178,13 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Emit heartbeats enabled. The default value is `false`.
+        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// </summary>
+        [Input("emitBackwardHeartbeatsEnabled")]
+        public Input<bool>? EmitBackwardHeartbeatsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }
@@ -264,7 +276,13 @@ namespace Pulumi.Aiven
     public sealed class MirrorMakerReplicationFlowState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Emit heartbeats enabled. The default value is `false`.
+        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// </summary>
+        [Input("emitBackwardHeartbeatsEnabled")]
+        public Input<bool>? EmitBackwardHeartbeatsEnabled { get; set; }
+
+        /// <summary>
+        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         [Input("emitHeartbeatsEnabled")]
         public Input<bool>? EmitHeartbeatsEnabled { get; set; }

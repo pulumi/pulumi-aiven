@@ -58,7 +58,7 @@ namespace Pulumi.Aiven
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.Aiven
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }

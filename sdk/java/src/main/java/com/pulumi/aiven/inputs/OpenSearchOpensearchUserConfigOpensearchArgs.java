@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -46,6 +47,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<Boolean>> actionDestructiveRequiresName() {
         return Optional.ofNullable(this.actionDestructiveRequiresName);
+    }
+
+    /**
+     * Opensearch Security Plugin Settings.
+     * 
+     */
+    @Import(name="authFailureListeners")
+    private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs> authFailureListeners;
+
+    /**
+     * @return Opensearch Security Plugin Settings.
+     * 
+     */
+    public Optional<Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs>> authFailureListeners() {
+        return Optional.ofNullable(this.authFailureListeners);
     }
 
     /**
@@ -124,6 +140,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable/Disable security audit. The default value is `false`.
+     * 
+     */
+    @Import(name="enableSecurityAudit")
+    private @Nullable Output<Boolean> enableSecurityAudit;
+
+    /**
+     * @return Enable/Disable security audit. The default value is `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> enableSecurityAudit() {
+        return Optional.ofNullable(this.enableSecurityAudit);
+    }
+
+    /**
      * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
      * 
      */
@@ -199,6 +230,36 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Absolute value. Default is unbound. Doesn&#39;t work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+     * 
+     */
+    @Import(name="indicesMemoryMaxIndexBufferSize")
+    private @Nullable Output<Integer> indicesMemoryMaxIndexBufferSize;
+
+    /**
+     * @return Absolute value. Default is unbound. Doesn&#39;t work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+     * 
+     */
+    public Optional<Output<Integer>> indicesMemoryMaxIndexBufferSize() {
+        return Optional.ofNullable(this.indicesMemoryMaxIndexBufferSize);
+    }
+
+    /**
+     * Absolute value. Default is 48mb. Doesn&#39;t work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+     * 
+     */
+    @Import(name="indicesMemoryMinIndexBufferSize")
+    private @Nullable Output<Integer> indicesMemoryMinIndexBufferSize;
+
+    /**
+     * @return Absolute value. Default is 48mb. Doesn&#39;t work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+     * 
+     */
+    public Optional<Output<Integer>> indicesMemoryMinIndexBufferSize() {
+        return Optional.ofNullable(this.indicesMemoryMinIndexBufferSize);
+    }
+
+    /**
      * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      * 
      */
@@ -256,6 +317,96 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
      */
     public Optional<Output<Integer>> indicesRecoveryMaxConcurrentFileChunks() {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
+    }
+
+    /**
+     * Specifies whether ISM is enabled or not. The default value is `true`.
+     * 
+     */
+    @Import(name="ismEnabled")
+    private @Nullable Output<Boolean> ismEnabled;
+
+    /**
+     * @return Specifies whether ISM is enabled or not. The default value is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> ismEnabled() {
+        return Optional.ofNullable(this.ismEnabled);
+    }
+
+    /**
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * 
+     */
+    @Import(name="ismHistoryEnabled")
+    private @Nullable Output<Boolean> ismHistoryEnabled;
+
+    /**
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * 
+     */
+    public Optional<Output<Boolean>> ismHistoryEnabled() {
+        return Optional.ofNullable(this.ismHistoryEnabled);
+    }
+
+    /**
+     * The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * 
+     */
+    @Import(name="ismHistoryMaxAge")
+    private @Nullable Output<Integer> ismHistoryMaxAge;
+
+    /**
+     * @return The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * 
+     */
+    public Optional<Output<Integer>> ismHistoryMaxAge() {
+        return Optional.ofNullable(this.ismHistoryMaxAge);
+    }
+
+    /**
+     * The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * 
+     */
+    @Import(name="ismHistoryMaxDocs")
+    private @Nullable Output<Integer> ismHistoryMaxDocs;
+
+    /**
+     * @return The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * 
+     */
+    public Optional<Output<Integer>> ismHistoryMaxDocs() {
+        return Optional.ofNullable(this.ismHistoryMaxDocs);
+    }
+
+    /**
+     * The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * 
+     */
+    @Import(name="ismHistoryRolloverCheckPeriod")
+    private @Nullable Output<Integer> ismHistoryRolloverCheckPeriod;
+
+    /**
+     * @return The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * 
+     */
+    public Optional<Output<Integer>> ismHistoryRolloverCheckPeriod() {
+        return Optional.ofNullable(this.ismHistoryRolloverCheckPeriod);
+    }
+
+    /**
+     * How long audit history indices are kept in days. The default value is `30`.
+     * 
+     */
+    @Import(name="ismHistoryRolloverRetentionPeriod")
+    private @Nullable Output<Integer> ismHistoryRolloverRetentionPeriod;
+
+    /**
+     * @return How long audit history indices are kept in days. The default value is `30`.
+     * 
+     */
+    public Optional<Output<Integer>> ismHistoryRolloverRetentionPeriod() {
+        return Optional.ofNullable(this.ismHistoryRolloverRetentionPeriod);
     }
 
     /**
@@ -488,20 +639,30 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     private OpenSearchOpensearchUserConfigOpensearchArgs(OpenSearchOpensearchUserConfigOpensearchArgs $) {
         this.actionAutoCreateIndexEnabled = $.actionAutoCreateIndexEnabled;
         this.actionDestructiveRequiresName = $.actionDestructiveRequiresName;
+        this.authFailureListeners = $.authFailureListeners;
         this.clusterMaxShardsPerNode = $.clusterMaxShardsPerNode;
         this.clusterRoutingAllocationNodeConcurrentRecoveries = $.clusterRoutingAllocationNodeConcurrentRecoveries;
         this.emailSenderName = $.emailSenderName;
         this.emailSenderPassword = $.emailSenderPassword;
         this.emailSenderUsername = $.emailSenderUsername;
+        this.enableSecurityAudit = $.enableSecurityAudit;
         this.httpMaxContentLength = $.httpMaxContentLength;
         this.httpMaxHeaderSize = $.httpMaxHeaderSize;
         this.httpMaxInitialLineLength = $.httpMaxInitialLineLength;
         this.indicesFielddataCacheSize = $.indicesFielddataCacheSize;
         this.indicesMemoryIndexBufferSize = $.indicesMemoryIndexBufferSize;
+        this.indicesMemoryMaxIndexBufferSize = $.indicesMemoryMaxIndexBufferSize;
+        this.indicesMemoryMinIndexBufferSize = $.indicesMemoryMinIndexBufferSize;
         this.indicesQueriesCacheSize = $.indicesQueriesCacheSize;
         this.indicesQueryBoolMaxClauseCount = $.indicesQueryBoolMaxClauseCount;
         this.indicesRecoveryMaxBytesPerSec = $.indicesRecoveryMaxBytesPerSec;
         this.indicesRecoveryMaxConcurrentFileChunks = $.indicesRecoveryMaxConcurrentFileChunks;
+        this.ismEnabled = $.ismEnabled;
+        this.ismHistoryEnabled = $.ismHistoryEnabled;
+        this.ismHistoryMaxAge = $.ismHistoryMaxAge;
+        this.ismHistoryMaxDocs = $.ismHistoryMaxDocs;
+        this.ismHistoryRolloverCheckPeriod = $.ismHistoryRolloverCheckPeriod;
+        this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
         this.overrideMainResponseVersion = $.overrideMainResponseVersion;
         this.reindexRemoteWhitelists = $.reindexRemoteWhitelists;
         this.scriptMaxCompilationsRate = $.scriptMaxCompilationsRate;
@@ -577,6 +738,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder actionDestructiveRequiresName(Boolean actionDestructiveRequiresName) {
             return actionDestructiveRequiresName(Output.of(actionDestructiveRequiresName));
+        }
+
+        /**
+         * @param authFailureListeners Opensearch Security Plugin Settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authFailureListeners(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs> authFailureListeners) {
+            $.authFailureListeners = authFailureListeners;
+            return this;
+        }
+
+        /**
+         * @param authFailureListeners Opensearch Security Plugin Settings.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authFailureListeners(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs authFailureListeners) {
+            return authFailureListeners(Output.of(authFailureListeners));
         }
 
         /**
@@ -685,6 +867,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param enableSecurityAudit Enable/Disable security audit. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSecurityAudit(@Nullable Output<Boolean> enableSecurityAudit) {
+            $.enableSecurityAudit = enableSecurityAudit;
+            return this;
+        }
+
+        /**
+         * @param enableSecurityAudit Enable/Disable security audit. The default value is `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableSecurityAudit(Boolean enableSecurityAudit) {
+            return enableSecurityAudit(Output.of(enableSecurityAudit));
+        }
+
+        /**
          * @param httpMaxContentLength Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
          * 
          * @return builder
@@ -790,6 +993,48 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
+         * @param indicesMemoryMaxIndexBufferSize Absolute value. Default is unbound. Doesn&#39;t work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indicesMemoryMaxIndexBufferSize(@Nullable Output<Integer> indicesMemoryMaxIndexBufferSize) {
+            $.indicesMemoryMaxIndexBufferSize = indicesMemoryMaxIndexBufferSize;
+            return this;
+        }
+
+        /**
+         * @param indicesMemoryMaxIndexBufferSize Absolute value. Default is unbound. Doesn&#39;t work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indicesMemoryMaxIndexBufferSize(Integer indicesMemoryMaxIndexBufferSize) {
+            return indicesMemoryMaxIndexBufferSize(Output.of(indicesMemoryMaxIndexBufferSize));
+        }
+
+        /**
+         * @param indicesMemoryMinIndexBufferSize Absolute value. Default is 48mb. Doesn&#39;t work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indicesMemoryMinIndexBufferSize(@Nullable Output<Integer> indicesMemoryMinIndexBufferSize) {
+            $.indicesMemoryMinIndexBufferSize = indicesMemoryMinIndexBufferSize;
+            return this;
+        }
+
+        /**
+         * @param indicesMemoryMinIndexBufferSize Absolute value. Default is 48mb. Doesn&#39;t work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indicesMemoryMinIndexBufferSize(Integer indicesMemoryMinIndexBufferSize) {
+            return indicesMemoryMinIndexBufferSize(Output.of(indicesMemoryMinIndexBufferSize));
+        }
+
+        /**
          * @param indicesQueriesCacheSize Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
          * 
          * @return builder
@@ -871,6 +1116,132 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder indicesRecoveryMaxConcurrentFileChunks(Integer indicesRecoveryMaxConcurrentFileChunks) {
             return indicesRecoveryMaxConcurrentFileChunks(Output.of(indicesRecoveryMaxConcurrentFileChunks));
+        }
+
+        /**
+         * @param ismEnabled Specifies whether ISM is enabled or not. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismEnabled(@Nullable Output<Boolean> ismEnabled) {
+            $.ismEnabled = ismEnabled;
+            return this;
+        }
+
+        /**
+         * @param ismEnabled Specifies whether ISM is enabled or not. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismEnabled(Boolean ismEnabled) {
+            return ismEnabled(Output.of(ismEnabled));
+        }
+
+        /**
+         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryEnabled(@Nullable Output<Boolean> ismHistoryEnabled) {
+            $.ismHistoryEnabled = ismHistoryEnabled;
+            return this;
+        }
+
+        /**
+         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryEnabled(Boolean ismHistoryEnabled) {
+            return ismHistoryEnabled(Output.of(ismHistoryEnabled));
+        }
+
+        /**
+         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. The default value is `24`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryMaxAge(@Nullable Output<Integer> ismHistoryMaxAge) {
+            $.ismHistoryMaxAge = ismHistoryMaxAge;
+            return this;
+        }
+
+        /**
+         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. The default value is `24`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryMaxAge(Integer ismHistoryMaxAge) {
+            return ismHistoryMaxAge(Output.of(ismHistoryMaxAge));
+        }
+
+        /**
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryMaxDocs(@Nullable Output<Integer> ismHistoryMaxDocs) {
+            $.ismHistoryMaxDocs = ismHistoryMaxDocs;
+            return this;
+        }
+
+        /**
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryMaxDocs(Integer ismHistoryMaxDocs) {
+            return ismHistoryMaxDocs(Output.of(ismHistoryMaxDocs));
+        }
+
+        /**
+         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. The default value is `8`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryRolloverCheckPeriod(@Nullable Output<Integer> ismHistoryRolloverCheckPeriod) {
+            $.ismHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
+            return this;
+        }
+
+        /**
+         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. The default value is `8`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryRolloverCheckPeriod(Integer ismHistoryRolloverCheckPeriod) {
+            return ismHistoryRolloverCheckPeriod(Output.of(ismHistoryRolloverCheckPeriod));
+        }
+
+        /**
+         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. The default value is `30`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryRolloverRetentionPeriod(@Nullable Output<Integer> ismHistoryRolloverRetentionPeriod) {
+            $.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
+            return this;
+        }
+
+        /**
+         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. The default value is `30`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ismHistoryRolloverRetentionPeriod(Integer ismHistoryRolloverRetentionPeriod) {
+            return ismHistoryRolloverRetentionPeriod(Output.of(ismHistoryRolloverRetentionPeriod));
         }
 
         /**

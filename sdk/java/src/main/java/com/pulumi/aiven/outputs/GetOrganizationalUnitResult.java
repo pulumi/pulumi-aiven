@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -112,32 +113,50 @@ public final class GetOrganizationalUnitResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(String parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder tenantId(String tenantId) {
-            this.tenantId = Objects.requireNonNull(tenantId);
+            if (tenantId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "tenantId");
+            }
+            this.tenantId = tenantId;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationalUnitResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetOrganizationalUnitResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -29,14 +30,14 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="userEmail", required=true)
     private Output<String> userEmail;
 
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> userEmail() {
@@ -90,7 +91,7 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -101,7 +102,7 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -111,8 +112,12 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetOrganizationUserArgs build() {
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
-            $.userEmail = Objects.requireNonNull($.userEmail, "expected parameter 'userEmail' to be non-null");
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationUserArgs", "organizationId");
+            }
+            if ($.userEmail == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationUserArgs", "userEmail");
+            }
             return $;
         }
     }

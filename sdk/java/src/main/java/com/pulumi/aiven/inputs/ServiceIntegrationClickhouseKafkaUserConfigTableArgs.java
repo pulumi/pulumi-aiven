@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigTableC
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -544,9 +545,15 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         public ServiceIntegrationClickhouseKafkaUserConfigTableArgs build() {
-            $.dataFormat = Objects.requireNonNull($.dataFormat, "expected parameter 'dataFormat' to be non-null");
-            $.groupName = Objects.requireNonNull($.groupName, "expected parameter 'groupName' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.dataFormat == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "dataFormat");
+            }
+            if ($.groupName == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "groupName");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "name");
+            }
             return $;
         }
     }

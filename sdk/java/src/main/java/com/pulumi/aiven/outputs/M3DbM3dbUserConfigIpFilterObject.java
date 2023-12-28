@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,12 +43,16 @@ public final class M3DbM3dbUserConfigIpFilterObject {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("M3DbM3dbUserConfigIpFilterObject", "network");
+            }
+            this.network = network;
             return this;
         }
         public M3DbM3dbUserConfigIpFilterObject build() {

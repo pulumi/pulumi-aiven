@@ -48,16 +48,19 @@ public final class GetPgPgUserConfigPrivateAccess {
 
         @CustomType.Setter
         public Builder pg(@Nullable Boolean pg) {
+
             this.pg = pg;
             return this;
         }
         @CustomType.Setter
         public Builder pgbouncer(@Nullable Boolean pgbouncer) {
+
             this.pgbouncer = pgbouncer;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }

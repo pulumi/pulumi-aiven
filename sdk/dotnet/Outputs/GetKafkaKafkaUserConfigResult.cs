@@ -14,6 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaKafkaUserConfigResult
     {
         public readonly string? AdditionalBackupRegions;
+        public readonly bool? AivenKafkaTopicMessages;
         public readonly string? CustomDomain;
         public readonly ImmutableArray<Outputs.GetKafkaKafkaUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilterStrings;
@@ -31,11 +32,15 @@ namespace Pulumi.Aiven.Outputs
         public readonly Outputs.GetKafkaKafkaUserConfigPublicAccessResult? PublicAccess;
         public readonly bool? SchemaRegistry;
         public readonly Outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult? SchemaRegistryConfig;
+        public readonly bool? ServiceLog;
         public readonly bool? StaticIps;
+        public readonly Outputs.GetKafkaKafkaUserConfigTieredStorageResult? TieredStorage;
 
         [OutputConstructor]
         private GetKafkaKafkaUserConfigResult(
             string? additionalBackupRegions,
+
+            bool? aivenKafkaTopicMessages,
 
             string? customDomain,
 
@@ -71,9 +76,14 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult? schemaRegistryConfig,
 
-            bool? staticIps)
+            bool? serviceLog,
+
+            bool? staticIps,
+
+            Outputs.GetKafkaKafkaUserConfigTieredStorageResult? tieredStorage)
         {
             AdditionalBackupRegions = additionalBackupRegions;
+            AivenKafkaTopicMessages = aivenKafkaTopicMessages;
             CustomDomain = customDomain;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
@@ -91,7 +101,9 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             SchemaRegistry = schemaRegistry;
             SchemaRegistryConfig = schemaRegistryConfig;
+            ServiceLog = serviceLog;
             StaticIps = staticIps;
+            TieredStorage = tieredStorage;
         }
     }
 }

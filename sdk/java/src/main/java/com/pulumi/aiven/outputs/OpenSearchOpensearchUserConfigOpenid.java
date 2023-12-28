@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -32,7 +33,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
      * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
      * 
      */
-    private @Nullable Boolean enabled;
+    private Boolean enabled;
     /**
      * @return HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
      * 
@@ -100,8 +101,8 @@ public final class OpenSearchOpensearchUserConfigOpenid {
      * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
      * 
      */
-    public Optional<Boolean> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Boolean enabled() {
+        return this.enabled;
     }
     /**
      * @return HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
@@ -172,7 +173,7 @@ public final class OpenSearchOpensearchUserConfigOpenid {
         private String clientId;
         private String clientSecret;
         private String connectUrl;
-        private @Nullable Boolean enabled;
+        private Boolean enabled;
         private @Nullable String header;
         private @Nullable String jwtHeader;
         private @Nullable String jwtUrlParameter;
@@ -200,61 +201,81 @@ public final class OpenSearchOpensearchUserConfigOpenid {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenid", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenid", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder connectUrl(String connectUrl) {
-            this.connectUrl = Objects.requireNonNull(connectUrl);
+            if (connectUrl == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenid", "connectUrl");
+            }
+            this.connectUrl = connectUrl;
             return this;
         }
         @CustomType.Setter
-        public Builder enabled(@Nullable Boolean enabled) {
+        public Builder enabled(Boolean enabled) {
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenid", "enabled");
+            }
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable String header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder jwtHeader(@Nullable String jwtHeader) {
+
             this.jwtHeader = jwtHeader;
             return this;
         }
         @CustomType.Setter
         public Builder jwtUrlParameter(@Nullable String jwtUrlParameter) {
+
             this.jwtUrlParameter = jwtUrlParameter;
             return this;
         }
         @CustomType.Setter
         public Builder refreshRateLimitCount(@Nullable Integer refreshRateLimitCount) {
+
             this.refreshRateLimitCount = refreshRateLimitCount;
             return this;
         }
         @CustomType.Setter
         public Builder refreshRateLimitTimeWindowMs(@Nullable Integer refreshRateLimitTimeWindowMs) {
+
             this.refreshRateLimitTimeWindowMs = refreshRateLimitTimeWindowMs;
             return this;
         }
         @CustomType.Setter
         public Builder rolesKey(@Nullable String rolesKey) {
+
             this.rolesKey = rolesKey;
             return this;
         }
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder subjectKey(@Nullable String subjectKey) {
+
             this.subjectKey = subjectKey;
             return this;
         }

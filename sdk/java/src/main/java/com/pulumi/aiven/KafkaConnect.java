@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.KafkaConnectKafkaConnect;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.KafkaConnectServiceIntegration;
 import com.pulumi.aiven.outputs.KafkaConnectTag;
+import com.pulumi.aiven.outputs.KafkaConnectTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -487,6 +488,22 @@ public class KafkaConnect extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<KafkaConnectTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,KafkaConnectTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KafkaConnectTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Output<Optional<List<KafkaConnectTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

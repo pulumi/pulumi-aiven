@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -80,41 +81,53 @@ public final class MySqlMysqlUserConfigMigration {
 
         @CustomType.Setter
         public Builder dbname(@Nullable String dbname) {
+
             this.dbname = dbname;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("MySqlMysqlUserConfigMigration", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDbs(@Nullable String ignoreDbs) {
+
             this.ignoreDbs = ignoreDbs;
             return this;
         }
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("MySqlMysqlUserConfigMigration", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

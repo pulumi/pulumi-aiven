@@ -43,6 +43,7 @@ public final class GetMySqlMysqlUserConfig {
     private @Nullable String projectToForkFrom;
     private @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess;
     private @Nullable String recoveryTargetTime;
+    private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable Boolean staticIps;
 
@@ -104,6 +105,9 @@ public final class GetMySqlMysqlUserConfig {
     public Optional<String> recoveryTargetTime() {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -137,6 +141,7 @@ public final class GetMySqlMysqlUserConfig {
         private @Nullable String projectToForkFrom;
         private @Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess;
         private @Nullable String recoveryTargetTime;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -159,42 +164,50 @@ public final class GetMySqlMysqlUserConfig {
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
     	      this.recoveryTargetTime = defaults.recoveryTargetTime;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder adminPassword(@Nullable String adminPassword) {
+
             this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder adminUsername(@Nullable String adminUsername) {
+
             this.adminUsername = adminUsername;
             return this;
         }
         @CustomType.Setter
         public Builder backupHour(@Nullable Integer backupHour) {
+
             this.backupHour = backupHour;
             return this;
         }
         @CustomType.Setter
         public Builder backupMinute(@Nullable Integer backupMinute) {
+
             this.backupMinute = backupMinute;
             return this;
         }
         @CustomType.Setter
         public Builder binlogRetentionPeriod(@Nullable Integer binlogRetentionPeriod) {
+
             this.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetMySqlMysqlUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -203,6 +216,7 @@ public final class GetMySqlMysqlUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -211,6 +225,7 @@ public final class GetMySqlMysqlUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -219,51 +234,67 @@ public final class GetMySqlMysqlUserConfig {
         }
         @CustomType.Setter
         public Builder migration(@Nullable GetMySqlMysqlUserConfigMigration migration) {
+
             this.migration = migration;
             return this;
         }
         @CustomType.Setter
         public Builder mysql(@Nullable GetMySqlMysqlUserConfigMysql mysql) {
+
             this.mysql = mysql;
             return this;
         }
         @CustomType.Setter
         public Builder mysqlVersion(@Nullable String mysqlVersion) {
+
             this.mysqlVersion = mysqlVersion;
             return this;
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetMySqlMysqlUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetMySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetMySqlMysqlUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryTargetTime(@Nullable String recoveryTargetTime) {
+
             this.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -286,6 +317,7 @@ public final class GetMySqlMysqlUserConfig {
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
             _resultValue.recoveryTargetTime = recoveryTargetTime;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
             return _resultValue;

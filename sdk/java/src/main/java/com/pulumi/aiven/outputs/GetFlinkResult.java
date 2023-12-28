@@ -8,7 +8,9 @@ import com.pulumi.aiven.outputs.GetFlinkFlink;
 import com.pulumi.aiven.outputs.GetFlinkFlinkUserConfig;
 import com.pulumi.aiven.outputs.GetFlinkServiceIntegration;
 import com.pulumi.aiven.outputs.GetFlinkTag;
+import com.pulumi.aiven.outputs.GetFlinkTechEmail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -152,6 +154,11 @@ public final class GetFlinkResult {
      * 
      */
     private List<GetFlinkTag> tags;
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    private List<GetFlinkTechEmail> techEmails;
     /**
      * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
@@ -349,6 +356,13 @@ public final class GetFlinkResult {
         return this.tags;
     }
     /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public List<GetFlinkTechEmail> techEmails() {
+        return this.techEmails;
+    }
+    /**
      * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
@@ -392,6 +406,7 @@ public final class GetFlinkResult {
         private String state;
         private List<String> staticIps;
         private List<GetFlinkTag> tags;
+        private List<GetFlinkTechEmail> techEmails;
         private Boolean terminationProtection;
         public Builder() {}
         public Builder(GetFlinkResult defaults) {
@@ -423,22 +438,32 @@ public final class GetFlinkResult {
     	      this.state = defaults.state;
     	      this.staticIps = defaults.staticIps;
     	      this.tags = defaults.tags;
+    	      this.techEmails = defaults.techEmails;
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
         @CustomType.Setter
         public Builder additionalDiskSpace(String additionalDiskSpace) {
-            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            if (additionalDiskSpace == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "additionalDiskSpace");
+            }
+            this.additionalDiskSpace = additionalDiskSpace;
             return this;
         }
         @CustomType.Setter
         public Builder cloudName(String cloudName) {
-            this.cloudName = Objects.requireNonNull(cloudName);
+            if (cloudName == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "cloudName");
+            }
+            this.cloudName = cloudName;
             return this;
         }
         @CustomType.Setter
         public Builder components(List<GetFlinkComponent> components) {
-            this.components = Objects.requireNonNull(components);
+            if (components == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "components");
+            }
+            this.components = components;
             return this;
         }
         public Builder components(GetFlinkComponent... components) {
@@ -446,32 +471,50 @@ public final class GetFlinkResult {
         }
         @CustomType.Setter
         public Builder diskSpace(String diskSpace) {
-            this.diskSpace = Objects.requireNonNull(diskSpace);
+            if (diskSpace == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "diskSpace");
+            }
+            this.diskSpace = diskSpace;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceCap(String diskSpaceCap) {
-            this.diskSpaceCap = Objects.requireNonNull(diskSpaceCap);
+            if (diskSpaceCap == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "diskSpaceCap");
+            }
+            this.diskSpaceCap = diskSpaceCap;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceDefault(String diskSpaceDefault) {
-            this.diskSpaceDefault = Objects.requireNonNull(diskSpaceDefault);
+            if (diskSpaceDefault == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "diskSpaceDefault");
+            }
+            this.diskSpaceDefault = diskSpaceDefault;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceStep(String diskSpaceStep) {
-            this.diskSpaceStep = Objects.requireNonNull(diskSpaceStep);
+            if (diskSpaceStep == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "diskSpaceStep");
+            }
+            this.diskSpaceStep = diskSpaceStep;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceUsed(String diskSpaceUsed) {
-            this.diskSpaceUsed = Objects.requireNonNull(diskSpaceUsed);
+            if (diskSpaceUsed == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "diskSpaceUsed");
+            }
+            this.diskSpaceUsed = diskSpaceUsed;
             return this;
         }
         @CustomType.Setter
         public Builder flinkUserConfigs(List<GetFlinkFlinkUserConfig> flinkUserConfigs) {
-            this.flinkUserConfigs = Objects.requireNonNull(flinkUserConfigs);
+            if (flinkUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "flinkUserConfigs");
+            }
+            this.flinkUserConfigs = flinkUserConfigs;
             return this;
         }
         public Builder flinkUserConfigs(GetFlinkFlinkUserConfig... flinkUserConfigs) {
@@ -479,7 +522,10 @@ public final class GetFlinkResult {
         }
         @CustomType.Setter
         public Builder flinks(List<GetFlinkFlink> flinks) {
-            this.flinks = Objects.requireNonNull(flinks);
+            if (flinks == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "flinks");
+            }
+            this.flinks = flinks;
             return this;
         }
         public Builder flinks(GetFlinkFlink... flinks) {
@@ -487,42 +533,66 @@ public final class GetFlinkResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
-            this.maintenanceWindowDow = Objects.requireNonNull(maintenanceWindowDow);
+            if (maintenanceWindowDow == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "maintenanceWindowDow");
+            }
+            this.maintenanceWindowDow = maintenanceWindowDow;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindowTime(String maintenanceWindowTime) {
-            this.maintenanceWindowTime = Objects.requireNonNull(maintenanceWindowTime);
+            if (maintenanceWindowTime == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "maintenanceWindowTime");
+            }
+            this.maintenanceWindowTime = maintenanceWindowTime;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder projectVpcId(String projectVpcId) {
-            this.projectVpcId = Objects.requireNonNull(projectVpcId);
+            if (projectVpcId == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "projectVpcId");
+            }
+            this.projectVpcId = projectVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceHost(String serviceHost) {
-            this.serviceHost = Objects.requireNonNull(serviceHost);
+            if (serviceHost == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "serviceHost");
+            }
+            this.serviceHost = serviceHost;
             return this;
         }
         @CustomType.Setter
         public Builder serviceIntegrations(List<GetFlinkServiceIntegration> serviceIntegrations) {
-            this.serviceIntegrations = Objects.requireNonNull(serviceIntegrations);
+            if (serviceIntegrations == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "serviceIntegrations");
+            }
+            this.serviceIntegrations = serviceIntegrations;
             return this;
         }
         public Builder serviceIntegrations(GetFlinkServiceIntegration... serviceIntegrations) {
@@ -530,42 +600,66 @@ public final class GetFlinkResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder servicePassword(String servicePassword) {
-            this.servicePassword = Objects.requireNonNull(servicePassword);
+            if (servicePassword == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "servicePassword");
+            }
+            this.servicePassword = servicePassword;
             return this;
         }
         @CustomType.Setter
         public Builder servicePort(Integer servicePort) {
-            this.servicePort = Objects.requireNonNull(servicePort);
+            if (servicePort == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "servicePort");
+            }
+            this.servicePort = servicePort;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
-            this.serviceType = Objects.requireNonNull(serviceType);
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "serviceType");
+            }
+            this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceUri(String serviceUri) {
-            this.serviceUri = Objects.requireNonNull(serviceUri);
+            if (serviceUri == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "serviceUri");
+            }
+            this.serviceUri = serviceUri;
             return this;
         }
         @CustomType.Setter
         public Builder serviceUsername(String serviceUsername) {
-            this.serviceUsername = Objects.requireNonNull(serviceUsername);
+            if (serviceUsername == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "serviceUsername");
+            }
+            this.serviceUsername = serviceUsername;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(List<String> staticIps) {
-            this.staticIps = Objects.requireNonNull(staticIps);
+            if (staticIps == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "staticIps");
+            }
+            this.staticIps = staticIps;
             return this;
         }
         public Builder staticIps(String... staticIps) {
@@ -573,15 +667,32 @@ public final class GetFlinkResult {
         }
         @CustomType.Setter
         public Builder tags(List<GetFlinkTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetFlinkTag... tags) {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder techEmails(List<GetFlinkTechEmail> techEmails) {
+            if (techEmails == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "techEmails");
+            }
+            this.techEmails = techEmails;
+            return this;
+        }
+        public Builder techEmails(GetFlinkTechEmail... techEmails) {
+            return techEmails(List.of(techEmails));
+        }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
-            this.terminationProtection = Objects.requireNonNull(terminationProtection);
+            if (terminationProtection == null) {
+              throw new MissingRequiredPropertyException("GetFlinkResult", "terminationProtection");
+            }
+            this.terminationProtection = terminationProtection;
             return this;
         }
         public GetFlinkResult build() {
@@ -613,6 +724,7 @@ public final class GetFlinkResult {
             _resultValue.state = state;
             _resultValue.staticIps = staticIps;
             _resultValue.tags = tags;
+            _resultValue.techEmails = techEmails;
             _resultValue.terminationProtection = terminationProtection;
             return _resultValue;
         }

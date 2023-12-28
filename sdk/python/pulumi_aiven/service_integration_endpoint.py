@@ -23,9 +23,11 @@ class ServiceIntegrationEndpointArgs:
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_google_cloud_bigquery: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] = None,
                  external_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] = None,
                  external_opensearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']] = None,
+                 external_postgresql: Optional[pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs']] = None,
                  external_schema_registry_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] = None,
                  jolokia_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs']] = None,
                  prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs']] = None,
@@ -33,15 +35,17 @@ class ServiceIntegrationEndpointArgs:
         """
         The set of arguments for constructing a ServiceIntegrationEndpoint resource.
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
-        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
         :param pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs'] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs'] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs'] external_kafka_user_config: ExternalKafka user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs'] external_postgresql: ExternalPostgresql user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs'] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs'] jolokia_user_config: Jolokia user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
@@ -58,12 +62,16 @@ class ServiceIntegrationEndpointArgs:
             pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if external_elasticsearch_logs_user_config is not None:
             pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
+        if external_google_cloud_bigquery is not None:
+            pulumi.set(__self__, "external_google_cloud_bigquery", external_google_cloud_bigquery)
         if external_google_cloud_logging_user_config is not None:
             pulumi.set(__self__, "external_google_cloud_logging_user_config", external_google_cloud_logging_user_config)
         if external_kafka_user_config is not None:
             pulumi.set(__self__, "external_kafka_user_config", external_kafka_user_config)
         if external_opensearch_logs_user_config is not None:
             pulumi.set(__self__, "external_opensearch_logs_user_config", external_opensearch_logs_user_config)
+        if external_postgresql is not None:
+            pulumi.set(__self__, "external_postgresql", external_postgresql)
         if external_schema_registry_user_config is not None:
             pulumi.set(__self__, "external_schema_registry_user_config", external_schema_registry_user_config)
         if jolokia_user_config is not None:
@@ -89,7 +97,7 @@ class ServiceIntegrationEndpointArgs:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -158,6 +166,18 @@ class ServiceIntegrationEndpointArgs:
         pulumi.set(self, "external_elasticsearch_logs_user_config", value)
 
     @property
+    @pulumi.getter(name="externalGoogleCloudBigquery")
+    def external_google_cloud_bigquery(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]:
+        """
+        ExternalGoogleCloudBigquery user configurable settings
+        """
+        return pulumi.get(self, "external_google_cloud_bigquery")
+
+    @external_google_cloud_bigquery.setter
+    def external_google_cloud_bigquery(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]):
+        pulumi.set(self, "external_google_cloud_bigquery", value)
+
+    @property
     @pulumi.getter(name="externalGoogleCloudLoggingUserConfig")
     def external_google_cloud_logging_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]:
         """
@@ -192,6 +212,18 @@ class ServiceIntegrationEndpointArgs:
     @external_opensearch_logs_user_config.setter
     def external_opensearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]):
         pulumi.set(self, "external_opensearch_logs_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalPostgresql")
+    def external_postgresql(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs']]:
+        """
+        ExternalPostgresql user configurable settings
+        """
+        return pulumi.get(self, "external_postgresql")
+
+    @external_postgresql.setter
+    def external_postgresql(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs']]):
+        pulumi.set(self, "external_postgresql", value)
 
     @property
     @pulumi.getter(name="externalSchemaRegistryUserConfig")
@@ -252,9 +284,11 @@ class _ServiceIntegrationEndpointState:
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_google_cloud_bigquery: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] = None,
                  external_kafka_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] = None,
                  external_opensearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']] = None,
+                 external_postgresql: Optional[pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs']] = None,
                  external_schema_registry_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] = None,
                  jolokia_user_config: Optional[pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -265,13 +299,15 @@ class _ServiceIntegrationEndpointState:
         :param pulumi.Input['ServiceIntegrationEndpointDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_config: Integration endpoint specific backend configuration
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
-        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs'] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs'] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalKafkaUserConfigArgs'] external_kafka_user_config: ExternalKafka user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs'] external_postgresql: ExternalPostgresql user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs'] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
         :param pulumi.Input['ServiceIntegrationEndpointJolokiaUserConfigArgs'] jolokia_user_config: Jolokia user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
@@ -292,12 +328,16 @@ class _ServiceIntegrationEndpointState:
             pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
         if external_elasticsearch_logs_user_config is not None:
             pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
+        if external_google_cloud_bigquery is not None:
+            pulumi.set(__self__, "external_google_cloud_bigquery", external_google_cloud_bigquery)
         if external_google_cloud_logging_user_config is not None:
             pulumi.set(__self__, "external_google_cloud_logging_user_config", external_google_cloud_logging_user_config)
         if external_kafka_user_config is not None:
             pulumi.set(__self__, "external_kafka_user_config", external_kafka_user_config)
         if external_opensearch_logs_user_config is not None:
             pulumi.set(__self__, "external_opensearch_logs_user_config", external_opensearch_logs_user_config)
+        if external_postgresql is not None:
+            pulumi.set(__self__, "external_postgresql", external_postgresql)
         if external_schema_registry_user_config is not None:
             pulumi.set(__self__, "external_schema_registry_user_config", external_schema_registry_user_config)
         if jolokia_user_config is not None:
@@ -349,7 +389,7 @@ class _ServiceIntegrationEndpointState:
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -394,6 +434,18 @@ class _ServiceIntegrationEndpointState:
         pulumi.set(self, "external_elasticsearch_logs_user_config", value)
 
     @property
+    @pulumi.getter(name="externalGoogleCloudBigquery")
+    def external_google_cloud_bigquery(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]:
+        """
+        ExternalGoogleCloudBigquery user configurable settings
+        """
+        return pulumi.get(self, "external_google_cloud_bigquery")
+
+    @external_google_cloud_bigquery.setter
+    def external_google_cloud_bigquery(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]):
+        pulumi.set(self, "external_google_cloud_bigquery", value)
+
+    @property
     @pulumi.getter(name="externalGoogleCloudLoggingUserConfig")
     def external_google_cloud_logging_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]:
         """
@@ -428,6 +480,18 @@ class _ServiceIntegrationEndpointState:
     @external_opensearch_logs_user_config.setter
     def external_opensearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]):
         pulumi.set(self, "external_opensearch_logs_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalPostgresql")
+    def external_postgresql(self) -> Optional[pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs']]:
+        """
+        ExternalPostgresql user configurable settings
+        """
+        return pulumi.get(self, "external_postgresql")
+
+    @external_postgresql.setter
+    def external_postgresql(self, value: Optional[pulumi.Input['ServiceIntegrationEndpointExternalPostgresqlArgs']]):
+        pulumi.set(self, "external_postgresql", value)
 
     @property
     @pulumi.getter(name="externalSchemaRegistryUserConfig")
@@ -501,9 +565,11 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 external_google_cloud_bigquery: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
                  external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
                  external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]] = None,
+                 external_postgresql: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']]] = None,
                  external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
                  jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -517,13 +583,15 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
-        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: ExternalKafka user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']] external_postgresql: ExternalPostgresql user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
@@ -560,9 +628,11 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
                  external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
                  external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 external_google_cloud_bigquery: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]] = None,
                  external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
                  external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
                  external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]] = None,
+                 external_postgresql: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']]] = None,
                  external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
                  jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -587,9 +657,11 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
             __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
             __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
+            __props__.__dict__["external_google_cloud_bigquery"] = external_google_cloud_bigquery
             __props__.__dict__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
             __props__.__dict__["external_kafka_user_config"] = external_kafka_user_config
             __props__.__dict__["external_opensearch_logs_user_config"] = external_opensearch_logs_user_config
+            __props__.__dict__["external_postgresql"] = external_postgresql
             __props__.__dict__["external_schema_registry_user_config"] = external_schema_registry_user_config
             __props__.__dict__["jolokia_user_config"] = jolokia_user_config
             if project is None and not opts.urn:
@@ -615,9 +687,11 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
             external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
             external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
             external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']]] = None,
+            external_google_cloud_bigquery: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']]] = None,
             external_google_cloud_logging_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']]] = None,
             external_kafka_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']]] = None,
             external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']]] = None,
+            external_postgresql: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']]] = None,
             external_schema_registry_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']]] = None,
             jolokia_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -633,13 +707,15 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] endpoint_config: Integration endpoint specific backend configuration
         :param pulumi.Input[str] endpoint_name: Name of the service integration endpoint
-        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        :param pulumi.Input[str] endpoint_type: Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs']] external_google_cloud_bigquery: ExternalGoogleCloudBigquery user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs']] external_google_cloud_logging_user_config: ExternalGoogleCloudLogging user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalKafkaUserConfigArgs']] external_kafka_user_config: ExternalKafka user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalPostgresqlArgs']] external_postgresql: ExternalPostgresql user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs']] external_schema_registry_user_config: ExternalSchemaRegistry user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationEndpointJolokiaUserConfigArgs']] jolokia_user_config: Jolokia user configurable settings
         :param pulumi.Input[str] project: Project the service integration endpoint belongs to
@@ -657,9 +733,11 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
         __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
         __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
+        __props__.__dict__["external_google_cloud_bigquery"] = external_google_cloud_bigquery
         __props__.__dict__["external_google_cloud_logging_user_config"] = external_google_cloud_logging_user_config
         __props__.__dict__["external_kafka_user_config"] = external_kafka_user_config
         __props__.__dict__["external_opensearch_logs_user_config"] = external_opensearch_logs_user_config
+        __props__.__dict__["external_postgresql"] = external_postgresql
         __props__.__dict__["external_schema_registry_user_config"] = external_schema_registry_user_config
         __props__.__dict__["jolokia_user_config"] = jolokia_user_config
         __props__.__dict__["project"] = project
@@ -695,7 +773,7 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointType")
     def endpoint_type(self) -> pulumi.Output[str]:
         """
-        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         """
         return pulumi.get(self, "endpoint_type")
 
@@ -724,6 +802,14 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         return pulumi.get(self, "external_elasticsearch_logs_user_config")
 
     @property
+    @pulumi.getter(name="externalGoogleCloudBigquery")
+    def external_google_cloud_bigquery(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery']]:
+        """
+        ExternalGoogleCloudBigquery user configurable settings
+        """
+        return pulumi.get(self, "external_google_cloud_bigquery")
+
+    @property
     @pulumi.getter(name="externalGoogleCloudLoggingUserConfig")
     def external_google_cloud_logging_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig']]:
         """
@@ -746,6 +832,14 @@ class ServiceIntegrationEndpoint(pulumi.CustomResource):
         ExternalOpensearchLogs user configurable settings
         """
         return pulumi.get(self, "external_opensearch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalPostgresql")
+    def external_postgresql(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationEndpointExternalPostgresql']]:
+        """
+        ExternalPostgresql user configurable settings
+        """
+        return pulumi.get(self, "external_postgresql")
 
     @property
     @pulumi.getter(name="externalSchemaRegistryUserConfig")

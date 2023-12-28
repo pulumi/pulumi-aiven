@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetServiceIntegrationEndpointPlainArgs extends com.pulumi.res
         }
 
         public GetServiceIntegrationEndpointPlainArgs build() {
-            $.endpointName = Objects.requireNonNull($.endpointName, "expected parameter 'endpointName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.endpointName == null) {
+                throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointPlainArgs", "endpointName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointPlainArgs", "project");
+            }
             return $;
         }
     }

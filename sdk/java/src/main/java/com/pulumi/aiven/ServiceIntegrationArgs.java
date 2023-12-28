@@ -14,6 +14,7 @@ import com.pulumi.aiven.inputs.ServiceIntegrationLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationMetricsUserConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -603,8 +604,12 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         public ServiceIntegrationArgs build() {
-            $.integrationType = Objects.requireNonNull($.integrationType, "expected parameter 'integrationType' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.integrationType == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationArgs", "integrationType");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationArgs", "project");
+            }
             return $;
         }
     }

@@ -36,6 +36,8 @@ type LookupOrganizationUserGroupResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
 	Description string `pulumi:"description"`
+	// The unique organization user group ID
+	GroupId string `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
@@ -94,6 +96,11 @@ func (o LookupOrganizationUserGroupResultOutput) CreateTime() pulumi.StringOutpu
 // The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupOrganizationUserGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The unique organization user group ID
+func (o LookupOrganizationUserGroupResultOutput) GroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

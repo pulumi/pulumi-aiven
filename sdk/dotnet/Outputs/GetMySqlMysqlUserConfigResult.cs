@@ -30,6 +30,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetMySqlMysqlUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly bool? StaticIps;
 
@@ -69,6 +70,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? recoveryTargetTime,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -90,6 +93,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

@@ -59,7 +59,11 @@ export interface GetMirrorMakerReplicationFlowArgs {
  */
 export interface GetMirrorMakerReplicationFlowResult {
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     */
+    readonly emitBackwardHeartbeatsEnabled: boolean;
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      */
     readonly emitHeartbeatsEnabled: boolean;
     /**

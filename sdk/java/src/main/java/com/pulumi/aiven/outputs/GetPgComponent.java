@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -12,6 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPgComponent {
     private String component;
+    private String connectionUri;
     private String host;
     private String kafkaAuthenticationMethod;
     private Integer port;
@@ -22,6 +24,9 @@ public final class GetPgComponent {
     private GetPgComponent() {}
     public String component() {
         return this.component;
+    }
+    public String connectionUri() {
+        return this.connectionUri;
     }
     public String host() {
         return this.host;
@@ -52,6 +57,7 @@ public final class GetPgComponent {
     @CustomType.Builder
     public static final class Builder {
         private String component;
+        private String connectionUri;
         private String host;
         private String kafkaAuthenticationMethod;
         private Integer port;
@@ -62,6 +68,7 @@ public final class GetPgComponent {
         public Builder(GetPgComponent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.component = defaults.component;
+    	      this.connectionUri = defaults.connectionUri;
     	      this.host = defaults.host;
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
     	      this.port = defaults.port;
@@ -72,42 +79,72 @@ public final class GetPgComponent {
 
         @CustomType.Setter
         public Builder component(String component) {
-            this.component = Objects.requireNonNull(component);
+            if (component == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "component");
+            }
+            this.component = component;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder connectionUri(String connectionUri) {
+            if (connectionUri == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "connectionUri");
+            }
+            this.connectionUri = connectionUri;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaAuthenticationMethod(String kafkaAuthenticationMethod) {
-            this.kafkaAuthenticationMethod = Objects.requireNonNull(kafkaAuthenticationMethod);
+            if (kafkaAuthenticationMethod == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "kafkaAuthenticationMethod");
+            }
+            this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder route(String route) {
-            this.route = Objects.requireNonNull(route);
+            if (route == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "route");
+            }
+            this.route = route;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(Boolean ssl) {
-            this.ssl = Objects.requireNonNull(ssl);
+            if (ssl == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "ssl");
+            }
+            this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder usage(String usage) {
-            this.usage = Objects.requireNonNull(usage);
+            if (usage == null) {
+              throw new MissingRequiredPropertyException("GetPgComponent", "usage");
+            }
+            this.usage = usage;
             return this;
         }
         public GetPgComponent build() {
             final var _resultValue = new GetPgComponent();
             _resultValue.component = component;
+            _resultValue.connectionUri = connectionUri;
             _resultValue.host = host;
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             _resultValue.port = port;

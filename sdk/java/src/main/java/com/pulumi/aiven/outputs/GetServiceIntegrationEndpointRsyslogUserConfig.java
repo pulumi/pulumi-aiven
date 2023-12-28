@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -86,47 +87,64 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
 
         @CustomType.Setter
         public Builder ca(@Nullable String ca) {
+
             this.ca = ca;
             return this;
         }
         @CustomType.Setter
         public Builder cert(@Nullable String cert) {
+
             this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder format(String format) {
-            this.format = Objects.requireNonNull(format);
+            if (format == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointRsyslogUserConfig", "format");
+            }
+            this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder logline(@Nullable String logline) {
+
             this.logline = logline;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointRsyslogUserConfig", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder sd(@Nullable String sd) {
+
             this.sd = sd;
             return this;
         }
         @CustomType.Setter
         public Builder server(String server) {
-            this.server = Objects.requireNonNull(server);
+            if (server == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointRsyslogUserConfig", "server");
+            }
+            this.server = server;
             return this;
         }
         @CustomType.Setter
         public Builder tls(Boolean tls) {
-            this.tls = Objects.requireNonNull(tls);
+            if (tls == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointRsyslogUserConfig", "tls");
+            }
+            this.tls = tls;
             return this;
         }
         public GetServiceIntegrationEndpointRsyslogUserConfig build() {

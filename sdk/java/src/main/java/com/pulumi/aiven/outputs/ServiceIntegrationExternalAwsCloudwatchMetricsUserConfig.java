@@ -59,6 +59,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
 
         @CustomType.Setter
         public Builder droppedMetrics(@Nullable List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric> droppedMetrics) {
+
             this.droppedMetrics = droppedMetrics;
             return this;
         }
@@ -67,6 +68,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
         }
         @CustomType.Setter
         public Builder extraMetrics(@Nullable List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric> extraMetrics) {
+
             this.extraMetrics = extraMetrics;
             return this;
         }

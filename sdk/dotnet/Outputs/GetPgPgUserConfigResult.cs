@@ -24,6 +24,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
         public readonly Outputs.GetPgPgUserConfigPgResult? Pg;
+        public readonly Outputs.GetPgPgUserConfigPgQualstatsResult? PgQualstats;
         public readonly bool? PgReadReplica;
         public readonly string? PgServiceToForkFrom;
         public readonly bool? PgStatMonitorEnable;
@@ -35,6 +36,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? ProjectToForkFrom;
         public readonly Outputs.GetPgPgUserConfigPublicAccessResult? PublicAccess;
         public readonly string? RecoveryTargetTime;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly double? SharedBuffersPercentage;
         public readonly bool? StaticIps;
@@ -67,6 +69,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.GetPgPgUserConfigPgResult? pg,
 
+            Outputs.GetPgPgUserConfigPgQualstatsResult? pgQualstats,
+
             bool? pgReadReplica,
 
             string? pgServiceToForkFrom,
@@ -88,6 +92,8 @@ namespace Pulumi.Aiven.Outputs
             Outputs.GetPgPgUserConfigPublicAccessResult? publicAccess,
 
             string? recoveryTargetTime,
+
+            bool? serviceLog,
 
             string? serviceToForkFrom,
 
@@ -114,6 +120,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             Migration = migration;
             Pg = pg;
+            PgQualstats = pgQualstats;
             PgReadReplica = pgReadReplica;
             PgServiceToForkFrom = pgServiceToForkFrom;
             PgStatMonitorEnable = pgStatMonitorEnable;
@@ -125,6 +132,7 @@ namespace Pulumi.Aiven.Outputs
             ProjectToForkFrom = projectToForkFrom;
             PublicAccess = publicAccess;
             RecoveryTargetTime = recoveryTargetTime;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             SharedBuffersPercentage = sharedBuffersPercentage;
             StaticIps = staticIps;

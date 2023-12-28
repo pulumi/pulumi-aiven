@@ -65,7 +65,9 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 
 // A collection of values returned by getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowResult struct {
-	// Emit heartbeats enabled. The default value is `false`.
+	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+	EmitBackwardHeartbeatsEnabled bool `pulumi:"emitBackwardHeartbeatsEnabled"`
+	// Whether to emit heartbeats to the target cluster. The default value is `false`.
 	EmitHeartbeatsEnabled bool `pulumi:"emitHeartbeatsEnabled"`
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
@@ -137,7 +139,12 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplica
 	return o
 }
 
-// Emit heartbeats enabled. The default value is `false`.
+// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+func (o LookupMirrorMakerReplicationFlowResultOutput) EmitBackwardHeartbeatsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.EmitBackwardHeartbeatsEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether to emit heartbeats to the target cluster. The default value is `false`.
 func (o LookupMirrorMakerReplicationFlowResultOutput) EmitHeartbeatsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) bool { return v.EmitHeartbeatsEnabled }).(pulumi.BoolOutput)
 }

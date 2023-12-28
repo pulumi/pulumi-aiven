@@ -31,6 +31,7 @@ public final class GetClickhouseClickhouseUserConfig {
     private @Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
     private @Nullable String projectToForkFrom;
     private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
+    private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable Boolean staticIps;
 
@@ -65,6 +66,9 @@ public final class GetClickhouseClickhouseUserConfig {
     public Optional<GetClickhouseClickhouseUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
@@ -89,6 +93,7 @@ public final class GetClickhouseClickhouseUserConfig {
         private @Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable String projectToForkFrom;
         private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
+        private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -102,17 +107,20 @@ public final class GetClickhouseClickhouseUserConfig {
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.projectToForkFrom = defaults.projectToForkFrom;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder additionalBackupRegions(@Nullable String additionalBackupRegions) {
+
             this.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -121,6 +129,7 @@ public final class GetClickhouseClickhouseUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -129,6 +138,7 @@ public final class GetClickhouseClickhouseUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -137,31 +147,43 @@ public final class GetClickhouseClickhouseUserConfig {
         }
         @CustomType.Setter
         public Builder privateAccess(@Nullable GetClickhouseClickhouseUserConfigPrivateAccess privateAccess) {
+
             this.privateAccess = privateAccess;
             return this;
         }
         @CustomType.Setter
         public Builder privatelinkAccess(@Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess) {
+
             this.privatelinkAccess = privatelinkAccess;
             return this;
         }
         @CustomType.Setter
         public Builder projectToForkFrom(@Nullable String projectToForkFrom) {
+
             this.projectToForkFrom = projectToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccess(@Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess) {
+
             this.publicAccess = publicAccess;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceToForkFrom(@Nullable String serviceToForkFrom) {
+
             this.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -175,6 +197,7 @@ public final class GetClickhouseClickhouseUserConfig {
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.projectToForkFrom = projectToForkFrom;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;
             return _resultValue;

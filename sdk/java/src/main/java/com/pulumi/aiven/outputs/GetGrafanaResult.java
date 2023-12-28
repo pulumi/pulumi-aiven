@@ -8,7 +8,9 @@ import com.pulumi.aiven.outputs.GetGrafanaGrafana;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfig;
 import com.pulumi.aiven.outputs.GetGrafanaServiceIntegration;
 import com.pulumi.aiven.outputs.GetGrafanaTag;
+import com.pulumi.aiven.outputs.GetGrafanaTechEmail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -152,6 +154,11 @@ public final class GetGrafanaResult {
      * 
      */
     private List<GetGrafanaTag> tags;
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    private List<GetGrafanaTechEmail> techEmails;
     /**
      * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
@@ -349,6 +356,13 @@ public final class GetGrafanaResult {
         return this.tags;
     }
     /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public List<GetGrafanaTechEmail> techEmails() {
+        return this.techEmails;
+    }
+    /**
      * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
@@ -392,6 +406,7 @@ public final class GetGrafanaResult {
         private String state;
         private List<String> staticIps;
         private List<GetGrafanaTag> tags;
+        private List<GetGrafanaTechEmail> techEmails;
         private Boolean terminationProtection;
         public Builder() {}
         public Builder(GetGrafanaResult defaults) {
@@ -423,22 +438,32 @@ public final class GetGrafanaResult {
     	      this.state = defaults.state;
     	      this.staticIps = defaults.staticIps;
     	      this.tags = defaults.tags;
+    	      this.techEmails = defaults.techEmails;
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
         @CustomType.Setter
         public Builder additionalDiskSpace(String additionalDiskSpace) {
-            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            if (additionalDiskSpace == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "additionalDiskSpace");
+            }
+            this.additionalDiskSpace = additionalDiskSpace;
             return this;
         }
         @CustomType.Setter
         public Builder cloudName(String cloudName) {
-            this.cloudName = Objects.requireNonNull(cloudName);
+            if (cloudName == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "cloudName");
+            }
+            this.cloudName = cloudName;
             return this;
         }
         @CustomType.Setter
         public Builder components(List<GetGrafanaComponent> components) {
-            this.components = Objects.requireNonNull(components);
+            if (components == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "components");
+            }
+            this.components = components;
             return this;
         }
         public Builder components(GetGrafanaComponent... components) {
@@ -446,32 +471,50 @@ public final class GetGrafanaResult {
         }
         @CustomType.Setter
         public Builder diskSpace(String diskSpace) {
-            this.diskSpace = Objects.requireNonNull(diskSpace);
+            if (diskSpace == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "diskSpace");
+            }
+            this.diskSpace = diskSpace;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceCap(String diskSpaceCap) {
-            this.diskSpaceCap = Objects.requireNonNull(diskSpaceCap);
+            if (diskSpaceCap == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "diskSpaceCap");
+            }
+            this.diskSpaceCap = diskSpaceCap;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceDefault(String diskSpaceDefault) {
-            this.diskSpaceDefault = Objects.requireNonNull(diskSpaceDefault);
+            if (diskSpaceDefault == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "diskSpaceDefault");
+            }
+            this.diskSpaceDefault = diskSpaceDefault;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceStep(String diskSpaceStep) {
-            this.diskSpaceStep = Objects.requireNonNull(diskSpaceStep);
+            if (diskSpaceStep == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "diskSpaceStep");
+            }
+            this.diskSpaceStep = diskSpaceStep;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceUsed(String diskSpaceUsed) {
-            this.diskSpaceUsed = Objects.requireNonNull(diskSpaceUsed);
+            if (diskSpaceUsed == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "diskSpaceUsed");
+            }
+            this.diskSpaceUsed = diskSpaceUsed;
             return this;
         }
         @CustomType.Setter
         public Builder grafanaUserConfigs(List<GetGrafanaGrafanaUserConfig> grafanaUserConfigs) {
-            this.grafanaUserConfigs = Objects.requireNonNull(grafanaUserConfigs);
+            if (grafanaUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "grafanaUserConfigs");
+            }
+            this.grafanaUserConfigs = grafanaUserConfigs;
             return this;
         }
         public Builder grafanaUserConfigs(GetGrafanaGrafanaUserConfig... grafanaUserConfigs) {
@@ -479,7 +522,10 @@ public final class GetGrafanaResult {
         }
         @CustomType.Setter
         public Builder grafanas(List<GetGrafanaGrafana> grafanas) {
-            this.grafanas = Objects.requireNonNull(grafanas);
+            if (grafanas == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "grafanas");
+            }
+            this.grafanas = grafanas;
             return this;
         }
         public Builder grafanas(GetGrafanaGrafana... grafanas) {
@@ -487,42 +533,66 @@ public final class GetGrafanaResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
-            this.maintenanceWindowDow = Objects.requireNonNull(maintenanceWindowDow);
+            if (maintenanceWindowDow == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "maintenanceWindowDow");
+            }
+            this.maintenanceWindowDow = maintenanceWindowDow;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindowTime(String maintenanceWindowTime) {
-            this.maintenanceWindowTime = Objects.requireNonNull(maintenanceWindowTime);
+            if (maintenanceWindowTime == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "maintenanceWindowTime");
+            }
+            this.maintenanceWindowTime = maintenanceWindowTime;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder projectVpcId(String projectVpcId) {
-            this.projectVpcId = Objects.requireNonNull(projectVpcId);
+            if (projectVpcId == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "projectVpcId");
+            }
+            this.projectVpcId = projectVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceHost(String serviceHost) {
-            this.serviceHost = Objects.requireNonNull(serviceHost);
+            if (serviceHost == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "serviceHost");
+            }
+            this.serviceHost = serviceHost;
             return this;
         }
         @CustomType.Setter
         public Builder serviceIntegrations(List<GetGrafanaServiceIntegration> serviceIntegrations) {
-            this.serviceIntegrations = Objects.requireNonNull(serviceIntegrations);
+            if (serviceIntegrations == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "serviceIntegrations");
+            }
+            this.serviceIntegrations = serviceIntegrations;
             return this;
         }
         public Builder serviceIntegrations(GetGrafanaServiceIntegration... serviceIntegrations) {
@@ -530,42 +600,66 @@ public final class GetGrafanaResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder servicePassword(String servicePassword) {
-            this.servicePassword = Objects.requireNonNull(servicePassword);
+            if (servicePassword == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "servicePassword");
+            }
+            this.servicePassword = servicePassword;
             return this;
         }
         @CustomType.Setter
         public Builder servicePort(Integer servicePort) {
-            this.servicePort = Objects.requireNonNull(servicePort);
+            if (servicePort == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "servicePort");
+            }
+            this.servicePort = servicePort;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
-            this.serviceType = Objects.requireNonNull(serviceType);
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "serviceType");
+            }
+            this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceUri(String serviceUri) {
-            this.serviceUri = Objects.requireNonNull(serviceUri);
+            if (serviceUri == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "serviceUri");
+            }
+            this.serviceUri = serviceUri;
             return this;
         }
         @CustomType.Setter
         public Builder serviceUsername(String serviceUsername) {
-            this.serviceUsername = Objects.requireNonNull(serviceUsername);
+            if (serviceUsername == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "serviceUsername");
+            }
+            this.serviceUsername = serviceUsername;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(List<String> staticIps) {
-            this.staticIps = Objects.requireNonNull(staticIps);
+            if (staticIps == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "staticIps");
+            }
+            this.staticIps = staticIps;
             return this;
         }
         public Builder staticIps(String... staticIps) {
@@ -573,15 +667,32 @@ public final class GetGrafanaResult {
         }
         @CustomType.Setter
         public Builder tags(List<GetGrafanaTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetGrafanaTag... tags) {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder techEmails(List<GetGrafanaTechEmail> techEmails) {
+            if (techEmails == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "techEmails");
+            }
+            this.techEmails = techEmails;
+            return this;
+        }
+        public Builder techEmails(GetGrafanaTechEmail... techEmails) {
+            return techEmails(List.of(techEmails));
+        }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
-            this.terminationProtection = Objects.requireNonNull(terminationProtection);
+            if (terminationProtection == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaResult", "terminationProtection");
+            }
+            this.terminationProtection = terminationProtection;
             return this;
         }
         public GetGrafanaResult build() {
@@ -613,6 +724,7 @@ public final class GetGrafanaResult {
             _resultValue.state = state;
             _resultValue.staticIps = staticIps;
             _resultValue.tags = tags;
+            _resultValue.techEmails = techEmails;
             _resultValue.terminationProtection = terminationProtection;
             return _resultValue;
         }

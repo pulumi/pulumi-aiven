@@ -215,14 +215,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     @Import(name="technicalEmails")
     private @Nullable Output<List<String>> technicalEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     public Optional<Output<List<String>>> technicalEmails() {
@@ -568,7 +568,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 

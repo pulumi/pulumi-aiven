@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class FlinkComponent {
     private @Nullable String component;
+    private @Nullable String connectionUri;
     private @Nullable String host;
     private @Nullable String kafkaAuthenticationMethod;
     private @Nullable Integer port;
@@ -24,6 +25,9 @@ public final class FlinkComponent {
     private FlinkComponent() {}
     public Optional<String> component() {
         return Optional.ofNullable(this.component);
+    }
+    public Optional<String> connectionUri() {
+        return Optional.ofNullable(this.connectionUri);
     }
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
@@ -54,6 +58,7 @@ public final class FlinkComponent {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String component;
+        private @Nullable String connectionUri;
         private @Nullable String host;
         private @Nullable String kafkaAuthenticationMethod;
         private @Nullable Integer port;
@@ -64,6 +69,7 @@ public final class FlinkComponent {
         public Builder(FlinkComponent defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.component = defaults.component;
+    	      this.connectionUri = defaults.connectionUri;
     	      this.host = defaults.host;
     	      this.kafkaAuthenticationMethod = defaults.kafkaAuthenticationMethod;
     	      this.port = defaults.port;
@@ -74,42 +80,56 @@ public final class FlinkComponent {
 
         @CustomType.Setter
         public Builder component(@Nullable String component) {
+
             this.component = component;
             return this;
         }
         @CustomType.Setter
+        public Builder connectionUri(@Nullable String connectionUri) {
+
+            this.connectionUri = connectionUri;
+            return this;
+        }
+        @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaAuthenticationMethod(@Nullable String kafkaAuthenticationMethod) {
+
             this.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder route(@Nullable String route) {
+
             this.route = route;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder usage(@Nullable String usage) {
+
             this.usage = usage;
             return this;
         }
         public FlinkComponent build() {
             final var _resultValue = new FlinkComponent();
             _resultValue.component = component;
+            _resultValue.connectionUri = connectionUri;
             _resultValue.host = host;
             _resultValue.kafkaAuthenticationMethod = kafkaAuthenticationMethod;
             _resultValue.port = port;

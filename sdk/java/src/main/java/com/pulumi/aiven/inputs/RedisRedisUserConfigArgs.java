@@ -182,6 +182,13 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.redisTimeout);
     }
 
+    @Import(name="serviceLog")
+    private @Nullable Output<Boolean> serviceLog;
+
+    public Optional<Output<Boolean>> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
+
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
@@ -220,6 +227,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         this.redisPubsubClientOutputBufferLimit = $.redisPubsubClientOutputBufferLimit;
         this.redisSsl = $.redisSsl;
         this.redisTimeout = $.redisTimeout;
+        this.serviceLog = $.serviceLog;
         this.serviceToForkFrom = $.serviceToForkFrom;
         this.staticIps = $.staticIps;
     }
@@ -465,6 +473,15 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
 
         public Builder redisTimeout(Integer redisTimeout) {
             return redisTimeout(Output.of(redisTimeout));
+        }
+
+        public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
+            $.serviceLog = serviceLog;
+            return this;
+        }
+
+        public Builder serviceLog(Boolean serviceLog) {
+            return serviceLog(Output.of(serviceLog));
         }
 
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {

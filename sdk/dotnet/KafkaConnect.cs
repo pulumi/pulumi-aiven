@@ -232,6 +232,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.KafkaConnectTag>> Tags { get; private set; } = null!;
 
         /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        [Output("techEmails")]
+        public Output<ImmutableArray<Outputs.KafkaConnectTechEmail>> TechEmails { get; private set; } = null!;
+
+        /// <summary>
         /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
         /// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
         /// much of the content can at least be restored from backup in case accidental deletion is done.
@@ -402,6 +409,19 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.KafkaConnectTagArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.KafkaConnectTechEmailArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        public InputList<Inputs.KafkaConnectTechEmailArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.KafkaConnectTechEmailArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>
@@ -644,6 +664,19 @@ namespace Pulumi.Aiven
         {
             get => _tags ?? (_tags = new InputList<Inputs.KafkaConnectTagGetArgs>());
             set => _tags = value;
+        }
+
+        [Input("techEmails")]
+        private InputList<Inputs.KafkaConnectTechEmailGetArgs>? _techEmails;
+
+        /// <summary>
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        /// instability.
+        /// </summary>
+        public InputList<Inputs.KafkaConnectTechEmailGetArgs> TechEmails
+        {
+            get => _techEmails ?? (_techEmails = new InputList<Inputs.KafkaConnectTechEmailGetArgs>());
+            set => _techEmails = value;
         }
 
         /// <summary>

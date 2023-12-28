@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -13,7 +14,12 @@ import java.util.Objects;
 @CustomType
 public final class GetMirrorMakerReplicationFlowResult {
     /**
-     * @return Emit heartbeats enabled. The default value is `false`.
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    private Boolean emitBackwardHeartbeatsEnabled;
+    /**
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     private Boolean emitHeartbeatsEnabled;
@@ -80,7 +86,14 @@ public final class GetMirrorMakerReplicationFlowResult {
 
     private GetMirrorMakerReplicationFlowResult() {}
     /**
-     * @return Emit heartbeats enabled. The default value is `false`.
+     * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     * 
+     */
+    public Boolean emitBackwardHeartbeatsEnabled() {
+        return this.emitBackwardHeartbeatsEnabled;
+    }
+    /**
+     * @return Whether to emit heartbeats to the target cluster. The default value is `false`.
      * 
      */
     public Boolean emitHeartbeatsEnabled() {
@@ -180,6 +193,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Boolean emitBackwardHeartbeatsEnabled;
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
         private String id;
@@ -196,6 +210,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         public Builder() {}
         public Builder(GetMirrorMakerReplicationFlowResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.emitBackwardHeartbeatsEnabled = defaults.emitBackwardHeartbeatsEnabled;
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
     	      this.enable = defaults.enable;
     	      this.id = defaults.id;
@@ -212,63 +227,107 @@ public final class GetMirrorMakerReplicationFlowResult {
         }
 
         @CustomType.Setter
+        public Builder emitBackwardHeartbeatsEnabled(Boolean emitBackwardHeartbeatsEnabled) {
+            if (emitBackwardHeartbeatsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "emitBackwardHeartbeatsEnabled");
+            }
+            this.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
+            return this;
+        }
+        @CustomType.Setter
         public Builder emitHeartbeatsEnabled(Boolean emitHeartbeatsEnabled) {
-            this.emitHeartbeatsEnabled = Objects.requireNonNull(emitHeartbeatsEnabled);
+            if (emitHeartbeatsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "emitHeartbeatsEnabled");
+            }
+            this.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder offsetSyncsTopicLocation(String offsetSyncsTopicLocation) {
-            this.offsetSyncsTopicLocation = Objects.requireNonNull(offsetSyncsTopicLocation);
+            if (offsetSyncsTopicLocation == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "offsetSyncsTopicLocation");
+            }
+            this.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder replicationPolicyClass(String replicationPolicyClass) {
-            this.replicationPolicyClass = Objects.requireNonNull(replicationPolicyClass);
+            if (replicationPolicyClass == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "replicationPolicyClass");
+            }
+            this.replicationPolicyClass = replicationPolicyClass;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceCluster(String sourceCluster) {
-            this.sourceCluster = Objects.requireNonNull(sourceCluster);
+            if (sourceCluster == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "sourceCluster");
+            }
+            this.sourceCluster = sourceCluster;
             return this;
         }
         @CustomType.Setter
         public Builder syncGroupOffsetsEnabled(Boolean syncGroupOffsetsEnabled) {
-            this.syncGroupOffsetsEnabled = Objects.requireNonNull(syncGroupOffsetsEnabled);
+            if (syncGroupOffsetsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "syncGroupOffsetsEnabled");
+            }
+            this.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder syncGroupOffsetsIntervalSeconds(Integer syncGroupOffsetsIntervalSeconds) {
-            this.syncGroupOffsetsIntervalSeconds = Objects.requireNonNull(syncGroupOffsetsIntervalSeconds);
+            if (syncGroupOffsetsIntervalSeconds == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "syncGroupOffsetsIntervalSeconds");
+            }
+            this.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder targetCluster(String targetCluster) {
-            this.targetCluster = Objects.requireNonNull(targetCluster);
+            if (targetCluster == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "targetCluster");
+            }
+            this.targetCluster = targetCluster;
             return this;
         }
         @CustomType.Setter
         public Builder topics(List<String> topics) {
-            this.topics = Objects.requireNonNull(topics);
+            if (topics == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "topics");
+            }
+            this.topics = topics;
             return this;
         }
         public Builder topics(String... topics) {
@@ -276,7 +335,10 @@ public final class GetMirrorMakerReplicationFlowResult {
         }
         @CustomType.Setter
         public Builder topicsBlacklists(List<String> topicsBlacklists) {
-            this.topicsBlacklists = Objects.requireNonNull(topicsBlacklists);
+            if (topicsBlacklists == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "topicsBlacklists");
+            }
+            this.topicsBlacklists = topicsBlacklists;
             return this;
         }
         public Builder topicsBlacklists(String... topicsBlacklists) {
@@ -284,6 +346,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         }
         public GetMirrorMakerReplicationFlowResult build() {
             final var _resultValue = new GetMirrorMakerReplicationFlowResult();
+            _resultValue.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             _resultValue.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             _resultValue.enable = enable;
             _resultValue.id = id;

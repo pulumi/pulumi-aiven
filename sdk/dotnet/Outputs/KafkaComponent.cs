@@ -14,6 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaComponent
     {
         public readonly string? Component;
+        public readonly string? ConnectionUri;
         public readonly string? Host;
         public readonly string? KafkaAuthenticationMethod;
         public readonly int? Port;
@@ -24,6 +25,8 @@ namespace Pulumi.Aiven.Outputs
         [OutputConstructor]
         private KafkaComponent(
             string? component,
+
+            string? connectionUri,
 
             string? host,
 
@@ -38,6 +41,7 @@ namespace Pulumi.Aiven.Outputs
             string? usage)
         {
             Component = component;
+            ConnectionUri = connectionUri;
             Host = host;
             KafkaAuthenticationMethod = kafkaAuthenticationMethod;
             Port = port;

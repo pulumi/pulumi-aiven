@@ -42,11 +42,13 @@ public final class GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
 
         @CustomType.Setter
         public Builder certificate(@Nullable Boolean certificate) {
+
             this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder sasl(@Nullable Boolean sasl) {
+
             this.sasl = sasl;
             return this;
         }

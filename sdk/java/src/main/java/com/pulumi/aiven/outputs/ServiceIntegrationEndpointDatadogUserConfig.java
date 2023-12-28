@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -132,11 +133,15 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
 
         @CustomType.Setter
         public Builder datadogApiKey(String datadogApiKey) {
-            this.datadogApiKey = Objects.requireNonNull(datadogApiKey);
+            if (datadogApiKey == null) {
+              throw new MissingRequiredPropertyException("ServiceIntegrationEndpointDatadogUserConfig", "datadogApiKey");
+            }
+            this.datadogApiKey = datadogApiKey;
             return this;
         }
         @CustomType.Setter
         public Builder datadogTags(@Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags) {
+
             this.datadogTags = datadogTags;
             return this;
         }
@@ -145,26 +150,31 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         }
         @CustomType.Setter
         public Builder disableConsumerStats(@Nullable Boolean disableConsumerStats) {
+
             this.disableConsumerStats = disableConsumerStats;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConsumerCheckInstances(@Nullable Integer kafkaConsumerCheckInstances) {
+
             this.kafkaConsumerCheckInstances = kafkaConsumerCheckInstances;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConsumerStatsTimeout(@Nullable Integer kafkaConsumerStatsTimeout) {
+
             this.kafkaConsumerStatsTimeout = kafkaConsumerStatsTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder maxPartitionContexts(@Nullable Integer maxPartitionContexts) {
+
             this.maxPartitionContexts = maxPartitionContexts;
             return this;
         }
         @CustomType.Setter
         public Builder site(@Nullable String site) {
+
             this.site = site;
             return this;
         }

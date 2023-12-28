@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         public ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs build() {
-            $.accessKey = Objects.requireNonNull($.accessKey, "expected parameter 'accessKey' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.secretKey = Objects.requireNonNull($.secretKey, "expected parameter 'secretKey' to be non-null");
+            if ($.accessKey == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs", "accessKey");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs", "region");
+            }
+            if ($.secretKey == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs", "secretKey");
+            }
             return $;
         }
     }

@@ -30,7 +30,7 @@ type OrganizationUser struct {
 	InvitedBy pulumi.StringOutput `pulumi:"invitedBy"`
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
 
@@ -78,7 +78,7 @@ type organizationUserState struct {
 	InvitedBy *string `pulumi:"invitedBy"`
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail *string `pulumi:"userEmail"`
 }
 
@@ -91,7 +91,7 @@ type OrganizationUserState struct {
 	InvitedBy pulumi.StringPtrInput
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringPtrInput
 }
 
@@ -102,7 +102,7 @@ func (OrganizationUserState) ElementType() reflect.Type {
 type organizationUserArgs struct {
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -110,7 +110,7 @@ type organizationUserArgs struct {
 type OrganizationUserArgs struct {
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId pulumi.StringInput
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringInput
 }
 
@@ -221,7 +221,7 @@ func (o OrganizationUserOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUser) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.
+// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 func (o OrganizationUserOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUser) pulumi.StringOutput { return v.UserEmail }).(pulumi.StringOutput)
 }

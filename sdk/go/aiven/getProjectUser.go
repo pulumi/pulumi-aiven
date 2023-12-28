@@ -51,7 +51,7 @@ func LookupProjectUser(ctx *pulumi.Context, args *LookupProjectUserArgs, opts ..
 
 // A collection of arguments for invoking getProjectUser.
 type LookupProjectUserArgs struct {
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email string `pulumi:"email"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project string `pulumi:"project"`
@@ -61,7 +61,7 @@ type LookupProjectUserArgs struct {
 type LookupProjectUserResult struct {
 	// Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
 	Accepted bool `pulumi:"accepted"`
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email string `pulumi:"email"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
@@ -86,7 +86,7 @@ func LookupProjectUserOutput(ctx *pulumi.Context, args LookupProjectUserOutputAr
 
 // A collection of arguments for invoking getProjectUser.
 type LookupProjectUserOutputArgs struct {
-	// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+	// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	Email pulumi.StringInput `pulumi:"email"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
@@ -116,7 +116,7 @@ func (o LookupProjectUserResultOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupProjectUserResult) bool { return v.Accepted }).(pulumi.BoolOutput)
 }
 
-// Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupProjectUserResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectUserResult) string { return v.Email }).(pulumi.StringOutput)
 }

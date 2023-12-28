@@ -78,6 +78,8 @@ type Pg struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags PgTagArrayOutput `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails PgTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
@@ -177,6 +179,8 @@ type pgState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []PgTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []PgTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -236,6 +240,8 @@ type PgState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags PgTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails PgTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -275,6 +281,8 @@ type pgArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []PgTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []PgTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
@@ -311,6 +319,8 @@ type PgArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags PgTagArrayInput
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails PgTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
@@ -532,6 +542,11 @@ func (o PgOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o PgOutput) Tags() PgTagArrayOutput {
 	return o.ApplyT(func(v *Pg) PgTagArrayOutput { return v.Tags }).(PgTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o PgOutput) TechEmails() PgTechEmailArrayOutput {
+	return o.ApplyT(func(v *Pg) PgTechEmailArrayOutput { return v.TechEmails }).(PgTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

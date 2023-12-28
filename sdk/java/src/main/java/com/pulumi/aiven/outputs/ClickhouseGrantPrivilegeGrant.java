@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -101,26 +102,33 @@ public final class ClickhouseGrantPrivilegeGrant {
 
         @CustomType.Setter
         public Builder column(@Nullable String column) {
+
             this.column = column;
             return this;
         }
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("ClickhouseGrantPrivilegeGrant", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder privilege(@Nullable String privilege) {
+
             this.privilege = privilege;
             return this;
         }
         @CustomType.Setter
         public Builder table(@Nullable String table) {
+
             this.table = table;
             return this;
         }
         @CustomType.Setter
         public Builder withGrant(@Nullable Boolean withGrant) {
+
             this.withGrant = withGrant;
             return this;
         }

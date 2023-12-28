@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -19,6 +20,11 @@ public final class GetOrganizationUserGroupResult {
      * 
      */
     private String description;
+    /**
+     * @return The unique organization user group ID
+     * 
+     */
+    private String groupId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -54,6 +60,13 @@ public final class GetOrganizationUserGroupResult {
      */
     public String description() {
         return this.description;
+    }
+    /**
+     * @return The unique organization user group ID
+     * 
+     */
+    public String groupId() {
+        return this.groupId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -95,6 +108,7 @@ public final class GetOrganizationUserGroupResult {
     public static final class Builder {
         private String createTime;
         private String description;
+        private String groupId;
         private String id;
         private String name;
         private String organizationId;
@@ -104,6 +118,7 @@ public final class GetOrganizationUserGroupResult {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.groupId = defaults.groupId;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.organizationId = defaults.organizationId;
@@ -112,38 +127,65 @@ public final class GetOrganizationUserGroupResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "description");
+            }
+            this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupId(String groupId) {
+            if (groupId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "groupId");
+            }
+            this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(String organizationId) {
-            this.organizationId = Objects.requireNonNull(organizationId);
+            if (organizationId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "organizationId");
+            }
+            this.organizationId = organizationId;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationUserGroupResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetOrganizationUserGroupResult build() {
             final var _resultValue = new GetOrganizationUserGroupResult();
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.groupId = groupId;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.organizationId = organizationId;

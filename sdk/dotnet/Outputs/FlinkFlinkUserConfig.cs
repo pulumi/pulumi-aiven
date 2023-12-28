@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class FlinkFlinkUserConfig
     {
         /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
+        public readonly string? AdditionalBackupRegions;
+        /// <summary>
         /// Flink major version.
         /// </summary>
         public readonly string? FlinkVersion;
@@ -37,9 +41,19 @@ namespace Pulumi.Aiven.Outputs
         /// Allow access to selected service components through Privatelink.
         /// </summary>
         public readonly Outputs.FlinkFlinkUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private FlinkFlinkUserConfig(
+            string? additionalBackupRegions,
+
             string? flinkVersion,
 
             ImmutableArray<Outputs.FlinkFlinkUserConfigIpFilterObject> ipFilterObjects,
@@ -50,14 +64,21 @@ namespace Pulumi.Aiven.Outputs
 
             int? numberOfTaskSlots,
 
-            Outputs.FlinkFlinkUserConfigPrivatelinkAccess? privatelinkAccess)
+            Outputs.FlinkFlinkUserConfigPrivatelinkAccess? privatelinkAccess,
+
+            bool? serviceLog,
+
+            bool? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             FlinkVersion = flinkVersion;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
             PrivatelinkAccess = privatelinkAccess;
+            ServiceLog = serviceLog;
+            StaticIps = staticIps;
         }
     }
 }

@@ -73,16 +73,19 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxOldSpaceSize(@Nullable Integer maxOldSpaceSize) {
+
             this.maxOldSpaceSize = maxOldSpaceSize;
             return this;
         }
         @CustomType.Setter
         public Builder opensearchRequestTimeout(@Nullable Integer opensearchRequestTimeout) {
+
             this.opensearchRequestTimeout = opensearchRequestTimeout;
             return this;
         }

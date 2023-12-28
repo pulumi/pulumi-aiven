@@ -22,6 +22,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ActionDestructiveRequiresName;
         /// <summary>
+        /// Opensearch Security Plugin Settings.
+        /// </summary>
+        public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? AuthFailureListeners;
+        /// <summary>
         /// Controls the number of shards allowed in the cluster per data node.
         /// </summary>
         public readonly int? ClusterMaxShardsPerNode;
@@ -41,6 +45,10 @@ namespace Pulumi.Aiven.Outputs
         /// Sender username for Opensearch alerts.
         /// </summary>
         public readonly string? EmailSenderUsername;
+        /// <summary>
+        /// Enable/Disable security audit. The default value is `false`.
+        /// </summary>
+        public readonly bool? EnableSecurityAudit;
         /// <summary>
         /// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
         /// </summary>
@@ -62,6 +70,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IndicesMemoryIndexBufferSize;
         /// <summary>
+        /// Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.
+        /// </summary>
+        public readonly int? IndicesMemoryMaxIndexBufferSize;
+        /// <summary>
+        /// Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.
+        /// </summary>
+        public readonly int? IndicesMemoryMinIndexBufferSize;
+        /// <summary>
         /// Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
         /// </summary>
         public readonly int? IndicesQueriesCacheSize;
@@ -77,6 +93,30 @@ namespace Pulumi.Aiven.Outputs
         /// Number of file chunks sent in parallel for each recovery. Defaults to 2.
         /// </summary>
         public readonly int? IndicesRecoveryMaxConcurrentFileChunks;
+        /// <summary>
+        /// Specifies whether ISM is enabled or not. The default value is `true`.
+        /// </summary>
+        public readonly bool? IsmEnabled;
+        /// <summary>
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+        /// </summary>
+        public readonly bool? IsmHistoryEnabled;
+        /// <summary>
+        /// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+        /// </summary>
+        public readonly int? IsmHistoryMaxAge;
+        /// <summary>
+        /// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+        /// </summary>
+        public readonly int? IsmHistoryMaxDocs;
+        /// <summary>
+        /// The time between rollover checks for the audit history index in hours. The default value is `8`.
+        /// </summary>
+        public readonly int? IsmHistoryRolloverCheckPeriod;
+        /// <summary>
+        /// How long audit history indices are kept in days. The default value is `30`.
+        /// </summary>
+        public readonly int? IsmHistoryRolloverRetentionPeriod;
         /// <summary>
         /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
         /// </summary>
@@ -144,6 +184,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? actionDestructiveRequiresName,
 
+            Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? authFailureListeners,
+
             int? clusterMaxShardsPerNode,
 
             int? clusterRoutingAllocationNodeConcurrentRecoveries,
@@ -153,6 +195,8 @@ namespace Pulumi.Aiven.Outputs
             string? emailSenderPassword,
 
             string? emailSenderUsername,
+
+            bool? enableSecurityAudit,
 
             int? httpMaxContentLength,
 
@@ -164,6 +208,10 @@ namespace Pulumi.Aiven.Outputs
 
             int? indicesMemoryIndexBufferSize,
 
+            int? indicesMemoryMaxIndexBufferSize,
+
+            int? indicesMemoryMinIndexBufferSize,
+
             int? indicesQueriesCacheSize,
 
             int? indicesQueryBoolMaxClauseCount,
@@ -171,6 +219,18 @@ namespace Pulumi.Aiven.Outputs
             int? indicesRecoveryMaxBytesPerSec,
 
             int? indicesRecoveryMaxConcurrentFileChunks,
+
+            bool? ismEnabled,
+
+            bool? ismHistoryEnabled,
+
+            int? ismHistoryMaxAge,
+
+            int? ismHistoryMaxDocs,
+
+            int? ismHistoryRolloverCheckPeriod,
+
+            int? ismHistoryRolloverRetentionPeriod,
 
             bool? overrideMainResponseVersion,
 
@@ -204,20 +264,30 @@ namespace Pulumi.Aiven.Outputs
         {
             ActionAutoCreateIndexEnabled = actionAutoCreateIndexEnabled;
             ActionDestructiveRequiresName = actionDestructiveRequiresName;
+            AuthFailureListeners = authFailureListeners;
             ClusterMaxShardsPerNode = clusterMaxShardsPerNode;
             ClusterRoutingAllocationNodeConcurrentRecoveries = clusterRoutingAllocationNodeConcurrentRecoveries;
             EmailSenderName = emailSenderName;
             EmailSenderPassword = emailSenderPassword;
             EmailSenderUsername = emailSenderUsername;
+            EnableSecurityAudit = enableSecurityAudit;
             HttpMaxContentLength = httpMaxContentLength;
             HttpMaxHeaderSize = httpMaxHeaderSize;
             HttpMaxInitialLineLength = httpMaxInitialLineLength;
             IndicesFielddataCacheSize = indicesFielddataCacheSize;
             IndicesMemoryIndexBufferSize = indicesMemoryIndexBufferSize;
+            IndicesMemoryMaxIndexBufferSize = indicesMemoryMaxIndexBufferSize;
+            IndicesMemoryMinIndexBufferSize = indicesMemoryMinIndexBufferSize;
             IndicesQueriesCacheSize = indicesQueriesCacheSize;
             IndicesQueryBoolMaxClauseCount = indicesQueryBoolMaxClauseCount;
             IndicesRecoveryMaxBytesPerSec = indicesRecoveryMaxBytesPerSec;
             IndicesRecoveryMaxConcurrentFileChunks = indicesRecoveryMaxConcurrentFileChunks;
+            IsmEnabled = ismEnabled;
+            IsmHistoryEnabled = ismHistoryEnabled;
+            IsmHistoryMaxAge = ismHistoryMaxAge;
+            IsmHistoryMaxDocs = ismHistoryMaxDocs;
+            IsmHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
+            IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             OverrideMainResponseVersion = overrideMainResponseVersion;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;

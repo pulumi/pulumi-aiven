@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -127,37 +128,58 @@ public final class GetOpensearchSecurityPluginConfigResult {
 
         @CustomType.Setter
         public Builder adminEnabled(Boolean adminEnabled) {
-            this.adminEnabled = Objects.requireNonNull(adminEnabled);
+            if (adminEnabled == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "adminEnabled");
+            }
+            this.adminEnabled = adminEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder adminPassword(String adminPassword) {
-            this.adminPassword = Objects.requireNonNull(adminPassword);
+            if (adminPassword == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "adminPassword");
+            }
+            this.adminPassword = adminPassword;
             return this;
         }
         @CustomType.Setter
         public Builder available(Boolean available) {
-            this.available = Objects.requireNonNull(available);
+            if (available == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "available");
+            }
+            this.available = available;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetOpensearchSecurityPluginConfigResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         public GetOpensearchSecurityPluginConfigResult build() {

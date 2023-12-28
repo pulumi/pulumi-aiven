@@ -94,6 +94,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigSaml? Saml;
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        public readonly bool? ServiceLog;
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         public readonly string? ServiceToForkFrom;
@@ -144,6 +148,8 @@ namespace Pulumi.Aiven.Outputs
 
             Outputs.OpenSearchOpensearchUserConfigSaml? saml,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -168,6 +174,7 @@ namespace Pulumi.Aiven.Outputs
             PublicAccess = publicAccess;
             RecoveryBasebackupName = recoveryBasebackupName;
             Saml = saml;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

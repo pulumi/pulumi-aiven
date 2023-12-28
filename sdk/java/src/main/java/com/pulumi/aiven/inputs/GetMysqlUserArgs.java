@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class GetMysqlUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetMysqlUserArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetMysqlUserArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetMysqlUserArgs", "serviceName");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("GetMysqlUserArgs", "username");
+            }
             return $;
         }
     }

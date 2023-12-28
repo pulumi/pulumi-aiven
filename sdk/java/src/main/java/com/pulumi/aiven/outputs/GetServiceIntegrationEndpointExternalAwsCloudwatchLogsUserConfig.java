@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -54,22 +55,32 @@ public final class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserCon
 
         @CustomType.Setter
         public Builder accessKey(String accessKey) {
-            this.accessKey = Objects.requireNonNull(accessKey);
+            if (accessKey == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig", "accessKey");
+            }
+            this.accessKey = accessKey;
             return this;
         }
         @CustomType.Setter
         public Builder logGroupName(@Nullable String logGroupName) {
+
             this.logGroupName = logGroupName;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secretKey(String secretKey) {
-            this.secretKey = Objects.requireNonNull(secretKey);
+            if (secretKey == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig", "secretKey");
+            }
+            this.secretKey = secretKey;
             return this;
         }
         public GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig build() {

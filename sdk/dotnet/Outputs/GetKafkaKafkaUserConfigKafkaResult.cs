@@ -29,6 +29,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? LogFlushIntervalMs;
         public readonly int? LogIndexIntervalBytes;
         public readonly int? LogIndexSizeMaxBytes;
+        public readonly int? LogLocalRetentionBytes;
+        public readonly int? LogLocalRetentionMs;
         public readonly bool? LogMessageDownconversionEnable;
         public readonly int? LogMessageTimestampDifferenceMaxMs;
         public readonly string? LogMessageTimestampType;
@@ -49,7 +51,12 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? ProducerPurgatoryPurgeIntervalRequests;
         public readonly int? ReplicaFetchMaxBytes;
         public readonly int? ReplicaFetchResponseMaxBytes;
+        public readonly string? SaslOauthbearerExpectedAudience;
+        public readonly string? SaslOauthbearerExpectedIssuer;
+        public readonly string? SaslOauthbearerJwksEndpointUrl;
+        public readonly string? SaslOauthbearerSubClaimName;
         public readonly int? SocketRequestMaxBytes;
+        public readonly bool? TransactionPartitionVerificationEnable;
         public readonly int? TransactionRemoveExpiredTransactionCleanupIntervalMs;
         public readonly int? TransactionStateLogSegmentBytes;
 
@@ -86,6 +93,10 @@ namespace Pulumi.Aiven.Outputs
             int? logIndexIntervalBytes,
 
             int? logIndexSizeMaxBytes,
+
+            int? logLocalRetentionBytes,
+
+            int? logLocalRetentionMs,
 
             bool? logMessageDownconversionEnable,
 
@@ -127,7 +138,17 @@ namespace Pulumi.Aiven.Outputs
 
             int? replicaFetchResponseMaxBytes,
 
+            string? saslOauthbearerExpectedAudience,
+
+            string? saslOauthbearerExpectedIssuer,
+
+            string? saslOauthbearerJwksEndpointUrl,
+
+            string? saslOauthbearerSubClaimName,
+
             int? socketRequestMaxBytes,
+
+            bool? transactionPartitionVerificationEnable,
 
             int? transactionRemoveExpiredTransactionCleanupIntervalMs,
 
@@ -149,6 +170,8 @@ namespace Pulumi.Aiven.Outputs
             LogFlushIntervalMs = logFlushIntervalMs;
             LogIndexIntervalBytes = logIndexIntervalBytes;
             LogIndexSizeMaxBytes = logIndexSizeMaxBytes;
+            LogLocalRetentionBytes = logLocalRetentionBytes;
+            LogLocalRetentionMs = logLocalRetentionMs;
             LogMessageDownconversionEnable = logMessageDownconversionEnable;
             LogMessageTimestampDifferenceMaxMs = logMessageTimestampDifferenceMaxMs;
             LogMessageTimestampType = logMessageTimestampType;
@@ -169,7 +192,12 @@ namespace Pulumi.Aiven.Outputs
             ProducerPurgatoryPurgeIntervalRequests = producerPurgatoryPurgeIntervalRequests;
             ReplicaFetchMaxBytes = replicaFetchMaxBytes;
             ReplicaFetchResponseMaxBytes = replicaFetchResponseMaxBytes;
+            SaslOauthbearerExpectedAudience = saslOauthbearerExpectedAudience;
+            SaslOauthbearerExpectedIssuer = saslOauthbearerExpectedIssuer;
+            SaslOauthbearerJwksEndpointUrl = saslOauthbearerJwksEndpointUrl;
+            SaslOauthbearerSubClaimName = saslOauthbearerSubClaimName;
             SocketRequestMaxBytes = socketRequestMaxBytes;
+            TransactionPartitionVerificationEnable = transactionPartitionVerificationEnable;
             TransactionRemoveExpiredTransactionCleanupIntervalMs = transactionRemoveExpiredTransactionCleanupIntervalMs;
             TransactionStateLogSegmentBytes = transactionStateLogSegmentBytes;
         }

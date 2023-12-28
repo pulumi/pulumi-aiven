@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,7 +42,7 @@ public final class GetAccountTeamMemberResult {
      */
     private String teamId;
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String userEmail;
@@ -90,7 +91,7 @@ public final class GetAccountTeamMemberResult {
         return this.teamId;
     }
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String userEmail() {
@@ -127,37 +128,58 @@ public final class GetAccountTeamMemberResult {
 
         @CustomType.Setter
         public Builder accepted(Boolean accepted) {
-            this.accepted = Objects.requireNonNull(accepted);
+            if (accepted == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "accepted");
+            }
+            this.accepted = accepted;
             return this;
         }
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder invitedByUserEmail(String invitedByUserEmail) {
-            this.invitedByUserEmail = Objects.requireNonNull(invitedByUserEmail);
+            if (invitedByUserEmail == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "invitedByUserEmail");
+            }
+            this.invitedByUserEmail = invitedByUserEmail;
             return this;
         }
         @CustomType.Setter
         public Builder teamId(String teamId) {
-            this.teamId = Objects.requireNonNull(teamId);
+            if (teamId == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "teamId");
+            }
+            this.teamId = teamId;
             return this;
         }
         @CustomType.Setter
         public Builder userEmail(String userEmail) {
-            this.userEmail = Objects.requireNonNull(userEmail);
+            if (userEmail == null) {
+              throw new MissingRequiredPropertyException("GetAccountTeamMemberResult", "userEmail");
+            }
+            this.userEmail = userEmail;
             return this;
         }
         public GetAccountTeamMemberResult build() {

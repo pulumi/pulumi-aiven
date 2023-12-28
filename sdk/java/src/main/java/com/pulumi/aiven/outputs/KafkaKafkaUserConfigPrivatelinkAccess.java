@@ -114,31 +114,37 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
 
         @CustomType.Setter
         public Builder jolokia(@Nullable Boolean jolokia) {
+
             this.jolokia = jolokia;
             return this;
         }
         @CustomType.Setter
         public Builder kafka(@Nullable Boolean kafka) {
+
             this.kafka = kafka;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaConnect(@Nullable Boolean kafkaConnect) {
+
             this.kafkaConnect = kafkaConnect;
             return this;
         }
         @CustomType.Setter
         public Builder kafkaRest(@Nullable Boolean kafkaRest) {
+
             this.kafkaRest = kafkaRest;
             return this;
         }
         @CustomType.Setter
         public Builder prometheus(@Nullable Boolean prometheus) {
+
             this.prometheus = prometheus;
             return this;
         }
         @CustomType.Setter
         public Builder schemaRegistry(@Nullable Boolean schemaRegistry) {
+
             this.schemaRegistry = schemaRegistry;
             return this;
         }

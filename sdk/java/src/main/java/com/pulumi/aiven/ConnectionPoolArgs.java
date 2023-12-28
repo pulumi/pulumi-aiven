@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -299,10 +300,18 @@ public final class ConnectionPoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ConnectionPoolArgs build() {
-            $.databaseName = Objects.requireNonNull($.databaseName, "expected parameter 'databaseName' to be non-null");
-            $.poolName = Objects.requireNonNull($.poolName, "expected parameter 'poolName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.databaseName == null) {
+                throw new MissingRequiredPropertyException("ConnectionPoolArgs", "databaseName");
+            }
+            if ($.poolName == null) {
+                throw new MissingRequiredPropertyException("ConnectionPoolArgs", "poolName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ConnectionPoolArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ConnectionPoolArgs", "serviceName");
+            }
             return $;
         }
     }

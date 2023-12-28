@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -372,8 +373,12 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         public ServiceIntegrationEndpointExternalKafkaUserConfigArgs build() {
-            $.bootstrapServers = Objects.requireNonNull($.bootstrapServers, "expected parameter 'bootstrapServers' to be non-null");
-            $.securityProtocol = Objects.requireNonNull($.securityProtocol, "expected parameter 'securityProtocol' to be non-null");
+            if ($.bootstrapServers == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalKafkaUserConfigArgs", "bootstrapServers");
+            }
+            if ($.securityProtocol == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalKafkaUserConfigArgs", "securityProtocol");
+            }
             return $;
         }
     }

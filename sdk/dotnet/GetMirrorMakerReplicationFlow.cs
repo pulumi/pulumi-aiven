@@ -144,7 +144,11 @@ namespace Pulumi.Aiven
     public sealed class GetMirrorMakerReplicationFlowResult
     {
         /// <summary>
-        /// Emit heartbeats enabled. The default value is `false`.
+        /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        /// </summary>
+        public readonly bool EmitBackwardHeartbeatsEnabled;
+        /// <summary>
+        /// Whether to emit heartbeats to the target cluster. The default value is `false`.
         /// </summary>
         public readonly bool EmitHeartbeatsEnabled;
         /// <summary>
@@ -198,6 +202,8 @@ namespace Pulumi.Aiven
 
         [OutputConstructor]
         private GetMirrorMakerReplicationFlowResult(
+            bool emitBackwardHeartbeatsEnabled,
+
             bool emitHeartbeatsEnabled,
 
             bool enable,
@@ -224,6 +230,7 @@ namespace Pulumi.Aiven
 
             ImmutableArray<string> topicsBlacklists)
         {
+            EmitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             EmitHeartbeatsEnabled = emitHeartbeatsEnabled;
             Enable = enable;
             Id = id;

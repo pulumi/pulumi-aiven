@@ -7,15 +7,18 @@ import com.pulumi.aiven.inputs.ServiceIntegrationEndpointDatadogUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalPostgresqlArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointJolokiaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointPrometheusUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationEndpointRsyslogUserConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -57,14 +60,14 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     @Import(name="endpointType", required=true)
     private Output<String> endpointType;
 
     /**
-     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+     * @return Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
      * 
      */
     public Output<String> endpointType() {
@@ -117,6 +120,21 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
     }
 
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    @Import(name="externalGoogleCloudBigquery")
+    private @Nullable Output<ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs> externalGoogleCloudBigquery;
+
+    /**
+     * @return ExternalGoogleCloudBigquery user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs>> externalGoogleCloudBigquery() {
+        return Optional.ofNullable(this.externalGoogleCloudBigquery);
+    }
+
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      * 
      */
@@ -159,6 +177,21 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
      */
     public Optional<Output<ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>> externalOpensearchLogsUserConfig() {
         return Optional.ofNullable(this.externalOpensearchLogsUserConfig);
+    }
+
+    /**
+     * ExternalPostgresql user configurable settings
+     * 
+     */
+    @Import(name="externalPostgresql")
+    private @Nullable Output<ServiceIntegrationEndpointExternalPostgresqlArgs> externalPostgresql;
+
+    /**
+     * @return ExternalPostgresql user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationEndpointExternalPostgresqlArgs>> externalPostgresql() {
+        return Optional.ofNullable(this.externalPostgresql);
     }
 
     /**
@@ -245,9 +278,11 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         this.externalAwsCloudwatchLogsUserConfig = $.externalAwsCloudwatchLogsUserConfig;
         this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
         this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
+        this.externalGoogleCloudBigquery = $.externalGoogleCloudBigquery;
         this.externalGoogleCloudLoggingUserConfig = $.externalGoogleCloudLoggingUserConfig;
         this.externalKafkaUserConfig = $.externalKafkaUserConfig;
         this.externalOpensearchLogsUserConfig = $.externalOpensearchLogsUserConfig;
+        this.externalPostgresql = $.externalPostgresql;
         this.externalSchemaRegistryUserConfig = $.externalSchemaRegistryUserConfig;
         this.jolokiaUserConfig = $.jolokiaUserConfig;
         this.project = $.project;
@@ -316,7 +351,7 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
          * 
          * @return builder
          * 
@@ -327,7 +362,7 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+         * @param endpointType Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
          * 
          * @return builder
          * 
@@ -400,6 +435,27 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         /**
+         * @param externalGoogleCloudBigquery ExternalGoogleCloudBigquery user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalGoogleCloudBigquery(@Nullable Output<ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs> externalGoogleCloudBigquery) {
+            $.externalGoogleCloudBigquery = externalGoogleCloudBigquery;
+            return this;
+        }
+
+        /**
+         * @param externalGoogleCloudBigquery ExternalGoogleCloudBigquery user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalGoogleCloudBigquery(ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs externalGoogleCloudBigquery) {
+            return externalGoogleCloudBigquery(Output.of(externalGoogleCloudBigquery));
+        }
+
+        /**
          * @param externalGoogleCloudLoggingUserConfig ExternalGoogleCloudLogging user configurable settings
          * 
          * @return builder
@@ -460,6 +516,27 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
          */
         public Builder externalOpensearchLogsUserConfig(ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs externalOpensearchLogsUserConfig) {
             return externalOpensearchLogsUserConfig(Output.of(externalOpensearchLogsUserConfig));
+        }
+
+        /**
+         * @param externalPostgresql ExternalPostgresql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPostgresql(@Nullable Output<ServiceIntegrationEndpointExternalPostgresqlArgs> externalPostgresql) {
+            $.externalPostgresql = externalPostgresql;
+            return this;
+        }
+
+        /**
+         * @param externalPostgresql ExternalPostgresql user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalPostgresql(ServiceIntegrationEndpointExternalPostgresqlArgs externalPostgresql) {
+            return externalPostgresql(Output.of(externalPostgresql));
         }
 
         /**
@@ -568,9 +645,15 @@ public final class ServiceIntegrationEndpointArgs extends com.pulumi.resources.R
         }
 
         public ServiceIntegrationEndpointArgs build() {
-            $.endpointName = Objects.requireNonNull($.endpointName, "expected parameter 'endpointName' to be non-null");
-            $.endpointType = Objects.requireNonNull($.endpointType, "expected parameter 'endpointType' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.endpointName == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointArgs", "endpointName");
+            }
+            if ($.endpointType == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointArgs", "endpointType");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointArgs", "project");
+            }
             return $;
         }
     }

@@ -22,7 +22,7 @@ class GetKafkaResult:
     """
     A collection of values returned by getKafka.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, default_acl=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_user_configs=None, kafkas=None, karapace=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, default_acl=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_user_configs=None, kafkas=None, karapace=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -110,6 +110,9 @@ class GetKafkaResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+        if tech_emails and not isinstance(tech_emails, list):
+            raise TypeError("Expected argument 'tech_emails' to be a list")
+        pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection and not isinstance(termination_protection, bool):
             raise TypeError("Expected argument 'termination_protection' to be a bool")
         pulumi.set(__self__, "termination_protection", termination_protection)
@@ -347,6 +350,14 @@ class GetKafkaResult:
         return pulumi.get(self, "tags")
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Sequence['outputs.GetKafkaTechEmailResult']:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> bool:
         """
@@ -390,6 +401,7 @@ class AwaitableGetKafkaResult(GetKafkaResult):
             state=self.state,
             static_ips=self.static_ips,
             tags=self.tags,
+            tech_emails=self.tech_emails,
             termination_protection=self.termination_protection)
 
 
@@ -449,6 +461,7 @@ def get_kafka(project: Optional[str] = None,
         state=pulumi.get(__ret__, 'state'),
         static_ips=pulumi.get(__ret__, 'static_ips'),
         tags=pulumi.get(__ret__, 'tags'),
+        tech_emails=pulumi.get(__ret__, 'tech_emails'),
         termination_protection=pulumi.get(__ret__, 'termination_protection'))
 
 

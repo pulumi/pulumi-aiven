@@ -44,6 +44,7 @@ public final class ClickhouseGrantRoleGrant {
 
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }

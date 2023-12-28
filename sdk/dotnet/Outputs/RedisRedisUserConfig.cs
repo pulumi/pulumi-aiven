@@ -34,6 +34,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly int? RedisPubsubClientOutputBufferLimit;
         public readonly bool? RedisSsl;
         public readonly int? RedisTimeout;
+        public readonly bool? ServiceLog;
         public readonly string? ServiceToForkFrom;
         public readonly bool? StaticIps;
 
@@ -81,6 +82,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? redisTimeout,
 
+            bool? serviceLog,
+
             string? serviceToForkFrom,
 
             bool? staticIps)
@@ -106,6 +109,7 @@ namespace Pulumi.Aiven.Outputs
             RedisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             RedisSsl = redisSsl;
             RedisTimeout = redisTimeout;
+            ServiceLog = serviceLog;
             ServiceToForkFrom = serviceToForkFrom;
             StaticIps = staticIps;
         }

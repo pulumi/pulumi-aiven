@@ -34,7 +34,7 @@ namespace Pulumi.Aiven
         public Output<string> EndpointName { get; private set; } = null!;
 
         /// <summary>
-        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         /// </summary>
         [Output("endpointType")]
         public Output<string> EndpointType { get; private set; } = null!;
@@ -58,6 +58,12 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig?> ExternalElasticsearchLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
+        /// ExternalGoogleCloudBigquery user configurable settings
+        /// </summary>
+        [Output("externalGoogleCloudBigquery")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalGoogleCloudBigquery?> ExternalGoogleCloudBigquery { get; private set; } = null!;
+
+        /// <summary>
         /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         [Output("externalGoogleCloudLoggingUserConfig")]
@@ -74,6 +80,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("externalOpensearchLogsUserConfig")]
         public Output<Outputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfig?> ExternalOpensearchLogsUserConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// ExternalPostgresql user configurable settings
+        /// </summary>
+        [Output("externalPostgresql")]
+        public Output<Outputs.ServiceIntegrationEndpointExternalPostgresql?> ExternalPostgresql { get; private set; } = null!;
 
         /// <summary>
         /// ExternalSchemaRegistry user configurable settings
@@ -164,7 +176,7 @@ namespace Pulumi.Aiven
         public Input<string> EndpointName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         /// </summary>
         [Input("endpointType", required: true)]
         public Input<string> EndpointType { get; set; } = null!;
@@ -188,6 +200,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
 
         /// <summary>
+        /// ExternalGoogleCloudBigquery user configurable settings
+        /// </summary>
+        [Input("externalGoogleCloudBigquery")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs>? ExternalGoogleCloudBigquery { get; set; }
+
+        /// <summary>
         /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         [Input("externalGoogleCloudLoggingUserConfig")]
@@ -204,6 +222,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalOpensearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigArgs>? ExternalOpensearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalPostgresql user configurable settings
+        /// </summary>
+        [Input("externalPostgresql")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalPostgresqlArgs>? ExternalPostgresql { get; set; }
 
         /// <summary>
         /// ExternalSchemaRegistry user configurable settings
@@ -268,7 +292,7 @@ namespace Pulumi.Aiven
         public Input<string>? EndpointName { get; set; }
 
         /// <summary>
-        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`
+        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
         /// </summary>
         [Input("endpointType")]
         public Input<string>? EndpointType { get; set; }
@@ -292,6 +316,12 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigGetArgs>? ExternalElasticsearchLogsUserConfig { get; set; }
 
         /// <summary>
+        /// ExternalGoogleCloudBigquery user configurable settings
+        /// </summary>
+        [Input("externalGoogleCloudBigquery")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalGoogleCloudBigqueryGetArgs>? ExternalGoogleCloudBigquery { get; set; }
+
+        /// <summary>
         /// ExternalGoogleCloudLogging user configurable settings
         /// </summary>
         [Input("externalGoogleCloudLoggingUserConfig")]
@@ -308,6 +338,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("externalOpensearchLogsUserConfig")]
         public Input<Inputs.ServiceIntegrationEndpointExternalOpensearchLogsUserConfigGetArgs>? ExternalOpensearchLogsUserConfig { get; set; }
+
+        /// <summary>
+        /// ExternalPostgresql user configurable settings
+        /// </summary>
+        [Input("externalPostgresql")]
+        public Input<Inputs.ServiceIntegrationEndpointExternalPostgresqlGetArgs>? ExternalPostgresql { get; set; }
 
         /// <summary>
         /// ExternalSchemaRegistry user configurable settings

@@ -78,6 +78,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The unique organization user group ID
+        /// </summary>
+        public readonly string GroupId;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -100,6 +104,8 @@ namespace Pulumi.Aiven
 
             string description,
 
+            string groupId,
+
             string id,
 
             string name,
@@ -110,6 +116,7 @@ namespace Pulumi.Aiven
         {
             CreateTime = createTime;
             Description = description;
+            GroupId = groupId;
             Id = id;
             Name = name;
             OrganizationId = organizationId;

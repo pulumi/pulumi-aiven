@@ -192,6 +192,11 @@ export class Redis extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.RedisTag[] | undefined>;
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     */
+    public readonly techEmails!: pulumi.Output<outputs.RedisTechEmail[] | undefined>;
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
      * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
      * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -237,6 +242,7 @@ export class Redis extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["staticIps"] = state ? state.staticIps : undefined;
             resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["techEmails"] = state ? state.techEmails : undefined;
             resourceInputs["terminationProtection"] = state ? state.terminationProtection : undefined;
         } else {
             const args = argsOrState as RedisArgs | undefined;
@@ -262,6 +268,7 @@ export class Redis extends pulumi.CustomResource {
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["staticIps"] = args ? args.staticIps : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["techEmails"] = args ? args.techEmails : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["diskSpaceCap"] = undefined /*out*/;
@@ -415,6 +422,11 @@ export interface RedisState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.RedisTag>[]>;
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     */
+    techEmails?: pulumi.Input<pulumi.Input<inputs.RedisTechEmail>[]>;
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
      * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
      * much of the content can at least be restored from backup in case accidental deletion is done.
@@ -498,6 +510,11 @@ export interface RedisArgs {
      * Tags are key-value pairs that allow you to categorize services.
      */
     tags?: pulumi.Input<pulumi.Input<inputs.RedisTag>[]>;
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     */
+    techEmails?: pulumi.Input<pulumi.Input<inputs.RedisTechEmail>[]>;
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
      * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups

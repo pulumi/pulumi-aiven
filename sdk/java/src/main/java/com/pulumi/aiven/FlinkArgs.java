@@ -7,8 +7,10 @@ import com.pulumi.aiven.inputs.FlinkFlinkArgs;
 import com.pulumi.aiven.inputs.FlinkFlinkUserConfigArgs;
 import com.pulumi.aiven.inputs.FlinkServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.FlinkTagArgs;
+import com.pulumi.aiven.inputs.FlinkTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -210,14 +212,14 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Use static public IP addresses.
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Use static public IP addresses.
      * 
      */
     public Optional<Output<List<String>>> staticIps() {
@@ -237,6 +239,21 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<FlinkTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<FlinkTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Optional<Output<List<FlinkTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
     }
 
     /**
@@ -271,6 +288,7 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
         this.serviceName = $.serviceName;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -563,7 +581,7 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -574,7 +592,7 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -584,7 +602,7 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+         * @param staticIps Use static public IP addresses.
          * 
          * @return builder
          * 
@@ -625,6 +643,37 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<FlinkTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<FlinkTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(FlinkTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
+        }
+
+        /**
          * @param terminationProtection Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
          * 
          * @return builder
@@ -646,9 +695,15 @@ public final class FlinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlinkArgs build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("FlinkArgs", "plan");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("FlinkArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("FlinkArgs", "serviceName");
+            }
             return $;
         }
     }

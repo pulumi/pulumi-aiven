@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -117,9 +118,15 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetKafkaConnectorPlainArgs build() {
-            $.connectorName = Objects.requireNonNull($.connectorName, "expected parameter 'connectorName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.connectorName == null) {
+                throw new MissingRequiredPropertyException("GetKafkaConnectorPlainArgs", "connectorName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetKafkaConnectorPlainArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetKafkaConnectorPlainArgs", "serviceName");
+            }
             return $;
         }
     }

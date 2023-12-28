@@ -50,7 +50,7 @@ class GetProjectUserResult:
     @pulumi.getter
     def email(self) -> str:
         """
-        Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+        Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "email")
 
@@ -109,7 +109,7 @@ def get_project_user(email: Optional[str] = None,
     ```
 
 
-    :param str email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+    :param str email: Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
@@ -144,7 +144,7 @@ def get_project_user_output(email: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str email: Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+    :param str email: Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

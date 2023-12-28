@@ -94,7 +94,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ProjectTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         [Output("technicalEmails")]
         public Output<ImmutableArray<string>> TechnicalEmails { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _technicalEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public InputList<string> TechnicalEmails
         {
@@ -327,7 +327,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _technicalEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public InputList<string> TechnicalEmails
         {

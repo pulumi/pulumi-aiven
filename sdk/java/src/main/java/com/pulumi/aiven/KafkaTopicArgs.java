@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.KafkaTopicConfigArgs;
 import com.pulumi.aiven.inputs.KafkaTopicTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -354,11 +355,21 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KafkaTopicArgs build() {
-            $.partitions = Objects.requireNonNull($.partitions, "expected parameter 'partitions' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.replication = Objects.requireNonNull($.replication, "expected parameter 'replication' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.topicName = Objects.requireNonNull($.topicName, "expected parameter 'topicName' to be non-null");
+            if ($.partitions == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "partitions");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "project");
+            }
+            if ($.replication == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "replication");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "serviceName");
+            }
+            if ($.topicName == null) {
+                throw new MissingRequiredPropertyException("KafkaTopicArgs", "topicName");
+            }
             return $;
         }
     }

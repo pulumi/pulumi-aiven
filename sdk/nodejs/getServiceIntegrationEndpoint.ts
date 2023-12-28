@@ -61,7 +61,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly endpointName: string;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
      */
     readonly endpointType: string;
     /**
@@ -77,6 +77,10 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfig[];
     /**
+     * ExternalGoogleCloudBigquery user configurable settings
+     */
+    readonly externalGoogleCloudBigqueries: outputs.GetServiceIntegrationEndpointExternalGoogleCloudBigquery[];
+    /**
      * ExternalGoogleCloudLogging user configurable settings
      */
     readonly externalGoogleCloudLoggingUserConfigs: outputs.GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig[];
@@ -88,6 +92,10 @@ export interface GetServiceIntegrationEndpointResult {
      * ExternalOpensearchLogs user configurable settings
      */
     readonly externalOpensearchLogsUserConfigs: outputs.GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig[];
+    /**
+     * ExternalPostgresql user configurable settings
+     */
+    readonly externalPostgresqls: outputs.GetServiceIntegrationEndpointExternalPostgresql[];
     /**
      * ExternalSchemaRegistry user configurable settings
      */

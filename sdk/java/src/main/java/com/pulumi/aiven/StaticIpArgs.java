@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StaticIpArgs build() {
-            $.cloudName = Objects.requireNonNull($.cloudName, "expected parameter 'cloudName' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.cloudName == null) {
+                throw new MissingRequiredPropertyException("StaticIpArgs", "cloudName");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("StaticIpArgs", "project");
+            }
             return $;
         }
     }

@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("component")]
         public Input<string>? Component { get; set; }
 
+        [Input("connectionUri")]
+        public Input<string>? ConnectionUri { get; set; }
+
         [Input("host")]
         public Input<string>? Host { get; set; }
 

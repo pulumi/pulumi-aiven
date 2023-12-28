@@ -206,14 +206,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     @Export(name="technicalEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> technicalEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     public Output<Optional<List<String>>> technicalEmails() {

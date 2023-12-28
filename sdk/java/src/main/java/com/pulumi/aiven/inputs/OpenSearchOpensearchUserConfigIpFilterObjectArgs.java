@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class OpenSearchOpensearchUserConfigIpFilterObjectArgs extends com.
         }
 
         public OpenSearchOpensearchUserConfigIpFilterObjectArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigIpFilterObjectArgs", "network");
+            }
             return $;
         }
     }

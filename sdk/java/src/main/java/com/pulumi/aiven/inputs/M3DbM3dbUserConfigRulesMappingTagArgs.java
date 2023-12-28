@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
         }
 
         public M3DbM3dbUserConfigRulesMappingTagArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("M3DbM3dbUserConfigRulesMappingTagArgs", "name");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("M3DbM3dbUserConfigRulesMappingTagArgs", "value");
+            }
             return $;
         }
     }

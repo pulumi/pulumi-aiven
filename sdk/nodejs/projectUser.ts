@@ -59,7 +59,7 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export interface ProjectUserState {
      */
     accepted?: pulumi.Input<boolean>;
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     email?: pulumi.Input<string>;
     /**
@@ -136,7 +136,7 @@ export interface ProjectUserState {
  */
 export interface ProjectUserArgs {
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     email: pulumi.Input<string>;
     /**

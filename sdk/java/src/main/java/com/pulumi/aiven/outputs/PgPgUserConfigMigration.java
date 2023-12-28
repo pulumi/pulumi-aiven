@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -25,7 +26,7 @@ public final class PgPgUserConfigMigration {
      */
     private @Nullable String ignoreDbs;
     /**
-     * @return The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * @return The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     private @Nullable String method;
@@ -61,7 +62,7 @@ public final class PgPgUserConfigMigration {
         return Optional.ofNullable(this.ignoreDbs);
     }
     /**
-     * @return The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).
+     * @return The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     public Optional<String> method() {
@@ -120,41 +121,53 @@ public final class PgPgUserConfigMigration {
 
         @CustomType.Setter
         public Builder dbname(@Nullable String dbname) {
+
             this.dbname = dbname;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("PgPgUserConfigMigration", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreDbs(@Nullable String ignoreDbs) {
+
             this.ignoreDbs = ignoreDbs;
             return this;
         }
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("PgPgUserConfigMigration", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable Boolean ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

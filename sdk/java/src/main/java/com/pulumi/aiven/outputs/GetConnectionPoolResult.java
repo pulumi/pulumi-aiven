@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,47 +156,74 @@ public final class GetConnectionPoolResult {
 
         @CustomType.Setter
         public Builder connectionUri(String connectionUri) {
-            this.connectionUri = Objects.requireNonNull(connectionUri);
+            if (connectionUri == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "connectionUri");
+            }
+            this.connectionUri = connectionUri;
             return this;
         }
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder poolMode(String poolMode) {
-            this.poolMode = Objects.requireNonNull(poolMode);
+            if (poolMode == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "poolMode");
+            }
+            this.poolMode = poolMode;
             return this;
         }
         @CustomType.Setter
         public Builder poolName(String poolName) {
-            this.poolName = Objects.requireNonNull(poolName);
+            if (poolName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "poolName");
+            }
+            this.poolName = poolName;
             return this;
         }
         @CustomType.Setter
         public Builder poolSize(Integer poolSize) {
-            this.poolSize = Objects.requireNonNull(poolSize);
+            if (poolSize == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "poolSize");
+            }
+            this.poolSize = poolSize;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetConnectionPoolResult", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetConnectionPoolResult build() {

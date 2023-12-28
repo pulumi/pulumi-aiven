@@ -42,11 +42,13 @@ public final class M3DbM3dbUserConfigM3TagOptions {
 
         @CustomType.Setter
         public Builder allowTagNameDuplicates(@Nullable Boolean allowTagNameDuplicates) {
+
             this.allowTagNameDuplicates = allowTagNameDuplicates;
             return this;
         }
         @CustomType.Setter
         public Builder allowTagValueEmpty(@Nullable Boolean allowTagValueEmpty) {
+
             this.allowTagValueEmpty = allowTagValueEmpty;
             return this;
         }

@@ -32,14 +32,14 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> email() {
@@ -125,7 +125,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

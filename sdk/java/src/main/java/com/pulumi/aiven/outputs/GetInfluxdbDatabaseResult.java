@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,27 +92,42 @@ public final class GetInfluxdbDatabaseResult {
 
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetInfluxdbDatabaseResult", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInfluxdbDatabaseResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetInfluxdbDatabaseResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetInfluxdbDatabaseResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
-            this.terminationProtection = Objects.requireNonNull(terminationProtection);
+            if (terminationProtection == null) {
+              throw new MissingRequiredPropertyException("GetInfluxdbDatabaseResult", "terminationProtection");
+            }
+            this.terminationProtection = terminationProtection;
             return this;
         }
         public GetInfluxdbDatabaseResult build() {

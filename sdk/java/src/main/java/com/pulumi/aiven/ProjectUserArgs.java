@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -14,14 +15,14 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectUserArgs Empty = new ProjectUserArgs();
 
     /**
-     * Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
-     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> email() {
@@ -85,7 +86,7 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -96,7 +97,7 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -148,9 +149,15 @@ public final class ProjectUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectUserArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.memberType = Objects.requireNonNull($.memberType, "expected parameter 'memberType' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("ProjectUserArgs", "email");
+            }
+            if ($.memberType == null) {
+                throw new MissingRequiredPropertyException("ProjectUserArgs", "memberType");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectUserArgs", "project");
+            }
             return $;
         }
     }

@@ -114,6 +114,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -167,6 +170,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -219,6 +225,9 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -241,6 +250,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -400,6 +412,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -451,6 +466,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -512,6 +530,16 @@
                                 },
                                 "schema_registry_config": {
                                     "maxItemsOne": true
+                                },
+                                "tiered_storage": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "local_cache": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -523,6 +551,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -580,6 +611,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -631,6 +665,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -696,6 +733,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -802,6 +842,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -873,6 +916,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -923,6 +969,19 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "auth_failure_listeners": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "internal_authentication_backend_limiting": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "ip_rate_limiting": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
                                             }
@@ -954,6 +1013,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1022,6 +1084,9 @@
                                 "pg": {
                                     "maxItemsOne": true
                                 },
+                                "pg_qualstats": {
+                                    "maxItemsOne": true
+                                },
                                 "pgbouncer": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -1057,6 +1122,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1137,6 +1205,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1319,6 +1390,9 @@
                     "external_elasticsearch_logs_user_config": {
                         "maxItemsOne": true
                     },
+                    "external_google_cloud_bigquery": {
+                        "maxItemsOne": true
+                    },
                     "external_google_cloud_logging_user_config": {
                         "maxItemsOne": true
                     },
@@ -1326,6 +1400,9 @@
                         "maxItemsOne": true
                     },
                     "external_opensearch_logs_user_config": {
+                        "maxItemsOne": true
+                    },
+                    "external_postgresql": {
                         "maxItemsOne": true
                     },
                     "external_schema_registry_user_config": {
@@ -1466,6 +1543,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1514,6 +1594,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1568,6 +1651,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1604,6 +1690,9 @@
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
+                                "additional_backup_regions": {
+                                    "maxItemsOne": true
+                                },
                                 "ip_filter": {
                                     "maxItemsOne": false
                                 },
@@ -1626,6 +1715,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1777,6 +1869,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -1828,6 +1923,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1889,6 +1987,16 @@
                                 },
                                 "schema_registry_config": {
                                     "maxItemsOne": true
+                                },
+                                "tiered_storage": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "local_cache": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1900,6 +2008,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -1957,6 +2068,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2008,6 +2122,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -2073,6 +2190,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -2179,6 +2299,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2250,6 +2373,9 @@
                     },
                     "tag": {
                         "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2300,6 +2426,19 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "auth_failure_listeners": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "internal_authentication_backend_limiting": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "ip_rate_limiting": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             "reindex_remote_whitelist": {
                                                 "maxItemsOne": false
                                             }
@@ -2331,6 +2470,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -2399,6 +2541,9 @@
                                 "pg": {
                                     "maxItemsOne": true
                                 },
+                                "pg_qualstats": {
+                                    "maxItemsOne": true
+                                },
                                 "pgbouncer": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2434,6 +2579,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -2514,6 +2662,9 @@
                         "maxItemsOne": false
                     },
                     "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
                         "maxItemsOne": false
                     }
                 }
@@ -2700,6 +2851,9 @@
                     "external_elasticsearch_logs_user_config": {
                         "maxItemsOne": false
                     },
+                    "external_google_cloud_bigquery": {
+                        "maxItemsOne": false
+                    },
                     "external_google_cloud_logging_user_config": {
                         "maxItemsOne": false
                     },
@@ -2707,6 +2861,9 @@
                         "maxItemsOne": false
                     },
                     "external_opensearch_logs_user_config": {
+                        "maxItemsOne": false
+                    },
+                    "external_postgresql": {
                         "maxItemsOne": false
                     },
                     "external_schema_registry_user_config": {
@@ -3028,6 +3185,7 @@
                 "privateAccess": "private_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "serviceToJoinWith": "service_to_join_with",
                 "staticIps": "static_ips"
@@ -3037,6 +3195,7 @@
                 "batchSizeWarnThresholdInKb": "batch_size_warn_threshold_in_kb"
             },
             "aiven:index/CassandraComponent:CassandraComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/CassandraServiceIntegration:CassandraServiceIntegration": {
@@ -3052,19 +3211,24 @@
                 "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
             "aiven:index/ClickhouseClickhouseUserConfigPrivateAccess:ClickhouseClickhouseUserConfigPrivateAccess": {
-                "clickhouseHttps": "clickhouse_https"
+                "clickhouseHttps": "clickhouse_https",
+                "clickhouseMysql": "clickhouse_mysql"
             },
             "aiven:index/ClickhouseClickhouseUserConfigPrivatelinkAccess:ClickhouseClickhouseUserConfigPrivatelinkAccess": {
-                "clickhouseHttps": "clickhouse_https"
+                "clickhouseHttps": "clickhouse_https",
+                "clickhouseMysql": "clickhouse_mysql"
             },
             "aiven:index/ClickhouseClickhouseUserConfigPublicAccess:ClickhouseClickhouseUserConfigPublicAccess": {
-                "clickhouseHttps": "clickhouse_https"
+                "clickhouseHttps": "clickhouse_https",
+                "clickhouseMysql": "clickhouse_mysql"
             },
             "aiven:index/ClickhouseComponent:ClickhouseComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/ClickhouseGrantPrivilegeGrant:ClickhouseGrantPrivilegeGrant": {
@@ -3083,24 +3247,29 @@
                 "integrationId": "integration_id"
             },
             "aiven:index/FlinkComponent:FlinkComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/FlinkFlink:FlinkFlink": {
                 "hostPorts": "host_ports"
             },
             "aiven:index/FlinkFlinkUserConfig:FlinkFlinkUserConfig": {
+                "additionalBackupRegions": "additional_backup_regions",
                 "flinkVersion": "flink_version",
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "numberOfTaskSlots": "number_of_task_slots",
-                "privatelinkAccess": "privatelink_access"
+                "privatelinkAccess": "privatelink_access",
+                "serviceLog": "service_log",
+                "staticIps": "static_ips"
             },
             "aiven:index/FlinkServiceIntegration:FlinkServiceIntegration": {
                 "integrationType": "integration_type",
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/GrafanaComponent:GrafanaComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig": {
@@ -3138,9 +3307,11 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryBasebackupName": "recovery_basebackup_name",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "smtpServer": "smtp_server",
                 "staticIps": "static_ips",
+                "unifiedAlertingEnabled": "unified_alerting_enabled",
                 "userAutoAssignOrg": "user_auto_assign_org",
                 "userAutoAssignOrgRole": "user_auto_assign_org_role",
                 "viewersCanEdit": "viewers_can_edit"
@@ -3213,6 +3384,7 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/InfluxDbComponent:InfluxDbComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb": {
@@ -3229,6 +3401,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryBasebackupName": "recovery_basebackup_name",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -3246,9 +3419,11 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/KafkaComponent:KafkaComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/KafkaConnectComponent:KafkaConnectComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/KafkaConnectKafkaConnectUserConfig:KafkaConnectKafkaConnectUserConfig": {
@@ -3260,6 +3435,7 @@
                 "privateAccess": "private_access",
                 "privatelinkAccess": "privatelink_access",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "staticIps": "static_ips"
             },
             "aiven:index/KafkaConnectKafkaConnectUserConfigKafkaConnect:KafkaConnectKafkaConnectUserConfigKafkaConnect": {
@@ -3302,6 +3478,7 @@
             },
             "aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig": {
                 "additionalBackupRegions": "additional_backup_regions",
+                "aivenKafkaTopicMessages": "aiven_kafka_topic_messages",
                 "customDomain": "custom_domain",
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
@@ -3318,7 +3495,9 @@
                 "publicAccess": "public_access",
                 "schemaRegistry": "schema_registry",
                 "schemaRegistryConfig": "schema_registry_config",
-                "staticIps": "static_ips"
+                "serviceLog": "service_log",
+                "staticIps": "static_ips",
+                "tieredStorage": "tiered_storage"
             },
             "aiven:index/KafkaKafkaUserConfigKafka:KafkaKafkaUserConfigKafka": {
                 "autoCreateTopicsEnable": "auto_create_topics_enable",
@@ -3337,6 +3516,8 @@
                 "logFlushIntervalMs": "log_flush_interval_ms",
                 "logIndexIntervalBytes": "log_index_interval_bytes",
                 "logIndexSizeMaxBytes": "log_index_size_max_bytes",
+                "logLocalRetentionBytes": "log_local_retention_bytes",
+                "logLocalRetentionMs": "log_local_retention_ms",
                 "logMessageDownconversionEnable": "log_message_downconversion_enable",
                 "logMessageTimestampDifferenceMaxMs": "log_message_timestamp_difference_max_ms",
                 "logMessageTimestampType": "log_message_timestamp_type",
@@ -3357,7 +3538,12 @@
                 "producerPurgatoryPurgeIntervalRequests": "producer_purgatory_purge_interval_requests",
                 "replicaFetchMaxBytes": "replica_fetch_max_bytes",
                 "replicaFetchResponseMaxBytes": "replica_fetch_response_max_bytes",
+                "saslOauthbearerExpectedAudience": "sasl_oauthbearer_expected_audience",
+                "saslOauthbearerExpectedIssuer": "sasl_oauthbearer_expected_issuer",
+                "saslOauthbearerJwksEndpointUrl": "sasl_oauthbearer_jwks_endpoint_url",
+                "saslOauthbearerSubClaimName": "sasl_oauthbearer_sub_claim_name",
                 "socketRequestMaxBytes": "socket_request_max_bytes",
+                "transactionPartitionVerificationEnable": "transaction_partition_verification_enable",
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": "transaction_remove_expired_transaction_cleanup_interval_ms",
                 "transactionStateLogSegmentBytes": "transaction_state_log_segment_bytes"
             },
@@ -3383,6 +3569,7 @@
                 "consumerEnableAutoCommit": "consumer_enable_auto_commit",
                 "consumerRequestMaxBytes": "consumer_request_max_bytes",
                 "consumerRequestTimeoutMs": "consumer_request_timeout_ms",
+                "nameStrategyValidation": "name_strategy_validation",
                 "producerAcks": "producer_acks",
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
@@ -3408,7 +3595,11 @@
                 "leaderEligibility": "leader_eligibility",
                 "topicName": "topic_name"
             },
+            "aiven:index/KafkaKafkaUserConfigTieredStorage:KafkaKafkaUserConfigTieredStorage": {
+                "localCache": "local_cache"
+            },
             "aiven:index/KafkaMirrorMakerComponent:KafkaMirrorMakerComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfig:KafkaMirrorMakerKafkaMirrormakerUserConfig": {
@@ -3417,6 +3608,7 @@
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "kafkaMirrormaker": "kafka_mirrormaker",
+                "serviceLog": "service_log",
                 "staticIps": "static_ips"
             },
             "aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
@@ -3465,6 +3657,7 @@
                 "uncleanLeaderElectionEnable": "unclean_leader_election_enable"
             },
             "aiven:index/M3AggregatorComponent:M3AggregatorComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig": {
@@ -3474,6 +3667,7 @@
                 "ipFilters": "ip_filter",
                 "m3Version": "m3_version",
                 "m3aggregatorVersion": "m3aggregator_version",
+                "serviceLog": "service_log",
                 "staticIps": "static_ips"
             },
             "aiven:index/M3AggregatorServiceIntegration:M3AggregatorServiceIntegration": {
@@ -3481,6 +3675,7 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/M3DbComponent:M3DbComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig": {
@@ -3495,6 +3690,7 @@
                 "privateAccess": "private_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -3537,6 +3733,7 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/MySqlComponent:MySqlComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/MySqlMysqlUserConfig:MySqlMysqlUserConfig": {
@@ -3555,6 +3752,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryTargetTime": "recovery_target_time",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -3598,6 +3796,7 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/OpenSearchComponent:OpenSearchComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/OpenSearchOpensearch:OpenSearchOpensearch": {
@@ -3621,6 +3820,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryBasebackupName": "recovery_basebackup_name",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -3647,20 +3847,30 @@
             "aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch": {
                 "actionAutoCreateIndexEnabled": "action_auto_create_index_enabled",
                 "actionDestructiveRequiresName": "action_destructive_requires_name",
+                "authFailureListeners": "auth_failure_listeners",
                 "clusterMaxShardsPerNode": "cluster_max_shards_per_node",
                 "clusterRoutingAllocationNodeConcurrentRecoveries": "cluster_routing_allocation_node_concurrent_recoveries",
                 "emailSenderName": "email_sender_name",
                 "emailSenderPassword": "email_sender_password",
                 "emailSenderUsername": "email_sender_username",
+                "enableSecurityAudit": "enable_security_audit",
                 "httpMaxContentLength": "http_max_content_length",
                 "httpMaxHeaderSize": "http_max_header_size",
                 "httpMaxInitialLineLength": "http_max_initial_line_length",
                 "indicesFielddataCacheSize": "indices_fielddata_cache_size",
                 "indicesMemoryIndexBufferSize": "indices_memory_index_buffer_size",
+                "indicesMemoryMaxIndexBufferSize": "indices_memory_max_index_buffer_size",
+                "indicesMemoryMinIndexBufferSize": "indices_memory_min_index_buffer_size",
                 "indicesQueriesCacheSize": "indices_queries_cache_size",
                 "indicesQueryBoolMaxClauseCount": "indices_query_bool_max_clause_count",
                 "indicesRecoveryMaxBytesPerSec": "indices_recovery_max_bytes_per_sec",
                 "indicesRecoveryMaxConcurrentFileChunks": "indices_recovery_max_concurrent_file_chunks",
+                "ismEnabled": "ism_enabled",
+                "ismHistoryEnabled": "ism_history_enabled",
+                "ismHistoryMaxAge": "ism_history_max_age",
+                "ismHistoryMaxDocs": "ism_history_max_docs",
+                "ismHistoryRolloverCheckPeriod": "ism_history_rollover_check_period",
+                "ismHistoryRolloverRetentionPeriod": "ism_history_rollover_retention_period",
                 "overrideMainResponseVersion": "override_main_response_version",
                 "reindexRemoteWhitelists": "reindex_remote_whitelist",
                 "scriptMaxCompilationsRate": "script_max_compilations_rate",
@@ -3676,6 +3886,25 @@
                 "threadPoolSearchThrottledSize": "thread_pool_search_throttled_size",
                 "threadPoolWriteQueueSize": "thread_pool_write_queue_size",
                 "threadPoolWriteSize": "thread_pool_write_size"
+            },
+            "aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners:OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners": {
+                "internalAuthenticationBackendLimiting": "internal_authentication_backend_limiting",
+                "ipRateLimiting": "ip_rate_limiting"
+            },
+            "aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting:OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting": {
+                "allowedTries": "allowed_tries",
+                "authenticationBackend": "authentication_backend",
+                "blockExpirySeconds": "block_expiry_seconds",
+                "maxBlockedClients": "max_blocked_clients",
+                "maxTrackedClients": "max_tracked_clients",
+                "timeWindowSeconds": "time_window_seconds"
+            },
+            "aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting:OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting": {
+                "allowedTries": "allowed_tries",
+                "blockExpirySeconds": "block_expiry_seconds",
+                "maxBlockedClients": "max_blocked_clients",
+                "maxTrackedClients": "max_tracked_clients",
+                "timeWindowSeconds": "time_window_seconds"
             },
             "aiven:index/OpenSearchOpensearchUserConfigOpensearchDashboards:OpenSearchOpensearchUserConfigOpensearchDashboards": {
                 "maxOldSpaceSize": "max_old_space_size",
@@ -3703,6 +3932,7 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/PgComponent:PgComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/PgPg:PgPg": {
@@ -3719,6 +3949,7 @@
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
+                "pgQualstats": "pg_qualstats",
                 "pgReadReplica": "pg_read_replica",
                 "pgServiceToForkFrom": "pg_service_to_fork_from",
                 "pgStatMonitorEnable": "pg_stat_monitor_enable",
@@ -3728,6 +3959,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryTargetTime": "recovery_target_time",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "sharedBuffersPercentage": "shared_buffers_percentage",
                 "staticIps": "static_ips",
@@ -3786,6 +4018,12 @@
                 "walSenderTimeout": "wal_sender_timeout",
                 "walWriterDelay": "wal_writer_delay"
             },
+            "aiven:index/PgPgUserConfigPgQualstats:PgPgUserConfigPgQualstats": {
+                "minErrEstimateNum": "min_err_estimate_num",
+                "minErrEstimateRatio": "min_err_estimate_ratio",
+                "trackConstants": "track_constants",
+                "trackPgCatalog": "track_pg_catalog"
+            },
             "aiven:index/PgPgUserConfigPgbouncer:PgPgUserConfigPgbouncer": {
                 "autodbIdleTimeout": "autodb_idle_timeout",
                 "autodbMaxDbConnections": "autodb_max_db_connections",
@@ -3808,6 +4046,7 @@
                 "sourceServiceName": "source_service_name"
             },
             "aiven:index/RedisComponent:RedisComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/RedisRedisUserConfig:RedisRedisUserConfig": {
@@ -3831,6 +4070,7 @@
                 "redisPubsubClientOutputBufferLimit": "redis_pubsub_client_output_buffer_limit",
                 "redisSsl": "redis_ssl",
                 "redisTimeout": "redis_timeout",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -3892,6 +4132,10 @@
                 "indexDaysMax": "index_days_max",
                 "indexPrefix": "index_prefix"
             },
+            "aiven:index/ServiceIntegrationEndpointExternalGoogleCloudBigquery:ServiceIntegrationEndpointExternalGoogleCloudBigquery": {
+                "projectId": "project_id",
+                "serviceAccountCredentials": "service_account_credentials"
+            },
             "aiven:index/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
                 "logId": "log_id",
                 "projectId": "project_id",
@@ -3911,6 +4155,10 @@
             "aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig": {
                 "indexDaysMax": "index_days_max",
                 "indexPrefix": "index_prefix"
+            },
+            "aiven:index/ServiceIntegrationEndpointExternalPostgresql:ServiceIntegrationEndpointExternalPostgresql": {
+                "sslMode": "ssl_mode",
+                "sslRootCert": "ssl_root_cert"
             },
             "aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
                 "basicAuthPassword": "basic_auth_password",
@@ -4094,6 +4342,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/cassandraUser:CassandraUser": {
@@ -4124,6 +4373,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/clickhouseDatabase:ClickhouseDatabase": {
@@ -4171,6 +4421,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/flinkApplication:FlinkApplication": {
@@ -4330,6 +4581,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig": {
@@ -4344,6 +4596,7 @@
                 "privateAccess": "private_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "serviceToJoinWith": "service_to_join_with",
                 "staticIps": "static_ips"
@@ -4353,6 +4606,7 @@
                 "batchSizeWarnThresholdInKb": "batch_size_warn_threshold_in_kb"
             },
             "aiven:index/getCassandaComponent:getCassandaComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getCassandaServiceIntegration:getCassandaServiceIntegration": {
@@ -4382,6 +4636,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getCassandraCassandraUserConfig:getCassandraCassandraUserConfig": {
@@ -4396,6 +4651,7 @@
                 "privateAccess": "private_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "serviceToJoinWith": "service_to_join_with",
                 "staticIps": "static_ips"
@@ -4405,6 +4661,7 @@
                 "batchSizeWarnThresholdInKb": "batch_size_warn_threshold_in_kb"
             },
             "aiven:index/getCassandraComponent:getCassandraComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getCassandraServiceIntegration:getCassandraServiceIntegration": {
@@ -4439,6 +4696,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getClickhouseClickhouseUserConfig:getClickhouseClickhouseUserConfig": {
@@ -4450,19 +4708,24 @@
                 "privatelinkAccess": "privatelink_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
             "aiven:index/getClickhouseClickhouseUserConfigPrivateAccess:getClickhouseClickhouseUserConfigPrivateAccess": {
-                "clickhouseHttps": "clickhouse_https"
+                "clickhouseHttps": "clickhouse_https",
+                "clickhouseMysql": "clickhouse_mysql"
             },
             "aiven:index/getClickhouseClickhouseUserConfigPrivatelinkAccess:getClickhouseClickhouseUserConfigPrivatelinkAccess": {
-                "clickhouseHttps": "clickhouse_https"
+                "clickhouseHttps": "clickhouse_https",
+                "clickhouseMysql": "clickhouse_mysql"
             },
             "aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess": {
-                "clickhouseHttps": "clickhouse_https"
+                "clickhouseHttps": "clickhouse_https",
+                "clickhouseMysql": "clickhouse_mysql"
             },
             "aiven:index/getClickhouseComponent:getClickhouseComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getClickhouseDatabase:getClickhouseDatabase": {
@@ -4507,6 +4770,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getFlinkApplication:getFlinkApplication": {
@@ -4533,18 +4797,22 @@
                 "integrationId": "integration_id"
             },
             "aiven:index/getFlinkComponent:getFlinkComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getFlinkFlink:getFlinkFlink": {
                 "hostPorts": "host_ports"
             },
             "aiven:index/getFlinkFlinkUserConfig:getFlinkFlinkUserConfig": {
+                "additionalBackupRegions": "additional_backup_regions",
                 "flinkVersion": "flink_version",
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "numberOfTaskSlots": "number_of_task_slots",
-                "privatelinkAccess": "privatelink_access"
+                "privatelinkAccess": "privatelink_access",
+                "serviceLog": "service_log",
+                "staticIps": "static_ips"
             },
             "aiven:index/getFlinkServiceIntegration:getFlinkServiceIntegration": {
                 "integrationType": "integration_type",
@@ -4584,9 +4852,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getGrafanaComponent:getGrafanaComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getGrafanaGrafanaUserConfig:getGrafanaGrafanaUserConfig": {
@@ -4624,9 +4894,11 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryBasebackupName": "recovery_basebackup_name",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "smtpServer": "smtp_server",
                 "staticIps": "static_ips",
+                "unifiedAlertingEnabled": "unified_alerting_enabled",
                 "userAutoAssignOrg": "user_auto_assign_org",
                 "userAutoAssignOrgRole": "user_auto_assign_org_role",
                 "viewersCanEdit": "viewers_can_edit"
@@ -4721,9 +4993,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getInfluxDbComponent:getInfluxDbComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getInfluxDbInfluxdb:getInfluxDbInfluxdb": {
@@ -4740,6 +5014,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryBasebackupName": "recovery_basebackup_name",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -4790,6 +5065,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getKafkaAcl:getKafkaAcl": {
@@ -4797,6 +5073,7 @@
                 "serviceName": "service_name"
             },
             "aiven:index/getKafkaComponent:getKafkaComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getKafkaConnect:getKafkaConnect": {
@@ -4822,9 +5099,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getKafkaConnectComponent:getKafkaConnectComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getKafkaConnectKafkaConnectUserConfig:getKafkaConnectKafkaConnectUserConfig": {
@@ -4836,6 +5115,7 @@
                 "privateAccess": "private_access",
                 "privatelinkAccess": "privatelink_access",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "staticIps": "static_ips"
             },
             "aiven:index/getKafkaConnectKafkaConnectUserConfigKafkaConnect:getKafkaConnectKafkaConnectUserConfigKafkaConnect": {
@@ -4889,6 +5169,7 @@
             },
             "aiven:index/getKafkaKafkaUserConfig:getKafkaKafkaUserConfig": {
                 "additionalBackupRegions": "additional_backup_regions",
+                "aivenKafkaTopicMessages": "aiven_kafka_topic_messages",
                 "customDomain": "custom_domain",
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
@@ -4905,7 +5186,9 @@
                 "publicAccess": "public_access",
                 "schemaRegistry": "schema_registry",
                 "schemaRegistryConfig": "schema_registry_config",
-                "staticIps": "static_ips"
+                "serviceLog": "service_log",
+                "staticIps": "static_ips",
+                "tieredStorage": "tiered_storage"
             },
             "aiven:index/getKafkaKafkaUserConfigKafka:getKafkaKafkaUserConfigKafka": {
                 "autoCreateTopicsEnable": "auto_create_topics_enable",
@@ -4924,6 +5207,8 @@
                 "logFlushIntervalMs": "log_flush_interval_ms",
                 "logIndexIntervalBytes": "log_index_interval_bytes",
                 "logIndexSizeMaxBytes": "log_index_size_max_bytes",
+                "logLocalRetentionBytes": "log_local_retention_bytes",
+                "logLocalRetentionMs": "log_local_retention_ms",
                 "logMessageDownconversionEnable": "log_message_downconversion_enable",
                 "logMessageTimestampDifferenceMaxMs": "log_message_timestamp_difference_max_ms",
                 "logMessageTimestampType": "log_message_timestamp_type",
@@ -4944,7 +5229,12 @@
                 "producerPurgatoryPurgeIntervalRequests": "producer_purgatory_purge_interval_requests",
                 "replicaFetchMaxBytes": "replica_fetch_max_bytes",
                 "replicaFetchResponseMaxBytes": "replica_fetch_response_max_bytes",
+                "saslOauthbearerExpectedAudience": "sasl_oauthbearer_expected_audience",
+                "saslOauthbearerExpectedIssuer": "sasl_oauthbearer_expected_issuer",
+                "saslOauthbearerJwksEndpointUrl": "sasl_oauthbearer_jwks_endpoint_url",
+                "saslOauthbearerSubClaimName": "sasl_oauthbearer_sub_claim_name",
                 "socketRequestMaxBytes": "socket_request_max_bytes",
+                "transactionPartitionVerificationEnable": "transaction_partition_verification_enable",
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": "transaction_remove_expired_transaction_cleanup_interval_ms",
                 "transactionStateLogSegmentBytes": "transaction_state_log_segment_bytes"
             },
@@ -4970,6 +5260,7 @@
                 "consumerEnableAutoCommit": "consumer_enable_auto_commit",
                 "consumerRequestMaxBytes": "consumer_request_max_bytes",
                 "consumerRequestTimeoutMs": "consumer_request_timeout_ms",
+                "nameStrategyValidation": "name_strategy_validation",
                 "producerAcks": "producer_acks",
                 "producerCompressionType": "producer_compression_type",
                 "producerLingerMs": "producer_linger_ms",
@@ -4995,6 +5286,9 @@
                 "leaderEligibility": "leader_eligibility",
                 "topicName": "topic_name"
             },
+            "aiven:index/getKafkaKafkaUserConfigTieredStorage:getKafkaKafkaUserConfigTieredStorage": {
+                "localCache": "local_cache"
+            },
             "aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker": {
                 "additionalDiskSpace": "additional_disk_space",
                 "cloudName": "cloud_name",
@@ -5018,9 +5312,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getKafkaMirrorMakerComponent:getKafkaMirrorMakerComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfig:getKafkaMirrorMakerKafkaMirrormakerUserConfig": {
@@ -5029,6 +5325,7 @@
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
                 "kafkaMirrormaker": "kafka_mirrormaker",
+                "serviceLog": "service_log",
                 "staticIps": "static_ips"
             },
             "aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
@@ -5127,9 +5424,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getM3AggregatorComponent:getM3AggregatorComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getM3AggregatorM3aggregatorUserConfig:getM3AggregatorM3aggregatorUserConfig": {
@@ -5139,6 +5438,7 @@
                 "ipFilters": "ip_filter",
                 "m3Version": "m3_version",
                 "m3aggregatorVersion": "m3aggregator_version",
+                "serviceLog": "service_log",
                 "staticIps": "static_ips"
             },
             "aiven:index/getM3AggregatorServiceIntegration:getM3AggregatorServiceIntegration": {
@@ -5168,9 +5468,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getM3DbComponent:getM3DbComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getM3DbM3dbUserConfig:getM3DbM3dbUserConfig": {
@@ -5185,6 +5487,7 @@
                 "privateAccess": "private_access",
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -5230,6 +5533,7 @@
                 "serviceName": "service_name"
             },
             "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow": {
+                "emitBackwardHeartbeatsEnabled": "emit_backward_heartbeats_enabled",
                 "emitHeartbeatsEnabled": "emit_heartbeats_enabled",
                 "offsetSyncsTopicLocation": "offset_syncs_topic_location",
                 "replicationPolicyClass": "replication_policy_class",
@@ -5263,9 +5567,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getMySqlComponent:getMySqlComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getMySqlMysqlUserConfig:getMySqlMysqlUserConfig": {
@@ -5284,6 +5590,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryTargetTime": "recovery_target_time",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -5359,6 +5666,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getOpenSearchAclConfig:getOpenSearchAclConfig": {
@@ -5369,6 +5677,7 @@
                 "serviceName": "service_name"
             },
             "aiven:index/getOpenSearchComponent:getOpenSearchComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getOpenSearchOpensearch:getOpenSearchOpensearch": {
@@ -5392,6 +5701,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryBasebackupName": "recovery_basebackup_name",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -5418,20 +5728,30 @@
             "aiven:index/getOpenSearchOpensearchUserConfigOpensearch:getOpenSearchOpensearchUserConfigOpensearch": {
                 "actionAutoCreateIndexEnabled": "action_auto_create_index_enabled",
                 "actionDestructiveRequiresName": "action_destructive_requires_name",
+                "authFailureListeners": "auth_failure_listeners",
                 "clusterMaxShardsPerNode": "cluster_max_shards_per_node",
                 "clusterRoutingAllocationNodeConcurrentRecoveries": "cluster_routing_allocation_node_concurrent_recoveries",
                 "emailSenderName": "email_sender_name",
                 "emailSenderPassword": "email_sender_password",
                 "emailSenderUsername": "email_sender_username",
+                "enableSecurityAudit": "enable_security_audit",
                 "httpMaxContentLength": "http_max_content_length",
                 "httpMaxHeaderSize": "http_max_header_size",
                 "httpMaxInitialLineLength": "http_max_initial_line_length",
                 "indicesFielddataCacheSize": "indices_fielddata_cache_size",
                 "indicesMemoryIndexBufferSize": "indices_memory_index_buffer_size",
+                "indicesMemoryMaxIndexBufferSize": "indices_memory_max_index_buffer_size",
+                "indicesMemoryMinIndexBufferSize": "indices_memory_min_index_buffer_size",
                 "indicesQueriesCacheSize": "indices_queries_cache_size",
                 "indicesQueryBoolMaxClauseCount": "indices_query_bool_max_clause_count",
                 "indicesRecoveryMaxBytesPerSec": "indices_recovery_max_bytes_per_sec",
                 "indicesRecoveryMaxConcurrentFileChunks": "indices_recovery_max_concurrent_file_chunks",
+                "ismEnabled": "ism_enabled",
+                "ismHistoryEnabled": "ism_history_enabled",
+                "ismHistoryMaxAge": "ism_history_max_age",
+                "ismHistoryMaxDocs": "ism_history_max_docs",
+                "ismHistoryRolloverCheckPeriod": "ism_history_rollover_check_period",
+                "ismHistoryRolloverRetentionPeriod": "ism_history_rollover_retention_period",
                 "overrideMainResponseVersion": "override_main_response_version",
                 "reindexRemoteWhitelists": "reindex_remote_whitelist",
                 "scriptMaxCompilationsRate": "script_max_compilations_rate",
@@ -5447,6 +5767,25 @@
                 "threadPoolSearchThrottledSize": "thread_pool_search_throttled_size",
                 "threadPoolWriteQueueSize": "thread_pool_write_queue_size",
                 "threadPoolWriteSize": "thread_pool_write_size"
+            },
+            "aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners": {
+                "internalAuthenticationBackendLimiting": "internal_authentication_backend_limiting",
+                "ipRateLimiting": "ip_rate_limiting"
+            },
+            "aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting": {
+                "allowedTries": "allowed_tries",
+                "authenticationBackend": "authentication_backend",
+                "blockExpirySeconds": "block_expiry_seconds",
+                "maxBlockedClients": "max_blocked_clients",
+                "maxTrackedClients": "max_tracked_clients",
+                "timeWindowSeconds": "time_window_seconds"
+            },
+            "aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting": {
+                "allowedTries": "allowed_tries",
+                "blockExpirySeconds": "block_expiry_seconds",
+                "maxBlockedClients": "max_blocked_clients",
+                "maxTrackedClients": "max_tracked_clients",
+                "timeWindowSeconds": "time_window_seconds"
             },
             "aiven:index/getOpenSearchOpensearchUserConfigOpensearchDashboards:getOpenSearchOpensearchUserConfigOpensearchDashboards": {
                 "maxOldSpaceSize": "max_old_space_size",
@@ -5494,6 +5833,7 @@
             },
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": {
                 "createTime": "create_time",
+                "groupId": "group_id",
                 "organizationId": "organization_id",
                 "updateTime": "update_time"
             },
@@ -5526,9 +5866,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getPgComponent:getPgComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getPgDatabase:getPgDatabase": {
@@ -5552,6 +5894,7 @@
                 "ipFilterObjects": "ip_filter_object",
                 "ipFilterStrings": "ip_filter_string",
                 "ipFilters": "ip_filter",
+                "pgQualstats": "pg_qualstats",
                 "pgReadReplica": "pg_read_replica",
                 "pgServiceToForkFrom": "pg_service_to_fork_from",
                 "pgStatMonitorEnable": "pg_stat_monitor_enable",
@@ -5561,6 +5904,7 @@
                 "projectToForkFrom": "project_to_fork_from",
                 "publicAccess": "public_access",
                 "recoveryTargetTime": "recovery_target_time",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "sharedBuffersPercentage": "shared_buffers_percentage",
                 "staticIps": "static_ips",
@@ -5618,6 +5962,12 @@
                 "trackIoTiming": "track_io_timing",
                 "walSenderTimeout": "wal_sender_timeout",
                 "walWriterDelay": "wal_writer_delay"
+            },
+            "aiven:index/getPgPgUserConfigPgQualstats:getPgPgUserConfigPgQualstats": {
+                "minErrEstimateNum": "min_err_estimate_num",
+                "minErrEstimateRatio": "min_err_estimate_ratio",
+                "trackConstants": "track_constants",
+                "trackPgCatalog": "track_pg_catalog"
             },
             "aiven:index/getPgPgUserConfigPgbouncer:getPgPgUserConfigPgbouncer": {
                 "autodbIdleTimeout": "autodb_idle_timeout",
@@ -5691,9 +6041,11 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/getRedisComponent:getRedisComponent": {
+                "connectionUri": "connection_uri",
                 "kafkaAuthenticationMethod": "kafka_authentication_method"
             },
             "aiven:index/getRedisRedisUserConfig:getRedisRedisUserConfig": {
@@ -5717,6 +6069,7 @@
                 "redisPubsubClientOutputBufferLimit": "redis_pubsub_client_output_buffer_limit",
                 "redisSsl": "redis_ssl",
                 "redisTimeout": "redis_timeout",
+                "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
             },
@@ -5793,9 +6146,11 @@
                 "externalAwsCloudwatchLogsUserConfigs": "external_aws_cloudwatch_logs_user_config",
                 "externalAwsCloudwatchMetricsUserConfigs": "external_aws_cloudwatch_metrics_user_config",
                 "externalElasticsearchLogsUserConfigs": "external_elasticsearch_logs_user_config",
+                "externalGoogleCloudBigqueries": "external_google_cloud_bigquery",
                 "externalGoogleCloudLoggingUserConfigs": "external_google_cloud_logging_user_config",
                 "externalKafkaUserConfigs": "external_kafka_user_config",
                 "externalOpensearchLogsUserConfigs": "external_opensearch_logs_user_config",
+                "externalPostgresqls": "external_postgresql",
                 "externalSchemaRegistryUserConfigs": "external_schema_registry_user_config",
                 "jolokiaUserConfigs": "jolokia_user_config",
                 "prometheusUserConfigs": "prometheus_user_config",
@@ -5822,6 +6177,10 @@
                 "indexDaysMax": "index_days_max",
                 "indexPrefix": "index_prefix"
             },
+            "aiven:index/getServiceIntegrationEndpointExternalGoogleCloudBigquery:getServiceIntegrationEndpointExternalGoogleCloudBigquery": {
+                "projectId": "project_id",
+                "serviceAccountCredentials": "service_account_credentials"
+            },
             "aiven:index/getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
                 "logId": "log_id",
                 "projectId": "project_id",
@@ -5841,6 +6200,10 @@
             "aiven:index/getServiceIntegrationEndpointExternalOpensearchLogsUserConfig:getServiceIntegrationEndpointExternalOpensearchLogsUserConfig": {
                 "indexDaysMax": "index_days_max",
                 "indexPrefix": "index_prefix"
+            },
+            "aiven:index/getServiceIntegrationEndpointExternalPostgresql:getServiceIntegrationEndpointExternalPostgresql": {
+                "sslMode": "ssl_mode",
+                "sslRootCert": "ssl_root_cert"
             },
             "aiven:index/getServiceIntegrationEndpointExternalSchemaRegistryUserConfig:getServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
                 "basicAuthPassword": "basic_auth_password",
@@ -5941,6 +6304,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/influxDb:InfluxDb": {
@@ -5966,6 +6330,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/influxdbDatabase:InfluxdbDatabase": {
@@ -6002,6 +6367,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/kafkaAcl:KafkaAcl": {
@@ -6031,6 +6397,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/kafkaConnector:KafkaConnector": {
@@ -6067,6 +6434,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/kafkaSchema:KafkaSchema": {
@@ -6117,6 +6485,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/m3Db:M3Db": {
@@ -6142,12 +6511,14 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/m3dbUser:M3dbUser": {
                 "serviceName": "service_name"
             },
             "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": {
+                "emitBackwardHeartbeatsEnabled": "emit_backward_heartbeats_enabled",
                 "emitHeartbeatsEnabled": "emit_heartbeats_enabled",
                 "offsetSyncsTopicLocation": "offset_syncs_topic_location",
                 "replicationPolicyClass": "replication_policy_class",
@@ -6181,6 +6552,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/mysqlDatabase:MysqlDatabase": {
@@ -6216,6 +6588,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/openSearchAclConfig:OpenSearchAclConfig": {
@@ -6246,6 +6619,7 @@
             },
             "aiven:index/organizationUserGroup:OrganizationUserGroup": {
                 "createTime": "create_time",
+                "groupId": "group_id",
                 "organizationId": "organization_id",
                 "updateTime": "update_time"
             },
@@ -6277,6 +6651,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/pgDatabase:PgDatabase": {
@@ -6336,6 +6711,7 @@
                 "serviceUsername": "service_username",
                 "staticIps": "static_ips",
                 "tags": "tag",
+                "techEmails": "tech_emails",
                 "terminationProtection": "termination_protection"
             },
             "aiven:index/redisUser:RedisUser": {
@@ -6370,9 +6746,11 @@
                 "externalAwsCloudwatchLogsUserConfig": "external_aws_cloudwatch_logs_user_config",
                 "externalAwsCloudwatchMetricsUserConfig": "external_aws_cloudwatch_metrics_user_config",
                 "externalElasticsearchLogsUserConfig": "external_elasticsearch_logs_user_config",
+                "externalGoogleCloudBigquery": "external_google_cloud_bigquery",
                 "externalGoogleCloudLoggingUserConfig": "external_google_cloud_logging_user_config",
                 "externalKafkaUserConfig": "external_kafka_user_config",
                 "externalOpensearchLogsUserConfig": "external_opensearch_logs_user_config",
+                "externalPostgresql": "external_postgresql",
                 "externalSchemaRegistryUserConfig": "external_schema_registry_user_config",
                 "jolokiaUserConfig": "jolokia_user_config",
                 "prometheusUserConfig": "prometheus_user_config",

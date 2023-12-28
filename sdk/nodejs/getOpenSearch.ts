@@ -157,6 +157,10 @@ export interface GetOpenSearchResult {
      */
     readonly tags: outputs.GetOpenSearchTag[];
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     */
+    readonly techEmails: outputs.GetOpenSearchTechEmail[];
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     readonly terminationProtection: boolean;

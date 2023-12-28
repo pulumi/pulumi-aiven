@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -119,37 +120,58 @@ public final class GetPgDatabaseResult {
 
         @CustomType.Setter
         public Builder databaseName(String databaseName) {
-            this.databaseName = Objects.requireNonNull(databaseName);
+            if (databaseName == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "databaseName");
+            }
+            this.databaseName = databaseName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lcCollate(String lcCollate) {
-            this.lcCollate = Objects.requireNonNull(lcCollate);
+            if (lcCollate == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "lcCollate");
+            }
+            this.lcCollate = lcCollate;
             return this;
         }
         @CustomType.Setter
         public Builder lcCtype(String lcCtype) {
-            this.lcCtype = Objects.requireNonNull(lcCtype);
+            if (lcCtype == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "lcCtype");
+            }
+            this.lcCtype = lcCtype;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
-            this.terminationProtection = Objects.requireNonNull(terminationProtection);
+            if (terminationProtection == null) {
+              throw new MissingRequiredPropertyException("GetPgDatabaseResult", "terminationProtection");
+            }
+            this.terminationProtection = terminationProtection;
             return this;
         }
         public GetPgDatabaseResult build() {

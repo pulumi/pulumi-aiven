@@ -29,6 +29,7 @@ class MySqlArgs:
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a MySql resource.
@@ -63,6 +64,8 @@ class MySqlArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['MySqlTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -93,6 +96,8 @@ class MySqlArgs:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -274,6 +279,19 @@ class MySqlArgs:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -317,6 +335,7 @@ class _MySqlState:
                  state: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTagArgs']]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering MySql resources.
@@ -366,6 +385,8 @@ class _MySqlState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['MySqlTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -425,6 +446,8 @@ class _MySqlState:
             pulumi.set(__self__, "static_ips", static_ips)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if tech_emails is not None:
+            pulumi.set(__self__, "tech_emails", tech_emails)
         if termination_protection is not None:
             pulumi.set(__self__, "termination_protection", termination_protection)
 
@@ -764,6 +787,19 @@ class _MySqlState:
         pulumi.set(self, "tags", value)
 
     @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        instability.
+        """
+        return pulumi.get(self, "tech_emails")
+
+    @tech_emails.setter
+    def tech_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlTechEmailArgs']]]]):
+        pulumi.set(self, "tech_emails", value)
+
+    @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -796,6 +832,7 @@ class MySql(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -865,6 +902,8 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -937,6 +976,7 @@ class MySql(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]]] = None,
+                 tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]]] = None,
                  termination_protection: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -966,6 +1006,7 @@ class MySql(pulumi.CustomResource):
             __props__.__dict__["service_name"] = service_name
             __props__.__dict__["static_ips"] = static_ips
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["tech_emails"] = tech_emails
             __props__.__dict__["termination_protection"] = termination_protection
             __props__.__dict__["components"] = None
             __props__.__dict__["disk_space_cap"] = None
@@ -1018,6 +1059,7 @@ class MySql(pulumi.CustomResource):
             state: Optional[pulumi.Input[str]] = None,
             static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]]] = None,
+            tech_emails: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]]] = None,
             termination_protection: Optional[pulumi.Input[bool]] = None) -> 'MySql':
         """
         Get an existing MySql resource's state with the given name, id, and optional extra
@@ -1072,6 +1114,8 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MySqlTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+               instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1106,6 +1150,7 @@ class MySql(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["static_ips"] = static_ips
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["tech_emails"] = tech_emails
         __props__.__dict__["termination_protection"] = termination_protection
         return MySql(resource_name, opts=opts, __props__=__props__)
 
@@ -1339,6 +1384,15 @@ class MySql(pulumi.CustomResource):
         Tags are key-value pairs that allow you to categorize services.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter(name="techEmails")
+    def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.MySqlTechEmail']]]:
+        """
+        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+        instability.
+        """
+        return pulumi.get(self, "tech_emails")
 
     @property
     @pulumi.getter(name="terminationProtection")

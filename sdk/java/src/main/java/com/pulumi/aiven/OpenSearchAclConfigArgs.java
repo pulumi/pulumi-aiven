@@ -5,6 +5,7 @@ package com.pulumi.aiven;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -188,8 +189,12 @@ public final class OpenSearchAclConfigArgs extends com.pulumi.resources.Resource
         }
 
         public OpenSearchAclConfigArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("OpenSearchAclConfigArgs", "project");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("OpenSearchAclConfigArgs", "serviceName");
+            }
             return $;
         }
     }

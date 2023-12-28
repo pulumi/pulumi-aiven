@@ -88,6 +88,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("recoveryTargetTime")]
         public Input<string>? RecoveryTargetTime { get; set; }
 
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 

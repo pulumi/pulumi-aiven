@@ -19,6 +19,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> IpFilters;
         public readonly string? M3Version;
         public readonly string? M3aggregatorVersion;
+        public readonly bool? ServiceLog;
         public readonly bool? StaticIps;
 
         [OutputConstructor]
@@ -35,6 +36,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? m3aggregatorVersion,
 
+            bool? serviceLog,
+
             bool? staticIps)
         {
             CustomDomain = customDomain;
@@ -43,6 +46,7 @@ namespace Pulumi.Aiven.Outputs
             IpFilters = ipFilters;
             M3Version = m3Version;
             M3aggregatorVersion = m3aggregatorVersion;
+            ServiceLog = serviceLog;
             StaticIps = staticIps;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -177,9 +178,15 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         public GrafanaGrafanaUserConfigSmtpServerArgs build() {
-            $.fromAddress = Objects.requireNonNull($.fromAddress, "expected parameter 'fromAddress' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.fromAddress == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigSmtpServerArgs", "fromAddress");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigSmtpServerArgs", "host");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigSmtpServerArgs", "port");
+            }
             return $;
         }
     }

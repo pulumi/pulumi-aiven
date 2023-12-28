@@ -11,6 +11,7 @@ import com.pulumi.aiven.outputs.MySqlMysql;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfig;
 import com.pulumi.aiven.outputs.MySqlServiceIntegration;
 import com.pulumi.aiven.outputs.MySqlTag;
+import com.pulumi.aiven.outputs.MySqlTechEmail;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -489,6 +490,22 @@ public class MySql extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<List<MySqlTag>>> tags() {
         return Codegen.optional(this.tags);
+    }
+    /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    @Export(name="techEmails", refs={List.class,MySqlTechEmail.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<MySqlTechEmail>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
+     * instability.
+     * 
+     */
+    public Output<Optional<List<MySqlTechEmail>>> techEmails() {
+        return Codegen.optional(this.techEmails);
     }
     /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent

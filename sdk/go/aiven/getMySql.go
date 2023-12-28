@@ -113,6 +113,8 @@ type LookupMySqlResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetMySqlTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []GetMySqlTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -290,6 +292,11 @@ func (o LookupMySqlResultOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o LookupMySqlResultOutput) Tags() GetMySqlTagArrayOutput {
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlTag { return v.Tags }).(GetMySqlTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o LookupMySqlResultOutput) TechEmails() GetMySqlTechEmailArrayOutput {
+	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlTechEmail { return v.TechEmails }).(GetMySqlTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

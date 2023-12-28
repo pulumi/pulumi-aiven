@@ -32,6 +32,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
     private @Nullable String m3aggregatorVersion;
+    private @Nullable Boolean serviceLog;
     private @Nullable Boolean staticIps;
 
     private M3AggregatorM3aggregatorUserConfig() {}
@@ -65,6 +66,9 @@ public final class M3AggregatorM3aggregatorUserConfig {
     public Optional<String> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
+    public Optional<Boolean> serviceLog() {
+        return Optional.ofNullable(this.serviceLog);
+    }
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -84,6 +88,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
         private @Nullable List<String> ipFilters;
         private @Nullable String m3Version;
         private @Nullable String m3aggregatorVersion;
+        private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
         public Builder() {}
         public Builder(M3AggregatorM3aggregatorUserConfig defaults) {
@@ -94,16 +99,19 @@ public final class M3AggregatorM3aggregatorUserConfig {
     	      this.ipFilters = defaults.ipFilters;
     	      this.m3Version = defaults.m3Version;
     	      this.m3aggregatorVersion = defaults.m3aggregatorVersion;
+    	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
         }
 
         @CustomType.Setter
         public Builder customDomain(@Nullable String customDomain) {
+
             this.customDomain = customDomain;
             return this;
         }
         @CustomType.Setter
         public Builder ipFilterObjects(@Nullable List<M3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects) {
+
             this.ipFilterObjects = ipFilterObjects;
             return this;
         }
@@ -112,6 +120,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilterStrings(@Nullable List<String> ipFilterStrings) {
+
             this.ipFilterStrings = ipFilterStrings;
             return this;
         }
@@ -120,6 +129,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
         }
         @CustomType.Setter
         public Builder ipFilters(@Nullable List<String> ipFilters) {
+
             this.ipFilters = ipFilters;
             return this;
         }
@@ -128,16 +138,25 @@ public final class M3AggregatorM3aggregatorUserConfig {
         }
         @CustomType.Setter
         public Builder m3Version(@Nullable String m3Version) {
+
             this.m3Version = m3Version;
             return this;
         }
         @CustomType.Setter
         public Builder m3aggregatorVersion(@Nullable String m3aggregatorVersion) {
+
             this.m3aggregatorVersion = m3aggregatorVersion;
             return this;
         }
         @CustomType.Setter
+        public Builder serviceLog(@Nullable Boolean serviceLog) {
+
+            this.serviceLog = serviceLog;
+            return this;
+        }
+        @CustomType.Setter
         public Builder staticIps(@Nullable Boolean staticIps) {
+
             this.staticIps = staticIps;
             return this;
         }
@@ -149,6 +168,7 @@ public final class M3AggregatorM3aggregatorUserConfig {
             _resultValue.ipFilters = ipFilters;
             _resultValue.m3Version = m3Version;
             _resultValue.m3aggregatorVersion = m3aggregatorVersion;
+            _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
             return _resultValue;
         }

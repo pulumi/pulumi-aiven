@@ -13,15 +13,20 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetFlinkFlinkUserConfigResult
     {
+        public readonly string? AdditionalBackupRegions;
         public readonly string? FlinkVersion;
         public readonly ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> IpFilterObjects;
         public readonly ImmutableArray<string> IpFilterStrings;
         public readonly ImmutableArray<string> IpFilters;
         public readonly int? NumberOfTaskSlots;
         public readonly Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        public readonly bool? ServiceLog;
+        public readonly bool? StaticIps;
 
         [OutputConstructor]
         private GetFlinkFlinkUserConfigResult(
+            string? additionalBackupRegions,
+
             string? flinkVersion,
 
             ImmutableArray<Outputs.GetFlinkFlinkUserConfigIpFilterObjectResult> ipFilterObjects,
@@ -32,14 +37,21 @@ namespace Pulumi.Aiven.Outputs
 
             int? numberOfTaskSlots,
 
-            Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? privatelinkAccess)
+            Outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult? privatelinkAccess,
+
+            bool? serviceLog,
+
+            bool? staticIps)
         {
+            AdditionalBackupRegions = additionalBackupRegions;
             FlinkVersion = flinkVersion;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;
             IpFilters = ipFilters;
             NumberOfTaskSlots = numberOfTaskSlots;
             PrivatelinkAccess = privatelinkAccess;
+            ServiceLog = serviceLog;
+            StaticIps = staticIps;
         }
     }
 }

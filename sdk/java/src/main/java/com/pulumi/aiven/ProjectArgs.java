@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.ProjectTagArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -155,14 +156,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     @Import(name="technicalEmails")
     private @Nullable Output<List<String>> technicalEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      * 
      */
     public Optional<Output<List<String>>> technicalEmails() {
@@ -420,7 +421,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -431,7 +432,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -441,7 +442,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -480,7 +481,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectArgs", "project");
+            }
             return $;
         }
     }

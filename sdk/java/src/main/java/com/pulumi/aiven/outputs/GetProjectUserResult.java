@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -16,7 +17,7 @@ public final class GetProjectUserResult {
      */
     private Boolean accepted;
     /**
-     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String email;
@@ -45,7 +46,7 @@ public final class GetProjectUserResult {
         return this.accepted;
     }
     /**
-     * @return Email address of the user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String email() {
@@ -99,27 +100,42 @@ public final class GetProjectUserResult {
 
         @CustomType.Setter
         public Builder accepted(Boolean accepted) {
-            this.accepted = Objects.requireNonNull(accepted);
+            if (accepted == null) {
+              throw new MissingRequiredPropertyException("GetProjectUserResult", "accepted");
+            }
+            this.accepted = accepted;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetProjectUserResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectUserResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memberType(String memberType) {
-            this.memberType = Objects.requireNonNull(memberType);
+            if (memberType == null) {
+              throw new MissingRequiredPropertyException("GetProjectUserResult", "memberType");
+            }
+            this.memberType = memberType;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectUserResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetProjectUserResult build() {

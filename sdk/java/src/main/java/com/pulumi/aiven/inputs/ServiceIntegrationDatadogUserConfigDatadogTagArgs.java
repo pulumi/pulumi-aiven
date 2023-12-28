@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ServiceIntegrationDatadogUserConfigDatadogTagArgs extends com
         }
 
         public ServiceIntegrationDatadogUserConfigDatadogTagArgs build() {
-            $.tag = Objects.requireNonNull($.tag, "expected parameter 'tag' to be non-null");
+            if ($.tag == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationDatadogUserConfigDatadogTagArgs", "tag");
+            }
             return $;
         }
     }

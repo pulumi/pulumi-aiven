@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -66,15 +67,15 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
      * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
      * 
      */
-    @Import(name="enabled")
-    private @Nullable Output<Boolean> enabled;
+    @Import(name="enabled", required=true)
+    private Output<Boolean> enabled;
 
     /**
      * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
      * 
      */
-    public Optional<Output<Boolean>> enabled() {
-        return Optional.ofNullable(this.enabled);
+    public Output<Boolean> enabled() {
+        return this.enabled;
     }
 
     /**
@@ -301,7 +302,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
          * @return builder
          * 
          */
-        public Builder enabled(@Nullable Output<Boolean> enabled) {
+        public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
@@ -485,9 +486,18 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         public OpenSearchOpensearchUserConfigOpenidArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.connectUrl = Objects.requireNonNull($.connectUrl, "expected parameter 'connectUrl' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenidArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenidArgs", "clientSecret");
+            }
+            if ($.connectUrl == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenidArgs", "connectUrl");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("OpenSearchOpensearchUserConfigOpenidArgs", "enabled");
+            }
             return $;
         }
     }

@@ -113,6 +113,8 @@ type LookupM3DbResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetM3DbTag `pulumi:"tags"`
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	TechEmails []GetM3DbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
 }
@@ -290,6 +292,11 @@ func (o LookupM3DbResultOutput) StaticIps() pulumi.StringArrayOutput {
 // Tags are key-value pairs that allow you to categorize services.
 func (o LookupM3DbResultOutput) Tags() GetM3DbTagArrayOutput {
 	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbTag { return v.Tags }).(GetM3DbTagArrayOutput)
+}
+
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+func (o LookupM3DbResultOutput) TechEmails() GetM3DbTechEmailArrayOutput {
+	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbTechEmail { return v.TechEmails }).(GetM3DbTechEmailArrayOutput)
 }
 
 // Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.

@@ -8,6 +8,7 @@ import com.pulumi.aiven.inputs.OpenSearchOpensearchArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigArgs;
 import com.pulumi.aiven.inputs.OpenSearchServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.OpenSearchTagArgs;
+import com.pulumi.aiven.inputs.OpenSearchTechEmailArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
@@ -422,6 +423,21 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    @Import(name="techEmails")
+    private @Nullable Output<List<OpenSearchTechEmailArgs>> techEmails;
+
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public Optional<Output<List<OpenSearchTechEmailArgs>>> techEmails() {
+        return Optional.ofNullable(this.techEmails);
+    }
+
+    /**
      * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
@@ -465,6 +481,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         this.state = $.state;
         this.staticIps = $.staticIps;
         this.tags = $.tags;
+        this.techEmails = $.techEmails;
         this.terminationProtection = $.terminationProtection;
     }
 
@@ -1088,6 +1105,37 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tags(OpenSearchTagArgs... tags) {
             return tags(List.of(tags));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(@Nullable Output<List<OpenSearchTechEmailArgs>> techEmails) {
+            $.techEmails = techEmails;
+            return this;
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(List<OpenSearchTechEmailArgs> techEmails) {
+            return techEmails(Output.of(techEmails));
+        }
+
+        /**
+         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder techEmails(OpenSearchTechEmailArgs... techEmails) {
+            return techEmails(List.of(techEmails));
         }
 
         /**

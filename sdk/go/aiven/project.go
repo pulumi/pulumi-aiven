@@ -52,7 +52,7 @@ type Project struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags ProjectTagArrayOutput `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	//
@@ -125,7 +125,7 @@ type projectState struct {
 	Project *string `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []ProjectTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	//
@@ -162,7 +162,7 @@ type ProjectState struct {
 	Project pulumi.StringPtrInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags ProjectTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// Use the same billing group that is used in source project.
 	//
@@ -195,7 +195,7 @@ type projectArgs struct {
 	Project string `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []ProjectTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	//
@@ -225,7 +225,7 @@ type ProjectArgs struct {
 	Project pulumi.StringInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags ProjectTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// Use the same billing group that is used in source project.
 	//
@@ -384,7 +384,7 @@ func (o ProjectOutput) Tags() ProjectTagArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectTagArrayOutput { return v.Tags }).(ProjectTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
 func (o ProjectOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
 }

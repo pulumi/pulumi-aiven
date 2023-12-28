@@ -59,11 +59,13 @@ public final class KafkaKafkaUserConfigSchemaRegistryConfig {
 
         @CustomType.Setter
         public Builder leaderEligibility(@Nullable Boolean leaderEligibility) {
+
             this.leaderEligibility = leaderEligibility;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(@Nullable String topicName) {
+
             this.topicName = topicName;
             return this;
         }

@@ -157,46 +157,55 @@ public final class PgPg {
 
         @CustomType.Setter
         public Builder dbname(@Nullable String dbname) {
+
             this.dbname = dbname;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
+
             this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder replicaUri(@Nullable String replicaUri) {
+
             this.replicaUri = replicaUri;
             return this;
         }
         @CustomType.Setter
         public Builder sslmode(@Nullable String sslmode) {
+
             this.sslmode = sslmode;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder user(@Nullable String user) {
+
             this.user = user;
             return this;
         }

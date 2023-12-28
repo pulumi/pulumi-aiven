@@ -8,7 +8,9 @@ import com.pulumi.aiven.outputs.GetCassandaCassandraUserConfig;
 import com.pulumi.aiven.outputs.GetCassandaComponent;
 import com.pulumi.aiven.outputs.GetCassandaServiceIntegration;
 import com.pulumi.aiven.outputs.GetCassandaTag;
+import com.pulumi.aiven.outputs.GetCassandaTechEmail;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -152,6 +154,11 @@ public final class GetCassandaResult {
      * 
      */
     private List<GetCassandaTag> tags;
+    /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    private List<GetCassandaTechEmail> techEmails;
     /**
      * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
@@ -349,6 +356,13 @@ public final class GetCassandaResult {
         return this.tags;
     }
     /**
+     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * 
+     */
+    public List<GetCassandaTechEmail> techEmails() {
+        return this.techEmails;
+    }
+    /**
      * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
@@ -392,6 +406,7 @@ public final class GetCassandaResult {
         private String state;
         private List<String> staticIps;
         private List<GetCassandaTag> tags;
+        private List<GetCassandaTechEmail> techEmails;
         private Boolean terminationProtection;
         public Builder() {}
         public Builder(GetCassandaResult defaults) {
@@ -423,17 +438,24 @@ public final class GetCassandaResult {
     	      this.state = defaults.state;
     	      this.staticIps = defaults.staticIps;
     	      this.tags = defaults.tags;
+    	      this.techEmails = defaults.techEmails;
     	      this.terminationProtection = defaults.terminationProtection;
         }
 
         @CustomType.Setter
         public Builder additionalDiskSpace(String additionalDiskSpace) {
-            this.additionalDiskSpace = Objects.requireNonNull(additionalDiskSpace);
+            if (additionalDiskSpace == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "additionalDiskSpace");
+            }
+            this.additionalDiskSpace = additionalDiskSpace;
             return this;
         }
         @CustomType.Setter
         public Builder cassandraUserConfigs(List<GetCassandaCassandraUserConfig> cassandraUserConfigs) {
-            this.cassandraUserConfigs = Objects.requireNonNull(cassandraUserConfigs);
+            if (cassandraUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "cassandraUserConfigs");
+            }
+            this.cassandraUserConfigs = cassandraUserConfigs;
             return this;
         }
         public Builder cassandraUserConfigs(GetCassandaCassandraUserConfig... cassandraUserConfigs) {
@@ -441,7 +463,10 @@ public final class GetCassandaResult {
         }
         @CustomType.Setter
         public Builder cassandras(List<GetCassandaCassandra> cassandras) {
-            this.cassandras = Objects.requireNonNull(cassandras);
+            if (cassandras == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "cassandras");
+            }
+            this.cassandras = cassandras;
             return this;
         }
         public Builder cassandras(GetCassandaCassandra... cassandras) {
@@ -449,12 +474,18 @@ public final class GetCassandaResult {
         }
         @CustomType.Setter
         public Builder cloudName(String cloudName) {
-            this.cloudName = Objects.requireNonNull(cloudName);
+            if (cloudName == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "cloudName");
+            }
+            this.cloudName = cloudName;
             return this;
         }
         @CustomType.Setter
         public Builder components(List<GetCassandaComponent> components) {
-            this.components = Objects.requireNonNull(components);
+            if (components == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "components");
+            }
+            this.components = components;
             return this;
         }
         public Builder components(GetCassandaComponent... components) {
@@ -462,67 +493,106 @@ public final class GetCassandaResult {
         }
         @CustomType.Setter
         public Builder diskSpace(String diskSpace) {
-            this.diskSpace = Objects.requireNonNull(diskSpace);
+            if (diskSpace == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "diskSpace");
+            }
+            this.diskSpace = diskSpace;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceCap(String diskSpaceCap) {
-            this.diskSpaceCap = Objects.requireNonNull(diskSpaceCap);
+            if (diskSpaceCap == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "diskSpaceCap");
+            }
+            this.diskSpaceCap = diskSpaceCap;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceDefault(String diskSpaceDefault) {
-            this.diskSpaceDefault = Objects.requireNonNull(diskSpaceDefault);
+            if (diskSpaceDefault == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "diskSpaceDefault");
+            }
+            this.diskSpaceDefault = diskSpaceDefault;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceStep(String diskSpaceStep) {
-            this.diskSpaceStep = Objects.requireNonNull(diskSpaceStep);
+            if (diskSpaceStep == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "diskSpaceStep");
+            }
+            this.diskSpaceStep = diskSpaceStep;
             return this;
         }
         @CustomType.Setter
         public Builder diskSpaceUsed(String diskSpaceUsed) {
-            this.diskSpaceUsed = Objects.requireNonNull(diskSpaceUsed);
+            if (diskSpaceUsed == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "diskSpaceUsed");
+            }
+            this.diskSpaceUsed = diskSpaceUsed;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
-            this.maintenanceWindowDow = Objects.requireNonNull(maintenanceWindowDow);
+            if (maintenanceWindowDow == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "maintenanceWindowDow");
+            }
+            this.maintenanceWindowDow = maintenanceWindowDow;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindowTime(String maintenanceWindowTime) {
-            this.maintenanceWindowTime = Objects.requireNonNull(maintenanceWindowTime);
+            if (maintenanceWindowTime == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "maintenanceWindowTime");
+            }
+            this.maintenanceWindowTime = maintenanceWindowTime;
             return this;
         }
         @CustomType.Setter
         public Builder plan(String plan) {
-            this.plan = Objects.requireNonNull(plan);
+            if (plan == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "plan");
+            }
+            this.plan = plan;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder projectVpcId(String projectVpcId) {
-            this.projectVpcId = Objects.requireNonNull(projectVpcId);
+            if (projectVpcId == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "projectVpcId");
+            }
+            this.projectVpcId = projectVpcId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceHost(String serviceHost) {
-            this.serviceHost = Objects.requireNonNull(serviceHost);
+            if (serviceHost == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "serviceHost");
+            }
+            this.serviceHost = serviceHost;
             return this;
         }
         @CustomType.Setter
         public Builder serviceIntegrations(List<GetCassandaServiceIntegration> serviceIntegrations) {
-            this.serviceIntegrations = Objects.requireNonNull(serviceIntegrations);
+            if (serviceIntegrations == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "serviceIntegrations");
+            }
+            this.serviceIntegrations = serviceIntegrations;
             return this;
         }
         public Builder serviceIntegrations(GetCassandaServiceIntegration... serviceIntegrations) {
@@ -530,42 +600,66 @@ public final class GetCassandaResult {
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder servicePassword(String servicePassword) {
-            this.servicePassword = Objects.requireNonNull(servicePassword);
+            if (servicePassword == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "servicePassword");
+            }
+            this.servicePassword = servicePassword;
             return this;
         }
         @CustomType.Setter
         public Builder servicePort(Integer servicePort) {
-            this.servicePort = Objects.requireNonNull(servicePort);
+            if (servicePort == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "servicePort");
+            }
+            this.servicePort = servicePort;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(String serviceType) {
-            this.serviceType = Objects.requireNonNull(serviceType);
+            if (serviceType == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "serviceType");
+            }
+            this.serviceType = serviceType;
             return this;
         }
         @CustomType.Setter
         public Builder serviceUri(String serviceUri) {
-            this.serviceUri = Objects.requireNonNull(serviceUri);
+            if (serviceUri == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "serviceUri");
+            }
+            this.serviceUri = serviceUri;
             return this;
         }
         @CustomType.Setter
         public Builder serviceUsername(String serviceUsername) {
-            this.serviceUsername = Objects.requireNonNull(serviceUsername);
+            if (serviceUsername == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "serviceUsername");
+            }
+            this.serviceUsername = serviceUsername;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder staticIps(List<String> staticIps) {
-            this.staticIps = Objects.requireNonNull(staticIps);
+            if (staticIps == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "staticIps");
+            }
+            this.staticIps = staticIps;
             return this;
         }
         public Builder staticIps(String... staticIps) {
@@ -573,15 +667,32 @@ public final class GetCassandaResult {
         }
         @CustomType.Setter
         public Builder tags(List<GetCassandaTag> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(GetCassandaTag... tags) {
             return tags(List.of(tags));
         }
         @CustomType.Setter
+        public Builder techEmails(List<GetCassandaTechEmail> techEmails) {
+            if (techEmails == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "techEmails");
+            }
+            this.techEmails = techEmails;
+            return this;
+        }
+        public Builder techEmails(GetCassandaTechEmail... techEmails) {
+            return techEmails(List.of(techEmails));
+        }
+        @CustomType.Setter
         public Builder terminationProtection(Boolean terminationProtection) {
-            this.terminationProtection = Objects.requireNonNull(terminationProtection);
+            if (terminationProtection == null) {
+              throw new MissingRequiredPropertyException("GetCassandaResult", "terminationProtection");
+            }
+            this.terminationProtection = terminationProtection;
             return this;
         }
         public GetCassandaResult build() {
@@ -613,6 +724,7 @@ public final class GetCassandaResult {
             _resultValue.state = state;
             _resultValue.staticIps = staticIps;
             _resultValue.tags = tags;
+            _resultValue.techEmails = techEmails;
             _resultValue.terminationProtection = terminationProtection;
             return _resultValue;
         }

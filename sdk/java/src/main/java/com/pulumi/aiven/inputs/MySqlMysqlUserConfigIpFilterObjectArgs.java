@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class MySqlMysqlUserConfigIpFilterObjectArgs extends com.pulumi.res
         }
 
         public MySqlMysqlUserConfigIpFilterObjectArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("MySqlMysqlUserConfigIpFilterObjectArgs", "network");
+            }
             return $;
         }
     }

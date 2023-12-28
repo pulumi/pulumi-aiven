@@ -22,7 +22,7 @@ type ServiceIntegrationEndpoint struct {
 	EndpointConfig pulumi.StringMapOutput `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint
 	EndpointName pulumi.StringOutput `pulumi:"endpointName"`
-	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
 	EndpointType pulumi.StringOutput `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -30,12 +30,16 @@ type ServiceIntegrationEndpoint struct {
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
+	// ExternalGoogleCloudBigquery user configurable settings
+	ExternalGoogleCloudBigquery ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput `pulumi:"externalGoogleCloudBigquery"`
 	// ExternalGoogleCloudLogging user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrOutput `pulumi:"externalKafkaUserConfig"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput `pulumi:"externalOpensearchLogsUserConfig"`
+	// ExternalPostgresql user configurable settings
+	ExternalPostgresql ServiceIntegrationEndpointExternalPostgresqlPtrOutput `pulumi:"externalPostgresql"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrOutput `pulumi:"externalSchemaRegistryUserConfig"`
 	// Jolokia user configurable settings
@@ -93,7 +97,7 @@ type serviceIntegrationEndpointState struct {
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint
 	EndpointName *string `pulumi:"endpointName"`
-	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
 	EndpointType *string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -101,12 +105,16 @@ type serviceIntegrationEndpointState struct {
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// ExternalGoogleCloudBigquery user configurable settings
+	ExternalGoogleCloudBigquery *ServiceIntegrationEndpointExternalGoogleCloudBigquery `pulumi:"externalGoogleCloudBigquery"`
 	// ExternalGoogleCloudLogging user configurable settings
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig *ServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
+	// ExternalPostgresql user configurable settings
+	ExternalPostgresql *ServiceIntegrationEndpointExternalPostgresql `pulumi:"externalPostgresql"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfig"`
 	// Jolokia user configurable settings
@@ -126,7 +134,7 @@ type ServiceIntegrationEndpointState struct {
 	EndpointConfig pulumi.StringMapInput
 	// Name of the service integration endpoint
 	EndpointName pulumi.StringPtrInput
-	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
 	EndpointType pulumi.StringPtrInput
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -134,12 +142,16 @@ type ServiceIntegrationEndpointState struct {
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
+	// ExternalGoogleCloudBigquery user configurable settings
+	ExternalGoogleCloudBigquery ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput
 	// ExternalGoogleCloudLogging user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput
+	// ExternalPostgresql user configurable settings
+	ExternalPostgresql ServiceIntegrationEndpointExternalPostgresqlPtrInput
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput
 	// Jolokia user configurable settings
@@ -161,7 +173,7 @@ type serviceIntegrationEndpointArgs struct {
 	DatadogUserConfig *ServiceIntegrationEndpointDatadogUserConfig `pulumi:"datadogUserConfig"`
 	// Name of the service integration endpoint
 	EndpointName string `pulumi:"endpointName"`
-	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
 	EndpointType string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
@@ -169,12 +181,16 @@ type serviceIntegrationEndpointArgs struct {
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig *ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// ExternalGoogleCloudBigquery user configurable settings
+	ExternalGoogleCloudBigquery *ServiceIntegrationEndpointExternalGoogleCloudBigquery `pulumi:"externalGoogleCloudBigquery"`
 	// ExternalGoogleCloudLogging user configurable settings
 	ExternalGoogleCloudLoggingUserConfig *ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig `pulumi:"externalGoogleCloudLoggingUserConfig"`
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig *ServiceIntegrationEndpointExternalKafkaUserConfig `pulumi:"externalKafkaUserConfig"`
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig *ServiceIntegrationEndpointExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
+	// ExternalPostgresql user configurable settings
+	ExternalPostgresql *ServiceIntegrationEndpointExternalPostgresql `pulumi:"externalPostgresql"`
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig *ServiceIntegrationEndpointExternalSchemaRegistryUserConfig `pulumi:"externalSchemaRegistryUserConfig"`
 	// Jolokia user configurable settings
@@ -193,7 +209,7 @@ type ServiceIntegrationEndpointArgs struct {
 	DatadogUserConfig ServiceIntegrationEndpointDatadogUserConfigPtrInput
 	// Name of the service integration endpoint
 	EndpointName pulumi.StringInput
-	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
 	EndpointType pulumi.StringInput
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigPtrInput
@@ -201,12 +217,16 @@ type ServiceIntegrationEndpointArgs struct {
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfigPtrInput
 	// ExternalElasticsearchLogs user configurable settings
 	ExternalElasticsearchLogsUserConfig ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrInput
+	// ExternalGoogleCloudBigquery user configurable settings
+	ExternalGoogleCloudBigquery ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrInput
 	// ExternalGoogleCloudLogging user configurable settings
 	ExternalGoogleCloudLoggingUserConfig ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrInput
 	// ExternalKafka user configurable settings
 	ExternalKafkaUserConfig ServiceIntegrationEndpointExternalKafkaUserConfigPtrInput
 	// ExternalOpensearchLogs user configurable settings
 	ExternalOpensearchLogsUserConfig ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrInput
+	// ExternalPostgresql user configurable settings
+	ExternalPostgresql ServiceIntegrationEndpointExternalPostgresqlPtrInput
 	// ExternalSchemaRegistry user configurable settings
 	ExternalSchemaRegistryUserConfig ServiceIntegrationEndpointExternalSchemaRegistryUserConfigPtrInput
 	// Jolokia user configurable settings
@@ -323,7 +343,7 @@ func (o ServiceIntegrationEndpointOutput) EndpointName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`
+// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
 func (o ServiceIntegrationEndpointOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) pulumi.StringOutput { return v.EndpointType }).(pulumi.StringOutput)
 }
@@ -349,6 +369,13 @@ func (o ServiceIntegrationEndpointOutput) ExternalElasticsearchLogsUserConfig() 
 	}).(ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigPtrOutput)
 }
 
+// ExternalGoogleCloudBigquery user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalGoogleCloudBigquery() ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput {
+		return v.ExternalGoogleCloudBigquery
+	}).(ServiceIntegrationEndpointExternalGoogleCloudBigqueryPtrOutput)
+}
+
 // ExternalGoogleCloudLogging user configurable settings
 func (o ServiceIntegrationEndpointOutput) ExternalGoogleCloudLoggingUserConfig() ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigPtrOutput {
@@ -368,6 +395,13 @@ func (o ServiceIntegrationEndpointOutput) ExternalOpensearchLogsUserConfig() Ser
 	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput {
 		return v.ExternalOpensearchLogsUserConfig
 	}).(ServiceIntegrationEndpointExternalOpensearchLogsUserConfigPtrOutput)
+}
+
+// ExternalPostgresql user configurable settings
+func (o ServiceIntegrationEndpointOutput) ExternalPostgresql() ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpoint) ServiceIntegrationEndpointExternalPostgresqlPtrOutput {
+		return v.ExternalPostgresql
+	}).(ServiceIntegrationEndpointExternalPostgresqlPtrOutput)
 }
 
 // ExternalSchemaRegistry user configurable settings

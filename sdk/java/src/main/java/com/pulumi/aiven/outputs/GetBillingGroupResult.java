@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -267,12 +268,18 @@ public final class GetBillingGroupResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder addressLines(List<String> addressLines) {
-            this.addressLines = Objects.requireNonNull(addressLines);
+            if (addressLines == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "addressLines");
+            }
+            this.addressLines = addressLines;
             return this;
         }
         public Builder addressLines(String... addressLines) {
@@ -280,12 +287,18 @@ public final class GetBillingGroupResult {
         }
         @CustomType.Setter
         public Builder billingCurrency(String billingCurrency) {
-            this.billingCurrency = Objects.requireNonNull(billingCurrency);
+            if (billingCurrency == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "billingCurrency");
+            }
+            this.billingCurrency = billingCurrency;
             return this;
         }
         @CustomType.Setter
         public Builder billingEmails(List<String> billingEmails) {
-            this.billingEmails = Objects.requireNonNull(billingEmails);
+            if (billingEmails == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "billingEmails");
+            }
+            this.billingEmails = billingEmails;
             return this;
         }
         public Builder billingEmails(String... billingEmails) {
@@ -293,67 +306,106 @@ public final class GetBillingGroupResult {
         }
         @CustomType.Setter
         public Builder billingExtraText(String billingExtraText) {
-            this.billingExtraText = Objects.requireNonNull(billingExtraText);
+            if (billingExtraText == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "billingExtraText");
+            }
+            this.billingExtraText = billingExtraText;
             return this;
         }
         @CustomType.Setter
         public Builder billingGroupId(String billingGroupId) {
-            this.billingGroupId = Objects.requireNonNull(billingGroupId);
+            if (billingGroupId == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "billingGroupId");
+            }
+            this.billingGroupId = billingGroupId;
             return this;
         }
         @CustomType.Setter
         public Builder cardId(String cardId) {
-            this.cardId = Objects.requireNonNull(cardId);
+            if (cardId == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "cardId");
+            }
+            this.cardId = cardId;
             return this;
         }
         @CustomType.Setter
         public Builder city(String city) {
-            this.city = Objects.requireNonNull(city);
+            if (city == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "city");
+            }
+            this.city = city;
             return this;
         }
         @CustomType.Setter
         public Builder company(String company) {
-            this.company = Objects.requireNonNull(company);
+            if (company == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "company");
+            }
+            this.company = company;
             return this;
         }
         @CustomType.Setter
         public Builder copyFromBillingGroup(String copyFromBillingGroup) {
-            this.copyFromBillingGroup = Objects.requireNonNull(copyFromBillingGroup);
+            if (copyFromBillingGroup == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "copyFromBillingGroup");
+            }
+            this.copyFromBillingGroup = copyFromBillingGroup;
             return this;
         }
         @CustomType.Setter
         public Builder countryCode(String countryCode) {
-            this.countryCode = Objects.requireNonNull(countryCode);
+            if (countryCode == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "countryCode");
+            }
+            this.countryCode = countryCode;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(String parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder vatId(String vatId) {
-            this.vatId = Objects.requireNonNull(vatId);
+            if (vatId == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "vatId");
+            }
+            this.vatId = vatId;
             return this;
         }
         @CustomType.Setter
         public Builder zipCode(String zipCode) {
-            this.zipCode = Objects.requireNonNull(zipCode);
+            if (zipCode == null) {
+              throw new MissingRequiredPropertyException("GetBillingGroupResult", "zipCode");
+            }
+            this.zipCode = zipCode;
             return this;
         }
         public GetBillingGroupResult build() {

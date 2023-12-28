@@ -43,6 +43,10 @@ export interface GetOrganizationUserGroupResult {
      */
     readonly description: string;
     /**
+     * The unique organization user group ID
+     */
+    readonly groupId: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

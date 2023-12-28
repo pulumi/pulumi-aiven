@@ -28,7 +28,7 @@ type LookupAccountTeamMemberArgs struct {
 	AccountId string `pulumi:"accountId"`
 	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId string `pulumi:"teamId"`
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -46,7 +46,7 @@ type LookupAccountTeamMemberResult struct {
 	InvitedByUserEmail string `pulumi:"invitedByUserEmail"`
 	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId string `pulumi:"teamId"`
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -69,7 +69,7 @@ type LookupAccountTeamMemberOutputArgs struct {
 	AccountId pulumi.StringInput `pulumi:"accountId"`
 	// An account team id. This property cannot be changed, doing so forces recreation of the resource.
 	TeamId pulumi.StringInput `pulumi:"teamId"`
-	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+	// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringInput `pulumi:"userEmail"`
 }
 
@@ -122,7 +122,7 @@ func (o LookupAccountTeamMemberResultOutput) TeamId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.TeamId }).(pulumi.StringOutput)
 }
 
-// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.
+// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 func (o LookupAccountTeamMemberResultOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountTeamMemberResult) string { return v.UserEmail }).(pulumi.StringOutput)
 }

@@ -108,6 +108,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigPgGetArgs>? Pg { get; set; }
 
         /// <summary>
+        /// System-wide settings for the pg*qualstats extension.
+        /// </summary>
+        [Input("pgQualstats")]
+        public Input<Inputs.PgPgUserConfigPgQualstatsGetArgs>? PgQualstats { get; set; }
+
+        /// <summary>
         /// Use read_replica service integration instead.
         /// </summary>
         [Input("pgReadReplica")]
@@ -138,7 +144,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigPgbouncerGetArgs>? Pgbouncer { get; set; }
 
         /// <summary>
-        /// PGLookout settings.
+        /// System-wide settings for pglookout.
         /// </summary>
         [Input("pglookout")]
         public Input<Inputs.PgPgUserConfigPglookoutGetArgs>? Pglookout { get; set; }
@@ -174,6 +180,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RecoveryTargetTime { get; set; }
 
         /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
+        /// <summary>
         /// Name of another service to fork from. This has effect only when a new service is being created.
         /// </summary>
         [Input("serviceToForkFrom")]
@@ -198,7 +210,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SynchronousReplication { get; set; }
 
         /// <summary>
-        /// TimescaleDB extension configuration values.
+        /// System-wide settings for the timescaledb extension.
         /// </summary>
         [Input("timescaledb")]
         public Input<Inputs.PgPgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }

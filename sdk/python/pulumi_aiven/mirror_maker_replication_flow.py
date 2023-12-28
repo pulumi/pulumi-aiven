@@ -19,6 +19,7 @@ class MirrorMakerReplicationFlowArgs:
                  service_name: pulumi.Input[str],
                  source_cluster: pulumi.Input[str],
                  target_cluster: pulumi.Input[str],
+                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
                  replication_policy_class: Optional[pulumi.Input[str]] = None,
@@ -33,7 +34,8 @@ class MirrorMakerReplicationFlowArgs:
         :param pulumi.Input[str] service_name: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] source_cluster: Source cluster alias. Maximum length: `128`.
         :param pulumi.Input[str] target_cluster: Target cluster alias. Maximum length: `128`.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location.
         :param pulumi.Input[str] replication_policy_class: Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         :param pulumi.Input[bool] sync_group_offsets_enabled: Sync consumer group offsets. The default value is `false`.
@@ -46,6 +48,8 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(__self__, "service_name", service_name)
         pulumi.set(__self__, "source_cluster", source_cluster)
         pulumi.set(__self__, "target_cluster", target_cluster)
+        if emit_backward_heartbeats_enabled is not None:
+            pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
         if emit_heartbeats_enabled is not None:
             pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
         if offset_syncs_topic_location is not None:
@@ -122,10 +126,22 @@ class MirrorMakerReplicationFlowArgs:
         pulumi.set(self, "target_cluster", value)
 
     @property
+    @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
+    def emit_backward_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        """
+        return pulumi.get(self, "emit_backward_heartbeats_enabled")
+
+    @emit_backward_heartbeats_enabled.setter
+    def emit_backward_heartbeats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "emit_backward_heartbeats_enabled", value)
+
+    @property
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Emit heartbeats enabled. The default value is `false`.
+        Whether to emit heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -209,6 +225,7 @@ class MirrorMakerReplicationFlowArgs:
 @pulumi.input_type
 class _MirrorMakerReplicationFlowState:
     def __init__(__self__, *,
+                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
@@ -223,7 +240,8 @@ class _MirrorMakerReplicationFlowState:
                  topics_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -236,6 +254,8 @@ class _MirrorMakerReplicationFlowState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics: List of topics and/or regular expressions to replicate
         :param pulumi.Input[Sequence[pulumi.Input[str]]] topics_blacklists: List of topics and/or regular expressions to not replicate.
         """
+        if emit_backward_heartbeats_enabled is not None:
+            pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
         if emit_heartbeats_enabled is not None:
             pulumi.set(__self__, "emit_heartbeats_enabled", emit_heartbeats_enabled)
         if enable is not None:
@@ -262,10 +282,22 @@ class _MirrorMakerReplicationFlowState:
             pulumi.set(__self__, "topics_blacklists", topics_blacklists)
 
     @property
+    @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
+    def emit_backward_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        """
+        return pulumi.get(self, "emit_backward_heartbeats_enabled")
+
+    @emit_backward_heartbeats_enabled.setter
+    def emit_backward_heartbeats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "emit_backward_heartbeats_enabled", value)
+
+    @property
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Emit heartbeats enabled. The default value is `false`.
+        Whether to emit heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 
@@ -411,6 +443,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
@@ -455,7 +488,8 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -518,6 +552,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
@@ -539,6 +574,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MirrorMakerReplicationFlowArgs.__new__(MirrorMakerReplicationFlowArgs)
 
+            __props__.__dict__["emit_backward_heartbeats_enabled"] = emit_backward_heartbeats_enabled
             __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
             if enable is None and not opts.urn:
                 raise TypeError("Missing required property 'enable'")
@@ -571,6 +607,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            emit_backward_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
             emit_heartbeats_enabled: Optional[pulumi.Input[bool]] = None,
             enable: Optional[pulumi.Input[bool]] = None,
             offset_syncs_topic_location: Optional[pulumi.Input[str]] = None,
@@ -590,7 +627,8 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] emit_heartbeats_enabled: Emit heartbeats enabled. The default value is `false`.
+        :param pulumi.Input[bool] emit_backward_heartbeats_enabled: Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        :param pulumi.Input[bool] emit_heartbeats_enabled: Whether to emit heartbeats to the target cluster. The default value is `false`.
         :param pulumi.Input[bool] enable: Enable of disable replication flows for a service.
         :param pulumi.Input[str] offset_syncs_topic_location: Offset syncs topic location.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -607,6 +645,7 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         __props__ = _MirrorMakerReplicationFlowState.__new__(_MirrorMakerReplicationFlowState)
 
+        __props__.__dict__["emit_backward_heartbeats_enabled"] = emit_backward_heartbeats_enabled
         __props__.__dict__["emit_heartbeats_enabled"] = emit_heartbeats_enabled
         __props__.__dict__["enable"] = enable
         __props__.__dict__["offset_syncs_topic_location"] = offset_syncs_topic_location
@@ -622,10 +661,18 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         return MirrorMakerReplicationFlow(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
+    def emit_backward_heartbeats_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+        """
+        return pulumi.get(self, "emit_backward_heartbeats_enabled")
+
+    @property
     @pulumi.getter(name="emitHeartbeatsEnabled")
     def emit_heartbeats_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Emit heartbeats enabled. The default value is `false`.
+        Whether to emit heartbeats to the target cluster. The default value is `false`.
         """
         return pulumi.get(self, "emit_heartbeats_enabled")
 

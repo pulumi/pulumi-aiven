@@ -96,7 +96,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.ProjectTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
@@ -217,7 +217,7 @@ export interface ProjectState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ProjectTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -269,7 +269,7 @@ export interface ProjectArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ProjectTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**

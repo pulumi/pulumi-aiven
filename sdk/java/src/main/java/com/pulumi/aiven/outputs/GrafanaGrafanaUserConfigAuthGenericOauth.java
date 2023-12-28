@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -98,11 +99,13 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
 
         @CustomType.Setter
         public Builder allowSignUp(@Nullable Boolean allowSignUp) {
+
             this.allowSignUp = allowSignUp;
             return this;
         }
         @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
+
             this.allowedDomains = allowedDomains;
             return this;
         }
@@ -111,6 +114,7 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
         }
         @CustomType.Setter
         public Builder allowedOrganizations(@Nullable List<String> allowedOrganizations) {
+
             this.allowedOrganizations = allowedOrganizations;
             return this;
         }
@@ -119,36 +123,51 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
         }
         @CustomType.Setter
         public Builder apiUrl(String apiUrl) {
-            this.apiUrl = Objects.requireNonNull(apiUrl);
+            if (apiUrl == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauth", "apiUrl");
+            }
+            this.apiUrl = apiUrl;
             return this;
         }
         @CustomType.Setter
         public Builder authUrl(String authUrl) {
-            this.authUrl = Objects.requireNonNull(authUrl);
+            if (authUrl == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauth", "authUrl");
+            }
+            this.authUrl = authUrl;
             return this;
         }
         @CustomType.Setter
         public Builder autoLogin(@Nullable Boolean autoLogin) {
+
             this.autoLogin = autoLogin;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauth", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(String clientSecret) {
-            this.clientSecret = Objects.requireNonNull(clientSecret);
+            if (clientSecret == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauth", "clientSecret");
+            }
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
+
             this.scopes = scopes;
             return this;
         }
@@ -157,7 +176,10 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauth {
         }
         @CustomType.Setter
         public Builder tokenUrl(String tokenUrl) {
-            this.tokenUrl = Objects.requireNonNull(tokenUrl);
+            if (tokenUrl == null) {
+              throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGenericOauth", "tokenUrl");
+            }
+            this.tokenUrl = tokenUrl;
             return this;
         }
         public GrafanaGrafanaUserConfigAuthGenericOauth build() {

@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -168,10 +169,18 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
         }
 
         public GrafanaGrafanaUserConfigAuthAzureadArgs build() {
-            $.authUrl = Objects.requireNonNull($.authUrl, "expected parameter 'authUrl' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.tokenUrl = Objects.requireNonNull($.tokenUrl, "expected parameter 'tokenUrl' to be non-null");
+            if ($.authUrl == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthAzureadArgs", "authUrl");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthAzureadArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthAzureadArgs", "clientSecret");
+            }
+            if ($.tokenUrl == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthAzureadArgs", "tokenUrl");
+            }
             return $;
         }
     }

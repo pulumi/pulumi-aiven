@@ -36,6 +36,7 @@ public final class InfluxDbInfluxdb {
 
         @CustomType.Setter
         public Builder databaseName(@Nullable String databaseName) {
+
             this.databaseName = databaseName;
             return this;
         }

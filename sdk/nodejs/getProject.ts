@@ -95,7 +95,7 @@ export interface GetProjectResult {
      */
     readonly tags: outputs.GetProjectTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails: string[];
     /**

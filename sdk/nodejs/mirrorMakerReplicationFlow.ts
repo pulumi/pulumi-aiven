@@ -63,7 +63,11 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     }
 
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     */
+    public readonly emitBackwardHeartbeatsEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      */
     public readonly emitHeartbeatsEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -124,6 +128,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MirrorMakerReplicationFlowState | undefined;
+            resourceInputs["emitBackwardHeartbeatsEnabled"] = state ? state.emitBackwardHeartbeatsEnabled : undefined;
             resourceInputs["emitHeartbeatsEnabled"] = state ? state.emitHeartbeatsEnabled : undefined;
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["offsetSyncsTopicLocation"] = state ? state.offsetSyncsTopicLocation : undefined;
@@ -153,6 +158,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             if ((!args || args.targetCluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'targetCluster'");
             }
+            resourceInputs["emitBackwardHeartbeatsEnabled"] = args ? args.emitBackwardHeartbeatsEnabled : undefined;
             resourceInputs["emitHeartbeatsEnabled"] = args ? args.emitHeartbeatsEnabled : undefined;
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["offsetSyncsTopicLocation"] = args ? args.offsetSyncsTopicLocation : undefined;
@@ -176,7 +182,11 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
  */
 export interface MirrorMakerReplicationFlowState {
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     */
+    emitBackwardHeartbeatsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      */
     emitHeartbeatsEnabled?: pulumi.Input<boolean>;
     /**
@@ -230,7 +240,11 @@ export interface MirrorMakerReplicationFlowState {
  */
 export interface MirrorMakerReplicationFlowArgs {
     /**
-     * Emit heartbeats enabled. The default value is `false`.
+     * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
+     */
+    emitBackwardHeartbeatsEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether to emit heartbeats to the target cluster. The default value is `false`.
      */
     emitHeartbeatsEnabled?: pulumi.Input<boolean>;
     /**

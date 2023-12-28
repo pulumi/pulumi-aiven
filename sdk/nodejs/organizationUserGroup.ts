@@ -44,6 +44,10 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The unique organization user group ID
+     */
+    public /*out*/ readonly groupId!: pulumi.Output<string>;
+    /**
      * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly name!: pulumi.Output<string>;
@@ -71,6 +75,7 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
             const state = argsOrState as OrganizationUserGroupState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["groupId"] = state ? state.groupId : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
@@ -83,6 +88,7 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -102,6 +108,10 @@ export interface OrganizationUserGroupState {
      * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The unique organization user group ID
+     */
+    groupId?: pulumi.Input<string>;
     /**
      * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      */

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserCo
 
         @CustomType.Setter
         public Builder logId(String logId) {
-            this.logId = Objects.requireNonNull(logId);
+            if (logId == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig", "logId");
+            }
+            this.logId = logId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountCredentials(String serviceAccountCredentials) {
-            this.serviceAccountCredentials = Objects.requireNonNull(serviceAccountCredentials);
+            if (serviceAccountCredentials == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig", "serviceAccountCredentials");
+            }
+            this.serviceAccountCredentials = serviceAccountCredentials;
             return this;
         }
         public GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig build() {

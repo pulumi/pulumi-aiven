@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class FlinkFlinkUserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
+        [Input("additionalBackupRegions")]
+        public Input<string>? AdditionalBackupRegions { get; set; }
+
+        /// <summary>
         /// Flink major version.
         /// </summary>
         [Input("flinkVersion")]
@@ -66,6 +72,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.FlinkFlinkUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
+
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
+        [Input("serviceLog")]
+        public Input<bool>? ServiceLog { get; set; }
+
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
+        [Input("staticIps")]
+        public Input<bool>? StaticIps { get; set; }
 
         public FlinkFlinkUserConfigArgs()
         {

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -128,37 +129,58 @@ public final class GetGcpVpcPeeringConnectionResult {
 
         @CustomType.Setter
         public Builder gcpProjectId(String gcpProjectId) {
-            this.gcpProjectId = Objects.requireNonNull(gcpProjectId);
+            if (gcpProjectId == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "gcpProjectId");
+            }
+            this.gcpProjectId = gcpProjectId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder peerVpc(String peerVpc) {
-            this.peerVpc = Objects.requireNonNull(peerVpc);
+            if (peerVpc == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "peerVpc");
+            }
+            this.peerVpc = peerVpc;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateInfo(Map<String,Object> stateInfo) {
-            this.stateInfo = Objects.requireNonNull(stateInfo);
+            if (stateInfo == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "stateInfo");
+            }
+            this.stateInfo = stateInfo;
             return this;
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("GetGcpVpcPeeringConnectionResult", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public GetGcpVpcPeeringConnectionResult build() {

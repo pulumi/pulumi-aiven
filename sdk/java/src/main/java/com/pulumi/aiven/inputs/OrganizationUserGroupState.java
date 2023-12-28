@@ -46,6 +46,21 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
+     * The unique organization user group ID
+     * 
+     */
+    @Import(name="groupId")
+    private @Nullable Output<String> groupId;
+
+    /**
+     * @return The unique organization user group ID
+     * 
+     */
+    public Optional<Output<String>> groupId() {
+        return Optional.ofNullable(this.groupId);
+    }
+
+    /**
      * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
@@ -95,6 +110,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     private OrganizationUserGroupState(OrganizationUserGroupState $) {
         this.createTime = $.createTime;
         this.description = $.description;
+        this.groupId = $.groupId;
         this.name = $.name;
         this.organizationId = $.organizationId;
         this.updateTime = $.updateTime;
@@ -158,6 +174,27 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param groupId The unique organization user group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupId(@Nullable Output<String> groupId) {
+            $.groupId = groupId;
+            return this;
+        }
+
+        /**
+         * @param groupId The unique organization user group ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder groupId(String groupId) {
+            return groupId(Output.of(groupId));
         }
 
         /**

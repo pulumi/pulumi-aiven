@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetAccountAuthenticationSamlFieldMapping;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -297,62 +298,98 @@ public final class GetAccountAuthenticationResult {
 
         @CustomType.Setter
         public Builder accountId(String accountId) {
-            this.accountId = Objects.requireNonNull(accountId);
+            if (accountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "accountId");
+            }
+            this.accountId = accountId;
             return this;
         }
         @CustomType.Setter
         public Builder authenticationId(String authenticationId) {
-            this.authenticationId = Objects.requireNonNull(authenticationId);
+            if (authenticationId == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "authenticationId");
+            }
+            this.authenticationId = authenticationId;
             return this;
         }
         @CustomType.Setter
         public Builder autoJoinTeamId(String autoJoinTeamId) {
-            this.autoJoinTeamId = Objects.requireNonNull(autoJoinTeamId);
+            if (autoJoinTeamId == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "autoJoinTeamId");
+            }
+            this.autoJoinTeamId = autoJoinTeamId;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder samlAcsUrl(String samlAcsUrl) {
-            this.samlAcsUrl = Objects.requireNonNull(samlAcsUrl);
+            if (samlAcsUrl == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlAcsUrl");
+            }
+            this.samlAcsUrl = samlAcsUrl;
             return this;
         }
         @CustomType.Setter
         public Builder samlCertificate(String samlCertificate) {
-            this.samlCertificate = Objects.requireNonNull(samlCertificate);
+            if (samlCertificate == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlCertificate");
+            }
+            this.samlCertificate = samlCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder samlDigestAlgorithm(String samlDigestAlgorithm) {
-            this.samlDigestAlgorithm = Objects.requireNonNull(samlDigestAlgorithm);
+            if (samlDigestAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlDigestAlgorithm");
+            }
+            this.samlDigestAlgorithm = samlDigestAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder samlEntityId(String samlEntityId) {
-            this.samlEntityId = Objects.requireNonNull(samlEntityId);
+            if (samlEntityId == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlEntityId");
+            }
+            this.samlEntityId = samlEntityId;
             return this;
         }
         @CustomType.Setter
         public Builder samlFieldMappings(List<GetAccountAuthenticationSamlFieldMapping> samlFieldMappings) {
-            this.samlFieldMappings = Objects.requireNonNull(samlFieldMappings);
+            if (samlFieldMappings == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlFieldMappings");
+            }
+            this.samlFieldMappings = samlFieldMappings;
             return this;
         }
         public Builder samlFieldMappings(GetAccountAuthenticationSamlFieldMapping... samlFieldMappings) {
@@ -360,37 +397,58 @@ public final class GetAccountAuthenticationResult {
         }
         @CustomType.Setter
         public Builder samlIdpLoginAllowed(Boolean samlIdpLoginAllowed) {
-            this.samlIdpLoginAllowed = Objects.requireNonNull(samlIdpLoginAllowed);
+            if (samlIdpLoginAllowed == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlIdpLoginAllowed");
+            }
+            this.samlIdpLoginAllowed = samlIdpLoginAllowed;
             return this;
         }
         @CustomType.Setter
         public Builder samlIdpUrl(String samlIdpUrl) {
-            this.samlIdpUrl = Objects.requireNonNull(samlIdpUrl);
+            if (samlIdpUrl == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlIdpUrl");
+            }
+            this.samlIdpUrl = samlIdpUrl;
             return this;
         }
         @CustomType.Setter
         public Builder samlMetadataUrl(String samlMetadataUrl) {
-            this.samlMetadataUrl = Objects.requireNonNull(samlMetadataUrl);
+            if (samlMetadataUrl == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlMetadataUrl");
+            }
+            this.samlMetadataUrl = samlMetadataUrl;
             return this;
         }
         @CustomType.Setter
         public Builder samlSignatureAlgorithm(String samlSignatureAlgorithm) {
-            this.samlSignatureAlgorithm = Objects.requireNonNull(samlSignatureAlgorithm);
+            if (samlSignatureAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlSignatureAlgorithm");
+            }
+            this.samlSignatureAlgorithm = samlSignatureAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder samlVariant(String samlVariant) {
-            this.samlVariant = Objects.requireNonNull(samlVariant);
+            if (samlVariant == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "samlVariant");
+            }
+            this.samlVariant = samlVariant;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetAccountAuthenticationResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetAccountAuthenticationResult build() {
