@@ -150,6 +150,10 @@
                     "$ref": "#/types/aiven:index/CassandraCassandraUserConfigPublicAccess:CassandraCassandraUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n"
                 },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when a new service is being created.\n",
@@ -222,6 +226,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -246,6 +253,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -288,6 +296,18 @@
             "required": [
                 "key",
                 "value"
+            ]
+        },
+        "aiven:index/CassandraTechEmail:CassandraTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
             ]
         },
         "aiven:index/ClickhouseClickhouse:ClickhouseClickhouse": {
@@ -338,6 +358,10 @@
                     "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfigPublicAccess:ClickhouseClickhouseUserConfigPublicAccess",
                     "description": "Allow access to selected service ports from the public Internet.\n"
                 },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when a new service is being created.\n",
@@ -376,6 +400,10 @@
                     "type": "boolean",
                     "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
+                "clickhouseMysql": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                },
                 "prometheus": {
                     "type": "boolean",
                     "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
@@ -392,6 +420,10 @@
                 "clickhouseHttps": {
                     "type": "boolean",
                     "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                },
+                "clickhouseMysql": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
@@ -410,6 +442,10 @@
                     "type": "boolean",
                     "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
+                "clickhouseMysql": {
+                    "type": "boolean",
+                    "description": "Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                },
                 "prometheus": {
                     "type": "boolean",
                     "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
@@ -420,6 +456,9 @@
         "aiven:index/ClickhouseComponent:ClickhouseComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -446,6 +485,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -533,6 +573,18 @@
                 "value"
             ]
         },
+        "aiven:index/ClickhouseTechEmail:ClickhouseTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/FlinkApplicationVersionSink:FlinkApplicationVersionSink": {
             "properties": {
                 "createTable": {
@@ -574,6 +626,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -598,6 +653,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -629,6 +685,10 @@
         },
         "aiven:index/FlinkFlinkUserConfig:FlinkFlinkUserConfig": {
             "properties": {
+                "additionalBackupRegions": {
+                    "type": "string",
+                    "description": "Additional Cloud Regions for Backup Replication.\n"
+                },
                 "flinkVersion": {
                     "type": "string",
                     "description": "Flink major version.\n"
@@ -662,6 +722,14 @@
                 "privatelinkAccess": {
                     "$ref": "#/types/aiven:index/FlinkFlinkUserConfigPrivatelinkAccess:FlinkFlinkUserConfigPrivatelinkAccess",
                     "description": "Allow access to selected service components through Privatelink.\n"
+                },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
+                "staticIps": {
+                    "type": "boolean",
+                    "description": "Use static public IP addresses.\n"
                 }
             },
             "type": "object"
@@ -729,9 +797,24 @@
                 "value"
             ]
         },
+        "aiven:index/FlinkTechEmail:FlinkTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/GrafanaComponent:GrafanaComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -758,6 +841,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -886,6 +970,9 @@
                 "recoveryBasebackupName": {
                     "type": "string"
                 },
+                "serviceLog": {
+                    "type": "boolean"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "willReplaceOnChanges": true
@@ -894,6 +981,9 @@
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfigSmtpServer:GrafanaGrafanaUserConfigSmtpServer"
                 },
                 "staticIps": {
+                    "type": "boolean"
+                },
+                "unifiedAlertingEnabled": {
                     "type": "boolean"
                 },
                 "userAutoAssignOrg": {
@@ -1242,9 +1332,23 @@
                 "value"
             ]
         },
+        "aiven:index/GrafanaTechEmail:GrafanaTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/InfluxDbComponent:InfluxDbComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -1271,6 +1375,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -1352,6 +1457,10 @@
                 "recoveryBasebackupName": {
                     "type": "string",
                     "description": "Name of the basebackup to restore in forked service.\n"
+                },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
                 },
                 "serviceToForkFrom": {
                     "type": "string",
@@ -1475,9 +1584,24 @@
                 "value"
             ]
         },
+        "aiven:index/InfluxDbTechEmail:InfluxDbTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/KafkaComponent:KafkaComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -1504,6 +1628,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -1519,6 +1644,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -1543,6 +1671,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -1591,6 +1720,9 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/KafkaConnectKafkaConnectUserConfigPublicAccess:KafkaConnectKafkaConnectUserConfigPublicAccess"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "staticIps": {
                     "type": "boolean"
@@ -1731,6 +1863,17 @@
                 "value"
             ]
         },
+        "aiven:index/KafkaConnectTechEmail:KafkaConnectTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/KafkaConnectorTask:KafkaConnectorTask": {
             "properties": {
                 "connector": {
@@ -1791,6 +1934,10 @@
                 "additionalBackupRegions": {
                     "type": "string",
                     "description": "Additional Cloud Regions for Backup Replication.\n"
+                },
+                "aivenKafkaTopicMessages": {
+                    "type": "boolean",
+                    "description": "Allow access to read Kafka topic messages in the Aiven Console and REST API.\n"
                 },
                 "customDomain": {
                     "type": "string",
@@ -1870,9 +2017,17 @@
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigSchemaRegistryConfig:KafkaKafkaUserConfigSchemaRegistryConfig",
                     "description": "Schema Registry configuration.\n"
                 },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
                 "staticIps": {
                     "type": "boolean",
                     "description": "Use static public IP addresses.\n"
+                },
+                "tieredStorage": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigTieredStorage:KafkaKafkaUserConfigTieredStorage",
+                    "description": "Tiered storage configuration.\n"
                 }
             },
             "type": "object"
@@ -1959,6 +2114,14 @@
                     "type": "integer",
                     "description": "The maximum size in bytes of the offset index.\n"
                 },
+                "logLocalRetentionBytes": {
+                    "type": "integer",
+                    "description": "The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.\n"
+                },
+                "logLocalRetentionMs": {
+                    "type": "integer",
+                    "description": "The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.\n"
+                },
                 "logMessageDownconversionEnable": {
                     "type": "boolean",
                     "description": "This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .\n"
@@ -2039,9 +2202,29 @@
                     "type": "integer",
                     "description": "Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.\n"
                 },
+                "saslOauthbearerExpectedAudience": {
+                    "type": "string",
+                    "description": "The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.\n"
+                },
+                "saslOauthbearerExpectedIssuer": {
+                    "type": "string",
+                    "description": "Optional setting for the broker to use to verify that the JWT was created by the expected issuer.\n"
+                },
+                "saslOauthbearerJwksEndpointUrl": {
+                    "type": "string",
+                    "description": "OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .\n"
+                },
+                "saslOauthbearerSubClaimName": {
+                    "type": "string",
+                    "description": "Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.\n"
+                },
                 "socketRequestMaxBytes": {
                     "type": "integer",
                     "description": "The maximum number of bytes in a socket request (defaults to 104857600).\n"
+                },
+                "transactionPartitionVerificationEnable": {
+                    "type": "boolean",
+                    "description": "Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.\n"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
                     "type": "integer",
@@ -2149,6 +2332,10 @@
                 "consumerRequestTimeoutMs": {
                     "type": "integer",
                     "description": "The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
+                },
+                "nameStrategyValidation": {
+                    "type": "boolean",
+                    "description": "If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.\n"
                 },
                 "producerAcks": {
                     "type": "string",
@@ -2265,9 +2452,34 @@
             },
             "type": "object"
         },
+        "aiven:index/KafkaKafkaUserConfigTieredStorage:KafkaKafkaUserConfigTieredStorage": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable the tiered storage functionality.\n"
+                },
+                "localCache": {
+                    "$ref": "#/types/aiven:index/KafkaKafkaUserConfigTieredStorageLocalCache:KafkaKafkaUserConfigTieredStorageLocalCache",
+                    "description": "Local cache configuration.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/KafkaKafkaUserConfigTieredStorageLocalCache:KafkaKafkaUserConfigTieredStorageLocalCache": {
+            "properties": {
+                "size": {
+                    "type": "integer",
+                    "description": "Local cache size in bytes.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/KafkaMirrorMakerComponent:KafkaMirrorMakerComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -2294,6 +2506,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -2333,6 +2546,9 @@
                 },
                 "kafkaMirrormaker": {
                     "$ref": "#/types/aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "staticIps": {
                     "type": "boolean"
@@ -2419,6 +2635,17 @@
                 "value"
             ]
         },
+        "aiven:index/KafkaMirrorMakerTechEmail:KafkaMirrorMakerTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/KafkaServiceIntegration:KafkaServiceIntegration": {
             "properties": {
                 "integrationType": {
@@ -2451,6 +2678,18 @@
             "required": [
                 "key",
                 "value"
+            ]
+        },
+        "aiven:index/KafkaTechEmail:KafkaTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
             ]
         },
         "aiven:index/KafkaTopicConfig:KafkaTopicConfig": {
@@ -2576,6 +2815,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -2600,6 +2842,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -2643,6 +2886,9 @@
                 },
                 "m3aggregatorVersion": {
                     "type": "string"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "staticIps": {
                     "type": "boolean"
@@ -2694,9 +2940,23 @@
                 "value"
             ]
         },
+        "aiven:index/M3AggregatorTechEmail:M3AggregatorTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/M3DbComponent:M3DbComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -2723,6 +2983,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -2797,6 +3058,9 @@
                 },
                 "rules": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfigRules:M3DbM3dbUserConfigRules"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string",
@@ -3050,9 +3314,23 @@
                 "value"
             ]
         },
+        "aiven:index/M3DbTechEmail:M3DbTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/MySqlComponent:MySqlComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -3079,6 +3357,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -3159,6 +3438,9 @@
                 "recoveryTargetTime": {
                     "type": "string",
                     "willReplaceOnChanges": true
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string",
@@ -3385,9 +3667,23 @@
                 "value"
             ]
         },
+        "aiven:index/MySqlTechEmail:MySqlTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/OpenSearchComponent:OpenSearchComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -3414,6 +3710,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -3538,6 +3835,10 @@
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigSaml:OpenSearchOpensearchUserConfigSaml",
                     "description": "OpenSearch SAML configuration.\n"
                 },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when a new service is being created.\n",
@@ -3659,7 +3960,8 @@
             "required": [
                 "clientId",
                 "clientSecret",
-                "connectUrl"
+                "connectUrl",
+                "enabled"
             ]
         },
         "aiven:index/OpenSearchOpensearchUserConfigOpensearch:OpenSearchOpensearchUserConfigOpensearch": {
@@ -3671,6 +3973,10 @@
                 "actionDestructiveRequiresName": {
                     "type": "boolean",
                     "description": "Require explicit index names when deleting.\n"
+                },
+                "authFailureListeners": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners:OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners",
+                    "description": "Opensearch Security Plugin Settings.\n"
                 },
                 "clusterMaxShardsPerNode": {
                     "type": "integer",
@@ -3693,6 +3999,10 @@
                     "type": "string",
                     "description": "Sender username for Opensearch alerts.\n"
                 },
+                "enableSecurityAudit": {
+                    "type": "boolean",
+                    "description": "Enable/Disable security audit. The default value is `false`.\n"
+                },
                 "httpMaxContentLength": {
                     "type": "integer",
                     "description": "Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.\n"
@@ -3713,6 +4023,14 @@
                     "type": "integer",
                     "description": "Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.\n"
                 },
+                "indicesMemoryMaxIndexBufferSize": {
+                    "type": "integer",
+                    "description": "Absolute value. Default is unbound. Doesn't work without indices.memory.index*buffer*size. Maximum amount of heap used for query cache, an absolute indices.memory.index*buffer*size maximum hard limit.\n"
+                },
+                "indicesMemoryMinIndexBufferSize": {
+                    "type": "integer",
+                    "description": "Absolute value. Default is 48mb. Doesn't work without indices.memory.index*buffer*size. Minimum amount of heap used for query cache, an absolute indices.memory.index*buffer*size minimal hard limit.\n"
+                },
                 "indicesQueriesCacheSize": {
                     "type": "integer",
                     "description": "Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.\n"
@@ -3728,6 +4046,30 @@
                 "indicesRecoveryMaxConcurrentFileChunks": {
                     "type": "integer",
                     "description": "Number of file chunks sent in parallel for each recovery. Defaults to 2.\n"
+                },
+                "ismEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether ISM is enabled or not. The default value is `true`.\n"
+                },
+                "ismHistoryEnabled": {
+                    "type": "boolean",
+                    "description": "Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.\n"
+                },
+                "ismHistoryMaxAge": {
+                    "type": "integer",
+                    "description": "The maximum age before rolling over the audit history index in hours. The default value is `24`.\n"
+                },
+                "ismHistoryMaxDocs": {
+                    "type": "integer",
+                    "description": "The maximum number of documents before rolling over the audit history index. The default value is `2500000`.\n"
+                },
+                "ismHistoryRolloverCheckPeriod": {
+                    "type": "integer",
+                    "description": "The time between rollover checks for the audit history index in hours. The default value is `8`.\n"
+                },
+                "ismHistoryRolloverRetentionPeriod": {
+                    "type": "integer",
+                    "description": "How long audit history indices are kept in days. The default value is `30`.\n"
                 },
                 "overrideMainResponseVersion": {
                     "type": "boolean",
@@ -3791,6 +4133,81 @@
                 "threadPoolWriteSize": {
                     "type": "integer",
                     "description": "Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners:OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners": {
+            "properties": {
+                "internalAuthenticationBackendLimiting": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting:OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting",
+                    "description": ".\n"
+                },
+                "ipRateLimiting": {
+                    "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting:OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting",
+                    "description": "IP address rate limiting settings.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting:OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting": {
+            "properties": {
+                "allowedTries": {
+                    "type": "integer",
+                    "description": "The number of login attempts allowed before login is blocked.\n"
+                },
+                "authenticationBackend": {
+                    "type": "string",
+                    "description": "The internal backend. Enter `internal`.\n"
+                },
+                "blockExpirySeconds": {
+                    "type": "integer",
+                    "description": "The duration of time that login remains blocked after a failed login.\n"
+                },
+                "maxBlockedClients": {
+                    "type": "integer",
+                    "description": "The maximum number of blocked IP addresses.\n"
+                },
+                "maxTrackedClients": {
+                    "type": "integer",
+                    "description": "The maximum number of tracked IP addresses that have failed login.\n"
+                },
+                "timeWindowSeconds": {
+                    "type": "integer",
+                    "description": "The window of time in which the value for `allowed_tries` is enforced.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of rate limiting.\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting:OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting": {
+            "properties": {
+                "allowedTries": {
+                    "type": "integer",
+                    "description": "The number of login attempts allowed before login is blocked.\n"
+                },
+                "blockExpirySeconds": {
+                    "type": "integer",
+                    "description": "The duration of time that login remains blocked after a failed login.\n"
+                },
+                "maxBlockedClients": {
+                    "type": "integer",
+                    "description": "The maximum number of blocked IP addresses.\n"
+                },
+                "maxTrackedClients": {
+                    "type": "integer",
+                    "description": "The maximum number of tracked IP addresses that have failed login.\n"
+                },
+                "timeWindowSeconds": {
+                    "type": "integer",
+                    "description": "The window of time in which the value for `allowed_tries` is enforced.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of rate limiting.\n"
                 }
             },
             "type": "object"
@@ -3936,6 +4353,18 @@
                 "value"
             ]
         },
+        "aiven:index/OpenSearchTechEmail:OpenSearchTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/OrganizationTimeouts:OrganizationTimeouts": {
             "properties": {
                 "create": {
@@ -3962,6 +4391,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -3986,6 +4418,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -4114,6 +4547,10 @@
                     "$ref": "#/types/aiven:index/PgPgUserConfigPg:PgPgUserConfigPg",
                     "description": "postgresql.conf configuration values.\n"
                 },
+                "pgQualstats": {
+                    "$ref": "#/types/aiven:index/PgPgUserConfigPgQualstats:PgPgUserConfigPgQualstats",
+                    "description": "System-wide settings for the pg*qualstats extension.\n"
+                },
                 "pgReadReplica": {
                     "type": "boolean",
                     "description": "Use read_replica service integration instead.\n",
@@ -4139,7 +4576,7 @@
                 },
                 "pglookout": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPglookout:PgPgUserConfigPglookout",
-                    "description": "PGLookout settings.\n"
+                    "description": "System-wide settings for pglookout.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPrivateAccess:PgPgUserConfigPrivateAccess",
@@ -4163,6 +4600,10 @@
                     "description": "Recovery target time when forking a service. This has effect only when a new service is being created.\n",
                     "willReplaceOnChanges": true
                 },
+                "serviceLog": {
+                    "type": "boolean",
+                    "description": "Store logs for the service so that they are available in the HTTP API and console.\n"
+                },
                 "serviceToForkFrom": {
                     "type": "string",
                     "description": "Name of another service to fork from. This has effect only when a new service is being created.\n",
@@ -4182,7 +4623,7 @@
                 },
                 "timescaledb": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigTimescaledb:PgPgUserConfigTimescaledb",
-                    "description": "TimescaleDB extension configuration values.\n"
+                    "description": "System-wide settings for the timescaledb extension.\n"
                 },
                 "variant": {
                     "type": "string",
@@ -4226,7 +4667,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, MySQL and PostgreSQL service types).\n"
+                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -4451,6 +4892,31 @@
             },
             "type": "object"
         },
+        "aiven:index/PgPgUserConfigPgQualstats:PgPgUserConfigPgQualstats": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable / Disable pg_qualstats. The default value is `false`.\n"
+                },
+                "minErrEstimateNum": {
+                    "type": "integer",
+                    "description": "Error estimation num threshold to save quals. The default value is `0`.\n"
+                },
+                "minErrEstimateRatio": {
+                    "type": "integer",
+                    "description": "Error estimation ratio threshold to save quals. The default value is `0`.\n"
+                },
+                "trackConstants": {
+                    "type": "boolean",
+                    "description": "Enable / Disable pg_qualstats constants tracking. The default value is `true`.\n"
+                },
+                "trackPgCatalog": {
+                    "type": "boolean",
+                    "description": "Track quals on system catalogs too. The default value is `false`.\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/PgPgUserConfigPgbouncer:PgPgUserConfigPgbouncer": {
             "properties": {
                 "autodbIdleTimeout": {
@@ -4559,7 +5025,7 @@
             "properties": {
                 "maxBackgroundWorkers": {
                     "type": "integer",
-                    "description": "The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time.\n"
+                    "description": "The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.\n"
                 }
             },
             "type": "object"
@@ -4598,6 +5064,18 @@
                 "value"
             ]
         },
+        "aiven:index/PgTechEmail:PgTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address to contact for technical issues\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ]
+        },
         "aiven:index/ProjectTag:ProjectTag": {
             "properties": {
                 "key": {
@@ -4618,6 +5096,9 @@
         "aiven:index/RedisComponent:RedisComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -4644,6 +5125,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "component",
+                        "connectionUri",
                         "host",
                         "kafkaAuthenticationMethod",
                         "port",
@@ -4732,6 +5214,9 @@
                 },
                 "redisTimeout": {
                     "type": "integer"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string",
@@ -4852,6 +5337,17 @@
             "required": [
                 "key",
                 "value"
+            ]
+        },
+        "aiven:index/RedisTechEmail:RedisTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
             ]
         },
         "aiven:index/ServiceIntegrationClickhouseKafkaUserConfig:ServiceIntegrationClickhouseKafkaUserConfig": {
@@ -5231,6 +5727,23 @@
                 "url"
             ]
         },
+        "aiven:index/ServiceIntegrationEndpointExternalGoogleCloudBigquery:ServiceIntegrationEndpointExternalGoogleCloudBigquery": {
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "GCP project id.\n"
+                },
+                "serviceAccountCredentials": {
+                    "type": "string",
+                    "description": "This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId",
+                "serviceAccountCredentials"
+            ]
+        },
         "aiven:index/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
             "properties": {
                 "logId": {
@@ -5326,6 +5839,42 @@
             "required": [
                 "indexPrefix",
                 "url"
+            ]
+        },
+        "aiven:index/ServiceIntegrationEndpointExternalPostgresql:ServiceIntegrationEndpointExternalPostgresql": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Hostname or IP address of the server.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "Password.\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number of the server.\n"
+                },
+                "sslMode": {
+                    "type": "string",
+                    "description": "SSL Mode. The default value is `verify-full`.\n"
+                },
+                "sslRootCert": {
+                    "type": "string",
+                    "description": "SSL Root Cert.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "User name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "password",
+                "port",
+                "username"
             ]
         },
         "aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig": {
@@ -5759,6 +6308,9 @@
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getCassandaCassandraUserConfigPublicAccess:getCassandaCassandraUserConfigPublicAccess"
                 },
+                "serviceLog": {
+                    "type": "boolean"
+                },
                 "serviceToForkFrom": {
                     "type": "string"
                 },
@@ -5825,6 +6377,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -5847,6 +6402,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -5893,6 +6449,22 @@
             "required": [
                 "key",
                 "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getCassandaTechEmail:getCassandaTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
             ],
             "language": {
                 "nodejs": {
@@ -5950,6 +6522,9 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getCassandraCassandraUserConfigPublicAccess:getCassandraCassandraUserConfigPublicAccess"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -6017,6 +6592,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -6039,6 +6617,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -6092,6 +6671,22 @@
                 }
             }
         },
+        "aiven:index/getCassandraTechEmail:getCassandraTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getClickhouseClickhouse:getClickhouseClickhouse": {
             "type": "object"
         },
@@ -6131,6 +6726,9 @@
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getClickhouseClickhouseUserConfigPublicAccess:getClickhouseClickhouseUserConfigPublicAccess"
                 },
+                "serviceLog": {
+                    "type": "boolean"
+                },
                 "serviceToForkFrom": {
                     "type": "string"
                 },
@@ -6167,6 +6765,9 @@
                 "clickhouseHttps": {
                     "type": "boolean"
                 },
+                "clickhouseMysql": {
+                    "type": "boolean"
+                },
                 "prometheus": {
                     "type": "boolean"
                 }
@@ -6179,6 +6780,9 @@
                     "type": "boolean"
                 },
                 "clickhouseHttps": {
+                    "type": "boolean"
+                },
+                "clickhouseMysql": {
                     "type": "boolean"
                 },
                 "prometheus": {
@@ -6195,6 +6799,9 @@
                 "clickhouseHttps": {
                     "type": "boolean"
                 },
+                "clickhouseMysql": {
+                    "type": "boolean"
+                },
                 "prometheus": {
                     "type": "boolean"
                 }
@@ -6204,6 +6811,9 @@
         "aiven:index/getClickhouseComponent:getClickhouseComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -6228,6 +6838,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -6281,6 +6892,22 @@
                 }
             }
         },
+        "aiven:index/getClickhouseTechEmail:getClickhouseTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getFlinkApplicationVersionSink:getFlinkApplicationVersionSink": {
             "properties": {
                 "createTable": {
@@ -6324,6 +6951,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -6346,6 +6976,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -6380,6 +7011,9 @@
         },
         "aiven:index/getFlinkFlinkUserConfig:getFlinkFlinkUserConfig": {
             "properties": {
+                "additionalBackupRegions": {
+                    "type": "string"
+                },
                 "flinkVersion": {
                     "type": "string"
                 },
@@ -6407,6 +7041,12 @@
                 },
                 "privatelinkAccess": {
                     "$ref": "#/types/aiven:index/getFlinkFlinkUserConfigPrivatelinkAccess:getFlinkFlinkUserConfigPrivatelinkAccess"
+                },
+                "serviceLog": {
+                    "type": "boolean"
+                },
+                "staticIps": {
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -6481,9 +7121,28 @@
                 }
             }
         },
+        "aiven:index/getFlinkTechEmail:getFlinkTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getGrafanaComponent:getGrafanaComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -6508,6 +7167,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -6638,6 +7298,9 @@
                 "recoveryBasebackupName": {
                     "type": "string"
                 },
+                "serviceLog": {
+                    "type": "boolean"
+                },
                 "serviceToForkFrom": {
                     "type": "string"
                 },
@@ -6645,6 +7308,9 @@
                     "$ref": "#/types/aiven:index/getGrafanaGrafanaUserConfigSmtpServer:getGrafanaGrafanaUserConfigSmtpServer"
                 },
                 "staticIps": {
+                    "type": "boolean"
+                },
+                "unifiedAlertingEnabled": {
                     "type": "boolean"
                 },
                 "userAutoAssignOrg": {
@@ -7043,9 +7709,28 @@
                 }
             }
         },
+        "aiven:index/getGrafanaTechEmail:getGrafanaTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getInfluxDbComponent:getInfluxDbComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -7070,6 +7755,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -7143,6 +7829,9 @@
                 },
                 "recoveryBasebackupName": {
                     "type": "string"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -7262,9 +7951,28 @@
                 }
             }
         },
+        "aiven:index/getInfluxDbTechEmail:getInfluxDbTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getKafkaComponent:getKafkaComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -7289,6 +7997,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -7307,6 +8016,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -7329,6 +8041,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -7380,6 +8093,9 @@
                 },
                 "publicAccess": {
                     "$ref": "#/types/aiven:index/getKafkaConnectKafkaConnectUserConfigPublicAccess:getKafkaConnectKafkaConnectUserConfigPublicAccess"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "staticIps": {
                     "type": "boolean"
@@ -7535,6 +8251,22 @@
                 }
             }
         },
+        "aiven:index/getKafkaConnectTechEmail:getKafkaConnectTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getKafkaConnectorTask:getKafkaConnectorTask": {
             "properties": {
                 "connector": {
@@ -7597,6 +8329,9 @@
                 "additionalBackupRegions": {
                     "type": "string"
                 },
+                "aivenKafkaTopicMessages": {
+                    "type": "boolean"
+                },
                 "customDomain": {
                     "type": "string"
                 },
@@ -7658,8 +8393,14 @@
                 "schemaRegistryConfig": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigSchemaRegistryConfig:getKafkaKafkaUserConfigSchemaRegistryConfig"
                 },
+                "serviceLog": {
+                    "type": "boolean"
+                },
                 "staticIps": {
                     "type": "boolean"
+                },
+                "tieredStorage": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigTieredStorage:getKafkaKafkaUserConfigTieredStorage"
                 }
             },
             "type": "object"
@@ -7733,6 +8474,12 @@
                 "logIndexSizeMaxBytes": {
                     "type": "integer"
                 },
+                "logLocalRetentionBytes": {
+                    "type": "integer"
+                },
+                "logLocalRetentionMs": {
+                    "type": "integer"
+                },
                 "logMessageDownconversionEnable": {
                     "type": "boolean"
                 },
@@ -7793,8 +8540,23 @@
                 "replicaFetchResponseMaxBytes": {
                     "type": "integer"
                 },
+                "saslOauthbearerExpectedAudience": {
+                    "type": "string"
+                },
+                "saslOauthbearerExpectedIssuer": {
+                    "type": "string"
+                },
+                "saslOauthbearerJwksEndpointUrl": {
+                    "type": "string"
+                },
+                "saslOauthbearerSubClaimName": {
+                    "type": "string"
+                },
                 "socketRequestMaxBytes": {
                     "type": "integer"
+                },
+                "transactionPartitionVerificationEnable": {
+                    "type": "boolean"
                 },
                 "transactionRemoveExpiredTransactionCleanupIntervalMs": {
                     "type": "integer"
@@ -7879,6 +8641,9 @@
                 },
                 "consumerRequestTimeoutMs": {
                     "type": "integer"
+                },
+                "nameStrategyValidation": {
+                    "type": "boolean"
                 },
                 "producerAcks": {
                     "type": "string"
@@ -7972,9 +8737,31 @@
             },
             "type": "object"
         },
+        "aiven:index/getKafkaKafkaUserConfigTieredStorage:getKafkaKafkaUserConfigTieredStorage": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "localCache": {
+                    "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigTieredStorageLocalCache:getKafkaKafkaUserConfigTieredStorageLocalCache"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getKafkaKafkaUserConfigTieredStorageLocalCache:getKafkaKafkaUserConfigTieredStorageLocalCache": {
+            "properties": {
+                "size": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getKafkaMirrorMakerComponent:getKafkaMirrorMakerComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -7999,6 +8786,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -8041,6 +8829,9 @@
                 },
                 "kafkaMirrormaker": {
                     "$ref": "#/types/aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "staticIps": {
                     "type": "boolean"
@@ -8142,6 +8933,22 @@
                 }
             }
         },
+        "aiven:index/getKafkaMirrorMakerTechEmail:getKafkaMirrorMakerTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getKafkaServiceIntegration:getKafkaServiceIntegration": {
             "properties": {
                 "integrationType": {
@@ -8175,6 +8982,22 @@
             "required": [
                 "key",
                 "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getKafkaTechEmail:getKafkaTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
             ],
             "language": {
                 "nodejs": {
@@ -8284,6 +9107,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -8306,6 +9132,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -8352,6 +9179,9 @@
                 },
                 "m3aggregatorVersion": {
                     "type": "string"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "staticIps": {
                     "type": "boolean"
@@ -8418,9 +9248,28 @@
                 }
             }
         },
+        "aiven:index/getM3AggregatorTechEmail:getM3AggregatorTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getM3DbComponent:getM3DbComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -8445,6 +9294,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -8521,6 +9371,9 @@
                 },
                 "rules": {
                     "$ref": "#/types/aiven:index/getM3DbM3dbUserConfigRules:getM3DbM3dbUserConfigRules"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -8803,9 +9656,28 @@
                 }
             }
         },
+        "aiven:index/getM3DbTechEmail:getM3DbTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getMySqlComponent:getMySqlComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -8830,6 +9702,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -8909,6 +9782,9 @@
                 },
                 "recoveryTargetTime": {
                     "type": "string"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -9154,9 +10030,28 @@
                 }
             }
         },
+        "aiven:index/getMySqlTechEmail:getMySqlTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getOpenSearchComponent:getOpenSearchComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -9181,6 +10076,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -9287,6 +10183,9 @@
                 },
                 "saml": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigSaml:getOpenSearchOpensearchUserConfigSaml"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -9396,7 +10295,8 @@
             "required": [
                 "clientId",
                 "clientSecret",
-                "connectUrl"
+                "connectUrl",
+                "enabled"
             ],
             "language": {
                 "nodejs": {
@@ -9411,6 +10311,9 @@
                 },
                 "actionDestructiveRequiresName": {
                     "type": "boolean"
+                },
+                "authFailureListeners": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners"
                 },
                 "clusterMaxShardsPerNode": {
                     "type": "integer"
@@ -9428,6 +10331,9 @@
                 "emailSenderUsername": {
                     "type": "string"
                 },
+                "enableSecurityAudit": {
+                    "type": "boolean"
+                },
                 "httpMaxContentLength": {
                     "type": "integer"
                 },
@@ -9443,6 +10349,12 @@
                 "indicesMemoryIndexBufferSize": {
                     "type": "integer"
                 },
+                "indicesMemoryMaxIndexBufferSize": {
+                    "type": "integer"
+                },
+                "indicesMemoryMinIndexBufferSize": {
+                    "type": "integer"
+                },
                 "indicesQueriesCacheSize": {
                     "type": "integer"
                 },
@@ -9453,6 +10365,24 @@
                     "type": "integer"
                 },
                 "indicesRecoveryMaxConcurrentFileChunks": {
+                    "type": "integer"
+                },
+                "ismEnabled": {
+                    "type": "boolean"
+                },
+                "ismHistoryEnabled": {
+                    "type": "boolean"
+                },
+                "ismHistoryMaxAge": {
+                    "type": "integer"
+                },
+                "ismHistoryMaxDocs": {
+                    "type": "integer"
+                },
+                "ismHistoryRolloverCheckPeriod": {
+                    "type": "integer"
+                },
+                "ismHistoryRolloverRetentionPeriod": {
                     "type": "integer"
                 },
                 "overrideMainResponseVersion": {
@@ -9502,6 +10432,66 @@
                 },
                 "threadPoolWriteSize": {
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners": {
+            "properties": {
+                "internalAuthenticationBackendLimiting": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting"
+                },
+                "ipRateLimiting": {
+                    "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting": {
+            "properties": {
+                "allowedTries": {
+                    "type": "integer"
+                },
+                "authenticationBackend": {
+                    "type": "string"
+                },
+                "blockExpirySeconds": {
+                    "type": "integer"
+                },
+                "maxBlockedClients": {
+                    "type": "integer"
+                },
+                "maxTrackedClients": {
+                    "type": "integer"
+                },
+                "timeWindowSeconds": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting:getOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting": {
+            "properties": {
+                "allowedTries": {
+                    "type": "integer"
+                },
+                "blockExpirySeconds": {
+                    "type": "integer"
+                },
+                "maxBlockedClients": {
+                    "type": "integer"
+                },
+                "maxTrackedClients": {
+                    "type": "integer"
+                },
+                "timeWindowSeconds": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -9639,9 +10629,28 @@
                 }
             }
         },
+        "aiven:index/getOpenSearchTechEmail:getOpenSearchTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getPgComponent:getPgComponent": {
             "properties": {
                 "component": {
+                    "type": "string"
+                },
+                "connectionUri": {
                     "type": "string"
                 },
                 "host": {
@@ -9666,6 +10675,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -9776,6 +10786,9 @@
                 "pg": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigPg:getPgPgUserConfigPg"
                 },
+                "pgQualstats": {
+                    "$ref": "#/types/aiven:index/getPgPgUserConfigPgQualstats:getPgPgUserConfigPgQualstats"
+                },
                 "pgReadReplica": {
                     "type": "boolean",
                     "deprecationMessage": "Usage of this field is discouraged."
@@ -9810,6 +10823,9 @@
                 },
                 "recoveryTargetTime": {
                     "type": "string"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -10045,6 +11061,26 @@
             },
             "type": "object"
         },
+        "aiven:index/getPgPgUserConfigPgQualstats:getPgPgUserConfigPgQualstats": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "minErrEstimateNum": {
+                    "type": "integer"
+                },
+                "minErrEstimateRatio": {
+                    "type": "integer"
+                },
+                "trackConstants": {
+                    "type": "boolean"
+                },
+                "trackPgCatalog": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/getPgPgUserConfigPgbouncer:getPgPgUserConfigPgbouncer": {
             "properties": {
                 "autodbIdleTimeout": {
@@ -10178,6 +11214,22 @@
                 }
             }
         },
+        "aiven:index/getPgTechEmail:getPgTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getProjectTag:getProjectTag": {
             "properties": {
                 "key": {
@@ -10203,6 +11255,9 @@
                 "component": {
                     "type": "string"
                 },
+                "connectionUri": {
+                    "type": "string"
+                },
                 "host": {
                     "type": "string"
                 },
@@ -10225,6 +11280,7 @@
             "type": "object",
             "required": [
                 "component",
+                "connectionUri",
                 "host",
                 "kafkaAuthenticationMethod",
                 "port",
@@ -10315,6 +11371,9 @@
                 },
                 "redisTimeout": {
                     "type": "integer"
+                },
+                "serviceLog": {
+                    "type": "boolean"
                 },
                 "serviceToForkFrom": {
                     "type": "string"
@@ -10449,6 +11508,22 @@
             "required": [
                 "key",
                 "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getRedisTechEmail:getRedisTechEmail": {
+            "properties": {
+                "email": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email"
             ],
             "language": {
                 "nodejs": {
@@ -10820,6 +11895,26 @@
                 }
             }
         },
+        "aiven:index/getServiceIntegrationEndpointExternalGoogleCloudBigquery:getServiceIntegrationEndpointExternalGoogleCloudBigquery": {
+            "properties": {
+                "projectId": {
+                    "type": "string"
+                },
+                "serviceAccountCredentials": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "projectId",
+                "serviceAccountCredentials"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:getServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig": {
             "properties": {
                 "logId": {
@@ -10908,6 +12003,41 @@
             "required": [
                 "indexPrefix",
                 "url"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getServiceIntegrationEndpointExternalPostgresql:getServiceIntegrationEndpointExternalPostgresql": {
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "sslMode": {
+                    "type": "string"
+                },
+                "sslRootCert": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "password",
+                "port",
+                "username"
             ],
             "language": {
                 "nodejs": {
@@ -11682,7 +12812,7 @@
                 },
                 "userEmail": {
                     "type": "string",
-                    "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                 }
             },
             "required": [
@@ -11706,7 +12836,7 @@
                 },
                 "userEmail": {
                     "type": "string",
-                    "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -11742,7 +12872,7 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -12702,6 +13832,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/CassandraTechEmail:CassandraTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -12789,6 +13926,13 @@
                         "$ref": "#/types/aiven:index/CassandraTag:CassandraTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/CassandraTechEmail:CassandraTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -12931,6 +14075,13 @@
                             "$ref": "#/types/aiven:index/CassandraTag:CassandraTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/CassandraTechEmail:CassandraTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -13177,6 +14328,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ClickhouseTechEmail:ClickhouseTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -13264,6 +14422,13 @@
                         "$ref": "#/types/aiven:index/ClickhouseTag:ClickhouseTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/ClickhouseTechEmail:ClickhouseTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -13401,6 +14566,13 @@
                             "$ref": "#/types/aiven:index/ClickhouseTag:ClickhouseTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/ClickhouseTechEmail:ClickhouseTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -14014,7 +15186,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -14022,6 +15194,13 @@
                         "$ref": "#/types/aiven:index/FlinkTag:FlinkTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/FlinkTechEmail:FlinkTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -14111,7 +15290,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                    "description": "Use static public IP addresses.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -14119,6 +15298,13 @@
                         "$ref": "#/types/aiven:index/FlinkTag:FlinkTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/FlinkTechEmail:FlinkTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -14250,7 +15436,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
+                        "description": "Use static public IP addresses.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -14258,6 +15444,13 @@
                             "$ref": "#/types/aiven:index/FlinkTag:FlinkTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/FlinkTechEmail:FlinkTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -15121,6 +16314,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/GrafanaTechEmail:GrafanaTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -15208,6 +16408,13 @@
                         "$ref": "#/types/aiven:index/GrafanaTag:GrafanaTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/GrafanaTechEmail:GrafanaTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -15350,6 +16557,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/GrafanaTechEmail:GrafanaTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -15483,6 +16697,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/InfluxDbTechEmail:InfluxDbTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -15570,6 +16791,13 @@
                         "$ref": "#/types/aiven:index/InfluxDbTag:InfluxDbTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/InfluxDbTechEmail:InfluxDbTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -15707,6 +16935,13 @@
                             "$ref": "#/types/aiven:index/InfluxDbTag:InfluxDbTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/InfluxDbTechEmail:InfluxDbTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -16044,6 +17279,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaTechEmail:KafkaTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -16141,6 +17383,13 @@
                         "$ref": "#/types/aiven:index/KafkaTag:KafkaTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaTechEmail:KafkaTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -16293,6 +17542,13 @@
                             "$ref": "#/types/aiven:index/KafkaTag:KafkaTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/KafkaTechEmail:KafkaTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -16538,6 +17794,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaConnectTechEmail:KafkaConnectTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -16625,6 +17888,13 @@
                         "$ref": "#/types/aiven:index/KafkaConnectTag:KafkaConnectTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaConnectTechEmail:KafkaConnectTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -16767,6 +18037,13 @@
                             "$ref": "#/types/aiven:index/KafkaConnectTag:KafkaConnectTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/KafkaConnectTechEmail:KafkaConnectTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -17058,6 +18335,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaMirrorMakerTechEmail:KafkaMirrorMakerTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -17145,6 +18429,13 @@
                         "$ref": "#/types/aiven:index/KafkaMirrorMakerTag:KafkaMirrorMakerTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaMirrorMakerTechEmail:KafkaMirrorMakerTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -17282,6 +18573,13 @@
                             "$ref": "#/types/aiven:index/KafkaMirrorMakerTag:KafkaMirrorMakerTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/KafkaMirrorMakerTechEmail:KafkaMirrorMakerTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -17947,6 +19245,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3AggregatorTechEmail:M3AggregatorTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -18034,6 +19339,13 @@
                         "$ref": "#/types/aiven:index/M3AggregatorTag:M3AggregatorTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3AggregatorTechEmail:M3AggregatorTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -18172,6 +19484,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/M3AggregatorTechEmail:M3AggregatorTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -18305,6 +19624,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbTechEmail:M3DbTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -18392,6 +19718,13 @@
                         "$ref": "#/types/aiven:index/M3DbTag:M3DbTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/M3DbTechEmail:M3DbTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -18530,6 +19863,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/M3DbTechEmail:M3DbTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -18631,9 +19971,13 @@
         "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow": {
             "description": "The MirrorMaker 2 Replication Flow resource allows the creation and management of MirrorMaker 2 Replication Flows on Aiven Cloud.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst f1 = new aiven.MirrorMakerReplicationFlow(\"f1\", {\n    project: aiven_project[\"kafka-mm-project1\"].project,\n    serviceName: aiven_kafka.mm.service_name,\n    sourceCluster: aiven_kafka.source.service_name,\n    targetCluster: aiven_kafka.target.service_name,\n    enable: true,\n    topics: [\".*\"],\n    topicsBlacklists: [\n        \".*[\\\\-\\\\.]internal\",\n        \".*\\\\.replica\",\n        \"__.*\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nf1 = aiven.MirrorMakerReplicationFlow(\"f1\",\n    project=aiven_project[\"kafka-mm-project1\"][\"project\"],\n    service_name=aiven_kafka[\"mm\"][\"service_name\"],\n    source_cluster=aiven_kafka[\"source\"][\"service_name\"],\n    target_cluster=aiven_kafka[\"target\"][\"service_name\"],\n    enable=True,\n    topics=[\".*\"],\n    topics_blacklists=[\n        \".*[\\\\-\\\\.]internal\",\n        \".*\\\\.replica\",\n        \"__.*\",\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var f1 = new Aiven.MirrorMakerReplicationFlow(\"f1\", new()\n    {\n        Project = aiven_project.Kafka_mm_project1.Project,\n        ServiceName = aiven_kafka.Mm.Service_name,\n        SourceCluster = aiven_kafka.Source.Service_name,\n        TargetCluster = aiven_kafka.Target.Service_name,\n        Enable = true,\n        Topics = new[]\n        {\n            \".*\",\n        },\n        TopicsBlacklists = new[]\n        {\n            \".*[\\\\-\\\\.]internal\",\n            \".*\\\\.replica\",\n            \"__.*\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewMirrorMakerReplicationFlow(ctx, \"f1\", \u0026aiven.MirrorMakerReplicationFlowArgs{\n\t\t\tProject:       pulumi.Any(aiven_project.KafkaMmProject1.Project),\n\t\t\tServiceName:   pulumi.Any(aiven_kafka.Mm.Service_name),\n\t\t\tSourceCluster: pulumi.Any(aiven_kafka.Source.Service_name),\n\t\t\tTargetCluster: pulumi.Any(aiven_kafka.Target.Service_name),\n\t\t\tEnable:        pulumi.Bool(true),\n\t\t\tTopics: pulumi.StringArray{\n\t\t\t\tpulumi.String(\".*\"),\n\t\t\t},\n\t\t\tTopicsBlacklists: pulumi.StringArray{\n\t\t\t\tpulumi.String(\".*[\\\\-\\\\.]internal\"),\n\t\t\t\tpulumi.String(\".*\\\\.replica\"),\n\t\t\t\tpulumi.String(\"__.*\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.MirrorMakerReplicationFlow;\nimport com.pulumi.aiven.MirrorMakerReplicationFlowArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var f1 = new MirrorMakerReplicationFlow(\"f1\", MirrorMakerReplicationFlowArgs.builder()        \n            .project(aiven_project.kafka-mm-project1().project())\n            .serviceName(aiven_kafka.mm().service_name())\n            .sourceCluster(aiven_kafka.source().service_name())\n            .targetCluster(aiven_kafka.target().service_name())\n            .enable(true)\n            .topics(\".*\")\n            .topicsBlacklists(            \n                \".*[\\\\-\\\\.]internal\",\n                \".*\\\\.replica\",\n                \"__.*\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  f1:\n    type: aiven:MirrorMakerReplicationFlow\n    properties:\n      project: ${aiven_project\"kafka-mm-project1\"[%!s(MISSING)].project}\n      serviceName: ${aiven_kafka.mm.service_name}\n      sourceCluster: ${aiven_kafka.source.service_name}\n      targetCluster: ${aiven_kafka.target.service_name}\n      enable: true\n      topics:\n        - .*\n      topicsBlacklists:\n        - .*[\\-\\.]internal\n        - .*\\.replica\n        - __.*\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster\n```\n\n ",
             "properties": {
+                "emitBackwardHeartbeatsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.\n"
+                },
                 "emitHeartbeatsEnabled": {
                     "type": "boolean",
-                    "description": "Emit heartbeats enabled. The default value is `false`.\n"
+                    "description": "Whether to emit heartbeats to the target cluster. The default value is `false`.\n"
                 },
                 "enable": {
                     "type": "boolean",
@@ -18694,9 +20038,13 @@
                 "targetCluster"
             ],
             "inputProperties": {
+                "emitBackwardHeartbeatsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.\n"
+                },
                 "emitHeartbeatsEnabled": {
                     "type": "boolean",
-                    "description": "Emit heartbeats enabled. The default value is `false`.\n"
+                    "description": "Whether to emit heartbeats to the target cluster. The default value is `false`.\n"
                 },
                 "enable": {
                     "type": "boolean",
@@ -18761,9 +20109,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.\n",
                 "properties": {
+                    "emitBackwardHeartbeatsEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.\n"
+                    },
                     "emitHeartbeatsEnabled": {
                         "type": "boolean",
-                        "description": "Emit heartbeats enabled. The default value is `false`.\n"
+                        "description": "Whether to emit heartbeats to the target cluster. The default value is `false`.\n"
                     },
                     "enable": {
                         "type": "boolean",
@@ -18946,6 +20298,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/MySqlTechEmail:MySqlTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -19033,6 +20392,13 @@
                         "$ref": "#/types/aiven:index/MySqlTag:MySqlTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/MySqlTechEmail:MySqlTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -19170,6 +20536,13 @@
                             "$ref": "#/types/aiven:index/MySqlTag:MySqlTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/MySqlTechEmail:MySqlTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -19505,6 +20878,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/OpenSearchTechEmail:OpenSearchTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -19592,6 +20972,13 @@
                         "$ref": "#/types/aiven:index/OpenSearchTag:OpenSearchTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/OpenSearchTechEmail:OpenSearchTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -19729,6 +21116,13 @@
                             "$ref": "#/types/aiven:index/OpenSearchTag:OpenSearchTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/OpenSearchTechEmail:OpenSearchTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -20174,7 +21568,7 @@
                 },
                 "userEmail": {
                     "type": "string",
-                    "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                 }
             },
             "required": [
@@ -20192,7 +21586,7 @@
                 },
                 "userEmail": {
                     "type": "string",
-                    "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -20222,7 +21616,7 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -20240,6 +21634,10 @@
                     "type": "string",
                     "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
+                "groupId": {
+                    "type": "string",
+                    "description": "The unique organization user group ID\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
@@ -20255,6 +21653,7 @@
             },
             "required": [
                 "createTime",
+                "groupId",
                 "name",
                 "organizationId",
                 "updateTime"
@@ -20288,6 +21687,10 @@
                     "description": {
                         "type": "string",
                         "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique organization user group ID\n"
                     },
                     "name": {
                         "type": "string",
@@ -20505,6 +21908,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/PgTechEmail:PgTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -20601,6 +22011,13 @@
                         "$ref": "#/types/aiven:index/PgTag:PgTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/PgTechEmail:PgTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -20739,6 +22156,13 @@
                             "$ref": "#/types/aiven:index/PgTag:PgTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/PgTechEmail:PgTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -21044,7 +22468,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
                 },
                 "useSourceProjectBillingGroup": {
                     "type": "boolean",
@@ -21107,7 +22531,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
                 },
                 "useSourceProjectBillingGroup": {
                     "type": "boolean",
@@ -21185,7 +22609,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
                     },
                     "useSourceProjectBillingGroup": {
                         "type": "boolean",
@@ -21205,7 +22629,7 @@
                 },
                 "email": {
                     "type": "string",
-                    "description": "Email address of the user. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
                 "memberType": {
                     "type": "string",
@@ -21225,7 +22649,7 @@
             "inputProperties": {
                 "email": {
                     "type": "string",
-                    "description": "Email address of the user. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "memberType": {
@@ -21252,7 +22676,7 @@
                     },
                     "email": {
                         "type": "string",
-                        "description": "Email address of the user. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "memberType": {
@@ -21472,6 +22896,13 @@
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
                 },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/RedisTechEmail:RedisTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
+                },
                 "terminationProtection": {
                     "type": "boolean",
                     "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent\nunintentional service deletion. This does not shield against deleting databases or topics but for services with backups\nmuch of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -21559,6 +22990,13 @@
                         "$ref": "#/types/aiven:index/RedisTag:RedisTag"
                     },
                     "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                },
+                "techEmails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/RedisTechEmail:RedisTechEmail"
+                    },
+                    "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                 },
                 "terminationProtection": {
                     "type": "boolean",
@@ -21701,6 +23139,13 @@
                             "$ref": "#/types/aiven:index/RedisTag:RedisTag"
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
+                    },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/RedisTechEmail:RedisTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service\ninstability.\n"
                     },
                     "terminationProtection": {
                         "type": "boolean",
@@ -22134,7 +23579,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n"
+                    "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`\n"
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
@@ -22148,6 +23593,10 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                     "description": "ExternalElasticsearchLogs user configurable settings\n"
                 },
+                "externalGoogleCloudBigquery": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalGoogleCloudBigquery:ServiceIntegrationEndpointExternalGoogleCloudBigquery",
+                    "description": "ExternalGoogleCloudBigquery user configurable settings\n"
+                },
                 "externalGoogleCloudLoggingUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig",
                     "description": "ExternalGoogleCloudLogging user configurable settings\n"
@@ -22159,6 +23608,10 @@
                 "externalOpensearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
                     "description": "ExternalOpensearchLogs user configurable settings\n"
+                },
+                "externalPostgresql": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalPostgresql:ServiceIntegrationEndpointExternalPostgresql",
+                    "description": "ExternalPostgresql user configurable settings\n"
                 },
                 "externalSchemaRegistryUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -22199,7 +23652,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n",
+                    "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`\n",
                     "willReplaceOnChanges": true
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
@@ -22214,6 +23667,10 @@
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                     "description": "ExternalElasticsearchLogs user configurable settings\n"
                 },
+                "externalGoogleCloudBigquery": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalGoogleCloudBigquery:ServiceIntegrationEndpointExternalGoogleCloudBigquery",
+                    "description": "ExternalGoogleCloudBigquery user configurable settings\n"
+                },
                 "externalGoogleCloudLoggingUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig",
                     "description": "ExternalGoogleCloudLogging user configurable settings\n"
@@ -22225,6 +23682,10 @@
                 "externalOpensearchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
                     "description": "ExternalOpensearchLogs user configurable settings\n"
+                },
+                "externalPostgresql": {
+                    "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalPostgresql:ServiceIntegrationEndpointExternalPostgresql",
+                    "description": "ExternalPostgresql user configurable settings\n"
                 },
                 "externalSchemaRegistryUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -22274,7 +23735,7 @@
                     },
                     "endpointType": {
                         "type": "string",
-                        "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n",
+                        "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`\n",
                         "willReplaceOnChanges": true
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
@@ -22289,6 +23750,10 @@
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig:ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig",
                         "description": "ExternalElasticsearchLogs user configurable settings\n"
                     },
+                    "externalGoogleCloudBigquery": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalGoogleCloudBigquery:ServiceIntegrationEndpointExternalGoogleCloudBigquery",
+                        "description": "ExternalGoogleCloudBigquery user configurable settings\n"
+                    },
                     "externalGoogleCloudLoggingUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig:ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig",
                         "description": "ExternalGoogleCloudLogging user configurable settings\n"
@@ -22300,6 +23765,10 @@
                     "externalOpensearchLogsUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalOpensearchLogsUserConfig:ServiceIntegrationEndpointExternalOpensearchLogsUserConfig",
                         "description": "ExternalOpensearchLogs user configurable settings\n"
+                    },
+                    "externalPostgresql": {
+                        "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalPostgresql:ServiceIntegrationEndpointExternalPostgresql",
+                        "description": "ExternalPostgresql user configurable settings\n"
                     },
                     "externalSchemaRegistryUserConfig": {
                         "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalSchemaRegistryUserConfig:ServiceIntegrationEndpointExternalSchemaRegistryUserConfig",
@@ -22819,7 +24288,7 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -22858,7 +24327,7 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -23517,6 +24986,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandaTechEmail:getCassandaTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -23550,6 +25026,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -23706,6 +25183,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandraTechEmail:getCassandraTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -23739,6 +25223,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -23972,6 +25457,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getClickhouseTechEmail:getClickhouseTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -24005,6 +25497,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -24369,6 +25862,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getFlinkTechEmail:getFlinkTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -24402,6 +25902,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -24876,6 +26377,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getGrafanaTechEmail:getGrafanaTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -24909,6 +26417,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -25065,6 +26574,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getInfluxDbTechEmail:getInfluxDbTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -25098,6 +26614,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -25397,6 +26914,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getKafkaTechEmail:getKafkaTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -25432,6 +26956,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -25667,6 +27192,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getKafkaConnectTechEmail:getKafkaConnectTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -25700,6 +27232,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -25956,6 +27489,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getKafkaMirrorMakerTechEmail:getKafkaMirrorMakerTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -25989,6 +27529,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -26528,6 +28069,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3AggregatorTechEmail:getM3AggregatorTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -26561,6 +28109,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -26717,6 +28266,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3DbTechEmail:getM3DbTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -26750,6 +28306,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -26853,9 +28410,13 @@
             "outputs": {
                 "description": "A collection of values returned by getMirrorMakerReplicationFlow.\n",
                 "properties": {
+                    "emitBackwardHeartbeatsEnabled": {
+                        "type": "boolean",
+                        "description": "Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.\n"
+                    },
                     "emitHeartbeatsEnabled": {
                         "type": "boolean",
-                        "description": "Emit heartbeats enabled. The default value is `false`.\n"
+                        "description": "Whether to emit heartbeats to the target cluster. The default value is `false`.\n"
                     },
                     "enable": {
                         "type": "boolean",
@@ -26914,6 +28475,7 @@
                 },
                 "type": "object",
                 "required": [
+                    "emitBackwardHeartbeatsEnabled",
                     "emitHeartbeatsEnabled",
                     "enable",
                     "offsetSyncsTopicLocation",
@@ -27081,6 +28643,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getMySqlTechEmail:getMySqlTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -27114,6 +28683,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -27410,6 +28980,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getOpenSearchTechEmail:getOpenSearchTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -27443,6 +29020,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -27765,7 +29343,7 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -27799,7 +29377,7 @@
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -27844,6 +29422,10 @@
                         "type": "string",
                         "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
+                    "groupId": {
+                        "type": "string",
+                        "description": "The unique organization user group ID\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -27865,6 +29447,7 @@
                 "required": [
                     "createTime",
                     "description",
+                    "groupId",
                     "name",
                     "organizationId",
                     "updateTime",
@@ -28077,6 +29660,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getPgTechEmail:getPgTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -28110,6 +29700,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -28344,7 +29935,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is  good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.\n"
                     },
                     "useSourceProjectBillingGroup": {
                         "type": "boolean",
@@ -28378,7 +29969,7 @@
                 "properties": {
                     "email": {
                         "type": "string",
-                        "description": "Email address of the user. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "project": {
                         "type": "string",
@@ -28400,7 +29991,7 @@
                     },
                     "email": {
                         "type": "string",
-                        "description": "Email address of the user. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "id": {
                         "type": "string",
@@ -28632,6 +30223,13 @@
                         },
                         "description": "Tags are key-value pairs that allow you to categorize services.\n"
                     },
+                    "techEmails": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getRedisTechEmail:getRedisTechEmail"
+                        },
+                        "description": "Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.\n"
+                    },
                     "terminationProtection": {
                         "type": "boolean",
                         "description": "Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.\n"
@@ -28665,6 +30263,7 @@
                     "state",
                     "staticIps",
                     "tags",
+                    "techEmails",
                     "terminationProtection",
                     "id"
                 ]
@@ -29055,7 +30654,7 @@
                     },
                     "endpointType": {
                         "type": "string",
-                        "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`\n"
+                        "description": "Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`\n"
                     },
                     "externalAwsCloudwatchLogsUserConfigs": {
                         "type": "array",
@@ -29078,6 +30677,13 @@
                         },
                         "description": "ExternalElasticsearchLogs user configurable settings\n"
                     },
+                    "externalGoogleCloudBigqueries": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalGoogleCloudBigquery:getServiceIntegrationEndpointExternalGoogleCloudBigquery"
+                        },
+                        "description": "ExternalGoogleCloudBigquery user configurable settings\n"
+                    },
                     "externalGoogleCloudLoggingUserConfigs": {
                         "type": "array",
                         "items": {
@@ -29098,6 +30704,13 @@
                             "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalOpensearchLogsUserConfig:getServiceIntegrationEndpointExternalOpensearchLogsUserConfig"
                         },
                         "description": "ExternalOpensearchLogs user configurable settings\n"
+                    },
+                    "externalPostgresqls": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getServiceIntegrationEndpointExternalPostgresql:getServiceIntegrationEndpointExternalPostgresql"
+                        },
+                        "description": "ExternalPostgresql user configurable settings\n"
                     },
                     "externalSchemaRegistryUserConfigs": {
                         "type": "array",
@@ -29145,9 +30758,11 @@
                     "externalAwsCloudwatchLogsUserConfigs",
                     "externalAwsCloudwatchMetricsUserConfigs",
                     "externalElasticsearchLogsUserConfigs",
+                    "externalGoogleCloudBigqueries",
                     "externalGoogleCloudLoggingUserConfigs",
                     "externalKafkaUserConfigs",
                     "externalOpensearchLogsUserConfigs",
+                    "externalPostgresqls",
                     "externalSchemaRegistryUserConfigs",
                     "jolokiaUserConfigs",
                     "project",
