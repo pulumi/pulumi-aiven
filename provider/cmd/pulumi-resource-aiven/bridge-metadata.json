@@ -5827,9 +5827,9 @@
             },
             "aiven:index/getOrganizationUser:getOrganizationUser": {
                 "createTime": "create_time",
-                "invitedBy": "invited_by",
                 "organizationId": "organization_id",
-                "userEmail": "user_email"
+                "userEmail": "user_email",
+                "userId": "user_id"
             },
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": {
                 "createTime": "create_time",
@@ -6615,7 +6615,8 @@
                 "createTime": "create_time",
                 "invitedBy": "invited_by",
                 "organizationId": "organization_id",
-                "userEmail": "user_email"
+                "userEmail": "user_email",
+                "userId": "user_id"
             },
             "aiven:index/organizationUserGroup:OrganizationUserGroup": {
                 "createTime": "create_time",

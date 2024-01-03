@@ -29,7 +29,11 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
     /**
      * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
     @Export(name="accepted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accepted;
 
@@ -57,7 +61,11 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
     /**
      * The email address of the user who sent an invitation to the user.
      * 
+     * @deprecated
+     * This field is deprecated and will be removed in the next major release.
+     * 
      */
+    @Deprecated /* This field is deprecated and will be removed in the next major release.  */
     @Export(name="invitedBy", refs={String.class}, tree="[0]")
     private Output<String> invitedBy;
 
@@ -95,6 +103,20 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
      */
     public Output<String> userEmail() {
         return this.userEmail;
+    }
+    /**
+     * The unique organization user ID
+     * 
+     */
+    @Export(name="userId", refs={String.class}, tree="[0]")
+    private Output<String> userId;
+
+    /**
+     * @return The unique organization user ID
+     * 
+     */
+    public Output<String> userId() {
+        return this.userId;
     }
 
     /**

@@ -5,17 +5,13 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOrganizationUserResult {
-    /**
-     * @return This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
-     * 
-     */
-    private Boolean accepted;
     /**
      * @return Time of creation
      * 
@@ -27,29 +23,22 @@ public final class GetOrganizationUserResult {
      */
     private String id;
     /**
-     * @return The email address of the user who sent an invitation to the user.
-     * 
-     */
-    private String invitedBy;
-    /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique organization ID.
      * 
      */
     private String organizationId;
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address
      * 
      */
-    private String userEmail;
+    private @Nullable String userEmail;
+    /**
+     * @return The unique organization user ID
+     * 
+     */
+    private @Nullable String userId;
 
     private GetOrganizationUserResult() {}
-    /**
-     * @return This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
-     * 
-     */
-    public Boolean accepted() {
-        return this.accepted;
-    }
     /**
      * @return Time of creation
      * 
@@ -65,25 +54,25 @@ public final class GetOrganizationUserResult {
         return this.id;
     }
     /**
-     * @return The email address of the user who sent an invitation to the user.
-     * 
-     */
-    public String invitedBy() {
-        return this.invitedBy;
-    }
-    /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique organization ID.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address
      * 
      */
-    public String userEmail() {
-        return this.userEmail;
+    public Optional<String> userEmail() {
+        return Optional.ofNullable(this.userEmail);
+    }
+    /**
+     * @return The unique organization user ID
+     * 
+     */
+    public Optional<String> userId() {
+        return Optional.ofNullable(this.userId);
     }
 
     public static Builder builder() {
@@ -95,31 +84,21 @@ public final class GetOrganizationUserResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private Boolean accepted;
         private String createTime;
         private String id;
-        private String invitedBy;
         private String organizationId;
-        private String userEmail;
+        private @Nullable String userEmail;
+        private @Nullable String userId;
         public Builder() {}
         public Builder(GetOrganizationUserResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.accepted = defaults.accepted;
     	      this.createTime = defaults.createTime;
     	      this.id = defaults.id;
-    	      this.invitedBy = defaults.invitedBy;
     	      this.organizationId = defaults.organizationId;
     	      this.userEmail = defaults.userEmail;
+    	      this.userId = defaults.userId;
         }
 
-        @CustomType.Setter
-        public Builder accepted(Boolean accepted) {
-            if (accepted == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "accepted");
-            }
-            this.accepted = accepted;
-            return this;
-        }
         @CustomType.Setter
         public Builder createTime(String createTime) {
             if (createTime == null) {
@@ -137,14 +116,6 @@ public final class GetOrganizationUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder invitedBy(String invitedBy) {
-            if (invitedBy == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "invitedBy");
-            }
-            this.invitedBy = invitedBy;
-            return this;
-        }
-        @CustomType.Setter
         public Builder organizationId(String organizationId) {
             if (organizationId == null) {
               throw new MissingRequiredPropertyException("GetOrganizationUserResult", "organizationId");
@@ -153,21 +124,24 @@ public final class GetOrganizationUserResult {
             return this;
         }
         @CustomType.Setter
-        public Builder userEmail(String userEmail) {
-            if (userEmail == null) {
-              throw new MissingRequiredPropertyException("GetOrganizationUserResult", "userEmail");
-            }
+        public Builder userEmail(@Nullable String userEmail) {
+
             this.userEmail = userEmail;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder userId(@Nullable String userId) {
+
+            this.userId = userId;
             return this;
         }
         public GetOrganizationUserResult build() {
             final var _resultValue = new GetOrganizationUserResult();
-            _resultValue.accepted = accepted;
             _resultValue.createTime = createTime;
             _resultValue.id = id;
-            _resultValue.invitedBy = invitedBy;
             _resultValue.organizationId = organizationId;
             _resultValue.userEmail = userEmail;
+            _resultValue.userId = userId;
             return _resultValue;
         }
     }

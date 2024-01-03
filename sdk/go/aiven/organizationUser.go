@@ -23,15 +23,21 @@ type OrganizationUser struct {
 	pulumi.CustomResourceState
 
 	// This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	Accepted pulumi.BoolOutput `pulumi:"accepted"`
 	// Time of creation
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The email address of the user who sent an invitation to the user.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	InvitedBy pulumi.StringOutput `pulumi:"invitedBy"`
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
+	// The unique organization user ID
+	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
 // NewOrganizationUser registers a new resource with the given unique name, arguments, and options.
@@ -71,28 +77,40 @@ func GetOrganizationUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering OrganizationUser resources.
 type organizationUserState struct {
 	// This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	Accepted *bool `pulumi:"accepted"`
 	// Time of creation
 	CreateTime *string `pulumi:"createTime"`
 	// The email address of the user who sent an invitation to the user.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	InvitedBy *string `pulumi:"invitedBy"`
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId *string `pulumi:"organizationId"`
 	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail *string `pulumi:"userEmail"`
+	// The unique organization user ID
+	UserId *string `pulumi:"userId"`
 }
 
 type OrganizationUserState struct {
 	// This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	Accepted pulumi.BoolPtrInput
 	// Time of creation
 	CreateTime pulumi.StringPtrInput
 	// The email address of the user who sent an invitation to the user.
+	//
+	// Deprecated: This field is deprecated and will be removed in the next major release.
 	InvitedBy pulumi.StringPtrInput
 	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
 	OrganizationId pulumi.StringPtrInput
 	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 	UserEmail pulumi.StringPtrInput
+	// The unique organization user ID
+	UserId pulumi.StringPtrInput
 }
 
 func (OrganizationUserState) ElementType() reflect.Type {
@@ -202,6 +220,8 @@ func (o OrganizationUserOutput) ToOrganizationUserOutputWithContext(ctx context.
 }
 
 // This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
+//
+// Deprecated: This field is deprecated and will be removed in the next major release.
 func (o OrganizationUserOutput) Accepted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OrganizationUser) pulumi.BoolOutput { return v.Accepted }).(pulumi.BoolOutput)
 }
@@ -212,6 +232,8 @@ func (o OrganizationUserOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The email address of the user who sent an invitation to the user.
+//
+// Deprecated: This field is deprecated and will be removed in the next major release.
 func (o OrganizationUserOutput) InvitedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUser) pulumi.StringOutput { return v.InvitedBy }).(pulumi.StringOutput)
 }
@@ -224,6 +246,11 @@ func (o OrganizationUserOutput) OrganizationId() pulumi.StringOutput {
 // This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
 func (o OrganizationUserOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationUser) pulumi.StringOutput { return v.UserEmail }).(pulumi.StringOutput)
+}
+
+// The unique organization user ID
+func (o OrganizationUserOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationUser) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
 type OrganizationUserArrayOutput struct{ *pulumi.OutputState }
