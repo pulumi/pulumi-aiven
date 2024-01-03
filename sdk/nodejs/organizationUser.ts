@@ -43,6 +43,8 @@ export class OrganizationUser extends pulumi.CustomResource {
 
     /**
      * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. 
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
@@ -51,6 +53,8 @@ export class OrganizationUser extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The email address of the user who sent an invitation to the user.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. 
      */
     public /*out*/ readonly invitedBy!: pulumi.Output<string>;
     /**
@@ -61,6 +65,10 @@ export class OrganizationUser extends pulumi.CustomResource {
      * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly userEmail!: pulumi.Output<string>;
+    /**
+     * The unique organization user ID
+     */
+    public /*out*/ readonly userId!: pulumi.Output<string>;
 
     /**
      * Create a OrganizationUser resource with the given unique name, arguments, and options.
@@ -80,6 +88,7 @@ export class OrganizationUser extends pulumi.CustomResource {
             resourceInputs["invitedBy"] = state ? state.invitedBy : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["userEmail"] = state ? state.userEmail : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
             const args = argsOrState as OrganizationUserArgs | undefined;
             if ((!args || args.organizationId === undefined) && !opts.urn) {
@@ -93,6 +102,7 @@ export class OrganizationUser extends pulumi.CustomResource {
             resourceInputs["accepted"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["invitedBy"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(OrganizationUser.__pulumiType, name, resourceInputs, opts);
@@ -105,6 +115,8 @@ export class OrganizationUser extends pulumi.CustomResource {
 export interface OrganizationUserState {
     /**
      * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. 
      */
     accepted?: pulumi.Input<boolean>;
     /**
@@ -113,6 +125,8 @@ export interface OrganizationUserState {
     createTime?: pulumi.Input<string>;
     /**
      * The email address of the user who sent an invitation to the user.
+     *
+     * @deprecated This field is deprecated and will be removed in the next major release. 
      */
     invitedBy?: pulumi.Input<string>;
     /**
@@ -123,6 +137,10 @@ export interface OrganizationUserState {
      * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
      */
     userEmail?: pulumi.Input<string>;
+    /**
+     * The unique organization user ID
+     */
+    userId?: pulumi.Input<string>;
 }
 
 /**

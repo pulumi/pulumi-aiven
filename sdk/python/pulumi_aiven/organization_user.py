@@ -56,7 +56,8 @@ class _OrganizationUserState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  invited_by: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 user_email: Optional[pulumi.Input[str]] = None):
+                 user_email: Optional[pulumi.Input[str]] = None,
+                 user_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OrganizationUser resources.
         :param pulumi.Input[bool] accepted: This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
@@ -64,17 +65,26 @@ class _OrganizationUserState:
         :param pulumi.Input[str] invited_by: The email address of the user who sent an invitation to the user.
         :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] user_id: The unique organization user ID
         """
+        if accepted is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
+            pulumi.log.warn("""accepted is deprecated: This field is deprecated and will be removed in the next major release. """)
         if accepted is not None:
             pulumi.set(__self__, "accepted", accepted)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if invited_by is not None:
+            warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
+            pulumi.log.warn("""invited_by is deprecated: This field is deprecated and will be removed in the next major release. """)
         if invited_by is not None:
             pulumi.set(__self__, "invited_by", invited_by)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if user_email is not None:
             pulumi.set(__self__, "user_email", user_email)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
 
     @property
     @pulumi.getter
@@ -82,6 +92,9 @@ class _OrganizationUserState:
         """
         This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
+        pulumi.log.warn("""accepted is deprecated: This field is deprecated and will be removed in the next major release. """)
+
         return pulumi.get(self, "accepted")
 
     @accepted.setter
@@ -106,6 +119,9 @@ class _OrganizationUserState:
         """
         The email address of the user who sent an invitation to the user.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
+        pulumi.log.warn("""invited_by is deprecated: This field is deprecated and will be removed in the next major release. """)
+
         return pulumi.get(self, "invited_by")
 
     @invited_by.setter
@@ -135,6 +151,18 @@ class _OrganizationUserState:
     @user_email.setter
     def user_email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_email", value)
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique organization user ID
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_id", value)
 
 
 class OrganizationUser(pulumi.CustomResource):
@@ -209,6 +237,7 @@ class OrganizationUser(pulumi.CustomResource):
             __props__.__dict__["accepted"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["invited_by"] = None
+            __props__.__dict__["user_id"] = None
         super(OrganizationUser, __self__).__init__(
             'aiven:index/organizationUser:OrganizationUser',
             resource_name,
@@ -223,7 +252,8 @@ class OrganizationUser(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             invited_by: Optional[pulumi.Input[str]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
-            user_email: Optional[pulumi.Input[str]] = None) -> 'OrganizationUser':
+            user_email: Optional[pulumi.Input[str]] = None,
+            user_id: Optional[pulumi.Input[str]] = None) -> 'OrganizationUser':
         """
         Get an existing OrganizationUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -236,6 +266,7 @@ class OrganizationUser(pulumi.CustomResource):
         :param pulumi.Input[str] invited_by: The email address of the user who sent an invitation to the user.
         :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] user_id: The unique organization user ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -246,6 +277,7 @@ class OrganizationUser(pulumi.CustomResource):
         __props__.__dict__["invited_by"] = invited_by
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["user_email"] = user_email
+        __props__.__dict__["user_id"] = user_id
         return OrganizationUser(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -254,6 +286,9 @@ class OrganizationUser(pulumi.CustomResource):
         """
         This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
+        pulumi.log.warn("""accepted is deprecated: This field is deprecated and will be removed in the next major release. """)
+
         return pulumi.get(self, "accepted")
 
     @property
@@ -270,6 +305,9 @@ class OrganizationUser(pulumi.CustomResource):
         """
         The email address of the user who sent an invitation to the user.
         """
+        warnings.warn("""This field is deprecated and will be removed in the next major release. """, DeprecationWarning)
+        pulumi.log.warn("""invited_by is deprecated: This field is deprecated and will be removed in the next major release. """)
+
         return pulumi.get(self, "invited_by")
 
     @property
@@ -287,4 +325,12 @@ class OrganizationUser(pulumi.CustomResource):
         This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
+
+    @property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> pulumi.Output[str]:
+        """
+        The unique organization user ID
+        """
+        return pulumi.get(self, "user_id")
 

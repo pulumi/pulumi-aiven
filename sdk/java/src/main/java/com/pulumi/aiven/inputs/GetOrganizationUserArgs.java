@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeArgs {
@@ -15,14 +17,14 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
     public static final GetOrganizationUserArgs Empty = new GetOrganizationUserArgs();
 
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique organization ID.
      * 
      */
     public Output<String> organizationId() {
@@ -30,18 +32,33 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address
      * 
      */
-    @Import(name="userEmail", required=true)
-    private Output<String> userEmail;
+    @Import(name="userEmail")
+    private @Nullable Output<String> userEmail;
 
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address
      * 
      */
-    public Output<String> userEmail() {
-        return this.userEmail;
+    public Optional<Output<String>> userEmail() {
+        return Optional.ofNullable(this.userEmail);
+    }
+
+    /**
+     * The unique organization user ID
+     * 
+     */
+    @Import(name="userId")
+    private @Nullable Output<String> userId;
+
+    /**
+     * @return The unique organization user ID
+     * 
+     */
+    public Optional<Output<String>> userId() {
+        return Optional.ofNullable(this.userId);
     }
 
     private GetOrganizationUserArgs() {}
@@ -49,6 +66,7 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
     private GetOrganizationUserArgs(GetOrganizationUserArgs $) {
         this.organizationId = $.organizationId;
         this.userEmail = $.userEmail;
+        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -70,7 +88,7 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The unique organization ID.
          * 
          * @return builder
          * 
@@ -81,7 +99,7 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The unique organization ID.
          * 
          * @return builder
          * 
@@ -91,18 +109,18 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address
          * 
          * @return builder
          * 
          */
-        public Builder userEmail(Output<String> userEmail) {
+        public Builder userEmail(@Nullable Output<String> userEmail) {
             $.userEmail = userEmail;
             return this;
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address
          * 
          * @return builder
          * 
@@ -111,12 +129,30 @@ public final class GetOrganizationUserArgs extends com.pulumi.resources.InvokeAr
             return userEmail(Output.of(userEmail));
         }
 
+        /**
+         * @param userId The unique organization user ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userId(@Nullable Output<String> userId) {
+            $.userId = userId;
+            return this;
+        }
+
+        /**
+         * @param userId The unique organization user ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userId(String userId) {
+            return userId(Output.of(userId));
+        }
+
         public GetOrganizationUserArgs build() {
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationUserArgs", "organizationId");
-            }
-            if ($.userEmail == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationUserArgs", "userEmail");
             }
             return $;
         }

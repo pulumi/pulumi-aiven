@@ -28,16 +28,22 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique organization ID.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address
         /// </summary>
-        [Input("userEmail", required: true)]
-        public string UserEmail { get; set; } = null!;
+        [Input("userEmail")]
+        public string? UserEmail { get; set; }
+
+        /// <summary>
+        /// The unique organization user ID
+        /// </summary>
+        [Input("userId")]
+        public string? UserId { get; set; }
 
         public GetOrganizationUserArgs()
         {
@@ -48,16 +54,22 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique organization ID.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address
         /// </summary>
-        [Input("userEmail", required: true)]
-        public Input<string> UserEmail { get; set; } = null!;
+        [Input("userEmail")]
+        public Input<string>? UserEmail { get; set; }
+
+        /// <summary>
+        /// The unique organization user ID
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         public GetOrganizationUserInvokeArgs()
         {
@@ -70,10 +82,6 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserResult
     {
         /// <summary>
-        /// This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
-        /// </summary>
-        public readonly bool Accepted;
-        /// <summary>
         /// Time of creation
         /// </summary>
         public readonly string CreateTime;
@@ -82,38 +90,35 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The email address of the user who sent an invitation to the user.
-        /// </summary>
-        public readonly string InvitedBy;
-        /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique organization ID.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address
         /// </summary>
-        public readonly string UserEmail;
+        public readonly string? UserEmail;
+        /// <summary>
+        /// The unique organization user ID
+        /// </summary>
+        public readonly string? UserId;
 
         [OutputConstructor]
         private GetOrganizationUserResult(
-            bool accepted,
-
             string createTime,
 
             string id,
 
-            string invitedBy,
-
             string organizationId,
 
-            string userEmail)
+            string? userEmail,
+
+            string? userId)
         {
-            Accepted = accepted;
             CreateTime = createTime;
             Id = id;
-            InvitedBy = invitedBy;
             OrganizationId = organizationId;
             UserEmail = userEmail;
+            UserId = userId;
         }
     }
 }

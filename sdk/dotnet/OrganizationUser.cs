@@ -51,6 +51,12 @@ namespace Pulumi.Aiven
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique organization user ID
+        /// </summary>
+        [Output("userId")]
+        public Output<string> UserId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a OrganizationUser resource with the given unique name, arguments, and options.
@@ -146,6 +152,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }
+
+        /// <summary>
+        /// The unique organization user ID
+        /// </summary>
+        [Input("userId")]
+        public Input<string>? UserId { get; set; }
 
         public OrganizationUserState()
         {

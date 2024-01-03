@@ -13,6 +13,7 @@ export function getOrganizationUser(args: GetOrganizationUserArgs, opts?: pulumi
     return pulumi.runtime.invoke("aiven:index/getOrganizationUser:getOrganizationUser", {
         "organizationId": args.organizationId,
         "userEmail": args.userEmail,
+        "userId": args.userId,
     }, opts);
 }
 
@@ -21,23 +22,23 @@ export function getOrganizationUser(args: GetOrganizationUserArgs, opts?: pulumi
  */
 export interface GetOrganizationUserArgs {
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID.
      */
     organizationId: string;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address
      */
-    userEmail: string;
+    userEmail?: string;
+    /**
+     * The unique organization user ID
+     */
+    userId?: string;
 }
 
 /**
  * A collection of values returned by getOrganizationUser.
  */
 export interface GetOrganizationUserResult {
-    /**
-     * This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
-     */
-    readonly accepted: boolean;
     /**
      * Time of creation
      */
@@ -47,17 +48,17 @@ export interface GetOrganizationUserResult {
      */
     readonly id: string;
     /**
-     * The email address of the user who sent an invitation to the user.
-     */
-    readonly invitedBy: string;
-    /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID.
      */
     readonly organizationId: string;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address
      */
-    readonly userEmail: string;
+    readonly userEmail?: string;
+    /**
+     * The unique organization user ID
+     */
+    readonly userId?: string;
 }
 /**
  * The Organization User data source provides information about the existing Aiven Organization User.
@@ -71,11 +72,15 @@ export function getOrganizationUserOutput(args: GetOrganizationUserOutputArgs, o
  */
 export interface GetOrganizationUserOutputArgs {
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address
      */
-    userEmail: pulumi.Input<string>;
+    userEmail?: pulumi.Input<string>;
+    /**
+     * The unique organization user ID
+     */
+    userId?: pulumi.Input<string>;
 }

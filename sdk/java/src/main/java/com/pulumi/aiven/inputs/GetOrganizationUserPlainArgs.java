@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -14,14 +16,14 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
     public static final GetOrganizationUserPlainArgs Empty = new GetOrganizationUserPlainArgs();
 
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID.
      * 
      */
     @Import(name="organizationId", required=true)
     private String organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique organization ID.
      * 
      */
     public String organizationId() {
@@ -29,18 +31,33 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address
      * 
      */
-    @Import(name="userEmail", required=true)
-    private String userEmail;
+    @Import(name="userEmail")
+    private @Nullable String userEmail;
 
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address
      * 
      */
-    public String userEmail() {
-        return this.userEmail;
+    public Optional<String> userEmail() {
+        return Optional.ofNullable(this.userEmail);
+    }
+
+    /**
+     * The unique organization user ID
+     * 
+     */
+    @Import(name="userId")
+    private @Nullable String userId;
+
+    /**
+     * @return The unique organization user ID
+     * 
+     */
+    public Optional<String> userId() {
+        return Optional.ofNullable(this.userId);
     }
 
     private GetOrganizationUserPlainArgs() {}
@@ -48,6 +65,7 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
     private GetOrganizationUserPlainArgs(GetOrganizationUserPlainArgs $) {
         this.organizationId = $.organizationId;
         this.userEmail = $.userEmail;
+        this.userId = $.userId;
     }
 
     public static Builder builder() {
@@ -69,7 +87,7 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The unique organization ID.
          * 
          * @return builder
          * 
@@ -80,22 +98,30 @@ public final class GetOrganizationUserPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address
          * 
          * @return builder
          * 
          */
-        public Builder userEmail(String userEmail) {
+        public Builder userEmail(@Nullable String userEmail) {
             $.userEmail = userEmail;
+            return this;
+        }
+
+        /**
+         * @param userId The unique organization user ID
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userId(@Nullable String userId) {
+            $.userId = userId;
             return this;
         }
 
         public GetOrganizationUserPlainArgs build() {
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("GetOrganizationUserPlainArgs", "organizationId");
-            }
-            if ($.userEmail == null) {
-                throw new MissingRequiredPropertyException("GetOrganizationUserPlainArgs", "userEmail");
             }
             return $;
         }

@@ -24,26 +24,26 @@ func LookupOrganizationUser(ctx *pulumi.Context, args *LookupOrganizationUserArg
 
 // A collection of arguments for invoking getOrganizationUser.
 type LookupOrganizationUserArgs struct {
-	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+	// The unique organization ID.
 	OrganizationId string `pulumi:"organizationId"`
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
-	UserEmail string `pulumi:"userEmail"`
+	// This is a user email address
+	UserEmail *string `pulumi:"userEmail"`
+	// The unique organization user ID
+	UserId *string `pulumi:"userId"`
 }
 
 // A collection of values returned by getOrganizationUser.
 type LookupOrganizationUserResult struct {
-	// This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
-	Accepted bool `pulumi:"accepted"`
 	// Time of creation
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The email address of the user who sent an invitation to the user.
-	InvitedBy string `pulumi:"invitedBy"`
-	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+	// The unique organization ID.
 	OrganizationId string `pulumi:"organizationId"`
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
-	UserEmail string `pulumi:"userEmail"`
+	// This is a user email address
+	UserEmail *string `pulumi:"userEmail"`
+	// The unique organization user ID
+	UserId *string `pulumi:"userId"`
 }
 
 func LookupOrganizationUserOutput(ctx *pulumi.Context, args LookupOrganizationUserOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationUserResultOutput {
@@ -61,10 +61,12 @@ func LookupOrganizationUserOutput(ctx *pulumi.Context, args LookupOrganizationUs
 
 // A collection of arguments for invoking getOrganizationUser.
 type LookupOrganizationUserOutputArgs struct {
-	// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+	// The unique organization ID.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
-	// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
-	UserEmail pulumi.StringInput `pulumi:"userEmail"`
+	// This is a user email address
+	UserEmail pulumi.StringPtrInput `pulumi:"userEmail"`
+	// The unique organization user ID
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
 }
 
 func (LookupOrganizationUserOutputArgs) ElementType() reflect.Type {
@@ -86,11 +88,6 @@ func (o LookupOrganizationUserResultOutput) ToLookupOrganizationUserResultOutput
 	return o
 }
 
-// This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
-func (o LookupOrganizationUserResultOutput) Accepted() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupOrganizationUserResult) bool { return v.Accepted }).(pulumi.BoolOutput)
-}
-
 // Time of creation
 func (o LookupOrganizationUserResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -101,19 +98,19 @@ func (o LookupOrganizationUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The email address of the user who sent an invitation to the user.
-func (o LookupOrganizationUserResultOutput) InvitedBy() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationUserResult) string { return v.InvitedBy }).(pulumi.StringOutput)
-}
-
-// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+// The unique organization ID.
 func (o LookupOrganizationUserResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
-func (o LookupOrganizationUserResultOutput) UserEmail() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationUserResult) string { return v.UserEmail }).(pulumi.StringOutput)
+// This is a user email address
+func (o LookupOrganizationUserResultOutput) UserEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationUserResult) *string { return v.UserEmail }).(pulumi.StringPtrOutput)
+}
+
+// The unique organization user ID
+func (o LookupOrganizationUserResultOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationUserResult) *string { return v.UserId }).(pulumi.StringPtrOutput)
 }
 
 func init() {
