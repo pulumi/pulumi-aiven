@@ -21552,7 +21552,8 @@
             "properties": {
                 "accepted": {
                     "type": "boolean",
-                    "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n"
+                    "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in the next major release. "
                 },
                 "createTime": {
                     "type": "string",
@@ -21560,7 +21561,8 @@
                 },
                 "invitedBy": {
                     "type": "string",
-                    "description": "The email address of the user who sent an invitation to the user.\n"
+                    "description": "The email address of the user who sent an invitation to the user.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in the next major release. "
                 },
                 "organizationId": {
                     "type": "string",
@@ -21569,6 +21571,10 @@
                 "userEmail": {
                     "type": "string",
                     "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The unique organization user ID\n"
                 }
             },
             "required": [
@@ -21576,7 +21582,8 @@
                 "createTime",
                 "invitedBy",
                 "organizationId",
-                "userEmail"
+                "userEmail",
+                "userId"
             ],
             "inputProperties": {
                 "organizationId": {
@@ -21599,7 +21606,8 @@
                 "properties": {
                     "accepted": {
                         "type": "boolean",
-                        "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n"
+                        "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in the next major release. "
                     },
                     "createTime": {
                         "type": "string",
@@ -21607,7 +21615,8 @@
                     },
                     "invitedBy": {
                         "type": "string",
-                        "description": "The email address of the user who sent an invitation to the user.\n"
+                        "description": "The email address of the user who sent an invitation to the user.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in the next major release. "
                     },
                     "organizationId": {
                         "type": "string",
@@ -21618,6 +21627,10 @@
                         "type": "string",
                         "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The unique organization user ID\n"
                     }
                 },
                 "type": "object"
@@ -29339,26 +29352,25 @@
                 "properties": {
                     "organizationId": {
                         "type": "string",
-                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The unique organization ID.\n"
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "This is a user email address\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The unique organization user ID\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "organizationId",
-                    "userEmail"
+                    "organizationId"
                 ]
             },
             "outputs": {
                 "description": "A collection of values returned by getOrganizationUser.\n",
                 "properties": {
-                    "accepted": {
-                        "type": "boolean",
-                        "description": "This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.\n"
-                    },
                     "createTime": {
                         "type": "string",
                         "description": "Time of creation\n"
@@ -29367,26 +29379,23 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
-                    "invitedBy": {
-                        "type": "string",
-                        "description": "The email address of the user who sent an invitation to the user.\n"
-                    },
                     "organizationId": {
                         "type": "string",
-                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The unique organization ID.\n"
                     },
                     "userEmail": {
                         "type": "string",
-                        "description": "This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "This is a user email address\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The unique organization user ID\n"
                     }
                 },
                 "type": "object",
                 "required": [
-                    "accepted",
                     "createTime",
-                    "invitedBy",
                     "organizationId",
-                    "userEmail",
                     "id"
                 ]
             }
