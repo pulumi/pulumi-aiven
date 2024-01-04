@@ -20,6 +20,8 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? FlushMessages;
         public readonly string? FlushMs;
         public readonly string? IndexIntervalBytes;
+        public readonly string? LocalRetentionBytes;
+        public readonly string? LocalRetentionMs;
         public readonly string? MaxCompactionLagMs;
         public readonly string? MaxMessageBytes;
         public readonly bool? MessageDownconversionEnable;
@@ -30,6 +32,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string? MinCompactionLagMs;
         public readonly string? MinInsyncReplicas;
         public readonly bool? Preallocate;
+        public readonly bool? RemoteStorageEnable;
         public readonly string? RetentionBytes;
         public readonly string? RetentionMs;
         public readonly string? SegmentBytes;
@@ -54,6 +57,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? indexIntervalBytes,
 
+            string? localRetentionBytes,
+
+            string? localRetentionMs,
+
             string? maxCompactionLagMs,
 
             string? maxMessageBytes,
@@ -73,6 +80,8 @@ namespace Pulumi.Aiven.Outputs
             string? minInsyncReplicas,
 
             bool? preallocate,
+
+            bool? remoteStorageEnable,
 
             string? retentionBytes,
 
@@ -95,6 +104,8 @@ namespace Pulumi.Aiven.Outputs
             FlushMessages = flushMessages;
             FlushMs = flushMs;
             IndexIntervalBytes = indexIntervalBytes;
+            LocalRetentionBytes = localRetentionBytes;
+            LocalRetentionMs = localRetentionMs;
             MaxCompactionLagMs = maxCompactionLagMs;
             MaxMessageBytes = maxMessageBytes;
             MessageDownconversionEnable = messageDownconversionEnable;
@@ -105,6 +116,7 @@ namespace Pulumi.Aiven.Outputs
             MinCompactionLagMs = minCompactionLagMs;
             MinInsyncReplicas = minInsyncReplicas;
             Preallocate = preallocate;
+            RemoteStorageEnable = remoteStorageEnable;
             RetentionBytes = retentionBytes;
             RetentionMs = retentionMs;
             SegmentBytes = segmentBytes;

@@ -7481,6 +7481,10 @@ class KafkaTopicConfig(dict):
             suggest = "flush_ms"
         elif key == "indexIntervalBytes":
             suggest = "index_interval_bytes"
+        elif key == "localRetentionBytes":
+            suggest = "local_retention_bytes"
+        elif key == "localRetentionMs":
+            suggest = "local_retention_ms"
         elif key == "maxCompactionLagMs":
             suggest = "max_compaction_lag_ms"
         elif key == "maxMessageBytes":
@@ -7499,6 +7503,8 @@ class KafkaTopicConfig(dict):
             suggest = "min_compaction_lag_ms"
         elif key == "minInsyncReplicas":
             suggest = "min_insync_replicas"
+        elif key == "remoteStorageEnable":
+            suggest = "remote_storage_enable"
         elif key == "retentionBytes":
             suggest = "retention_bytes"
         elif key == "retentionMs":
@@ -7533,6 +7539,8 @@ class KafkaTopicConfig(dict):
                  flush_messages: Optional[str] = None,
                  flush_ms: Optional[str] = None,
                  index_interval_bytes: Optional[str] = None,
+                 local_retention_bytes: Optional[str] = None,
+                 local_retention_ms: Optional[str] = None,
                  max_compaction_lag_ms: Optional[str] = None,
                  max_message_bytes: Optional[str] = None,
                  message_downconversion_enable: Optional[bool] = None,
@@ -7543,6 +7551,7 @@ class KafkaTopicConfig(dict):
                  min_compaction_lag_ms: Optional[str] = None,
                  min_insync_replicas: Optional[str] = None,
                  preallocate: Optional[bool] = None,
+                 remote_storage_enable: Optional[bool] = None,
                  retention_bytes: Optional[str] = None,
                  retention_ms: Optional[str] = None,
                  segment_bytes: Optional[str] = None,
@@ -7558,6 +7567,8 @@ class KafkaTopicConfig(dict):
         :param str flush_messages: flush.messages value
         :param str flush_ms: flush.ms value
         :param str index_interval_bytes: index.interval.bytes value
+        :param str local_retention_bytes: local.retention.bytes value
+        :param str local_retention_ms: local.retention.ms value
         :param str max_compaction_lag_ms: max.compaction.lag.ms value
         :param str max_message_bytes: max.message.bytes value
         :param bool message_downconversion_enable: message.downconversion.enable value
@@ -7568,6 +7579,7 @@ class KafkaTopicConfig(dict):
         :param str min_compaction_lag_ms: min.compaction.lag.ms value
         :param str min_insync_replicas: min.insync.replicas value
         :param bool preallocate: preallocate value
+        :param bool remote_storage_enable: remote.storage.enable value
         :param str retention_bytes: retention.bytes value
         :param str retention_ms: retention.ms value
         :param str segment_bytes: segment.bytes value
@@ -7590,6 +7602,10 @@ class KafkaTopicConfig(dict):
             pulumi.set(__self__, "flush_ms", flush_ms)
         if index_interval_bytes is not None:
             pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if local_retention_bytes is not None:
+            pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
+        if local_retention_ms is not None:
+            pulumi.set(__self__, "local_retention_ms", local_retention_ms)
         if max_compaction_lag_ms is not None:
             pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
         if max_message_bytes is not None:
@@ -7610,6 +7626,8 @@ class KafkaTopicConfig(dict):
             pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if preallocate is not None:
             pulumi.set(__self__, "preallocate", preallocate)
+        if remote_storage_enable is not None:
+            pulumi.set(__self__, "remote_storage_enable", remote_storage_enable)
         if retention_bytes is not None:
             pulumi.set(__self__, "retention_bytes", retention_bytes)
         if retention_ms is not None:
@@ -7680,6 +7698,22 @@ class KafkaTopicConfig(dict):
         index.interval.bytes value
         """
         return pulumi.get(self, "index_interval_bytes")
+
+    @property
+    @pulumi.getter(name="localRetentionBytes")
+    def local_retention_bytes(self) -> Optional[str]:
+        """
+        local.retention.bytes value
+        """
+        return pulumi.get(self, "local_retention_bytes")
+
+    @property
+    @pulumi.getter(name="localRetentionMs")
+    def local_retention_ms(self) -> Optional[str]:
+        """
+        local.retention.ms value
+        """
+        return pulumi.get(self, "local_retention_ms")
 
     @property
     @pulumi.getter(name="maxCompactionLagMs")
@@ -7760,6 +7794,14 @@ class KafkaTopicConfig(dict):
         preallocate value
         """
         return pulumi.get(self, "preallocate")
+
+    @property
+    @pulumi.getter(name="remoteStorageEnable")
+    def remote_storage_enable(self) -> Optional[bool]:
+        """
+        remote.storage.enable value
+        """
+        return pulumi.get(self, "remote_storage_enable")
 
     @property
     @pulumi.getter(name="retentionBytes")
@@ -21798,6 +21840,8 @@ class GetKafkaTopicConfigResult(dict):
                  flush_messages: Optional[str] = None,
                  flush_ms: Optional[str] = None,
                  index_interval_bytes: Optional[str] = None,
+                 local_retention_bytes: Optional[str] = None,
+                 local_retention_ms: Optional[str] = None,
                  max_compaction_lag_ms: Optional[str] = None,
                  max_message_bytes: Optional[str] = None,
                  message_downconversion_enable: Optional[bool] = None,
@@ -21808,6 +21852,7 @@ class GetKafkaTopicConfigResult(dict):
                  min_compaction_lag_ms: Optional[str] = None,
                  min_insync_replicas: Optional[str] = None,
                  preallocate: Optional[bool] = None,
+                 remote_storage_enable: Optional[bool] = None,
                  retention_bytes: Optional[str] = None,
                  retention_ms: Optional[str] = None,
                  segment_bytes: Optional[str] = None,
@@ -21829,6 +21874,10 @@ class GetKafkaTopicConfigResult(dict):
             pulumi.set(__self__, "flush_ms", flush_ms)
         if index_interval_bytes is not None:
             pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if local_retention_bytes is not None:
+            pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
+        if local_retention_ms is not None:
+            pulumi.set(__self__, "local_retention_ms", local_retention_ms)
         if max_compaction_lag_ms is not None:
             pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
         if max_message_bytes is not None:
@@ -21849,6 +21898,8 @@ class GetKafkaTopicConfigResult(dict):
             pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if preallocate is not None:
             pulumi.set(__self__, "preallocate", preallocate)
+        if remote_storage_enable is not None:
+            pulumi.set(__self__, "remote_storage_enable", remote_storage_enable)
         if retention_bytes is not None:
             pulumi.set(__self__, "retention_bytes", retention_bytes)
         if retention_ms is not None:
@@ -21900,6 +21951,16 @@ class GetKafkaTopicConfigResult(dict):
         return pulumi.get(self, "index_interval_bytes")
 
     @property
+    @pulumi.getter(name="localRetentionBytes")
+    def local_retention_bytes(self) -> Optional[str]:
+        return pulumi.get(self, "local_retention_bytes")
+
+    @property
+    @pulumi.getter(name="localRetentionMs")
+    def local_retention_ms(self) -> Optional[str]:
+        return pulumi.get(self, "local_retention_ms")
+
+    @property
     @pulumi.getter(name="maxCompactionLagMs")
     def max_compaction_lag_ms(self) -> Optional[str]:
         return pulumi.get(self, "max_compaction_lag_ms")
@@ -21948,6 +22009,11 @@ class GetKafkaTopicConfigResult(dict):
     @pulumi.getter
     def preallocate(self) -> Optional[bool]:
         return pulumi.get(self, "preallocate")
+
+    @property
+    @pulumi.getter(name="remoteStorageEnable")
+    def remote_storage_enable(self) -> Optional[bool]:
+        return pulumi.get(self, "remote_storage_enable")
 
     @property
     @pulumi.getter(name="retentionBytes")

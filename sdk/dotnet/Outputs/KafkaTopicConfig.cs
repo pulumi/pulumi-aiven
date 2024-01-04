@@ -42,6 +42,14 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IndexIntervalBytes;
         /// <summary>
+        /// local.retention.bytes value
+        /// </summary>
+        public readonly string? LocalRetentionBytes;
+        /// <summary>
+        /// local.retention.ms value
+        /// </summary>
+        public readonly string? LocalRetentionMs;
+        /// <summary>
         /// max.compaction.lag.ms value
         /// </summary>
         public readonly string? MaxCompactionLagMs;
@@ -81,6 +89,10 @@ namespace Pulumi.Aiven.Outputs
         /// preallocate value
         /// </summary>
         public readonly bool? Preallocate;
+        /// <summary>
+        /// remote.storage.enable value
+        /// </summary>
+        public readonly bool? RemoteStorageEnable;
         /// <summary>
         /// retention.bytes value
         /// </summary>
@@ -126,6 +138,10 @@ namespace Pulumi.Aiven.Outputs
 
             string? indexIntervalBytes,
 
+            string? localRetentionBytes,
+
+            string? localRetentionMs,
+
             string? maxCompactionLagMs,
 
             string? maxMessageBytes,
@@ -145,6 +161,8 @@ namespace Pulumi.Aiven.Outputs
             string? minInsyncReplicas,
 
             bool? preallocate,
+
+            bool? remoteStorageEnable,
 
             string? retentionBytes,
 
@@ -167,6 +185,8 @@ namespace Pulumi.Aiven.Outputs
             FlushMessages = flushMessages;
             FlushMs = flushMs;
             IndexIntervalBytes = indexIntervalBytes;
+            LocalRetentionBytes = localRetentionBytes;
+            LocalRetentionMs = localRetentionMs;
             MaxCompactionLagMs = maxCompactionLagMs;
             MaxMessageBytes = maxMessageBytes;
             MessageDownconversionEnable = messageDownconversionEnable;
@@ -177,6 +197,7 @@ namespace Pulumi.Aiven.Outputs
             MinCompactionLagMs = minCompactionLagMs;
             MinInsyncReplicas = minInsyncReplicas;
             Preallocate = preallocate;
+            RemoteStorageEnable = remoteStorageEnable;
             RetentionBytes = retentionBytes;
             RetentionMs = retentionMs;
             SegmentBytes = segmentBytes;

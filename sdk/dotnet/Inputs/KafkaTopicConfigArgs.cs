@@ -55,6 +55,18 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IndexIntervalBytes { get; set; }
 
         /// <summary>
+        /// local.retention.bytes value
+        /// </summary>
+        [Input("localRetentionBytes")]
+        public Input<string>? LocalRetentionBytes { get; set; }
+
+        /// <summary>
+        /// local.retention.ms value
+        /// </summary>
+        [Input("localRetentionMs")]
+        public Input<string>? LocalRetentionMs { get; set; }
+
+        /// <summary>
         /// max.compaction.lag.ms value
         /// </summary>
         [Input("maxCompactionLagMs")]
@@ -113,6 +125,12 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("preallocate")]
         public Input<bool>? Preallocate { get; set; }
+
+        /// <summary>
+        /// remote.storage.enable value
+        /// </summary>
+        [Input("remoteStorageEnable")]
+        public Input<bool>? RemoteStorageEnable { get; set; }
 
         /// <summary>
         /// retention.bytes value

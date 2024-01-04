@@ -1376,6 +1376,8 @@ export interface GetKafkaTopicConfig {
     flushMessages?: string;
     flushMs?: string;
     indexIntervalBytes?: string;
+    localRetentionBytes?: string;
+    localRetentionMs?: string;
     maxCompactionLagMs?: string;
     maxMessageBytes?: string;
     messageDownconversionEnable?: boolean;
@@ -1386,6 +1388,7 @@ export interface GetKafkaTopicConfig {
     minCompactionLagMs?: string;
     minInsyncReplicas?: string;
     preallocate?: boolean;
+    remoteStorageEnable?: boolean;
     retentionBytes?: string;
     retentionMs?: string;
     segmentBytes?: string;
@@ -3522,6 +3525,14 @@ export interface KafkaTopicConfig {
      */
     indexIntervalBytes?: string;
     /**
+     * local.retention.bytes value
+     */
+    localRetentionBytes?: string;
+    /**
+     * local.retention.ms value
+     */
+    localRetentionMs?: string;
+    /**
      * max.compaction.lag.ms value
      */
     maxCompactionLagMs?: string;
@@ -3561,6 +3572,10 @@ export interface KafkaTopicConfig {
      * preallocate value
      */
     preallocate?: boolean;
+    /**
+     * remote.storage.enable value
+     */
+    remoteStorageEnable?: boolean;
     /**
      * retention.bytes value
      */

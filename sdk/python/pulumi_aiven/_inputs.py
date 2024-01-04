@@ -7664,6 +7664,8 @@ class KafkaTopicConfigArgs:
                  flush_messages: Optional[pulumi.Input[str]] = None,
                  flush_ms: Optional[pulumi.Input[str]] = None,
                  index_interval_bytes: Optional[pulumi.Input[str]] = None,
+                 local_retention_bytes: Optional[pulumi.Input[str]] = None,
+                 local_retention_ms: Optional[pulumi.Input[str]] = None,
                  max_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
                  max_message_bytes: Optional[pulumi.Input[str]] = None,
                  message_downconversion_enable: Optional[pulumi.Input[bool]] = None,
@@ -7674,6 +7676,7 @@ class KafkaTopicConfigArgs:
                  min_compaction_lag_ms: Optional[pulumi.Input[str]] = None,
                  min_insync_replicas: Optional[pulumi.Input[str]] = None,
                  preallocate: Optional[pulumi.Input[bool]] = None,
+                 remote_storage_enable: Optional[pulumi.Input[bool]] = None,
                  retention_bytes: Optional[pulumi.Input[str]] = None,
                  retention_ms: Optional[pulumi.Input[str]] = None,
                  segment_bytes: Optional[pulumi.Input[str]] = None,
@@ -7689,6 +7692,8 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[str] flush_messages: flush.messages value
         :param pulumi.Input[str] flush_ms: flush.ms value
         :param pulumi.Input[str] index_interval_bytes: index.interval.bytes value
+        :param pulumi.Input[str] local_retention_bytes: local.retention.bytes value
+        :param pulumi.Input[str] local_retention_ms: local.retention.ms value
         :param pulumi.Input[str] max_compaction_lag_ms: max.compaction.lag.ms value
         :param pulumi.Input[str] max_message_bytes: max.message.bytes value
         :param pulumi.Input[bool] message_downconversion_enable: message.downconversion.enable value
@@ -7699,6 +7704,7 @@ class KafkaTopicConfigArgs:
         :param pulumi.Input[str] min_compaction_lag_ms: min.compaction.lag.ms value
         :param pulumi.Input[str] min_insync_replicas: min.insync.replicas value
         :param pulumi.Input[bool] preallocate: preallocate value
+        :param pulumi.Input[bool] remote_storage_enable: remote.storage.enable value
         :param pulumi.Input[str] retention_bytes: retention.bytes value
         :param pulumi.Input[str] retention_ms: retention.ms value
         :param pulumi.Input[str] segment_bytes: segment.bytes value
@@ -7721,6 +7727,10 @@ class KafkaTopicConfigArgs:
             pulumi.set(__self__, "flush_ms", flush_ms)
         if index_interval_bytes is not None:
             pulumi.set(__self__, "index_interval_bytes", index_interval_bytes)
+        if local_retention_bytes is not None:
+            pulumi.set(__self__, "local_retention_bytes", local_retention_bytes)
+        if local_retention_ms is not None:
+            pulumi.set(__self__, "local_retention_ms", local_retention_ms)
         if max_compaction_lag_ms is not None:
             pulumi.set(__self__, "max_compaction_lag_ms", max_compaction_lag_ms)
         if max_message_bytes is not None:
@@ -7741,6 +7751,8 @@ class KafkaTopicConfigArgs:
             pulumi.set(__self__, "min_insync_replicas", min_insync_replicas)
         if preallocate is not None:
             pulumi.set(__self__, "preallocate", preallocate)
+        if remote_storage_enable is not None:
+            pulumi.set(__self__, "remote_storage_enable", remote_storage_enable)
         if retention_bytes is not None:
             pulumi.set(__self__, "retention_bytes", retention_bytes)
         if retention_ms is not None:
@@ -7842,6 +7854,30 @@ class KafkaTopicConfigArgs:
     @index_interval_bytes.setter
     def index_interval_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "index_interval_bytes", value)
+
+    @property
+    @pulumi.getter(name="localRetentionBytes")
+    def local_retention_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        local.retention.bytes value
+        """
+        return pulumi.get(self, "local_retention_bytes")
+
+    @local_retention_bytes.setter
+    def local_retention_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_retention_bytes", value)
+
+    @property
+    @pulumi.getter(name="localRetentionMs")
+    def local_retention_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        local.retention.ms value
+        """
+        return pulumi.get(self, "local_retention_ms")
+
+    @local_retention_ms.setter
+    def local_retention_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_retention_ms", value)
 
     @property
     @pulumi.getter(name="maxCompactionLagMs")
@@ -7962,6 +7998,18 @@ class KafkaTopicConfigArgs:
     @preallocate.setter
     def preallocate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "preallocate", value)
+
+    @property
+    @pulumi.getter(name="remoteStorageEnable")
+    def remote_storage_enable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        remote.storage.enable value
+        """
+        return pulumi.get(self, "remote_storage_enable")
+
+    @remote_storage_enable.setter
+    def remote_storage_enable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remote_storage_enable", value)
 
     @property
     @pulumi.getter(name="retentionBytes")

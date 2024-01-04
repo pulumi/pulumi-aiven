@@ -49,6 +49,16 @@ public final class KafkaTopicConfig {
      */
     private @Nullable String indexIntervalBytes;
     /**
+     * @return local.retention.bytes value
+     * 
+     */
+    private @Nullable String localRetentionBytes;
+    /**
+     * @return local.retention.ms value
+     * 
+     */
+    private @Nullable String localRetentionMs;
+    /**
      * @return max.compaction.lag.ms value
      * 
      */
@@ -98,6 +108,11 @@ public final class KafkaTopicConfig {
      * 
      */
     private @Nullable Boolean preallocate;
+    /**
+     * @return remote.storage.enable value
+     * 
+     */
+    private @Nullable Boolean remoteStorageEnable;
     /**
      * @return retention.bytes value
      * 
@@ -189,6 +204,20 @@ public final class KafkaTopicConfig {
         return Optional.ofNullable(this.indexIntervalBytes);
     }
     /**
+     * @return local.retention.bytes value
+     * 
+     */
+    public Optional<String> localRetentionBytes() {
+        return Optional.ofNullable(this.localRetentionBytes);
+    }
+    /**
+     * @return local.retention.ms value
+     * 
+     */
+    public Optional<String> localRetentionMs() {
+        return Optional.ofNullable(this.localRetentionMs);
+    }
+    /**
      * @return max.compaction.lag.ms value
      * 
      */
@@ -257,6 +286,13 @@ public final class KafkaTopicConfig {
      */
     public Optional<Boolean> preallocate() {
         return Optional.ofNullable(this.preallocate);
+    }
+    /**
+     * @return remote.storage.enable value
+     * 
+     */
+    public Optional<Boolean> remoteStorageEnable() {
+        return Optional.ofNullable(this.remoteStorageEnable);
     }
     /**
      * @return retention.bytes value
@@ -328,6 +364,8 @@ public final class KafkaTopicConfig {
         private @Nullable String flushMessages;
         private @Nullable String flushMs;
         private @Nullable String indexIntervalBytes;
+        private @Nullable String localRetentionBytes;
+        private @Nullable String localRetentionMs;
         private @Nullable String maxCompactionLagMs;
         private @Nullable String maxMessageBytes;
         private @Nullable Boolean messageDownconversionEnable;
@@ -338,6 +376,7 @@ public final class KafkaTopicConfig {
         private @Nullable String minCompactionLagMs;
         private @Nullable String minInsyncReplicas;
         private @Nullable Boolean preallocate;
+        private @Nullable Boolean remoteStorageEnable;
         private @Nullable String retentionBytes;
         private @Nullable String retentionMs;
         private @Nullable String segmentBytes;
@@ -355,6 +394,8 @@ public final class KafkaTopicConfig {
     	      this.flushMessages = defaults.flushMessages;
     	      this.flushMs = defaults.flushMs;
     	      this.indexIntervalBytes = defaults.indexIntervalBytes;
+    	      this.localRetentionBytes = defaults.localRetentionBytes;
+    	      this.localRetentionMs = defaults.localRetentionMs;
     	      this.maxCompactionLagMs = defaults.maxCompactionLagMs;
     	      this.maxMessageBytes = defaults.maxMessageBytes;
     	      this.messageDownconversionEnable = defaults.messageDownconversionEnable;
@@ -365,6 +406,7 @@ public final class KafkaTopicConfig {
     	      this.minCompactionLagMs = defaults.minCompactionLagMs;
     	      this.minInsyncReplicas = defaults.minInsyncReplicas;
     	      this.preallocate = defaults.preallocate;
+    	      this.remoteStorageEnable = defaults.remoteStorageEnable;
     	      this.retentionBytes = defaults.retentionBytes;
     	      this.retentionMs = defaults.retentionMs;
     	      this.segmentBytes = defaults.segmentBytes;
@@ -414,6 +456,18 @@ public final class KafkaTopicConfig {
         public Builder indexIntervalBytes(@Nullable String indexIntervalBytes) {
 
             this.indexIntervalBytes = indexIntervalBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localRetentionBytes(@Nullable String localRetentionBytes) {
+
+            this.localRetentionBytes = localRetentionBytes;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localRetentionMs(@Nullable String localRetentionMs) {
+
+            this.localRetentionMs = localRetentionMs;
             return this;
         }
         @CustomType.Setter
@@ -477,6 +531,12 @@ public final class KafkaTopicConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder remoteStorageEnable(@Nullable Boolean remoteStorageEnable) {
+
+            this.remoteStorageEnable = remoteStorageEnable;
+            return this;
+        }
+        @CustomType.Setter
         public Builder retentionBytes(@Nullable String retentionBytes) {
 
             this.retentionBytes = retentionBytes;
@@ -527,6 +587,8 @@ public final class KafkaTopicConfig {
             _resultValue.flushMessages = flushMessages;
             _resultValue.flushMs = flushMs;
             _resultValue.indexIntervalBytes = indexIntervalBytes;
+            _resultValue.localRetentionBytes = localRetentionBytes;
+            _resultValue.localRetentionMs = localRetentionMs;
             _resultValue.maxCompactionLagMs = maxCompactionLagMs;
             _resultValue.maxMessageBytes = maxMessageBytes;
             _resultValue.messageDownconversionEnable = messageDownconversionEnable;
@@ -537,6 +599,7 @@ public final class KafkaTopicConfig {
             _resultValue.minCompactionLagMs = minCompactionLagMs;
             _resultValue.minInsyncReplicas = minInsyncReplicas;
             _resultValue.preallocate = preallocate;
+            _resultValue.remoteStorageEnable = remoteStorageEnable;
             _resultValue.retentionBytes = retentionBytes;
             _resultValue.retentionMs = retentionMs;
             _resultValue.segmentBytes = segmentBytes;
