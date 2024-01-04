@@ -2722,6 +2722,14 @@
                     "type": "string",
                     "description": "index.interval.bytes value\n"
                 },
+                "localRetentionBytes": {
+                    "type": "string",
+                    "description": "local.retention.bytes value\n"
+                },
+                "localRetentionMs": {
+                    "type": "string",
+                    "description": "local.retention.ms value\n"
+                },
                 "maxCompactionLagMs": {
                     "type": "string",
                     "description": "max.compaction.lag.ms value\n"
@@ -2761,6 +2769,10 @@
                 "preallocate": {
                     "type": "boolean",
                     "description": "preallocate value\n"
+                },
+                "remoteStorageEnable": {
+                    "type": "boolean",
+                    "description": "remote.storage.enable value\n"
                 },
                 "retentionBytes": {
                     "type": "string",
@@ -9028,6 +9040,12 @@
                 "indexIntervalBytes": {
                     "type": "string"
                 },
+                "localRetentionBytes": {
+                    "type": "string"
+                },
+                "localRetentionMs": {
+                    "type": "string"
+                },
                 "maxCompactionLagMs": {
                     "type": "string"
                 },
@@ -9056,6 +9074,9 @@
                     "type": "string"
                 },
                 "preallocate": {
+                    "type": "boolean"
+                },
+                "remoteStorageEnable": {
                     "type": "boolean"
                 },
                 "retentionBytes": {
