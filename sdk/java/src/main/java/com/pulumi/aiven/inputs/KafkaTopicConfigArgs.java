@@ -123,6 +123,36 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * local.retention.bytes value
+     * 
+     */
+    @Import(name="localRetentionBytes")
+    private @Nullable Output<String> localRetentionBytes;
+
+    /**
+     * @return local.retention.bytes value
+     * 
+     */
+    public Optional<Output<String>> localRetentionBytes() {
+        return Optional.ofNullable(this.localRetentionBytes);
+    }
+
+    /**
+     * local.retention.ms value
+     * 
+     */
+    @Import(name="localRetentionMs")
+    private @Nullable Output<String> localRetentionMs;
+
+    /**
+     * @return local.retention.ms value
+     * 
+     */
+    public Optional<Output<String>> localRetentionMs() {
+        return Optional.ofNullable(this.localRetentionMs);
+    }
+
+    /**
      * max.compaction.lag.ms value
      * 
      */
@@ -273,6 +303,21 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * remote.storage.enable value
+     * 
+     */
+    @Import(name="remoteStorageEnable")
+    private @Nullable Output<Boolean> remoteStorageEnable;
+
+    /**
+     * @return remote.storage.enable value
+     * 
+     */
+    public Optional<Output<Boolean>> remoteStorageEnable() {
+        return Optional.ofNullable(this.remoteStorageEnable);
+    }
+
+    /**
      * retention.bytes value
      * 
      */
@@ -395,6 +440,8 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         this.flushMessages = $.flushMessages;
         this.flushMs = $.flushMs;
         this.indexIntervalBytes = $.indexIntervalBytes;
+        this.localRetentionBytes = $.localRetentionBytes;
+        this.localRetentionMs = $.localRetentionMs;
         this.maxCompactionLagMs = $.maxCompactionLagMs;
         this.maxMessageBytes = $.maxMessageBytes;
         this.messageDownconversionEnable = $.messageDownconversionEnable;
@@ -405,6 +452,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         this.minCompactionLagMs = $.minCompactionLagMs;
         this.minInsyncReplicas = $.minInsyncReplicas;
         this.preallocate = $.preallocate;
+        this.remoteStorageEnable = $.remoteStorageEnable;
         this.retentionBytes = $.retentionBytes;
         this.retentionMs = $.retentionMs;
         this.segmentBytes = $.segmentBytes;
@@ -577,6 +625,48 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder indexIntervalBytes(String indexIntervalBytes) {
             return indexIntervalBytes(Output.of(indexIntervalBytes));
+        }
+
+        /**
+         * @param localRetentionBytes local.retention.bytes value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localRetentionBytes(@Nullable Output<String> localRetentionBytes) {
+            $.localRetentionBytes = localRetentionBytes;
+            return this;
+        }
+
+        /**
+         * @param localRetentionBytes local.retention.bytes value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localRetentionBytes(String localRetentionBytes) {
+            return localRetentionBytes(Output.of(localRetentionBytes));
+        }
+
+        /**
+         * @param localRetentionMs local.retention.ms value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localRetentionMs(@Nullable Output<String> localRetentionMs) {
+            $.localRetentionMs = localRetentionMs;
+            return this;
+        }
+
+        /**
+         * @param localRetentionMs local.retention.ms value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localRetentionMs(String localRetentionMs) {
+            return localRetentionMs(Output.of(localRetentionMs));
         }
 
         /**
@@ -787,6 +877,27 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder preallocate(Boolean preallocate) {
             return preallocate(Output.of(preallocate));
+        }
+
+        /**
+         * @param remoteStorageEnable remote.storage.enable value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteStorageEnable(@Nullable Output<Boolean> remoteStorageEnable) {
+            $.remoteStorageEnable = remoteStorageEnable;
+            return this;
+        }
+
+        /**
+         * @param remoteStorageEnable remote.storage.enable value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder remoteStorageEnable(Boolean remoteStorageEnable) {
+            return remoteStorageEnable(Output.of(remoteStorageEnable));
         }
 
         /**

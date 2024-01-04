@@ -1577,6 +1577,14 @@ export interface KafkaTopicConfig {
      */
     indexIntervalBytes?: pulumi.Input<string>;
     /**
+     * local.retention.bytes value
+     */
+    localRetentionBytes?: pulumi.Input<string>;
+    /**
+     * local.retention.ms value
+     */
+    localRetentionMs?: pulumi.Input<string>;
+    /**
      * max.compaction.lag.ms value
      */
     maxCompactionLagMs?: pulumi.Input<string>;
@@ -1616,6 +1624,10 @@ export interface KafkaTopicConfig {
      * preallocate value
      */
     preallocate?: pulumi.Input<boolean>;
+    /**
+     * remote.storage.enable value
+     */
+    remoteStorageEnable?: pulumi.Input<boolean>;
     /**
      * retention.bytes value
      */

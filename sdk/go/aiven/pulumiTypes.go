@@ -17277,6 +17277,10 @@ type KafkaTopicConfig struct {
 	FlushMs *string `pulumi:"flushMs"`
 	// index.interval.bytes value
 	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
+	// local.retention.bytes value
+	LocalRetentionBytes *string `pulumi:"localRetentionBytes"`
+	// local.retention.ms value
+	LocalRetentionMs *string `pulumi:"localRetentionMs"`
 	// max.compaction.lag.ms value
 	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
 	// max.message.bytes value
@@ -17297,6 +17301,8 @@ type KafkaTopicConfig struct {
 	MinInsyncReplicas *string `pulumi:"minInsyncReplicas"`
 	// preallocate value
 	Preallocate *bool `pulumi:"preallocate"`
+	// remote.storage.enable value
+	RemoteStorageEnable *bool `pulumi:"remoteStorageEnable"`
 	// retention.bytes value
 	RetentionBytes *string `pulumi:"retentionBytes"`
 	// retention.ms value
@@ -17341,6 +17347,10 @@ type KafkaTopicConfigArgs struct {
 	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
 	// index.interval.bytes value
 	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
+	// local.retention.bytes value
+	LocalRetentionBytes pulumi.StringPtrInput `pulumi:"localRetentionBytes"`
+	// local.retention.ms value
+	LocalRetentionMs pulumi.StringPtrInput `pulumi:"localRetentionMs"`
 	// max.compaction.lag.ms value
 	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
 	// max.message.bytes value
@@ -17361,6 +17371,8 @@ type KafkaTopicConfigArgs struct {
 	MinInsyncReplicas pulumi.StringPtrInput `pulumi:"minInsyncReplicas"`
 	// preallocate value
 	Preallocate pulumi.BoolPtrInput `pulumi:"preallocate"`
+	// remote.storage.enable value
+	RemoteStorageEnable pulumi.BoolPtrInput `pulumi:"remoteStorageEnable"`
 	// retention.bytes value
 	RetentionBytes pulumi.StringPtrInput `pulumi:"retentionBytes"`
 	// retention.ms value
@@ -17491,6 +17503,16 @@ func (o KafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
 }
 
+// local.retention.bytes value
+func (o KafkaTopicConfigOutput) LocalRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.LocalRetentionBytes }).(pulumi.StringPtrOutput)
+}
+
+// local.retention.ms value
+func (o KafkaTopicConfigOutput) LocalRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.LocalRetentionMs }).(pulumi.StringPtrOutput)
+}
+
 // max.compaction.lag.ms value
 func (o KafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
@@ -17539,6 +17561,11 @@ func (o KafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 // preallocate value
 func (o KafkaTopicConfigOutput) Preallocate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *bool { return v.Preallocate }).(pulumi.BoolPtrOutput)
+}
+
+// remote.storage.enable value
+func (o KafkaTopicConfigOutput) RemoteStorageEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KafkaTopicConfig) *bool { return v.RemoteStorageEnable }).(pulumi.BoolPtrOutput)
 }
 
 // retention.bytes value
@@ -17672,6 +17699,26 @@ func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// local.retention.bytes value
+func (o KafkaTopicConfigPtrOutput) LocalRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalRetentionBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// local.retention.ms value
+func (o KafkaTopicConfigPtrOutput) LocalRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalRetentionMs
+	}).(pulumi.StringPtrOutput)
+}
+
 // max.compaction.lag.ms value
 func (o KafkaTopicConfigPtrOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
@@ -17769,6 +17816,16 @@ func (o KafkaTopicConfigPtrOutput) Preallocate() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Preallocate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// remote.storage.enable value
+func (o KafkaTopicConfigPtrOutput) RemoteStorageEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KafkaTopicConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RemoteStorageEnable
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -56857,6 +56914,8 @@ type GetKafkaTopicConfig struct {
 	FlushMessages                   *string  `pulumi:"flushMessages"`
 	FlushMs                         *string  `pulumi:"flushMs"`
 	IndexIntervalBytes              *string  `pulumi:"indexIntervalBytes"`
+	LocalRetentionBytes             *string  `pulumi:"localRetentionBytes"`
+	LocalRetentionMs                *string  `pulumi:"localRetentionMs"`
 	MaxCompactionLagMs              *string  `pulumi:"maxCompactionLagMs"`
 	MaxMessageBytes                 *string  `pulumi:"maxMessageBytes"`
 	MessageDownconversionEnable     *bool    `pulumi:"messageDownconversionEnable"`
@@ -56867,6 +56926,7 @@ type GetKafkaTopicConfig struct {
 	MinCompactionLagMs              *string  `pulumi:"minCompactionLagMs"`
 	MinInsyncReplicas               *string  `pulumi:"minInsyncReplicas"`
 	Preallocate                     *bool    `pulumi:"preallocate"`
+	RemoteStorageEnable             *bool    `pulumi:"remoteStorageEnable"`
 	RetentionBytes                  *string  `pulumi:"retentionBytes"`
 	RetentionMs                     *string  `pulumi:"retentionMs"`
 	SegmentBytes                    *string  `pulumi:"segmentBytes"`
@@ -56896,6 +56956,8 @@ type GetKafkaTopicConfigArgs struct {
 	FlushMessages                   pulumi.StringPtrInput  `pulumi:"flushMessages"`
 	FlushMs                         pulumi.StringPtrInput  `pulumi:"flushMs"`
 	IndexIntervalBytes              pulumi.StringPtrInput  `pulumi:"indexIntervalBytes"`
+	LocalRetentionBytes             pulumi.StringPtrInput  `pulumi:"localRetentionBytes"`
+	LocalRetentionMs                pulumi.StringPtrInput  `pulumi:"localRetentionMs"`
 	MaxCompactionLagMs              pulumi.StringPtrInput  `pulumi:"maxCompactionLagMs"`
 	MaxMessageBytes                 pulumi.StringPtrInput  `pulumi:"maxMessageBytes"`
 	MessageDownconversionEnable     pulumi.BoolPtrInput    `pulumi:"messageDownconversionEnable"`
@@ -56906,6 +56968,7 @@ type GetKafkaTopicConfigArgs struct {
 	MinCompactionLagMs              pulumi.StringPtrInput  `pulumi:"minCompactionLagMs"`
 	MinInsyncReplicas               pulumi.StringPtrInput  `pulumi:"minInsyncReplicas"`
 	Preallocate                     pulumi.BoolPtrInput    `pulumi:"preallocate"`
+	RemoteStorageEnable             pulumi.BoolPtrInput    `pulumi:"remoteStorageEnable"`
 	RetentionBytes                  pulumi.StringPtrInput  `pulumi:"retentionBytes"`
 	RetentionMs                     pulumi.StringPtrInput  `pulumi:"retentionMs"`
 	SegmentBytes                    pulumi.StringPtrInput  `pulumi:"segmentBytes"`
@@ -56995,6 +57058,14 @@ func (o GetKafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
 }
 
+func (o GetKafkaTopicConfigOutput) LocalRetentionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.LocalRetentionBytes }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaTopicConfigOutput) LocalRetentionMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.LocalRetentionMs }).(pulumi.StringPtrOutput)
+}
+
 func (o GetKafkaTopicConfigOutput) MaxCompactionLagMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *string { return v.MaxCompactionLagMs }).(pulumi.StringPtrOutput)
 }
@@ -57033,6 +57104,10 @@ func (o GetKafkaTopicConfigOutput) MinInsyncReplicas() pulumi.StringPtrOutput {
 
 func (o GetKafkaTopicConfigOutput) Preallocate() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.Preallocate }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetKafkaTopicConfigOutput) RemoteStorageEnable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetKafkaTopicConfig) *bool { return v.RemoteStorageEnable }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetKafkaTopicConfigOutput) RetentionBytes() pulumi.StringPtrOutput {
