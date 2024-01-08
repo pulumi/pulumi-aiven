@@ -7567,8 +7567,8 @@ class KafkaTopicConfig(dict):
         :param str flush_messages: flush.messages value
         :param str flush_ms: flush.ms value
         :param str index_interval_bytes: index.interval.bytes value
-        :param str local_retention_bytes: local.retention.bytes value
-        :param str local_retention_ms: local.retention.ms value
+        :param str local_retention_bytes: local.retention.bytes value. This field is temporarily disabled.
+        :param str local_retention_ms: local.retention.ms value. This field is temporarily disabled.
         :param str max_compaction_lag_ms: max.compaction.lag.ms value
         :param str max_message_bytes: max.message.bytes value
         :param bool message_downconversion_enable: message.downconversion.enable value
@@ -7703,7 +7703,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="localRetentionBytes")
     def local_retention_bytes(self) -> Optional[str]:
         """
-        local.retention.bytes value
+        local.retention.bytes value. This field is temporarily disabled.
         """
         return pulumi.get(self, "local_retention_bytes")
 
@@ -7711,7 +7711,7 @@ class KafkaTopicConfig(dict):
     @pulumi.getter(name="localRetentionMs")
     def local_retention_ms(self) -> Optional[str]:
         """
-        local.retention.ms value
+        local.retention.ms value. This field is temporarily disabled.
         """
         return pulumi.get(self, "local_retention_ms")
 

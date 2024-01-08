@@ -49,12 +49,12 @@ public final class KafkaTopicConfig {
      */
     private @Nullable String indexIntervalBytes;
     /**
-     * @return local.retention.bytes value
+     * @return local.retention.bytes value. This field is temporarily disabled.
      * 
      */
     private @Nullable String localRetentionBytes;
     /**
-     * @return local.retention.ms value
+     * @return local.retention.ms value. This field is temporarily disabled.
      * 
      */
     private @Nullable String localRetentionMs;
@@ -204,14 +204,14 @@ public final class KafkaTopicConfig {
         return Optional.ofNullable(this.indexIntervalBytes);
     }
     /**
-     * @return local.retention.bytes value
+     * @return local.retention.bytes value. This field is temporarily disabled.
      * 
      */
     public Optional<String> localRetentionBytes() {
         return Optional.ofNullable(this.localRetentionBytes);
     }
     /**
-     * @return local.retention.ms value
+     * @return local.retention.ms value. This field is temporarily disabled.
      * 
      */
     public Optional<String> localRetentionMs() {

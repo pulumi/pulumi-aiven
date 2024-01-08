@@ -2724,11 +2724,11 @@
                 },
                 "localRetentionBytes": {
                     "type": "string",
-                    "description": "local.retention.bytes value\n"
+                    "description": "local.retention.bytes value. This field is temporarily disabled.\n"
                 },
                 "localRetentionMs": {
                     "type": "string",
-                    "description": "local.retention.ms value\n"
+                    "description": "local.retention.ms value. This field is temporarily disabled.\n"
                 },
                 "maxCompactionLagMs": {
                     "type": "string",

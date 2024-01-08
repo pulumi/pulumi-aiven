@@ -42,11 +42,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IndexIntervalBytes;
         /// <summary>
-        /// local.retention.bytes value
+        /// local.retention.bytes value. This field is temporarily disabled.
         /// </summary>
         public readonly string? LocalRetentionBytes;
         /// <summary>
-        /// local.retention.ms value
+        /// local.retention.ms value. This field is temporarily disabled.
         /// </summary>
         public readonly string? LocalRetentionMs;
         /// <summary>

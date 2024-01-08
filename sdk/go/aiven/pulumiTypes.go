@@ -17277,9 +17277,9 @@ type KafkaTopicConfig struct {
 	FlushMs *string `pulumi:"flushMs"`
 	// index.interval.bytes value
 	IndexIntervalBytes *string `pulumi:"indexIntervalBytes"`
-	// local.retention.bytes value
+	// local.retention.bytes value. This field is temporarily disabled.
 	LocalRetentionBytes *string `pulumi:"localRetentionBytes"`
-	// local.retention.ms value
+	// local.retention.ms value. This field is temporarily disabled.
 	LocalRetentionMs *string `pulumi:"localRetentionMs"`
 	// max.compaction.lag.ms value
 	MaxCompactionLagMs *string `pulumi:"maxCompactionLagMs"`
@@ -17347,9 +17347,9 @@ type KafkaTopicConfigArgs struct {
 	FlushMs pulumi.StringPtrInput `pulumi:"flushMs"`
 	// index.interval.bytes value
 	IndexIntervalBytes pulumi.StringPtrInput `pulumi:"indexIntervalBytes"`
-	// local.retention.bytes value
+	// local.retention.bytes value. This field is temporarily disabled.
 	LocalRetentionBytes pulumi.StringPtrInput `pulumi:"localRetentionBytes"`
-	// local.retention.ms value
+	// local.retention.ms value. This field is temporarily disabled.
 	LocalRetentionMs pulumi.StringPtrInput `pulumi:"localRetentionMs"`
 	// max.compaction.lag.ms value
 	MaxCompactionLagMs pulumi.StringPtrInput `pulumi:"maxCompactionLagMs"`
@@ -17503,12 +17503,12 @@ func (o KafkaTopicConfigOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.IndexIntervalBytes }).(pulumi.StringPtrOutput)
 }
 
-// local.retention.bytes value
+// local.retention.bytes value. This field is temporarily disabled.
 func (o KafkaTopicConfigOutput) LocalRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.LocalRetentionBytes }).(pulumi.StringPtrOutput)
 }
 
-// local.retention.ms value
+// local.retention.ms value. This field is temporarily disabled.
 func (o KafkaTopicConfigOutput) LocalRetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KafkaTopicConfig) *string { return v.LocalRetentionMs }).(pulumi.StringPtrOutput)
 }
@@ -17699,7 +17699,7 @@ func (o KafkaTopicConfigPtrOutput) IndexIntervalBytes() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// local.retention.bytes value
+// local.retention.bytes value. This field is temporarily disabled.
 func (o KafkaTopicConfigPtrOutput) LocalRetentionBytes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
@@ -17709,7 +17709,7 @@ func (o KafkaTopicConfigPtrOutput) LocalRetentionBytes() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// local.retention.ms value
+// local.retention.ms value. This field is temporarily disabled.
 func (o KafkaTopicConfigPtrOutput) LocalRetentionMs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaTopicConfig) *string {
 		if v == nil {
