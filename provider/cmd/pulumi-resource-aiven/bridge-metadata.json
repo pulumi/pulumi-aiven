@@ -3341,6 +3341,7 @@
                 "allowedOrganizations": "allowed_organizations",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
+                "skipOrgRoleSync": "skip_org_role_sync",
                 "teamIds": "team_ids"
             },
             "aiven:index/GrafanaGrafanaUserConfigAuthGitlab:GrafanaGrafanaUserConfigAuthGitlab": {
@@ -4931,6 +4932,7 @@
                 "allowedOrganizations": "allowed_organizations",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
+                "skipOrgRoleSync": "skip_org_role_sync",
                 "teamIds": "team_ids"
             },
             "aiven:index/getGrafanaGrafanaUserConfigAuthGitlab:getGrafanaGrafanaUserConfigAuthGitlab": {
