@@ -16,14 +16,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     public static final OrganizationUserGroupState Empty = new OrganizationUserGroupState();
 
     /**
-     * Time of creation
+     * Time of creation.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -31,14 +31,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The unique organization user group ID
+     * The ID of the user group.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return The unique organization user group ID
+     * @return The ID of the user group.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -61,14 +61,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -76,14 +76,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="organizationId")
     private @Nullable Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> organizationId() {
@@ -91,14 +91,14 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Time of last update
+     * Time of last update.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -135,7 +135,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createTime Time of creation
+         * @param createTime Time of creation.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createTime Time of creation
+         * @param createTime Time of creation.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+         * @param description The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param description The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+         * @param description The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param groupId The unique organization user group ID
+         * @param groupId The ID of the user group.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param groupId The unique organization user group ID
+         * @param groupId The ID of the user group.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param name The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param name The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updateTime Time of last update
+         * @param updateTime Time of last update.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class OrganizationUserGroupState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updateTime Time of last update
+         * @param updateTime Time of last update.
          * 
          * @return builder
          * 

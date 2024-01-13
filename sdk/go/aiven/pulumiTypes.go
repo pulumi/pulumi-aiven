@@ -6386,6 +6386,7 @@ type GrafanaGrafanaUserConfigAuthGithub struct {
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
 	ClientId             string   `pulumi:"clientId"`
 	ClientSecret         string   `pulumi:"clientSecret"`
+	SkipOrgRoleSync      *bool    `pulumi:"skipOrgRoleSync"`
 	TeamIds              []int    `pulumi:"teamIds"`
 }
 
@@ -6405,6 +6406,7 @@ type GrafanaGrafanaUserConfigAuthGithubArgs struct {
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
 	ClientId             pulumi.StringInput      `pulumi:"clientId"`
 	ClientSecret         pulumi.StringInput      `pulumi:"clientSecret"`
+	SkipOrgRoleSync      pulumi.BoolPtrInput     `pulumi:"skipOrgRoleSync"`
 	TeamIds              pulumi.IntArrayInput    `pulumi:"teamIds"`
 }
 
@@ -6501,6 +6503,10 @@ func (o GrafanaGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.StringOu
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+func (o GrafanaGrafanaUserConfigAuthGithubOutput) SkipOrgRoleSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) *bool { return v.SkipOrgRoleSync }).(pulumi.BoolPtrOutput)
+}
+
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) []int { return v.TeamIds }).(pulumi.IntArrayOutput)
 }
@@ -6563,6 +6569,15 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.Strin
 		}
 		return &v.ClientSecret
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) SkipOrgRoleSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipOrgRoleSync
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.IntArrayOutput {
@@ -47227,6 +47242,7 @@ type GetGrafanaGrafanaUserConfigAuthGithub struct {
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
 	ClientId             string   `pulumi:"clientId"`
 	ClientSecret         string   `pulumi:"clientSecret"`
+	SkipOrgRoleSync      *bool    `pulumi:"skipOrgRoleSync"`
 	TeamIds              []int    `pulumi:"teamIds"`
 }
 
@@ -47246,6 +47262,7 @@ type GetGrafanaGrafanaUserConfigAuthGithubArgs struct {
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
 	ClientId             pulumi.StringInput      `pulumi:"clientId"`
 	ClientSecret         pulumi.StringInput      `pulumi:"clientSecret"`
+	SkipOrgRoleSync      pulumi.BoolPtrInput     `pulumi:"skipOrgRoleSync"`
 	TeamIds              pulumi.IntArrayInput    `pulumi:"teamIds"`
 }
 
@@ -47342,6 +47359,10 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ClientSecret() pulumi.Strin
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
+func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) SkipOrgRoleSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *bool { return v.SkipOrgRoleSync }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) TeamIds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) []int { return v.TeamIds }).(pulumi.IntArrayOutput)
 }
@@ -47404,6 +47425,15 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientSecret() pulumi.St
 		}
 		return &v.ClientSecret
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) SkipOrgRoleSync() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipOrgRoleSync
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) TeamIds() pulumi.IntArrayOutput {

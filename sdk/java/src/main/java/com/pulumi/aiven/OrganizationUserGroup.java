@@ -15,90 +15,90 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Organization User Group resource allows the creation and management of an Aiven Organization Groups.
+ * Creates and manages a user group in an organization.
  * 
  */
 @ResourceType(type="aiven:index/organizationUserGroup:OrganizationUserGroup")
 public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Time of creation
+     * Time of creation.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The unique organization user group ID
+     * The ID of the user group.
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return The unique organization user group ID
+     * @return The ID of the user group.
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * Time of last update
+     * Time of last update.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     public Output<String> updateTime() {

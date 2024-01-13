@@ -3128,6 +3128,8 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
             suggest = "allow_sign_up"
         elif key == "allowedOrganizations":
             suggest = "allowed_organizations"
+        elif key == "skipOrgRoleSync":
+            suggest = "skip_org_role_sync"
         elif key == "teamIds":
             suggest = "team_ids"
 
@@ -3147,6 +3149,7 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
                  client_secret: str,
                  allow_sign_up: Optional[bool] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
+                 skip_org_role_sync: Optional[bool] = None,
                  team_ids: Optional[Sequence[int]] = None):
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -3154,6 +3157,8 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if skip_org_role_sync is not None:
+            pulumi.set(__self__, "skip_org_role_sync", skip_org_role_sync)
         if team_ids is not None:
             pulumi.set(__self__, "team_ids", team_ids)
 
@@ -3176,6 +3181,11 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_organizations")
+
+    @property
+    @pulumi.getter(name="skipOrgRoleSync")
+    def skip_org_role_sync(self) -> Optional[bool]:
+        return pulumi.get(self, "skip_org_role_sync")
 
     @property
     @pulumi.getter(name="teamIds")
@@ -19169,6 +19179,7 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
                  client_secret: str,
                  allow_sign_up: Optional[bool] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
+                 skip_org_role_sync: Optional[bool] = None,
                  team_ids: Optional[Sequence[int]] = None):
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
@@ -19176,6 +19187,8 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if skip_org_role_sync is not None:
+            pulumi.set(__self__, "skip_org_role_sync", skip_org_role_sync)
         if team_ids is not None:
             pulumi.set(__self__, "team_ids", team_ids)
 
@@ -19198,6 +19211,11 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_organizations")
+
+    @property
+    @pulumi.getter(name="skipOrgRoleSync")
+    def skip_org_role_sync(self) -> Optional[bool]:
+        return pulumi.get(self, "skip_org_role_sync")
 
     @property
     @pulumi.getter(name="teamIds")

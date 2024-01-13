@@ -19,6 +19,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     private @Nullable List<String> allowedOrganizations;
     private String clientId;
     private String clientSecret;
+    private @Nullable Boolean skipOrgRoleSync;
     private @Nullable List<Integer> teamIds;
 
     private GetGrafanaGrafanaUserConfigAuthGithub() {}
@@ -33,6 +34,9 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     }
     public String clientSecret() {
         return this.clientSecret;
+    }
+    public Optional<Boolean> skipOrgRoleSync() {
+        return Optional.ofNullable(this.skipOrgRoleSync);
     }
     public List<Integer> teamIds() {
         return this.teamIds == null ? List.of() : this.teamIds;
@@ -51,6 +55,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
         private @Nullable List<String> allowedOrganizations;
         private String clientId;
         private String clientSecret;
+        private @Nullable Boolean skipOrgRoleSync;
         private @Nullable List<Integer> teamIds;
         public Builder() {}
         public Builder(GetGrafanaGrafanaUserConfigAuthGithub defaults) {
@@ -59,6 +64,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     	      this.allowedOrganizations = defaults.allowedOrganizations;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
+    	      this.skipOrgRoleSync = defaults.skipOrgRoleSync;
     	      this.teamIds = defaults.teamIds;
         }
 
@@ -94,6 +100,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
             return this;
         }
         @CustomType.Setter
+        public Builder skipOrgRoleSync(@Nullable Boolean skipOrgRoleSync) {
+
+            this.skipOrgRoleSync = skipOrgRoleSync;
+            return this;
+        }
+        @CustomType.Setter
         public Builder teamIds(@Nullable List<Integer> teamIds) {
 
             this.teamIds = teamIds;
@@ -108,6 +120,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
             _resultValue.allowedOrganizations = allowedOrganizations;
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
+            _resultValue.skipOrgRoleSync = skipOrgRoleSync;
             _resultValue.teamIds = teamIds;
             return _resultValue;
         }

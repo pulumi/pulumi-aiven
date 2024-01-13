@@ -6854,28 +6854,28 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationUser:getOrganizationUser", TypeShape.of(GetOrganizationUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
+     * Provides information about an existing user group in an organization.
      * 
      */
     public static Output<GetOrganizationUserGroupResult> getOrganizationUserGroup(GetOrganizationUserGroupArgs args) {
         return getOrganizationUserGroup(args, InvokeOptions.Empty);
     }
     /**
-     * The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
+     * Provides information about an existing user group in an organization.
      * 
      */
     public static CompletableFuture<GetOrganizationUserGroupResult> getOrganizationUserGroupPlain(GetOrganizationUserGroupPlainArgs args) {
         return getOrganizationUserGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
+     * Provides information about an existing user group in an organization.
      * 
      */
     public static Output<GetOrganizationUserGroupResult> getOrganizationUserGroup(GetOrganizationUserGroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", TypeShape.of(GetOrganizationUserGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
+     * Provides information about an existing user group in an organization.
      * 
      */
     public static CompletableFuture<GetOrganizationUserGroupResult> getOrganizationUserGroupPlain(GetOrganizationUserGroupPlainArgs args, InvokeOptions options) {
