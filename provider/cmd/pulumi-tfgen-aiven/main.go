@@ -17,8 +17,9 @@ package main
 import (
 	"context"
 
-	aiven "github.com/pulumi/pulumi-aiven/provider/v6"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
+
+	aiven "github.com/pulumi/pulumi-aiven/provider/v6"
 )
 
 func main() {
