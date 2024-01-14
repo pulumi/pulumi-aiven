@@ -17,14 +17,14 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
     public static final OrganizationUserGroupArgs Empty = new OrganizationUserGroupArgs();
 
     /**
-     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> description() {
@@ -32,14 +32,14 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> name() {
@@ -47,14 +47,14 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -88,7 +88,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+         * @param description The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param description The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+         * @param description The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param name The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param name The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param name The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

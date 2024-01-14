@@ -1107,6 +1107,9 @@
                 "clientSecret": {
                     "type": "string"
                 },
+                "skipOrgRoleSync": {
+                    "type": "boolean"
+                },
                 "teamIds": {
                     "type": "array",
                     "items": {
@@ -7455,6 +7458,9 @@
                 },
                 "clientSecret": {
                     "type": "string"
+                },
+                "skipOrgRoleSync": {
+                    "type": "boolean"
                 },
                 "teamIds": {
                     "type": "array",
@@ -21658,31 +21664,31 @@
             }
         },
         "aiven:index/organizationUserGroup:OrganizationUserGroup": {
-            "description": "The Organization User Group resource allows the creation and management of an Aiven Organization Groups.\n",
+            "description": "Creates and manages a user group in an organization.\n",
             "properties": {
                 "createTime": {
                     "type": "string",
-                    "description": "Time of creation\n"
+                    "description": "Time of creation.\n"
                 },
                 "description": {
                     "type": "string",
-                    "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "The description of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
                 "groupId": {
                     "type": "string",
-                    "description": "The unique organization user group ID\n"
+                    "description": "The ID of the user group.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "The name of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
                 "updateTime": {
                     "type": "string",
-                    "description": "Time of last update\n"
+                    "description": "Time of last update.\n"
                 }
             },
             "required": [
@@ -21695,16 +21701,16 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                    "description": "The description of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "The name of the user group. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n",
+                    "description": "The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -21716,29 +21722,29 @@
                 "properties": {
                     "createTime": {
                         "type": "string",
-                        "description": "Time of creation\n"
+                        "description": "Time of creation.\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The description of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "groupId": {
                         "type": "string",
-                        "description": "The unique organization user group ID\n"
+                        "description": "The ID of the user group.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "The name of the user group. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n",
+                        "description": "The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "updateTime": {
                         "type": "string",
-                        "description": "Time of last update\n"
+                        "description": "Time of last update.\n"
                     }
                 },
                 "type": "object"
@@ -29422,17 +29428,17 @@
             }
         },
         "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": {
-            "description": "The Organization User Groupe data source provides information about the existing Aiven Organization User Group.\n",
+            "description": "Provides information about an existing user group in an organization.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getOrganizationUserGroup.\n",
                 "properties": {
                     "name": {
                         "type": "string",
-                        "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The name of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -29446,15 +29452,15 @@
                 "properties": {
                     "createTime": {
                         "type": "string",
-                        "description": "Time of creation\n"
+                        "description": "Time of creation.\n"
                     },
                     "description": {
                         "type": "string",
-                        "description": "The organization user group description. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The description of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "groupId": {
                         "type": "string",
-                        "description": "The unique organization user group ID\n"
+                        "description": "The ID of the user group.\n"
                     },
                     "id": {
                         "type": "string",
@@ -29462,15 +29468,15 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The organization user group name. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The name of the user group. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.\n"
+                        "description": "The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.\n"
                     },
                     "updateTime": {
                         "type": "string",
-                        "description": "Time of last update\n"
+                        "description": "Time of last update.\n"
                     }
                 },
                 "type": "object",

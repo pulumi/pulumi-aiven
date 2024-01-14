@@ -29,6 +29,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
+        [Input("skipOrgRoleSync")]
+        public Input<bool>? SkipOrgRoleSync { get; set; }
+
         [Input("teamIds")]
         private InputList<int>? _teamIds;
         public InputList<int> TeamIds

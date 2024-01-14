@@ -47,6 +47,13 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
         return this.clientSecret;
     }
 
+    @Import(name="skipOrgRoleSync")
+    private @Nullable Output<Boolean> skipOrgRoleSync;
+
+    public Optional<Output<Boolean>> skipOrgRoleSync() {
+        return Optional.ofNullable(this.skipOrgRoleSync);
+    }
+
     @Import(name="teamIds")
     private @Nullable Output<List<Integer>> teamIds;
 
@@ -61,6 +68,7 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
         this.allowedOrganizations = $.allowedOrganizations;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
+        this.skipOrgRoleSync = $.skipOrgRoleSync;
         this.teamIds = $.teamIds;
     }
 
@@ -120,6 +128,15 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
 
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
+        }
+
+        public Builder skipOrgRoleSync(@Nullable Output<Boolean> skipOrgRoleSync) {
+            $.skipOrgRoleSync = skipOrgRoleSync;
+            return this;
+        }
+
+        public Builder skipOrgRoleSync(Boolean skipOrgRoleSync) {
+            return skipOrgRoleSync(Output.of(skipOrgRoleSync));
         }
 
         public Builder teamIds(@Nullable Output<List<Integer>> teamIds) {

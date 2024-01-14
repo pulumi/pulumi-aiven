@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Organization User Group resource allows the creation and management of an Aiven Organization Groups.
+ * Creates and manages a user group in an organization.
  */
 export class OrganizationUserGroup extends pulumi.CustomResource {
     /**
@@ -36,27 +36,27 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Time of creation
+     * Time of creation.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The unique organization user group ID
+     * The ID of the user group.
      */
     public /*out*/ readonly groupId!: pulumi.Output<string>;
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Time of last update
+     * Time of last update.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -101,27 +101,27 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
  */
 export interface OrganizationUserGroupState {
     /**
-     * Time of creation
+     * Time of creation.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The unique organization user group ID
+     * The ID of the user group.
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * Time of last update
+     * Time of last update.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -131,15 +131,15 @@ export interface OrganizationUserGroupState {
  */
 export interface OrganizationUserGroupArgs {
     /**
-     * The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
     description?: pulumi.Input<string>;
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
 }

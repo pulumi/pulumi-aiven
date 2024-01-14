@@ -10,43 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Organization User Group resource allows the creation and management of an Aiven Organization Groups.
+    /// Creates and manages a user group in an organization.
     /// </summary>
     [AivenResourceType("aiven:index/organizationUserGroup:OrganizationUserGroup")]
     public partial class OrganizationUserGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time of creation
+        /// Time of creation.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The unique organization user group ID
+        /// The ID of the user group.
         /// </summary>
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of last update
+        /// Time of last update.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -98,19 +98,19 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -124,37 +124,37 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of creation
+        /// Time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The unique organization user group ID
+        /// The ID of the user group.
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// Time of last update
+        /// Time of last update.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

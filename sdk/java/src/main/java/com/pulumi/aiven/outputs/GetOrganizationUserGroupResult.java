@@ -11,17 +11,17 @@ import java.util.Objects;
 @CustomType
 public final class GetOrganizationUserGroupResult {
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     private String createTime;
     /**
-     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String description;
     /**
-     * @return The unique organization user group ID
+     * @return The ID of the user group.
      * 
      */
     private String groupId;
@@ -31,38 +31,38 @@ public final class GetOrganizationUserGroupResult {
      */
     private String id;
     /**
-     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String name;
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     private String organizationId;
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     private String updateTime;
 
     private GetOrganizationUserGroupResult() {}
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return The unique organization user group ID
+     * @return The ID of the user group.
      * 
      */
     public String groupId() {
@@ -76,21 +76,21 @@ public final class GetOrganizationUserGroupResult {
         return this.id;
     }
     /**
-     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public String organizationId() {
         return this.organizationId;
     }
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     public String updateTime() {

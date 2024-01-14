@@ -874,6 +874,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGithub {
     allowedOrganizations?: string[];
     clientId: string;
     clientSecret: string;
+    skipOrgRoleSync?: boolean;
     teamIds?: number[];
 }
 
@@ -2541,6 +2542,7 @@ export interface GrafanaGrafanaUserConfigAuthGithub {
     allowedOrganizations?: string[];
     clientId: string;
     clientSecret: string;
+    skipOrgRoleSync?: boolean;
     teamIds?: number[];
 }
 

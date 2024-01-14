@@ -48,7 +48,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time of creation
+        Time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -56,7 +56,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        The organization user group description. This property cannot be changed, doing so forces recreation of the resource.
+        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -64,7 +64,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="groupId")
     def group_id(self) -> str:
         """
-        The unique organization user group ID
+        The ID of the user group.
         """
         return pulumi.get(self, "group_id")
 
@@ -80,7 +80,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -88,7 +88,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> str:
         """
-        The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -96,7 +96,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        Time of last update
+        Time of last update.
         """
         return pulumi.get(self, "update_time")
 
@@ -120,11 +120,11 @@ def get_organization_user_group(name: Optional[str] = None,
                                 organization_id: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserGroupResult:
     """
-    The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
+    Provides information about an existing user group in an organization.
 
 
-    :param str name: The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
-    :param str organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+    :param str name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+    :param str organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -147,10 +147,10 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
                                        organization_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
     """
-    The Organization User Groupe data source provides information about the existing Aiven Organization User Group.
+    Provides information about an existing user group in an organization.
 
 
-    :param str name: The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
-    :param str organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+    :param str name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+    :param str organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
     """
     ...

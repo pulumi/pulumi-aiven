@@ -15,14 +15,14 @@ public final class GetOrganizationUserGroupArgs extends com.pulumi.resources.Inv
     public static final GetOrganizationUserGroupArgs Empty = new GetOrganizationUserGroupArgs();
 
     /**
-     * The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> name() {
@@ -30,14 +30,14 @@ public final class GetOrganizationUserGroupArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -70,7 +70,7 @@ public final class GetOrganizationUserGroupArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param name The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetOrganizationUserGroupArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name The organization user group name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param name The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetOrganizationUserGroupArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetOrganizationUserGroupArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
          * 
          * @return builder
          * 

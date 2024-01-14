@@ -17,6 +17,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly ImmutableArray<string> AllowedOrganizations;
         public readonly string ClientId;
         public readonly string ClientSecret;
+        public readonly bool? SkipOrgRoleSync;
         public readonly ImmutableArray<int> TeamIds;
 
         [OutputConstructor]
@@ -29,12 +30,15 @@ namespace Pulumi.Aiven.Outputs
 
             string clientSecret,
 
+            bool? skipOrgRoleSync,
+
             ImmutableArray<int> teamIds)
         {
             AllowSignUp = allowSignUp;
             AllowedOrganizations = allowedOrganizations;
             ClientId = clientId;
             ClientSecret = clientSecret;
+            SkipOrgRoleSync = skipOrgRoleSync;
             TeamIds = teamIds;
         }
     }

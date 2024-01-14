@@ -593,6 +593,7 @@ export interface GrafanaGrafanaUserConfigAuthGithub {
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
     clientId: pulumi.Input<string>;
     clientSecret: pulumi.Input<string>;
+    skipOrgRoleSync?: pulumi.Input<boolean>;
     teamIds?: pulumi.Input<pulumi.Input<number>[]>;
 }
 
