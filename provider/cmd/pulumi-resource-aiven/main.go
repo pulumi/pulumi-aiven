@@ -18,10 +18,12 @@ package main
 
 import (
 	"context"
+
 	_ "embed"
 
-	aiven "github.com/pulumi/pulumi-aiven/provider/v6"
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+
+	aiven "github.com/pulumi/pulumi-aiven/provider/v6"
 )
 
 //go:embed schema-embed.json
