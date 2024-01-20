@@ -25,7 +25,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      */
     private @Nullable String cert;
     /**
-     * @return message format. The default value is `rfc5424`.
+     * @return Message format. The default value is `rfc5424`.
      * 
      */
     private String format;
@@ -35,12 +35,17 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      */
     private @Nullable String key;
     /**
-     * @return custom syslog message format.
+     * @return Custom syslog message format.
      * 
      */
     private @Nullable String logline;
     /**
-     * @return rsyslog server port. The default value is `514`.
+     * @return Rsyslog max message size. The default value is `8192`.
+     * 
+     */
+    private @Nullable Integer maxMessageSize;
+    /**
+     * @return Rsyslog server port. The default value is `514`.
      * 
      */
     private Integer port;
@@ -50,7 +55,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
      */
     private @Nullable String sd;
     /**
-     * @return rsyslog server IP address or hostname.
+     * @return Rsyslog server IP address or hostname.
      * 
      */
     private String server;
@@ -76,7 +81,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         return Optional.ofNullable(this.cert);
     }
     /**
-     * @return message format. The default value is `rfc5424`.
+     * @return Message format. The default value is `rfc5424`.
      * 
      */
     public String format() {
@@ -90,14 +95,21 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return custom syslog message format.
+     * @return Custom syslog message format.
      * 
      */
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
     /**
-     * @return rsyslog server port. The default value is `514`.
+     * @return Rsyslog max message size. The default value is `8192`.
+     * 
+     */
+    public Optional<Integer> maxMessageSize() {
+        return Optional.ofNullable(this.maxMessageSize);
+    }
+    /**
+     * @return Rsyslog server port. The default value is `514`.
      * 
      */
     public Integer port() {
@@ -111,7 +123,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         return Optional.ofNullable(this.sd);
     }
     /**
-     * @return rsyslog server IP address or hostname.
+     * @return Rsyslog server IP address or hostname.
      * 
      */
     public String server() {
@@ -139,6 +151,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
         private String format;
         private @Nullable String key;
         private @Nullable String logline;
+        private @Nullable Integer maxMessageSize;
         private Integer port;
         private @Nullable String sd;
         private String server;
@@ -151,6 +164,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
     	      this.format = defaults.format;
     	      this.key = defaults.key;
     	      this.logline = defaults.logline;
+    	      this.maxMessageSize = defaults.maxMessageSize;
     	      this.port = defaults.port;
     	      this.sd = defaults.sd;
     	      this.server = defaults.server;
@@ -190,6 +204,12 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxMessageSize(@Nullable Integer maxMessageSize) {
+
+            this.maxMessageSize = maxMessageSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder port(Integer port) {
             if (port == null) {
               throw new MissingRequiredPropertyException("ServiceIntegrationEndpointRsyslogUserConfig", "port");
@@ -226,6 +246,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfig {
             _resultValue.format = format;
             _resultValue.key = key;
             _resultValue.logline = logline;
+            _resultValue.maxMessageSize = maxMessageSize;
             _resultValue.port = port;
             _resultValue.sd = sd;
             _resultValue.server = server;

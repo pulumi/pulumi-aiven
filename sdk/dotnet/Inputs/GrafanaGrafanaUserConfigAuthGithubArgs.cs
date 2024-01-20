@@ -23,6 +23,9 @@ namespace Pulumi.Aiven.Inputs
             set => _allowedOrganizations = value;
         }
 
+        [Input("autoLogin")]
+        public Input<bool>? AutoLogin { get; set; }
+
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 

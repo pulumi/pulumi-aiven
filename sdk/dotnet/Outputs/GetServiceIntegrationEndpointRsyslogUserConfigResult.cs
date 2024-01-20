@@ -18,6 +18,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly string Format;
         public readonly string? Key;
         public readonly string? Logline;
+        public readonly int? MaxMessageSize;
         public readonly int Port;
         public readonly string? Sd;
         public readonly string Server;
@@ -35,6 +36,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? logline,
 
+            int? maxMessageSize,
+
             int port,
 
             string? sd,
@@ -48,6 +51,7 @@ namespace Pulumi.Aiven.Outputs
             Format = format;
             Key = key;
             Logline = logline;
+            MaxMessageSize = maxMessageSize;
             Port = port;
             Sd = sd;
             Server = server;

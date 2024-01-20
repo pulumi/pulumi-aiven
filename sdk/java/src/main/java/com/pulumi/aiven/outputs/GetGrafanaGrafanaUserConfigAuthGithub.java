@@ -17,6 +17,7 @@ import javax.annotation.Nullable;
 public final class GetGrafanaGrafanaUserConfigAuthGithub {
     private @Nullable Boolean allowSignUp;
     private @Nullable List<String> allowedOrganizations;
+    private @Nullable Boolean autoLogin;
     private String clientId;
     private String clientSecret;
     private @Nullable Boolean skipOrgRoleSync;
@@ -28,6 +29,9 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     }
     public List<String> allowedOrganizations() {
         return this.allowedOrganizations == null ? List.of() : this.allowedOrganizations;
+    }
+    public Optional<Boolean> autoLogin() {
+        return Optional.ofNullable(this.autoLogin);
     }
     public String clientId() {
         return this.clientId;
@@ -53,6 +57,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     public static final class Builder {
         private @Nullable Boolean allowSignUp;
         private @Nullable List<String> allowedOrganizations;
+        private @Nullable Boolean autoLogin;
         private String clientId;
         private String clientSecret;
         private @Nullable Boolean skipOrgRoleSync;
@@ -62,6 +67,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
     	      Objects.requireNonNull(defaults);
     	      this.allowSignUp = defaults.allowSignUp;
     	      this.allowedOrganizations = defaults.allowedOrganizations;
+    	      this.autoLogin = defaults.autoLogin;
     	      this.clientId = defaults.clientId;
     	      this.clientSecret = defaults.clientSecret;
     	      this.skipOrgRoleSync = defaults.skipOrgRoleSync;
@@ -82,6 +88,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
         }
         public Builder allowedOrganizations(String... allowedOrganizations) {
             return allowedOrganizations(List.of(allowedOrganizations));
+        }
+        @CustomType.Setter
+        public Builder autoLogin(@Nullable Boolean autoLogin) {
+
+            this.autoLogin = autoLogin;
+            return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
@@ -118,6 +130,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGithub {
             final var _resultValue = new GetGrafanaGrafanaUserConfigAuthGithub();
             _resultValue.allowSignUp = allowSignUp;
             _resultValue.allowedOrganizations = allowedOrganizations;
+            _resultValue.autoLogin = autoLogin;
             _resultValue.clientId = clientId;
             _resultValue.clientSecret = clientSecret;
             _resultValue.skipOrgRoleSync = skipOrgRoleSync;

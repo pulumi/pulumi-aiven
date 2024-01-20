@@ -872,6 +872,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGenericOauth {
 export interface GetGrafanaGrafanaUserConfigAuthGithub {
     allowSignUp?: boolean;
     allowedOrganizations?: string[];
+    autoLogin?: boolean;
     clientId: string;
     clientSecret: string;
     skipOrgRoleSync?: boolean;
@@ -1331,6 +1332,9 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     emitCheckpointsEnabled?: boolean;
     emitCheckpointsIntervalSeconds?: number;
+    groups?: string;
+    groupsExclude?: string;
+    offsetLagMax?: number;
     refreshGroupsEnabled?: boolean;
     refreshGroupsIntervalSeconds?: number;
     refreshTopicsEnabled?: boolean;
@@ -2365,6 +2369,7 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     format: string;
     key?: string;
     logline?: string;
+    maxMessageSize?: number;
     port: number;
     sd?: string;
     server: string;
@@ -2540,6 +2545,7 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
 export interface GrafanaGrafanaUserConfigAuthGithub {
     allowSignUp?: boolean;
     allowedOrganizations?: string[];
+    autoLogin?: boolean;
     clientId: string;
     clientSecret: string;
     skipOrgRoleSync?: boolean;
@@ -3444,6 +3450,9 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     emitCheckpointsEnabled?: boolean;
     emitCheckpointsIntervalSeconds?: number;
+    groups?: string;
+    groupsExclude?: string;
+    offsetLagMax?: number;
     refreshGroupsEnabled?: boolean;
     refreshGroupsIntervalSeconds?: number;
     refreshTopicsEnabled?: boolean;
@@ -5622,7 +5631,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: string;
     /**
-     * message format. The default value is `rfc5424`.
+     * Message format. The default value is `rfc5424`.
      */
     format: string;
     /**
@@ -5630,11 +5639,15 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     key?: string;
     /**
-     * custom syslog message format.
+     * Custom syslog message format.
      */
     logline?: string;
     /**
-     * rsyslog server port. The default value is `514`.
+     * Rsyslog max message size. The default value is `8192`.
+     */
+    maxMessageSize?: number;
+    /**
+     * Rsyslog server port. The default value is `514`.
      */
     port: number;
     /**
@@ -5642,7 +5655,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     sd?: string;
     /**
-     * rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname.
      */
     server: string;
     /**

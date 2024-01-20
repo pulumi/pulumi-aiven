@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,9 @@ import javax.annotation.Nullable;
 public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     private @Nullable Boolean emitCheckpointsEnabled;
     private @Nullable Integer emitCheckpointsIntervalSeconds;
+    private @Nullable String groups;
+    private @Nullable String groupsExclude;
+    private @Nullable Integer offsetLagMax;
     private @Nullable Boolean refreshGroupsEnabled;
     private @Nullable Integer refreshGroupsIntervalSeconds;
     private @Nullable Boolean refreshTopicsEnabled;
@@ -29,6 +33,15 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     }
     public Optional<Integer> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
+    }
+    public Optional<String> groups() {
+        return Optional.ofNullable(this.groups);
+    }
+    public Optional<String> groupsExclude() {
+        return Optional.ofNullable(this.groupsExclude);
+    }
+    public Optional<Integer> offsetLagMax() {
+        return Optional.ofNullable(this.offsetLagMax);
     }
     public Optional<Boolean> refreshGroupsEnabled() {
         return Optional.ofNullable(this.refreshGroupsEnabled);
@@ -66,6 +79,9 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     public static final class Builder {
         private @Nullable Boolean emitCheckpointsEnabled;
         private @Nullable Integer emitCheckpointsIntervalSeconds;
+        private @Nullable String groups;
+        private @Nullable String groupsExclude;
+        private @Nullable Integer offsetLagMax;
         private @Nullable Boolean refreshGroupsEnabled;
         private @Nullable Integer refreshGroupsIntervalSeconds;
         private @Nullable Boolean refreshTopicsEnabled;
@@ -79,6 +95,9 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
     	      Objects.requireNonNull(defaults);
     	      this.emitCheckpointsEnabled = defaults.emitCheckpointsEnabled;
     	      this.emitCheckpointsIntervalSeconds = defaults.emitCheckpointsIntervalSeconds;
+    	      this.groups = defaults.groups;
+    	      this.groupsExclude = defaults.groupsExclude;
+    	      this.offsetLagMax = defaults.offsetLagMax;
     	      this.refreshGroupsEnabled = defaults.refreshGroupsEnabled;
     	      this.refreshGroupsIntervalSeconds = defaults.refreshGroupsIntervalSeconds;
     	      this.refreshTopicsEnabled = defaults.refreshTopicsEnabled;
@@ -99,6 +118,24 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
         public Builder emitCheckpointsIntervalSeconds(@Nullable Integer emitCheckpointsIntervalSeconds) {
 
             this.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groups(@Nullable String groups) {
+
+            this.groups = groups;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder groupsExclude(@Nullable String groupsExclude) {
+
+            this.groupsExclude = groupsExclude;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder offsetLagMax(@Nullable Integer offsetLagMax) {
+
+            this.offsetLagMax = offsetLagMax;
             return this;
         }
         @CustomType.Setter
@@ -153,6 +190,9 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
             final var _resultValue = new GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker();
             _resultValue.emitCheckpointsEnabled = emitCheckpointsEnabled;
             _resultValue.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
+            _resultValue.groups = groups;
+            _resultValue.groupsExclude = groupsExclude;
+            _resultValue.offsetLagMax = offsetLagMax;
             _resultValue.refreshGroupsEnabled = refreshGroupsEnabled;
             _resultValue.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             _resultValue.refreshTopicsEnabled = refreshTopicsEnabled;

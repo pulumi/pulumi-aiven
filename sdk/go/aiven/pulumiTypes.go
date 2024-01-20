@@ -6384,6 +6384,7 @@ func (o GrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.Str
 type GrafanaGrafanaUserConfigAuthGithub struct {
 	AllowSignUp          *bool    `pulumi:"allowSignUp"`
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
+	AutoLogin            *bool    `pulumi:"autoLogin"`
 	ClientId             string   `pulumi:"clientId"`
 	ClientSecret         string   `pulumi:"clientSecret"`
 	SkipOrgRoleSync      *bool    `pulumi:"skipOrgRoleSync"`
@@ -6404,6 +6405,7 @@ type GrafanaGrafanaUserConfigAuthGithubInput interface {
 type GrafanaGrafanaUserConfigAuthGithubArgs struct {
 	AllowSignUp          pulumi.BoolPtrInput     `pulumi:"allowSignUp"`
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
+	AutoLogin            pulumi.BoolPtrInput     `pulumi:"autoLogin"`
 	ClientId             pulumi.StringInput      `pulumi:"clientId"`
 	ClientSecret         pulumi.StringInput      `pulumi:"clientSecret"`
 	SkipOrgRoleSync      pulumi.BoolPtrInput     `pulumi:"skipOrgRoleSync"`
@@ -6495,6 +6497,10 @@ func (o GrafanaGrafanaUserConfigAuthGithubOutput) AllowedOrganizations() pulumi.
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
+func (o GrafanaGrafanaUserConfigAuthGithubOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) *bool { return v.AutoLogin }).(pulumi.BoolPtrOutput)
+}
+
 func (o GrafanaGrafanaUserConfigAuthGithubOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GrafanaGrafanaUserConfigAuthGithub) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -6551,6 +6557,15 @@ func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() pulu
 		}
 		return v.AllowedOrganizations
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GrafanaGrafanaUserConfigAuthGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogin
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
@@ -16389,16 +16404,19 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput) Ind
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	EmitCheckpointsEnabled          *bool `pulumi:"emitCheckpointsEnabled"`
-	EmitCheckpointsIntervalSeconds  *int  `pulumi:"emitCheckpointsIntervalSeconds"`
-	RefreshGroupsEnabled            *bool `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds    *int  `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled            *bool `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds    *int  `pulumi:"refreshTopicsIntervalSeconds"`
-	SyncGroupOffsetsEnabled         *bool `pulumi:"syncGroupOffsetsEnabled"`
-	SyncGroupOffsetsIntervalSeconds *int  `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	SyncTopicConfigsEnabled         *bool `pulumi:"syncTopicConfigsEnabled"`
-	TasksMaxPerCpu                  *int  `pulumi:"tasksMaxPerCpu"`
+	EmitCheckpointsEnabled          *bool   `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  *int    `pulumi:"emitCheckpointsIntervalSeconds"`
+	Groups                          *string `pulumi:"groups"`
+	GroupsExclude                   *string `pulumi:"groupsExclude"`
+	OffsetLagMax                    *int    `pulumi:"offsetLagMax"`
+	RefreshGroupsEnabled            *bool   `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    *int    `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            *bool   `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    *int    `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         *bool   `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds *int    `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	SyncTopicConfigsEnabled         *bool   `pulumi:"syncTopicConfigsEnabled"`
+	TasksMaxPerCpu                  *int    `pulumi:"tasksMaxPerCpu"`
 }
 
 // KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -16413,16 +16431,19 @@ type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interface {
 }
 
 type KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	EmitCheckpointsEnabled          pulumi.BoolPtrInput `pulumi:"emitCheckpointsEnabled"`
-	EmitCheckpointsIntervalSeconds  pulumi.IntPtrInput  `pulumi:"emitCheckpointsIntervalSeconds"`
-	RefreshGroupsEnabled            pulumi.BoolPtrInput `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds    pulumi.IntPtrInput  `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled            pulumi.BoolPtrInput `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds    pulumi.IntPtrInput  `pulumi:"refreshTopicsIntervalSeconds"`
-	SyncGroupOffsetsEnabled         pulumi.BoolPtrInput `pulumi:"syncGroupOffsetsEnabled"`
-	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput  `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	SyncTopicConfigsEnabled         pulumi.BoolPtrInput `pulumi:"syncTopicConfigsEnabled"`
-	TasksMaxPerCpu                  pulumi.IntPtrInput  `pulumi:"tasksMaxPerCpu"`
+	EmitCheckpointsEnabled          pulumi.BoolPtrInput   `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  pulumi.IntPtrInput    `pulumi:"emitCheckpointsIntervalSeconds"`
+	Groups                          pulumi.StringPtrInput `pulumi:"groups"`
+	GroupsExclude                   pulumi.StringPtrInput `pulumi:"groupsExclude"`
+	OffsetLagMax                    pulumi.IntPtrInput    `pulumi:"offsetLagMax"`
+	RefreshGroupsEnabled            pulumi.BoolPtrInput   `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    pulumi.IntPtrInput    `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            pulumi.BoolPtrInput   `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    pulumi.IntPtrInput    `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         pulumi.BoolPtrInput   `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput    `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	SyncTopicConfigsEnabled         pulumi.BoolPtrInput   `pulumi:"syncTopicConfigsEnabled"`
+	TasksMaxPerCpu                  pulumi.IntPtrInput    `pulumi:"tasksMaxPerCpu"`
 }
 
 func (KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -16514,6 +16535,18 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) EmitCh
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.Groups }).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) GroupsExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.GroupsExclude }).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) OffsetLagMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int { return v.OffsetLagMax }).(pulumi.IntPtrOutput)
+}
+
 func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
 		return v.RefreshGroupsEnabled
@@ -16599,6 +16632,33 @@ func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Emi
 			return nil
 		}
 		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Groups
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) GroupsExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) OffsetLagMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetLagMax
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -38660,17 +38720,19 @@ type ServiceIntegrationEndpointRsyslogUserConfig struct {
 	Ca *string `pulumi:"ca"`
 	// PEM encoded client certificate.
 	Cert *string `pulumi:"cert"`
-	// message format. The default value is `rfc5424`.
+	// Message format. The default value is `rfc5424`.
 	Format string `pulumi:"format"`
 	// PEM encoded client key.
 	Key *string `pulumi:"key"`
-	// custom syslog message format.
+	// Custom syslog message format.
 	Logline *string `pulumi:"logline"`
-	// rsyslog server port. The default value is `514`.
+	// Rsyslog max message size. The default value is `8192`.
+	MaxMessageSize *int `pulumi:"maxMessageSize"`
+	// Rsyslog server port. The default value is `514`.
 	Port int `pulumi:"port"`
 	// Structured data block for log message.
 	Sd *string `pulumi:"sd"`
-	// rsyslog server IP address or hostname.
+	// Rsyslog server IP address or hostname.
 	Server string `pulumi:"server"`
 	// Require TLS. The default value is `true`.
 	Tls bool `pulumi:"tls"`
@@ -38692,17 +38754,19 @@ type ServiceIntegrationEndpointRsyslogUserConfigArgs struct {
 	Ca pulumi.StringPtrInput `pulumi:"ca"`
 	// PEM encoded client certificate.
 	Cert pulumi.StringPtrInput `pulumi:"cert"`
-	// message format. The default value is `rfc5424`.
+	// Message format. The default value is `rfc5424`.
 	Format pulumi.StringInput `pulumi:"format"`
 	// PEM encoded client key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
-	// custom syslog message format.
+	// Custom syslog message format.
 	Logline pulumi.StringPtrInput `pulumi:"logline"`
-	// rsyslog server port. The default value is `514`.
+	// Rsyslog max message size. The default value is `8192`.
+	MaxMessageSize pulumi.IntPtrInput `pulumi:"maxMessageSize"`
+	// Rsyslog server port. The default value is `514`.
 	Port pulumi.IntInput `pulumi:"port"`
 	// Structured data block for log message.
 	Sd pulumi.StringPtrInput `pulumi:"sd"`
-	// rsyslog server IP address or hostname.
+	// Rsyslog server IP address or hostname.
 	Server pulumi.StringInput `pulumi:"server"`
 	// Require TLS. The default value is `true`.
 	Tls pulumi.BoolInput `pulumi:"tls"`
@@ -38795,7 +38859,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Cert() pulumi.StringP
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Cert }).(pulumi.StringPtrOutput)
 }
 
-// message format. The default value is `rfc5424`.
+// Message format. The default value is `rfc5424`.
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) string { return v.Format }).(pulumi.StringOutput)
 }
@@ -38805,12 +38869,17 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Key() pulumi.StringPt
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// custom syslog message format.
+// Custom syslog message format.
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server port. The default value is `514`.
+// Rsyslog max message size. The default value is `8192`.
+func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) MaxMessageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *int { return v.MaxMessageSize }).(pulumi.IntPtrOutput)
+}
+
+// Rsyslog server port. The default value is `514`.
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -38820,7 +38889,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Sd() pulumi.StringPtr
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Sd }).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server IP address or hostname.
+// Rsyslog server IP address or hostname.
 func (o ServiceIntegrationEndpointRsyslogUserConfigOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceIntegrationEndpointRsyslogUserConfig) string { return v.Server }).(pulumi.StringOutput)
 }
@@ -38874,7 +38943,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Cert() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// message format. The default value is `rfc5424`.
+// Message format. The default value is `rfc5424`.
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -38894,7 +38963,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Key() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// custom syslog message format.
+// Custom syslog message format.
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -38904,7 +38973,17 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Logline() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server port. The default value is `514`.
+// Rsyslog max message size. The default value is `8192`.
+func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) MaxMessageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxMessageSize
+	}).(pulumi.IntPtrOutput)
+}
+
+// Rsyslog server port. The default value is `514`.
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *int {
 		if v == nil {
@@ -38924,7 +39003,7 @@ func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Sd() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// rsyslog server IP address or hostname.
+// Rsyslog server IP address or hostname.
 func (o ServiceIntegrationEndpointRsyslogUserConfigPtrOutput) Server() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegrationEndpointRsyslogUserConfig) *string {
 		if v == nil {
@@ -47240,6 +47319,7 @@ func (o GetGrafanaGrafanaUserConfigAuthGenericOauthPtrOutput) TokenUrl() pulumi.
 type GetGrafanaGrafanaUserConfigAuthGithub struct {
 	AllowSignUp          *bool    `pulumi:"allowSignUp"`
 	AllowedOrganizations []string `pulumi:"allowedOrganizations"`
+	AutoLogin            *bool    `pulumi:"autoLogin"`
 	ClientId             string   `pulumi:"clientId"`
 	ClientSecret         string   `pulumi:"clientSecret"`
 	SkipOrgRoleSync      *bool    `pulumi:"skipOrgRoleSync"`
@@ -47260,6 +47340,7 @@ type GetGrafanaGrafanaUserConfigAuthGithubInput interface {
 type GetGrafanaGrafanaUserConfigAuthGithubArgs struct {
 	AllowSignUp          pulumi.BoolPtrInput     `pulumi:"allowSignUp"`
 	AllowedOrganizations pulumi.StringArrayInput `pulumi:"allowedOrganizations"`
+	AutoLogin            pulumi.BoolPtrInput     `pulumi:"autoLogin"`
 	ClientId             pulumi.StringInput      `pulumi:"clientId"`
 	ClientSecret         pulumi.StringInput      `pulumi:"clientSecret"`
 	SkipOrgRoleSync      pulumi.BoolPtrInput     `pulumi:"skipOrgRoleSync"`
@@ -47351,6 +47432,10 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) AllowedOrganizations() pulu
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) []string { return v.AllowedOrganizations }).(pulumi.StringArrayOutput)
 }
 
+func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) *bool { return v.AutoLogin }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetGrafanaGrafanaUserConfigAuthGithubOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGrafanaGrafanaUserConfigAuthGithub) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -47407,6 +47492,15 @@ func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AllowedOrganizations() p
 		}
 		return v.AllowedOrganizations
 	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) AutoLogin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetGrafanaGrafanaUserConfigAuthGithub) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoLogin
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGrafanaGrafanaUserConfigAuthGithubPtrOutput) ClientId() pulumi.StringPtrOutput {
@@ -56063,16 +56157,19 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArrayOutput) 
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker struct {
-	EmitCheckpointsEnabled          *bool `pulumi:"emitCheckpointsEnabled"`
-	EmitCheckpointsIntervalSeconds  *int  `pulumi:"emitCheckpointsIntervalSeconds"`
-	RefreshGroupsEnabled            *bool `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds    *int  `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled            *bool `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds    *int  `pulumi:"refreshTopicsIntervalSeconds"`
-	SyncGroupOffsetsEnabled         *bool `pulumi:"syncGroupOffsetsEnabled"`
-	SyncGroupOffsetsIntervalSeconds *int  `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	SyncTopicConfigsEnabled         *bool `pulumi:"syncTopicConfigsEnabled"`
-	TasksMaxPerCpu                  *int  `pulumi:"tasksMaxPerCpu"`
+	EmitCheckpointsEnabled          *bool   `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  *int    `pulumi:"emitCheckpointsIntervalSeconds"`
+	Groups                          *string `pulumi:"groups"`
+	GroupsExclude                   *string `pulumi:"groupsExclude"`
+	OffsetLagMax                    *int    `pulumi:"offsetLagMax"`
+	RefreshGroupsEnabled            *bool   `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    *int    `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            *bool   `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    *int    `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         *bool   `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds *int    `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	SyncTopicConfigsEnabled         *bool   `pulumi:"syncTopicConfigsEnabled"`
+	TasksMaxPerCpu                  *int    `pulumi:"tasksMaxPerCpu"`
 }
 
 // GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput is an input type that accepts GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs and GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput values.
@@ -56087,16 +56184,19 @@ type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerInput interfac
 }
 
 type GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs struct {
-	EmitCheckpointsEnabled          pulumi.BoolPtrInput `pulumi:"emitCheckpointsEnabled"`
-	EmitCheckpointsIntervalSeconds  pulumi.IntPtrInput  `pulumi:"emitCheckpointsIntervalSeconds"`
-	RefreshGroupsEnabled            pulumi.BoolPtrInput `pulumi:"refreshGroupsEnabled"`
-	RefreshGroupsIntervalSeconds    pulumi.IntPtrInput  `pulumi:"refreshGroupsIntervalSeconds"`
-	RefreshTopicsEnabled            pulumi.BoolPtrInput `pulumi:"refreshTopicsEnabled"`
-	RefreshTopicsIntervalSeconds    pulumi.IntPtrInput  `pulumi:"refreshTopicsIntervalSeconds"`
-	SyncGroupOffsetsEnabled         pulumi.BoolPtrInput `pulumi:"syncGroupOffsetsEnabled"`
-	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput  `pulumi:"syncGroupOffsetsIntervalSeconds"`
-	SyncTopicConfigsEnabled         pulumi.BoolPtrInput `pulumi:"syncTopicConfigsEnabled"`
-	TasksMaxPerCpu                  pulumi.IntPtrInput  `pulumi:"tasksMaxPerCpu"`
+	EmitCheckpointsEnabled          pulumi.BoolPtrInput   `pulumi:"emitCheckpointsEnabled"`
+	EmitCheckpointsIntervalSeconds  pulumi.IntPtrInput    `pulumi:"emitCheckpointsIntervalSeconds"`
+	Groups                          pulumi.StringPtrInput `pulumi:"groups"`
+	GroupsExclude                   pulumi.StringPtrInput `pulumi:"groupsExclude"`
+	OffsetLagMax                    pulumi.IntPtrInput    `pulumi:"offsetLagMax"`
+	RefreshGroupsEnabled            pulumi.BoolPtrInput   `pulumi:"refreshGroupsEnabled"`
+	RefreshGroupsIntervalSeconds    pulumi.IntPtrInput    `pulumi:"refreshGroupsIntervalSeconds"`
+	RefreshTopicsEnabled            pulumi.BoolPtrInput   `pulumi:"refreshTopicsEnabled"`
+	RefreshTopicsIntervalSeconds    pulumi.IntPtrInput    `pulumi:"refreshTopicsIntervalSeconds"`
+	SyncGroupOffsetsEnabled         pulumi.BoolPtrInput   `pulumi:"syncGroupOffsetsEnabled"`
+	SyncGroupOffsetsIntervalSeconds pulumi.IntPtrInput    `pulumi:"syncGroupOffsetsIntervalSeconds"`
+	SyncTopicConfigsEnabled         pulumi.BoolPtrInput   `pulumi:"syncTopicConfigsEnabled"`
+	TasksMaxPerCpu                  pulumi.IntPtrInput    `pulumi:"tasksMaxPerCpu"`
 }
 
 func (GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs) ElementType() reflect.Type {
@@ -56188,6 +56288,18 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Emi
 	}).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.Groups }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) GroupsExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string { return v.GroupsExclude }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) OffsetLagMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int { return v.OffsetLagMax }).(pulumi.IntPtrOutput)
+}
+
 func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerOutput) RefreshGroupsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *bool {
 		return v.RefreshGroupsEnabled
@@ -56273,6 +56385,33 @@ func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) 
 			return nil
 		}
 		return v.EmitCheckpointsIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) Groups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Groups
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) GroupsExclude() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsExclude
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerPtrOutput) OffsetLagMax() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker) *int {
+		if v == nil {
+			return nil
+		}
+		return v.OffsetLagMax
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -73940,15 +74079,16 @@ func (o GetServiceIntegrationEndpointPrometheusUserConfigArrayOutput) Index(i pu
 }
 
 type GetServiceIntegrationEndpointRsyslogUserConfig struct {
-	Ca      *string `pulumi:"ca"`
-	Cert    *string `pulumi:"cert"`
-	Format  string  `pulumi:"format"`
-	Key     *string `pulumi:"key"`
-	Logline *string `pulumi:"logline"`
-	Port    int     `pulumi:"port"`
-	Sd      *string `pulumi:"sd"`
-	Server  string  `pulumi:"server"`
-	Tls     bool    `pulumi:"tls"`
+	Ca             *string `pulumi:"ca"`
+	Cert           *string `pulumi:"cert"`
+	Format         string  `pulumi:"format"`
+	Key            *string `pulumi:"key"`
+	Logline        *string `pulumi:"logline"`
+	MaxMessageSize *int    `pulumi:"maxMessageSize"`
+	Port           int     `pulumi:"port"`
+	Sd             *string `pulumi:"sd"`
+	Server         string  `pulumi:"server"`
+	Tls            bool    `pulumi:"tls"`
 }
 
 // GetServiceIntegrationEndpointRsyslogUserConfigInput is an input type that accepts GetServiceIntegrationEndpointRsyslogUserConfigArgs and GetServiceIntegrationEndpointRsyslogUserConfigOutput values.
@@ -73963,15 +74103,16 @@ type GetServiceIntegrationEndpointRsyslogUserConfigInput interface {
 }
 
 type GetServiceIntegrationEndpointRsyslogUserConfigArgs struct {
-	Ca      pulumi.StringPtrInput `pulumi:"ca"`
-	Cert    pulumi.StringPtrInput `pulumi:"cert"`
-	Format  pulumi.StringInput    `pulumi:"format"`
-	Key     pulumi.StringPtrInput `pulumi:"key"`
-	Logline pulumi.StringPtrInput `pulumi:"logline"`
-	Port    pulumi.IntInput       `pulumi:"port"`
-	Sd      pulumi.StringPtrInput `pulumi:"sd"`
-	Server  pulumi.StringInput    `pulumi:"server"`
-	Tls     pulumi.BoolInput      `pulumi:"tls"`
+	Ca             pulumi.StringPtrInput `pulumi:"ca"`
+	Cert           pulumi.StringPtrInput `pulumi:"cert"`
+	Format         pulumi.StringInput    `pulumi:"format"`
+	Key            pulumi.StringPtrInput `pulumi:"key"`
+	Logline        pulumi.StringPtrInput `pulumi:"logline"`
+	MaxMessageSize pulumi.IntPtrInput    `pulumi:"maxMessageSize"`
+	Port           pulumi.IntInput       `pulumi:"port"`
+	Sd             pulumi.StringPtrInput `pulumi:"sd"`
+	Server         pulumi.StringInput    `pulumi:"server"`
+	Tls            pulumi.BoolInput      `pulumi:"tls"`
 }
 
 func (GetServiceIntegrationEndpointRsyslogUserConfigArgs) ElementType() reflect.Type {
@@ -74043,6 +74184,10 @@ func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Key() pulumi.Strin
 
 func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Logline() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *string { return v.Logline }).(pulumi.StringPtrOutput)
+}
+
+func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) MaxMessageSize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetServiceIntegrationEndpointRsyslogUserConfig) *int { return v.MaxMessageSize }).(pulumi.IntPtrOutput)
 }
 
 func (o GetServiceIntegrationEndpointRsyslogUserConfigOutput) Port() pulumi.IntOutput {

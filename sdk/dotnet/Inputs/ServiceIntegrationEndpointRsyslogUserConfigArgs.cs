@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// message format. The default value is `rfc5424`.
+        /// Message format. The default value is `rfc5424`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -37,13 +37,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// custom syslog message format.
+        /// Custom syslog message format.
         /// </summary>
         [Input("logline")]
         public Input<string>? Logline { get; set; }
 
         /// <summary>
-        /// rsyslog server port. The default value is `514`.
+        /// Rsyslog max message size. The default value is `8192`.
+        /// </summary>
+        [Input("maxMessageSize")]
+        public Input<int>? MaxMessageSize { get; set; }
+
+        /// <summary>
+        /// Rsyslog server port. The default value is `514`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
@@ -55,7 +61,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Sd { get; set; }
 
         /// <summary>
-        /// rsyslog server IP address or hostname.
+        /// Rsyslog server IP address or hostname.
         /// </summary>
         [Input("server", required: true)]
         public Input<string> Server { get; set; } = null!;
