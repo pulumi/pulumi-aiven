@@ -1101,6 +1101,9 @@
                         "type": "string"
                     }
                 },
+                "autoLogin": {
+                    "type": "boolean"
+                },
                 "clientId": {
                     "type": "string"
                 },
@@ -2579,6 +2582,15 @@
                     "type": "boolean"
                 },
                 "emitCheckpointsIntervalSeconds": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "string"
+                },
+                "groupsExclude": {
+                    "type": "string"
+                },
+                "offsetLagMax": {
                     "type": "integer"
                 },
                 "refreshGroupsEnabled": {
@@ -5958,7 +5970,7 @@
                 },
                 "format": {
                     "type": "string",
-                    "description": "message format. The default value is `rfc5424`.\n"
+                    "description": "Message format. The default value is `rfc5424`.\n"
                 },
                 "key": {
                     "type": "string",
@@ -5966,11 +5978,15 @@
                 },
                 "logline": {
                     "type": "string",
-                    "description": "custom syslog message format.\n"
+                    "description": "Custom syslog message format.\n"
+                },
+                "maxMessageSize": {
+                    "type": "integer",
+                    "description": "Rsyslog max message size. The default value is `8192`.\n"
                 },
                 "port": {
                     "type": "integer",
-                    "description": "rsyslog server port. The default value is `514`.\n"
+                    "description": "Rsyslog server port. The default value is `514`.\n"
                 },
                 "sd": {
                     "type": "string",
@@ -5978,7 +5994,7 @@
                 },
                 "server": {
                     "type": "string",
-                    "description": "rsyslog server IP address or hostname.\n"
+                    "description": "Rsyslog server IP address or hostname.\n"
                 },
                 "tls": {
                     "type": "boolean",
@@ -7453,6 +7469,9 @@
                         "type": "string"
                     }
                 },
+                "autoLogin": {
+                    "type": "boolean"
+                },
                 "clientId": {
                     "type": "string"
                 },
@@ -8882,6 +8901,15 @@
                     "type": "boolean"
                 },
                 "emitCheckpointsIntervalSeconds": {
+                    "type": "integer"
+                },
+                "groups": {
+                    "type": "string"
+                },
+                "groupsExclude": {
+                    "type": "string"
+                },
+                "offsetLagMax": {
                     "type": "integer"
                 },
                 "refreshGroupsEnabled": {
@@ -12139,6 +12167,9 @@
                 },
                 "logline": {
                     "type": "string"
+                },
+                "maxMessageSize": {
+                    "type": "integer"
                 },
                 "port": {
                     "type": "integer"

@@ -3128,6 +3128,8 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
             suggest = "allow_sign_up"
         elif key == "allowedOrganizations":
             suggest = "allowed_organizations"
+        elif key == "autoLogin":
+            suggest = "auto_login"
         elif key == "skipOrgRoleSync":
             suggest = "skip_org_role_sync"
         elif key == "teamIds":
@@ -3149,6 +3151,7 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
                  client_secret: str,
                  allow_sign_up: Optional[bool] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
+                 auto_login: Optional[bool] = None,
                  skip_org_role_sync: Optional[bool] = None,
                  team_ids: Optional[Sequence[int]] = None):
         pulumi.set(__self__, "client_id", client_id)
@@ -3157,6 +3160,8 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if auto_login is not None:
+            pulumi.set(__self__, "auto_login", auto_login)
         if skip_org_role_sync is not None:
             pulumi.set(__self__, "skip_org_role_sync", skip_org_role_sync)
         if team_ids is not None:
@@ -3181,6 +3186,11 @@ class GrafanaGrafanaUserConfigAuthGithub(dict):
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_organizations")
+
+    @property
+    @pulumi.getter(name="autoLogin")
+    def auto_login(self) -> Optional[bool]:
+        return pulumi.get(self, "auto_login")
 
     @property
     @pulumi.getter(name="skipOrgRoleSync")
@@ -7197,6 +7207,10 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
             suggest = "emit_checkpoints_enabled"
         elif key == "emitCheckpointsIntervalSeconds":
             suggest = "emit_checkpoints_interval_seconds"
+        elif key == "groupsExclude":
+            suggest = "groups_exclude"
+        elif key == "offsetLagMax":
+            suggest = "offset_lag_max"
         elif key == "refreshGroupsEnabled":
             suggest = "refresh_groups_enabled"
         elif key == "refreshGroupsIntervalSeconds":
@@ -7228,6 +7242,9 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     def __init__(__self__, *,
                  emit_checkpoints_enabled: Optional[bool] = None,
                  emit_checkpoints_interval_seconds: Optional[int] = None,
+                 groups: Optional[str] = None,
+                 groups_exclude: Optional[str] = None,
+                 offset_lag_max: Optional[int] = None,
                  refresh_groups_enabled: Optional[bool] = None,
                  refresh_groups_interval_seconds: Optional[int] = None,
                  refresh_topics_enabled: Optional[bool] = None,
@@ -7240,6 +7257,12 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
             pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
         if emit_checkpoints_interval_seconds is not None:
             pulumi.set(__self__, "emit_checkpoints_interval_seconds", emit_checkpoints_interval_seconds)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if groups_exclude is not None:
+            pulumi.set(__self__, "groups_exclude", groups_exclude)
+        if offset_lag_max is not None:
+            pulumi.set(__self__, "offset_lag_max", offset_lag_max)
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -7266,6 +7289,21 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="emitCheckpointsIntervalSeconds")
     def emit_checkpoints_interval_seconds(self) -> Optional[int]:
         return pulumi.get(self, "emit_checkpoints_interval_seconds")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[str]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter(name="groupsExclude")
+    def groups_exclude(self) -> Optional[str]:
+        return pulumi.get(self, "groups_exclude")
+
+    @property
+    @pulumi.getter(name="offsetLagMax")
+    def offset_lag_max(self) -> Optional[int]:
+        return pulumi.get(self, "offset_lag_max")
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
@@ -16362,6 +16400,23 @@ class ServiceIntegrationEndpointPrometheusUserConfig(dict):
 
 @pulumi.output_type
 class ServiceIntegrationEndpointRsyslogUserConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxMessageSize":
+            suggest = "max_message_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceIntegrationEndpointRsyslogUserConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceIntegrationEndpointRsyslogUserConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceIntegrationEndpointRsyslogUserConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  format: str,
                  port: int,
@@ -16371,16 +16426,18 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
                  cert: Optional[str] = None,
                  key: Optional[str] = None,
                  logline: Optional[str] = None,
+                 max_message_size: Optional[int] = None,
                  sd: Optional[str] = None):
         """
-        :param str format: message format. The default value is `rfc5424`.
-        :param int port: rsyslog server port. The default value is `514`.
-        :param str server: rsyslog server IP address or hostname.
+        :param str format: Message format. The default value is `rfc5424`.
+        :param int port: Rsyslog server port. The default value is `514`.
+        :param str server: Rsyslog server IP address or hostname.
         :param bool tls: Require TLS. The default value is `true`.
         :param str ca: PEM encoded CA certificate.
         :param str cert: PEM encoded client certificate.
         :param str key: PEM encoded client key.
-        :param str logline: custom syslog message format.
+        :param str logline: Custom syslog message format.
+        :param int max_message_size: Rsyslog max message size. The default value is `8192`.
         :param str sd: Structured data block for log message.
         """
         pulumi.set(__self__, "format", format)
@@ -16395,6 +16452,8 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
             pulumi.set(__self__, "key", key)
         if logline is not None:
             pulumi.set(__self__, "logline", logline)
+        if max_message_size is not None:
+            pulumi.set(__self__, "max_message_size", max_message_size)
         if sd is not None:
             pulumi.set(__self__, "sd", sd)
 
@@ -16402,7 +16461,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     @pulumi.getter
     def format(self) -> str:
         """
-        message format. The default value is `rfc5424`.
+        Message format. The default value is `rfc5424`.
         """
         return pulumi.get(self, "format")
 
@@ -16410,7 +16469,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        rsyslog server port. The default value is `514`.
+        Rsyslog server port. The default value is `514`.
         """
         return pulumi.get(self, "port")
 
@@ -16418,7 +16477,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     @pulumi.getter
     def server(self) -> str:
         """
-        rsyslog server IP address or hostname.
+        Rsyslog server IP address or hostname.
         """
         return pulumi.get(self, "server")
 
@@ -16458,9 +16517,17 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     @pulumi.getter
     def logline(self) -> Optional[str]:
         """
-        custom syslog message format.
+        Custom syslog message format.
         """
         return pulumi.get(self, "logline")
+
+    @property
+    @pulumi.getter(name="maxMessageSize")
+    def max_message_size(self) -> Optional[int]:
+        """
+        Rsyslog max message size. The default value is `8192`.
+        """
+        return pulumi.get(self, "max_message_size")
 
     @property
     @pulumi.getter
@@ -19179,6 +19246,7 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
                  client_secret: str,
                  allow_sign_up: Optional[bool] = None,
                  allowed_organizations: Optional[Sequence[str]] = None,
+                 auto_login: Optional[bool] = None,
                  skip_org_role_sync: Optional[bool] = None,
                  team_ids: Optional[Sequence[int]] = None):
         pulumi.set(__self__, "client_id", client_id)
@@ -19187,6 +19255,8 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
         if allowed_organizations is not None:
             pulumi.set(__self__, "allowed_organizations", allowed_organizations)
+        if auto_login is not None:
+            pulumi.set(__self__, "auto_login", auto_login)
         if skip_org_role_sync is not None:
             pulumi.set(__self__, "skip_org_role_sync", skip_org_role_sync)
         if team_ids is not None:
@@ -19211,6 +19281,11 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
     @pulumi.getter(name="allowedOrganizations")
     def allowed_organizations(self) -> Optional[Sequence[str]]:
         return pulumi.get(self, "allowed_organizations")
+
+    @property
+    @pulumi.getter(name="autoLogin")
+    def auto_login(self) -> Optional[bool]:
+        return pulumi.get(self, "auto_login")
 
     @property
     @pulumi.getter(name="skipOrgRoleSync")
@@ -21668,6 +21743,9 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
     def __init__(__self__, *,
                  emit_checkpoints_enabled: Optional[bool] = None,
                  emit_checkpoints_interval_seconds: Optional[int] = None,
+                 groups: Optional[str] = None,
+                 groups_exclude: Optional[str] = None,
+                 offset_lag_max: Optional[int] = None,
                  refresh_groups_enabled: Optional[bool] = None,
                  refresh_groups_interval_seconds: Optional[int] = None,
                  refresh_topics_enabled: Optional[bool] = None,
@@ -21680,6 +21758,12 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
             pulumi.set(__self__, "emit_checkpoints_enabled", emit_checkpoints_enabled)
         if emit_checkpoints_interval_seconds is not None:
             pulumi.set(__self__, "emit_checkpoints_interval_seconds", emit_checkpoints_interval_seconds)
+        if groups is not None:
+            pulumi.set(__self__, "groups", groups)
+        if groups_exclude is not None:
+            pulumi.set(__self__, "groups_exclude", groups_exclude)
+        if offset_lag_max is not None:
+            pulumi.set(__self__, "offset_lag_max", offset_lag_max)
         if refresh_groups_enabled is not None:
             pulumi.set(__self__, "refresh_groups_enabled", refresh_groups_enabled)
         if refresh_groups_interval_seconds is not None:
@@ -21706,6 +21790,21 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict):
     @pulumi.getter(name="emitCheckpointsIntervalSeconds")
     def emit_checkpoints_interval_seconds(self) -> Optional[int]:
         return pulumi.get(self, "emit_checkpoints_interval_seconds")
+
+    @property
+    @pulumi.getter
+    def groups(self) -> Optional[str]:
+        return pulumi.get(self, "groups")
+
+    @property
+    @pulumi.getter(name="groupsExclude")
+    def groups_exclude(self) -> Optional[str]:
+        return pulumi.get(self, "groups_exclude")
+
+    @property
+    @pulumi.getter(name="offsetLagMax")
+    def offset_lag_max(self) -> Optional[int]:
+        return pulumi.get(self, "offset_lag_max")
 
     @property
     @pulumi.getter(name="refreshGroupsEnabled")
@@ -27248,6 +27347,7 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
                  cert: Optional[str] = None,
                  key: Optional[str] = None,
                  logline: Optional[str] = None,
+                 max_message_size: Optional[int] = None,
                  sd: Optional[str] = None):
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "port", port)
@@ -27261,6 +27361,8 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
             pulumi.set(__self__, "key", key)
         if logline is not None:
             pulumi.set(__self__, "logline", logline)
+        if max_message_size is not None:
+            pulumi.set(__self__, "max_message_size", max_message_size)
         if sd is not None:
             pulumi.set(__self__, "sd", sd)
 
@@ -27303,6 +27405,11 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
     @pulumi.getter
     def logline(self) -> Optional[str]:
         return pulumi.get(self, "logline")
+
+    @property
+    @pulumi.getter(name="maxMessageSize")
+    def max_message_size(self) -> Optional[int]:
+        return pulumi.get(self, "max_message_size")
 
     @property
     @pulumi.getter

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Cert;
         /// <summary>
-        /// message format. The default value is `rfc5424`.
+        /// Message format. The default value is `rfc5424`.
         /// </summary>
         public readonly string Format;
         /// <summary>
@@ -30,11 +30,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// custom syslog message format.
+        /// Custom syslog message format.
         /// </summary>
         public readonly string? Logline;
         /// <summary>
-        /// rsyslog server port. The default value is `514`.
+        /// Rsyslog max message size. The default value is `8192`.
+        /// </summary>
+        public readonly int? MaxMessageSize;
+        /// <summary>
+        /// Rsyslog server port. The default value is `514`.
         /// </summary>
         public readonly int Port;
         /// <summary>
@@ -42,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Sd;
         /// <summary>
-        /// rsyslog server IP address or hostname.
+        /// Rsyslog server IP address or hostname.
         /// </summary>
         public readonly string Server;
         /// <summary>
@@ -62,6 +66,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? logline,
 
+            int? maxMessageSize,
+
             int port,
 
             string? sd,
@@ -75,6 +81,7 @@ namespace Pulumi.Aiven.Outputs
             Format = format;
             Key = key;
             Logline = logline;
+            MaxMessageSize = maxMessageSize;
             Port = port;
             Sd = sd;
             Server = server;

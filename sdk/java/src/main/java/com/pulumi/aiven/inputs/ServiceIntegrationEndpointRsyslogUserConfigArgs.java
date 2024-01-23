@@ -49,14 +49,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * message format. The default value is `rfc5424`.
+     * Message format. The default value is `rfc5424`.
      * 
      */
     @Import(name="format", required=true)
     private Output<String> format;
 
     /**
-     * @return message format. The default value is `rfc5424`.
+     * @return Message format. The default value is `rfc5424`.
      * 
      */
     public Output<String> format() {
@@ -79,14 +79,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * custom syslog message format.
+     * Custom syslog message format.
      * 
      */
     @Import(name="logline")
     private @Nullable Output<String> logline;
 
     /**
-     * @return custom syslog message format.
+     * @return Custom syslog message format.
      * 
      */
     public Optional<Output<String>> logline() {
@@ -94,14 +94,29 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * rsyslog server port. The default value is `514`.
+     * Rsyslog max message size. The default value is `8192`.
+     * 
+     */
+    @Import(name="maxMessageSize")
+    private @Nullable Output<Integer> maxMessageSize;
+
+    /**
+     * @return Rsyslog max message size. The default value is `8192`.
+     * 
+     */
+    public Optional<Output<Integer>> maxMessageSize() {
+        return Optional.ofNullable(this.maxMessageSize);
+    }
+
+    /**
+     * Rsyslog server port. The default value is `514`.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return rsyslog server port. The default value is `514`.
+     * @return Rsyslog server port. The default value is `514`.
      * 
      */
     public Output<Integer> port() {
@@ -124,14 +139,14 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
     }
 
     /**
-     * rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname.
      * 
      */
     @Import(name="server", required=true)
     private Output<String> server;
 
     /**
-     * @return rsyslog server IP address or hostname.
+     * @return Rsyslog server IP address or hostname.
      * 
      */
     public Output<String> server() {
@@ -161,6 +176,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         this.format = $.format;
         this.key = $.key;
         this.logline = $.logline;
+        this.maxMessageSize = $.maxMessageSize;
         this.port = $.port;
         this.sd = $.sd;
         this.server = $.server;
@@ -228,7 +244,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format message format. The default value is `rfc5424`.
+         * @param format Message format. The default value is `rfc5424`.
          * 
          * @return builder
          * 
@@ -239,7 +255,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param format message format. The default value is `rfc5424`.
+         * @param format Message format. The default value is `rfc5424`.
          * 
          * @return builder
          * 
@@ -270,7 +286,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param logline custom syslog message format.
+         * @param logline Custom syslog message format.
          * 
          * @return builder
          * 
@@ -281,7 +297,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param logline custom syslog message format.
+         * @param logline Custom syslog message format.
          * 
          * @return builder
          * 
@@ -291,7 +307,28 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param port rsyslog server port. The default value is `514`.
+         * @param maxMessageSize Rsyslog max message size. The default value is `8192`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxMessageSize(@Nullable Output<Integer> maxMessageSize) {
+            $.maxMessageSize = maxMessageSize;
+            return this;
+        }
+
+        /**
+         * @param maxMessageSize Rsyslog max message size. The default value is `8192`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxMessageSize(Integer maxMessageSize) {
+            return maxMessageSize(Output.of(maxMessageSize));
+        }
+
+        /**
+         * @param port Rsyslog server port. The default value is `514`.
          * 
          * @return builder
          * 
@@ -302,7 +339,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param port rsyslog server port. The default value is `514`.
+         * @param port Rsyslog server port. The default value is `514`.
          * 
          * @return builder
          * 
@@ -333,7 +370,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param server rsyslog server IP address or hostname.
+         * @param server Rsyslog server IP address or hostname.
          * 
          * @return builder
          * 
@@ -344,7 +381,7 @@ public final class ServiceIntegrationEndpointRsyslogUserConfigArgs extends com.p
         }
 
         /**
-         * @param server rsyslog server IP address or hostname.
+         * @param server Rsyslog server IP address or hostname.
          * 
          * @return builder
          * 

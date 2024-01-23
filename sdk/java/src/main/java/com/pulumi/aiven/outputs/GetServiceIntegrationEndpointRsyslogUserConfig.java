@@ -19,6 +19,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     private String format;
     private @Nullable String key;
     private @Nullable String logline;
+    private @Nullable Integer maxMessageSize;
     private Integer port;
     private @Nullable String sd;
     private String server;
@@ -39,6 +40,9 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     }
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
+    }
+    public Optional<Integer> maxMessageSize() {
+        return Optional.ofNullable(this.maxMessageSize);
     }
     public Integer port() {
         return this.port;
@@ -67,6 +71,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
         private String format;
         private @Nullable String key;
         private @Nullable String logline;
+        private @Nullable Integer maxMessageSize;
         private Integer port;
         private @Nullable String sd;
         private String server;
@@ -79,6 +84,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     	      this.format = defaults.format;
     	      this.key = defaults.key;
     	      this.logline = defaults.logline;
+    	      this.maxMessageSize = defaults.maxMessageSize;
     	      this.port = defaults.port;
     	      this.sd = defaults.sd;
     	      this.server = defaults.server;
@@ -118,6 +124,12 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxMessageSize(@Nullable Integer maxMessageSize) {
+
+            this.maxMessageSize = maxMessageSize;
+            return this;
+        }
+        @CustomType.Setter
         public Builder port(Integer port) {
             if (port == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointRsyslogUserConfig", "port");
@@ -154,6 +166,7 @@ public final class GetServiceIntegrationEndpointRsyslogUserConfig {
             _resultValue.format = format;
             _resultValue.key = key;
             _resultValue.logline = logline;
+            _resultValue.maxMessageSize = maxMessageSize;
             _resultValue.port = port;
             _resultValue.sd = sd;
             _resultValue.server = server;

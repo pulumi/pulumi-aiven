@@ -15,6 +15,9 @@ namespace Pulumi.Aiven.Outputs
     {
         public readonly bool? EmitCheckpointsEnabled;
         public readonly int? EmitCheckpointsIntervalSeconds;
+        public readonly string? Groups;
+        public readonly string? GroupsExclude;
+        public readonly int? OffsetLagMax;
         public readonly bool? RefreshGroupsEnabled;
         public readonly int? RefreshGroupsIntervalSeconds;
         public readonly bool? RefreshTopicsEnabled;
@@ -29,6 +32,12 @@ namespace Pulumi.Aiven.Outputs
             bool? emitCheckpointsEnabled,
 
             int? emitCheckpointsIntervalSeconds,
+
+            string? groups,
+
+            string? groupsExclude,
+
+            int? offsetLagMax,
 
             bool? refreshGroupsEnabled,
 
@@ -48,6 +57,9 @@ namespace Pulumi.Aiven.Outputs
         {
             EmitCheckpointsEnabled = emitCheckpointsEnabled;
             EmitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
+            Groups = groups;
+            GroupsExclude = groupsExclude;
+            OffsetLagMax = offsetLagMax;
             RefreshGroupsEnabled = refreshGroupsEnabled;
             RefreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             RefreshTopicsEnabled = refreshTopicsEnabled;

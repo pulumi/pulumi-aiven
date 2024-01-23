@@ -33,6 +33,13 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
         return Optional.ofNullable(this.allowedOrganizations);
     }
 
+    @Import(name="autoLogin")
+    private @Nullable Output<Boolean> autoLogin;
+
+    public Optional<Output<Boolean>> autoLogin() {
+        return Optional.ofNullable(this.autoLogin);
+    }
+
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
@@ -66,6 +73,7 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
     private GrafanaGrafanaUserConfigAuthGithubArgs(GrafanaGrafanaUserConfigAuthGithubArgs $) {
         this.allowSignUp = $.allowSignUp;
         this.allowedOrganizations = $.allowedOrganizations;
+        this.autoLogin = $.autoLogin;
         this.clientId = $.clientId;
         this.clientSecret = $.clientSecret;
         this.skipOrgRoleSync = $.skipOrgRoleSync;
@@ -110,6 +118,15 @@ public final class GrafanaGrafanaUserConfigAuthGithubArgs extends com.pulumi.res
 
         public Builder allowedOrganizations(String... allowedOrganizations) {
             return allowedOrganizations(List.of(allowedOrganizations));
+        }
+
+        public Builder autoLogin(@Nullable Output<Boolean> autoLogin) {
+            $.autoLogin = autoLogin;
+            return this;
+        }
+
+        public Builder autoLogin(Boolean autoLogin) {
+            return autoLogin(Output.of(autoLogin));
         }
 
         public Builder clientId(Output<String> clientId) {

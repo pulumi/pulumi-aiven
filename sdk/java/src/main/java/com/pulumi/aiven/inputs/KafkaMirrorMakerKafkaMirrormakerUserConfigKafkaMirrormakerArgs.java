@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -28,6 +29,27 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
 
     public Optional<Output<Integer>> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
+    }
+
+    @Import(name="groups")
+    private @Nullable Output<String> groups;
+
+    public Optional<Output<String>> groups() {
+        return Optional.ofNullable(this.groups);
+    }
+
+    @Import(name="groupsExclude")
+    private @Nullable Output<String> groupsExclude;
+
+    public Optional<Output<String>> groupsExclude() {
+        return Optional.ofNullable(this.groupsExclude);
+    }
+
+    @Import(name="offsetLagMax")
+    private @Nullable Output<Integer> offsetLagMax;
+
+    public Optional<Output<Integer>> offsetLagMax() {
+        return Optional.ofNullable(this.offsetLagMax);
     }
 
     @Import(name="refreshGroupsEnabled")
@@ -91,6 +113,9 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs $) {
         this.emitCheckpointsEnabled = $.emitCheckpointsEnabled;
         this.emitCheckpointsIntervalSeconds = $.emitCheckpointsIntervalSeconds;
+        this.groups = $.groups;
+        this.groupsExclude = $.groupsExclude;
+        this.offsetLagMax = $.offsetLagMax;
         this.refreshGroupsEnabled = $.refreshGroupsEnabled;
         this.refreshGroupsIntervalSeconds = $.refreshGroupsIntervalSeconds;
         this.refreshTopicsEnabled = $.refreshTopicsEnabled;
@@ -135,6 +160,33 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
 
         public Builder emitCheckpointsIntervalSeconds(Integer emitCheckpointsIntervalSeconds) {
             return emitCheckpointsIntervalSeconds(Output.of(emitCheckpointsIntervalSeconds));
+        }
+
+        public Builder groups(@Nullable Output<String> groups) {
+            $.groups = groups;
+            return this;
+        }
+
+        public Builder groups(String groups) {
+            return groups(Output.of(groups));
+        }
+
+        public Builder groupsExclude(@Nullable Output<String> groupsExclude) {
+            $.groupsExclude = groupsExclude;
+            return this;
+        }
+
+        public Builder groupsExclude(String groupsExclude) {
+            return groupsExclude(Output.of(groupsExclude));
+        }
+
+        public Builder offsetLagMax(@Nullable Output<Integer> offsetLagMax) {
+            $.offsetLagMax = offsetLagMax;
+            return this;
+        }
+
+        public Builder offsetLagMax(Integer offsetLagMax) {
+            return offsetLagMax(Output.of(offsetLagMax));
         }
 
         public Builder refreshGroupsEnabled(@Nullable Output<Boolean> refreshGroupsEnabled) {

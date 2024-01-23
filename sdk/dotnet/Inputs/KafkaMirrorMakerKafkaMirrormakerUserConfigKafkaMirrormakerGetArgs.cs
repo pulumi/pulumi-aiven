@@ -18,6 +18,15 @@ namespace Pulumi.Aiven.Inputs
         [Input("emitCheckpointsIntervalSeconds")]
         public Input<int>? EmitCheckpointsIntervalSeconds { get; set; }
 
+        [Input("groups")]
+        public Input<string>? Groups { get; set; }
+
+        [Input("groupsExclude")]
+        public Input<string>? GroupsExclude { get; set; }
+
+        [Input("offsetLagMax")]
+        public Input<int>? OffsetLagMax { get; set; }
+
         [Input("refreshGroupsEnabled")]
         public Input<bool>? RefreshGroupsEnabled { get; set; }
 

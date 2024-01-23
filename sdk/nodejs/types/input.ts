@@ -591,6 +591,7 @@ export interface GrafanaGrafanaUserConfigAuthGenericOauth {
 export interface GrafanaGrafanaUserConfigAuthGithub {
     allowSignUp?: pulumi.Input<boolean>;
     allowedOrganizations?: pulumi.Input<pulumi.Input<string>[]>;
+    autoLogin?: pulumi.Input<boolean>;
     clientId: pulumi.Input<string>;
     clientSecret: pulumi.Input<string>;
     skipOrgRoleSync?: pulumi.Input<boolean>;
@@ -1495,6 +1496,9 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
     emitCheckpointsEnabled?: pulumi.Input<boolean>;
     emitCheckpointsIntervalSeconds?: pulumi.Input<number>;
+    groups?: pulumi.Input<string>;
+    groupsExclude?: pulumi.Input<string>;
+    offsetLagMax?: pulumi.Input<number>;
     refreshGroupsEnabled?: pulumi.Input<boolean>;
     refreshGroupsIntervalSeconds?: pulumi.Input<number>;
     refreshTopicsEnabled?: pulumi.Input<boolean>;
@@ -3673,7 +3677,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: pulumi.Input<string>;
     /**
-     * message format. The default value is `rfc5424`.
+     * Message format. The default value is `rfc5424`.
      */
     format: pulumi.Input<string>;
     /**
@@ -3681,11 +3685,15 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     key?: pulumi.Input<string>;
     /**
-     * custom syslog message format.
+     * Custom syslog message format.
      */
     logline?: pulumi.Input<string>;
     /**
-     * rsyslog server port. The default value is `514`.
+     * Rsyslog max message size. The default value is `8192`.
+     */
+    maxMessageSize?: pulumi.Input<number>;
+    /**
+     * Rsyslog server port. The default value is `514`.
      */
     port: pulumi.Input<number>;
     /**
@@ -3693,7 +3701,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     sd?: pulumi.Input<string>;
     /**
-     * rsyslog server IP address or hostname.
+     * Rsyslog server IP address or hostname.
      */
     server: pulumi.Input<string>;
     /**

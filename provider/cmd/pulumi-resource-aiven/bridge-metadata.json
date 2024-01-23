@@ -3339,6 +3339,7 @@
             "aiven:index/GrafanaGrafanaUserConfigAuthGithub:GrafanaGrafanaUserConfigAuthGithub": {
                 "allowSignUp": "allow_sign_up",
                 "allowedOrganizations": "allowed_organizations",
+                "autoLogin": "auto_login",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "skipOrgRoleSync": "skip_org_role_sync",
@@ -3615,6 +3616,8 @@
             "aiven:index/KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
                 "emitCheckpointsEnabled": "emit_checkpoints_enabled",
                 "emitCheckpointsIntervalSeconds": "emit_checkpoints_interval_seconds",
+                "groupsExclude": "groups_exclude",
+                "offsetLagMax": "offset_lag_max",
                 "refreshGroupsEnabled": "refresh_groups_enabled",
                 "refreshGroupsIntervalSeconds": "refresh_groups_interval_seconds",
                 "refreshTopicsEnabled": "refresh_topics_enabled",
@@ -4175,6 +4178,9 @@
             "aiven:index/ServiceIntegrationEndpointPrometheusUserConfig:ServiceIntegrationEndpointPrometheusUserConfig": {
                 "basicAuthPassword": "basic_auth_password",
                 "basicAuthUsername": "basic_auth_username"
+            },
+            "aiven:index/ServiceIntegrationEndpointRsyslogUserConfig:ServiceIntegrationEndpointRsyslogUserConfig": {
+                "maxMessageSize": "max_message_size"
             },
             "aiven:index/ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
                 "droppedMetrics": "dropped_metrics",
@@ -4930,6 +4936,7 @@
             "aiven:index/getGrafanaGrafanaUserConfigAuthGithub:getGrafanaGrafanaUserConfigAuthGithub": {
                 "allowSignUp": "allow_sign_up",
                 "allowedOrganizations": "allowed_organizations",
+                "autoLogin": "auto_login",
                 "clientId": "client_id",
                 "clientSecret": "client_secret",
                 "skipOrgRoleSync": "skip_org_role_sync",
@@ -5336,6 +5343,8 @@
             "aiven:index/getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker:getKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker": {
                 "emitCheckpointsEnabled": "emit_checkpoints_enabled",
                 "emitCheckpointsIntervalSeconds": "emit_checkpoints_interval_seconds",
+                "groupsExclude": "groups_exclude",
+                "offsetLagMax": "offset_lag_max",
                 "refreshGroupsEnabled": "refresh_groups_enabled",
                 "refreshGroupsIntervalSeconds": "refresh_groups_interval_seconds",
                 "refreshTopicsEnabled": "refresh_topics_enabled",
@@ -6224,6 +6233,9 @@
             "aiven:index/getServiceIntegrationEndpointPrometheusUserConfig:getServiceIntegrationEndpointPrometheusUserConfig": {
                 "basicAuthPassword": "basic_auth_password",
                 "basicAuthUsername": "basic_auth_username"
+            },
+            "aiven:index/getServiceIntegrationEndpointRsyslogUserConfig:getServiceIntegrationEndpointRsyslogUserConfig": {
+                "maxMessageSize": "max_message_size"
             },
             "aiven:index/getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig:getServiceIntegrationExternalAwsCloudwatchMetricsUserConfig": {
                 "droppedMetrics": "dropped_metrics",
