@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource is deprecated; please use OrganizationUser data source instead.
 // The Organization User resource allows the creation and management of an Aiven Organization User.
 //
 // During the creation of `OrganizationUser`resource, an email invitation will be sent

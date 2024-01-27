@@ -10,6 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
+    /// This resource is deprecated; please use aiven.OrganizationUser data source instead.
     /// The Organization User resource allows the creation and management of an Aiven Organization User.
     /// 
     /// During the creation of `aiven.OrganizationUser`resource, an email invitation will be sent

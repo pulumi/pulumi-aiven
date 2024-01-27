@@ -3536,11 +3536,11 @@ export interface KafkaTopicConfig {
      */
     indexIntervalBytes?: string;
     /**
-     * local.retention.bytes value. This field is temporarily disabled.
+     * local.retention.bytes value
      */
     localRetentionBytes?: string;
     /**
-     * local.retention.ms value. This field is temporarily disabled.
+     * local.retention.ms value
      */
     localRetentionMs?: string;
     /**

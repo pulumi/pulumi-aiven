@@ -123,14 +123,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * local.retention.bytes value. This field is temporarily disabled.
+     * local.retention.bytes value
      * 
      */
     @Import(name="localRetentionBytes")
     private @Nullable Output<String> localRetentionBytes;
 
     /**
-     * @return local.retention.bytes value. This field is temporarily disabled.
+     * @return local.retention.bytes value
      * 
      */
     public Optional<Output<String>> localRetentionBytes() {
@@ -138,14 +138,14 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * local.retention.ms value. This field is temporarily disabled.
+     * local.retention.ms value
      * 
      */
     @Import(name="localRetentionMs")
     private @Nullable Output<String> localRetentionMs;
 
     /**
-     * @return local.retention.ms value. This field is temporarily disabled.
+     * @return local.retention.ms value
      * 
      */
     public Optional<Output<String>> localRetentionMs() {
@@ -628,7 +628,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionBytes local.retention.bytes value. This field is temporarily disabled.
+         * @param localRetentionBytes local.retention.bytes value
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionBytes local.retention.bytes value. This field is temporarily disabled.
+         * @param localRetentionBytes local.retention.bytes value
          * 
          * @return builder
          * 
@@ -649,7 +649,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionMs local.retention.ms value. This field is temporarily disabled.
+         * @param localRetentionMs local.retention.ms value
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class KafkaTopicConfigArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param localRetentionMs local.retention.ms value. This field is temporarily disabled.
+         * @param localRetentionMs local.retention.ms value
          * 
          * @return builder
          * 
