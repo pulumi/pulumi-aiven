@@ -2739,11 +2739,11 @@
                 },
                 "localRetentionBytes": {
                     "type": "string",
-                    "description": "local.retention.bytes value. This field is temporarily disabled.\n"
+                    "description": "local.retention.bytes value\n"
                 },
                 "localRetentionMs": {
                     "type": "string",
-                    "description": "local.retention.ms value. This field is temporarily disabled.\n"
+                    "description": "local.retention.ms value\n"
                 },
                 "maxCompactionLagMs": {
                     "type": "string",
@@ -21606,7 +21606,7 @@
             }
         },
         "aiven:index/organizationUser:OrganizationUser": {
-            "description": "The Organization User resource allows the creation and management of an Aiven Organization User.\n\nDuring the creation of `aiven.OrganizationUser`resource, an email invitation will be sent\nto a user using `user_email` address. If the user accepts an invitation, they will become\na member of the organization. The deletion of `aiven.OrganizationUser` will not only\ndelete the invitation if one was sent but not yet accepted by the user, it will also \neliminate the member from the organization if one has accepted an invitation previously.\n",
+            "description": "This resource is deprecated; please use aiven.OrganizationUser data source instead. \nThe Organization User resource allows the creation and management of an Aiven Organization User.\n\nDuring the creation of `aiven.OrganizationUser`resource, an email invitation will be sent\nto a user using `user_email` address. If the user accepts an invitation, they will become\na member of the organization. The deletion of `aiven.OrganizationUser` will not only\ndelete the invitation if one was sent but not yet accepted by the user, it will also \neliminate the member from the organization if one has accepted an invitation previously.\n",
             "properties": {
                 "accepted": {
                     "type": "boolean",

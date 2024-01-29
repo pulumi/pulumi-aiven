@@ -55,13 +55,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IndexIntervalBytes { get; set; }
 
         /// <summary>
-        /// local.retention.bytes value. This field is temporarily disabled.
+        /// local.retention.bytes value
         /// </summary>
         [Input("localRetentionBytes")]
         public Input<string>? LocalRetentionBytes { get; set; }
 
         /// <summary>
-        /// local.retention.ms value. This field is temporarily disabled.
+        /// local.retention.ms value
         /// </summary>
         [Input("localRetentionMs")]
         public Input<string>? LocalRetentionMs { get; set; }

@@ -1582,11 +1582,11 @@ export interface KafkaTopicConfig {
      */
     indexIntervalBytes?: pulumi.Input<string>;
     /**
-     * local.retention.bytes value. This field is temporarily disabled.
+     * local.retention.bytes value
      */
     localRetentionBytes?: pulumi.Input<string>;
     /**
-     * local.retention.ms value. This field is temporarily disabled.
+     * local.retention.ms value
      */
     localRetentionMs?: pulumi.Input<string>;
     /**
