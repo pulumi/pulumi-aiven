@@ -39,7 +39,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable CassandraCassandraUserConfigCassandra cassandra;
     /**
-     * @return Cassandra major version.
+     * @return Cassandra version.
      * 
      */
     private @Nullable String cassandraVersion;
@@ -133,7 +133,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.cassandra);
     }
     /**
-     * @return Cassandra major version.
+     * @return Cassandra version.
      * 
      */
     public Optional<String> cassandraVersion() {

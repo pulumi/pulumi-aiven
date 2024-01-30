@@ -109,7 +109,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Cassandra major version.\n"
+                    "description": "Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -2338,6 +2338,10 @@
                 "consumerRequestTimeoutMs": {
                     "type": "integer",
                     "description": "The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
+                },
+                "nameStrategy": {
+                    "type": "string",
+                    "description": "Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.\n"
                 },
                 "nameStrategyValidation": {
                     "type": "boolean",
@@ -5241,6 +5245,9 @@
                 },
                 "redisTimeout": {
                     "type": "integer"
+                },
+                "redisVersion": {
+                    "type": "string"
                 },
                 "serviceLog": {
                     "type": "boolean"
@@ -8679,6 +8686,9 @@
                 "consumerRequestTimeoutMs": {
                     "type": "integer"
                 },
+                "nameStrategy": {
+                    "type": "string"
+                },
                 "nameStrategyValidation": {
                     "type": "boolean"
                 },
@@ -11427,6 +11437,9 @@
                 "redisTimeout": {
                     "type": "integer"
                 },
+                "redisVersion": {
+                    "type": "string"
+                },
                 "serviceLog": {
                     "type": "boolean"
                 },
@@ -13544,11 +13557,11 @@
             }
         },
         "aiven:index/billingGroup:BillingGroup": {
-            "description": "The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bybg1 = new aiven.BillingGroup(\"bybg1\", {\n    billingCurrency: \"USD\",\n    vatId: \"123ABC\",\n});\nconst pr1 = new aiven.Project(\"pr1\", {\n    project: \"pr1\",\n    billingGroup: bybg1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbybg1 = aiven.BillingGroup(\"bybg1\",\n    billing_currency=\"USD\",\n    vat_id=\"123ABC\")\npr1 = aiven.Project(\"pr1\",\n    project=\"pr1\",\n    billing_group=bybg1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bybg1 = new Aiven.BillingGroup(\"bybg1\", new()\n    {\n        BillingCurrency = \"USD\",\n        VatId = \"123ABC\",\n    });\n\n    var pr1 = new Aiven.Project(\"pr1\", new()\n    {\n        ProjectName = \"pr1\",\n        BillingGroup = bybg1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbybg1, err := aiven.NewBillingGroup(ctx, \"bybg1\", \u0026aiven.BillingGroupArgs{\n\t\t\tBillingCurrency: pulumi.String(\"USD\"),\n\t\t\tVatId:           pulumi.String(\"123ABC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewProject(ctx, \"pr1\", \u0026aiven.ProjectArgs{\n\t\t\tProject:      pulumi.String(\"pr1\"),\n\t\t\tBillingGroup: bybg1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.BillingGroup;\nimport com.pulumi.aiven.BillingGroupArgs;\nimport com.pulumi.aiven.Project;\nimport com.pulumi.aiven.ProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bybg1 = new BillingGroup(\"bybg1\", BillingGroupArgs.builder()        \n            .billingCurrency(\"USD\")\n            .vatId(\"123ABC\")\n            .build());\n\n        var pr1 = new Project(\"pr1\", ProjectArgs.builder()        \n            .project(\"pr1\")\n            .billingGroup(bybg1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bybg1:\n    type: aiven:BillingGroup\n    properties:\n      billingCurrency: USD\n      vatId: 123ABC\n  pr1:\n    type: aiven:Project\n    properties:\n      project: pr1\n      billingGroup: ${bybg1.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id\n```\n\n ",
+            "description": "Creates and manages billing groups and assigns them to projects.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bybg1 = new aiven.BillingGroup(\"bybg1\", {\n    billingCurrency: \"USD\",\n    vatId: \"123ABC\",\n});\nconst pr1 = new aiven.Project(\"pr1\", {\n    project: \"pr1\",\n    billingGroup: bybg1.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbybg1 = aiven.BillingGroup(\"bybg1\",\n    billing_currency=\"USD\",\n    vat_id=\"123ABC\")\npr1 = aiven.Project(\"pr1\",\n    project=\"pr1\",\n    billing_group=bybg1.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bybg1 = new Aiven.BillingGroup(\"bybg1\", new()\n    {\n        BillingCurrency = \"USD\",\n        VatId = \"123ABC\",\n    });\n\n    var pr1 = new Aiven.Project(\"pr1\", new()\n    {\n        ProjectName = \"pr1\",\n        BillingGroup = bybg1.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbybg1, err := aiven.NewBillingGroup(ctx, \"bybg1\", \u0026aiven.BillingGroupArgs{\n\t\t\tBillingCurrency: pulumi.String(\"USD\"),\n\t\t\tVatId:           pulumi.String(\"123ABC\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewProject(ctx, \"pr1\", \u0026aiven.ProjectArgs{\n\t\t\tProject:      pulumi.String(\"pr1\"),\n\t\t\tBillingGroup: bybg1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.BillingGroup;\nimport com.pulumi.aiven.BillingGroupArgs;\nimport com.pulumi.aiven.Project;\nimport com.pulumi.aiven.ProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bybg1 = new BillingGroup(\"bybg1\", BillingGroupArgs.builder()        \n            .billingCurrency(\"USD\")\n            .vatId(\"123ABC\")\n            .build());\n\n        var pr1 = new Project(\"pr1\", ProjectArgs.builder()        \n            .project(\"pr1\")\n            .billingGroup(bybg1.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bybg1:\n    type: aiven:BillingGroup\n    properties:\n      billingCurrency: USD\n      vatId: 123ABC\n  pr1:\n    type: aiven:Project\n    properties:\n      project: pr1\n      billingGroup: ${bybg1.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\n\n\n```sh\n $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id\n```\n\n ",
             "properties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account id\n",
+                    "description": "Account ID.\n",
                     "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                 },
                 "addressLines": {
@@ -13556,62 +13569,62 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Address lines\n"
+                    "description": "Address lines 1 and 2. For example, street, PO box, or building.\n"
                 },
                 "billingCurrency": {
                     "type": "string",
-                    "description": "Billing currency\n"
+                    "description": "Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.\n"
                 },
                 "billingEmails": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Billing contact emails\n"
+                    "description": "Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.\n"
                 },
                 "billingExtraText": {
                     "type": "string",
-                    "description": "Billing extra text\n"
+                    "description": "Additional information to include on your invoice (for example, a reference number).\n"
                 },
                 "cardId": {
                     "type": "string",
-                    "description": "Credit card id\n"
+                    "description": "Credit card ID.\n"
                 },
                 "city": {
                     "type": "string",
-                    "description": "City\n"
+                    "description": "City, district, suburb, town, or village.\n"
                 },
                 "company": {
                     "type": "string",
-                    "description": "Company name\n"
+                    "description": "Your company name.\n"
                 },
                 "copyFromBillingGroup": {
                     "type": "string",
-                    "description": "ID of the billing group to copy from\n"
+                    "description": "ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.\n"
                 },
                 "countryCode": {
                     "type": "string",
-                    "description": "Country code\n"
+                    "description": "Two-letter country code.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Billing Group name\n"
+                    "description": "Name of the billing group.\n"
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "state": {
                     "type": "string",
-                    "description": "State\n"
+                    "description": "State or province.\n"
                 },
                 "vatId": {
                     "type": "string",
-                    "description": "VAT id\n"
+                    "description": "The VAT identification number for your company.\n"
                 },
                 "zipCode": {
                     "type": "string",
-                    "description": "Zip Code\n"
+                    "description": "Zip or postal code.\n"
                 }
             },
             "required": [
@@ -13620,7 +13633,7 @@
             "inputProperties": {
                 "accountId": {
                     "type": "string",
-                    "description": "Account id\n",
+                    "description": "Account ID.\n",
                     "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                 },
                 "addressLines": {
@@ -13628,62 +13641,62 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Address lines\n"
+                    "description": "Address lines 1 and 2. For example, street, PO box, or building.\n"
                 },
                 "billingCurrency": {
                     "type": "string",
-                    "description": "Billing currency\n"
+                    "description": "Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.\n"
                 },
                 "billingEmails": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Billing contact emails\n"
+                    "description": "Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.\n"
                 },
                 "billingExtraText": {
                     "type": "string",
-                    "description": "Billing extra text\n"
+                    "description": "Additional information to include on your invoice (for example, a reference number).\n"
                 },
                 "cardId": {
                     "type": "string",
-                    "description": "Credit card id\n"
+                    "description": "Credit card ID.\n"
                 },
                 "city": {
                     "type": "string",
-                    "description": "City\n"
+                    "description": "City, district, suburb, town, or village.\n"
                 },
                 "company": {
                     "type": "string",
-                    "description": "Company name\n"
+                    "description": "Your company name.\n"
                 },
                 "copyFromBillingGroup": {
                     "type": "string",
-                    "description": "ID of the billing group to copy from\n"
+                    "description": "ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.\n"
                 },
                 "countryCode": {
                     "type": "string",
-                    "description": "Country code\n"
+                    "description": "Two-letter country code.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Billing Group name\n"
+                    "description": "Name of the billing group.\n"
                 },
                 "parentId": {
                     "type": "string",
-                    "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                    "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                 },
                 "state": {
                     "type": "string",
-                    "description": "State\n"
+                    "description": "State or province.\n"
                 },
                 "vatId": {
                     "type": "string",
-                    "description": "VAT id\n"
+                    "description": "The VAT identification number for your company.\n"
                 },
                 "zipCode": {
                     "type": "string",
-                    "description": "Zip Code\n"
+                    "description": "Zip or postal code.\n"
                 }
             },
             "stateInputs": {
@@ -13691,7 +13704,7 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account id\n",
+                        "description": "Account ID.\n",
                         "deprecationMessage": "Use parent_id instead. This field will be removed in the next major release."
                     },
                     "addressLines": {
@@ -13699,62 +13712,62 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Address lines\n"
+                        "description": "Address lines 1 and 2. For example, street, PO box, or building.\n"
                     },
                     "billingCurrency": {
                         "type": "string",
-                        "description": "Billing currency\n"
+                        "description": "Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.\n"
                     },
                     "billingEmails": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Billing contact emails\n"
+                        "description": "Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.\n"
                     },
                     "billingExtraText": {
                         "type": "string",
-                        "description": "Billing extra text\n"
+                        "description": "Additional information to include on your invoice (for example, a reference number).\n"
                     },
                     "cardId": {
                         "type": "string",
-                        "description": "Credit card id\n"
+                        "description": "Credit card ID.\n"
                     },
                     "city": {
                         "type": "string",
-                        "description": "City\n"
+                        "description": "City, district, suburb, town, or village.\n"
                     },
                     "company": {
                         "type": "string",
-                        "description": "Company name\n"
+                        "description": "Your company name.\n"
                     },
                     "copyFromBillingGroup": {
                         "type": "string",
-                        "description": "ID of the billing group to copy from\n"
+                        "description": "ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.\n"
                     },
                     "countryCode": {
                         "type": "string",
-                        "description": "Country code\n"
+                        "description": "Two-letter country code.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Billing Group name\n"
+                        "description": "Name of the billing group.\n"
                     },
                     "parentId": {
                         "type": "string",
-                        "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "state": {
                         "type": "string",
-                        "description": "State\n"
+                        "description": "State or province.\n"
                     },
                     "vatId": {
                         "type": "string",
-                        "description": "VAT id\n"
+                        "description": "The VAT identification number for your company.\n"
                     },
                     "zipCode": {
                         "type": "string",
-                        "description": "Zip Code\n"
+                        "description": "Zip or postal code.\n"
                     }
                 },
                 "type": "object"
@@ -24791,13 +24804,13 @@
             }
         },
         "aiven:index/getBillingGroup:getBillingGroup": {
-            "description": "The Billing Group data source provides information about the existing Aiven Account.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetBillingGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()\n            .name(\"\u003cBILLING_GROUP_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: aiven:getBillingGroup\n      Arguments:\n        name: \u003cBILLING_GROUP_NAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Provides information about an existing billing group.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetBillingGroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foo = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()\n            .name(\"\u003cBILLING_GROUP_NAME\u003e\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foo:\n    fn::invoke:\n      Function: aiven:getBillingGroup\n      Arguments:\n        name: \u003cBILLING_GROUP_NAME\u003e\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getBillingGroup.\n",
                 "properties": {
                     "billingGroupId": {
                         "type": "string",
-                        "description": "The id of the billing group. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.\n"
                     }
                 },
                 "type": "object",
@@ -24810,53 +24823,53 @@
                 "properties": {
                     "accountId": {
                         "type": "string",
-                        "description": "Account id\n"
+                        "description": "Account ID.\n"
                     },
                     "addressLines": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Address lines\n"
+                        "description": "Address lines 1 and 2. For example, street, PO box, or building.\n"
                     },
                     "billingCurrency": {
                         "type": "string",
-                        "description": "Billing currency\n"
+                        "description": "Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.\n"
                     },
                     "billingEmails": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Billing contact emails\n"
+                        "description": "Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.\n"
                     },
                     "billingExtraText": {
                         "type": "string",
-                        "description": "Billing extra text\n"
+                        "description": "Additional information to include on your invoice (for example, a reference number).\n"
                     },
                     "billingGroupId": {
                         "type": "string",
-                        "description": "The id of the billing group. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "cardId": {
                         "type": "string",
-                        "description": "Credit card id\n"
+                        "description": "Credit card ID.\n"
                     },
                     "city": {
                         "type": "string",
-                        "description": "City\n"
+                        "description": "City, district, suburb, town, or village.\n"
                     },
                     "company": {
                         "type": "string",
-                        "description": "Company name\n"
+                        "description": "Your company name.\n"
                     },
                     "copyFromBillingGroup": {
                         "type": "string",
-                        "description": "ID of the billing group to copy from\n"
+                        "description": "ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.\n"
                     },
                     "countryCode": {
                         "type": "string",
-                        "description": "Country code\n"
+                        "description": "Two-letter country code.\n"
                     },
                     "id": {
                         "type": "string",
@@ -24864,23 +24877,23 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "Billing Group name\n"
+                        "description": "Name of the billing group.\n"
                     },
                     "parentId": {
                         "type": "string",
-                        "description": "An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
+                        "description": "Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.\n"
                     },
                     "state": {
                         "type": "string",
-                        "description": "State\n"
+                        "description": "State or province.\n"
                     },
                     "vatId": {
                         "type": "string",
-                        "description": "VAT id\n"
+                        "description": "The VAT identification number for your company.\n"
                     },
                     "zipCode": {
                         "type": "string",
-                        "description": "Zip Code\n"
+                        "description": "Zip or postal code.\n"
                     }
                 },
                 "type": "object",

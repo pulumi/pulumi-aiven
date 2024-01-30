@@ -17,7 +17,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     public static final BillingGroupArgs Empty = new BillingGroupArgs();
 
     /**
-     * Account id
+     * Account ID.
      * 
      * @deprecated
      * Use parent_id instead. This field will be removed in the next major release.
@@ -28,7 +28,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> accountId;
 
     /**
-     * @return Account id
+     * @return Account ID.
      * 
      * @deprecated
      * Use parent_id instead. This field will be removed in the next major release.
@@ -40,14 +40,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address lines
+     * Address lines 1 and 2. For example, street, PO box, or building.
      * 
      */
     @Import(name="addressLines")
     private @Nullable Output<List<String>> addressLines;
 
     /**
-     * @return Address lines
+     * @return Address lines 1 and 2. For example, street, PO box, or building.
      * 
      */
     public Optional<Output<List<String>>> addressLines() {
@@ -55,14 +55,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing currency
+     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      * 
      */
     @Import(name="billingCurrency")
     private @Nullable Output<String> billingCurrency;
 
     /**
-     * @return Billing currency
+     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      * 
      */
     public Optional<Output<String>> billingCurrency() {
@@ -70,14 +70,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing contact emails
+     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      * 
      */
     @Import(name="billingEmails")
     private @Nullable Output<List<String>> billingEmails;
 
     /**
-     * @return Billing contact emails
+     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      * 
      */
     public Optional<Output<List<String>>> billingEmails() {
@@ -85,14 +85,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing extra text
+     * Additional information to include on your invoice (for example, a reference number).
      * 
      */
     @Import(name="billingExtraText")
     private @Nullable Output<String> billingExtraText;
 
     /**
-     * @return Billing extra text
+     * @return Additional information to include on your invoice (for example, a reference number).
      * 
      */
     public Optional<Output<String>> billingExtraText() {
@@ -100,14 +100,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Credit card id
+     * Credit card ID.
      * 
      */
     @Import(name="cardId")
     private @Nullable Output<String> cardId;
 
     /**
-     * @return Credit card id
+     * @return Credit card ID.
      * 
      */
     public Optional<Output<String>> cardId() {
@@ -115,14 +115,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * City
+     * City, district, suburb, town, or village.
      * 
      */
     @Import(name="city")
     private @Nullable Output<String> city;
 
     /**
-     * @return City
+     * @return City, district, suburb, town, or village.
      * 
      */
     public Optional<Output<String>> city() {
@@ -130,14 +130,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Company name
+     * Your company name.
      * 
      */
     @Import(name="company")
     private @Nullable Output<String> company;
 
     /**
-     * @return Company name
+     * @return Your company name.
      * 
      */
     public Optional<Output<String>> company() {
@@ -145,14 +145,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ID of the billing group to copy from
+     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      * 
      */
     @Import(name="copyFromBillingGroup")
     private @Nullable Output<String> copyFromBillingGroup;
 
     /**
-     * @return ID of the billing group to copy from
+     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      * 
      */
     public Optional<Output<String>> copyFromBillingGroup() {
@@ -160,14 +160,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Country code
+     * Two-letter country code.
      * 
      */
     @Import(name="countryCode")
     private @Nullable Output<String> countryCode;
 
     /**
-     * @return Country code
+     * @return Two-letter country code.
      * 
      */
     public Optional<Output<String>> countryCode() {
@@ -175,14 +175,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Billing Group name
+     * Name of the billing group.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Billing Group name
+     * @return Name of the billing group.
      * 
      */
     public Optional<Output<String>> name() {
@@ -190,14 +190,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -205,14 +205,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * State
+     * State or province.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State
+     * @return State or province.
      * 
      */
     public Optional<Output<String>> state() {
@@ -220,14 +220,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * VAT id
+     * The VAT identification number for your company.
      * 
      */
     @Import(name="vatId")
     private @Nullable Output<String> vatId;
 
     /**
-     * @return VAT id
+     * @return The VAT identification number for your company.
      * 
      */
     public Optional<Output<String>> vatId() {
@@ -235,14 +235,14 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Zip Code
+     * Zip or postal code.
      * 
      */
     @Import(name="zipCode")
     private @Nullable Output<String> zipCode;
 
     /**
-     * @return Zip Code
+     * @return Zip or postal code.
      * 
      */
     public Optional<Output<String>> zipCode() {
@@ -288,7 +288,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account id
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId Account id
+         * @param accountId Account ID.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressLines Address lines
+         * @param addressLines Address lines 1 and 2. For example, street, PO box, or building.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressLines Address lines
+         * @param addressLines Address lines 1 and 2. For example, street, PO box, or building.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param addressLines Address lines
+         * @param addressLines Address lines 1 and 2. For example, street, PO box, or building.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingCurrency Billing currency
+         * @param billingCurrency Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingCurrency Billing currency
+         * @param billingCurrency Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingEmails Billing contact emails
+         * @param billingEmails Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingEmails Billing contact emails
+         * @param billingEmails Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingEmails Billing contact emails
+         * @param billingEmails Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingExtraText Billing extra text
+         * @param billingExtraText Additional information to include on your invoice (for example, a reference number).
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingExtraText Billing extra text
+         * @param billingExtraText Additional information to include on your invoice (for example, a reference number).
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cardId Credit card id
+         * @param cardId Credit card ID.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cardId Credit card id
+         * @param cardId Credit card ID.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city City
+         * @param city City, district, suburb, town, or village.
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city City
+         * @param city City, district, suburb, town, or village.
          * 
          * @return builder
          * 
@@ -463,7 +463,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param company Company name
+         * @param company Your company name.
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param company Company name
+         * @param company Your company name.
          * 
          * @return builder
          * 
@@ -484,7 +484,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromBillingGroup ID of the billing group to copy from
+         * @param copyFromBillingGroup ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromBillingGroup ID of the billing group to copy from
+         * @param copyFromBillingGroup ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode Country code
+         * @param countryCode Two-letter country code.
          * 
          * @return builder
          * 
@@ -516,7 +516,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param countryCode Country code
+         * @param countryCode Two-letter country code.
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Billing Group name
+         * @param name Name of the billing group.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Billing Group name
+         * @param name Name of the billing group.
          * 
          * @return builder
          * 
@@ -547,7 +547,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -558,7 +558,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State
+         * @param state State or province.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param state State
+         * @param state State or province.
          * 
          * @return builder
          * 
@@ -589,7 +589,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vatId VAT id
+         * @param vatId The VAT identification number for your company.
          * 
          * @return builder
          * 
@@ -600,7 +600,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vatId VAT id
+         * @param vatId The VAT identification number for your company.
          * 
          * @return builder
          * 
@@ -610,7 +610,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zipCode Zip Code
+         * @param zipCode Zip or postal code.
          * 
          * @return builder
          * 
@@ -621,7 +621,7 @@ public final class BillingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zipCode Zip Code
+         * @param zipCode Zip or postal code.
          * 
          * @return builder
          * 

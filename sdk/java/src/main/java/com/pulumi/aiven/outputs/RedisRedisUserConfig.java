@@ -46,6 +46,7 @@ public final class RedisRedisUserConfig {
     private @Nullable Integer redisPubsubClientOutputBufferLimit;
     private @Nullable Boolean redisSsl;
     private @Nullable Integer redisTimeout;
+    private @Nullable String redisVersion;
     private @Nullable Boolean serviceLog;
     private @Nullable String serviceToForkFrom;
     private @Nullable Boolean staticIps;
@@ -120,6 +121,9 @@ public final class RedisRedisUserConfig {
     public Optional<Integer> redisTimeout() {
         return Optional.ofNullable(this.redisTimeout);
     }
+    public Optional<String> redisVersion() {
+        return Optional.ofNullable(this.redisVersion);
+    }
     public Optional<Boolean> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
@@ -160,6 +164,7 @@ public final class RedisRedisUserConfig {
         private @Nullable Integer redisPubsubClientOutputBufferLimit;
         private @Nullable Boolean redisSsl;
         private @Nullable Integer redisTimeout;
+        private @Nullable String redisVersion;
         private @Nullable Boolean serviceLog;
         private @Nullable String serviceToForkFrom;
         private @Nullable Boolean staticIps;
@@ -187,6 +192,7 @@ public final class RedisRedisUserConfig {
     	      this.redisPubsubClientOutputBufferLimit = defaults.redisPubsubClientOutputBufferLimit;
     	      this.redisSsl = defaults.redisSsl;
     	      this.redisTimeout = defaults.redisTimeout;
+    	      this.redisVersion = defaults.redisVersion;
     	      this.serviceLog = defaults.serviceLog;
     	      this.serviceToForkFrom = defaults.serviceToForkFrom;
     	      this.staticIps = defaults.staticIps;
@@ -328,6 +334,12 @@ public final class RedisRedisUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder redisVersion(@Nullable String redisVersion) {
+
+            this.redisVersion = redisVersion;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -368,6 +380,7 @@ public final class RedisRedisUserConfig {
             _resultValue.redisPubsubClientOutputBufferLimit = redisPubsubClientOutputBufferLimit;
             _resultValue.redisSsl = redisSsl;
             _resultValue.redisTimeout = redisTimeout;
+            _resultValue.redisVersion = redisVersion;
             _resultValue.serviceLog = serviceLog;
             _resultValue.serviceToForkFrom = serviceToForkFrom;
             _resultValue.staticIps = staticIps;

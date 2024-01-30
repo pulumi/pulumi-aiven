@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Billing Group data source provides information about the existing Aiven Account.
+// Provides information about an existing billing group.
 func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts ...pulumi.InvokeOption) (*LookupBillingGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingGroupResult
@@ -24,45 +24,45 @@ func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts 
 
 // A collection of arguments for invoking getBillingGroup.
 type LookupBillingGroupArgs struct {
-	// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId string `pulumi:"billingGroupId"`
 }
 
 // A collection of values returned by getBillingGroup.
 type LookupBillingGroupResult struct {
-	// Account id
+	// Account ID.
 	AccountId string `pulumi:"accountId"`
-	// Address lines
+	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
-	// Billing currency
+	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 	BillingCurrency string `pulumi:"billingCurrency"`
-	// Billing contact emails
+	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Billing extra text
+	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText string `pulumi:"billingExtraText"`
-	// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId string `pulumi:"billingGroupId"`
-	// Credit card id
+	// Credit card ID.
 	CardId string `pulumi:"cardId"`
-	// City
+	// City, district, suburb, town, or village.
 	City string `pulumi:"city"`
-	// Company name
+	// Your company name.
 	Company string `pulumi:"company"`
-	// ID of the billing group to copy from
+	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 	CopyFromBillingGroup string `pulumi:"copyFromBillingGroup"`
-	// Country code
+	// Two-letter country code.
 	CountryCode string `pulumi:"countryCode"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Billing Group name
+	// Name of the billing group.
 	Name string `pulumi:"name"`
-	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId string `pulumi:"parentId"`
-	// State
+	// State or province.
 	State string `pulumi:"state"`
-	// VAT id
+	// The VAT identification number for your company.
 	VatId string `pulumi:"vatId"`
-	// Zip Code
+	// Zip or postal code.
 	ZipCode string `pulumi:"zipCode"`
 }
 
@@ -81,7 +81,7 @@ func LookupBillingGroupOutput(ctx *pulumi.Context, args LookupBillingGroupOutput
 
 // A collection of arguments for invoking getBillingGroup.
 type LookupBillingGroupOutputArgs struct {
-	// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroupId pulumi.StringInput `pulumi:"billingGroupId"`
 }
 
@@ -104,57 +104,57 @@ func (o LookupBillingGroupResultOutput) ToLookupBillingGroupResultOutputWithCont
 	return o
 }
 
-// Account id
+// Account ID.
 func (o LookupBillingGroupResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// Address lines
+// Address lines 1 and 2. For example, street, PO box, or building.
 func (o LookupBillingGroupResultOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
-// Billing currency
+// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 func (o LookupBillingGroupResultOutput) BillingCurrency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingCurrency }).(pulumi.StringOutput)
 }
 
-// Billing contact emails
+// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 func (o LookupBillingGroupResultOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) []string { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
-// Billing extra text
+// Additional information to include on your invoice (for example, a reference number).
 func (o LookupBillingGroupResultOutput) BillingExtraText() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingExtraText }).(pulumi.StringOutput)
 }
 
-// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupBillingGroupResultOutput) BillingGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.BillingGroupId }).(pulumi.StringOutput)
 }
 
-// Credit card id
+// Credit card ID.
 func (o LookupBillingGroupResultOutput) CardId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CardId }).(pulumi.StringOutput)
 }
 
-// City
+// City, district, suburb, town, or village.
 func (o LookupBillingGroupResultOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.City }).(pulumi.StringOutput)
 }
 
-// Company name
+// Your company name.
 func (o LookupBillingGroupResultOutput) Company() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Company }).(pulumi.StringOutput)
 }
 
-// ID of the billing group to copy from
+// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 func (o LookupBillingGroupResultOutput) CopyFromBillingGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CopyFromBillingGroup }).(pulumi.StringOutput)
 }
 
-// Country code
+// Two-letter country code.
 func (o LookupBillingGroupResultOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.CountryCode }).(pulumi.StringOutput)
 }
@@ -164,27 +164,27 @@ func (o LookupBillingGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Billing Group name
+// Name of the billing group.
 func (o LookupBillingGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o LookupBillingGroupResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// State
+// State or province.
 func (o LookupBillingGroupResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// VAT id
+// The VAT identification number for your company.
 func (o LookupBillingGroupResultOutput) VatId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.VatId }).(pulumi.StringOutput)
 }
 
-// Zip Code
+// Zip or postal code.
 func (o LookupBillingGroupResultOutput) ZipCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBillingGroupResult) string { return v.ZipCode }).(pulumi.StringOutput)
 }

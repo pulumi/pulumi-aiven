@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+// Creates and manages billing groups and assigns them to projects.
 //
 // ## Example Usage
 //
@@ -57,37 +57,37 @@ import (
 type BillingGroup struct {
 	pulumi.CustomResourceState
 
-	// Account id
+	// Account ID.
 	//
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Address lines
+	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayOutput `pulumi:"addressLines"`
-	// Billing currency
+	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 	BillingCurrency pulumi.StringPtrOutput `pulumi:"billingCurrency"`
-	// Billing contact emails
+	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 	BillingEmails pulumi.StringArrayOutput `pulumi:"billingEmails"`
-	// Billing extra text
+	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText pulumi.StringPtrOutput `pulumi:"billingExtraText"`
-	// Credit card id
+	// Credit card ID.
 	CardId pulumi.StringPtrOutput `pulumi:"cardId"`
-	// City
+	// City, district, suburb, town, or village.
 	City pulumi.StringPtrOutput `pulumi:"city"`
-	// Company name
+	// Your company name.
 	Company pulumi.StringPtrOutput `pulumi:"company"`
-	// ID of the billing group to copy from
+	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 	CopyFromBillingGroup pulumi.StringPtrOutput `pulumi:"copyFromBillingGroup"`
-	// Country code
+	// Two-letter country code.
 	CountryCode pulumi.StringPtrOutput `pulumi:"countryCode"`
-	// Billing Group name
+	// Name of the billing group.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
-	// State
+	// State or province.
 	State pulumi.StringPtrOutput `pulumi:"state"`
-	// VAT id
+	// The VAT identification number for your company.
 	VatId pulumi.StringPtrOutput `pulumi:"vatId"`
-	// Zip Code
+	// Zip or postal code.
 	ZipCode pulumi.StringPtrOutput `pulumi:"zipCode"`
 }
 
@@ -121,72 +121,72 @@ func GetBillingGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BillingGroup resources.
 type billingGroupState struct {
-	// Account id
+	// Account ID.
 	//
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
-	// Address lines
+	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
-	// Billing currency
+	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 	BillingCurrency *string `pulumi:"billingCurrency"`
-	// Billing contact emails
+	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Billing extra text
+	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText *string `pulumi:"billingExtraText"`
-	// Credit card id
+	// Credit card ID.
 	CardId *string `pulumi:"cardId"`
-	// City
+	// City, district, suburb, town, or village.
 	City *string `pulumi:"city"`
-	// Company name
+	// Your company name.
 	Company *string `pulumi:"company"`
-	// ID of the billing group to copy from
+	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
-	// Country code
+	// Two-letter country code.
 	CountryCode *string `pulumi:"countryCode"`
-	// Billing Group name
+	// Name of the billing group.
 	Name *string `pulumi:"name"`
-	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// State
+	// State or province.
 	State *string `pulumi:"state"`
-	// VAT id
+	// The VAT identification number for your company.
 	VatId *string `pulumi:"vatId"`
-	// Zip Code
+	// Zip or postal code.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
 type BillingGroupState struct {
-	// Account id
+	// Account ID.
 	//
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
-	// Address lines
+	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayInput
-	// Billing currency
+	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 	BillingCurrency pulumi.StringPtrInput
-	// Billing contact emails
+	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 	BillingEmails pulumi.StringArrayInput
-	// Billing extra text
+	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText pulumi.StringPtrInput
-	// Credit card id
+	// Credit card ID.
 	CardId pulumi.StringPtrInput
-	// City
+	// City, district, suburb, town, or village.
 	City pulumi.StringPtrInput
-	// Company name
+	// Your company name.
 	Company pulumi.StringPtrInput
-	// ID of the billing group to copy from
+	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 	CopyFromBillingGroup pulumi.StringPtrInput
-	// Country code
+	// Two-letter country code.
 	CountryCode pulumi.StringPtrInput
-	// Billing Group name
+	// Name of the billing group.
 	Name pulumi.StringPtrInput
-	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// State
+	// State or province.
 	State pulumi.StringPtrInput
-	// VAT id
+	// The VAT identification number for your company.
 	VatId pulumi.StringPtrInput
-	// Zip Code
+	// Zip or postal code.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -195,73 +195,73 @@ func (BillingGroupState) ElementType() reflect.Type {
 }
 
 type billingGroupArgs struct {
-	// Account id
+	// Account ID.
 	//
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
-	// Address lines
+	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
-	// Billing currency
+	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 	BillingCurrency *string `pulumi:"billingCurrency"`
-	// Billing contact emails
+	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 	BillingEmails []string `pulumi:"billingEmails"`
-	// Billing extra text
+	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText *string `pulumi:"billingExtraText"`
-	// Credit card id
+	// Credit card ID.
 	CardId *string `pulumi:"cardId"`
-	// City
+	// City, district, suburb, town, or village.
 	City *string `pulumi:"city"`
-	// Company name
+	// Your company name.
 	Company *string `pulumi:"company"`
-	// ID of the billing group to copy from
+	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 	CopyFromBillingGroup *string `pulumi:"copyFromBillingGroup"`
-	// Country code
+	// Two-letter country code.
 	CountryCode *string `pulumi:"countryCode"`
-	// Billing Group name
+	// Name of the billing group.
 	Name *string `pulumi:"name"`
-	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// State
+	// State or province.
 	State *string `pulumi:"state"`
-	// VAT id
+	// The VAT identification number for your company.
 	VatId *string `pulumi:"vatId"`
-	// Zip Code
+	// Zip or postal code.
 	ZipCode *string `pulumi:"zipCode"`
 }
 
 // The set of arguments for constructing a BillingGroup resource.
 type BillingGroupArgs struct {
-	// Account id
+	// Account ID.
 	//
 	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
-	// Address lines
+	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayInput
-	// Billing currency
+	// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 	BillingCurrency pulumi.StringPtrInput
-	// Billing contact emails
+	// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 	BillingEmails pulumi.StringArrayInput
-	// Billing extra text
+	// Additional information to include on your invoice (for example, a reference number).
 	BillingExtraText pulumi.StringPtrInput
-	// Credit card id
+	// Credit card ID.
 	CardId pulumi.StringPtrInput
-	// City
+	// City, district, suburb, town, or village.
 	City pulumi.StringPtrInput
-	// Company name
+	// Your company name.
 	Company pulumi.StringPtrInput
-	// ID of the billing group to copy from
+	// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 	CopyFromBillingGroup pulumi.StringPtrInput
-	// Country code
+	// Two-letter country code.
 	CountryCode pulumi.StringPtrInput
-	// Billing Group name
+	// Name of the billing group.
 	Name pulumi.StringPtrInput
-	// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// State
+	// State or province.
 	State pulumi.StringPtrInput
-	// VAT id
+	// The VAT identification number for your company.
 	VatId pulumi.StringPtrInput
-	// Zip Code
+	// Zip or postal code.
 	ZipCode pulumi.StringPtrInput
 }
 
@@ -352,79 +352,79 @@ func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Account id
+// Account ID.
 //
 // Deprecated: Use parent_id instead. This field will be removed in the next major release.
 func (o BillingGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Address lines
+// Address lines 1 and 2. For example, street, PO box, or building.
 func (o BillingGroupOutput) AddressLines() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.AddressLines }).(pulumi.StringArrayOutput)
 }
 
-// Billing currency
+// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
 func (o BillingGroupOutput) BillingCurrency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.BillingCurrency }).(pulumi.StringPtrOutput)
 }
 
-// Billing contact emails
+// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
 func (o BillingGroupOutput) BillingEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringArrayOutput { return v.BillingEmails }).(pulumi.StringArrayOutput)
 }
 
-// Billing extra text
+// Additional information to include on your invoice (for example, a reference number).
 func (o BillingGroupOutput) BillingExtraText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.BillingExtraText }).(pulumi.StringPtrOutput)
 }
 
-// Credit card id
+// Credit card ID.
 func (o BillingGroupOutput) CardId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CardId }).(pulumi.StringPtrOutput)
 }
 
-// City
+// City, district, suburb, town, or village.
 func (o BillingGroupOutput) City() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.City }).(pulumi.StringPtrOutput)
 }
 
-// Company name
+// Your company name.
 func (o BillingGroupOutput) Company() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.Company }).(pulumi.StringPtrOutput)
 }
 
-// ID of the billing group to copy from
+// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
 func (o BillingGroupOutput) CopyFromBillingGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CopyFromBillingGroup }).(pulumi.StringPtrOutput)
 }
 
-// Country code
+// Two-letter country code.
 func (o BillingGroupOutput) CountryCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.CountryCode }).(pulumi.StringPtrOutput)
 }
 
-// Billing Group name
+// Name of the billing group.
 func (o BillingGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o BillingGroupOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }
 
-// State
+// State or province.
 func (o BillingGroupOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// VAT id
+// The VAT identification number for your company.
 func (o BillingGroupOutput) VatId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.VatId }).(pulumi.StringPtrOutput)
 }
 
-// Zip Code
+// Zip or postal code.
 func (o BillingGroupOutput) ZipCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.ZipCode }).(pulumi.StringPtrOutput)
 }

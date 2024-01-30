@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+ * Creates and manages billing groups and assigns them to projects.
  * 
  * ## Example Usage
  * ```java
@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/billingGroup:BillingGroup")
 public class BillingGroup extends com.pulumi.resources.CustomResource {
     /**
-     * Account id
+     * Account ID.
      * 
      * @deprecated
      * Use parent_id instead. This field will be removed in the next major release.
@@ -77,203 +77,203 @@ public class BillingGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return Account id
+     * @return Account ID.
      * 
      */
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
     /**
-     * Address lines
+     * Address lines 1 and 2. For example, street, PO box, or building.
      * 
      */
     @Export(name="addressLines", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> addressLines;
 
     /**
-     * @return Address lines
+     * @return Address lines 1 and 2. For example, street, PO box, or building.
      * 
      */
     public Output<Optional<List<String>>> addressLines() {
         return Codegen.optional(this.addressLines);
     }
     /**
-     * Billing currency
+     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      * 
      */
     @Export(name="billingCurrency", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingCurrency;
 
     /**
-     * @return Billing currency
+     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      * 
      */
     public Output<Optional<String>> billingCurrency() {
         return Codegen.optional(this.billingCurrency);
     }
     /**
-     * Billing contact emails
+     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      * 
      */
     @Export(name="billingEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> billingEmails;
 
     /**
-     * @return Billing contact emails
+     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      * 
      */
     public Output<Optional<List<String>>> billingEmails() {
         return Codegen.optional(this.billingEmails);
     }
     /**
-     * Billing extra text
+     * Additional information to include on your invoice (for example, a reference number).
      * 
      */
     @Export(name="billingExtraText", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingExtraText;
 
     /**
-     * @return Billing extra text
+     * @return Additional information to include on your invoice (for example, a reference number).
      * 
      */
     public Output<Optional<String>> billingExtraText() {
         return Codegen.optional(this.billingExtraText);
     }
     /**
-     * Credit card id
+     * Credit card ID.
      * 
      */
     @Export(name="cardId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cardId;
 
     /**
-     * @return Credit card id
+     * @return Credit card ID.
      * 
      */
     public Output<Optional<String>> cardId() {
         return Codegen.optional(this.cardId);
     }
     /**
-     * City
+     * City, district, suburb, town, or village.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> city;
 
     /**
-     * @return City
+     * @return City, district, suburb, town, or village.
      * 
      */
     public Output<Optional<String>> city() {
         return Codegen.optional(this.city);
     }
     /**
-     * Company name
+     * Your company name.
      * 
      */
     @Export(name="company", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> company;
 
     /**
-     * @return Company name
+     * @return Your company name.
      * 
      */
     public Output<Optional<String>> company() {
         return Codegen.optional(this.company);
     }
     /**
-     * ID of the billing group to copy from
+     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      * 
      */
     @Export(name="copyFromBillingGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> copyFromBillingGroup;
 
     /**
-     * @return ID of the billing group to copy from
+     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      * 
      */
     public Output<Optional<String>> copyFromBillingGroup() {
         return Codegen.optional(this.copyFromBillingGroup);
     }
     /**
-     * Country code
+     * Two-letter country code.
      * 
      */
     @Export(name="countryCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> countryCode;
 
     /**
-     * @return Country code
+     * @return Two-letter country code.
      * 
      */
     public Output<Optional<String>> countryCode() {
         return Codegen.optional(this.countryCode);
     }
     /**
-     * Billing Group name
+     * Name of the billing group.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Billing Group name
+     * @return Name of the billing group.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
-     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> parentId() {
         return Codegen.optional(this.parentId);
     }
     /**
-     * State
+     * State or province.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> state;
 
     /**
-     * @return State
+     * @return State or province.
      * 
      */
     public Output<Optional<String>> state() {
         return Codegen.optional(this.state);
     }
     /**
-     * VAT id
+     * The VAT identification number for your company.
      * 
      */
     @Export(name="vatId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vatId;
 
     /**
-     * @return VAT id
+     * @return The VAT identification number for your company.
      * 
      */
     public Output<Optional<String>> vatId() {
         return Codegen.optional(this.vatId);
     }
     /**
-     * Zip Code
+     * Zip or postal code.
      * 
      */
     @Export(name="zipCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zipCode;
 
     /**
-     * @return Zip Code
+     * @return Zip or postal code.
      * 
      */
     public Output<Optional<String>> zipCode() {

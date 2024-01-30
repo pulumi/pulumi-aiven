@@ -49,7 +49,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
     /**
-     * Cassandra major version.
+     * Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -1250,6 +1250,7 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
     consumerEnableAutoCommit?: boolean;
     consumerRequestMaxBytes?: number;
     consumerRequestTimeoutMs?: number;
+    nameStrategy?: string;
     nameStrategyValidation?: boolean;
     producerAcks?: string;
     producerCompressionType?: string;
@@ -2153,6 +2154,7 @@ export interface GetRedisRedisUserConfig {
     redisPubsubClientOutputBufferLimit?: number;
     redisSsl?: boolean;
     redisTimeout?: number;
+    redisVersion?: string;
     serviceLog?: boolean;
     serviceToForkFrom?: string;
     staticIps?: boolean;
@@ -3287,6 +3289,10 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      */
     consumerRequestTimeoutMs?: number;
+    /**
+     * Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     */
+    nameStrategy?: string;
     /**
      * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
      */
@@ -5138,6 +5144,7 @@ export interface RedisRedisUserConfig {
     redisPubsubClientOutputBufferLimit?: number;
     redisSsl?: boolean;
     redisTimeout?: number;
+    redisVersion?: string;
     serviceLog?: boolean;
     serviceToForkFrom?: string;
     staticIps?: boolean;

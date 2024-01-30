@@ -12,57 +12,57 @@ import java.util.Objects;
 @CustomType
 public final class GetBillingGroupResult {
     /**
-     * @return Account id
+     * @return Account ID.
      * 
      */
     private String accountId;
     /**
-     * @return Address lines
+     * @return Address lines 1 and 2. For example, street, PO box, or building.
      * 
      */
     private List<String> addressLines;
     /**
-     * @return Billing currency
+     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      * 
      */
     private String billingCurrency;
     /**
-     * @return Billing contact emails
+     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      * 
      */
     private List<String> billingEmails;
     /**
-     * @return Billing extra text
+     * @return Additional information to include on your invoice (for example, a reference number).
      * 
      */
     private String billingExtraText;
     /**
-     * @return The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String billingGroupId;
     /**
-     * @return Credit card id
+     * @return Credit card ID.
      * 
      */
     private String cardId;
     /**
-     * @return City
+     * @return City, district, suburb, town, or village.
      * 
      */
     private String city;
     /**
-     * @return Company name
+     * @return Your company name.
      * 
      */
     private String company;
     /**
-     * @return ID of the billing group to copy from
+     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      * 
      */
     private String copyFromBillingGroup;
     /**
-     * @return Country code
+     * @return Two-letter country code.
      * 
      */
     private String countryCode;
@@ -72,104 +72,104 @@ public final class GetBillingGroupResult {
      */
     private String id;
     /**
-     * @return Billing Group name
+     * @return Name of the billing group.
      * 
      */
     private String name;
     /**
-     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String parentId;
     /**
-     * @return State
+     * @return State or province.
      * 
      */
     private String state;
     /**
-     * @return VAT id
+     * @return The VAT identification number for your company.
      * 
      */
     private String vatId;
     /**
-     * @return Zip Code
+     * @return Zip or postal code.
      * 
      */
     private String zipCode;
 
     private GetBillingGroupResult() {}
     /**
-     * @return Account id
+     * @return Account ID.
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return Address lines
+     * @return Address lines 1 and 2. For example, street, PO box, or building.
      * 
      */
     public List<String> addressLines() {
         return this.addressLines;
     }
     /**
-     * @return Billing currency
+     * @return Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      * 
      */
     public String billingCurrency() {
         return this.billingCurrency;
     }
     /**
-     * @return Billing contact emails
+     * @return Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      * 
      */
     public List<String> billingEmails() {
         return this.billingEmails;
     }
     /**
-     * @return Billing extra text
+     * @return Additional information to include on your invoice (for example, a reference number).
      * 
      */
     public String billingExtraText() {
         return this.billingExtraText;
     }
     /**
-     * @return The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String billingGroupId() {
         return this.billingGroupId;
     }
     /**
-     * @return Credit card id
+     * @return Credit card ID.
      * 
      */
     public String cardId() {
         return this.cardId;
     }
     /**
-     * @return City
+     * @return City, district, suburb, town, or village.
      * 
      */
     public String city() {
         return this.city;
     }
     /**
-     * @return Company name
+     * @return Your company name.
      * 
      */
     public String company() {
         return this.company;
     }
     /**
-     * @return ID of the billing group to copy from
+     * @return ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      * 
      */
     public String copyFromBillingGroup() {
         return this.copyFromBillingGroup;
     }
     /**
-     * @return Country code
+     * @return Two-letter country code.
      * 
      */
     public String countryCode() {
@@ -183,35 +183,35 @@ public final class GetBillingGroupResult {
         return this.id;
     }
     /**
-     * @return Billing Group name
+     * @return Name of the billing group.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String parentId() {
         return this.parentId;
     }
     /**
-     * @return State
+     * @return State or province.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return VAT id
+     * @return The VAT identification number for your company.
      * 
      */
     public String vatId() {
         return this.vatId;
     }
     /**
-     * @return Zip Code
+     * @return Zip or postal code.
      * 
      */
     public String zipCode() {

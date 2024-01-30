@@ -16,6 +16,7 @@ namespace Pulumi.Aiven.Outputs
         public readonly bool? ConsumerEnableAutoCommit;
         public readonly int? ConsumerRequestMaxBytes;
         public readonly int? ConsumerRequestTimeoutMs;
+        public readonly string? NameStrategy;
         public readonly bool? NameStrategyValidation;
         public readonly string? ProducerAcks;
         public readonly string? ProducerCompressionType;
@@ -30,6 +31,8 @@ namespace Pulumi.Aiven.Outputs
             int? consumerRequestMaxBytes,
 
             int? consumerRequestTimeoutMs,
+
+            string? nameStrategy,
 
             bool? nameStrategyValidation,
 
@@ -46,6 +49,7 @@ namespace Pulumi.Aiven.Outputs
             ConsumerEnableAutoCommit = consumerEnableAutoCommit;
             ConsumerRequestMaxBytes = consumerRequestMaxBytes;
             ConsumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            NameStrategy = nameStrategy;
             NameStrategyValidation = nameStrategyValidation;
             ProducerAcks = producerAcks;
             ProducerCompressionType = producerCompressionType;

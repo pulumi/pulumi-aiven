@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Billing Group data source provides information about the existing Aiven Account.
+ * Provides information about an existing billing group.
  */
 export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingGroupResult> {
 
@@ -20,7 +20,7 @@ export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeO
  */
 export interface GetBillingGroupArgs {
     /**
-     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: string;
 }
@@ -30,47 +30,47 @@ export interface GetBillingGroupArgs {
  */
 export interface GetBillingGroupResult {
     /**
-     * Account id
+     * Account ID.
      */
     readonly accountId: string;
     /**
-     * Address lines
+     * Address lines 1 and 2. For example, street, PO box, or building.
      */
     readonly addressLines: string[];
     /**
-     * Billing currency
+     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      */
     readonly billingCurrency: string;
     /**
-     * Billing contact emails
+     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      */
     readonly billingEmails: string[];
     /**
-     * Billing extra text
+     * Additional information to include on your invoice (for example, a reference number).
      */
     readonly billingExtraText: string;
     /**
-     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly billingGroupId: string;
     /**
-     * Credit card id
+     * Credit card ID.
      */
     readonly cardId: string;
     /**
-     * City
+     * City, district, suburb, town, or village.
      */
     readonly city: string;
     /**
-     * Company name
+     * Your company name.
      */
     readonly company: string;
     /**
-     * ID of the billing group to copy from
+     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      */
     readonly copyFromBillingGroup: string;
     /**
-     * Country code
+     * Two-letter country code.
      */
     readonly countryCode: string;
     /**
@@ -78,28 +78,28 @@ export interface GetBillingGroupResult {
      */
     readonly id: string;
     /**
-     * Billing Group name
+     * Name of the billing group.
      */
     readonly name: string;
     /**
-     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly parentId: string;
     /**
-     * State
+     * State or province.
      */
     readonly state: string;
     /**
-     * VAT id
+     * The VAT identification number for your company.
      */
     readonly vatId: string;
     /**
-     * Zip Code
+     * Zip or postal code.
      */
     readonly zipCode: string;
 }
 /**
- * The Billing Group data source provides information about the existing Aiven Account.
+ * Provides information about an existing billing group.
  */
 export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingGroupResult> {
     return pulumi.output(args).apply((a: any) => getBillingGroup(a, opts))
@@ -110,7 +110,7 @@ export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pu
  */
 export interface GetBillingGroupOutputArgs {
     /**
-     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroupId: pulumi.Input<string>;
 }

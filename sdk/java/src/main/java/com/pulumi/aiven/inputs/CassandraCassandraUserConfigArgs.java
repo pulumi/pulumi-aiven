@@ -83,14 +83,14 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Cassandra major version.
+     * Cassandra version.
      * 
      */
     @Import(name="cassandraVersion")
     private @Nullable Output<String> cassandraVersion;
 
     /**
-     * @return Cassandra major version.
+     * @return Cassandra version.
      * 
      */
     public Optional<Output<String>> cassandraVersion() {
@@ -394,7 +394,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cassandraVersion Cassandra major version.
+         * @param cassandraVersion Cassandra version.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cassandraVersion Cassandra major version.
+         * @param cassandraVersion Cassandra version.
          * 
          * @return builder
          * 

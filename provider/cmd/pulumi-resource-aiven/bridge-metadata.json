@@ -3571,6 +3571,7 @@
                 "consumerEnableAutoCommit": "consumer_enable_auto_commit",
                 "consumerRequestMaxBytes": "consumer_request_max_bytes",
                 "consumerRequestTimeoutMs": "consumer_request_timeout_ms",
+                "nameStrategy": "name_strategy",
                 "nameStrategyValidation": "name_strategy_validation",
                 "producerAcks": "producer_acks",
                 "producerCompressionType": "producer_compression_type",
@@ -4077,6 +4078,7 @@
                 "redisPubsubClientOutputBufferLimit": "redis_pubsub_client_output_buffer_limit",
                 "redisSsl": "redis_ssl",
                 "redisTimeout": "redis_timeout",
+                "redisVersion": "redis_version",
                 "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"
@@ -5272,6 +5274,7 @@
                 "consumerEnableAutoCommit": "consumer_enable_auto_commit",
                 "consumerRequestMaxBytes": "consumer_request_max_bytes",
                 "consumerRequestTimeoutMs": "consumer_request_timeout_ms",
+                "nameStrategy": "name_strategy",
                 "nameStrategyValidation": "name_strategy_validation",
                 "producerAcks": "producer_acks",
                 "producerCompressionType": "producer_compression_type",
@@ -6086,6 +6089,7 @@
                 "redisPubsubClientOutputBufferLimit": "redis_pubsub_client_output_buffer_limit",
                 "redisSsl": "redis_ssl",
                 "redisTimeout": "redis_timeout",
+                "redisVersion": "redis_version",
                 "serviceLog": "service_log",
                 "serviceToForkFrom": "service_to_fork_from",
                 "staticIps": "static_ips"

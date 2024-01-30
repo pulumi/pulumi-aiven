@@ -14,14 +14,14 @@ public final class GetBillingGroupPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetBillingGroupPlainArgs Empty = new GetBillingGroupPlainArgs();
 
     /**
-     * The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="billingGroupId", required=true)
     private String billingGroupId;
 
     /**
-     * @return The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String billingGroupId() {
@@ -53,7 +53,7 @@ public final class GetBillingGroupPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param billingGroupId The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+         * @param billingGroupId The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 

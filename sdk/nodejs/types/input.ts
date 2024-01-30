@@ -49,7 +49,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
     /**
-     * Cassandra major version.
+     * Cassandra version.
      */
     cassandraVersion?: pulumi.Input<string>;
     /**
@@ -1333,6 +1333,10 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      */
     consumerRequestTimeoutMs?: pulumi.Input<number>;
+    /**
+     * Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     */
+    nameStrategy?: pulumi.Input<string>;
     /**
      * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
      */
@@ -3184,6 +3188,7 @@ export interface RedisRedisUserConfig {
     redisPubsubClientOutputBufferLimit?: pulumi.Input<number>;
     redisSsl?: pulumi.Input<boolean>;
     redisTimeout?: pulumi.Input<number>;
+    redisVersion?: pulumi.Input<string>;
     serviceLog?: pulumi.Input<boolean>;
     serviceToForkFrom?: pulumi.Input<string>;
     staticIps?: pulumi.Input<boolean>;

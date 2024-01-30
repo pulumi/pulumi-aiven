@@ -16,6 +16,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
     private @Nullable Boolean consumerEnableAutoCommit;
     private @Nullable Integer consumerRequestMaxBytes;
     private @Nullable Integer consumerRequestTimeoutMs;
+    private @Nullable String nameStrategy;
     private @Nullable Boolean nameStrategyValidation;
     private @Nullable String producerAcks;
     private @Nullable String producerCompressionType;
@@ -32,6 +33,9 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
     }
     public Optional<Integer> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
+    }
+    public Optional<String> nameStrategy() {
+        return Optional.ofNullable(this.nameStrategy);
     }
     public Optional<Boolean> nameStrategyValidation() {
         return Optional.ofNullable(this.nameStrategyValidation);
@@ -64,6 +68,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         private @Nullable Boolean consumerEnableAutoCommit;
         private @Nullable Integer consumerRequestMaxBytes;
         private @Nullable Integer consumerRequestTimeoutMs;
+        private @Nullable String nameStrategy;
         private @Nullable Boolean nameStrategyValidation;
         private @Nullable String producerAcks;
         private @Nullable String producerCompressionType;
@@ -76,6 +81,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
     	      this.consumerEnableAutoCommit = defaults.consumerEnableAutoCommit;
     	      this.consumerRequestMaxBytes = defaults.consumerRequestMaxBytes;
     	      this.consumerRequestTimeoutMs = defaults.consumerRequestTimeoutMs;
+    	      this.nameStrategy = defaults.nameStrategy;
     	      this.nameStrategyValidation = defaults.nameStrategyValidation;
     	      this.producerAcks = defaults.producerAcks;
     	      this.producerCompressionType = defaults.producerCompressionType;
@@ -100,6 +106,12 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
         public Builder consumerRequestTimeoutMs(@Nullable Integer consumerRequestTimeoutMs) {
 
             this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nameStrategy(@Nullable String nameStrategy) {
+
+            this.nameStrategy = nameStrategy;
             return this;
         }
         @CustomType.Setter
@@ -143,6 +155,7 @@ public final class GetKafkaKafkaUserConfigKafkaRestConfig {
             _resultValue.consumerEnableAutoCommit = consumerEnableAutoCommit;
             _resultValue.consumerRequestMaxBytes = consumerRequestMaxBytes;
             _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            _resultValue.nameStrategy = nameStrategy;
             _resultValue.nameStrategyValidation = nameStrategyValidation;
             _resultValue.producerAcks = producerAcks;
             _resultValue.producerCompressionType = producerCompressionType;
