@@ -63,6 +63,21 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
+     * Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * 
+     */
+    @Import(name="nameStrategy")
+    private @Nullable Output<String> nameStrategy;
+
+    /**
+     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * 
+     */
+    public Optional<Output<String>> nameStrategy() {
+        return Optional.ofNullable(this.nameStrategy);
+    }
+
+    /**
      * If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
      * 
      */
@@ -158,6 +173,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         this.consumerEnableAutoCommit = $.consumerEnableAutoCommit;
         this.consumerRequestMaxBytes = $.consumerRequestMaxBytes;
         this.consumerRequestTimeoutMs = $.consumerRequestTimeoutMs;
+        this.nameStrategy = $.nameStrategy;
         this.nameStrategyValidation = $.nameStrategyValidation;
         this.producerAcks = $.producerAcks;
         this.producerCompressionType = $.producerCompressionType;
@@ -245,6 +261,27 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
          */
         public Builder consumerRequestTimeoutMs(Integer consumerRequestTimeoutMs) {
             return consumerRequestTimeoutMs(Output.of(consumerRequestTimeoutMs));
+        }
+
+        /**
+         * @param nameStrategy Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameStrategy(@Nullable Output<String> nameStrategy) {
+            $.nameStrategy = nameStrategy;
+            return this;
+        }
+
+        /**
+         * @param nameStrategy Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nameStrategy(String nameStrategy) {
+            return nameStrategy(Output.of(nameStrategy));
         }
 
         /**

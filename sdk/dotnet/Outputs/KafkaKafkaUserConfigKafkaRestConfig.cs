@@ -26,6 +26,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ConsumerRequestTimeoutMs;
         /// <summary>
+        /// Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        /// </summary>
+        public readonly string? NameStrategy;
+        /// <summary>
         /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
         /// </summary>
         public readonly bool? NameStrategyValidation;
@@ -58,6 +62,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? consumerRequestTimeoutMs,
 
+            string? nameStrategy,
+
             bool? nameStrategyValidation,
 
             string? producerAcks,
@@ -73,6 +79,7 @@ namespace Pulumi.Aiven.Outputs
             ConsumerEnableAutoCommit = consumerEnableAutoCommit;
             ConsumerRequestMaxBytes = consumerRequestMaxBytes;
             ConsumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            NameStrategy = nameStrategy;
             NameStrategyValidation = nameStrategyValidation;
             ProducerAcks = producerAcks;
             ProducerCompressionType = producerCompressionType;

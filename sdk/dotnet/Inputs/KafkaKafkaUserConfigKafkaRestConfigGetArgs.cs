@@ -31,6 +31,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
+        /// Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        /// </summary>
+        [Input("nameStrategy")]
+        public Input<string>? NameStrategy { get; set; }
+
+        /// <summary>
         /// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
         /// </summary>
         [Input("nameStrategyValidation")]

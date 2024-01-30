@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+    /// Creates and manages billing groups and assigns them to projects.
     /// 
     /// ## Example Usage
     /// 
@@ -47,91 +47,91 @@ namespace Pulumi.Aiven
     public partial class BillingGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Account id
+        /// Account ID.
         /// </summary>
         [Output("accountId")]
         public Output<string?> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Address lines
+        /// Address lines 1 and 2. For example, street, PO box, or building.
         /// </summary>
         [Output("addressLines")]
         public Output<ImmutableArray<string>> AddressLines { get; private set; } = null!;
 
         /// <summary>
-        /// Billing currency
+        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         /// </summary>
         [Output("billingCurrency")]
         public Output<string?> BillingCurrency { get; private set; } = null!;
 
         /// <summary>
-        /// Billing contact emails
+        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         /// </summary>
         [Output("billingEmails")]
         public Output<ImmutableArray<string>> BillingEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Billing extra text
+        /// Additional information to include on your invoice (for example, a reference number).
         /// </summary>
         [Output("billingExtraText")]
         public Output<string?> BillingExtraText { get; private set; } = null!;
 
         /// <summary>
-        /// Credit card id
+        /// Credit card ID.
         /// </summary>
         [Output("cardId")]
         public Output<string?> CardId { get; private set; } = null!;
 
         /// <summary>
-        /// City
+        /// City, district, suburb, town, or village.
         /// </summary>
         [Output("city")]
         public Output<string?> City { get; private set; } = null!;
 
         /// <summary>
-        /// Company name
+        /// Your company name.
         /// </summary>
         [Output("company")]
         public Output<string?> Company { get; private set; } = null!;
 
         /// <summary>
-        /// ID of the billing group to copy from
+        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         /// </summary>
         [Output("copyFromBillingGroup")]
         public Output<string?> CopyFromBillingGroup { get; private set; } = null!;
 
         /// <summary>
-        /// Country code
+        /// Two-letter country code.
         /// </summary>
         [Output("countryCode")]
         public Output<string?> CountryCode { get; private set; } = null!;
 
         /// <summary>
-        /// Billing Group name
+        /// Name of the billing group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("parentId")]
         public Output<string?> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// State
+        /// State or province.
         /// </summary>
         [Output("state")]
         public Output<string?> State { get; private set; } = null!;
 
         /// <summary>
-        /// VAT id
+        /// The VAT identification number for your company.
         /// </summary>
         [Output("vatId")]
         public Output<string?> VatId { get; private set; } = null!;
 
         /// <summary>
-        /// Zip Code
+        /// Zip or postal code.
         /// </summary>
         [Output("zipCode")]
         public Output<string?> ZipCode { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Aiven
     public sealed class BillingGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _addressLines;
 
         /// <summary>
-        /// Address lines
+        /// Address lines 1 and 2. For example, street, PO box, or building.
         /// </summary>
         public InputList<string> AddressLines
         {
@@ -201,7 +201,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing currency
+        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         /// </summary>
         [Input("billingCurrency")]
         public Input<string>? BillingCurrency { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// Billing contact emails
+        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -219,67 +219,67 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing extra text
+        /// Additional information to include on your invoice (for example, a reference number).
         /// </summary>
         [Input("billingExtraText")]
         public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
-        /// Credit card id
+        /// Credit card ID.
         /// </summary>
         [Input("cardId")]
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// City
+        /// City, district, suburb, town, or village.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Company name
+        /// Your company name.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
         /// <summary>
-        /// ID of the billing group to copy from
+        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         /// </summary>
         [Input("copyFromBillingGroup")]
         public Input<string>? CopyFromBillingGroup { get; set; }
 
         /// <summary>
-        /// Country code
+        /// Two-letter country code.
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Billing Group name
+        /// Name of the billing group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// State
+        /// State or province.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// VAT id
+        /// The VAT identification number for your company.
         /// </summary>
         [Input("vatId")]
         public Input<string>? VatId { get; set; }
 
         /// <summary>
-        /// Zip Code
+        /// Zip or postal code.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.Aiven
     public sealed class BillingGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Account id
+        /// Account ID.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -302,7 +302,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _addressLines;
 
         /// <summary>
-        /// Address lines
+        /// Address lines 1 and 2. For example, street, PO box, or building.
         /// </summary>
         public InputList<string> AddressLines
         {
@@ -311,7 +311,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing currency
+        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         /// </summary>
         [Input("billingCurrency")]
         public Input<string>? BillingCurrency { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _billingEmails;
 
         /// <summary>
-        /// Billing contact emails
+        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         /// </summary>
         public InputList<string> BillingEmails
         {
@@ -329,67 +329,67 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Billing extra text
+        /// Additional information to include on your invoice (for example, a reference number).
         /// </summary>
         [Input("billingExtraText")]
         public Input<string>? BillingExtraText { get; set; }
 
         /// <summary>
-        /// Credit card id
+        /// Credit card ID.
         /// </summary>
         [Input("cardId")]
         public Input<string>? CardId { get; set; }
 
         /// <summary>
-        /// City
+        /// City, district, suburb, town, or village.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Company name
+        /// Your company name.
         /// </summary>
         [Input("company")]
         public Input<string>? Company { get; set; }
 
         /// <summary>
-        /// ID of the billing group to copy from
+        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         /// </summary>
         [Input("copyFromBillingGroup")]
         public Input<string>? CopyFromBillingGroup { get; set; }
 
         /// <summary>
-        /// Country code
+        /// Two-letter country code.
         /// </summary>
         [Input("countryCode")]
         public Input<string>? CountryCode { get; set; }
 
         /// <summary>
-        /// Billing Group name
+        /// Name of the billing group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// State
+        /// State or province.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// VAT id
+        /// The VAT identification number for your company.
         /// </summary>
         [Input("vatId")]
         public Input<string>? VatId { get; set; }
 
         /// <summary>
-        /// Zip Code
+        /// Zip or postal code.
         /// </summary>
         [Input("zipCode")]
         public Input<string>? ZipCode { get; set; }

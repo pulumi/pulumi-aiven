@@ -952,7 +952,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", TypeShape.of(GetAzureVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Billing Group data source provides information about the existing Aiven Account.
+     * Provides information about an existing billing group.
      * 
      * ## Example Usage
      * 
@@ -990,7 +990,7 @@ public final class AivenFunctions {
         return getBillingGroup(args, InvokeOptions.Empty);
     }
     /**
-     * The Billing Group data source provides information about the existing Aiven Account.
+     * Provides information about an existing billing group.
      * 
      * ## Example Usage
      * 
@@ -1028,7 +1028,7 @@ public final class AivenFunctions {
         return getBillingGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Billing Group data source provides information about the existing Aiven Account.
+     * Provides information about an existing billing group.
      * 
      * ## Example Usage
      * 
@@ -1066,7 +1066,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Billing Group data source provides information about the existing Aiven Account.
+     * Provides information about an existing billing group.
      * 
      * ## Example Usage
      * 

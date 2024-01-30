@@ -29,6 +29,11 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer consumerRequestTimeoutMs;
     /**
+     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * 
+     */
+    private @Nullable String nameStrategy;
+    /**
      * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
      * 
      */
@@ -80,6 +85,13 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     public Optional<Integer> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
+    }
+    /**
+     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * 
+     */
+    public Optional<String> nameStrategy() {
+        return Optional.ofNullable(this.nameStrategy);
     }
     /**
      * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
@@ -136,6 +148,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         private @Nullable Boolean consumerEnableAutoCommit;
         private @Nullable Integer consumerRequestMaxBytes;
         private @Nullable Integer consumerRequestTimeoutMs;
+        private @Nullable String nameStrategy;
         private @Nullable Boolean nameStrategyValidation;
         private @Nullable String producerAcks;
         private @Nullable String producerCompressionType;
@@ -148,6 +161,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
     	      this.consumerEnableAutoCommit = defaults.consumerEnableAutoCommit;
     	      this.consumerRequestMaxBytes = defaults.consumerRequestMaxBytes;
     	      this.consumerRequestTimeoutMs = defaults.consumerRequestTimeoutMs;
+    	      this.nameStrategy = defaults.nameStrategy;
     	      this.nameStrategyValidation = defaults.nameStrategyValidation;
     	      this.producerAcks = defaults.producerAcks;
     	      this.producerCompressionType = defaults.producerCompressionType;
@@ -172,6 +186,12 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         public Builder consumerRequestTimeoutMs(@Nullable Integer consumerRequestTimeoutMs) {
 
             this.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nameStrategy(@Nullable String nameStrategy) {
+
+            this.nameStrategy = nameStrategy;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +235,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
             _resultValue.consumerEnableAutoCommit = consumerEnableAutoCommit;
             _resultValue.consumerRequestMaxBytes = consumerRequestMaxBytes;
             _resultValue.consumerRequestTimeoutMs = consumerRequestTimeoutMs;
+            _resultValue.nameStrategy = nameStrategy;
             _resultValue.nameStrategyValidation = nameStrategyValidation;
             _resultValue.producerAcks = producerAcks;
             _resultValue.producerCompressionType = producerCompressionType;

@@ -12,13 +12,13 @@ namespace Pulumi.Aiven
     public static class GetBillingGroup
     {
         /// <summary>
-        /// The Billing Group data source provides information about the existing Aiven Account.
+        /// Provides information about an existing billing group.
         /// </summary>
         public static Task<GetBillingGroupResult> InvokeAsync(GetBillingGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Billing Group data source provides information about the existing Aiven Account.
+        /// Provides information about an existing billing group.
         /// </summary>
         public static Output<GetBillingGroupResult> Invoke(GetBillingGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupInvokeArgs(), options.WithDefaults());
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
     public sealed class GetBillingGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public string BillingGroupId { get; set; } = null!;
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven
     public sealed class GetBillingGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("billingGroupId", required: true)]
         public Input<string> BillingGroupId { get; set; } = null!;
@@ -58,47 +58,47 @@ namespace Pulumi.Aiven
     public sealed class GetBillingGroupResult
     {
         /// <summary>
-        /// Account id
+        /// Account ID.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// Address lines
+        /// Address lines 1 and 2. For example, street, PO box, or building.
         /// </summary>
         public readonly ImmutableArray<string> AddressLines;
         /// <summary>
-        /// Billing currency
+        /// Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         /// </summary>
         public readonly string BillingCurrency;
         /// <summary>
-        /// Billing contact emails
+        /// Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         /// </summary>
         public readonly ImmutableArray<string> BillingEmails;
         /// <summary>
-        /// Billing extra text
+        /// Additional information to include on your invoice (for example, a reference number).
         /// </summary>
         public readonly string BillingExtraText;
         /// <summary>
-        /// The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        /// The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string BillingGroupId;
         /// <summary>
-        /// Credit card id
+        /// Credit card ID.
         /// </summary>
         public readonly string CardId;
         /// <summary>
-        /// City
+        /// City, district, suburb, town, or village.
         /// </summary>
         public readonly string City;
         /// <summary>
-        /// Company name
+        /// Your company name.
         /// </summary>
         public readonly string Company;
         /// <summary>
-        /// ID of the billing group to copy from
+        /// ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         /// </summary>
         public readonly string CopyFromBillingGroup;
         /// <summary>
-        /// Country code
+        /// Two-letter country code.
         /// </summary>
         public readonly string CountryCode;
         /// <summary>
@@ -106,23 +106,23 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Billing Group name
+        /// Name of the billing group.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// State
+        /// State or province.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// VAT id
+        /// The VAT identification number for your company.
         /// </summary>
         public readonly string VatId;
         /// <summary>
-        /// Zip Code
+        /// Zip or postal code.
         /// </summary>
         public readonly string ZipCode;
 

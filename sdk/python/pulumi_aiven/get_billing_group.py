@@ -78,7 +78,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        Account id
+        Account ID.
         """
         return pulumi.get(self, "account_id")
 
@@ -86,7 +86,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Sequence[str]:
         """
-        Address lines
+        Address lines 1 and 2. For example, street, PO box, or building.
         """
         return pulumi.get(self, "address_lines")
 
@@ -94,7 +94,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> str:
         """
-        Billing currency
+        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -102,7 +102,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Sequence[str]:
         """
-        Billing contact emails
+        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -110,7 +110,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> str:
         """
-        Billing extra text
+        Additional information to include on your invoice (for example, a reference number).
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -118,7 +118,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="billingGroupId")
     def billing_group_id(self) -> str:
         """
-        The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+        The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group_id")
 
@@ -126,7 +126,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="cardId")
     def card_id(self) -> str:
         """
-        Credit card id
+        Credit card ID.
         """
         return pulumi.get(self, "card_id")
 
@@ -134,7 +134,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def city(self) -> str:
         """
-        City
+        City, district, suburb, town, or village.
         """
         return pulumi.get(self, "city")
 
@@ -142,7 +142,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def company(self) -> str:
         """
-        Company name
+        Your company name.
         """
         return pulumi.get(self, "company")
 
@@ -150,7 +150,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> str:
         """
-        ID of the billing group to copy from
+        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -158,7 +158,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> str:
         """
-        Country code
+        Two-letter country code.
         """
         return pulumi.get(self, "country_code")
 
@@ -174,7 +174,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Billing Group name
+        Name of the billing group.
         """
         return pulumi.get(self, "name")
 
@@ -182,7 +182,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
         """
-        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -190,7 +190,7 @@ class GetBillingGroupResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        State
+        State or province.
         """
         return pulumi.get(self, "state")
 
@@ -198,7 +198,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="vatId")
     def vat_id(self) -> str:
         """
-        VAT id
+        The VAT identification number for your company.
         """
         return pulumi.get(self, "vat_id")
 
@@ -206,7 +206,7 @@ class GetBillingGroupResult:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> str:
         """
-        Zip Code
+        Zip or postal code.
         """
         return pulumi.get(self, "zip_code")
 
@@ -239,10 +239,10 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
 def get_billing_group(billing_group_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
-    The Billing Group data source provides information about the existing Aiven Account.
+    Provides information about an existing billing group.
 
 
-    :param str billing_group_id: The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+    :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
     """
     __args__ = dict()
     __args__['billingGroupId'] = billing_group_id
@@ -273,9 +273,9 @@ def get_billing_group(billing_group_id: Optional[str] = None,
 def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
-    The Billing Group data source provides information about the existing Aiven Account.
+    Provides information about an existing billing group.
 
 
-    :param str billing_group_id: The id of the billing group. To set up proper dependencies please refer to this variable as a reference.
+    :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
     """
     ...

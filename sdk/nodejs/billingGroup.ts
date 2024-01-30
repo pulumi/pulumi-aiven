@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+ * Creates and manages billing groups and assigns them to projects.
  *
  * ## Example Usage
  *
@@ -58,65 +58,65 @@ export class BillingGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Account id
+     * Account ID.
      *
      * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
-     * Address lines
+     * Address lines 1 and 2. For example, street, PO box, or building.
      */
     public readonly addressLines!: pulumi.Output<string[] | undefined>;
     /**
-     * Billing currency
+     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      */
     public readonly billingCurrency!: pulumi.Output<string | undefined>;
     /**
-     * Billing contact emails
+     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      */
     public readonly billingEmails!: pulumi.Output<string[] | undefined>;
     /**
-     * Billing extra text
+     * Additional information to include on your invoice (for example, a reference number).
      */
     public readonly billingExtraText!: pulumi.Output<string | undefined>;
     /**
-     * Credit card id
+     * Credit card ID.
      */
     public readonly cardId!: pulumi.Output<string | undefined>;
     /**
-     * City
+     * City, district, suburb, town, or village.
      */
     public readonly city!: pulumi.Output<string | undefined>;
     /**
-     * Company name
+     * Your company name.
      */
     public readonly company!: pulumi.Output<string | undefined>;
     /**
-     * ID of the billing group to copy from
+     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      */
     public readonly copyFromBillingGroup!: pulumi.Output<string | undefined>;
     /**
-     * Country code
+     * Two-letter country code.
      */
     public readonly countryCode!: pulumi.Output<string | undefined>;
     /**
-     * Billing Group name
+     * Name of the billing group.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly parentId!: pulumi.Output<string | undefined>;
     /**
-     * State
+     * State or province.
      */
     public readonly state!: pulumi.Output<string | undefined>;
     /**
-     * VAT id
+     * The VAT identification number for your company.
      */
     public readonly vatId!: pulumi.Output<string | undefined>;
     /**
-     * Zip Code
+     * Zip or postal code.
      */
     public readonly zipCode!: pulumi.Output<string | undefined>;
 
@@ -176,65 +176,65 @@ export class BillingGroup extends pulumi.CustomResource {
  */
 export interface BillingGroupState {
     /**
-     * Account id
+     * Account ID.
      *
      * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Address lines
+     * Address lines 1 and 2. For example, street, PO box, or building.
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing currency
+     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      */
     billingCurrency?: pulumi.Input<string>;
     /**
-     * Billing contact emails
+     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing extra text
+     * Additional information to include on your invoice (for example, a reference number).
      */
     billingExtraText?: pulumi.Input<string>;
     /**
-     * Credit card id
+     * Credit card ID.
      */
     cardId?: pulumi.Input<string>;
     /**
-     * City
+     * City, district, suburb, town, or village.
      */
     city?: pulumi.Input<string>;
     /**
-     * Company name
+     * Your company name.
      */
     company?: pulumi.Input<string>;
     /**
-     * ID of the billing group to copy from
+     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      */
     copyFromBillingGroup?: pulumi.Input<string>;
     /**
-     * Country code
+     * Two-letter country code.
      */
     countryCode?: pulumi.Input<string>;
     /**
-     * Billing Group name
+     * Name of the billing group.
      */
     name?: pulumi.Input<string>;
     /**
-     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * State
+     * State or province.
      */
     state?: pulumi.Input<string>;
     /**
-     * VAT id
+     * The VAT identification number for your company.
      */
     vatId?: pulumi.Input<string>;
     /**
-     * Zip Code
+     * Zip or postal code.
      */
     zipCode?: pulumi.Input<string>;
 }
@@ -244,65 +244,65 @@ export interface BillingGroupState {
  */
 export interface BillingGroupArgs {
     /**
-     * Account id
+     * Account ID.
      *
      * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
-     * Address lines
+     * Address lines 1 and 2. For example, street, PO box, or building.
      */
     addressLines?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing currency
+     * Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
      */
     billingCurrency?: pulumi.Input<string>;
     /**
-     * Billing contact emails
+     * Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
      */
     billingEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Billing extra text
+     * Additional information to include on your invoice (for example, a reference number).
      */
     billingExtraText?: pulumi.Input<string>;
     /**
-     * Credit card id
+     * Credit card ID.
      */
     cardId?: pulumi.Input<string>;
     /**
-     * City
+     * City, district, suburb, town, or village.
      */
     city?: pulumi.Input<string>;
     /**
-     * Company name
+     * Your company name.
      */
     company?: pulumi.Input<string>;
     /**
-     * ID of the billing group to copy from
+     * ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
      */
     copyFromBillingGroup?: pulumi.Input<string>;
     /**
-     * Country code
+     * Two-letter country code.
      */
     countryCode?: pulumi.Input<string>;
     /**
-     * Billing Group name
+     * Name of the billing group.
      */
     name?: pulumi.Input<string>;
     /**
-     * An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * State
+     * State or province.
      */
     state?: pulumi.Input<string>;
     /**
-     * VAT id
+     * The VAT identification number for your company.
      */
     vatId?: pulumi.Input<string>;
     /**
-     * Zip Code
+     * Zip or postal code.
      */
     zipCode?: pulumi.Input<string>;
 }

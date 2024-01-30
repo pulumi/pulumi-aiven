@@ -31,21 +31,21 @@ class BillingGroupArgs:
                  zip_code: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BillingGroup resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines
-        :param pulumi.Input[str] billing_currency: Billing currency
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails
-        :param pulumi.Input[str] billing_extra_text: Billing extra text
-        :param pulumi.Input[str] card_id: Credit card id
-        :param pulumi.Input[str] city: City
-        :param pulumi.Input[str] company: Company name
-        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
-        :param pulumi.Input[str] country_code: Country code
-        :param pulumi.Input[str] name: Billing Group name
-        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] state: State
-        :param pulumi.Input[str] vat_id: VAT id
-        :param pulumi.Input[str] zip_code: Zip Code
+        :param pulumi.Input[str] account_id: Account ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
+        :param pulumi.Input[str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        :param pulumi.Input[str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
+        :param pulumi.Input[str] card_id: Credit card ID.
+        :param pulumi.Input[str] city: City, district, suburb, town, or village.
+        :param pulumi.Input[str] company: Your company name.
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        :param pulumi.Input[str] country_code: Two-letter country code.
+        :param pulumi.Input[str] name: Name of the billing group.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] state: State or province.
+        :param pulumi.Input[str] vat_id: The VAT identification number for your company.
+        :param pulumi.Input[str] zip_code: Zip or postal code.
         """
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
@@ -85,7 +85,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account id
+        Account ID.
         """
         warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
         pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
@@ -100,7 +100,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Address lines
+        Address lines 1 and 2. For example, street, PO box, or building.
         """
         return pulumi.get(self, "address_lines")
 
@@ -112,7 +112,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing currency
+        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -124,7 +124,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Billing contact emails
+        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -136,7 +136,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing extra text
+        Additional information to include on your invoice (for example, a reference number).
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -148,7 +148,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="cardId")
     def card_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Credit card id
+        Credit card ID.
         """
         return pulumi.get(self, "card_id")
 
@@ -160,7 +160,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def city(self) -> Optional[pulumi.Input[str]]:
         """
-        City
+        City, district, suburb, town, or village.
         """
         return pulumi.get(self, "city")
 
@@ -172,7 +172,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[str]]:
         """
-        Company name
+        Your company name.
         """
         return pulumi.get(self, "company")
 
@@ -184,7 +184,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the billing group to copy from
+        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -196,7 +196,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Country code
+        Two-letter country code.
         """
         return pulumi.get(self, "country_code")
 
@@ -208,7 +208,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing Group name
+        Name of the billing group.
         """
         return pulumi.get(self, "name")
 
@@ -220,7 +220,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -232,7 +232,7 @@ class BillingGroupArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State
+        State or province.
         """
         return pulumi.get(self, "state")
 
@@ -244,7 +244,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[pulumi.Input[str]]:
         """
-        VAT id
+        The VAT identification number for your company.
         """
         return pulumi.get(self, "vat_id")
 
@@ -256,7 +256,7 @@ class BillingGroupArgs:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Zip Code
+        Zip or postal code.
         """
         return pulumi.get(self, "zip_code")
 
@@ -285,21 +285,21 @@ class _BillingGroupState:
                  zip_code: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BillingGroup resources.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines
-        :param pulumi.Input[str] billing_currency: Billing currency
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails
-        :param pulumi.Input[str] billing_extra_text: Billing extra text
-        :param pulumi.Input[str] card_id: Credit card id
-        :param pulumi.Input[str] city: City
-        :param pulumi.Input[str] company: Company name
-        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
-        :param pulumi.Input[str] country_code: Country code
-        :param pulumi.Input[str] name: Billing Group name
-        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] state: State
-        :param pulumi.Input[str] vat_id: VAT id
-        :param pulumi.Input[str] zip_code: Zip Code
+        :param pulumi.Input[str] account_id: Account ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
+        :param pulumi.Input[str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        :param pulumi.Input[str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
+        :param pulumi.Input[str] card_id: Credit card ID.
+        :param pulumi.Input[str] city: City, district, suburb, town, or village.
+        :param pulumi.Input[str] company: Your company name.
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        :param pulumi.Input[str] country_code: Two-letter country code.
+        :param pulumi.Input[str] name: Name of the billing group.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] state: State or province.
+        :param pulumi.Input[str] vat_id: The VAT identification number for your company.
+        :param pulumi.Input[str] zip_code: Zip or postal code.
         """
         if account_id is not None:
             warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
@@ -339,7 +339,7 @@ class _BillingGroupState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Account id
+        Account ID.
         """
         warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
         pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
@@ -354,7 +354,7 @@ class _BillingGroupState:
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Address lines
+        Address lines 1 and 2. For example, street, PO box, or building.
         """
         return pulumi.get(self, "address_lines")
 
@@ -366,7 +366,7 @@ class _BillingGroupState:
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing currency
+        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -378,7 +378,7 @@ class _BillingGroupState:
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Billing contact emails
+        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -390,7 +390,7 @@ class _BillingGroupState:
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing extra text
+        Additional information to include on your invoice (for example, a reference number).
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -402,7 +402,7 @@ class _BillingGroupState:
     @pulumi.getter(name="cardId")
     def card_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Credit card id
+        Credit card ID.
         """
         return pulumi.get(self, "card_id")
 
@@ -414,7 +414,7 @@ class _BillingGroupState:
     @pulumi.getter
     def city(self) -> Optional[pulumi.Input[str]]:
         """
-        City
+        City, district, suburb, town, or village.
         """
         return pulumi.get(self, "city")
 
@@ -426,7 +426,7 @@ class _BillingGroupState:
     @pulumi.getter
     def company(self) -> Optional[pulumi.Input[str]]:
         """
-        Company name
+        Your company name.
         """
         return pulumi.get(self, "company")
 
@@ -438,7 +438,7 @@ class _BillingGroupState:
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the billing group to copy from
+        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -450,7 +450,7 @@ class _BillingGroupState:
     @pulumi.getter(name="countryCode")
     def country_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Country code
+        Two-letter country code.
         """
         return pulumi.get(self, "country_code")
 
@@ -462,7 +462,7 @@ class _BillingGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Billing Group name
+        Name of the billing group.
         """
         return pulumi.get(self, "name")
 
@@ -474,7 +474,7 @@ class _BillingGroupState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -486,7 +486,7 @@ class _BillingGroupState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State
+        State or province.
         """
         return pulumi.get(self, "state")
 
@@ -498,7 +498,7 @@ class _BillingGroupState:
     @pulumi.getter(name="vatId")
     def vat_id(self) -> Optional[pulumi.Input[str]]:
         """
-        VAT id
+        The VAT identification number for your company.
         """
         return pulumi.get(self, "vat_id")
 
@@ -510,7 +510,7 @@ class _BillingGroupState:
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Zip Code
+        Zip or postal code.
         """
         return pulumi.get(self, "zip_code")
 
@@ -541,7 +541,7 @@ class BillingGroup(pulumi.CustomResource):
                  zip_code: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+        Creates and manages billing groups and assigns them to projects.
 
         ## Example Usage
 
@@ -565,21 +565,21 @@ class BillingGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines
-        :param pulumi.Input[str] billing_currency: Billing currency
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails
-        :param pulumi.Input[str] billing_extra_text: Billing extra text
-        :param pulumi.Input[str] card_id: Credit card id
-        :param pulumi.Input[str] city: City
-        :param pulumi.Input[str] company: Company name
-        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
-        :param pulumi.Input[str] country_code: Country code
-        :param pulumi.Input[str] name: Billing Group name
-        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] state: State
-        :param pulumi.Input[str] vat_id: VAT id
-        :param pulumi.Input[str] zip_code: Zip Code
+        :param pulumi.Input[str] account_id: Account ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
+        :param pulumi.Input[str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        :param pulumi.Input[str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
+        :param pulumi.Input[str] card_id: Credit card ID.
+        :param pulumi.Input[str] city: City, district, suburb, town, or village.
+        :param pulumi.Input[str] company: Your company name.
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        :param pulumi.Input[str] country_code: Two-letter country code.
+        :param pulumi.Input[str] name: Name of the billing group.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] state: State or province.
+        :param pulumi.Input[str] vat_id: The VAT identification number for your company.
+        :param pulumi.Input[str] zip_code: Zip or postal code.
         """
         ...
     @overload
@@ -588,7 +588,7 @@ class BillingGroup(pulumi.CustomResource):
                  args: Optional[BillingGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Billing Group resource allows the creation and management of Aiven Billing Groups and association with the Projects.
+        Creates and manages billing groups and assigns them to projects.
 
         ## Example Usage
 
@@ -696,21 +696,21 @@ class BillingGroup(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: Account id
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines
-        :param pulumi.Input[str] billing_currency: Billing currency
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Billing contact emails
-        :param pulumi.Input[str] billing_extra_text: Billing extra text
-        :param pulumi.Input[str] card_id: Credit card id
-        :param pulumi.Input[str] city: City
-        :param pulumi.Input[str] company: Company name
-        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy from
-        :param pulumi.Input[str] country_code: Country code
-        :param pulumi.Input[str] name: Billing Group name
-        :param pulumi.Input[str] parent_id: An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
-        :param pulumi.Input[str] state: State
-        :param pulumi.Input[str] vat_id: VAT id
-        :param pulumi.Input[str] zip_code: Zip Code
+        :param pulumi.Input[str] account_id: Account ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Address lines 1 and 2. For example, street, PO box, or building.
+        :param pulumi.Input[str] billing_currency: Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] billing_emails: Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
+        :param pulumi.Input[str] billing_extra_text: Additional information to include on your invoice (for example, a reference number).
+        :param pulumi.Input[str] card_id: Credit card ID.
+        :param pulumi.Input[str] city: City, district, suburb, town, or village.
+        :param pulumi.Input[str] company: Your company name.
+        :param pulumi.Input[str] copy_from_billing_group: ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
+        :param pulumi.Input[str] country_code: Two-letter country code.
+        :param pulumi.Input[str] name: Name of the billing group.
+        :param pulumi.Input[str] parent_id: Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        :param pulumi.Input[str] state: State or province.
+        :param pulumi.Input[str] vat_id: The VAT identification number for your company.
+        :param pulumi.Input[str] zip_code: Zip or postal code.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -737,7 +737,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Account id
+        Account ID.
         """
         warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
         pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
@@ -748,7 +748,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="addressLines")
     def address_lines(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Address lines
+        Address lines 1 and 2. For example, street, PO box, or building.
         """
         return pulumi.get(self, "address_lines")
 
@@ -756,7 +756,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingCurrency")
     def billing_currency(self) -> pulumi.Output[Optional[str]]:
         """
-        Billing currency
+        Billing currency for the billing group. Supported currencies are: AUD, CAD, CHF, DKK, EUR, GBP, JPY, NOK, NZD, SEK, SGD, and USD.
         """
         return pulumi.get(self, "billing_currency")
 
@@ -764,7 +764,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingEmails")
     def billing_emails(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Billing contact emails
+        Email address of billing contacts. Invoices and other payment notifications are emailed to all billing contacts.
         """
         return pulumi.get(self, "billing_emails")
 
@@ -772,7 +772,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="billingExtraText")
     def billing_extra_text(self) -> pulumi.Output[Optional[str]]:
         """
-        Billing extra text
+        Additional information to include on your invoice (for example, a reference number).
         """
         return pulumi.get(self, "billing_extra_text")
 
@@ -780,7 +780,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="cardId")
     def card_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Credit card id
+        Credit card ID.
         """
         return pulumi.get(self, "card_id")
 
@@ -788,7 +788,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def city(self) -> pulumi.Output[Optional[str]]:
         """
-        City
+        City, district, suburb, town, or village.
         """
         return pulumi.get(self, "city")
 
@@ -796,7 +796,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def company(self) -> pulumi.Output[Optional[str]]:
         """
-        Company name
+        Your company name.
         """
         return pulumi.get(self, "company")
 
@@ -804,7 +804,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="copyFromBillingGroup")
     def copy_from_billing_group(self) -> pulumi.Output[Optional[str]]:
         """
-        ID of the billing group to copy from
+        ID of the billing group to copy the company name, address, currency, billing contacts, and extra text from.
         """
         return pulumi.get(self, "copy_from_billing_group")
 
@@ -812,7 +812,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="countryCode")
     def country_code(self) -> pulumi.Output[Optional[str]]:
         """
-        Country code
+        Two-letter country code.
         """
         return pulumi.get(self, "country_code")
 
@@ -820,7 +820,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Billing Group name
+        Name of the billing group.
         """
         return pulumi.get(self, "name")
 
@@ -828,7 +828,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[Optional[str]]:
         """
-        An optional property to link a billing group to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a billing group to an existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -836,7 +836,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[Optional[str]]:
         """
-        State
+        State or province.
         """
         return pulumi.get(self, "state")
 
@@ -844,7 +844,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="vatId")
     def vat_id(self) -> pulumi.Output[Optional[str]]:
         """
-        VAT id
+        The VAT identification number for your company.
         """
         return pulumi.get(self, "vat_id")
 
@@ -852,7 +852,7 @@ class BillingGroup(pulumi.CustomResource):
     @pulumi.getter(name="zipCode")
     def zip_code(self) -> pulumi.Output[Optional[str]]:
         """
-        Zip Code
+        Zip or postal code.
         """
         return pulumi.get(self, "zip_code")
 

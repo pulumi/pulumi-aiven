@@ -323,7 +323,7 @@ type CassandraCassandraUserConfig struct {
 	BackupMinute *int `pulumi:"backupMinute"`
 	// cassandra configuration values.
 	Cassandra *CassandraCassandraUserConfigCassandra `pulumi:"cassandra"`
-	// Cassandra major version.
+	// Cassandra version.
 	CassandraVersion *string `pulumi:"cassandraVersion"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects []CassandraCassandraUserConfigIpFilterObject `pulumi:"ipFilterObjects"`
@@ -371,7 +371,7 @@ type CassandraCassandraUserConfigArgs struct {
 	BackupMinute pulumi.IntPtrInput `pulumi:"backupMinute"`
 	// cassandra configuration values.
 	Cassandra CassandraCassandraUserConfigCassandraPtrInput `pulumi:"cassandra"`
-	// Cassandra major version.
+	// Cassandra version.
 	CassandraVersion pulumi.StringPtrInput `pulumi:"cassandraVersion"`
 	// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
 	IpFilterObjects CassandraCassandraUserConfigIpFilterObjectArrayInput `pulumi:"ipFilterObjects"`
@@ -496,7 +496,7 @@ func (o CassandraCassandraUserConfigOutput) Cassandra() CassandraCassandraUserCo
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *CassandraCassandraUserConfigCassandra { return v.Cassandra }).(CassandraCassandraUserConfigCassandraPtrOutput)
 }
 
-// Cassandra major version.
+// Cassandra version.
 func (o CassandraCassandraUserConfigOutput) CassandraVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CassandraCassandraUserConfig) *string { return v.CassandraVersion }).(pulumi.StringPtrOutput)
 }
@@ -626,7 +626,7 @@ func (o CassandraCassandraUserConfigPtrOutput) Cassandra() CassandraCassandraUse
 	}).(CassandraCassandraUserConfigCassandraPtrOutput)
 }
 
-// Cassandra major version.
+// Cassandra version.
 func (o CassandraCassandraUserConfigPtrOutput) CassandraVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CassandraCassandraUserConfig) *string {
 		if v == nil {
@@ -14457,6 +14457,8 @@ type KafkaKafkaUserConfigKafkaRestConfig struct {
 	ConsumerRequestMaxBytes *int `pulumi:"consumerRequestMaxBytes"`
 	// The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
 	ConsumerRequestTimeoutMs *int `pulumi:"consumerRequestTimeoutMs"`
+	// Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+	NameStrategy *string `pulumi:"nameStrategy"`
 	// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
 	NameStrategyValidation *bool `pulumi:"nameStrategyValidation"`
 	// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
@@ -14489,6 +14491,8 @@ type KafkaKafkaUserConfigKafkaRestConfigArgs struct {
 	ConsumerRequestMaxBytes pulumi.IntPtrInput `pulumi:"consumerRequestMaxBytes"`
 	// The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
 	ConsumerRequestTimeoutMs pulumi.IntPtrInput `pulumi:"consumerRequestTimeoutMs"`
+	// Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+	NameStrategy pulumi.StringPtrInput `pulumi:"nameStrategy"`
 	// If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
 	NameStrategyValidation pulumi.BoolPtrInput `pulumi:"nameStrategyValidation"`
 	// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
@@ -14595,6 +14599,11 @@ func (o KafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs() pu
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
 }
 
+// Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+func (o KafkaKafkaUserConfigKafkaRestConfigOutput) NameStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *string { return v.NameStrategy }).(pulumi.StringPtrOutput)
+}
+
 // If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
 func (o KafkaKafkaUserConfigKafkaRestConfigOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v KafkaKafkaUserConfigKafkaRestConfig) *bool { return v.NameStrategyValidation }).(pulumi.BoolPtrOutput)
@@ -14677,6 +14686,16 @@ func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutMs()
 		}
 		return v.ConsumerRequestTimeoutMs
 	}).(pulumi.IntPtrOutput)
+}
+
+// Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+func (o KafkaKafkaUserConfigKafkaRestConfigPtrOutput) NameStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KafkaKafkaUserConfigKafkaRestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameStrategy
+	}).(pulumi.StringPtrOutput)
 }
 
 // If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
@@ -33117,6 +33136,7 @@ type RedisRedisUserConfig struct {
 	RedisPubsubClientOutputBufferLimit *int                                   `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           *bool                                  `pulumi:"redisSsl"`
 	RedisTimeout                       *int                                   `pulumi:"redisTimeout"`
+	RedisVersion                       *string                                `pulumi:"redisVersion"`
 	ServiceLog                         *bool                                  `pulumi:"serviceLog"`
 	ServiceToForkFrom                  *string                                `pulumi:"serviceToForkFrom"`
 	StaticIps                          *bool                                  `pulumi:"staticIps"`
@@ -33156,6 +33176,7 @@ type RedisRedisUserConfigArgs struct {
 	RedisPubsubClientOutputBufferLimit pulumi.IntPtrInput                            `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           pulumi.BoolPtrInput                           `pulumi:"redisSsl"`
 	RedisTimeout                       pulumi.IntPtrInput                            `pulumi:"redisTimeout"`
+	RedisVersion                       pulumi.StringPtrInput                         `pulumi:"redisVersion"`
 	ServiceLog                         pulumi.BoolPtrInput                           `pulumi:"serviceLog"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                         `pulumi:"serviceToForkFrom"`
 	StaticIps                          pulumi.BoolPtrInput                           `pulumi:"staticIps"`
@@ -33321,6 +33342,10 @@ func (o RedisRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
 
 func (o RedisRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RedisRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o RedisRedisUserConfigOutput) RedisVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RedisRedisUserConfig) *string { return v.RedisVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o RedisRedisUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {
@@ -33547,6 +33572,15 @@ func (o RedisRedisUserConfigPtrOutput) RedisTimeout() pulumi.IntPtrOutput {
 		}
 		return v.RedisTimeout
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o RedisRedisUserConfigPtrOutput) RedisVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RedisRedisUserConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedisVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o RedisRedisUserConfigPtrOutput) ServiceLog() pulumi.BoolPtrOutput {
@@ -54421,6 +54455,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfig struct {
 	ConsumerEnableAutoCommit  *bool   `pulumi:"consumerEnableAutoCommit"`
 	ConsumerRequestMaxBytes   *int    `pulumi:"consumerRequestMaxBytes"`
 	ConsumerRequestTimeoutMs  *int    `pulumi:"consumerRequestTimeoutMs"`
+	NameStrategy              *string `pulumi:"nameStrategy"`
 	NameStrategyValidation    *bool   `pulumi:"nameStrategyValidation"`
 	ProducerAcks              *string `pulumi:"producerAcks"`
 	ProducerCompressionType   *string `pulumi:"producerCompressionType"`
@@ -54444,6 +54479,7 @@ type GetKafkaKafkaUserConfigKafkaRestConfigArgs struct {
 	ConsumerEnableAutoCommit  pulumi.BoolPtrInput   `pulumi:"consumerEnableAutoCommit"`
 	ConsumerRequestMaxBytes   pulumi.IntPtrInput    `pulumi:"consumerRequestMaxBytes"`
 	ConsumerRequestTimeoutMs  pulumi.IntPtrInput    `pulumi:"consumerRequestTimeoutMs"`
+	NameStrategy              pulumi.StringPtrInput `pulumi:"nameStrategy"`
 	NameStrategyValidation    pulumi.BoolPtrInput   `pulumi:"nameStrategyValidation"`
 	ProducerAcks              pulumi.StringPtrInput `pulumi:"producerAcks"`
 	ProducerCompressionType   pulumi.StringPtrInput `pulumi:"producerCompressionType"`
@@ -54541,6 +54577,10 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) ConsumerRequestTimeoutMs()
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *int { return v.ConsumerRequestTimeoutMs }).(pulumi.IntPtrOutput)
 }
 
+func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) NameStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *string { return v.NameStrategy }).(pulumi.StringPtrOutput)
+}
+
 func (o GetKafkaKafkaUserConfigKafkaRestConfigOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetKafkaKafkaUserConfigKafkaRestConfig) *bool { return v.NameStrategyValidation }).(pulumi.BoolPtrOutput)
 }
@@ -54614,6 +54654,15 @@ func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) ConsumerRequestTimeoutM
 		}
 		return v.ConsumerRequestTimeoutMs
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) NameStrategy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetKafkaKafkaUserConfigKafkaRestConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NameStrategy
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o GetKafkaKafkaUserConfigKafkaRestConfigPtrOutput) NameStrategyValidation() pulumi.BoolPtrOutput {
@@ -70096,6 +70145,7 @@ type GetRedisRedisUserConfig struct {
 	RedisPubsubClientOutputBufferLimit *int                                      `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           *bool                                     `pulumi:"redisSsl"`
 	RedisTimeout                       *int                                      `pulumi:"redisTimeout"`
+	RedisVersion                       *string                                   `pulumi:"redisVersion"`
 	ServiceLog                         *bool                                     `pulumi:"serviceLog"`
 	ServiceToForkFrom                  *string                                   `pulumi:"serviceToForkFrom"`
 	StaticIps                          *bool                                     `pulumi:"staticIps"`
@@ -70135,6 +70185,7 @@ type GetRedisRedisUserConfigArgs struct {
 	RedisPubsubClientOutputBufferLimit pulumi.IntPtrInput                               `pulumi:"redisPubsubClientOutputBufferLimit"`
 	RedisSsl                           pulumi.BoolPtrInput                              `pulumi:"redisSsl"`
 	RedisTimeout                       pulumi.IntPtrInput                               `pulumi:"redisTimeout"`
+	RedisVersion                       pulumi.StringPtrInput                            `pulumi:"redisVersion"`
 	ServiceLog                         pulumi.BoolPtrInput                              `pulumi:"serviceLog"`
 	ServiceToForkFrom                  pulumi.StringPtrInput                            `pulumi:"serviceToForkFrom"`
 	StaticIps                          pulumi.BoolPtrInput                              `pulumi:"staticIps"`
@@ -70274,6 +70325,10 @@ func (o GetRedisRedisUserConfigOutput) RedisSsl() pulumi.BoolPtrOutput {
 
 func (o GetRedisRedisUserConfigOutput) RedisTimeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetRedisRedisUserConfig) *int { return v.RedisTimeout }).(pulumi.IntPtrOutput)
+}
+
+func (o GetRedisRedisUserConfigOutput) RedisVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRedisRedisUserConfig) *string { return v.RedisVersion }).(pulumi.StringPtrOutput)
 }
 
 func (o GetRedisRedisUserConfigOutput) ServiceLog() pulumi.BoolPtrOutput {

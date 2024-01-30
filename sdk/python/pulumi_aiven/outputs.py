@@ -629,7 +629,7 @@ class CassandraCassandraUserConfig(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param 'CassandraCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values.
-        :param str cassandra_version: Cassandra major version.
+        :param str cassandra_version: Cassandra version.
         :param Sequence['CassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -711,7 +711,7 @@ class CassandraCassandraUserConfig(dict):
     @pulumi.getter(name="cassandraVersion")
     def cassandra_version(self) -> Optional[str]:
         """
-        Cassandra major version.
+        Cassandra version.
         """
         return pulumi.get(self, "cassandra_version")
 
@@ -6461,6 +6461,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
             suggest = "consumer_request_max_bytes"
         elif key == "consumerRequestTimeoutMs":
             suggest = "consumer_request_timeout_ms"
+        elif key == "nameStrategy":
+            suggest = "name_strategy"
         elif key == "nameStrategyValidation":
             suggest = "name_strategy_validation"
         elif key == "producerAcks":
@@ -6489,6 +6491,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
                  consumer_enable_auto_commit: Optional[bool] = None,
                  consumer_request_max_bytes: Optional[int] = None,
                  consumer_request_timeout_ms: Optional[int] = None,
+                 name_strategy: Optional[str] = None,
                  name_strategy_validation: Optional[bool] = None,
                  producer_acks: Optional[str] = None,
                  producer_compression_type: Optional[str] = None,
@@ -6499,6 +6502,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         :param bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
         :param int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
         :param int consumer_request_timeout_ms: The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        :param str name_strategy: Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
         :param bool name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
         :param str producer_acks: The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
@@ -6512,6 +6516,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
             pulumi.set(__self__, "consumer_request_max_bytes", consumer_request_max_bytes)
         if consumer_request_timeout_ms is not None:
             pulumi.set(__self__, "consumer_request_timeout_ms", consumer_request_timeout_ms)
+        if name_strategy is not None:
+            pulumi.set(__self__, "name_strategy", name_strategy)
         if name_strategy_validation is not None:
             pulumi.set(__self__, "name_strategy_validation", name_strategy_validation)
         if producer_acks is not None:
@@ -6548,6 +6554,14 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
         """
         return pulumi.get(self, "consumer_request_timeout_ms")
+
+    @property
+    @pulumi.getter(name="nameStrategy")
+    def name_strategy(self) -> Optional[str]:
+        """
+        Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        """
+        return pulumi.get(self, "name_strategy")
 
     @property
     @pulumi.getter(name="nameStrategyValidation")
@@ -14368,6 +14382,8 @@ class RedisRedisUserConfig(dict):
             suggest = "redis_ssl"
         elif key == "redisTimeout":
             suggest = "redis_timeout"
+        elif key == "redisVersion":
+            suggest = "redis_version"
         elif key == "serviceLog":
             suggest = "service_log"
         elif key == "serviceToForkFrom":
@@ -14408,6 +14424,7 @@ class RedisRedisUserConfig(dict):
                  redis_pubsub_client_output_buffer_limit: Optional[int] = None,
                  redis_ssl: Optional[bool] = None,
                  redis_timeout: Optional[int] = None,
+                 redis_version: Optional[str] = None,
                  service_log: Optional[bool] = None,
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None):
@@ -14453,6 +14470,8 @@ class RedisRedisUserConfig(dict):
             pulumi.set(__self__, "redis_ssl", redis_ssl)
         if redis_timeout is not None:
             pulumi.set(__self__, "redis_timeout", redis_timeout)
+        if redis_version is not None:
+            pulumi.set(__self__, "redis_version", redis_version)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if service_to_fork_from is not None:
@@ -14567,6 +14586,11 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="redisTimeout")
     def redis_timeout(self) -> Optional[int]:
         return pulumi.get(self, "redis_timeout")
+
+    @property
+    @pulumi.getter(name="redisVersion")
+    def redis_version(self) -> Optional[str]:
+        return pulumi.get(self, "redis_version")
 
     @property
     @pulumi.getter(name="serviceLog")
@@ -21318,6 +21342,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
                  consumer_enable_auto_commit: Optional[bool] = None,
                  consumer_request_max_bytes: Optional[int] = None,
                  consumer_request_timeout_ms: Optional[int] = None,
+                 name_strategy: Optional[str] = None,
                  name_strategy_validation: Optional[bool] = None,
                  producer_acks: Optional[str] = None,
                  producer_compression_type: Optional[str] = None,
@@ -21330,6 +21355,8 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
             pulumi.set(__self__, "consumer_request_max_bytes", consumer_request_max_bytes)
         if consumer_request_timeout_ms is not None:
             pulumi.set(__self__, "consumer_request_timeout_ms", consumer_request_timeout_ms)
+        if name_strategy is not None:
+            pulumi.set(__self__, "name_strategy", name_strategy)
         if name_strategy_validation is not None:
             pulumi.set(__self__, "name_strategy_validation", name_strategy_validation)
         if producer_acks is not None:
@@ -21357,6 +21384,11 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[int]:
         return pulumi.get(self, "consumer_request_timeout_ms")
+
+    @property
+    @pulumi.getter(name="nameStrategy")
+    def name_strategy(self) -> Optional[str]:
+        return pulumi.get(self, "name_strategy")
 
     @property
     @pulumi.getter(name="nameStrategyValidation")
@@ -26150,6 +26182,7 @@ class GetRedisRedisUserConfigResult(dict):
                  redis_pubsub_client_output_buffer_limit: Optional[int] = None,
                  redis_ssl: Optional[bool] = None,
                  redis_timeout: Optional[int] = None,
+                 redis_version: Optional[str] = None,
                  service_log: Optional[bool] = None,
                  service_to_fork_from: Optional[str] = None,
                  static_ips: Optional[bool] = None):
@@ -26195,6 +26228,8 @@ class GetRedisRedisUserConfigResult(dict):
             pulumi.set(__self__, "redis_ssl", redis_ssl)
         if redis_timeout is not None:
             pulumi.set(__self__, "redis_timeout", redis_timeout)
+        if redis_version is not None:
+            pulumi.set(__self__, "redis_version", redis_version)
         if service_log is not None:
             pulumi.set(__self__, "service_log", service_log)
         if service_to_fork_from is not None:
@@ -26309,6 +26344,11 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="redisTimeout")
     def redis_timeout(self) -> Optional[int]:
         return pulumi.get(self, "redis_timeout")
+
+    @property
+    @pulumi.getter(name="redisVersion")
+    def redis_version(self) -> Optional[str]:
+        return pulumi.get(self, "redis_version")
 
     @property
     @pulumi.getter(name="serviceLog")

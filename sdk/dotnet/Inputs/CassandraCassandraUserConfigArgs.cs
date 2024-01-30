@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.CassandraCassandraUserConfigCassandraArgs>? Cassandra { get; set; }
 
         /// <summary>
-        /// Cassandra major version.
+        /// Cassandra version.
         /// </summary>
         [Input("cassandraVersion")]
         public Input<string>? CassandraVersion { get; set; }

@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.CassandraCassandraUserConfigCassandra? Cassandra;
         /// <summary>
-        /// Cassandra major version.
+        /// Cassandra version.
         /// </summary>
         public readonly string? CassandraVersion;
         /// <summary>
