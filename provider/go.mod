@@ -4,14 +4,14 @@ go 1.21.1
 
 replace (
 	github.com/aiven/terraform-provider-aiven => ../upstream
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20230912190043-e6d96b3b8f7e
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240129205329-74776a5cd5f9
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.25.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.72.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.25.1-0.20240131191004-be7f79a9478b
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.72.1-0.20240131191004-be7f79a9478b
 	github.com/pulumi/pulumi/pkg/v3 v3.103.1 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.103.1
 )
@@ -143,6 +143,7 @@ require (
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
+	github.com/hashicorp/terraform-plugin-mux v0.14.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.6.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
