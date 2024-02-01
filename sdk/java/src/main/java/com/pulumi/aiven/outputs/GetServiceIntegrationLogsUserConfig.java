@@ -13,17 +13,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationLogsUserConfig {
+    /**
+     * @return Elasticsearch index retention limit. The default value is `3`.
+     * 
+     */
     private @Nullable Integer elasticsearchIndexDaysMax;
+    /**
+     * @return Elasticsearch index prefix. The default value is `logs`.
+     * 
+     */
     private @Nullable String elasticsearchIndexPrefix;
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
     private @Nullable List<String> selectedLogFields;
 
     private GetServiceIntegrationLogsUserConfig() {}
+    /**
+     * @return Elasticsearch index retention limit. The default value is `3`.
+     * 
+     */
     public Optional<Integer> elasticsearchIndexDaysMax() {
         return Optional.ofNullable(this.elasticsearchIndexDaysMax);
     }
+    /**
+     * @return Elasticsearch index prefix. The default value is `logs`.
+     * 
+     */
     public Optional<String> elasticsearchIndexPrefix() {
         return Optional.ofNullable(this.elasticsearchIndexPrefix);
     }
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
     public List<String> selectedLogFields() {
         return this.selectedLogFields == null ? List.of() : this.selectedLogFields;
     }

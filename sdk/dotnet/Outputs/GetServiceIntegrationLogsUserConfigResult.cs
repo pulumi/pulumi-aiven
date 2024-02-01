@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationLogsUserConfigResult
     {
+        /// <summary>
+        /// Elasticsearch index retention limit. The default value is `3`.
+        /// </summary>
         public readonly int? ElasticsearchIndexDaysMax;
+        /// <summary>
+        /// Elasticsearch index prefix. The default value is `logs`.
+        /// </summary>
         public readonly string? ElasticsearchIndexPrefix;
+        /// <summary>
+        /// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+        /// </summary>
         public readonly ImmutableArray<string> SelectedLogFields;
 
         [OutputConstructor]

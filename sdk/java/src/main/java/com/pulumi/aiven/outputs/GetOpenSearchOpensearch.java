@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetOpenSearchOpensearch {
+    /**
+     * @return URI for OpenSearch dashboard frontend
+     * 
+     */
     private String opensearchDashboardsUri;
 
     private GetOpenSearchOpensearch() {}
+    /**
+     * @return URI for OpenSearch dashboard frontend
+     * 
+     */
     public String opensearchDashboardsUri() {
         return this.opensearchDashboardsUri;
     }

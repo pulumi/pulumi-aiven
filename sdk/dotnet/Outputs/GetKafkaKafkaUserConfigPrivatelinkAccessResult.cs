@@ -13,11 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// Enable jolokia.
+        /// </summary>
         public readonly bool? Jolokia;
+        /// <summary>
+        /// Enable kafka.
+        /// </summary>
         public readonly bool? Kafka;
+        /// <summary>
+        /// Enable kafka_connect.
+        /// </summary>
         public readonly bool? KafkaConnect;
+        /// <summary>
+        /// Enable kafka_rest.
+        /// </summary>
         public readonly bool? KafkaRest;
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         public readonly bool? Prometheus;
+        /// <summary>
+        /// Enable schema_registry.
+        /// </summary>
         public readonly bool? SchemaRegistry;
 
         [OutputConstructor]

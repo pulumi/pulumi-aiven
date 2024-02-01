@@ -15,16 +15,32 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
 
     public static final M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs Empty = new M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs();
 
+    /**
+     * The resolution for the matching namespace.
+     * 
+     */
     @Import(name="resolution")
     private @Nullable Output<String> resolution;
 
+    /**
+     * @return The resolution for the matching namespace.
+     * 
+     */
     public Optional<Output<String>> resolution() {
         return Optional.ofNullable(this.resolution);
     }
 
+    /**
+     * The retention period of the matching namespace.
+     * 
+     */
     @Import(name="retention")
     private @Nullable Output<String> retention;
 
+    /**
+     * @return The retention period of the matching namespace.
+     * 
+     */
     public Optional<Output<String>> retention() {
         return Optional.ofNullable(this.retention);
     }
@@ -54,20 +70,44 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
             $ = new M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param resolution The resolution for the matching namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolution(@Nullable Output<String> resolution) {
             $.resolution = resolution;
             return this;
         }
 
+        /**
+         * @param resolution The resolution for the matching namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolution(String resolution) {
             return resolution(Output.of(resolution));
         }
 
+        /**
+         * @param retention The retention period of the matching namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retention(@Nullable Output<String> retention) {
             $.retention = retention;
             return this;
         }
 
+        /**
+         * @param retention The retention period of the matching namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retention(String retention) {
             return retention(Output.of(retention));
         }

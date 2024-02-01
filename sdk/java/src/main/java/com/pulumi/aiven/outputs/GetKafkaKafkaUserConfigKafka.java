@@ -14,189 +14,557 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigKafka {
+    /**
+     * @return Enable auto creation of topics.
+     * 
+     */
     private @Nullable Boolean autoCreateTopicsEnable;
+    /**
+     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * 
+     */
     private @Nullable String compressionType;
+    /**
+     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * 
+     */
     private @Nullable Integer connectionsMaxIdleMs;
+    /**
+     * @return Replication factor for autocreated topics.
+     * 
+     */
     private @Nullable Integer defaultReplicationFactor;
+    /**
+     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * 
+     */
     private @Nullable Integer groupInitialRebalanceDelayMs;
+    /**
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     private @Nullable Integer groupMaxSessionTimeoutMs;
+    /**
+     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     private @Nullable Integer groupMinSessionTimeoutMs;
+    /**
+     * @return How long are delete records retained?.
+     * 
+     */
     private @Nullable Integer logCleanerDeleteRetentionMs;
+    /**
+     * @return The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+     * 
+     */
     private @Nullable Integer logCleanerMaxCompactionLagMs;
+    /**
+     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * 
+     */
     private @Nullable Double logCleanerMinCleanableRatio;
+    /**
+     * @return The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+     * 
+     */
     private @Nullable Integer logCleanerMinCompactionLagMs;
+    /**
+     * @return The default cleanup policy for segments beyond the retention window.
+     * 
+     */
     private @Nullable String logCleanupPolicy;
+    /**
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk.
+     * 
+     */
     private @Nullable Integer logFlushIntervalMessages;
+    /**
+     * @return The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     * 
+     */
     private @Nullable Integer logFlushIntervalMs;
+    /**
+     * @return The interval with which Kafka adds an entry to the offset index.
+     * 
+     */
     private @Nullable Integer logIndexIntervalBytes;
+    /**
+     * @return The maximum size in bytes of the offset index.
+     * 
+     */
     private @Nullable Integer logIndexSizeMaxBytes;
+    /**
+     * @return The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+     * 
+     */
     private @Nullable Integer logLocalRetentionBytes;
+    /**
+     * @return The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+     * 
+     */
     private @Nullable Integer logLocalRetentionMs;
+    /**
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * 
+     */
     private @Nullable Boolean logMessageDownconversionEnable;
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+     * 
+     */
     private @Nullable Integer logMessageTimestampDifferenceMaxMs;
+    /**
+     * @return Define whether the timestamp in the message is message create time or log append time.
+     * 
+     */
     private @Nullable String logMessageTimestampType;
+    /**
+     * @return Should pre allocate file when create new segment?.
+     * 
+     */
     private @Nullable Boolean logPreallocate;
+    /**
+     * @return The maximum size of the log before deleting messages.
+     * 
+     */
     private @Nullable Integer logRetentionBytes;
+    /**
+     * @return The number of hours to keep a log file before deleting it.
+     * 
+     */
     private @Nullable Integer logRetentionHours;
+    /**
+     * @return The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+     * 
+     */
     private @Nullable Integer logRetentionMs;
+    /**
+     * @return The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     * 
+     */
     private @Nullable Integer logRollJitterMs;
+    /**
+     * @return The maximum time before a new log segment is rolled out (in milliseconds).
+     * 
+     */
     private @Nullable Integer logRollMs;
+    /**
+     * @return The maximum size of a single log file.
+     * 
+     */
     private @Nullable Integer logSegmentBytes;
+    /**
+     * @return The amount of time to wait before deleting a file from the filesystem.
+     * 
+     */
     private @Nullable Integer logSegmentDeleteDelayMs;
+    /**
+     * @return The maximum number of connections allowed from each ip address (defaults to 2147483647).
+     * 
+     */
     private @Nullable Integer maxConnectionsPerIp;
+    /**
+     * @return The maximum number of incremental fetch sessions that the broker will maintain.
+     * 
+     */
     private @Nullable Integer maxIncrementalFetchSessionCacheSlots;
+    /**
+     * @return The maximum size of message that the server can receive.
+     * 
+     */
     private @Nullable Integer messageMaxBytes;
+    /**
+     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * 
+     */
     private @Nullable Integer minInsyncReplicas;
+    /**
+     * @return Number of partitions for autocreated topics.
+     * 
+     */
     private @Nullable Integer numPartitions;
+    /**
+     * @return Log retention window in minutes for offsets topic.
+     * 
+     */
     private @Nullable Integer offsetsRetentionMinutes;
+    /**
+     * @return The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+     * 
+     */
     private @Nullable Integer producerPurgatoryPurgeIntervalRequests;
+    /**
+     * @return The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+     * 
+     */
     private @Nullable Integer replicaFetchMaxBytes;
+    /**
+     * @return Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     * 
+     */
     private @Nullable Integer replicaFetchResponseMaxBytes;
+    /**
+     * @return The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+     * 
+     */
     private @Nullable String saslOauthbearerExpectedAudience;
+    /**
+     * @return Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+     * 
+     */
     private @Nullable String saslOauthbearerExpectedIssuer;
+    /**
+     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * 
+     */
     private @Nullable String saslOauthbearerJwksEndpointUrl;
+    /**
+     * @return Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+     * 
+     */
     private @Nullable String saslOauthbearerSubClaimName;
+    /**
+     * @return The maximum number of bytes in a socket request (defaults to 104857600).
+     * 
+     */
     private @Nullable Integer socketRequestMaxBytes;
+    /**
+     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+     * 
+     */
     private @Nullable Boolean transactionPartitionVerificationEnable;
+    /**
+     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+     * 
+     */
     private @Nullable Integer transactionRemoveExpiredTransactionCleanupIntervalMs;
+    /**
+     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+     * 
+     */
     private @Nullable Integer transactionStateLogSegmentBytes;
 
     private GetKafkaKafkaUserConfigKafka() {}
+    /**
+     * @return Enable auto creation of topics.
+     * 
+     */
     public Optional<Boolean> autoCreateTopicsEnable() {
         return Optional.ofNullable(this.autoCreateTopicsEnable);
     }
+    /**
+     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * 
+     */
     public Optional<String> compressionType() {
         return Optional.ofNullable(this.compressionType);
     }
+    /**
+     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * 
+     */
     public Optional<Integer> connectionsMaxIdleMs() {
         return Optional.ofNullable(this.connectionsMaxIdleMs);
     }
+    /**
+     * @return Replication factor for autocreated topics.
+     * 
+     */
     public Optional<Integer> defaultReplicationFactor() {
         return Optional.ofNullable(this.defaultReplicationFactor);
     }
+    /**
+     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * 
+     */
     public Optional<Integer> groupInitialRebalanceDelayMs() {
         return Optional.ofNullable(this.groupInitialRebalanceDelayMs);
     }
+    /**
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     public Optional<Integer> groupMaxSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMaxSessionTimeoutMs);
     }
+    /**
+     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * 
+     */
     public Optional<Integer> groupMinSessionTimeoutMs() {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
     }
+    /**
+     * @return How long are delete records retained?.
+     * 
+     */
     public Optional<Integer> logCleanerDeleteRetentionMs() {
         return Optional.ofNullable(this.logCleanerDeleteRetentionMs);
     }
+    /**
+     * @return The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
+     * 
+     */
     public Optional<Integer> logCleanerMaxCompactionLagMs() {
         return Optional.ofNullable(this.logCleanerMaxCompactionLagMs);
     }
+    /**
+     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * 
+     */
     public Optional<Double> logCleanerMinCleanableRatio() {
         return Optional.ofNullable(this.logCleanerMinCleanableRatio);
     }
+    /**
+     * @return The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
+     * 
+     */
     public Optional<Integer> logCleanerMinCompactionLagMs() {
         return Optional.ofNullable(this.logCleanerMinCompactionLagMs);
     }
+    /**
+     * @return The default cleanup policy for segments beyond the retention window.
+     * 
+     */
     public Optional<String> logCleanupPolicy() {
         return Optional.ofNullable(this.logCleanupPolicy);
     }
+    /**
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk.
+     * 
+     */
     public Optional<Integer> logFlushIntervalMessages() {
         return Optional.ofNullable(this.logFlushIntervalMessages);
     }
+    /**
+     * @return The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
+     * 
+     */
     public Optional<Integer> logFlushIntervalMs() {
         return Optional.ofNullable(this.logFlushIntervalMs);
     }
+    /**
+     * @return The interval with which Kafka adds an entry to the offset index.
+     * 
+     */
     public Optional<Integer> logIndexIntervalBytes() {
         return Optional.ofNullable(this.logIndexIntervalBytes);
     }
+    /**
+     * @return The maximum size in bytes of the offset index.
+     * 
+     */
     public Optional<Integer> logIndexSizeMaxBytes() {
         return Optional.ofNullable(this.logIndexSizeMaxBytes);
     }
+    /**
+     * @return The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
+     * 
+     */
     public Optional<Integer> logLocalRetentionBytes() {
         return Optional.ofNullable(this.logLocalRetentionBytes);
     }
+    /**
+     * @return The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
+     * 
+     */
     public Optional<Integer> logLocalRetentionMs() {
         return Optional.ofNullable(this.logLocalRetentionMs);
     }
+    /**
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * 
+     */
     public Optional<Boolean> logMessageDownconversionEnable() {
         return Optional.ofNullable(this.logMessageDownconversionEnable);
     }
+    /**
+     * @return The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
+     * 
+     */
     public Optional<Integer> logMessageTimestampDifferenceMaxMs() {
         return Optional.ofNullable(this.logMessageTimestampDifferenceMaxMs);
     }
+    /**
+     * @return Define whether the timestamp in the message is message create time or log append time.
+     * 
+     */
     public Optional<String> logMessageTimestampType() {
         return Optional.ofNullable(this.logMessageTimestampType);
     }
+    /**
+     * @return Should pre allocate file when create new segment?.
+     * 
+     */
     public Optional<Boolean> logPreallocate() {
         return Optional.ofNullable(this.logPreallocate);
     }
+    /**
+     * @return The maximum size of the log before deleting messages.
+     * 
+     */
     public Optional<Integer> logRetentionBytes() {
         return Optional.ofNullable(this.logRetentionBytes);
     }
+    /**
+     * @return The number of hours to keep a log file before deleting it.
+     * 
+     */
     public Optional<Integer> logRetentionHours() {
         return Optional.ofNullable(this.logRetentionHours);
     }
+    /**
+     * @return The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
+     * 
+     */
     public Optional<Integer> logRetentionMs() {
         return Optional.ofNullable(this.logRetentionMs);
     }
+    /**
+     * @return The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
+     * 
+     */
     public Optional<Integer> logRollJitterMs() {
         return Optional.ofNullable(this.logRollJitterMs);
     }
+    /**
+     * @return The maximum time before a new log segment is rolled out (in milliseconds).
+     * 
+     */
     public Optional<Integer> logRollMs() {
         return Optional.ofNullable(this.logRollMs);
     }
+    /**
+     * @return The maximum size of a single log file.
+     * 
+     */
     public Optional<Integer> logSegmentBytes() {
         return Optional.ofNullable(this.logSegmentBytes);
     }
+    /**
+     * @return The amount of time to wait before deleting a file from the filesystem.
+     * 
+     */
     public Optional<Integer> logSegmentDeleteDelayMs() {
         return Optional.ofNullable(this.logSegmentDeleteDelayMs);
     }
+    /**
+     * @return The maximum number of connections allowed from each ip address (defaults to 2147483647).
+     * 
+     */
     public Optional<Integer> maxConnectionsPerIp() {
         return Optional.ofNullable(this.maxConnectionsPerIp);
     }
+    /**
+     * @return The maximum number of incremental fetch sessions that the broker will maintain.
+     * 
+     */
     public Optional<Integer> maxIncrementalFetchSessionCacheSlots() {
         return Optional.ofNullable(this.maxIncrementalFetchSessionCacheSlots);
     }
+    /**
+     * @return The maximum size of message that the server can receive.
+     * 
+     */
     public Optional<Integer> messageMaxBytes() {
         return Optional.ofNullable(this.messageMaxBytes);
     }
+    /**
+     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * 
+     */
     public Optional<Integer> minInsyncReplicas() {
         return Optional.ofNullable(this.minInsyncReplicas);
     }
+    /**
+     * @return Number of partitions for autocreated topics.
+     * 
+     */
     public Optional<Integer> numPartitions() {
         return Optional.ofNullable(this.numPartitions);
     }
+    /**
+     * @return Log retention window in minutes for offsets topic.
+     * 
+     */
     public Optional<Integer> offsetsRetentionMinutes() {
         return Optional.ofNullable(this.offsetsRetentionMinutes);
     }
+    /**
+     * @return The purge interval (in number of requests) of the producer request purgatory(defaults to 1000).
+     * 
+     */
     public Optional<Integer> producerPurgatoryPurgeIntervalRequests() {
         return Optional.ofNullable(this.producerPurgatoryPurgeIntervalRequests);
     }
+    /**
+     * @return The number of bytes of messages to attempt to fetch for each partition (defaults to 1048576). This is not an absolute maximum, if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made.
+     * 
+     */
     public Optional<Integer> replicaFetchMaxBytes() {
         return Optional.ofNullable(this.replicaFetchMaxBytes);
     }
+    /**
+     * @return Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
+     * 
+     */
     public Optional<Integer> replicaFetchResponseMaxBytes() {
         return Optional.ofNullable(this.replicaFetchResponseMaxBytes);
     }
+    /**
+     * @return The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
+     * 
+     */
     public Optional<String> saslOauthbearerExpectedAudience() {
         return Optional.ofNullable(this.saslOauthbearerExpectedAudience);
     }
+    /**
+     * @return Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
+     * 
+     */
     public Optional<String> saslOauthbearerExpectedIssuer() {
         return Optional.ofNullable(this.saslOauthbearerExpectedIssuer);
     }
+    /**
+     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * 
+     */
     public Optional<String> saslOauthbearerJwksEndpointUrl() {
         return Optional.ofNullable(this.saslOauthbearerJwksEndpointUrl);
     }
+    /**
+     * @return Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
+     * 
+     */
     public Optional<String> saslOauthbearerSubClaimName() {
         return Optional.ofNullable(this.saslOauthbearerSubClaimName);
     }
+    /**
+     * @return The maximum number of bytes in a socket request (defaults to 104857600).
+     * 
+     */
     public Optional<Integer> socketRequestMaxBytes() {
         return Optional.ofNullable(this.socketRequestMaxBytes);
     }
+    /**
+     * @return Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
+     * 
+     */
     public Optional<Boolean> transactionPartitionVerificationEnable() {
         return Optional.ofNullable(this.transactionPartitionVerificationEnable);
     }
+    /**
+     * @return The interval at which to remove transactions that have expired due to transactional.id.expiration.ms passing (defaults to 3600000 (1 hour)).
+     * 
+     */
     public Optional<Integer> transactionRemoveExpiredTransactionCleanupIntervalMs() {
         return Optional.ofNullable(this.transactionRemoveExpiredTransactionCleanupIntervalMs);
     }
+    /**
+     * @return The transaction topic segment bytes should be kept relatively small in order to facilitate faster log compaction and cache loads (defaults to 104857600 (100 mebibytes)).
+     * 
+     */
     public Optional<Integer> transactionStateLogSegmentBytes() {
         return Optional.ofNullable(this.transactionStateLogSegmentBytes);
     }

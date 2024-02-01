@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions
     {
+        /// <summary>
+        /// Controls how long we wait before expiring stale data.
+        /// </summary>
         public readonly string? BlockDataExpiryDuration;
+        /// <summary>
+        /// Controls how long to keep a block in memory before flushing to a fileset on disk.
+        /// </summary>
         public readonly string? BlocksizeDuration;
+        /// <summary>
+        /// Controls how far into the future writes to the namespace will be accepted.
+        /// </summary>
         public readonly string? BufferFutureDuration;
+        /// <summary>
+        /// Controls how far into the past writes to the namespace will be accepted.
+        /// </summary>
         public readonly string? BufferPastDuration;
+        /// <summary>
+        /// Controls the duration of time that M3DB will retain data for the namespace.
+        /// </summary>
         public readonly string? RetentionPeriodDuration;
 
         [OutputConstructor]

@@ -13,15 +13,45 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointRsyslogUserConfigResult
     {
+        /// <summary>
+        /// PEM encoded CA certificate.
+        /// </summary>
         public readonly string? Ca;
+        /// <summary>
+        /// PEM encoded client certificate.
+        /// </summary>
         public readonly string? Cert;
+        /// <summary>
+        /// Message format. The default value is `rfc5424`.
+        /// </summary>
         public readonly string Format;
+        /// <summary>
+        /// PEM encoded client key.
+        /// </summary>
         public readonly string? Key;
+        /// <summary>
+        /// Custom syslog message format.
+        /// </summary>
         public readonly string? Logline;
+        /// <summary>
+        /// Rsyslog max message size. The default value is `8192`.
+        /// </summary>
         public readonly int? MaxMessageSize;
+        /// <summary>
+        /// Rsyslog server port. The default value is `514`.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// Structured data block for log message.
+        /// </summary>
         public readonly string? Sd;
+        /// <summary>
+        /// Rsyslog server IP address or hostname.
+        /// </summary>
         public readonly string Server;
+        /// <summary>
+        /// Require TLS. The default value is `true`.
+        /// </summary>
         public readonly bool Tls;
 
         [OutputConstructor]

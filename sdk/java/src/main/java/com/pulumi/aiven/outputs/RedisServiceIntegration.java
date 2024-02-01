@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class RedisServiceIntegration {
+    /**
+     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * 
+     */
     private String integrationType;
+    /**
+     * @return Name of the source service
+     * 
+     */
     private String sourceServiceName;
 
     private RedisServiceIntegration() {}
+    /**
+     * @return Type of the service integration. The only supported value at the moment is `read_replica`
+     * 
+     */
     public String integrationType() {
         return this.integrationType;
     }
+    /**
+     * @return Name of the source service
+     * 
+     */
     public String sourceServiceName() {
         return this.sourceServiceName;
     }

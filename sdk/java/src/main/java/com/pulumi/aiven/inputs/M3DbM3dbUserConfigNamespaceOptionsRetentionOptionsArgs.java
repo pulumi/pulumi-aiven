@@ -15,37 +15,77 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
 
     public static final M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs Empty = new M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs();
 
+    /**
+     * Controls how long we wait before expiring stale data.
+     * 
+     */
     @Import(name="blockDataExpiryDuration")
     private @Nullable Output<String> blockDataExpiryDuration;
 
+    /**
+     * @return Controls how long we wait before expiring stale data.
+     * 
+     */
     public Optional<Output<String>> blockDataExpiryDuration() {
         return Optional.ofNullable(this.blockDataExpiryDuration);
     }
 
+    /**
+     * Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * 
+     */
     @Import(name="blocksizeDuration")
     private @Nullable Output<String> blocksizeDuration;
 
+    /**
+     * @return Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * 
+     */
     public Optional<Output<String>> blocksizeDuration() {
         return Optional.ofNullable(this.blocksizeDuration);
     }
 
+    /**
+     * Controls how far into the future writes to the namespace will be accepted.
+     * 
+     */
     @Import(name="bufferFutureDuration")
     private @Nullable Output<String> bufferFutureDuration;
 
+    /**
+     * @return Controls how far into the future writes to the namespace will be accepted.
+     * 
+     */
     public Optional<Output<String>> bufferFutureDuration() {
         return Optional.ofNullable(this.bufferFutureDuration);
     }
 
+    /**
+     * Controls how far into the past writes to the namespace will be accepted.
+     * 
+     */
     @Import(name="bufferPastDuration")
     private @Nullable Output<String> bufferPastDuration;
 
+    /**
+     * @return Controls how far into the past writes to the namespace will be accepted.
+     * 
+     */
     public Optional<Output<String>> bufferPastDuration() {
         return Optional.ofNullable(this.bufferPastDuration);
     }
 
+    /**
+     * Controls the duration of time that M3DB will retain data for the namespace.
+     * 
+     */
     @Import(name="retentionPeriodDuration")
     private @Nullable Output<String> retentionPeriodDuration;
 
+    /**
+     * @return Controls the duration of time that M3DB will retain data for the namespace.
+     * 
+     */
     public Optional<Output<String>> retentionPeriodDuration() {
         return Optional.ofNullable(this.retentionPeriodDuration);
     }
@@ -78,47 +118,107 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
             $ = new M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param blockDataExpiryDuration Controls how long we wait before expiring stale data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDataExpiryDuration(@Nullable Output<String> blockDataExpiryDuration) {
             $.blockDataExpiryDuration = blockDataExpiryDuration;
             return this;
         }
 
+        /**
+         * @param blockDataExpiryDuration Controls how long we wait before expiring stale data.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blockDataExpiryDuration(String blockDataExpiryDuration) {
             return blockDataExpiryDuration(Output.of(blockDataExpiryDuration));
         }
 
+        /**
+         * @param blocksizeDuration Controls how long to keep a block in memory before flushing to a fileset on disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blocksizeDuration(@Nullable Output<String> blocksizeDuration) {
             $.blocksizeDuration = blocksizeDuration;
             return this;
         }
 
+        /**
+         * @param blocksizeDuration Controls how long to keep a block in memory before flushing to a fileset on disk.
+         * 
+         * @return builder
+         * 
+         */
         public Builder blocksizeDuration(String blocksizeDuration) {
             return blocksizeDuration(Output.of(blocksizeDuration));
         }
 
+        /**
+         * @param bufferFutureDuration Controls how far into the future writes to the namespace will be accepted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bufferFutureDuration(@Nullable Output<String> bufferFutureDuration) {
             $.bufferFutureDuration = bufferFutureDuration;
             return this;
         }
 
+        /**
+         * @param bufferFutureDuration Controls how far into the future writes to the namespace will be accepted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bufferFutureDuration(String bufferFutureDuration) {
             return bufferFutureDuration(Output.of(bufferFutureDuration));
         }
 
+        /**
+         * @param bufferPastDuration Controls how far into the past writes to the namespace will be accepted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bufferPastDuration(@Nullable Output<String> bufferPastDuration) {
             $.bufferPastDuration = bufferPastDuration;
             return this;
         }
 
+        /**
+         * @param bufferPastDuration Controls how far into the past writes to the namespace will be accepted.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bufferPastDuration(String bufferPastDuration) {
             return bufferPastDuration(Output.of(bufferPastDuration));
         }
 
+        /**
+         * @param retentionPeriodDuration Controls the duration of time that M3DB will retain data for the namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionPeriodDuration(@Nullable Output<String> retentionPeriodDuration) {
             $.retentionPeriodDuration = retentionPeriodDuration;
             return this;
         }
 
+        /**
+         * @param retentionPeriodDuration Controls the duration of time that M3DB will retain data for the namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionPeriodDuration(String retentionPeriodDuration) {
             return retentionPeriodDuration(Output.of(retentionPeriodDuration));
         }

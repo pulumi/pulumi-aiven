@@ -13,33 +13,139 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaTopicConfig {
+    /**
+     * @return cleanup.policy value
+     * 
+     */
     private @Nullable String cleanupPolicy;
+    /**
+     * @return compression.type value
+     * 
+     */
     private @Nullable String compressionType;
+    /**
+     * @return delete.retention.ms value
+     * 
+     */
     private @Nullable String deleteRetentionMs;
+    /**
+     * @return file.delete.delay.ms value
+     * 
+     */
     private @Nullable String fileDeleteDelayMs;
+    /**
+     * @return flush.messages value
+     * 
+     */
     private @Nullable String flushMessages;
+    /**
+     * @return flush.ms value
+     * 
+     */
     private @Nullable String flushMs;
+    /**
+     * @return index.interval.bytes value
+     * 
+     */
     private @Nullable String indexIntervalBytes;
+    /**
+     * @return local.retention.bytes value
+     * 
+     */
     private @Nullable String localRetentionBytes;
+    /**
+     * @return local.retention.ms value
+     * 
+     */
     private @Nullable String localRetentionMs;
+    /**
+     * @return max.compaction.lag.ms value
+     * 
+     */
     private @Nullable String maxCompactionLagMs;
+    /**
+     * @return max.message.bytes value
+     * 
+     */
     private @Nullable String maxMessageBytes;
+    /**
+     * @return message.downconversion.enable value
+     * 
+     */
     private @Nullable Boolean messageDownconversionEnable;
+    /**
+     * @return message.format.version value
+     * 
+     */
     private @Nullable String messageFormatVersion;
+    /**
+     * @return message.timestamp.difference.max.ms value
+     * 
+     */
     private @Nullable String messageTimestampDifferenceMaxMs;
+    /**
+     * @return message.timestamp.type value
+     * 
+     */
     private @Nullable String messageTimestampType;
+    /**
+     * @return min.cleanable.dirty.ratio value
+     * 
+     */
     private @Nullable Double minCleanableDirtyRatio;
+    /**
+     * @return min.compaction.lag.ms value
+     * 
+     */
     private @Nullable String minCompactionLagMs;
+    /**
+     * @return min.insync.replicas value
+     * 
+     */
     private @Nullable String minInsyncReplicas;
+    /**
+     * @return preallocate value
+     * 
+     */
     private @Nullable Boolean preallocate;
+    /**
+     * @return remote.storage.enable value
+     * 
+     */
     private @Nullable Boolean remoteStorageEnable;
+    /**
+     * @return retention.bytes value
+     * 
+     */
     private @Nullable String retentionBytes;
+    /**
+     * @return retention.ms value
+     * 
+     */
     private @Nullable String retentionMs;
+    /**
+     * @return segment.bytes value
+     * 
+     */
     private @Nullable String segmentBytes;
+    /**
+     * @return segment.index.bytes value
+     * 
+     */
     private @Nullable String segmentIndexBytes;
+    /**
+     * @return segment.jitter.ms value
+     * 
+     */
     private @Nullable String segmentJitterMs;
+    /**
+     * @return segment.ms value
+     * 
+     */
     private @Nullable String segmentMs;
     /**
+     * @return unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     * 
      * @deprecated
      * This field is deprecated and no longer functional.
      * 
@@ -48,85 +154,191 @@ public final class GetKafkaTopicConfig {
     private @Nullable Boolean uncleanLeaderElectionEnable;
 
     private GetKafkaTopicConfig() {}
+    /**
+     * @return cleanup.policy value
+     * 
+     */
     public Optional<String> cleanupPolicy() {
         return Optional.ofNullable(this.cleanupPolicy);
     }
+    /**
+     * @return compression.type value
+     * 
+     */
     public Optional<String> compressionType() {
         return Optional.ofNullable(this.compressionType);
     }
+    /**
+     * @return delete.retention.ms value
+     * 
+     */
     public Optional<String> deleteRetentionMs() {
         return Optional.ofNullable(this.deleteRetentionMs);
     }
+    /**
+     * @return file.delete.delay.ms value
+     * 
+     */
     public Optional<String> fileDeleteDelayMs() {
         return Optional.ofNullable(this.fileDeleteDelayMs);
     }
+    /**
+     * @return flush.messages value
+     * 
+     */
     public Optional<String> flushMessages() {
         return Optional.ofNullable(this.flushMessages);
     }
+    /**
+     * @return flush.ms value
+     * 
+     */
     public Optional<String> flushMs() {
         return Optional.ofNullable(this.flushMs);
     }
+    /**
+     * @return index.interval.bytes value
+     * 
+     */
     public Optional<String> indexIntervalBytes() {
         return Optional.ofNullable(this.indexIntervalBytes);
     }
+    /**
+     * @return local.retention.bytes value
+     * 
+     */
     public Optional<String> localRetentionBytes() {
         return Optional.ofNullable(this.localRetentionBytes);
     }
+    /**
+     * @return local.retention.ms value
+     * 
+     */
     public Optional<String> localRetentionMs() {
         return Optional.ofNullable(this.localRetentionMs);
     }
+    /**
+     * @return max.compaction.lag.ms value
+     * 
+     */
     public Optional<String> maxCompactionLagMs() {
         return Optional.ofNullable(this.maxCompactionLagMs);
     }
+    /**
+     * @return max.message.bytes value
+     * 
+     */
     public Optional<String> maxMessageBytes() {
         return Optional.ofNullable(this.maxMessageBytes);
     }
+    /**
+     * @return message.downconversion.enable value
+     * 
+     */
     public Optional<Boolean> messageDownconversionEnable() {
         return Optional.ofNullable(this.messageDownconversionEnable);
     }
+    /**
+     * @return message.format.version value
+     * 
+     */
     public Optional<String> messageFormatVersion() {
         return Optional.ofNullable(this.messageFormatVersion);
     }
+    /**
+     * @return message.timestamp.difference.max.ms value
+     * 
+     */
     public Optional<String> messageTimestampDifferenceMaxMs() {
         return Optional.ofNullable(this.messageTimestampDifferenceMaxMs);
     }
+    /**
+     * @return message.timestamp.type value
+     * 
+     */
     public Optional<String> messageTimestampType() {
         return Optional.ofNullable(this.messageTimestampType);
     }
+    /**
+     * @return min.cleanable.dirty.ratio value
+     * 
+     */
     public Optional<Double> minCleanableDirtyRatio() {
         return Optional.ofNullable(this.minCleanableDirtyRatio);
     }
+    /**
+     * @return min.compaction.lag.ms value
+     * 
+     */
     public Optional<String> minCompactionLagMs() {
         return Optional.ofNullable(this.minCompactionLagMs);
     }
+    /**
+     * @return min.insync.replicas value
+     * 
+     */
     public Optional<String> minInsyncReplicas() {
         return Optional.ofNullable(this.minInsyncReplicas);
     }
+    /**
+     * @return preallocate value
+     * 
+     */
     public Optional<Boolean> preallocate() {
         return Optional.ofNullable(this.preallocate);
     }
+    /**
+     * @return remote.storage.enable value
+     * 
+     */
     public Optional<Boolean> remoteStorageEnable() {
         return Optional.ofNullable(this.remoteStorageEnable);
     }
+    /**
+     * @return retention.bytes value
+     * 
+     */
     public Optional<String> retentionBytes() {
         return Optional.ofNullable(this.retentionBytes);
     }
+    /**
+     * @return retention.ms value
+     * 
+     */
     public Optional<String> retentionMs() {
         return Optional.ofNullable(this.retentionMs);
     }
+    /**
+     * @return segment.bytes value
+     * 
+     */
     public Optional<String> segmentBytes() {
         return Optional.ofNullable(this.segmentBytes);
     }
+    /**
+     * @return segment.index.bytes value
+     * 
+     */
     public Optional<String> segmentIndexBytes() {
         return Optional.ofNullable(this.segmentIndexBytes);
     }
+    /**
+     * @return segment.jitter.ms value
+     * 
+     */
     public Optional<String> segmentJitterMs() {
         return Optional.ofNullable(this.segmentJitterMs);
     }
+    /**
+     * @return segment.ms value
+     * 
+     */
     public Optional<String> segmentMs() {
         return Optional.ofNullable(this.segmentMs);
     }
     /**
+     * @return unclean.leader.election.enable value; This field is deprecated and no longer functional.
+     * 
      * @deprecated
      * This field is deprecated and no longer functional.
      * 

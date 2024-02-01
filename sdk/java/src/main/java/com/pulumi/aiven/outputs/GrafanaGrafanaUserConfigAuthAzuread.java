@@ -14,33 +14,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthAzuread {
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     private @Nullable Boolean allowSignUp;
+    /**
+     * @return Allowed domains.
+     * 
+     */
     private @Nullable List<String> allowedDomains;
+    /**
+     * @return Require users to belong to one of given groups.
+     * 
+     */
     private @Nullable List<String> allowedGroups;
+    /**
+     * @return Authorization URL.
+     * 
+     */
     private String authUrl;
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     private String clientId;
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return Token URL.
+     * 
+     */
     private String tokenUrl;
 
     private GrafanaGrafanaUserConfigAuthAzuread() {}
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
+    /**
+     * @return Allowed domains.
+     * 
+     */
     public List<String> allowedDomains() {
         return this.allowedDomains == null ? List.of() : this.allowedDomains;
     }
+    /**
+     * @return Require users to belong to one of given groups.
+     * 
+     */
     public List<String> allowedGroups() {
         return this.allowedGroups == null ? List.of() : this.allowedGroups;
     }
+    /**
+     * @return Authorization URL.
+     * 
+     */
     public String authUrl() {
         return this.authUrl;
     }
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Token URL.
+     * 
+     */
     public String tokenUrl() {
         return this.tokenUrl;
     }

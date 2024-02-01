@@ -15,9 +15,17 @@ public final class M3DbM3dbUserConfigPrivateAccessArgs extends com.pulumi.resour
 
     public static final M3DbM3dbUserConfigPrivateAccessArgs Empty = new M3DbM3dbUserConfigPrivateAccessArgs();
 
+    /**
+     * Allow clients to connect to m3coordinator with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="m3coordinator")
     private @Nullable Output<Boolean> m3coordinator;
 
+    /**
+     * @return Allow clients to connect to m3coordinator with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }
@@ -46,11 +54,23 @@ public final class M3DbM3dbUserConfigPrivateAccessArgs extends com.pulumi.resour
             $ = new M3DbM3dbUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param m3coordinator Allow clients to connect to m3coordinator with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinator(@Nullable Output<Boolean> m3coordinator) {
             $.m3coordinator = m3coordinator;
             return this;
         }
 
+        /**
+         * @param m3coordinator Allow clients to connect to m3coordinator with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinator(Boolean m3coordinator) {
             return m3coordinator(Output.of(m3coordinator));
         }

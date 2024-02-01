@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable grafana.
+        /// </summary>
         [Input("grafana")]
         public Input<bool>? Grafana { get; set; }
 

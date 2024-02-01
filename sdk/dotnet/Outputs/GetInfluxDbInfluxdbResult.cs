@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetInfluxDbInfluxdbResult
     {
+        /// <summary>
+        /// Name of the default InfluxDB database
+        /// </summary>
         public readonly string DatabaseName;
 
         [OutputConstructor]

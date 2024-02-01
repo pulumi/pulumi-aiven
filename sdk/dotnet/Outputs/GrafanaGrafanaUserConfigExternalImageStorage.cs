@@ -13,9 +13,21 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigExternalImageStorage
     {
+        /// <summary>
+        /// S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+        /// </summary>
         public readonly string AccessKey;
+        /// <summary>
+        /// Bucket URL for S3.
+        /// </summary>
         public readonly string BucketUrl;
+        /// <summary>
+        /// Provider type.
+        /// </summary>
         public readonly string Provider;
+        /// <summary>
+        /// S3 secret key.
+        /// </summary>
         public readonly string SecretKey;
 
         [OutputConstructor]

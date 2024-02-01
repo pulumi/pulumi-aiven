@@ -13,16 +13,49 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigAuthGenericOauth
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         public readonly bool? AllowSignUp;
+        /// <summary>
+        /// Allowed domains.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
+        /// <summary>
+        /// Require user to be member of one of the listed organizations.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedOrganizations;
+        /// <summary>
+        /// API URL.
+        /// </summary>
         public readonly string ApiUrl;
+        /// <summary>
+        /// Authorization URL.
+        /// </summary>
         public readonly string AuthUrl;
+        /// <summary>
+        /// Allow users to bypass the login screen and automatically log in.
+        /// </summary>
         public readonly bool? AutoLogin;
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         public readonly string ClientSecret;
+        /// <summary>
+        /// Name of the OAuth integration.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// OAuth scopes.
+        /// </summary>
         public readonly ImmutableArray<string> Scopes;
+        /// <summary>
+        /// Token URL.
+        /// </summary>
         public readonly string TokenUrl;
 
         [OutputConstructor]

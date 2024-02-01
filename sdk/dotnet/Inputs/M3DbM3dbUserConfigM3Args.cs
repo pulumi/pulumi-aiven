@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigM3Args : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// M3 Tag Options.
+        /// </summary>
         [Input("tagOptions")]
         public Input<Inputs.M3DbM3dbUserConfigM3TagOptionsArgs>? TagOptions { get; set; }
 

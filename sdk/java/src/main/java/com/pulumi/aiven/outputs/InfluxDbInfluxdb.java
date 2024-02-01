@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class InfluxDbInfluxdb {
+    /**
+     * @return Name of the default InfluxDB database
+     * 
+     */
     private @Nullable String databaseName;
 
     private InfluxDbInfluxdb() {}
+    /**
+     * @return Name of the default InfluxDB database
+     * 
+     */
     public Optional<String> databaseName() {
         return Optional.ofNullable(this.databaseName);
     }

@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetFlinkApplicationVersionSink {
+    /**
+     * @return The CREATE TABLE statement
+     * 
+     */
     private String createTable;
+    /**
+     * @return The integration ID
+     * 
+     */
     private @Nullable String integrationId;
 
     private GetFlinkApplicationVersionSink() {}
+    /**
+     * @return The CREATE TABLE statement
+     * 
+     */
     public String createTable() {
         return this.createTable;
     }
+    /**
+     * @return The integration ID
+     * 
+     */
     public Optional<String> integrationId() {
         return Optional.ofNullable(this.integrationId);
     }

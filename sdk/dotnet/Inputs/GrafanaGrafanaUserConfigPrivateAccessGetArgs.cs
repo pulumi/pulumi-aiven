@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow clients to connect to grafana with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         [Input("grafana")]
         public Input<bool>? Grafana { get; set; }
 

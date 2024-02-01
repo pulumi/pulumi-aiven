@@ -12,20 +12,36 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class MySqlMysqlUserConfigMigrationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Database name for bootstrapping the initial connection.
+        /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
+        /// <summary>
+        /// Hostname or IP address of the server where to migrate data from.
+        /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
+        /// <summary>
+        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+        /// </summary>
         [Input("ignoreDbs")]
         public Input<string>? IgnoreDbs { get; set; }
 
+        /// <summary>
+        /// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        /// </summary>
         [Input("method")]
         public Input<string>? Method { get; set; }
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// Password for authentication with the server where to migrate data from.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -36,12 +52,21 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        /// <summary>
+        /// Port number of the server where to migrate data from.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL. The default value is `true`.
+        /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
+        /// <summary>
+        /// User name for authentication with the server where to migrate data from.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

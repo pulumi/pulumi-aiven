@@ -18,6 +18,9 @@ namespace Pulumi.Aiven.Inputs
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
+        /// <summary>
+        /// Hostname or IP address of the server where to migrate data from.
+        /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
@@ -49,9 +52,15 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        /// <summary>
+        /// Port number of the server where to migrate data from.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL. The default value is `true`.
+        /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 

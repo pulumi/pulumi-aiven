@@ -15,9 +15,17 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
 
     public static final OpenSearchOpensearchArgs Empty = new OpenSearchOpensearchArgs();
 
+    /**
+     * URI for OpenSearch dashboard frontend
+     * 
+     */
     @Import(name="opensearchDashboardsUri")
     private @Nullable Output<String> opensearchDashboardsUri;
 
+    /**
+     * @return URI for OpenSearch dashboard frontend
+     * 
+     */
     public Optional<Output<String>> opensearchDashboardsUri() {
         return Optional.ofNullable(this.opensearchDashboardsUri);
     }
@@ -46,11 +54,23 @@ public final class OpenSearchOpensearchArgs extends com.pulumi.resources.Resourc
             $ = new OpenSearchOpensearchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param opensearchDashboardsUri URI for OpenSearch dashboard frontend
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearchDashboardsUri(@Nullable Output<String> opensearchDashboardsUri) {
             $.opensearchDashboardsUri = opensearchDashboardsUri;
             return this;
         }
 
+        /**
+         * @param opensearchDashboardsUri URI for OpenSearch dashboard frontend
+         * 
+         * @return builder
+         * 
+         */
         public Builder opensearchDashboardsUri(String opensearchDashboardsUri) {
             return opensearchDashboardsUri(Output.of(opensearchDashboardsUri));
         }

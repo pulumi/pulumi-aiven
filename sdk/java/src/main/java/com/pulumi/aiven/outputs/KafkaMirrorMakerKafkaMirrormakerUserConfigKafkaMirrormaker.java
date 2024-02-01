@@ -13,57 +13,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
+    /**
+     * @return Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+     * 
+     */
     private @Nullable Boolean emitCheckpointsEnabled;
+    /**
+     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * 
+     */
     private @Nullable Integer emitCheckpointsIntervalSeconds;
+    /**
+     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * 
+     */
     private @Nullable String groups;
+    /**
+     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * 
+     */
     private @Nullable String groupsExclude;
+    /**
+     * @return How out-of-sync a remote partition can be before it is resynced.
+     * 
+     */
     private @Nullable Integer offsetLagMax;
+    /**
+     * @return Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * 
+     */
     private @Nullable Boolean refreshGroupsEnabled;
+    /**
+     * @return Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     private @Nullable Integer refreshGroupsIntervalSeconds;
+    /**
+     * @return Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * 
+     */
     private @Nullable Boolean refreshTopicsEnabled;
+    /**
+     * @return Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     private @Nullable Integer refreshTopicsIntervalSeconds;
+    /**
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * 
+     */
     private @Nullable Boolean syncGroupOffsetsEnabled;
+    /**
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * 
+     */
     private @Nullable Integer syncGroupOffsetsIntervalSeconds;
+    /**
+     * @return Whether to periodically configure remote topics to match their corresponding upstream topics.
+     * 
+     */
     private @Nullable Boolean syncTopicConfigsEnabled;
+    /**
+     * @return &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * 
+     */
     private @Nullable Integer tasksMaxPerCpu;
 
     private KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker() {}
+    /**
+     * @return Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+     * 
+     */
     public Optional<Boolean> emitCheckpointsEnabled() {
         return Optional.ofNullable(this.emitCheckpointsEnabled);
     }
+    /**
+     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * 
+     */
     public Optional<Integer> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
     }
+    /**
+     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * 
+     */
     public Optional<String> groups() {
         return Optional.ofNullable(this.groups);
     }
+    /**
+     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * 
+     */
     public Optional<String> groupsExclude() {
         return Optional.ofNullable(this.groupsExclude);
     }
+    /**
+     * @return How out-of-sync a remote partition can be before it is resynced.
+     * 
+     */
     public Optional<Integer> offsetLagMax() {
         return Optional.ofNullable(this.offsetLagMax);
     }
+    /**
+     * @return Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * 
+     */
     public Optional<Boolean> refreshGroupsEnabled() {
         return Optional.ofNullable(this.refreshGroupsEnabled);
     }
+    /**
+     * @return Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     public Optional<Integer> refreshGroupsIntervalSeconds() {
         return Optional.ofNullable(this.refreshGroupsIntervalSeconds);
     }
+    /**
+     * @return Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * 
+     */
     public Optional<Boolean> refreshTopicsEnabled() {
         return Optional.ofNullable(this.refreshTopicsEnabled);
     }
+    /**
+     * @return Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     public Optional<Integer> refreshTopicsIntervalSeconds() {
         return Optional.ofNullable(this.refreshTopicsIntervalSeconds);
     }
+    /**
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * 
+     */
     public Optional<Boolean> syncGroupOffsetsEnabled() {
         return Optional.ofNullable(this.syncGroupOffsetsEnabled);
     }
+    /**
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * 
+     */
     public Optional<Integer> syncGroupOffsetsIntervalSeconds() {
         return Optional.ofNullable(this.syncGroupOffsetsIntervalSeconds);
     }
+    /**
+     * @return Whether to periodically configure remote topics to match their corresponding upstream topics.
+     * 
+     */
     public Optional<Boolean> syncTopicConfigsEnabled() {
         return Optional.ofNullable(this.syncTopicConfigsEnabled);
     }
+    /**
+     * @return &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * 
+     */
     public Optional<Integer> tasksMaxPerCpu() {
         return Optional.ofNullable(this.tasksMaxPerCpu);
     }

@@ -13,12 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetGrafanaGrafanaUserConfigAuthGithubResult
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         public readonly bool? AllowSignUp;
+        /// <summary>
+        /// Require users to belong to one of given organizations.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedOrganizations;
+        /// <summary>
+        /// Allow users to bypass the login screen and automatically log in.
+        /// </summary>
         public readonly bool? AutoLogin;
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         public readonly string ClientSecret;
+        /// <summary>
+        /// Stop automatically syncing user roles.
+        /// </summary>
         public readonly bool? SkipOrgRoleSync;
+        /// <summary>
+        /// Require users to belong to one of given team IDs.
+        /// </summary>
         public readonly ImmutableArray<int> TeamIds;
 
         [OutputConstructor]

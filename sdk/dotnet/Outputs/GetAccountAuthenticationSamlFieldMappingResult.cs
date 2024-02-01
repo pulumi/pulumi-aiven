@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetAccountAuthenticationSamlFieldMappingResult
     {
+        /// <summary>
+        /// Field name for user email
+        /// </summary>
         public readonly string? Email;
+        /// <summary>
+        /// Field name for user's first name
+        /// </summary>
         public readonly string? FirstName;
+        /// <summary>
+        /// Field name for user's identity. This field must always exist in responses, and must be immutable and unique. Contents of this field are used to identify the user. Using user ID (such as unix user id) is highly recommended, as email address may change, requiring relinking user to Aiven user.
+        /// </summary>
         public readonly string? Identity;
+        /// <summary>
+        /// Field name for user's last name
+        /// </summary>
         public readonly string? LastName;
+        /// <summary>
+        /// Field name for user's full name. If specified, first_name and last_name mappings are ignored
+        /// </summary>
         public readonly string? RealName;
 
         [OutputConstructor]

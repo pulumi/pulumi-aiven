@@ -11,41 +11,113 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPgPg {
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     private String dbname;
+    /**
+     * @return PostgreSQL master node host IP or name
+     * 
+     */
     private String host;
+    /**
+     * @return Connection limit
+     * 
+     */
     private Integer maxConnections;
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     private String password;
+    /**
+     * @return PostgreSQL port
+     * 
+     */
     private Integer port;
+    /**
+     * @return PostgreSQL replica URI for services with a replica
+     * 
+     */
     private String replicaUri;
+    /**
+     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * 
+     */
     private String sslmode;
+    /**
+     * @return PostgreSQL master connection URI
+     * 
+     */
     private String uri;
+    /**
+     * @return PostgreSQL admin user name
+     * 
+     */
     private String user;
 
     private GetPgPg() {}
+    /**
+     * @return Primary PostgreSQL database name
+     * 
+     */
     public String dbname() {
         return this.dbname;
     }
+    /**
+     * @return PostgreSQL master node host IP or name
+     * 
+     */
     public String host() {
         return this.host;
     }
+    /**
+     * @return Connection limit
+     * 
+     */
     public Integer maxConnections() {
         return this.maxConnections;
     }
+    /**
+     * @return PostgreSQL admin user password
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return PostgreSQL port
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return PostgreSQL replica URI for services with a replica
+     * 
+     */
     public String replicaUri() {
         return this.replicaUri;
     }
+    /**
+     * @return PostgreSQL sslmode setting (currently always &#34;require&#34;)
+     * 
+     */
     public String sslmode() {
         return this.sslmode;
     }
+    /**
+     * @return PostgreSQL master connection URI
+     * 
+     */
     public String uri() {
         return this.uri;
     }
+    /**
+     * @return PostgreSQL admin user name
+     * 
+     */
     public String user() {
         return this.user;
     }

@@ -14,45 +14,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointRsyslogUserConfig {
+    /**
+     * @return PEM encoded CA certificate.
+     * 
+     */
     private @Nullable String ca;
+    /**
+     * @return PEM encoded client certificate.
+     * 
+     */
     private @Nullable String cert;
+    /**
+     * @return Message format. The default value is `rfc5424`.
+     * 
+     */
     private String format;
+    /**
+     * @return PEM encoded client key.
+     * 
+     */
     private @Nullable String key;
+    /**
+     * @return Custom syslog message format.
+     * 
+     */
     private @Nullable String logline;
+    /**
+     * @return Rsyslog max message size. The default value is `8192`.
+     * 
+     */
     private @Nullable Integer maxMessageSize;
+    /**
+     * @return Rsyslog server port. The default value is `514`.
+     * 
+     */
     private Integer port;
+    /**
+     * @return Structured data block for log message.
+     * 
+     */
     private @Nullable String sd;
+    /**
+     * @return Rsyslog server IP address or hostname.
+     * 
+     */
     private String server;
+    /**
+     * @return Require TLS. The default value is `true`.
+     * 
+     */
     private Boolean tls;
 
     private GetServiceIntegrationEndpointRsyslogUserConfig() {}
+    /**
+     * @return PEM encoded CA certificate.
+     * 
+     */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
+    /**
+     * @return PEM encoded client certificate.
+     * 
+     */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
+    /**
+     * @return Message format. The default value is `rfc5424`.
+     * 
+     */
     public String format() {
         return this.format;
     }
+    /**
+     * @return PEM encoded client key.
+     * 
+     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
+    /**
+     * @return Custom syslog message format.
+     * 
+     */
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
+    /**
+     * @return Rsyslog max message size. The default value is `8192`.
+     * 
+     */
     public Optional<Integer> maxMessageSize() {
         return Optional.ofNullable(this.maxMessageSize);
     }
+    /**
+     * @return Rsyslog server port. The default value is `514`.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return Structured data block for log message.
+     * 
+     */
     public Optional<String> sd() {
         return Optional.ofNullable(this.sd);
     }
+    /**
+     * @return Rsyslog server IP address or hostname.
+     * 
+     */
     public String server() {
         return this.server;
     }
+    /**
+     * @return Require TLS. The default value is `true`.
+     * 
+     */
     public Boolean tls() {
         return this.tls;
     }

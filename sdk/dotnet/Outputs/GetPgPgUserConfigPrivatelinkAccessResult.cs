@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// Enable pg.
+        /// </summary>
         public readonly bool? Pg;
+        /// <summary>
+        /// Enable pgbouncer.
+        /// </summary>
         public readonly bool? Pgbouncer;
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

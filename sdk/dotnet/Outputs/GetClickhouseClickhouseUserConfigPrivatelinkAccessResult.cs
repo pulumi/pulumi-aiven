@@ -13,9 +13,21 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetClickhouseClickhouseUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// Enable clickhouse.
+        /// </summary>
         public readonly bool? Clickhouse;
+        /// <summary>
+        /// Enable clickhouse_https.
+        /// </summary>
         public readonly bool? ClickhouseHttps;
+        /// <summary>
+        /// Enable clickhouse_mysql.
+        /// </summary>
         public readonly bool? ClickhouseMysql;
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

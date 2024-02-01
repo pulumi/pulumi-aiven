@@ -14,25 +14,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
+    /**
+     * @return PEM encoded CA certificate.
+     * 
+     */
     private @Nullable String ca;
+    /**
+     * @return Maximum number of days of logs to keep. The default value is `3`.
+     * 
+     */
     private @Nullable Integer indexDaysMax;
+    /**
+     * @return OpenSearch index prefix. The default value is `logs`.
+     * 
+     */
     private String indexPrefix;
+    /**
+     * @return OpenSearch request timeout limit. The default value is `10.0`.
+     * 
+     */
     private @Nullable Double timeout;
+    /**
+     * @return OpenSearch connection URL.
+     * 
+     */
     private String url;
 
     private GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig() {}
+    /**
+     * @return PEM encoded CA certificate.
+     * 
+     */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
+    /**
+     * @return Maximum number of days of logs to keep. The default value is `3`.
+     * 
+     */
     public Optional<Integer> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
+    /**
+     * @return OpenSearch index prefix. The default value is `logs`.
+     * 
+     */
     public String indexPrefix() {
         return this.indexPrefix;
     }
+    /**
+     * @return OpenSearch request timeout limit. The default value is `10.0`.
+     * 
+     */
     public Optional<Double> timeout() {
         return Optional.ofNullable(this.timeout);
     }
+    /**
+     * @return OpenSearch connection URL.
+     * 
+     */
     public String url() {
         return this.url;
     }
