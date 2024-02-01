@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationClickhouseKafkaUserConfig {
+    /**
+     * @return Tables to create.
+     * 
+     */
     private @Nullable List<GetServiceIntegrationClickhouseKafkaUserConfigTable> tables;
 
     private GetServiceIntegrationClickhouseKafkaUserConfig() {}
+    /**
+     * @return Tables to create.
+     * 
+     */
     public List<GetServiceIntegrationClickhouseKafkaUserConfigTable> tables() {
         return this.tables == null ? List.of() : this.tables;
     }

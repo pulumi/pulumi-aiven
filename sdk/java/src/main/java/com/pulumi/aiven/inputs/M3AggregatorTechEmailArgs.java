@@ -14,9 +14,17 @@ public final class M3AggregatorTechEmailArgs extends com.pulumi.resources.Resour
 
     public static final M3AggregatorTechEmailArgs Empty = new M3AggregatorTechEmailArgs();
 
+    /**
+     * An email address to contact for technical issues
+     * 
+     */
     @Import(name="email", required=true)
     private Output<String> email;
 
+    /**
+     * @return An email address to contact for technical issues
+     * 
+     */
     public Output<String> email() {
         return this.email;
     }
@@ -45,11 +53,23 @@ public final class M3AggregatorTechEmailArgs extends com.pulumi.resources.Resour
             $ = new M3AggregatorTechEmailArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email An email address to contact for technical issues
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email An email address to contact for technical issues
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

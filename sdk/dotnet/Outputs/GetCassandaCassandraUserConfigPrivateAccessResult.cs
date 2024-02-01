@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetCassandaCassandraUserConfigPrivateAccessResult
     {
+        /// <summary>
+        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

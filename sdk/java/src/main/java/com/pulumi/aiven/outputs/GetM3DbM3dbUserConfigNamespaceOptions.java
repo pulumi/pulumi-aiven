@@ -12,17 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigNamespaceOptions {
+    /**
+     * @return Retention options.
+     * 
+     */
     private @Nullable GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
+    /**
+     * @return Controls whether M3DB will create snapshot files for this namespace.
+     * 
+     */
     private @Nullable Boolean snapshotEnabled;
+    /**
+     * @return Controls whether M3DB will include writes to this namespace in the commitlog.
+     * 
+     */
     private @Nullable Boolean writesToCommitlog;
 
     private GetM3DbM3dbUserConfigNamespaceOptions() {}
+    /**
+     * @return Retention options.
+     * 
+     */
     public Optional<GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions> retentionOptions() {
         return Optional.ofNullable(this.retentionOptions);
     }
+    /**
+     * @return Controls whether M3DB will create snapshot files for this namespace.
+     * 
+     */
     public Optional<Boolean> snapshotEnabled() {
         return Optional.ofNullable(this.snapshotEnabled);
     }
+    /**
+     * @return Controls whether M3DB will include writes to this namespace in the commitlog.
+     * 
+     */
     public Optional<Boolean> writesToCommitlog() {
         return Optional.ofNullable(this.writesToCommitlog);
     }

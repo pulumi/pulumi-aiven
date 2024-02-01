@@ -12,69 +12,197 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
+    /**
+     * @return Defines what client configurations can be overridden by the connector. Default is None.
+     * 
+     */
     private @Nullable String connectorClientConfigOverridePolicy;
+    /**
+     * @return What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * 
+     */
     private @Nullable String consumerAutoOffsetReset;
+    /**
+     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * 
+     */
     private @Nullable Integer consumerFetchMaxBytes;
+    /**
+     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * 
+     */
     private @Nullable String consumerIsolationLevel;
+    /**
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * 
+     */
     private @Nullable Integer consumerMaxPartitionFetchBytes;
+    /**
+     * @return The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
+     * 
+     */
     private @Nullable Integer consumerMaxPollIntervalMs;
+    /**
+     * @return The maximum number of records returned in a single call to poll() (defaults to 500).
+     * 
+     */
     private @Nullable Integer consumerMaxPollRecords;
+    /**
+     * @return The interval at which to try committing offsets for tasks (defaults to 60000).
+     * 
+     */
     private @Nullable Integer offsetFlushIntervalMs;
+    /**
+     * @return Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     * 
+     */
     private @Nullable Integer offsetFlushTimeoutMs;
+    /**
+     * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will &#39;linger&#39; for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * 
+     */
     private @Nullable Integer producerBatchSize;
+    /**
+     * @return The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
+     * 
+     */
     private @Nullable Integer producerBufferMemory;
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     private @Nullable String producerCompressionType;
+    /**
+     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * 
+     */
     private @Nullable Integer producerLingerMs;
+    /**
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * 
+     */
     private @Nullable Integer producerMaxRequestSize;
+    /**
+     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * 
+     */
     private @Nullable Integer scheduledRebalanceMaxDelayMs;
+    /**
+     * @return The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
+     * 
+     */
     private @Nullable Integer sessionTimeoutMs;
 
     private GetKafkaKafkaUserConfigKafkaConnectConfig() {}
+    /**
+     * @return Defines what client configurations can be overridden by the connector. Default is None.
+     * 
+     */
     public Optional<String> connectorClientConfigOverridePolicy() {
         return Optional.ofNullable(this.connectorClientConfigOverridePolicy);
     }
+    /**
+     * @return What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * 
+     */
     public Optional<String> consumerAutoOffsetReset() {
         return Optional.ofNullable(this.consumerAutoOffsetReset);
     }
+    /**
+     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * 
+     */
     public Optional<Integer> consumerFetchMaxBytes() {
         return Optional.ofNullable(this.consumerFetchMaxBytes);
     }
+    /**
+     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * 
+     */
     public Optional<String> consumerIsolationLevel() {
         return Optional.ofNullable(this.consumerIsolationLevel);
     }
+    /**
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * 
+     */
     public Optional<Integer> consumerMaxPartitionFetchBytes() {
         return Optional.ofNullable(this.consumerMaxPartitionFetchBytes);
     }
+    /**
+     * @return The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
+     * 
+     */
     public Optional<Integer> consumerMaxPollIntervalMs() {
         return Optional.ofNullable(this.consumerMaxPollIntervalMs);
     }
+    /**
+     * @return The maximum number of records returned in a single call to poll() (defaults to 500).
+     * 
+     */
     public Optional<Integer> consumerMaxPollRecords() {
         return Optional.ofNullable(this.consumerMaxPollRecords);
     }
+    /**
+     * @return The interval at which to try committing offsets for tasks (defaults to 60000).
+     * 
+     */
     public Optional<Integer> offsetFlushIntervalMs() {
         return Optional.ofNullable(this.offsetFlushIntervalMs);
     }
+    /**
+     * @return Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
+     * 
+     */
     public Optional<Integer> offsetFlushTimeoutMs() {
         return Optional.ofNullable(this.offsetFlushTimeoutMs);
     }
+    /**
+     * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will &#39;linger&#39; for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * 
+     */
     public Optional<Integer> producerBatchSize() {
         return Optional.ofNullable(this.producerBatchSize);
     }
+    /**
+     * @return The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
+     * 
+     */
     public Optional<Integer> producerBufferMemory() {
         return Optional.ofNullable(this.producerBufferMemory);
     }
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     public Optional<String> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
+    /**
+     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * 
+     */
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
+    /**
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * 
+     */
     public Optional<Integer> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
+    /**
+     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * 
+     */
     public Optional<Integer> scheduledRebalanceMaxDelayMs() {
         return Optional.ofNullable(this.scheduledRebalanceMaxDelayMs);
     }
+    /**
+     * @return The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
+     * 
+     */
     public Optional<Integer> sessionTimeoutMs() {
         return Optional.ofNullable(this.sessionTimeoutMs);
     }

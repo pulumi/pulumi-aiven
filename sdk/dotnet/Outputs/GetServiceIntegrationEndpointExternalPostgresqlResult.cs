@@ -13,11 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalPostgresqlResult
     {
+        /// <summary>
+        /// Hostname or IP address of the server.
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Password.
+        /// </summary>
         public readonly string Password;
+        /// <summary>
+        /// Port number of the server.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// SSL Mode. The default value is `verify-full`.
+        /// </summary>
         public readonly string? SslMode;
+        /// <summary>
+        /// SSL Root Cert.
+        /// </summary>
         public readonly string? SslRootCert;
+        /// <summary>
+        /// User name.
+        /// </summary>
         public readonly string Username;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfigPrivateAccess {
+    /**
+     * @return Allow clients to connect to influxdb with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean influxdb;
 
     private GetInfluxDbInfluxdbUserConfigPrivateAccess() {}
+    /**
+     * @return Allow clients to connect to influxdb with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }

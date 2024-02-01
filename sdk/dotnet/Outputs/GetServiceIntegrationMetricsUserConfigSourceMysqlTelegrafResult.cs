@@ -13,19 +13,61 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationMetricsUserConfigSourceMysqlTelegrafResult
     {
+        /// <summary>
+        /// Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
+        /// </summary>
         public readonly bool? GatherEventWaits;
+        /// <summary>
+        /// gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME.
+        /// </summary>
         public readonly bool? GatherFileEventsStats;
+        /// <summary>
+        /// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE.
+        /// </summary>
         public readonly bool? GatherIndexIoWaits;
+        /// <summary>
+        /// Gather auto_increment columns and max values from information schema.
+        /// </summary>
         public readonly bool? GatherInfoSchemaAutoInc;
+        /// <summary>
+        /// Gather metrics from INFORMATION_SCHEMA.INNODB_METRICS.
+        /// </summary>
         public readonly bool? GatherInnodbMetrics;
+        /// <summary>
+        /// Gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST.
+        /// </summary>
         public readonly bool? GatherPerfEventsStatements;
+        /// <summary>
+        /// Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+        /// </summary>
         public readonly bool? GatherProcessList;
+        /// <summary>
+        /// Gather metrics from SHOW SLAVE STATUS command output.
+        /// </summary>
         public readonly bool? GatherSlaveStatus;
+        /// <summary>
+        /// Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
+        /// </summary>
         public readonly bool? GatherTableIoWaits;
+        /// <summary>
+        /// Gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS.
+        /// </summary>
         public readonly bool? GatherTableLockWaits;
+        /// <summary>
+        /// Gather metrics from INFORMATION_SCHEMA.TABLES.
+        /// </summary>
         public readonly bool? GatherTableSchema;
+        /// <summary>
+        /// Truncates digest text from perf_events_statements into this many characters.
+        /// </summary>
         public readonly int? PerfEventsStatementsDigestTextLimit;
+        /// <summary>
+        /// Limits metrics from perf_events_statements.
+        /// </summary>
         public readonly int? PerfEventsStatementsLimit;
+        /// <summary>
+        /// Only include perf_events_statements whose last seen is less than this many seconds.
+        /// </summary>
         public readonly int? PerfEventsStatementsTimeLimit;
 
         [OutputConstructor]

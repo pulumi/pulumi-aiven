@@ -14,30 +14,62 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
 
     public static final GrafanaGrafanaUserConfigExternalImageStorageArgs Empty = new GrafanaGrafanaUserConfigExternalImageStorageArgs();
 
+    /**
+     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * 
+     */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
+    /**
+     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * 
+     */
     public Output<String> accessKey() {
         return this.accessKey;
     }
 
+    /**
+     * Bucket URL for S3.
+     * 
+     */
     @Import(name="bucketUrl", required=true)
     private Output<String> bucketUrl;
 
+    /**
+     * @return Bucket URL for S3.
+     * 
+     */
     public Output<String> bucketUrl() {
         return this.bucketUrl;
     }
 
+    /**
+     * Provider type.
+     * 
+     */
     @Import(name="provider", required=true)
     private Output<String> provider;
 
+    /**
+     * @return Provider type.
+     * 
+     */
     public Output<String> provider() {
         return this.provider;
     }
 
+    /**
+     * S3 secret key.
+     * 
+     */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
+    /**
+     * @return S3 secret key.
+     * 
+     */
     public Output<String> secretKey() {
         return this.secretKey;
     }
@@ -69,38 +101,86 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
             $ = new GrafanaGrafanaUserConfigExternalImageStorageArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessKey S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
 
+        /**
+         * @param bucketUrl Bucket URL for S3.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketUrl(Output<String> bucketUrl) {
             $.bucketUrl = bucketUrl;
             return this;
         }
 
+        /**
+         * @param bucketUrl Bucket URL for S3.
+         * 
+         * @return builder
+         * 
+         */
         public Builder bucketUrl(String bucketUrl) {
             return bucketUrl(Output.of(bucketUrl));
         }
 
+        /**
+         * @param provider Provider type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(Output<String> provider) {
             $.provider = provider;
             return this;
         }
 
+        /**
+         * @param provider Provider type.
+         * 
+         * @return builder
+         * 
+         */
         public Builder provider(String provider) {
             return provider(Output.of(provider));
         }
 
+        /**
+         * @param secretKey S3 secret key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(Output<String> secretKey) {
             $.secretKey = secretKey;
             return this;
         }
 
+        /**
+         * @param secretKey S3 secret key.
+         * 
+         * @return builder
+         * 
+         */
         public Builder secretKey(String secretKey) {
             return secretKey(Output.of(secretKey));
         }

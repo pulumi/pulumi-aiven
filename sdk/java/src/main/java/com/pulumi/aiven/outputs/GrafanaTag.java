@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GrafanaTag {
+    /**
+     * @return Service tag key
+     * 
+     */
     private String key;
+    /**
+     * @return Service tag value
+     * 
+     */
     private String value;
 
     private GrafanaTag() {}
+    /**
+     * @return Service tag key
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Service tag value
+     * 
+     */
     public String value() {
         return this.value;
     }

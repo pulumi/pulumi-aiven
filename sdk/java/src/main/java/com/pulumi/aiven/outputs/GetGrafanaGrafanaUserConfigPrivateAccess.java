@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigPrivateAccess {
+    /**
+     * @return Allow clients to connect to grafana with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean grafana;
 
     private GetGrafanaGrafanaUserConfigPrivateAccess() {}
+    /**
+     * @return Allow clients to connect to grafana with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> grafana() {
         return Optional.ofNullable(this.grafana);
     }

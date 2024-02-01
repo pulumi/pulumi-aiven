@@ -18,34 +18,86 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfig {
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<String> ipFilterStrings;
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
+    /**
+     * @return Kafka Connect configuration values.
+     * 
+     */
     private @Nullable KafkaConnectKafkaConnectUserConfigKafkaConnect kafkaConnect;
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     private @Nullable Boolean staticIps;
 
     private KafkaConnectKafkaConnectUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -54,21 +106,45 @@ public final class KafkaConnectKafkaConnectUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Kafka Connect configuration values.
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigKafkaConnect> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<KafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Boolean> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

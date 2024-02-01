@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationDatadogUserConfigDatadogTag {
+    /**
+     * @return Optional tag explanation.
+     * 
+     */
     private @Nullable String comment;
+    /**
+     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * 
+     */
     private String tag;
 
     private GetServiceIntegrationDatadogUserConfigDatadogTag() {}
+    /**
+     * @return Optional tag explanation.
+     * 
+     */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
+    /**
+     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * 
+     */
     public String tag() {
         return this.tag;
     }

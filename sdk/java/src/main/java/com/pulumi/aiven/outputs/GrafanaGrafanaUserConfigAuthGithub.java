@@ -15,33 +15,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthGithub {
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     private @Nullable Boolean allowSignUp;
+    /**
+     * @return Require users to belong to one of given organizations.
+     * 
+     */
     private @Nullable List<String> allowedOrganizations;
+    /**
+     * @return Allow users to bypass the login screen and automatically log in.
+     * 
+     */
     private @Nullable Boolean autoLogin;
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     private String clientId;
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return Stop automatically syncing user roles.
+     * 
+     */
     private @Nullable Boolean skipOrgRoleSync;
+    /**
+     * @return Require users to belong to one of given team IDs.
+     * 
+     */
     private @Nullable List<Integer> teamIds;
 
     private GrafanaGrafanaUserConfigAuthGithub() {}
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
+    /**
+     * @return Require users to belong to one of given organizations.
+     * 
+     */
     public List<String> allowedOrganizations() {
         return this.allowedOrganizations == null ? List.of() : this.allowedOrganizations;
     }
+    /**
+     * @return Allow users to bypass the login screen and automatically log in.
+     * 
+     */
     public Optional<Boolean> autoLogin() {
         return Optional.ofNullable(this.autoLogin);
     }
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Stop automatically syncing user roles.
+     * 
+     */
     public Optional<Boolean> skipOrgRoleSync() {
         return Optional.ofNullable(this.skipOrgRoleSync);
     }
+    /**
+     * @return Require users to belong to one of given team IDs.
+     * 
+     */
     public List<Integer> teamIds() {
         return this.teamIds == null ? List.of() : this.teamIds;
     }

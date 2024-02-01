@@ -12,11 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class RedisRedisUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.RedisRedisUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<Inputs.RedisRedisUserConfigIpFilterObjectArgs> IpFilterObjects
         {
             get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.RedisRedisUserConfigIpFilterObjectArgs>());
@@ -25,6 +32,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilterStrings")]
         private InputList<string>? _ipFilterStrings;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<string> IpFilterStrings
         {
             get => _ipFilterStrings ?? (_ipFilterStrings = new InputList<string>());
@@ -33,6 +44,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
@@ -40,66 +55,129 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Migrate data from existing server.
+        /// </summary>
         [Input("migration")]
         public Input<Inputs.RedisRedisUserConfigMigrationArgs>? Migration { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.RedisRedisUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.RedisRedisUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.RedisRedisUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         [Input("recoveryBasebackupName")]
         public Input<string>? RecoveryBasebackupName { get; set; }
 
+        /// <summary>
+        /// Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        /// </summary>
         [Input("redisAclChannelsDefault")]
         public Input<string>? RedisAclChannelsDefault { get; set; }
 
+        /// <summary>
+        /// Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+        /// </summary>
         [Input("redisIoThreads")]
         public Input<int>? RedisIoThreads { get; set; }
 
+        /// <summary>
+        /// LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+        /// </summary>
         [Input("redisLfuDecayTime")]
         public Input<int>? RedisLfuDecayTime { get; set; }
 
+        /// <summary>
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+        /// </summary>
         [Input("redisLfuLogFactor")]
         public Input<int>? RedisLfuLogFactor { get; set; }
 
+        /// <summary>
+        /// Redis maxmemory-policy. The default value is `noeviction`.
+        /// </summary>
         [Input("redisMaxmemoryPolicy")]
         public Input<string>? RedisMaxmemoryPolicy { get; set; }
 
+        /// <summary>
+        /// Set notify-keyspace-events option.
+        /// </summary>
         [Input("redisNotifyKeyspaceEvents")]
         public Input<string>? RedisNotifyKeyspaceEvents { get; set; }
 
+        /// <summary>
+        /// Set number of Redis databases. Changing this will cause a restart of the Redis service.
+        /// </summary>
         [Input("redisNumberOfDatabases")]
         public Input<int>? RedisNumberOfDatabases { get; set; }
 
+        /// <summary>
+        /// When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// </summary>
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
 
+        /// <summary>
+        /// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+        /// </summary>
         [Input("redisPubsubClientOutputBufferLimit")]
         public Input<int>? RedisPubsubClientOutputBufferLimit { get; set; }
 
+        /// <summary>
+        /// Require SSL to access Redis. The default value is `true`.
+        /// </summary>
         [Input("redisSsl")]
         public Input<bool>? RedisSsl { get; set; }
 
+        /// <summary>
+        /// Redis idle connection timeout in seconds. The default value is `300`.
+        /// </summary>
         [Input("redisTimeout")]
         public Input<int>? RedisTimeout { get; set; }
 
+        /// <summary>
+        /// Redis major version.
+        /// </summary>
         [Input("redisVersion")]
         public Input<string>? RedisVersion { get; set; }
 
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         [Input("serviceLog")]
         public Input<bool>? ServiceLog { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
 

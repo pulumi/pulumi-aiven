@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigExternalImageStorage {
+    /**
+     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * 
+     */
     private String accessKey;
+    /**
+     * @return Bucket URL for S3.
+     * 
+     */
     private String bucketUrl;
+    /**
+     * @return Provider type.
+     * 
+     */
     private String provider;
+    /**
+     * @return S3 secret key.
+     * 
+     */
     private String secretKey;
 
     private GrafanaGrafanaUserConfigExternalImageStorage() {}
+    /**
+     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return Bucket URL for S3.
+     * 
+     */
     public String bucketUrl() {
         return this.bucketUrl;
     }
+    /**
+     * @return Provider type.
+     * 
+     */
     public String provider() {
         return this.provider;
     }
+    /**
+     * @return S3 secret key.
+     * 
+     */
     public String secretKey() {
         return this.secretKey;
     }

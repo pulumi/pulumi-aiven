@@ -18,51 +18,107 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
 
     public static final GrafanaGrafanaUserConfigAuthGitlabArgs Empty = new GrafanaGrafanaUserConfigAuthGitlabArgs();
 
+    /**
+     * Automatically sign-up users on successful sign-in.
+     * 
+     */
     @Import(name="allowSignUp")
     private @Nullable Output<Boolean> allowSignUp;
 
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
+    /**
+     * Require users to belong to one of given groups.
+     * 
+     */
     @Import(name="allowedGroups")
     private @Nullable Output<List<String>> allowedGroups;
 
+    /**
+     * @return Require users to belong to one of given groups.
+     * 
+     */
     public Optional<Output<List<String>>> allowedGroups() {
         return Optional.ofNullable(this.allowedGroups);
     }
 
+    /**
+     * API URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     @Import(name="apiUrl")
     private @Nullable Output<String> apiUrl;
 
+    /**
+     * @return API URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     public Optional<Output<String>> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
     }
 
+    /**
+     * Authorization URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     @Import(name="authUrl")
     private @Nullable Output<String> authUrl;
 
+    /**
+     * @return Authorization URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     public Optional<Output<String>> authUrl() {
         return Optional.ofNullable(this.authUrl);
     }
 
+    /**
+     * Client ID from provider.
+     * 
+     */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public Output<String> clientId() {
         return this.clientId;
     }
 
+    /**
+     * Client secret from provider.
+     * 
+     */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
 
+    /**
+     * Token URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     @Import(name="tokenUrl")
     private @Nullable Output<String> tokenUrl;
 
+    /**
+     * @return Token URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     public Optional<Output<String>> tokenUrl() {
         return Optional.ofNullable(this.tokenUrl);
     }
@@ -97,69 +153,159 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
             $ = new GrafanaGrafanaUserConfigAuthGitlabArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
+        /**
+         * @param allowedGroups Require users to belong to one of given groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedGroups(@Nullable Output<List<String>> allowedGroups) {
             $.allowedGroups = allowedGroups;
             return this;
         }
 
+        /**
+         * @param allowedGroups Require users to belong to one of given groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedGroups(List<String> allowedGroups) {
             return allowedGroups(Output.of(allowedGroups));
         }
 
+        /**
+         * @param allowedGroups Require users to belong to one of given groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedGroups(String... allowedGroups) {
             return allowedGroups(List.of(allowedGroups));
         }
 
+        /**
+         * @param apiUrl API URL. This only needs to be set when using self hosted GitLab.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiUrl(@Nullable Output<String> apiUrl) {
             $.apiUrl = apiUrl;
             return this;
         }
 
+        /**
+         * @param apiUrl API URL. This only needs to be set when using self hosted GitLab.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiUrl(String apiUrl) {
             return apiUrl(Output.of(apiUrl));
         }
 
+        /**
+         * @param authUrl Authorization URL. This only needs to be set when using self hosted GitLab.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(@Nullable Output<String> authUrl) {
             $.authUrl = authUrl;
             return this;
         }
 
+        /**
+         * @param authUrl Authorization URL. This only needs to be set when using self hosted GitLab.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(String authUrl) {
             return authUrl(Output.of(authUrl));
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param tokenUrl Token URL. This only needs to be set when using self hosted GitLab.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenUrl(@Nullable Output<String> tokenUrl) {
             $.tokenUrl = tokenUrl;
             return this;
         }
 
+        /**
+         * @param tokenUrl Token URL. This only needs to be set when using self hosted GitLab.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenUrl(String tokenUrl) {
             return tokenUrl(Output.of(tokenUrl));
         }

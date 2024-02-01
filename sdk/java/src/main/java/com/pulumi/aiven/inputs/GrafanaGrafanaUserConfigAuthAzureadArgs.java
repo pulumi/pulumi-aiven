@@ -18,51 +18,107 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
 
     public static final GrafanaGrafanaUserConfigAuthAzureadArgs Empty = new GrafanaGrafanaUserConfigAuthAzureadArgs();
 
+    /**
+     * Automatically sign-up users on successful sign-in.
+     * 
+     */
     @Import(name="allowSignUp")
     private @Nullable Output<Boolean> allowSignUp;
 
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
+    /**
+     * Allowed domains.
+     * 
+     */
     @Import(name="allowedDomains")
     private @Nullable Output<List<String>> allowedDomains;
 
+    /**
+     * @return Allowed domains.
+     * 
+     */
     public Optional<Output<List<String>>> allowedDomains() {
         return Optional.ofNullable(this.allowedDomains);
     }
 
+    /**
+     * Require users to belong to one of given groups.
+     * 
+     */
     @Import(name="allowedGroups")
     private @Nullable Output<List<String>> allowedGroups;
 
+    /**
+     * @return Require users to belong to one of given groups.
+     * 
+     */
     public Optional<Output<List<String>>> allowedGroups() {
         return Optional.ofNullable(this.allowedGroups);
     }
 
+    /**
+     * Authorization URL.
+     * 
+     */
     @Import(name="authUrl", required=true)
     private Output<String> authUrl;
 
+    /**
+     * @return Authorization URL.
+     * 
+     */
     public Output<String> authUrl() {
         return this.authUrl;
     }
 
+    /**
+     * Client ID from provider.
+     * 
+     */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public Output<String> clientId() {
         return this.clientId;
     }
 
+    /**
+     * Client secret from provider.
+     * 
+     */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
 
+    /**
+     * Token URL.
+     * 
+     */
     @Import(name="tokenUrl", required=true)
     private Output<String> tokenUrl;
 
+    /**
+     * @return Token URL.
+     * 
+     */
     public Output<String> tokenUrl() {
         return this.tokenUrl;
     }
@@ -97,73 +153,169 @@ public final class GrafanaGrafanaUserConfigAuthAzureadArgs extends com.pulumi.re
             $ = new GrafanaGrafanaUserConfigAuthAzureadArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
+        /**
+         * @param allowedDomains Allowed domains.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(@Nullable Output<List<String>> allowedDomains) {
             $.allowedDomains = allowedDomains;
             return this;
         }
 
+        /**
+         * @param allowedDomains Allowed domains.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(List<String> allowedDomains) {
             return allowedDomains(Output.of(allowedDomains));
         }
 
+        /**
+         * @param allowedDomains Allowed domains.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
 
+        /**
+         * @param allowedGroups Require users to belong to one of given groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedGroups(@Nullable Output<List<String>> allowedGroups) {
             $.allowedGroups = allowedGroups;
             return this;
         }
 
+        /**
+         * @param allowedGroups Require users to belong to one of given groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedGroups(List<String> allowedGroups) {
             return allowedGroups(Output.of(allowedGroups));
         }
 
+        /**
+         * @param allowedGroups Require users to belong to one of given groups.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedGroups(String... allowedGroups) {
             return allowedGroups(List.of(allowedGroups));
         }
 
+        /**
+         * @param authUrl Authorization URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(Output<String> authUrl) {
             $.authUrl = authUrl;
             return this;
         }
 
+        /**
+         * @param authUrl Authorization URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(String authUrl) {
             return authUrl(Output.of(authUrl));
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param tokenUrl Token URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenUrl(Output<String> tokenUrl) {
             $.tokenUrl = tokenUrl;
             return this;
         }
 
+        /**
+         * @param tokenUrl Token URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenUrl(String tokenUrl) {
             return tokenUrl(Output.of(tokenUrl));
         }

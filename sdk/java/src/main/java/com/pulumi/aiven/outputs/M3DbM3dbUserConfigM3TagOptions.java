@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigM3TagOptions {
+    /**
+     * @return Allows for duplicate tags to appear on series (not allowed by default).
+     * 
+     */
     private @Nullable Boolean allowTagNameDuplicates;
+    /**
+     * @return Allows for empty tags to appear on series (not allowed by default).
+     * 
+     */
     private @Nullable Boolean allowTagValueEmpty;
 
     private M3DbM3dbUserConfigM3TagOptions() {}
+    /**
+     * @return Allows for duplicate tags to appear on series (not allowed by default).
+     * 
+     */
     public Optional<Boolean> allowTagNameDuplicates() {
         return Optional.ofNullable(this.allowTagNameDuplicates);
     }
+    /**
+     * @return Allows for empty tags to appear on series (not allowed by default).
+     * 
+     */
     public Optional<Boolean> allowTagValueEmpty() {
         return Optional.ofNullable(this.allowTagValueEmpty);
     }

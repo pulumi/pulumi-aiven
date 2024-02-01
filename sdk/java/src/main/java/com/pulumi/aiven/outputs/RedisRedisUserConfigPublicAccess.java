@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RedisRedisUserConfigPublicAccess {
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean prometheus;
+    /**
+     * @return Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean redis;
 
     private RedisRedisUserConfigPublicAccess() {}
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
+    /**
+     * @return Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> redis() {
         return Optional.ofNullable(this.redis);
     }

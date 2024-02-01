@@ -17,93 +17,197 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
 
     public static final KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs Empty = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs();
 
+    /**
+     * Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+     * 
+     */
     @Import(name="emitCheckpointsEnabled")
     private @Nullable Output<Boolean> emitCheckpointsEnabled;
 
+    /**
+     * @return Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+     * 
+     */
     public Optional<Output<Boolean>> emitCheckpointsEnabled() {
         return Optional.ofNullable(this.emitCheckpointsEnabled);
     }
 
+    /**
+     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * 
+     */
     @Import(name="emitCheckpointsIntervalSeconds")
     private @Nullable Output<Integer> emitCheckpointsIntervalSeconds;
 
+    /**
+     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * 
+     */
     public Optional<Output<Integer>> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
     }
 
+    /**
+     * Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * 
+     */
     @Import(name="groups")
     private @Nullable Output<String> groups;
 
+    /**
+     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * 
+     */
     public Optional<Output<String>> groups() {
         return Optional.ofNullable(this.groups);
     }
 
+    /**
+     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * 
+     */
     @Import(name="groupsExclude")
     private @Nullable Output<String> groupsExclude;
 
+    /**
+     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * 
+     */
     public Optional<Output<String>> groupsExclude() {
         return Optional.ofNullable(this.groupsExclude);
     }
 
+    /**
+     * How out-of-sync a remote partition can be before it is resynced.
+     * 
+     */
     @Import(name="offsetLagMax")
     private @Nullable Output<Integer> offsetLagMax;
 
+    /**
+     * @return How out-of-sync a remote partition can be before it is resynced.
+     * 
+     */
     public Optional<Output<Integer>> offsetLagMax() {
         return Optional.ofNullable(this.offsetLagMax);
     }
 
+    /**
+     * Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * 
+     */
     @Import(name="refreshGroupsEnabled")
     private @Nullable Output<Boolean> refreshGroupsEnabled;
 
+    /**
+     * @return Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * 
+     */
     public Optional<Output<Boolean>> refreshGroupsEnabled() {
         return Optional.ofNullable(this.refreshGroupsEnabled);
     }
 
+    /**
+     * Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     @Import(name="refreshGroupsIntervalSeconds")
     private @Nullable Output<Integer> refreshGroupsIntervalSeconds;
 
+    /**
+     * @return Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     public Optional<Output<Integer>> refreshGroupsIntervalSeconds() {
         return Optional.ofNullable(this.refreshGroupsIntervalSeconds);
     }
 
+    /**
+     * Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * 
+     */
     @Import(name="refreshTopicsEnabled")
     private @Nullable Output<Boolean> refreshTopicsEnabled;
 
+    /**
+     * @return Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * 
+     */
     public Optional<Output<Boolean>> refreshTopicsEnabled() {
         return Optional.ofNullable(this.refreshTopicsEnabled);
     }
 
+    /**
+     * Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     @Import(name="refreshTopicsIntervalSeconds")
     private @Nullable Output<Integer> refreshTopicsIntervalSeconds;
 
+    /**
+     * @return Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+     * 
+     */
     public Optional<Output<Integer>> refreshTopicsIntervalSeconds() {
         return Optional.ofNullable(this.refreshTopicsIntervalSeconds);
     }
 
+    /**
+     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * 
+     */
     @Import(name="syncGroupOffsetsEnabled")
     private @Nullable Output<Boolean> syncGroupOffsetsEnabled;
 
+    /**
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * 
+     */
     public Optional<Output<Boolean>> syncGroupOffsetsEnabled() {
         return Optional.ofNullable(this.syncGroupOffsetsEnabled);
     }
 
+    /**
+     * Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * 
+     */
     @Import(name="syncGroupOffsetsIntervalSeconds")
     private @Nullable Output<Integer> syncGroupOffsetsIntervalSeconds;
 
+    /**
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * 
+     */
     public Optional<Output<Integer>> syncGroupOffsetsIntervalSeconds() {
         return Optional.ofNullable(this.syncGroupOffsetsIntervalSeconds);
     }
 
+    /**
+     * Whether to periodically configure remote topics to match their corresponding upstream topics.
+     * 
+     */
     @Import(name="syncTopicConfigsEnabled")
     private @Nullable Output<Boolean> syncTopicConfigsEnabled;
 
+    /**
+     * @return Whether to periodically configure remote topics to match their corresponding upstream topics.
+     * 
+     */
     public Optional<Output<Boolean>> syncTopicConfigsEnabled() {
         return Optional.ofNullable(this.syncTopicConfigsEnabled);
     }
 
+    /**
+     * &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * 
+     */
     @Import(name="tasksMaxPerCpu")
     private @Nullable Output<Integer> tasksMaxPerCpu;
 
+    /**
+     * @return &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * 
+     */
     public Optional<Output<Integer>> tasksMaxPerCpu() {
         return Optional.ofNullable(this.tasksMaxPerCpu);
     }
@@ -144,119 +248,275 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
             $ = new KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param emitCheckpointsEnabled Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+         * 
+         * @return builder
+         * 
+         */
         public Builder emitCheckpointsEnabled(@Nullable Output<Boolean> emitCheckpointsEnabled) {
             $.emitCheckpointsEnabled = emitCheckpointsEnabled;
             return this;
         }
 
+        /**
+         * @param emitCheckpointsEnabled Whether to emit consumer group offset checkpoints to target cluster periodically (default: true).
+         * 
+         * @return builder
+         * 
+         */
         public Builder emitCheckpointsEnabled(Boolean emitCheckpointsEnabled) {
             return emitCheckpointsEnabled(Output.of(emitCheckpointsEnabled));
         }
 
+        /**
+         * @param emitCheckpointsIntervalSeconds Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+         * 
+         * @return builder
+         * 
+         */
         public Builder emitCheckpointsIntervalSeconds(@Nullable Output<Integer> emitCheckpointsIntervalSeconds) {
             $.emitCheckpointsIntervalSeconds = emitCheckpointsIntervalSeconds;
             return this;
         }
 
+        /**
+         * @param emitCheckpointsIntervalSeconds Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+         * 
+         * @return builder
+         * 
+         */
         public Builder emitCheckpointsIntervalSeconds(Integer emitCheckpointsIntervalSeconds) {
             return emitCheckpointsIntervalSeconds(Output.of(emitCheckpointsIntervalSeconds));
         }
 
+        /**
+         * @param groups Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groups(@Nullable Output<String> groups) {
             $.groups = groups;
             return this;
         }
 
+        /**
+         * @param groups Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groups(String groups) {
             return groups(Output.of(groups));
         }
 
+        /**
+         * @param groupsExclude Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupsExclude(@Nullable Output<String> groupsExclude) {
             $.groupsExclude = groupsExclude;
             return this;
         }
 
+        /**
+         * @param groupsExclude Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder groupsExclude(String groupsExclude) {
             return groupsExclude(Output.of(groupsExclude));
         }
 
+        /**
+         * @param offsetLagMax How out-of-sync a remote partition can be before it is resynced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder offsetLagMax(@Nullable Output<Integer> offsetLagMax) {
             $.offsetLagMax = offsetLagMax;
             return this;
         }
 
+        /**
+         * @param offsetLagMax How out-of-sync a remote partition can be before it is resynced.
+         * 
+         * @return builder
+         * 
+         */
         public Builder offsetLagMax(Integer offsetLagMax) {
             return offsetLagMax(Output.of(offsetLagMax));
         }
 
+        /**
+         * @param refreshGroupsEnabled Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshGroupsEnabled(@Nullable Output<Boolean> refreshGroupsEnabled) {
             $.refreshGroupsEnabled = refreshGroupsEnabled;
             return this;
         }
 
+        /**
+         * @param refreshGroupsEnabled Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshGroupsEnabled(Boolean refreshGroupsEnabled) {
             return refreshGroupsEnabled(Output.of(refreshGroupsEnabled));
         }
 
+        /**
+         * @param refreshGroupsIntervalSeconds Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshGroupsIntervalSeconds(@Nullable Output<Integer> refreshGroupsIntervalSeconds) {
             $.refreshGroupsIntervalSeconds = refreshGroupsIntervalSeconds;
             return this;
         }
 
+        /**
+         * @param refreshGroupsIntervalSeconds Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshGroupsIntervalSeconds(Integer refreshGroupsIntervalSeconds) {
             return refreshGroupsIntervalSeconds(Output.of(refreshGroupsIntervalSeconds));
         }
 
+        /**
+         * @param refreshTopicsEnabled Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTopicsEnabled(@Nullable Output<Boolean> refreshTopicsEnabled) {
             $.refreshTopicsEnabled = refreshTopicsEnabled;
             return this;
         }
 
+        /**
+         * @param refreshTopicsEnabled Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTopicsEnabled(Boolean refreshTopicsEnabled) {
             return refreshTopicsEnabled(Output.of(refreshTopicsEnabled));
         }
 
+        /**
+         * @param refreshTopicsIntervalSeconds Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTopicsIntervalSeconds(@Nullable Output<Integer> refreshTopicsIntervalSeconds) {
             $.refreshTopicsIntervalSeconds = refreshTopicsIntervalSeconds;
             return this;
         }
 
+        /**
+         * @param refreshTopicsIntervalSeconds Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
+         * 
+         * @return builder
+         * 
+         */
         public Builder refreshTopicsIntervalSeconds(Integer refreshTopicsIntervalSeconds) {
             return refreshTopicsIntervalSeconds(Output.of(refreshTopicsIntervalSeconds));
         }
 
+        /**
+         * @param syncGroupOffsetsEnabled Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syncGroupOffsetsEnabled(@Nullable Output<Boolean> syncGroupOffsetsEnabled) {
             $.syncGroupOffsetsEnabled = syncGroupOffsetsEnabled;
             return this;
         }
 
+        /**
+         * @param syncGroupOffsetsEnabled Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syncGroupOffsetsEnabled(Boolean syncGroupOffsetsEnabled) {
             return syncGroupOffsetsEnabled(Output.of(syncGroupOffsetsEnabled));
         }
 
+        /**
+         * @param syncGroupOffsetsIntervalSeconds Frequency at which consumer group offsets are synced (default: 60, every minute).
+         * 
+         * @return builder
+         * 
+         */
         public Builder syncGroupOffsetsIntervalSeconds(@Nullable Output<Integer> syncGroupOffsetsIntervalSeconds) {
             $.syncGroupOffsetsIntervalSeconds = syncGroupOffsetsIntervalSeconds;
             return this;
         }
 
+        /**
+         * @param syncGroupOffsetsIntervalSeconds Frequency at which consumer group offsets are synced (default: 60, every minute).
+         * 
+         * @return builder
+         * 
+         */
         public Builder syncGroupOffsetsIntervalSeconds(Integer syncGroupOffsetsIntervalSeconds) {
             return syncGroupOffsetsIntervalSeconds(Output.of(syncGroupOffsetsIntervalSeconds));
         }
 
+        /**
+         * @param syncTopicConfigsEnabled Whether to periodically configure remote topics to match their corresponding upstream topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syncTopicConfigsEnabled(@Nullable Output<Boolean> syncTopicConfigsEnabled) {
             $.syncTopicConfigsEnabled = syncTopicConfigsEnabled;
             return this;
         }
 
+        /**
+         * @param syncTopicConfigsEnabled Whether to periodically configure remote topics to match their corresponding upstream topics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder syncTopicConfigsEnabled(Boolean syncTopicConfigsEnabled) {
             return syncTopicConfigsEnabled(Output.of(syncTopicConfigsEnabled));
         }
 
+        /**
+         * @param tasksMaxPerCpu &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasksMaxPerCpu(@Nullable Output<Integer> tasksMaxPerCpu) {
             $.tasksMaxPerCpu = tasksMaxPerCpu;
             return this;
         }
 
+        /**
+         * @param tasksMaxPerCpu &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tasksMaxPerCpu(Integer tasksMaxPerCpu) {
             return tasksMaxPerCpu(Output.of(tasksMaxPerCpu));
         }

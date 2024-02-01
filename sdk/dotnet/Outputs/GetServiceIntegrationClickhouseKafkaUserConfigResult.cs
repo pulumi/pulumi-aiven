@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigResult
     {
+        /// <summary>
+        /// Tables to create.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableResult> Tables;
 
         [OutputConstructor]

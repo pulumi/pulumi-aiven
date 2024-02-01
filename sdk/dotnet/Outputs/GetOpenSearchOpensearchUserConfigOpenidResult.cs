@@ -13,17 +13,53 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigOpenidResult
     {
+        /// <summary>
+        /// The ID of the OpenID Connect client configured in your IdP. Required.
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// The client secret of the OpenID Connect client configured in your IdP. Required.
+        /// </summary>
         public readonly string ClientSecret;
+        /// <summary>
+        /// The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+        /// </summary>
         public readonly string ConnectUrl;
+        /// <summary>
+        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+        /// </summary>
         public readonly string? Header;
+        /// <summary>
+        /// The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer &lt;token&gt;. Optional. Default is Authorization.
+        /// </summary>
         public readonly string? JwtHeader;
+        /// <summary>
+        /// If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+        /// </summary>
         public readonly string? JwtUrlParameter;
+        /// <summary>
+        /// The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+        /// </summary>
         public readonly int? RefreshRateLimitCount;
+        /// <summary>
+        /// The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+        /// </summary>
         public readonly int? RefreshRateLimitTimeWindowMs;
+        /// <summary>
+        /// The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+        /// </summary>
         public readonly string? RolesKey;
+        /// <summary>
+        /// The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+        /// </summary>
         public readonly string? Scope;
+        /// <summary>
+        /// The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+        /// </summary>
         public readonly string? SubjectKey;
 
         [OutputConstructor]

@@ -18,58 +18,122 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
 
     public static final GrafanaGrafanaUserConfigSmtpServerArgs Empty = new GrafanaGrafanaUserConfigSmtpServerArgs();
 
+    /**
+     * Address used for sending emails.
+     * 
+     */
     @Import(name="fromAddress", required=true)
     private Output<String> fromAddress;
 
+    /**
+     * @return Address used for sending emails.
+     * 
+     */
     public Output<String> fromAddress() {
         return this.fromAddress;
     }
 
+    /**
+     * Name used in outgoing emails, defaults to Grafana.
+     * 
+     */
     @Import(name="fromName")
     private @Nullable Output<String> fromName;
 
+    /**
+     * @return Name used in outgoing emails, defaults to Grafana.
+     * 
+     */
     public Optional<Output<String>> fromName() {
         return Optional.ofNullable(this.fromName);
     }
 
+    /**
+     * Server hostname or IP.
+     * 
+     */
     @Import(name="host", required=true)
     private Output<String> host;
 
+    /**
+     * @return Server hostname or IP.
+     * 
+     */
     public Output<String> host() {
         return this.host;
     }
 
+    /**
+     * Password for SMTP authentication.
+     * 
+     */
     @Import(name="password")
     private @Nullable Output<String> password;
 
+    /**
+     * @return Password for SMTP authentication.
+     * 
+     */
     public Optional<Output<String>> password() {
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * SMTP server port.
+     * 
+     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
+    /**
+     * @return SMTP server port.
+     * 
+     */
     public Output<Integer> port() {
         return this.port;
     }
 
+    /**
+     * Skip verifying server certificate. Defaults to false.
+     * 
+     */
     @Import(name="skipVerify")
     private @Nullable Output<Boolean> skipVerify;
 
+    /**
+     * @return Skip verifying server certificate. Defaults to false.
+     * 
+     */
     public Optional<Output<Boolean>> skipVerify() {
         return Optional.ofNullable(this.skipVerify);
     }
 
+    /**
+     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * 
+     */
     @Import(name="starttlsPolicy")
     private @Nullable Output<String> starttlsPolicy;
 
+    /**
+     * @return Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * 
+     */
     public Optional<Output<String>> starttlsPolicy() {
         return Optional.ofNullable(this.starttlsPolicy);
     }
 
+    /**
+     * Username for SMTP authentication.
+     * 
+     */
     @Import(name="username")
     private @Nullable Output<String> username;
 
+    /**
+     * @return Username for SMTP authentication.
+     * 
+     */
     public Optional<Output<String>> username() {
         return Optional.ofNullable(this.username);
     }
@@ -105,74 +169,170 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
             $ = new GrafanaGrafanaUserConfigSmtpServerArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fromAddress Address used for sending emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fromAddress(Output<String> fromAddress) {
             $.fromAddress = fromAddress;
             return this;
         }
 
+        /**
+         * @param fromAddress Address used for sending emails.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fromAddress(String fromAddress) {
             return fromAddress(Output.of(fromAddress));
         }
 
+        /**
+         * @param fromName Name used in outgoing emails, defaults to Grafana.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fromName(@Nullable Output<String> fromName) {
             $.fromName = fromName;
             return this;
         }
 
+        /**
+         * @param fromName Name used in outgoing emails, defaults to Grafana.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fromName(String fromName) {
             return fromName(Output.of(fromName));
         }
 
+        /**
+         * @param host Server hostname or IP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Server hostname or IP.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
 
+        /**
+         * @param password Password for SMTP authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
 
+        /**
+         * @param password Password for SMTP authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder password(String password) {
             return password(Output.of(password));
         }
 
+        /**
+         * @param port SMTP server port.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port SMTP server port.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param skipVerify Skip verifying server certificate. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipVerify(@Nullable Output<Boolean> skipVerify) {
             $.skipVerify = skipVerify;
             return this;
         }
 
+        /**
+         * @param skipVerify Skip verifying server certificate. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
         public Builder skipVerify(Boolean skipVerify) {
             return skipVerify(Output.of(skipVerify));
         }
 
+        /**
+         * @param starttlsPolicy Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder starttlsPolicy(@Nullable Output<String> starttlsPolicy) {
             $.starttlsPolicy = starttlsPolicy;
             return this;
         }
 
+        /**
+         * @param starttlsPolicy Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+         * 
+         * @return builder
+         * 
+         */
         public Builder starttlsPolicy(String starttlsPolicy) {
             return starttlsPolicy(Output.of(starttlsPolicy));
         }
 
+        /**
+         * @param username Username for SMTP authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(@Nullable Output<String> username) {
             $.username = username;
             return this;
         }
 
+        /**
+         * @param username Username for SMTP authentication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder username(String username) {
             return username(Output.of(username));
         }

@@ -12,31 +12,54 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigAuthGithubGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         [Input("allowSignUp")]
         public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedOrganizations")]
         private InputList<string>? _allowedOrganizations;
+
+        /// <summary>
+        /// Require users to belong to one of given organizations.
+        /// </summary>
         public InputList<string> AllowedOrganizations
         {
             get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
             set => _allowedOrganizations = value;
         }
 
+        /// <summary>
+        /// Allow users to bypass the login screen and automatically log in.
+        /// </summary>
         [Input("autoLogin")]
         public Input<bool>? AutoLogin { get; set; }
 
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
+        /// <summary>
+        /// Stop automatically syncing user roles.
+        /// </summary>
         [Input("skipOrgRoleSync")]
         public Input<bool>? SkipOrgRoleSync { get; set; }
 
         [Input("teamIds")]
         private InputList<int>? _teamIds;
+
+        /// <summary>
+        /// Require users to belong to one of given team IDs.
+        /// </summary>
         public InputList<int> TeamIds
         {
             get => _teamIds ?? (_teamIds = new InputList<int>());

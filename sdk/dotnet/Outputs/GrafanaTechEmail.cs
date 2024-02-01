@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaTechEmail
     {
+        /// <summary>
+        /// An email address to contact for technical issues
+        /// </summary>
         public readonly string Email;
 
         [OutputConstructor]

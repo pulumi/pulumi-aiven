@@ -12,12 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class MySqlMysqlUserConfigPrivatelinkAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable mysql.
+        /// </summary>
         [Input("mysql")]
         public Input<bool>? Mysql { get; set; }
 
+        /// <summary>
+        /// Enable mysqlx.
+        /// </summary>
         [Input("mysqlx")]
         public Input<bool>? Mysqlx { get; set; }
 
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }
 

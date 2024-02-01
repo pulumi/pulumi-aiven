@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigPrivateAccess {
+    /**
+     * @return Allow clients to connect to m3coordinator with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean m3coordinator;
 
     private M3DbM3dbUserConfigPrivateAccess() {}
+    /**
+     * @return Allow clients to connect to m3coordinator with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }

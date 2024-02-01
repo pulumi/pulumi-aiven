@@ -15,16 +15,32 @@ public final class RedisRedisUserConfigPrivatelinkAccessArgs extends com.pulumi.
 
     public static final RedisRedisUserConfigPrivatelinkAccessArgs Empty = new RedisRedisUserConfigPrivatelinkAccessArgs();
 
+    /**
+     * Enable prometheus.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
+    /**
+     * Enable redis.
+     * 
+     */
     @Import(name="redis")
     private @Nullable Output<Boolean> redis;
 
+    /**
+     * @return Enable redis.
+     * 
+     */
     public Optional<Output<Boolean>> redis() {
         return Optional.ofNullable(this.redis);
     }
@@ -54,20 +70,44 @@ public final class RedisRedisUserConfigPrivatelinkAccessArgs extends com.pulumi.
             $ = new RedisRedisUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 
+        /**
+         * @param redis Enable redis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redis(@Nullable Output<Boolean> redis) {
             $.redis = redis;
             return this;
         }
 
+        /**
+         * @param redis Enable redis.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redis(Boolean redis) {
             return redis(Output.of(redis));
         }

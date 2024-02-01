@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigM3TagOptions
     {
+        /// <summary>
+        /// Allows for duplicate tags to appear on series (not allowed by default).
+        /// </summary>
         public readonly bool? AllowTagNameDuplicates;
+        /// <summary>
+        /// Allows for empty tags to appear on series (not allowed by default).
+        /// </summary>
         public readonly bool? AllowTagValueEmpty;
 
         [OutputConstructor]

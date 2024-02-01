@@ -22,28 +22,54 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
 
     public static final KafkaConnectKafkaConnectUserConfigArgs Empty = new KafkaConnectKafkaConnectUserConfigArgs();
 
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     * 
+     */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
 
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public Optional<Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public Optional<Output<List<String>>> ipFilterStrings() {
         return Optional.ofNullable(this.ipFilterStrings);
     }
 
     /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -53,6 +79,8 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
     private @Nullable Output<List<String>> ipFilters;
 
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -62,44 +90,92 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Kafka Connect configuration values.
+     * 
+     */
     @Import(name="kafkaConnect")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigKafkaConnectArgs> kafkaConnect;
 
+    /**
+     * @return Kafka Connect configuration values.
+     * 
+     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigKafkaConnectArgs>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
+    /**
+     * Allow access to selected service ports from private networks.
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink.
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet.
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<KafkaConnectKafkaConnectUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<Output<KafkaConnectKafkaConnectUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     @Import(name="serviceLog")
     private @Nullable Output<Boolean> serviceLog;
 
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Output<Boolean>> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
 
+    /**
+     * Use static public IP addresses.
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<Boolean> staticIps;
 
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -137,42 +213,92 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
             $ = new KafkaConnectKafkaConnectUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
 
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(@Nullable Output<List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs>> ipFilterObjects) {
             $.ipFilterObjects = ipFilterObjects;
             return this;
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(List<KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs> ipFilterObjects) {
             return ipFilterObjects(Output.of(ipFilterObjects));
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(@Nullable Output<List<String>> ipFilterStrings) {
             $.ipFilterStrings = ipFilterStrings;
             return this;
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(List<String> ipFilterStrings) {
             return ipFilterStrings(Output.of(ipFilterStrings));
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(String... ipFilterStrings) {
             return ipFilterStrings(List.of(ipFilterStrings));
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -186,6 +312,8 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -198,6 +326,8 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -209,56 +339,128 @@ public final class KafkaConnectKafkaConnectUserConfigArgs extends com.pulumi.res
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param kafkaConnect Kafka Connect configuration values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(@Nullable Output<KafkaConnectKafkaConnectUserConfigKafkaConnectArgs> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
+        /**
+         * @param kafkaConnect Kafka Connect configuration values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(KafkaConnectKafkaConnectUserConfigKafkaConnectArgs kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<KafkaConnectKafkaConnectUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(KafkaConnectKafkaConnectUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<KafkaConnectKafkaConnectUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
             $.serviceLog = serviceLog;
             return this;
         }
 
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceLog(Boolean serviceLog) {
             return serviceLog(Output.of(serviceLog));
         }
 
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }

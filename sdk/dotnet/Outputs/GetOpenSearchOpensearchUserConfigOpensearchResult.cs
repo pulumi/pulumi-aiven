@@ -13,46 +13,169 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchResult
     {
+        /// <summary>
+        /// Explicitly allow or block automatic creation of indices. Defaults to true.
+        /// </summary>
         public readonly bool? ActionAutoCreateIndexEnabled;
+        /// <summary>
+        /// Require explicit index names when deleting.
+        /// </summary>
         public readonly bool? ActionDestructiveRequiresName;
+        /// <summary>
+        /// Opensearch Security Plugin Settings.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult? AuthFailureListeners;
+        /// <summary>
+        /// Controls the number of shards allowed in the cluster per data node.
+        /// </summary>
         public readonly int? ClusterMaxShardsPerNode;
+        /// <summary>
+        /// How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+        /// </summary>
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
+        /// <summary>
+        /// This should be identical to the Sender name defined in Opensearch dashboards.
+        /// </summary>
         public readonly string? EmailSenderName;
+        /// <summary>
+        /// Sender password for Opensearch alerts to authenticate with SMTP server.
+        /// </summary>
         public readonly string? EmailSenderPassword;
+        /// <summary>
+        /// Sender username for Opensearch alerts.
+        /// </summary>
         public readonly string? EmailSenderUsername;
+        /// <summary>
+        /// Enable/Disable security audit. The default value is `false`.
+        /// </summary>
         public readonly bool? EnableSecurityAudit;
+        /// <summary>
+        /// Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+        /// </summary>
         public readonly int? HttpMaxContentLength;
+        /// <summary>
+        /// The max size of allowed headers, in bytes.
+        /// </summary>
         public readonly int? HttpMaxHeaderSize;
+        /// <summary>
+        /// The max length of an HTTP URL, in bytes.
+        /// </summary>
         public readonly int? HttpMaxInitialLineLength;
+        /// <summary>
+        /// Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+        /// </summary>
         public readonly int? IndicesFielddataCacheSize;
+        /// <summary>
+        /// Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+        /// </summary>
         public readonly int? IndicesMemoryIndexBufferSize;
+        /// <summary>
+        /// Absolute value. Default is unbound. Doesn't work without indices.memory.index_buffer_size. Maximum amount of heap used for query cache, an absolute indices.memory.index_buffer_size maximum hard limit.
+        /// </summary>
         public readonly int? IndicesMemoryMaxIndexBufferSize;
+        /// <summary>
+        /// Absolute value. Default is 48mb. Doesn't work without indices.memory.index_buffer_size. Minimum amount of heap used for query cache, an absolute indices.memory.index_buffer_size minimal hard limit.
+        /// </summary>
         public readonly int? IndicesMemoryMinIndexBufferSize;
+        /// <summary>
+        /// Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+        /// </summary>
         public readonly int? IndicesQueriesCacheSize;
+        /// <summary>
+        /// Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+        /// </summary>
         public readonly int? IndicesQueryBoolMaxClauseCount;
+        /// <summary>
+        /// Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+        /// </summary>
         public readonly int? IndicesRecoveryMaxBytesPerSec;
+        /// <summary>
+        /// Number of file chunks sent in parallel for each recovery. Defaults to 2.
+        /// </summary>
         public readonly int? IndicesRecoveryMaxConcurrentFileChunks;
+        /// <summary>
+        /// Specifies whether ISM is enabled or not. The default value is `true`.
+        /// </summary>
         public readonly bool? IsmEnabled;
+        /// <summary>
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+        /// </summary>
         public readonly bool? IsmHistoryEnabled;
+        /// <summary>
+        /// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+        /// </summary>
         public readonly int? IsmHistoryMaxAge;
+        /// <summary>
+        /// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+        /// </summary>
         public readonly int? IsmHistoryMaxDocs;
+        /// <summary>
+        /// The time between rollover checks for the audit history index in hours. The default value is `8`.
+        /// </summary>
         public readonly int? IsmHistoryRolloverCheckPeriod;
+        /// <summary>
+        /// How long audit history indices are kept in days. The default value is `30`.
+        /// </summary>
         public readonly int? IsmHistoryRolloverRetentionPeriod;
+        /// <summary>
+        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+        /// </summary>
         public readonly bool? OverrideMainResponseVersion;
+        /// <summary>
+        /// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+        /// </summary>
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
+        /// <summary>
+        /// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+        /// </summary>
         public readonly string? ScriptMaxCompilationsRate;
+        /// <summary>
+        /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+        /// </summary>
         public readonly int? SearchMaxBuckets;
+        /// <summary>
+        /// Size for the thread pool queue. See documentation for exact details.
+        /// </summary>
         public readonly int? ThreadPoolAnalyzeQueueSize;
+        /// <summary>
+        /// Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         public readonly int? ThreadPoolAnalyzeSize;
+        /// <summary>
+        /// Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         public readonly int? ThreadPoolForceMergeSize;
+        /// <summary>
+        /// Size for the thread pool queue. See documentation for exact details.
+        /// </summary>
         public readonly int? ThreadPoolGetQueueSize;
+        /// <summary>
+        /// Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         public readonly int? ThreadPoolGetSize;
+        /// <summary>
+        /// Size for the thread pool queue. See documentation for exact details.
+        /// </summary>
         public readonly int? ThreadPoolSearchQueueSize;
+        /// <summary>
+        /// Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         public readonly int? ThreadPoolSearchSize;
+        /// <summary>
+        /// Size for the thread pool queue. See documentation for exact details.
+        /// </summary>
         public readonly int? ThreadPoolSearchThrottledQueueSize;
+        /// <summary>
+        /// Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         public readonly int? ThreadPoolSearchThrottledSize;
+        /// <summary>
+        /// Size for the thread pool queue. See documentation for exact details.
+        /// </summary>
         public readonly int? ThreadPoolWriteQueueSize;
+        /// <summary>
+        /// Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+        /// </summary>
         public readonly int? ThreadPoolWriteSize;
 
         [OutputConstructor]

@@ -15,23 +15,47 @@ public final class MySqlMysqlUserConfigPublicAccessArgs extends com.pulumi.resou
 
     public static final MySqlMysqlUserConfigPublicAccessArgs Empty = new MySqlMysqlUserConfigPublicAccessArgs();
 
+    /**
+     * Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="mysql")
     private @Nullable Output<Boolean> mysql;
 
+    /**
+     * @return Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
 
+    /**
+     * Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="mysqlx")
     private @Nullable Output<Boolean> mysqlx;
 
+    /**
+     * @return Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
 
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -62,29 +86,65 @@ public final class MySqlMysqlUserConfigPublicAccessArgs extends com.pulumi.resou
             $ = new MySqlMysqlUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mysql Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(@Nullable Output<Boolean> mysql) {
             $.mysql = mysql;
             return this;
         }
 
+        /**
+         * @param mysql Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(Boolean mysql) {
             return mysql(Output.of(mysql));
         }
 
+        /**
+         * @param mysqlx Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlx(@Nullable Output<Boolean> mysqlx) {
             $.mysqlx = mysqlx;
             return this;
         }
 
+        /**
+         * @param mysqlx Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlx(Boolean mysqlx) {
             return mysqlx(Output.of(mysqlx));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

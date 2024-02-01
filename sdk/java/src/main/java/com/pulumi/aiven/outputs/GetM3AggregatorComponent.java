@@ -12,37 +12,101 @@ import java.util.Objects;
 
 @CustomType
 public final class GetM3AggregatorComponent {
+    /**
+     * @return Service component name
+     * 
+     */
     private String component;
+    /**
+     * @return Connection info for connecting to the service component. This is a combination of host and port.
+     * 
+     */
     private String connectionUri;
+    /**
+     * @return Host name for connecting to the service component
+     * 
+     */
     private String host;
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     private String kafkaAuthenticationMethod;
+    /**
+     * @return Port number for connecting to the service component
+     * 
+     */
     private Integer port;
+    /**
+     * @return Network access route
+     * 
+     */
     private String route;
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     * 
+     */
     private Boolean ssl;
+    /**
+     * @return DNS usage name
+     * 
+     */
     private String usage;
 
     private GetM3AggregatorComponent() {}
+    /**
+     * @return Service component name
+     * 
+     */
     public String component() {
         return this.component;
     }
+    /**
+     * @return Connection info for connecting to the service component. This is a combination of host and port.
+     * 
+     */
     public String connectionUri() {
         return this.connectionUri;
     }
+    /**
+     * @return Host name for connecting to the service component
+     * 
+     */
     public String host() {
         return this.host;
     }
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     public String kafkaAuthenticationMethod() {
         return this.kafkaAuthenticationMethod;
     }
+    /**
+     * @return Port number for connecting to the service component
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return Network access route
+     * 
+     */
     public String route() {
         return this.route;
     }
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     * 
+     */
     public Boolean ssl() {
         return this.ssl;
     }
+    /**
+     * @return DNS usage name
+     * 
+     */
     public String usage() {
         return this.usage;
     }

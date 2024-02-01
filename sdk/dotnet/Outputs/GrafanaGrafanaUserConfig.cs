@@ -13,47 +13,173 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfig
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+        /// </summary>
         public readonly bool? AlertingEnabled;
+        /// <summary>
+        /// Default error or timeout setting for new alerting rules.
+        /// </summary>
         public readonly string? AlertingErrorOrTimeout;
+        /// <summary>
+        /// Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+        /// </summary>
         public readonly int? AlertingMaxAnnotationsToKeep;
+        /// <summary>
+        /// Default value for 'no data or null values' for new alerting rules.
+        /// </summary>
         public readonly string? AlertingNodataOrNullvalues;
+        /// <summary>
+        /// Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
+        /// </summary>
         public readonly bool? AllowEmbedding;
+        /// <summary>
+        /// Azure AD OAuth integration.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigAuthAzuread? AuthAzuread;
+        /// <summary>
+        /// Enable or disable basic authentication form, used by Grafana built-in login.
+        /// </summary>
         public readonly bool? AuthBasicEnabled;
+        /// <summary>
+        /// Generic OAuth integration.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGenericOauth? AuthGenericOauth;
+        /// <summary>
+        /// Github Auth integration.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGithub? AuthGithub;
+        /// <summary>
+        /// GitLab Auth integration.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGitlab? AuthGitlab;
+        /// <summary>
+        /// Google Auth integration.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigAuthGoogle? AuthGoogle;
+        /// <summary>
+        /// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// </summary>
         public readonly string? CookieSamesite;
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
+        /// </summary>
         public readonly bool? DashboardPreviewsEnabled;
+        /// <summary>
+        /// Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+        /// </summary>
         public readonly string? DashboardsMinRefreshInterval;
+        /// <summary>
+        /// Dashboard versions to keep per dashboard.
+        /// </summary>
         public readonly int? DashboardsVersionsToKeep;
+        /// <summary>
+        /// Send 'X-Grafana-User' header to data source.
+        /// </summary>
         public readonly bool? DataproxySendUserHeader;
+        /// <summary>
+        /// Timeout for data proxy requests in seconds.
+        /// </summary>
         public readonly int? DataproxyTimeout;
+        /// <summary>
+        /// Grafana date format specifications.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigDateFormats? DateFormats;
+        /// <summary>
+        /// Set to true to disable gravatar. Defaults to false (gravatar is enabled).
+        /// </summary>
         public readonly bool? DisableGravatar;
+        /// <summary>
+        /// Editors can manage folders, teams and dashboards created by them.
+        /// </summary>
         public readonly bool? EditorsCanAdmin;
+        /// <summary>
+        /// External image store settings.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigExternalImageStorage? ExternalImageStorage;
+        /// <summary>
+        /// Google Analytics ID.
+        /// </summary>
         public readonly string? GoogleAnalyticsUaId;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GrafanaGrafanaUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Enable Grafana /metrics endpoint.
+        /// </summary>
         public readonly bool? MetricsEnabled;
+        /// <summary>
+        /// Enforce user lookup based on email instead of the unique ID provided by the IdP.
+        /// </summary>
         public readonly bool? OauthAllowInsecureEmailLookup;
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ProjectToForkFrom;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// SMTP server settings.
+        /// </summary>
         public readonly Outputs.GrafanaGrafanaUserConfigSmtpServer? SmtpServer;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
+        /// <summary>
+        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        /// </summary>
         public readonly bool? UnifiedAlertingEnabled;
+        /// <summary>
+        /// Auto-assign new users on signup to main organization. Defaults to false.
+        /// </summary>
         public readonly bool? UserAutoAssignOrg;
+        /// <summary>
+        /// Set role for new signups. Defaults to Viewer.
+        /// </summary>
         public readonly string? UserAutoAssignOrgRole;
+        /// <summary>
+        /// Users with view-only permission can edit but not save dashboards.
+        /// </summary>
         public readonly bool? ViewersCanEdit;
 
         [OutputConstructor]

@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The resolution for the matching namespace.
+        /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
 
+        /// <summary>
+        /// The retention period of the matching namespace.
+        /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }
 

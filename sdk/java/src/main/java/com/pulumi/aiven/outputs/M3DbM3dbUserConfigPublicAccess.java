@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigPublicAccess {
+    /**
+     * @return Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean m3coordinator;
 
     private M3DbM3dbUserConfigPublicAccess() {}
+    /**
+     * @return Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }

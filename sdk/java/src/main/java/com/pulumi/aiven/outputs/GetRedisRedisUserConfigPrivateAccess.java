@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRedisRedisUserConfigPrivateAccess {
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean prometheus;
+    /**
+     * @return Allow clients to connect to redis with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean redis;
 
     private GetRedisRedisUserConfigPrivateAccess() {}
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
+    /**
+     * @return Allow clients to connect to redis with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> redis() {
         return Optional.ofNullable(this.redis);
     }

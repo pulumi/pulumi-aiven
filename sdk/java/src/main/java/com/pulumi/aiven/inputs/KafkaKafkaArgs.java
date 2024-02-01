@@ -15,37 +15,77 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KafkaKafkaArgs Empty = new KafkaKafkaArgs();
 
+    /**
+     * The Kafka client certificate
+     * 
+     */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
+    /**
+     * @return The Kafka client certificate
+     * 
+     */
     public Optional<Output<String>> accessCert() {
         return Optional.ofNullable(this.accessCert);
     }
 
+    /**
+     * The Kafka client certificate key
+     * 
+     */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
+    /**
+     * @return The Kafka client certificate key
+     * 
+     */
     public Optional<Output<String>> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
 
+    /**
+     * The Kafka Connect URI, if any
+     * 
+     */
     @Import(name="connectUri")
     private @Nullable Output<String> connectUri;
 
+    /**
+     * @return The Kafka Connect URI, if any
+     * 
+     */
     public Optional<Output<String>> connectUri() {
         return Optional.ofNullable(this.connectUri);
     }
 
+    /**
+     * The Kafka REST URI, if any
+     * 
+     */
     @Import(name="restUri")
     private @Nullable Output<String> restUri;
 
+    /**
+     * @return The Kafka REST URI, if any
+     * 
+     */
     public Optional<Output<String>> restUri() {
         return Optional.ofNullable(this.restUri);
     }
 
+    /**
+     * The Schema Registry URI, if any
+     * 
+     */
     @Import(name="schemaRegistryUri")
     private @Nullable Output<String> schemaRegistryUri;
 
+    /**
+     * @return The Schema Registry URI, if any
+     * 
+     */
     public Optional<Output<String>> schemaRegistryUri() {
         return Optional.ofNullable(this.schemaRegistryUri);
     }
@@ -78,47 +118,107 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
             $ = new KafkaKafkaArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param accessCert The Kafka client certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessCert(@Nullable Output<String> accessCert) {
             $.accessCert = accessCert;
             return this;
         }
 
+        /**
+         * @param accessCert The Kafka client certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessCert(String accessCert) {
             return accessCert(Output.of(accessCert));
         }
 
+        /**
+         * @param accessKey The Kafka client certificate key
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(@Nullable Output<String> accessKey) {
             $.accessKey = accessKey;
             return this;
         }
 
+        /**
+         * @param accessKey The Kafka client certificate key
+         * 
+         * @return builder
+         * 
+         */
         public Builder accessKey(String accessKey) {
             return accessKey(Output.of(accessKey));
         }
 
+        /**
+         * @param connectUri The Kafka Connect URI, if any
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectUri(@Nullable Output<String> connectUri) {
             $.connectUri = connectUri;
             return this;
         }
 
+        /**
+         * @param connectUri The Kafka Connect URI, if any
+         * 
+         * @return builder
+         * 
+         */
         public Builder connectUri(String connectUri) {
             return connectUri(Output.of(connectUri));
         }
 
+        /**
+         * @param restUri The Kafka REST URI, if any
+         * 
+         * @return builder
+         * 
+         */
         public Builder restUri(@Nullable Output<String> restUri) {
             $.restUri = restUri;
             return this;
         }
 
+        /**
+         * @param restUri The Kafka REST URI, if any
+         * 
+         * @return builder
+         * 
+         */
         public Builder restUri(String restUri) {
             return restUri(Output.of(restUri));
         }
 
+        /**
+         * @param schemaRegistryUri The Schema Registry URI, if any
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistryUri(@Nullable Output<String> schemaRegistryUri) {
             $.schemaRegistryUri = schemaRegistryUri;
             return this;
         }
 
+        /**
+         * @param schemaRegistryUri The Schema Registry URI, if any
+         * 
+         * @return builder
+         * 
+         */
         public Builder schemaRegistryUri(String schemaRegistryUri) {
             return schemaRegistryUri(Output.of(schemaRegistryUri));
         }

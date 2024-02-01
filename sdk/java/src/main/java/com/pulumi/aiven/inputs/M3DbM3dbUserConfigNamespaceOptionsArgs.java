@@ -16,23 +16,47 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
 
     public static final M3DbM3dbUserConfigNamespaceOptionsArgs Empty = new M3DbM3dbUserConfigNamespaceOptionsArgs();
 
+    /**
+     * Retention options.
+     * 
+     */
     @Import(name="retentionOptions")
     private @Nullable Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions;
 
+    /**
+     * @return Retention options.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs>> retentionOptions() {
         return Optional.ofNullable(this.retentionOptions);
     }
 
+    /**
+     * Controls whether M3DB will create snapshot files for this namespace.
+     * 
+     */
     @Import(name="snapshotEnabled")
     private @Nullable Output<Boolean> snapshotEnabled;
 
+    /**
+     * @return Controls whether M3DB will create snapshot files for this namespace.
+     * 
+     */
     public Optional<Output<Boolean>> snapshotEnabled() {
         return Optional.ofNullable(this.snapshotEnabled);
     }
 
+    /**
+     * Controls whether M3DB will include writes to this namespace in the commitlog.
+     * 
+     */
     @Import(name="writesToCommitlog")
     private @Nullable Output<Boolean> writesToCommitlog;
 
+    /**
+     * @return Controls whether M3DB will include writes to this namespace in the commitlog.
+     * 
+     */
     public Optional<Output<Boolean>> writesToCommitlog() {
         return Optional.ofNullable(this.writesToCommitlog);
     }
@@ -63,29 +87,65 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
             $ = new M3DbM3dbUserConfigNamespaceOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param retentionOptions Retention options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionOptions(@Nullable Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions) {
             $.retentionOptions = retentionOptions;
             return this;
         }
 
+        /**
+         * @param retentionOptions Retention options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder retentionOptions(M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs retentionOptions) {
             return retentionOptions(Output.of(retentionOptions));
         }
 
+        /**
+         * @param snapshotEnabled Controls whether M3DB will create snapshot files for this namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotEnabled(@Nullable Output<Boolean> snapshotEnabled) {
             $.snapshotEnabled = snapshotEnabled;
             return this;
         }
 
+        /**
+         * @param snapshotEnabled Controls whether M3DB will create snapshot files for this namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder snapshotEnabled(Boolean snapshotEnabled) {
             return snapshotEnabled(Output.of(snapshotEnabled));
         }
 
+        /**
+         * @param writesToCommitlog Controls whether M3DB will include writes to this namespace in the commitlog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder writesToCommitlog(@Nullable Output<Boolean> writesToCommitlog) {
             $.writesToCommitlog = writesToCommitlog;
             return this;
         }
 
+        /**
+         * @param writesToCommitlog Controls whether M3DB will include writes to this namespace in the commitlog.
+         * 
+         * @return builder
+         * 
+         */
         public Builder writesToCommitlog(Boolean writesToCommitlog) {
             return writesToCommitlog(Output.of(writesToCommitlog));
         }

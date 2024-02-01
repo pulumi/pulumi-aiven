@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectorTask {
+    /**
+     * @return The name of the related connector.
+     * 
+     */
     private @Nullable String connector;
+    /**
+     * @return The task id of the task.
+     * 
+     */
     private @Nullable Integer task;
 
     private KafkaConnectorTask() {}
+    /**
+     * @return The name of the related connector.
+     * 
+     */
     public Optional<String> connector() {
         return Optional.ofNullable(this.connector);
     }
+    /**
+     * @return The task id of the task.
+     * 
+     */
     public Optional<Integer> task() {
         return Optional.ofNullable(this.task);
     }

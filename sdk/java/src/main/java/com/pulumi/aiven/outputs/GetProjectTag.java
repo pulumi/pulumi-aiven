@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetProjectTag {
+    /**
+     * @return Project tag key
+     * 
+     */
     private String key;
+    /**
+     * @return Project tag value
+     * 
+     */
     private String value;
 
     private GetProjectTag() {}
+    /**
+     * @return Project tag key
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Project tag value
+     * 
+     */
     public String value() {
         return this.value;
     }

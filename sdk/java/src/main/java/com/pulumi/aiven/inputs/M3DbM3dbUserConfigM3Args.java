@@ -15,9 +15,17 @@ public final class M3DbM3dbUserConfigM3Args extends com.pulumi.resources.Resourc
 
     public static final M3DbM3dbUserConfigM3Args Empty = new M3DbM3dbUserConfigM3Args();
 
+    /**
+     * M3 Tag Options.
+     * 
+     */
     @Import(name="tagOptions")
     private @Nullable Output<M3DbM3dbUserConfigM3TagOptionsArgs> tagOptions;
 
+    /**
+     * @return M3 Tag Options.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigM3TagOptionsArgs>> tagOptions() {
         return Optional.ofNullable(this.tagOptions);
     }
@@ -46,11 +54,23 @@ public final class M3DbM3dbUserConfigM3Args extends com.pulumi.resources.Resourc
             $ = new M3DbM3dbUserConfigM3Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param tagOptions M3 Tag Options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagOptions(@Nullable Output<M3DbM3dbUserConfigM3TagOptionsArgs> tagOptions) {
             $.tagOptions = tagOptions;
             return this;
         }
 
+        /**
+         * @param tagOptions M3 Tag Options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagOptions(M3DbM3dbUserConfigM3TagOptionsArgs tagOptions) {
             return tagOptions(Output.of(tagOptions));
         }

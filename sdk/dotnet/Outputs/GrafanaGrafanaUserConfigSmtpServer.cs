@@ -13,13 +13,37 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigSmtpServer
     {
+        /// <summary>
+        /// Address used for sending emails.
+        /// </summary>
         public readonly string FromAddress;
+        /// <summary>
+        /// Name used in outgoing emails, defaults to Grafana.
+        /// </summary>
         public readonly string? FromName;
+        /// <summary>
+        /// Server hostname or IP.
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Password for SMTP authentication.
+        /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// SMTP server port.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// Skip verifying server certificate. Defaults to false.
+        /// </summary>
         public readonly bool? SkipVerify;
+        /// <summary>
+        /// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        /// </summary>
         public readonly string? StarttlsPolicy;
+        /// <summary>
+        /// Username for SMTP authentication.
+        /// </summary>
         public readonly string? Username;
 
         [OutputConstructor]

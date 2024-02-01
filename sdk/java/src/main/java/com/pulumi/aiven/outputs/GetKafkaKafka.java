@@ -10,25 +10,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaKafka {
+    /**
+     * @return The Kafka client certificate
+     * 
+     */
     private String accessCert;
+    /**
+     * @return The Kafka client certificate key
+     * 
+     */
     private String accessKey;
+    /**
+     * @return The Kafka Connect URI, if any
+     * 
+     */
     private String connectUri;
+    /**
+     * @return The Kafka REST URI, if any
+     * 
+     */
     private String restUri;
+    /**
+     * @return The Schema Registry URI, if any
+     * 
+     */
     private String schemaRegistryUri;
 
     private GetKafkaKafka() {}
+    /**
+     * @return The Kafka client certificate
+     * 
+     */
     public String accessCert() {
         return this.accessCert;
     }
+    /**
+     * @return The Kafka client certificate key
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return The Kafka Connect URI, if any
+     * 
+     */
     public String connectUri() {
         return this.connectUri;
     }
+    /**
+     * @return The Kafka REST URI, if any
+     * 
+     */
     public String restUri() {
         return this.restUri;
     }
+    /**
+     * @return The Schema Registry URI, if any
+     * 
+     */
     public String schemaRegistryUri() {
         return this.schemaRegistryUri;
     }

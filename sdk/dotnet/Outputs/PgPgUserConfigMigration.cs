@@ -17,6 +17,9 @@ namespace Pulumi.Aiven.Outputs
         /// Primary PostgreSQL database name
         /// </summary>
         public readonly string? Dbname;
+        /// <summary>
+        /// Hostname or IP address of the server where to migrate data from.
+        /// </summary>
         public readonly string Host;
         /// <summary>
         /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
@@ -30,7 +33,13 @@ namespace Pulumi.Aiven.Outputs
         /// PostgreSQL admin user password
         /// </summary>
         public readonly string? Password;
+        /// <summary>
+        /// Port number of the server where to migrate data from.
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// The server where to migrate data from is secured with SSL. The default value is `true`.
+        /// </summary>
         public readonly bool? Ssl;
         /// <summary>
         /// User name for authentication with the server where to migrate data from.
