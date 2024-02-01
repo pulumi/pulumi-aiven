@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class RedisRedisUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }
 
+        /// <summary>
+        /// Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         [Input("redis")]
         public Input<bool>? Redis { get; set; }
 

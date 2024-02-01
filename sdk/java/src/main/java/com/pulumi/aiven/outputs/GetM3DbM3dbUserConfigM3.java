@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigM3 {
+    /**
+     * @return M3 Tag Options.
+     * 
+     */
     private @Nullable GetM3DbM3dbUserConfigM3TagOptions tagOptions;
 
     private GetM3DbM3dbUserConfigM3() {}
+    /**
+     * @return M3 Tag Options.
+     * 
+     */
     public Optional<GetM3DbM3dbUserConfigM3TagOptions> tagOptions() {
         return Optional.ofNullable(this.tagOptions);
     }

@@ -12,11 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigAuthAzureadArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         [Input("allowSignUp")]
         public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private InputList<string>? _allowedDomains;
+
+        /// <summary>
+        /// Allowed domains.
+        /// </summary>
         public InputList<string> AllowedDomains
         {
             get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
@@ -25,21 +32,37 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("allowedGroups")]
         private InputList<string>? _allowedGroups;
+
+        /// <summary>
+        /// Require users to belong to one of given groups.
+        /// </summary>
         public InputList<string> AllowedGroups
         {
             get => _allowedGroups ?? (_allowedGroups = new InputList<string>());
             set => _allowedGroups = value;
         }
 
+        /// <summary>
+        /// Authorization URL.
+        /// </summary>
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
 
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
+        /// <summary>
+        /// Token URL.
+        /// </summary>
         [Input("tokenUrl", required: true)]
         public Input<string> TokenUrl { get; set; } = null!;
 

@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInfluxDbInfluxdb {
+    /**
+     * @return Name of the default InfluxDB database
+     * 
+     */
     private String databaseName;
 
     private GetInfluxDbInfluxdb() {}
+    /**
+     * @return Name of the default InfluxDB database
+     * 
+     */
     public String databaseName() {
         return this.databaseName;
     }

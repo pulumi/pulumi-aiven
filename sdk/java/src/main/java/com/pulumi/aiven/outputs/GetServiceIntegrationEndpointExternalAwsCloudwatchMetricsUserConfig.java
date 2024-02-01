@@ -10,21 +10,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
+    /**
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * 
+     */
     private String accessKey;
+    /**
+     * @return AWS CloudWatch Metrics Namespace.
+     * 
+     */
     private String namespace;
+    /**
+     * @return AWS region.
+     * 
+     */
     private String region;
+    /**
+     * @return AWS secret key.
+     * 
+     */
     private String secretKey;
 
     private GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig() {}
+    /**
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return AWS CloudWatch Metrics Namespace.
+     * 
+     */
     public String namespace() {
         return this.namespace;
     }
+    /**
+     * @return AWS region.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return AWS secret key.
+     * 
+     */
     public String secretKey() {
         return this.secretKey;
     }

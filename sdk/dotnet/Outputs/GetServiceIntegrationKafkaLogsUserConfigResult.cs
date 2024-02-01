@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationKafkaLogsUserConfigResult
     {
+        /// <summary>
+        /// Topic name.
+        /// </summary>
         public readonly string KafkaTopic;
+        /// <summary>
+        /// The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+        /// </summary>
         public readonly ImmutableArray<string> SelectedLogFields;
 
         [OutputConstructor]

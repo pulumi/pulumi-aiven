@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetMySqlMysqlUserConfigPublicAccessResult
     {
+        /// <summary>
+        /// Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? Mysql;
+        /// <summary>
+        /// Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? Mysqlx;
+        /// <summary>
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

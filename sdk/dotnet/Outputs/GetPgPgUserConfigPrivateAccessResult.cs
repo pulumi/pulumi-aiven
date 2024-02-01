@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigPrivateAccessResult
     {
+        /// <summary>
+        /// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? Pg;
+        /// <summary>
+        /// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? Pgbouncer;
+        /// <summary>
+        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

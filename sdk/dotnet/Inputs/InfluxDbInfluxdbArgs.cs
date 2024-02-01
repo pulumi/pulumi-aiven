@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class InfluxDbInfluxdbArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Name of the default InfluxDB database
+        /// </summary>
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 

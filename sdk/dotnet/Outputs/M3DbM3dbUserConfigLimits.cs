@@ -13,11 +13,29 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigLimits
     {
+        /// <summary>
+        /// The maximum number of blocks that can be read in a given lookback period.
+        /// </summary>
         public readonly int? MaxRecentlyQueriedSeriesBlocks;
+        /// <summary>
+        /// The maximum number of disk bytes that can be read in a given lookback period.
+        /// </summary>
         public readonly int? MaxRecentlyQueriedSeriesDiskBytesRead;
+        /// <summary>
+        /// The lookback period for 'max_recently_queried_series_blocks' and 'max_recently_queried_series_disk_bytes_read'.
+        /// </summary>
         public readonly string? MaxRecentlyQueriedSeriesLookback;
+        /// <summary>
+        /// The maximum number of docs fetched in single query.
+        /// </summary>
         public readonly int? QueryDocs;
+        /// <summary>
+        /// When query limits are exceeded, whether to return error or return partial results.
+        /// </summary>
         public readonly bool? QueryRequireExhaustive;
+        /// <summary>
+        /// The maximum number of series fetched in single query.
+        /// </summary>
         public readonly int? QuerySeries;
 
         [OutputConstructor]

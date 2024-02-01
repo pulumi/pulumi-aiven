@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig {
+    /**
+     * @return Google Cloud Logging log id.
+     * 
+     */
     private String logId;
+    /**
+     * @return GCP project id.
+     * 
+     */
     private String projectId;
+    /**
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * 
+     */
     private String serviceAccountCredentials;
 
     private GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig() {}
+    /**
+     * @return Google Cloud Logging log id.
+     * 
+     */
     public String logId() {
         return this.logId;
     }
+    /**
+     * @return GCP project id.
+     * 
+     */
     public String projectId() {
         return this.projectId;
     }
+    /**
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * 
+     */
     public String serviceAccountCredentials() {
         return this.serviceAccountCredentials;
     }

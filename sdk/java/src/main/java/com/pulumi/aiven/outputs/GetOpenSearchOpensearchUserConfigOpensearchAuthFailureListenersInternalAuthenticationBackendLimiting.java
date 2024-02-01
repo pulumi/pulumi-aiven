@@ -12,33 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting {
+    /**
+     * @return The number of login attempts allowed before login is blocked.
+     * 
+     */
     private @Nullable Integer allowedTries;
+    /**
+     * @return The internal backend. Enter `internal`.
+     * 
+     */
     private @Nullable String authenticationBackend;
+    /**
+     * @return The duration of time that login remains blocked after a failed login.
+     * 
+     */
     private @Nullable Integer blockExpirySeconds;
+    /**
+     * @return The maximum number of blocked IP addresses.
+     * 
+     */
     private @Nullable Integer maxBlockedClients;
+    /**
+     * @return The maximum number of tracked IP addresses that have failed login.
+     * 
+     */
     private @Nullable Integer maxTrackedClients;
+    /**
+     * @return The window of time in which the value for `allowed_tries` is enforced.
+     * 
+     */
     private @Nullable Integer timeWindowSeconds;
+    /**
+     * @return The type of rate limiting.
+     * 
+     */
     private @Nullable String type;
 
     private GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting() {}
+    /**
+     * @return The number of login attempts allowed before login is blocked.
+     * 
+     */
     public Optional<Integer> allowedTries() {
         return Optional.ofNullable(this.allowedTries);
     }
+    /**
+     * @return The internal backend. Enter `internal`.
+     * 
+     */
     public Optional<String> authenticationBackend() {
         return Optional.ofNullable(this.authenticationBackend);
     }
+    /**
+     * @return The duration of time that login remains blocked after a failed login.
+     * 
+     */
     public Optional<Integer> blockExpirySeconds() {
         return Optional.ofNullable(this.blockExpirySeconds);
     }
+    /**
+     * @return The maximum number of blocked IP addresses.
+     * 
+     */
     public Optional<Integer> maxBlockedClients() {
         return Optional.ofNullable(this.maxBlockedClients);
     }
+    /**
+     * @return The maximum number of tracked IP addresses that have failed login.
+     * 
+     */
     public Optional<Integer> maxTrackedClients() {
         return Optional.ofNullable(this.maxTrackedClients);
     }
+    /**
+     * @return The window of time in which the value for `allowed_tries` is enforced.
+     * 
+     */
     public Optional<Integer> timeWindowSeconds() {
         return Optional.ofNullable(this.timeWindowSeconds);
     }
+    /**
+     * @return The type of rate limiting.
+     * 
+     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

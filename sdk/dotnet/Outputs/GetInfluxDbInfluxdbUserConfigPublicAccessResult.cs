@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetInfluxDbInfluxdbUserConfigPublicAccessResult
     {
+        /// <summary>
+        /// Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? Influxdb;
 
         [OutputConstructor]

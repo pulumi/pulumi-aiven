@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigPublicAccess {
+    /**
+     * @return Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean opensearch;
+    /**
+     * @return Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean opensearchDashboards;
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetOpenSearchOpensearchUserConfigPublicAccess() {}
+    /**
+     * @return Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

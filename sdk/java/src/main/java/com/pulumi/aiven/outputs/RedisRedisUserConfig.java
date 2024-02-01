@@ -19,49 +19,161 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RedisRedisUserConfig {
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<RedisRedisUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<String> ipFilterStrings;
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
+    /**
+     * @return Migrate data from existing server.
+     * 
+     */
     private @Nullable RedisRedisUserConfigMigration migration;
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     private @Nullable RedisRedisUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     private @Nullable RedisRedisUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     private @Nullable RedisRedisUserConfigPublicAccess publicAccess;
+    /**
+     * @return Name of the basebackup to restore in forked service.
+     * 
+     */
     private @Nullable String recoveryBasebackupName;
+    /**
+     * @return Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * 
+     */
     private @Nullable String redisAclChannelsDefault;
+    /**
+     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * 
+     */
     private @Nullable Integer redisIoThreads;
+    /**
+     * @return LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * 
+     */
     private @Nullable Integer redisLfuDecayTime;
+    /**
+     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * 
+     */
     private @Nullable Integer redisLfuLogFactor;
+    /**
+     * @return Redis maxmemory-policy. The default value is `noeviction`.
+     * 
+     */
     private @Nullable String redisMaxmemoryPolicy;
+    /**
+     * @return Set notify-keyspace-events option.
+     * 
+     */
     private @Nullable String redisNotifyKeyspaceEvents;
+    /**
+     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * 
+     */
     private @Nullable Integer redisNumberOfDatabases;
+    /**
+     * @return When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * 
+     */
     private @Nullable String redisPersistence;
+    /**
+     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * 
+     */
     private @Nullable Integer redisPubsubClientOutputBufferLimit;
+    /**
+     * @return Require SSL to access Redis. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean redisSsl;
+    /**
+     * @return Redis idle connection timeout in seconds. The default value is `300`.
+     * 
+     */
     private @Nullable Integer redisTimeout;
+    /**
+     * @return Redis major version.
+     * 
+     */
     private @Nullable String redisVersion;
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     private @Nullable Boolean staticIps;
 
     private RedisRedisUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<RedisRedisUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -70,66 +182,150 @@ public final class RedisRedisUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Migrate data from existing server.
+     * 
+     */
     public Optional<RedisRedisUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<RedisRedisUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     public Optional<RedisRedisUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<RedisRedisUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Name of the basebackup to restore in forked service.
+     * 
+     */
     public Optional<String> recoveryBasebackupName() {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
+    /**
+     * @return Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * 
+     */
     public Optional<String> redisAclChannelsDefault() {
         return Optional.ofNullable(this.redisAclChannelsDefault);
     }
+    /**
+     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * 
+     */
     public Optional<Integer> redisIoThreads() {
         return Optional.ofNullable(this.redisIoThreads);
     }
+    /**
+     * @return LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * 
+     */
     public Optional<Integer> redisLfuDecayTime() {
         return Optional.ofNullable(this.redisLfuDecayTime);
     }
+    /**
+     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * 
+     */
     public Optional<Integer> redisLfuLogFactor() {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
+    /**
+     * @return Redis maxmemory-policy. The default value is `noeviction`.
+     * 
+     */
     public Optional<String> redisMaxmemoryPolicy() {
         return Optional.ofNullable(this.redisMaxmemoryPolicy);
     }
+    /**
+     * @return Set notify-keyspace-events option.
+     * 
+     */
     public Optional<String> redisNotifyKeyspaceEvents() {
         return Optional.ofNullable(this.redisNotifyKeyspaceEvents);
     }
+    /**
+     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * 
+     */
     public Optional<Integer> redisNumberOfDatabases() {
         return Optional.ofNullable(this.redisNumberOfDatabases);
     }
+    /**
+     * @return When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * 
+     */
     public Optional<String> redisPersistence() {
         return Optional.ofNullable(this.redisPersistence);
     }
+    /**
+     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * 
+     */
     public Optional<Integer> redisPubsubClientOutputBufferLimit() {
         return Optional.ofNullable(this.redisPubsubClientOutputBufferLimit);
     }
+    /**
+     * @return Require SSL to access Redis. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> redisSsl() {
         return Optional.ofNullable(this.redisSsl);
     }
+    /**
+     * @return Redis idle connection timeout in seconds. The default value is `300`.
+     * 
+     */
     public Optional<Integer> redisTimeout() {
         return Optional.ofNullable(this.redisTimeout);
     }
+    /**
+     * @return Redis major version.
+     * 
+     */
     public Optional<String> redisVersion() {
         return Optional.ofNullable(this.redisVersion);
     }
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Boolean> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

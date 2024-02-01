@@ -16,16 +16,32 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
 
     public static final M3DbM3dbUserConfigIpFilterObjectArgs Empty = new M3DbM3dbUserConfigIpFilterObjectArgs();
 
+    /**
+     * Description for IP filter list entry.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Description for IP filter list entry.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * CIDR address block.
+     * 
+     */
     @Import(name="network", required=true)
     private Output<String> network;
 
+    /**
+     * @return CIDR address block.
+     * 
+     */
     public Output<String> network() {
         return this.network;
     }
@@ -55,20 +71,44 @@ public final class M3DbM3dbUserConfigIpFilterObjectArgs extends com.pulumi.resou
             $ = new M3DbM3dbUserConfigIpFilterObjectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description Description for IP filter list entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Description for IP filter list entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param network CIDR address block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network CIDR address block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }

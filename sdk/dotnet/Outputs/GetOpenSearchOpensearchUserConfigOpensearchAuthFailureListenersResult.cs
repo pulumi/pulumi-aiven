@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult
     {
+        /// <summary>
+        /// .
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingResult? InternalAuthenticationBackendLimiting;
+        /// <summary>
+        /// IP address rate limiting settings.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingResult? IpRateLimiting;
 
         [OutputConstructor]

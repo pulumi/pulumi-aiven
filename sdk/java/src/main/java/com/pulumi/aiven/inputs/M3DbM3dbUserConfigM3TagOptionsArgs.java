@@ -15,16 +15,32 @@ public final class M3DbM3dbUserConfigM3TagOptionsArgs extends com.pulumi.resourc
 
     public static final M3DbM3dbUserConfigM3TagOptionsArgs Empty = new M3DbM3dbUserConfigM3TagOptionsArgs();
 
+    /**
+     * Allows for duplicate tags to appear on series (not allowed by default).
+     * 
+     */
     @Import(name="allowTagNameDuplicates")
     private @Nullable Output<Boolean> allowTagNameDuplicates;
 
+    /**
+     * @return Allows for duplicate tags to appear on series (not allowed by default).
+     * 
+     */
     public Optional<Output<Boolean>> allowTagNameDuplicates() {
         return Optional.ofNullable(this.allowTagNameDuplicates);
     }
 
+    /**
+     * Allows for empty tags to appear on series (not allowed by default).
+     * 
+     */
     @Import(name="allowTagValueEmpty")
     private @Nullable Output<Boolean> allowTagValueEmpty;
 
+    /**
+     * @return Allows for empty tags to appear on series (not allowed by default).
+     * 
+     */
     public Optional<Output<Boolean>> allowTagValueEmpty() {
         return Optional.ofNullable(this.allowTagValueEmpty);
     }
@@ -54,20 +70,44 @@ public final class M3DbM3dbUserConfigM3TagOptionsArgs extends com.pulumi.resourc
             $ = new M3DbM3dbUserConfigM3TagOptionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowTagNameDuplicates Allows for duplicate tags to appear on series (not allowed by default).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowTagNameDuplicates(@Nullable Output<Boolean> allowTagNameDuplicates) {
             $.allowTagNameDuplicates = allowTagNameDuplicates;
             return this;
         }
 
+        /**
+         * @param allowTagNameDuplicates Allows for duplicate tags to appear on series (not allowed by default).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowTagNameDuplicates(Boolean allowTagNameDuplicates) {
             return allowTagNameDuplicates(Output.of(allowTagNameDuplicates));
         }
 
+        /**
+         * @param allowTagValueEmpty Allows for empty tags to appear on series (not allowed by default).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowTagValueEmpty(@Nullable Output<Boolean> allowTagValueEmpty) {
             $.allowTagValueEmpty = allowTagValueEmpty;
             return this;
         }
 
+        /**
+         * @param allowTagValueEmpty Allows for empty tags to appear on series (not allowed by default).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowTagValueEmpty(Boolean allowTagValueEmpty) {
             return allowTagValueEmpty(Output.of(allowTagValueEmpty));
         }

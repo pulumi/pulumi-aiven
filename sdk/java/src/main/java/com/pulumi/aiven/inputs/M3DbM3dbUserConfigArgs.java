@@ -24,35 +24,69 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
 
     public static final M3DbM3dbUserConfigArgs Empty = new M3DbM3dbUserConfigArgs();
 
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     * 
+     */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
 
+    /**
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * 
+     */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * 
+     */
     public Optional<Output<String>> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
 
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<M3DbM3dbUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public Optional<Output<List<M3DbM3dbUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public Optional<Output<List<String>>> ipFilterStrings() {
         return Optional.ofNullable(this.ipFilterStrings);
     }
 
     /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -62,6 +96,8 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<List<String>> ipFilters;
 
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -71,21 +107,39 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * M3 limits.
+     * 
+     */
     @Import(name="limits")
     private @Nullable Output<M3DbM3dbUserConfigLimitsArgs> limits;
 
+    /**
+     * @return M3 limits.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigLimitsArgs>> limits() {
         return Optional.ofNullable(this.limits);
     }
 
+    /**
+     * M3 specific configuration options.
+     * 
+     */
     @Import(name="m3")
     private @Nullable Output<M3DbM3dbUserConfigM3Args> m3;
 
+    /**
+     * @return M3 specific configuration options.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigM3Args>> m3() {
         return Optional.ofNullable(this.m3);
     }
 
     /**
+     * M3 major version (deprecated, use m3db_version).
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -95,6 +149,8 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> m3Version;
 
     /**
+     * @return M3 major version (deprecated, use m3db_version).
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -104,72 +160,152 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.m3Version);
     }
 
+    /**
+     * Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+     * 
+     */
     @Import(name="m3coordinatorEnableGraphiteCarbonIngest")
     private @Nullable Output<Boolean> m3coordinatorEnableGraphiteCarbonIngest;
 
+    /**
+     * @return Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+     * 
+     */
     public Optional<Output<Boolean>> m3coordinatorEnableGraphiteCarbonIngest() {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
 
+    /**
+     * M3 major version (the minimum compatible version).
+     * 
+     */
     @Import(name="m3dbVersion")
     private @Nullable Output<String> m3dbVersion;
 
+    /**
+     * @return M3 major version (the minimum compatible version).
+     * 
+     */
     public Optional<Output<String>> m3dbVersion() {
         return Optional.ofNullable(this.m3dbVersion);
     }
 
+    /**
+     * List of M3 namespaces.
+     * 
+     */
     @Import(name="namespaces")
     private @Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces;
 
+    /**
+     * @return List of M3 namespaces.
+     * 
+     */
     public Optional<Output<List<M3DbM3dbUserConfigNamespaceArgs>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
 
+    /**
+     * Allow access to selected service ports from private networks.
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<M3DbM3dbUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet.
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<M3DbM3dbUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * M3 rules.
+     * 
+     */
     @Import(name="rules")
     private @Nullable Output<M3DbM3dbUserConfigRulesArgs> rules;
 
+    /**
+     * @return M3 rules.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigRulesArgs>> rules() {
         return Optional.ofNullable(this.rules);
     }
 
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     @Import(name="serviceLog")
     private @Nullable Output<Boolean> serviceLog;
 
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Output<Boolean>> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * Use static public IP addresses.
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<Boolean> staticIps;
 
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -215,51 +351,113 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             $ = new M3DbM3dbUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
 
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
+        /**
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(@Nullable Output<String> customDomain) {
             $.customDomain = customDomain;
             return this;
         }
 
+        /**
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * 
+         * @return builder
+         * 
+         */
         public Builder customDomain(String customDomain) {
             return customDomain(Output.of(customDomain));
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(@Nullable Output<List<M3DbM3dbUserConfigIpFilterObjectArgs>> ipFilterObjects) {
             $.ipFilterObjects = ipFilterObjects;
             return this;
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(List<M3DbM3dbUserConfigIpFilterObjectArgs> ipFilterObjects) {
             return ipFilterObjects(Output.of(ipFilterObjects));
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(M3DbM3dbUserConfigIpFilterObjectArgs... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(@Nullable Output<List<String>> ipFilterStrings) {
             $.ipFilterStrings = ipFilterStrings;
             return this;
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(List<String> ipFilterStrings) {
             return ipFilterStrings(Output.of(ipFilterStrings));
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(String... ipFilterStrings) {
             return ipFilterStrings(List.of(ipFilterStrings));
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -273,6 +471,8 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -285,6 +485,8 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -296,25 +498,51 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param limits M3 limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limits(@Nullable Output<M3DbM3dbUserConfigLimitsArgs> limits) {
             $.limits = limits;
             return this;
         }
 
+        /**
+         * @param limits M3 limits.
+         * 
+         * @return builder
+         * 
+         */
         public Builder limits(M3DbM3dbUserConfigLimitsArgs limits) {
             return limits(Output.of(limits));
         }
 
+        /**
+         * @param m3 M3 specific configuration options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3(@Nullable Output<M3DbM3dbUserConfigM3Args> m3) {
             $.m3 = m3;
             return this;
         }
 
+        /**
+         * @param m3 M3 specific configuration options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3(M3DbM3dbUserConfigM3Args m3) {
             return m3(Output.of(m3));
         }
 
         /**
+         * @param m3Version M3 major version (deprecated, use m3db_version).
+         * 
          * @return builder
          * 
          * @deprecated
@@ -328,6 +556,8 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param m3Version M3 major version (deprecated, use m3db_version).
+         * 
          * @return builder
          * 
          * @deprecated
@@ -339,96 +569,222 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
             return m3Version(Output.of(m3Version));
         }
 
+        /**
+         * @param m3coordinatorEnableGraphiteCarbonIngest Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinatorEnableGraphiteCarbonIngest(@Nullable Output<Boolean> m3coordinatorEnableGraphiteCarbonIngest) {
             $.m3coordinatorEnableGraphiteCarbonIngest = m3coordinatorEnableGraphiteCarbonIngest;
             return this;
         }
 
+        /**
+         * @param m3coordinatorEnableGraphiteCarbonIngest Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinatorEnableGraphiteCarbonIngest(Boolean m3coordinatorEnableGraphiteCarbonIngest) {
             return m3coordinatorEnableGraphiteCarbonIngest(Output.of(m3coordinatorEnableGraphiteCarbonIngest));
         }
 
+        /**
+         * @param m3dbVersion M3 major version (the minimum compatible version).
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3dbVersion(@Nullable Output<String> m3dbVersion) {
             $.m3dbVersion = m3dbVersion;
             return this;
         }
 
+        /**
+         * @param m3dbVersion M3 major version (the minimum compatible version).
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3dbVersion(String m3dbVersion) {
             return m3dbVersion(Output.of(m3dbVersion));
         }
 
+        /**
+         * @param namespaces List of M3 namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(@Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces) {
             $.namespaces = namespaces;
             return this;
         }
 
+        /**
+         * @param namespaces List of M3 namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(List<M3DbM3dbUserConfigNamespaceArgs> namespaces) {
             return namespaces(Output.of(namespaces));
         }
 
+        /**
+         * @param namespaces List of M3 namespaces.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespaces(M3DbM3dbUserConfigNamespaceArgs... namespaces) {
             return namespaces(List.of(namespaces));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<M3DbM3dbUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(M3DbM3dbUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<M3DbM3dbUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(M3DbM3dbUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param rules M3 rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(@Nullable Output<M3DbM3dbUserConfigRulesArgs> rules) {
             $.rules = rules;
             return this;
         }
 
+        /**
+         * @param rules M3 rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder rules(M3DbM3dbUserConfigRulesArgs rules) {
             return rules(Output.of(rules));
         }
 
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
             $.serviceLog = serviceLog;
             return this;
         }
 
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceLog(Boolean serviceLog) {
             return serviceLog(Output.of(serviceLog));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }

@@ -14,37 +14,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigSmtpServer {
+    /**
+     * @return Address used for sending emails.
+     * 
+     */
     private String fromAddress;
+    /**
+     * @return Name used in outgoing emails, defaults to Grafana.
+     * 
+     */
     private @Nullable String fromName;
+    /**
+     * @return Server hostname or IP.
+     * 
+     */
     private String host;
+    /**
+     * @return Password for SMTP authentication.
+     * 
+     */
     private @Nullable String password;
+    /**
+     * @return SMTP server port.
+     * 
+     */
     private Integer port;
+    /**
+     * @return Skip verifying server certificate. Defaults to false.
+     * 
+     */
     private @Nullable Boolean skipVerify;
+    /**
+     * @return Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * 
+     */
     private @Nullable String starttlsPolicy;
+    /**
+     * @return Username for SMTP authentication.
+     * 
+     */
     private @Nullable String username;
 
     private GrafanaGrafanaUserConfigSmtpServer() {}
+    /**
+     * @return Address used for sending emails.
+     * 
+     */
     public String fromAddress() {
         return this.fromAddress;
     }
+    /**
+     * @return Name used in outgoing emails, defaults to Grafana.
+     * 
+     */
     public Optional<String> fromName() {
         return Optional.ofNullable(this.fromName);
     }
+    /**
+     * @return Server hostname or IP.
+     * 
+     */
     public String host() {
         return this.host;
     }
+    /**
+     * @return Password for SMTP authentication.
+     * 
+     */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return SMTP server port.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return Skip verifying server certificate. Defaults to false.
+     * 
+     */
     public Optional<Boolean> skipVerify() {
         return Optional.ofNullable(this.skipVerify);
     }
+    /**
+     * @return Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * 
+     */
     public Optional<String> starttlsPolicy() {
         return Optional.ofNullable(this.starttlsPolicy);
     }
+    /**
+     * @return Username for SMTP authentication.
+     * 
+     */
     public Optional<String> username() {
         return Optional.ofNullable(this.username);
     }

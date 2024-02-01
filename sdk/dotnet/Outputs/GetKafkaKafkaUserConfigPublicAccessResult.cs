@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigPublicAccessResult
     {
+        /// <summary>
+        /// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? Kafka;
+        /// <summary>
+        /// Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? KafkaConnect;
+        /// <summary>
+        /// Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? KafkaRest;
+        /// <summary>
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? Prometheus;
+        /// <summary>
+        /// Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         public readonly bool? SchemaRegistry;
 
         [OutputConstructor]

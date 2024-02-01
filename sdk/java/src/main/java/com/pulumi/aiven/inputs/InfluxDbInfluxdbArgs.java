@@ -15,9 +15,17 @@ public final class InfluxDbInfluxdbArgs extends com.pulumi.resources.ResourceArg
 
     public static final InfluxDbInfluxdbArgs Empty = new InfluxDbInfluxdbArgs();
 
+    /**
+     * Name of the default InfluxDB database
+     * 
+     */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
+    /**
+     * @return Name of the default InfluxDB database
+     * 
+     */
     public Optional<Output<String>> databaseName() {
         return Optional.ofNullable(this.databaseName);
     }
@@ -46,11 +54,23 @@ public final class InfluxDbInfluxdbArgs extends com.pulumi.resources.ResourceArg
             $ = new InfluxDbInfluxdbArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param databaseName Name of the default InfluxDB database
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseName(@Nullable Output<String> databaseName) {
             $.databaseName = databaseName;
             return this;
         }
 
+        /**
+         * @param databaseName Name of the default InfluxDB database
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseName(String databaseName) {
             return databaseName(Output.of(databaseName));
         }

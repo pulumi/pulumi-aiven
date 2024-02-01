@@ -13,12 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka MirrorMaker configuration values.
+        /// </summary>
         public readonly Outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult? KafkaMirrormaker;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

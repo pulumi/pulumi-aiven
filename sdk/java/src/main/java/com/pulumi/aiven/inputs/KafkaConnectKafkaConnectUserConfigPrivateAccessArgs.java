@@ -15,16 +15,32 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs extends c
 
     public static final KafkaConnectKafkaConnectUserConfigPrivateAccessArgs Empty = new KafkaConnectKafkaConnectUserConfigPrivateAccessArgs();
 
+    /**
+     * Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
+    /**
+     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -54,20 +70,44 @@ public final class KafkaConnectKafkaConnectUserConfigPrivateAccessArgs extends c
             $ = new KafkaConnectKafkaConnectUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
+        /**
+         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(Boolean kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

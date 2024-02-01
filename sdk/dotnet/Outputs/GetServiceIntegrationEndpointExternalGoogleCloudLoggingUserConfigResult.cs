@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigResult
     {
+        /// <summary>
+        /// Google Cloud Logging log id.
+        /// </summary>
         public readonly string LogId;
+        /// <summary>
+        /// GCP project id.
+        /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+        /// </summary>
         public readonly string ServiceAccountCredentials;
 
         [OutputConstructor]

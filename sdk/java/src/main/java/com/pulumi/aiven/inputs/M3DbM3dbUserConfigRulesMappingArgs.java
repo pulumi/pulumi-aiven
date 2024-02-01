@@ -20,35 +20,69 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
 
     public static final M3DbM3dbUserConfigRulesMappingArgs Empty = new M3DbM3dbUserConfigRulesMappingArgs();
 
+    /**
+     * List of aggregations to be applied.
+     * 
+     */
     @Import(name="aggregations")
     private @Nullable Output<List<String>> aggregations;
 
+    /**
+     * @return List of aggregations to be applied.
+     * 
+     */
     public Optional<Output<List<String>>> aggregations() {
         return Optional.ofNullable(this.aggregations);
     }
 
+    /**
+     * Only store the derived metric (as specified in the roll-up rules), if any.
+     * 
+     */
     @Import(name="drop")
     private @Nullable Output<Boolean> drop;
 
+    /**
+     * @return Only store the derived metric (as specified in the roll-up rules), if any.
+     * 
+     */
     public Optional<Output<Boolean>> drop() {
         return Optional.ofNullable(this.drop);
     }
 
+    /**
+     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * 
+     */
     @Import(name="filter", required=true)
     private Output<String> filter;
 
+    /**
+     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * 
+     */
     public Output<String> filter() {
         return this.filter;
     }
 
+    /**
+     * The (optional) name of the rule.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The (optional) name of the rule.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
@@ -58,6 +92,8 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
     private @Nullable Output<List<String>> namespaces;
 
     /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
@@ -67,23 +103,47 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         return Optional.ofNullable(this.namespaces);
     }
 
+    /**
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * 
+     */
     @Import(name="namespacesObjects")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>> namespacesObjects;
 
+    /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * 
+     */
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>>> namespacesObjects() {
         return Optional.ofNullable(this.namespacesObjects);
     }
 
+    /**
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
+     */
     @Import(name="namespacesStrings")
     private @Nullable Output<List<String>> namespacesStrings;
 
+    /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
+     */
     public Optional<Output<List<String>>> namespacesStrings() {
         return Optional.ofNullable(this.namespacesStrings);
     }
 
+    /**
+     * List of tags to be appended to matching metrics.
+     * 
+     */
     @Import(name="tags")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>> tags;
 
+    /**
+     * @return List of tags to be appended to matching metrics.
+     * 
+     */
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -119,47 +179,103 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
             $ = new M3DbM3dbUserConfigRulesMappingArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param aggregations List of aggregations to be applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregations(@Nullable Output<List<String>> aggregations) {
             $.aggregations = aggregations;
             return this;
         }
 
+        /**
+         * @param aggregations List of aggregations to be applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregations(List<String> aggregations) {
             return aggregations(Output.of(aggregations));
         }
 
+        /**
+         * @param aggregations List of aggregations to be applied.
+         * 
+         * @return builder
+         * 
+         */
         public Builder aggregations(String... aggregations) {
             return aggregations(List.of(aggregations));
         }
 
+        /**
+         * @param drop Only store the derived metric (as specified in the roll-up rules), if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder drop(@Nullable Output<Boolean> drop) {
             $.drop = drop;
             return this;
         }
 
+        /**
+         * @param drop Only store the derived metric (as specified in the roll-up rules), if any.
+         * 
+         * @return builder
+         * 
+         */
         public Builder drop(Boolean drop) {
             return drop(Output.of(drop));
         }
 
+        /**
+         * @param filter Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(Output<String> filter) {
             $.filter = filter;
             return this;
         }
 
+        /**
+         * @param filter Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+         * 
+         * @return builder
+         * 
+         */
         public Builder filter(String filter) {
             return filter(Output.of(filter));
         }
 
+        /**
+         * @param name The (optional) name of the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The (optional) name of the rule.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
         /**
+         * @param namespaces This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+         * 
          * @return builder
          * 
          * @deprecated
@@ -173,6 +289,8 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param namespaces This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+         * 
          * @return builder
          * 
          * @deprecated
@@ -185,6 +303,8 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param namespaces This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+         * 
          * @return builder
          * 
          * @deprecated
@@ -196,41 +316,95 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
             return namespaces(List.of(namespaces));
         }
 
+        /**
+         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespacesObjects(@Nullable Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>> namespacesObjects) {
             $.namespacesObjects = namespacesObjects;
             return this;
         }
 
+        /**
+         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespacesObjects(List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs> namespacesObjects) {
             return namespacesObjects(Output.of(namespacesObjects));
         }
 
+        /**
+         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespacesObjects(M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs... namespacesObjects) {
             return namespacesObjects(List.of(namespacesObjects));
         }
 
+        /**
+         * @param namespacesStrings This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespacesStrings(@Nullable Output<List<String>> namespacesStrings) {
             $.namespacesStrings = namespacesStrings;
             return this;
         }
 
+        /**
+         * @param namespacesStrings This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespacesStrings(List<String> namespacesStrings) {
             return namespacesStrings(Output.of(namespacesStrings));
         }
 
+        /**
+         * @param namespacesStrings This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+         * 
+         * @return builder
+         * 
+         */
         public Builder namespacesStrings(String... namespacesStrings) {
             return namespacesStrings(List.of(namespacesStrings));
         }
 
+        /**
+         * @param tags List of tags to be appended to matching metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(@Nullable Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>> tags) {
             $.tags = tags;
             return this;
         }
 
+        /**
+         * @param tags List of tags to be appended to matching metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(List<M3DbM3dbUserConfigRulesMappingTagArgs> tags) {
             return tags(Output.of(tags));
         }
 
+        /**
+         * @param tags List of tags to be appended to matching metrics.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tags(M3DbM3dbUserConfigRulesMappingTagArgs... tags) {
             return tags(List.of(tags));
         }

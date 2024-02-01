@@ -12,21 +12,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
+    /**
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * 
+     */
     private String accessKey;
+    /**
+     * @return AWS CloudWatch log group name.
+     * 
+     */
     private @Nullable String logGroupName;
+    /**
+     * @return AWS region.
+     * 
+     */
     private String region;
+    /**
+     * @return AWS secret key.
+     * 
+     */
     private String secretKey;
 
     private GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig() {}
+    /**
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * 
+     */
     public String accessKey() {
         return this.accessKey;
     }
+    /**
+     * @return AWS CloudWatch log group name.
+     * 
+     */
     public Optional<String> logGroupName() {
         return Optional.ofNullable(this.logGroupName);
     }
+    /**
+     * @return AWS region.
+     * 
+     */
     public String region() {
         return this.region;
     }
+    /**
+     * @return AWS secret key.
+     * 
+     */
     public String secretKey() {
         return this.secretKey;
     }

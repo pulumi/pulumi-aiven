@@ -11,21 +11,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetClickhouseClickhouseUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable clickhouse.
+     * 
+     */
     private @Nullable Boolean clickhouse;
+    /**
+     * @return Enable clickhouse_https.
+     * 
+     */
     private @Nullable Boolean clickhouseHttps;
+    /**
+     * @return Enable clickhouse_mysql.
+     * 
+     */
     private @Nullable Boolean clickhouseMysql;
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetClickhouseClickhouseUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable clickhouse.
+     * 
+     */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }
+    /**
+     * @return Enable clickhouse_https.
+     * 
+     */
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
+    /**
+     * @return Enable clickhouse_mysql.
+     * 
+     */
     public Optional<Boolean> clickhouseMysql() {
         return Optional.ofNullable(this.clickhouseMysql);
     }
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

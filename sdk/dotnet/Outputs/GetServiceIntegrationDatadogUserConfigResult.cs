@@ -13,15 +13,45 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationDatadogUserConfigResult
     {
+        /// <summary>
+        /// Enable Datadog Database Monitoring.
+        /// </summary>
         public readonly bool? DatadogDbmEnabled;
+        /// <summary>
+        /// Custom tags provided by user.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> DatadogTags;
+        /// <summary>
+        /// List of custom metrics.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludeConsumerGroups;
+        /// <summary>
+        /// List of topics to exclude.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludeTopics;
+        /// <summary>
+        /// List of custom metrics.
+        /// </summary>
         public readonly ImmutableArray<string> IncludeConsumerGroups;
+        /// <summary>
+        /// List of topics to include.
+        /// </summary>
         public readonly ImmutableArray<string> IncludeTopics;
+        /// <summary>
+        /// List of custom metrics.
+        /// </summary>
         public readonly ImmutableArray<string> KafkaCustomMetrics;
+        /// <summary>
+        /// Maximum number of JMX metrics to send.
+        /// </summary>
         public readonly int? MaxJmxMetrics;
+        /// <summary>
+        /// Datadog Opensearch Options.
+        /// </summary>
         public readonly Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? Opensearch;
+        /// <summary>
+        /// Datadog Redis Options.
+        /// </summary>
         public readonly Outputs.GetServiceIntegrationDatadogUserConfigRedisResult? Redis;
 
         [OutputConstructor]

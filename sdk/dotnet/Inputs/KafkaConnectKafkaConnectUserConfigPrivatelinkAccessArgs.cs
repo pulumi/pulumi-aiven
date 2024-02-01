@@ -12,12 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable jolokia.
+        /// </summary>
         [Input("jolokia")]
         public Input<bool>? Jolokia { get; set; }
 
+        /// <summary>
+        /// Enable kafka_connect.
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }
 

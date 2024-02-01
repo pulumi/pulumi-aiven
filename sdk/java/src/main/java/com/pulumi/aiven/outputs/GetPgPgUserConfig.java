@@ -25,25 +25,73 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfig {
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     private @Nullable String adminPassword;
+    /**
+     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     private @Nullable String adminUsername;
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     private @Nullable Integer backupHour;
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     private @Nullable Integer backupMinute;
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
     private @Nullable Boolean enableIpv6;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<GetPgPgUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<String> ipFilterStrings;
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
+    /**
+     * @return Migrate data from existing server.
+     * 
+     */
     private @Nullable GetPgPgUserConfigMigration migration;
+    /**
+     * @return postgresql.conf configuration values.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPg pg;
+    /**
+     * @return System-wide settings for the pg_qualstats extension.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPgQualstats pgQualstats;
     /**
+     * @return Use read_replica service integration instead.
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -51,56 +99,160 @@ public final class GetPgPgUserConfig {
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable Boolean pgReadReplica;
     /**
+     * @return Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
      */
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String pgServiceToForkFrom;
+    /**
+     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg_stat_statements results for utility commands are unreliable. The default value is `false`.
+     * 
+     */
     private @Nullable Boolean pgStatMonitorEnable;
+    /**
+     * @return PostgreSQL major version.
+     * 
+     */
     private @Nullable String pgVersion;
+    /**
+     * @return PGBouncer connection pooling settings.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPgbouncer pgbouncer;
+    /**
+     * @return System-wide settings for pglookout.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPglookout pglookout;
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPrivatelinkAccess privatelinkAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     private @Nullable GetPgPgUserConfigPublicAccess publicAccess;
+    /**
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String recoveryTargetTime;
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * 
+     */
     private @Nullable Double sharedBuffersPercentage;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     private @Nullable Boolean staticIps;
+    /**
+     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * 
+     */
     private @Nullable String synchronousReplication;
+    /**
+     * @return System-wide settings for the timescaledb extension.
+     * 
+     */
     private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
+    /**
+     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * 
+     */
     private @Nullable String variant;
+    /**
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * 
+     */
     private @Nullable Integer workMem;
 
     private GetPgPgUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    /**
+     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<String> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
+    /**
+     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
+    /**
+     * @return Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
+     * 
+     */
     public Optional<Boolean> enableIpv6() {
         return Optional.ofNullable(this.enableIpv6);
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<GetPgPgUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -109,16 +261,30 @@ public final class GetPgPgUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return Migrate data from existing server.
+     * 
+     */
     public Optional<GetPgPgUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
+    /**
+     * @return postgresql.conf configuration values.
+     * 
+     */
     public Optional<GetPgPgUserConfigPg> pg() {
         return Optional.ofNullable(this.pg);
     }
+    /**
+     * @return System-wide settings for the pg_qualstats extension.
+     * 
+     */
     public Optional<GetPgPgUserConfigPgQualstats> pgQualstats() {
         return Optional.ofNullable(this.pgQualstats);
     }
     /**
+     * @return Use read_replica service integration instead.
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -128,6 +294,8 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.pgReadReplica);
     }
     /**
+     * @return Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -136,54 +304,122 @@ public final class GetPgPgUserConfig {
     public Optional<String> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
+    /**
+     * @return Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg_stat_statements results for utility commands are unreliable. The default value is `false`.
+     * 
+     */
     public Optional<Boolean> pgStatMonitorEnable() {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
+    /**
+     * @return PostgreSQL major version.
+     * 
+     */
     public Optional<String> pgVersion() {
         return Optional.ofNullable(this.pgVersion);
     }
+    /**
+     * @return PGBouncer connection pooling settings.
+     * 
+     */
     public Optional<GetPgPgUserConfigPgbouncer> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
+    /**
+     * @return System-wide settings for pglookout.
+     * 
+     */
     public Optional<GetPgPgUserConfigPglookout> pglookout() {
         return Optional.ofNullable(this.pglookout);
     }
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<GetPgPgUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     public Optional<GetPgPgUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<GetPgPgUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> recoveryTargetTime() {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Boolean> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * 
+     */
     public Optional<Double> sharedBuffersPercentage() {
         return Optional.ofNullable(this.sharedBuffersPercentage);
     }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
+    /**
+     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * 
+     */
     public Optional<String> synchronousReplication() {
         return Optional.ofNullable(this.synchronousReplication);
     }
+    /**
+     * @return System-wide settings for the timescaledb extension.
+     * 
+     */
     public Optional<GetPgPgUserConfigTimescaledb> timescaledb() {
         return Optional.ofNullable(this.timescaledb);
     }
+    /**
+     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * 
+     */
     public Optional<String> variant() {
         return Optional.ofNullable(this.variant);
     }
+    /**
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * 
+     */
     public Optional<Integer> workMem() {
         return Optional.ofNullable(this.workMem);
     }

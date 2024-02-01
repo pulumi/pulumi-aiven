@@ -13,30 +13,105 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetRedisRedisUserConfigResult
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisRedisUserConfigIpFilterObjectResult> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Migrate data from existing server.
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigMigrationResult? Migration;
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ProjectToForkFrom;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPublicAccessResult? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        /// </summary>
         public readonly string? RedisAclChannelsDefault;
+        /// <summary>
+        /// Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+        /// </summary>
         public readonly int? RedisIoThreads;
+        /// <summary>
+        /// LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+        /// </summary>
         public readonly int? RedisLfuDecayTime;
+        /// <summary>
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+        /// </summary>
         public readonly int? RedisLfuLogFactor;
+        /// <summary>
+        /// Redis maxmemory-policy. The default value is `noeviction`.
+        /// </summary>
         public readonly string? RedisMaxmemoryPolicy;
+        /// <summary>
+        /// Set notify-keyspace-events option.
+        /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
+        /// <summary>
+        /// Set number of Redis databases. Changing this will cause a restart of the Redis service.
+        /// </summary>
         public readonly int? RedisNumberOfDatabases;
+        /// <summary>
+        /// When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// </summary>
         public readonly string? RedisPersistence;
+        /// <summary>
+        /// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+        /// </summary>
         public readonly int? RedisPubsubClientOutputBufferLimit;
+        /// <summary>
+        /// Require SSL to access Redis. The default value is `true`.
+        /// </summary>
         public readonly bool? RedisSsl;
+        /// <summary>
+        /// Redis idle connection timeout in seconds. The default value is `300`.
+        /// </summary>
         public readonly int? RedisTimeout;
+        /// <summary>
+        /// Redis major version.
+        /// </summary>
         public readonly string? RedisVersion;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class OpenSearchOpensearch {
+    /**
+     * @return URI for OpenSearch dashboard frontend
+     * 
+     */
     private @Nullable String opensearchDashboardsUri;
 
     private OpenSearchOpensearch() {}
+    /**
+     * @return URI for OpenSearch dashboard frontend
+     * 
+     */
     public Optional<String> opensearchDashboardsUri() {
         return Optional.ofNullable(this.opensearchDashboardsUri);
     }

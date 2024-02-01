@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationKafkaMirrormakerUserConfigResult
     {
+        /// <summary>
+        /// The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, '.', '_', and '-'.
+        /// </summary>
         public readonly string? ClusterAlias;
+        /// <summary>
+        /// Kafka MirrorMaker configuration values.
+        /// </summary>
         public readonly Outputs.GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult? KafkaMirrormaker;
 
         [OutputConstructor]

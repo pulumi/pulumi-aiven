@@ -12,11 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3AggregatorM3aggregatorUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.M3AggregatorM3aggregatorUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<Inputs.M3AggregatorM3aggregatorUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
             get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.M3AggregatorM3aggregatorUserConfigIpFilterObjectGetArgs>());
@@ -25,6 +32,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilterStrings")]
         private InputList<string>? _ipFilterStrings;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<string> IpFilterStrings
         {
             get => _ipFilterStrings ?? (_ipFilterStrings = new InputList<string>());
@@ -33,6 +44,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
@@ -40,15 +55,27 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// M3 major version (deprecated, use m3aggregator_version).
+        /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
+        /// <summary>
+        /// M3 major version (the minimum compatible version).
+        /// </summary>
         [Input("m3aggregatorVersion")]
         public Input<string>? M3aggregatorVersion { get; set; }
 
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         [Input("serviceLog")]
         public Input<bool>? ServiceLog { get; set; }
 
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
 

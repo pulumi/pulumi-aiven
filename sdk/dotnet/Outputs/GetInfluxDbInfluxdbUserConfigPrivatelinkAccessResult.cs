@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// Enable influxdb.
+        /// </summary>
         public readonly bool? Influxdb;
 
         [OutputConstructor]

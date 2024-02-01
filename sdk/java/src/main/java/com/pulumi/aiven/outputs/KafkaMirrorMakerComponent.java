@@ -13,37 +13,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaMirrorMakerComponent {
+    /**
+     * @return Service component name
+     * 
+     */
     private @Nullable String component;
+    /**
+     * @return Connection info for connecting to the service component. This is a combination of host and port.
+     * 
+     */
     private @Nullable String connectionUri;
+    /**
+     * @return Host name for connecting to the service component
+     * 
+     */
     private @Nullable String host;
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     private @Nullable String kafkaAuthenticationMethod;
+    /**
+     * @return Port number for connecting to the service component
+     * 
+     */
     private @Nullable Integer port;
+    /**
+     * @return Network access route
+     * 
+     */
     private @Nullable String route;
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     * 
+     */
     private @Nullable Boolean ssl;
+    /**
+     * @return DNS usage name
+     * 
+     */
     private @Nullable String usage;
 
     private KafkaMirrorMakerComponent() {}
+    /**
+     * @return Service component name
+     * 
+     */
     public Optional<String> component() {
         return Optional.ofNullable(this.component);
     }
+    /**
+     * @return Connection info for connecting to the service component. This is a combination of host and port.
+     * 
+     */
     public Optional<String> connectionUri() {
         return Optional.ofNullable(this.connectionUri);
     }
+    /**
+     * @return Host name for connecting to the service component
+     * 
+     */
     public Optional<String> host() {
         return Optional.ofNullable(this.host);
     }
+    /**
+     * @return Kafka authentication method. This is a value specific to the &#39;kafka&#39; service component
+     * 
+     */
     public Optional<String> kafkaAuthenticationMethod() {
         return Optional.ofNullable(this.kafkaAuthenticationMethod);
     }
+    /**
+     * @return Port number for connecting to the service component
+     * 
+     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
+    /**
+     * @return Network access route
+     * 
+     */
     public Optional<String> route() {
         return Optional.ofNullable(this.route);
     }
+    /**
+     * @return Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     * 
+     */
     public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }
+    /**
+     * @return DNS usage name
+     * 
+     */
     public Optional<String> usage() {
         return Optional.ofNullable(this.usage);
     }

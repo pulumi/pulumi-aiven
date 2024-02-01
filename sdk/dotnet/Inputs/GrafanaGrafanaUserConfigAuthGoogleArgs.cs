@@ -12,20 +12,33 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigAuthGoogleArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         [Input("allowSignUp")]
         public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private InputList<string>? _allowedDomains;
+
+        /// <summary>
+        /// Domains allowed to sign-in to this Grafana.
+        /// </summary>
         public InputList<string> AllowedDomains
         {
             get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
             set => _allowedDomains = value;
         }
 
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 

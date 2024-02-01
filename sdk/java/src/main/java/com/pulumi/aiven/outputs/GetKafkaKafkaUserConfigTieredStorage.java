@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigTieredStorage {
+    /**
+     * @return Whether to enable the tiered storage functionality.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Local cache configuration.
+     * 
+     */
     private @Nullable GetKafkaKafkaUserConfigTieredStorageLocalCache localCache;
 
     private GetKafkaKafkaUserConfigTieredStorage() {}
+    /**
+     * @return Whether to enable the tiered storage functionality.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Local cache configuration.
+     * 
+     */
     public Optional<GetKafkaKafkaUserConfigTieredStorageLocalCache> localCache() {
         return Optional.ofNullable(this.localCache);
     }

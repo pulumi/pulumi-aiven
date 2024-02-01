@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+        /// </summary>
         [Input("grafana")]
         public Input<bool>? Grafana { get; set; }
 

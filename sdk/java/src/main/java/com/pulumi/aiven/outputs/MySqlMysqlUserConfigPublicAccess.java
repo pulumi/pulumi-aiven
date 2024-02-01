@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MySqlMysqlUserConfigPublicAccess {
+    /**
+     * @return Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean mysql;
+    /**
+     * @return Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean mysqlx;
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private MySqlMysqlUserConfigPublicAccess() {}
+    /**
+     * @return Allow clients to connect to mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> mysql() {
         return Optional.ofNullable(this.mysql);
     }
+    /**
+     * @return Allow clients to connect to mysqlx from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

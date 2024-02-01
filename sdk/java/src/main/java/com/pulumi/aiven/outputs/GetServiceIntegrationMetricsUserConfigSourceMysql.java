@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationMetricsUserConfigSourceMysql {
+    /**
+     * @return Configuration options for Telegraf MySQL input plugin.
+     * 
+     */
     private @Nullable GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf telegraf;
 
     private GetServiceIntegrationMetricsUserConfigSourceMysql() {}
+    /**
+     * @return Configuration options for Telegraf MySQL input plugin.
+     * 
+     */
     public Optional<GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf> telegraf() {
         return Optional.ofNullable(this.telegraf);
     }

@@ -19,6 +19,10 @@ public final class PgPgUserConfigMigration {
      * 
      */
     private @Nullable String dbname;
+    /**
+     * @return Hostname or IP address of the server where to migrate data from.
+     * 
+     */
     private String host;
     /**
      * @return Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
@@ -35,7 +39,15 @@ public final class PgPgUserConfigMigration {
      * 
      */
     private @Nullable String password;
+    /**
+     * @return Port number of the server where to migrate data from.
+     * 
+     */
     private Integer port;
+    /**
+     * @return The server where to migrate data from is secured with SSL. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean ssl;
     /**
      * @return User name for authentication with the server where to migrate data from.
@@ -51,6 +63,10 @@ public final class PgPgUserConfigMigration {
     public Optional<String> dbname() {
         return Optional.ofNullable(this.dbname);
     }
+    /**
+     * @return Hostname or IP address of the server where to migrate data from.
+     * 
+     */
     public String host() {
         return this.host;
     }
@@ -75,9 +91,17 @@ public final class PgPgUserConfigMigration {
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
+    /**
+     * @return Port number of the server where to migrate data from.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return The server where to migrate data from is secured with SSL. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> ssl() {
         return Optional.ofNullable(this.ssl);
     }

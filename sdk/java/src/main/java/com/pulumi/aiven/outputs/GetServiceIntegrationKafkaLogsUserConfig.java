@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationKafkaLogsUserConfig {
+    /**
+     * @return Topic name.
+     * 
+     */
     private String kafkaTopic;
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
     private @Nullable List<String> selectedLogFields;
 
     private GetServiceIntegrationKafkaLogsUserConfig() {}
+    /**
+     * @return Topic name.
+     * 
+     */
     public String kafkaTopic() {
         return this.kafkaTopic;
     }
+    /**
+     * @return The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     * 
+     */
     public List<String> selectedLogFields() {
         return this.selectedLogFields == null ? List.of() : this.selectedLogFields;
     }

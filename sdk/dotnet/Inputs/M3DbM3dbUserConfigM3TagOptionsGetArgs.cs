@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigM3TagOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allows for duplicate tags to appear on series (not allowed by default).
+        /// </summary>
         [Input("allowTagNameDuplicates")]
         public Input<bool>? AllowTagNameDuplicates { get; set; }
 
+        /// <summary>
+        /// Allows for empty tags to appear on series (not allowed by default).
+        /// </summary>
         [Input("allowTagValueEmpty")]
         public Input<bool>? AllowTagValueEmpty { get; set; }
 

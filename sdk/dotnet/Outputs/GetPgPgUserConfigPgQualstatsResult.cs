@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetPgPgUserConfigPgQualstatsResult
     {
+        /// <summary>
+        /// Enable / Disable pg_qualstats. The default value is `false`.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Error estimation num threshold to save quals. The default value is `0`.
+        /// </summary>
         public readonly int? MinErrEstimateNum;
+        /// <summary>
+        /// Error estimation ratio threshold to save quals. The default value is `0`.
+        /// </summary>
         public readonly int? MinErrEstimateRatio;
+        /// <summary>
+        /// Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+        /// </summary>
         public readonly bool? TrackConstants;
+        /// <summary>
+        /// Track quals on system catalogs too. The default value is `false`.
+        /// </summary>
         public readonly bool? TrackPgCatalog;
 
         [OutputConstructor]

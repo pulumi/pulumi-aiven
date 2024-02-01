@@ -10,13 +10,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigRulesMappingTag {
+    /**
+     * @return Name of the tag.
+     * 
+     */
     private String name;
+    /**
+     * @return Value of the tag.
+     * 
+     */
     private String value;
 
     private GetM3DbM3dbUserConfigRulesMappingTag() {}
+    /**
+     * @return Name of the tag.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Value of the tag.
+     * 
+     */
     public String value() {
         return this.value;
     }

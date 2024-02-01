@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigLimits {
+    /**
+     * @return The maximum number of blocks that can be read in a given lookback period.
+     * 
+     */
     private @Nullable Integer maxRecentlyQueriedSeriesBlocks;
+    /**
+     * @return The maximum number of disk bytes that can be read in a given lookback period.
+     * 
+     */
     private @Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead;
+    /**
+     * @return The lookback period for &#39;max_recently_queried_series_blocks&#39; and &#39;max_recently_queried_series_disk_bytes_read&#39;.
+     * 
+     */
     private @Nullable String maxRecentlyQueriedSeriesLookback;
+    /**
+     * @return The maximum number of docs fetched in single query.
+     * 
+     */
     private @Nullable Integer queryDocs;
+    /**
+     * @return When query limits are exceeded, whether to return error or return partial results.
+     * 
+     */
     private @Nullable Boolean queryRequireExhaustive;
+    /**
+     * @return The maximum number of series fetched in single query.
+     * 
+     */
     private @Nullable Integer querySeries;
 
     private GetM3DbM3dbUserConfigLimits() {}
+    /**
+     * @return The maximum number of blocks that can be read in a given lookback period.
+     * 
+     */
     public Optional<Integer> maxRecentlyQueriedSeriesBlocks() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesBlocks);
     }
+    /**
+     * @return The maximum number of disk bytes that can be read in a given lookback period.
+     * 
+     */
     public Optional<Integer> maxRecentlyQueriedSeriesDiskBytesRead() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
     }
+    /**
+     * @return The lookback period for &#39;max_recently_queried_series_blocks&#39; and &#39;max_recently_queried_series_disk_bytes_read&#39;.
+     * 
+     */
     public Optional<String> maxRecentlyQueriedSeriesLookback() {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesLookback);
     }
+    /**
+     * @return The maximum number of docs fetched in single query.
+     * 
+     */
     public Optional<Integer> queryDocs() {
         return Optional.ofNullable(this.queryDocs);
     }
+    /**
+     * @return When query limits are exceeded, whether to return error or return partial results.
+     * 
+     */
     public Optional<Boolean> queryRequireExhaustive() {
         return Optional.ofNullable(this.queryRequireExhaustive);
     }
+    /**
+     * @return The maximum number of series fetched in single query.
+     * 
+     */
     public Optional<Integer> querySeries() {
         return Optional.ofNullable(this.querySeries);
     }

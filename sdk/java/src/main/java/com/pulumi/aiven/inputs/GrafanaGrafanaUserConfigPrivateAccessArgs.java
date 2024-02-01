@@ -15,9 +15,17 @@ public final class GrafanaGrafanaUserConfigPrivateAccessArgs extends com.pulumi.
 
     public static final GrafanaGrafanaUserConfigPrivateAccessArgs Empty = new GrafanaGrafanaUserConfigPrivateAccessArgs();
 
+    /**
+     * Allow clients to connect to grafana with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="grafana")
     private @Nullable Output<Boolean> grafana;
 
+    /**
+     * @return Allow clients to connect to grafana with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> grafana() {
         return Optional.ofNullable(this.grafana);
     }
@@ -46,11 +54,23 @@ public final class GrafanaGrafanaUserConfigPrivateAccessArgs extends com.pulumi.
             $ = new GrafanaGrafanaUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param grafana Allow clients to connect to grafana with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder grafana(@Nullable Output<Boolean> grafana) {
             $.grafana = grafana;
             return this;
         }
 
+        /**
+         * @param grafana Allow clients to connect to grafana with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder grafana(Boolean grafana) {
             return grafana(Output.of(grafana));
         }

@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricResult
     {
+        /// <summary>
+        /// Identifier of a value in the metric.
+        /// </summary>
         public readonly string Field;
+        /// <summary>
+        /// Identifier of the metric.
+        /// </summary>
         public readonly string Metric;
 
         [OutputConstructor]

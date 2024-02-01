@@ -33,9 +33,17 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.dbname);
     }
 
+    /**
+     * Hostname or IP address of the server where to migrate data from.
+     * 
+     */
     @Import(name="host", required=true)
     private Output<String> host;
 
+    /**
+     * @return Hostname or IP address of the server where to migrate data from.
+     * 
+     */
     public Output<String> host() {
         return this.host;
     }
@@ -85,16 +93,32 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.password);
     }
 
+    /**
+     * Port number of the server where to migrate data from.
+     * 
+     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
+    /**
+     * @return Port number of the server where to migrate data from.
+     * 
+     */
     public Output<Integer> port() {
         return this.port;
     }
 
+    /**
+     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     * 
+     */
     @Import(name="ssl")
     private @Nullable Output<Boolean> ssl;
 
+    /**
+     * @return The server where to migrate data from is secured with SSL. The default value is `true`.
+     * 
+     */
     public Optional<Output<Boolean>> ssl() {
         return Optional.ofNullable(this.ssl);
     }
@@ -166,11 +190,23 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
             return dbname(Output.of(dbname));
         }
 
+        /**
+         * @param host Hostname or IP address of the server where to migrate data from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(Output<String> host) {
             $.host = host;
             return this;
         }
 
+        /**
+         * @param host Hostname or IP address of the server where to migrate data from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder host(String host) {
             return host(Output.of(host));
         }
@@ -238,20 +274,44 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
             return password(Output.of(password));
         }
 
+        /**
+         * @param port Port number of the server where to migrate data from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
+        /**
+         * @param port Port number of the server where to migrate data from.
+         * 
+         * @return builder
+         * 
+         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
+        /**
+         * @param ssl The server where to migrate data from is secured with SSL. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssl(@Nullable Output<Boolean> ssl) {
             $.ssl = ssl;
             return this;
         }
 
+        /**
+         * @param ssl The server where to migrate data from is secured with SSL. The default value is `true`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ssl(Boolean ssl) {
             return ssl(Output.of(ssl));
         }

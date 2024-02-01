@@ -14,21 +14,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGoogle {
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     private @Nullable Boolean allowSignUp;
+    /**
+     * @return Domains allowed to sign-in to this Grafana.
+     * 
+     */
     private @Nullable List<String> allowedDomains;
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     private String clientId;
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     private String clientSecret;
 
     private GetGrafanaGrafanaUserConfigAuthGoogle() {}
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
+    /**
+     * @return Domains allowed to sign-in to this Grafana.
+     * 
+     */
     public List<String> allowedDomains() {
         return this.allowedDomains == null ? List.of() : this.allowedDomains;
     }
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
