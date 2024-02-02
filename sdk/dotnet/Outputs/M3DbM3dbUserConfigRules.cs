@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigRules
     {
+        /// <summary>
+        /// List of M3 mapping rules.
+        /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMapping> Mappings;
 
         [OutputConstructor]

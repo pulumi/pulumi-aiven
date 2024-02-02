@@ -13,21 +13,53 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigNamespace {
+    /**
+     * @return The name of the namespace.
+     * 
+     */
     private String name;
+    /**
+     * @return Namespace options.
+     * 
+     */
     private @Nullable M3DbM3dbUserConfigNamespaceOptions options;
+    /**
+     * @return The resolution for an aggregated namespace.
+     * 
+     */
     private @Nullable String resolution;
+    /**
+     * @return The type of aggregation (aggregated/unaggregated).
+     * 
+     */
     private String type;
 
     private M3DbM3dbUserConfigNamespace() {}
+    /**
+     * @return The name of the namespace.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return Namespace options.
+     * 
+     */
     public Optional<M3DbM3dbUserConfigNamespaceOptions> options() {
         return Optional.ofNullable(this.options);
     }
+    /**
+     * @return The resolution for an aggregated namespace.
+     * 
+     */
     public Optional<String> resolution() {
         return Optional.ofNullable(this.resolution);
     }
+    /**
+     * @return The type of aggregation (aggregated/unaggregated).
+     * 
+     */
     public String type() {
         return this.type;
     }

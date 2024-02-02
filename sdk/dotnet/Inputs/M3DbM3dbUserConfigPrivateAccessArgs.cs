@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigPrivateAccessArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Allow clients to connect to m3coordinator with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// </summary>
         [Input("m3coordinator")]
         public Input<bool>? M3coordinator { get; set; }
 

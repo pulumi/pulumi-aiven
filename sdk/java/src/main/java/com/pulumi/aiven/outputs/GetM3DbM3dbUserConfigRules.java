@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigRules {
+    /**
+     * @return List of M3 mapping rules.
+     * 
+     */
     private @Nullable List<GetM3DbM3dbUserConfigRulesMapping> mappings;
 
     private GetM3DbM3dbUserConfigRules() {}
+    /**
+     * @return List of M3 mapping rules.
+     * 
+     */
     public List<GetM3DbM3dbUserConfigRulesMapping> mappings() {
         return this.mappings == null ? List.of() : this.mappings;
     }

@@ -16,16 +16,32 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
 
     public static final KafkaConnectorTaskArgs Empty = new KafkaConnectorTaskArgs();
 
+    /**
+     * The name of the related connector.
+     * 
+     */
     @Import(name="connector")
     private @Nullable Output<String> connector;
 
+    /**
+     * @return The name of the related connector.
+     * 
+     */
     public Optional<Output<String>> connector() {
         return Optional.ofNullable(this.connector);
     }
 
+    /**
+     * The task id of the task.
+     * 
+     */
     @Import(name="task")
     private @Nullable Output<Integer> task;
 
+    /**
+     * @return The task id of the task.
+     * 
+     */
     public Optional<Output<Integer>> task() {
         return Optional.ofNullable(this.task);
     }
@@ -55,20 +71,44 @@ public final class KafkaConnectorTaskArgs extends com.pulumi.resources.ResourceA
             $ = new KafkaConnectorTaskArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param connector The name of the related connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connector(@Nullable Output<String> connector) {
             $.connector = connector;
             return this;
         }
 
+        /**
+         * @param connector The name of the related connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder connector(String connector) {
             return connector(Output.of(connector));
         }
 
+        /**
+         * @param task The task id of the task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder task(@Nullable Output<Integer> task) {
             $.task = task;
             return this;
         }
 
+        /**
+         * @param task The task id of the task.
+         * 
+         * @return builder
+         * 
+         */
         public Builder task(Integer task) {
             return task(Output.of(task));
         }

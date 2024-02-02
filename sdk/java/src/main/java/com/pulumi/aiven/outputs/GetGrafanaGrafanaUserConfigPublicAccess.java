@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigPublicAccess {
+    /**
+     * @return Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean grafana;
 
     private GetGrafanaGrafanaUserConfigPublicAccess() {}
+    /**
+     * @return Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> grafana() {
         return Optional.ofNullable(this.grafana);
     }

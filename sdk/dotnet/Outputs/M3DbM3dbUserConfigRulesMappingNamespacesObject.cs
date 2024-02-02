@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigRulesMappingNamespacesObject
     {
+        /// <summary>
+        /// The resolution for the matching namespace.
+        /// </summary>
         public readonly string? Resolution;
+        /// <summary>
+        /// The retention period of the matching namespace.
+        /// </summary>
         public readonly string? Retention;
 
         [OutputConstructor]

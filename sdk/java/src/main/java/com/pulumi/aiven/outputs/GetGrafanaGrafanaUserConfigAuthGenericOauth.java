@@ -14,49 +14,137 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     private @Nullable Boolean allowSignUp;
+    /**
+     * @return Allowed domains.
+     * 
+     */
     private @Nullable List<String> allowedDomains;
+    /**
+     * @return Require user to be member of one of the listed organizations.
+     * 
+     */
     private @Nullable List<String> allowedOrganizations;
+    /**
+     * @return API URL.
+     * 
+     */
     private String apiUrl;
+    /**
+     * @return Authorization URL.
+     * 
+     */
     private String authUrl;
+    /**
+     * @return Allow users to bypass the login screen and automatically log in.
+     * 
+     */
     private @Nullable Boolean autoLogin;
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     private String clientId;
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return Name of the OAuth integration.
+     * 
+     */
     private @Nullable String name;
+    /**
+     * @return OAuth scopes.
+     * 
+     */
     private @Nullable List<String> scopes;
+    /**
+     * @return Token URL.
+     * 
+     */
     private String tokenUrl;
 
     private GetGrafanaGrafanaUserConfigAuthGenericOauth() {}
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
+    /**
+     * @return Allowed domains.
+     * 
+     */
     public List<String> allowedDomains() {
         return this.allowedDomains == null ? List.of() : this.allowedDomains;
     }
+    /**
+     * @return Require user to be member of one of the listed organizations.
+     * 
+     */
     public List<String> allowedOrganizations() {
         return this.allowedOrganizations == null ? List.of() : this.allowedOrganizations;
     }
+    /**
+     * @return API URL.
+     * 
+     */
     public String apiUrl() {
         return this.apiUrl;
     }
+    /**
+     * @return Authorization URL.
+     * 
+     */
     public String authUrl() {
         return this.authUrl;
     }
+    /**
+     * @return Allow users to bypass the login screen and automatically log in.
+     * 
+     */
     public Optional<Boolean> autoLogin() {
         return Optional.ofNullable(this.autoLogin);
     }
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Name of the OAuth integration.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return OAuth scopes.
+     * 
+     */
     public List<String> scopes() {
         return this.scopes == null ? List.of() : this.scopes;
     }
+    /**
+     * @return Token URL.
+     * 
+     */
     public String tokenUrl() {
         return this.tokenUrl;
     }

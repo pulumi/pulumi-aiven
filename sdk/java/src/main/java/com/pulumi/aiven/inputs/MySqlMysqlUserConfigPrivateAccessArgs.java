@@ -15,23 +15,47 @@ public final class MySqlMysqlUserConfigPrivateAccessArgs extends com.pulumi.reso
 
     public static final MySqlMysqlUserConfigPrivateAccessArgs Empty = new MySqlMysqlUserConfigPrivateAccessArgs();
 
+    /**
+     * Allow clients to connect to mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="mysql")
     private @Nullable Output<Boolean> mysql;
 
+    /**
+     * @return Allow clients to connect to mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
 
+    /**
+     * Allow clients to connect to mysqlx with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="mysqlx")
     private @Nullable Output<Boolean> mysqlx;
 
+    /**
+     * @return Allow clients to connect to mysqlx with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
 
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -62,29 +86,65 @@ public final class MySqlMysqlUserConfigPrivateAccessArgs extends com.pulumi.reso
             $ = new MySqlMysqlUserConfigPrivateAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mysql Allow clients to connect to mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(@Nullable Output<Boolean> mysql) {
             $.mysql = mysql;
             return this;
         }
 
+        /**
+         * @param mysql Allow clients to connect to mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(Boolean mysql) {
             return mysql(Output.of(mysql));
         }
 
+        /**
+         * @param mysqlx Allow clients to connect to mysqlx with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlx(@Nullable Output<Boolean> mysqlx) {
             $.mysqlx = mysqlx;
             return this;
         }
 
+        /**
+         * @param mysqlx Allow clients to connect to mysqlx with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlx(Boolean mysqlx) {
             return mysqlx(Output.of(mysqlx));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

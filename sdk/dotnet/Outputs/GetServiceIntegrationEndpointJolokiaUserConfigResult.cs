@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointJolokiaUserConfigResult
     {
+        /// <summary>
+        /// Jolokia basic authentication password.
+        /// </summary>
         public readonly string? BasicAuthPassword;
+        /// <summary>
+        /// Jolokia basic authentication username.
+        /// </summary>
         public readonly string? BasicAuthUsername;
 
         [OutputConstructor]

@@ -13,23 +13,77 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfig
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// M3 limits.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigLimits? Limits;
+        /// <summary>
+        /// M3 specific configuration options.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigM3? M3;
+        /// <summary>
+        /// M3 major version (deprecated, use m3db_version).
+        /// </summary>
         public readonly string? M3Version;
+        /// <summary>
+        /// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+        /// </summary>
         public readonly bool? M3coordinatorEnableGraphiteCarbonIngest;
+        /// <summary>
+        /// M3 major version (the minimum compatible version).
+        /// </summary>
         public readonly string? M3dbVersion;
+        /// <summary>
+        /// List of M3 namespaces.
+        /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> Namespaces;
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ProjectToForkFrom;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// M3 rules.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

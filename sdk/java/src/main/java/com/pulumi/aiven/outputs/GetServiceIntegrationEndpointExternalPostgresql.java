@@ -13,29 +13,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointExternalPostgresql {
+    /**
+     * @return Hostname or IP address of the server.
+     * 
+     */
     private String host;
+    /**
+     * @return Password.
+     * 
+     */
     private String password;
+    /**
+     * @return Port number of the server.
+     * 
+     */
     private Integer port;
+    /**
+     * @return SSL Mode. The default value is `verify-full`.
+     * 
+     */
     private @Nullable String sslMode;
+    /**
+     * @return SSL Root Cert.
+     * 
+     */
     private @Nullable String sslRootCert;
+    /**
+     * @return User name.
+     * 
+     */
     private String username;
 
     private GetServiceIntegrationEndpointExternalPostgresql() {}
+    /**
+     * @return Hostname or IP address of the server.
+     * 
+     */
     public String host() {
         return this.host;
     }
+    /**
+     * @return Password.
+     * 
+     */
     public String password() {
         return this.password;
     }
+    /**
+     * @return Port number of the server.
+     * 
+     */
     public Integer port() {
         return this.port;
     }
+    /**
+     * @return SSL Mode. The default value is `verify-full`.
+     * 
+     */
     public Optional<String> sslMode() {
         return Optional.ofNullable(this.sslMode);
     }
+    /**
+     * @return SSL Root Cert.
+     * 
+     */
     public Optional<String> sslRootCert() {
         return Optional.ofNullable(this.sslRootCert);
     }
+    /**
+     * @return User name.
+     * 
+     */
     public String username() {
         return this.username;
     }

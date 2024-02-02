@@ -13,28 +13,97 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigResult
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
+        /// </summary>
         public readonly bool? DisableReplicationFactorAdjustment;
+        /// <summary>
+        /// Index patterns.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult> IndexPatterns;
+        /// <summary>
+        /// Template settings for all new indexes.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult? IndexTemplate;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
+        /// </summary>
         public readonly bool? KeepIndexRefreshInterval;
+        /// <summary>
+        /// Use index_patterns instead. The default value is `0`.
+        /// </summary>
         public readonly int? MaxIndexCount;
+        /// <summary>
+        /// OpenSearch OpenID Connect Configuration.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpenidResult? Openid;
+        /// <summary>
+        /// OpenSearch settings.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchResult? Opensearch;
+        /// <summary>
+        /// OpenSearch Dashboards settings.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult? OpensearchDashboards;
+        /// <summary>
+        /// OpenSearch major version.
+        /// </summary>
         public readonly string? OpensearchVersion;
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigPrivateAccessResult? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ProjectToForkFrom;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigPublicAccessResult? PublicAccess;
+        /// <summary>
+        /// Name of the basebackup to restore in forked service.
+        /// </summary>
         public readonly string? RecoveryBasebackupName;
+        /// <summary>
+        /// OpenSearch SAML configuration.
+        /// </summary>
         public readonly Outputs.GetOpenSearchOpensearchUserConfigSamlResult? Saml;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         public readonly string? ServiceToForkFrom;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

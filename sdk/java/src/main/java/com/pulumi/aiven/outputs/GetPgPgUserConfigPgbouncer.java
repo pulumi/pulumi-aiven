@@ -14,41 +14,113 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPgbouncer {
+    /**
+     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * 
+     */
     private @Nullable Integer autodbIdleTimeout;
+    /**
+     * @return Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * 
+     */
     private @Nullable Integer autodbMaxDbConnections;
+    /**
+     * @return PGBouncer pool mode.
+     * 
+     */
     private @Nullable String autodbPoolMode;
+    /**
+     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist.
+     * 
+     */
     private @Nullable Integer autodbPoolSize;
+    /**
+     * @return List of parameters to ignore when given in startup packet.
+     * 
+     */
     private @Nullable List<String> ignoreStartupParameters;
+    /**
+     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * 
+     */
     private @Nullable Integer minPoolSize;
+    /**
+     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * 
+     */
     private @Nullable Integer serverIdleTimeout;
+    /**
+     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * 
+     */
     private @Nullable Integer serverLifetime;
+    /**
+     * @return Run server_reset_query (DISCARD ALL) in all pooling modes.
+     * 
+     */
     private @Nullable Boolean serverResetQueryAlways;
 
     private GetPgPgUserConfigPgbouncer() {}
+    /**
+     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * 
+     */
     public Optional<Integer> autodbIdleTimeout() {
         return Optional.ofNullable(this.autodbIdleTimeout);
     }
+    /**
+     * @return Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * 
+     */
     public Optional<Integer> autodbMaxDbConnections() {
         return Optional.ofNullable(this.autodbMaxDbConnections);
     }
+    /**
+     * @return PGBouncer pool mode.
+     * 
+     */
     public Optional<String> autodbPoolMode() {
         return Optional.ofNullable(this.autodbPoolMode);
     }
+    /**
+     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist.
+     * 
+     */
     public Optional<Integer> autodbPoolSize() {
         return Optional.ofNullable(this.autodbPoolSize);
     }
+    /**
+     * @return List of parameters to ignore when given in startup packet.
+     * 
+     */
     public List<String> ignoreStartupParameters() {
         return this.ignoreStartupParameters == null ? List.of() : this.ignoreStartupParameters;
     }
+    /**
+     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * 
+     */
     public Optional<Integer> minPoolSize() {
         return Optional.ofNullable(this.minPoolSize);
     }
+    /**
+     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * 
+     */
     public Optional<Integer> serverIdleTimeout() {
         return Optional.ofNullable(this.serverIdleTimeout);
     }
+    /**
+     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * 
+     */
     public Optional<Integer> serverLifetime() {
         return Optional.ofNullable(this.serverLifetime);
     }
+    /**
+     * @return Run server_reset_query (DISCARD ALL) in all pooling modes.
+     * 
+     */
     public Optional<Boolean> serverResetQueryAlways() {
         return Optional.ofNullable(this.serverResetQueryAlways);
     }

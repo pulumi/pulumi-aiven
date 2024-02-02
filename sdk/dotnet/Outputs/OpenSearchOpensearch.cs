@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class OpenSearchOpensearch
     {
+        /// <summary>
+        /// URI for OpenSearch dashboard frontend
+        /// </summary>
         public readonly string? OpensearchDashboardsUri;
 
         [OutputConstructor]

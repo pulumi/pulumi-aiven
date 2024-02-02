@@ -12,6 +12,9 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class MySqlTechEmailArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An email address to contact for technical issues
+        /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 

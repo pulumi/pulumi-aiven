@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
+    /**
+     * @return The resolution for the matching namespace.
+     * 
+     */
     private @Nullable String resolution;
+    /**
+     * @return The retention period of the matching namespace.
+     * 
+     */
     private @Nullable String retention;
 
     private GetM3DbM3dbUserConfigRulesMappingNamespacesObject() {}
+    /**
+     * @return The resolution for the matching namespace.
+     * 
+     */
     public Optional<String> resolution() {
         return Optional.ofNullable(this.resolution);
     }
+    /**
+     * @return The retention period of the matching namespace.
+     * 
+     */
     public Optional<String> retention() {
         return Optional.ofNullable(this.retention);
     }

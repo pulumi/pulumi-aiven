@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable opensearch.
+     * 
+     */
     private @Nullable Boolean opensearch;
+    /**
+     * @return Enable opensearch_dashboards.
+     * 
+     */
     private @Nullable Boolean opensearchDashboards;
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetOpenSearchOpensearchUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable opensearch.
+     * 
+     */
     public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return Enable opensearch_dashboards.
+     * 
+     */
     public Optional<Boolean> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

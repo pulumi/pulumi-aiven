@@ -11,37 +11,101 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigDateFormats {
+    /**
+     * @return Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+     * 
+     */
     private @Nullable String defaultTimezone;
+    /**
+     * @return Moment.js style format string for cases where full date is shown.
+     * 
+     */
     private @Nullable String fullDate;
+    /**
+     * @return Moment.js style format string used when a time requiring day accuracy is shown.
+     * 
+     */
     private @Nullable String intervalDay;
+    /**
+     * @return Moment.js style format string used when a time requiring hour accuracy is shown.
+     * 
+     */
     private @Nullable String intervalHour;
+    /**
+     * @return Moment.js style format string used when a time requiring minute accuracy is shown.
+     * 
+     */
     private @Nullable String intervalMinute;
+    /**
+     * @return Moment.js style format string used when a time requiring month accuracy is shown.
+     * 
+     */
     private @Nullable String intervalMonth;
+    /**
+     * @return Moment.js style format string used when a time requiring second accuracy is shown.
+     * 
+     */
     private @Nullable String intervalSecond;
+    /**
+     * @return Moment.js style format string used when a time requiring year accuracy is shown.
+     * 
+     */
     private @Nullable String intervalYear;
 
     private GrafanaGrafanaUserConfigDateFormats() {}
+    /**
+     * @return Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+     * 
+     */
     public Optional<String> defaultTimezone() {
         return Optional.ofNullable(this.defaultTimezone);
     }
+    /**
+     * @return Moment.js style format string for cases where full date is shown.
+     * 
+     */
     public Optional<String> fullDate() {
         return Optional.ofNullable(this.fullDate);
     }
+    /**
+     * @return Moment.js style format string used when a time requiring day accuracy is shown.
+     * 
+     */
     public Optional<String> intervalDay() {
         return Optional.ofNullable(this.intervalDay);
     }
+    /**
+     * @return Moment.js style format string used when a time requiring hour accuracy is shown.
+     * 
+     */
     public Optional<String> intervalHour() {
         return Optional.ofNullable(this.intervalHour);
     }
+    /**
+     * @return Moment.js style format string used when a time requiring minute accuracy is shown.
+     * 
+     */
     public Optional<String> intervalMinute() {
         return Optional.ofNullable(this.intervalMinute);
     }
+    /**
+     * @return Moment.js style format string used when a time requiring month accuracy is shown.
+     * 
+     */
     public Optional<String> intervalMonth() {
         return Optional.ofNullable(this.intervalMonth);
     }
+    /**
+     * @return Moment.js style format string used when a time requiring second accuracy is shown.
+     * 
+     */
     public Optional<String> intervalSecond() {
         return Optional.ofNullable(this.intervalSecond);
     }
+    /**
+     * @return Moment.js style format string used when a time requiring year accuracy is shown.
+     * 
+     */
     public Optional<String> intervalYear() {
         return Optional.ofNullable(this.intervalYear);
     }

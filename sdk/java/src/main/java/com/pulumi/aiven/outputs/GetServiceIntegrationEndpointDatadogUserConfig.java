@@ -16,33 +16,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationEndpointDatadogUserConfig {
+    /**
+     * @return Datadog API key.
+     * 
+     */
     private String datadogApiKey;
+    /**
+     * @return Custom tags provided by user.
+     * 
+     */
     private @Nullable List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
+    /**
+     * @return Disable consumer group metrics.
+     * 
+     */
     private @Nullable Boolean disableConsumerStats;
+    /**
+     * @return Number of separate instances to fetch kafka consumer statistics with.
+     * 
+     */
     private @Nullable Integer kafkaConsumerCheckInstances;
+    /**
+     * @return Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * 
+     */
     private @Nullable Integer kafkaConsumerStatsTimeout;
+    /**
+     * @return Maximum number of partition contexts to send.
+     * 
+     */
     private @Nullable Integer maxPartitionContexts;
+    /**
+     * @return Datadog intake site. Defaults to datadoghq.com.
+     * 
+     */
     private @Nullable String site;
 
     private GetServiceIntegrationEndpointDatadogUserConfig() {}
+    /**
+     * @return Datadog API key.
+     * 
+     */
     public String datadogApiKey() {
         return this.datadogApiKey;
     }
+    /**
+     * @return Custom tags provided by user.
+     * 
+     */
     public List<GetServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags() {
         return this.datadogTags == null ? List.of() : this.datadogTags;
     }
+    /**
+     * @return Disable consumer group metrics.
+     * 
+     */
     public Optional<Boolean> disableConsumerStats() {
         return Optional.ofNullable(this.disableConsumerStats);
     }
+    /**
+     * @return Number of separate instances to fetch kafka consumer statistics with.
+     * 
+     */
     public Optional<Integer> kafkaConsumerCheckInstances() {
         return Optional.ofNullable(this.kafkaConsumerCheckInstances);
     }
+    /**
+     * @return Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * 
+     */
     public Optional<Integer> kafkaConsumerStatsTimeout() {
         return Optional.ofNullable(this.kafkaConsumerStatsTimeout);
     }
+    /**
+     * @return Maximum number of partition contexts to send.
+     * 
+     */
     public Optional<Integer> maxPartitionContexts() {
         return Optional.ofNullable(this.maxPartitionContexts);
     }
+    /**
+     * @return Datadog intake site. Defaults to datadoghq.com.
+     * 
+     */
     public Optional<String> site() {
         return Optional.ofNullable(this.site);
     }

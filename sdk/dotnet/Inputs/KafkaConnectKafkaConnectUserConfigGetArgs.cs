@@ -12,11 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaConnectKafkaConnectUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
             get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.KafkaConnectKafkaConnectUserConfigIpFilterObjectGetArgs>());
@@ -25,6 +32,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilterStrings")]
         private InputList<string>? _ipFilterStrings;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<string> IpFilterStrings
         {
             get => _ipFilterStrings ?? (_ipFilterStrings = new InputList<string>());
@@ -33,6 +44,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
@@ -40,21 +55,39 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// Kafka Connect configuration values.
+        /// </summary>
         [Input("kafkaConnect")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs>? KafkaConnect { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaConnectKafkaConnectUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         [Input("serviceLog")]
         public Input<bool>? ServiceLog { get; set; }
 
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
 

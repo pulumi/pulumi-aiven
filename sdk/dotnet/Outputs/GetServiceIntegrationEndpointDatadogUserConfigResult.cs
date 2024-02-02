@@ -13,12 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointDatadogUserConfigResult
     {
+        /// <summary>
+        /// Datadog API key.
+        /// </summary>
         public readonly string DatadogApiKey;
+        /// <summary>
+        /// Custom tags provided by user.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTagResult> DatadogTags;
+        /// <summary>
+        /// Disable consumer group metrics.
+        /// </summary>
         public readonly bool? DisableConsumerStats;
+        /// <summary>
+        /// Number of separate instances to fetch kafka consumer statistics with.
+        /// </summary>
         public readonly int? KafkaConsumerCheckInstances;
+        /// <summary>
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers.
+        /// </summary>
         public readonly int? KafkaConsumerStatsTimeout;
+        /// <summary>
+        /// Maximum number of partition contexts to send.
+        /// </summary>
         public readonly int? MaxPartitionContexts;
+        /// <summary>
+        /// Datadog intake site. Defaults to datadoghq.com.
+        /// </summary>
         public readonly string? Site;
 
         [OutputConstructor]

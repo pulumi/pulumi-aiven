@@ -12,33 +12,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfigInfluxdb {
+    /**
+     * @return The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+     * 
+     */
     private @Nullable Integer logQueriesAfter;
+    /**
+     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * 
+     */
     private @Nullable Integer maxConnectionLimit;
+    /**
+     * @return The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
+     * 
+     */
     private @Nullable Integer maxRowLimit;
+    /**
+     * @return The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
+     * 
+     */
     private @Nullable Integer maxSelectBuckets;
+    /**
+     * @return The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+     * 
+     */
     private @Nullable Integer maxSelectPoint;
+    /**
+     * @return Whether queries should be logged before execution. May log sensitive data contained within a query.
+     * 
+     */
     private @Nullable Boolean queryLogEnabled;
+    /**
+     * @return The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
+     * 
+     */
     private @Nullable Integer queryTimeout;
 
     private GetInfluxDbInfluxdbUserConfigInfluxdb() {}
+    /**
+     * @return The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
+     * 
+     */
     public Optional<Integer> logQueriesAfter() {
         return Optional.ofNullable(this.logQueriesAfter);
     }
+    /**
+     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * 
+     */
     public Optional<Integer> maxConnectionLimit() {
         return Optional.ofNullable(this.maxConnectionLimit);
     }
+    /**
+     * @return The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
+     * 
+     */
     public Optional<Integer> maxRowLimit() {
         return Optional.ofNullable(this.maxRowLimit);
     }
+    /**
+     * @return The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
+     * 
+     */
     public Optional<Integer> maxSelectBuckets() {
         return Optional.ofNullable(this.maxSelectBuckets);
     }
+    /**
+     * @return The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
+     * 
+     */
     public Optional<Integer> maxSelectPoint() {
         return Optional.ofNullable(this.maxSelectPoint);
     }
+    /**
+     * @return Whether queries should be logged before execution. May log sensitive data contained within a query.
+     * 
+     */
     public Optional<Boolean> queryLogEnabled() {
         return Optional.ofNullable(this.queryLogEnabled);
     }
+    /**
+     * @return The maximum duration in seconds before a query is killed. Setting this to 0 (the default) will never kill slow queries.
+     * 
+     */
     public Optional<Integer> queryTimeout() {
         return Optional.ofNullable(this.queryTimeout);
     }

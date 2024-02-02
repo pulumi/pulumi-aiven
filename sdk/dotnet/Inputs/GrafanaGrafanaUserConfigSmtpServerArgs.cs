@@ -12,17 +12,30 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigSmtpServerArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Address used for sending emails.
+        /// </summary>
         [Input("fromAddress", required: true)]
         public Input<string> FromAddress { get; set; } = null!;
 
+        /// <summary>
+        /// Name used in outgoing emails, defaults to Grafana.
+        /// </summary>
         [Input("fromName")]
         public Input<string>? FromName { get; set; }
 
+        /// <summary>
+        /// Server hostname or IP.
+        /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
         [Input("password")]
         private Input<string>? _password;
+
+        /// <summary>
+        /// Password for SMTP authentication.
+        /// </summary>
         public Input<string>? Password
         {
             get => _password;
@@ -33,15 +46,27 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        /// <summary>
+        /// SMTP server port.
+        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
+        /// <summary>
+        /// Skip verifying server certificate. Defaults to false.
+        /// </summary>
         [Input("skipVerify")]
         public Input<bool>? SkipVerify { get; set; }
 
+        /// <summary>
+        /// Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        /// </summary>
         [Input("starttlsPolicy")]
         public Input<string>? StarttlsPolicy { get; set; }
 
+        /// <summary>
+        /// Username for SMTP authentication.
+        /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }
 

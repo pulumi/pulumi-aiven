@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable jolokia.
+     * 
+     */
     private @Nullable Boolean jolokia;
+    /**
+     * @return Enable kafka_connect.
+     * 
+     */
     private @Nullable Boolean kafkaConnect;
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable jolokia.
+     * 
+     */
     public Optional<Boolean> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
+    /**
+     * @return Enable kafka_connect.
+     * 
+     */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

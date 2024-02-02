@@ -12,12 +12,21 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigNamespaceOptionsGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Retention options.
+        /// </summary>
         [Input("retentionOptions")]
         public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsGetArgs>? RetentionOptions { get; set; }
 
+        /// <summary>
+        /// Controls whether M3DB will create snapshot files for this namespace.
+        /// </summary>
         [Input("snapshotEnabled")]
         public Input<bool>? SnapshotEnabled { get; set; }
 
+        /// <summary>
+        /// Controls whether M3DB will include writes to this namespace in the commitlog.
+        /// </summary>
         [Input("writesToCommitlog")]
         public Input<bool>? WritesToCommitlog { get; set; }
 

@@ -14,23 +14,40 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("aggregations")]
         private InputList<string>? _aggregations;
+
+        /// <summary>
+        /// List of aggregations to be applied.
+        /// </summary>
         public InputList<string> Aggregations
         {
             get => _aggregations ?? (_aggregations = new InputList<string>());
             set => _aggregations = value;
         }
 
+        /// <summary>
+        /// Only store the derived metric (as specified in the roll-up rules), if any.
+        /// </summary>
         [Input("drop")]
         public Input<bool>? Drop { get; set; }
 
+        /// <summary>
+        /// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        /// </summary>
         [Input("filter", required: true)]
         public Input<string> Filter { get; set; } = null!;
 
+        /// <summary>
+        /// The (optional) name of the rule.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("namespaces")]
         private InputList<string>? _namespaces;
+
+        /// <summary>
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+        /// </summary>
         [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
         public InputList<string> Namespaces
         {
@@ -40,6 +57,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("namespacesObjects")]
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>? _namespacesObjects;
+
+        /// <summary>
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs> NamespacesObjects
         {
             get => _namespacesObjects ?? (_namespacesObjects = new InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>());
@@ -48,6 +69,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("namespacesStrings")]
         private InputList<string>? _namespacesStrings;
+
+        /// <summary>
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+        /// </summary>
         public InputList<string> NamespacesStrings
         {
             get => _namespacesStrings ?? (_namespacesStrings = new InputList<string>());
@@ -56,6 +81,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("tags")]
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagArgs>? _tags;
+
+        /// <summary>
+        /// List of tags to be appended to matching metrics.
+        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagArgs> Tags
         {
             get => _tags ?? (_tags = new InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagArgs>());

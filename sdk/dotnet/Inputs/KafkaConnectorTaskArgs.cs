@@ -12,9 +12,15 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class KafkaConnectorTaskArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the related connector.
+        /// </summary>
         [Input("connector")]
         public Input<string>? Connector { get; set; }
 
+        /// <summary>
+        /// The task id of the task.
+        /// </summary>
         [Input("task")]
         public Input<int>? Task { get; set; }
 

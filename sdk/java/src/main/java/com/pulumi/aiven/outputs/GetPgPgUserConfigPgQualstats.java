@@ -12,25 +12,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPgQualstats {
+    /**
+     * @return Enable / Disable pg_qualstats. The default value is `false`.
+     * 
+     */
     private @Nullable Boolean enabled;
+    /**
+     * @return Error estimation num threshold to save quals. The default value is `0`.
+     * 
+     */
     private @Nullable Integer minErrEstimateNum;
+    /**
+     * @return Error estimation ratio threshold to save quals. The default value is `0`.
+     * 
+     */
     private @Nullable Integer minErrEstimateRatio;
+    /**
+     * @return Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean trackConstants;
+    /**
+     * @return Track quals on system catalogs too. The default value is `false`.
+     * 
+     */
     private @Nullable Boolean trackPgCatalog;
 
     private GetPgPgUserConfigPgQualstats() {}
+    /**
+     * @return Enable / Disable pg_qualstats. The default value is `false`.
+     * 
+     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
+    /**
+     * @return Error estimation num threshold to save quals. The default value is `0`.
+     * 
+     */
     public Optional<Integer> minErrEstimateNum() {
         return Optional.ofNullable(this.minErrEstimateNum);
     }
+    /**
+     * @return Error estimation ratio threshold to save quals. The default value is `0`.
+     * 
+     */
     public Optional<Integer> minErrEstimateRatio() {
         return Optional.ofNullable(this.minErrEstimateRatio);
     }
+    /**
+     * @return Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> trackConstants() {
         return Optional.ofNullable(this.trackConstants);
     }
+    /**
+     * @return Track quals on system catalogs too. The default value is `false`.
+     * 
+     */
     public Optional<Boolean> trackPgCatalog() {
         return Optional.ofNullable(this.trackPgCatalog);
     }
