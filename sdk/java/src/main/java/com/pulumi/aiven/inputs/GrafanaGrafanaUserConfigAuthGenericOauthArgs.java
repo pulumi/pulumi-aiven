@@ -18,79 +18,167 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
 
     public static final GrafanaGrafanaUserConfigAuthGenericOauthArgs Empty = new GrafanaGrafanaUserConfigAuthGenericOauthArgs();
 
+    /**
+     * Automatically sign-up users on successful sign-in.
+     * 
+     */
     @Import(name="allowSignUp")
     private @Nullable Output<Boolean> allowSignUp;
 
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
+    /**
+     * Allowed domains.
+     * 
+     */
     @Import(name="allowedDomains")
     private @Nullable Output<List<String>> allowedDomains;
 
+    /**
+     * @return Allowed domains.
+     * 
+     */
     public Optional<Output<List<String>>> allowedDomains() {
         return Optional.ofNullable(this.allowedDomains);
     }
 
+    /**
+     * Require user to be member of one of the listed organizations.
+     * 
+     */
     @Import(name="allowedOrganizations")
     private @Nullable Output<List<String>> allowedOrganizations;
 
+    /**
+     * @return Require user to be member of one of the listed organizations.
+     * 
+     */
     public Optional<Output<List<String>>> allowedOrganizations() {
         return Optional.ofNullable(this.allowedOrganizations);
     }
 
+    /**
+     * API URL.
+     * 
+     */
     @Import(name="apiUrl", required=true)
     private Output<String> apiUrl;
 
+    /**
+     * @return API URL.
+     * 
+     */
     public Output<String> apiUrl() {
         return this.apiUrl;
     }
 
+    /**
+     * Authorization URL.
+     * 
+     */
     @Import(name="authUrl", required=true)
     private Output<String> authUrl;
 
+    /**
+     * @return Authorization URL.
+     * 
+     */
     public Output<String> authUrl() {
         return this.authUrl;
     }
 
+    /**
+     * Allow users to bypass the login screen and automatically log in.
+     * 
+     */
     @Import(name="autoLogin")
     private @Nullable Output<Boolean> autoLogin;
 
+    /**
+     * @return Allow users to bypass the login screen and automatically log in.
+     * 
+     */
     public Optional<Output<Boolean>> autoLogin() {
         return Optional.ofNullable(this.autoLogin);
     }
 
+    /**
+     * Client ID from provider.
+     * 
+     */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public Output<String> clientId() {
         return this.clientId;
     }
 
+    /**
+     * Client secret from provider.
+     * 
+     */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
 
+    /**
+     * Name of the OAuth integration.
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return Name of the OAuth integration.
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * OAuth scopes.
+     * 
+     */
     @Import(name="scopes")
     private @Nullable Output<List<String>> scopes;
 
+    /**
+     * @return OAuth scopes.
+     * 
+     */
     public Optional<Output<List<String>>> scopes() {
         return Optional.ofNullable(this.scopes);
     }
 
+    /**
+     * Token URL.
+     * 
+     */
     @Import(name="tokenUrl", required=true)
     private Output<String> tokenUrl;
 
+    /**
+     * @return Token URL.
+     * 
+     */
     public Output<String> tokenUrl() {
         return this.tokenUrl;
     }
@@ -129,113 +217,263 @@ public final class GrafanaGrafanaUserConfigAuthGenericOauthArgs extends com.pulu
             $ = new GrafanaGrafanaUserConfigAuthGenericOauthArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
+        /**
+         * @param allowedDomains Allowed domains.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(@Nullable Output<List<String>> allowedDomains) {
             $.allowedDomains = allowedDomains;
             return this;
         }
 
+        /**
+         * @param allowedDomains Allowed domains.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(List<String> allowedDomains) {
             return allowedDomains(Output.of(allowedDomains));
         }
 
+        /**
+         * @param allowedDomains Allowed domains.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
 
+        /**
+         * @param allowedOrganizations Require user to be member of one of the listed organizations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedOrganizations(@Nullable Output<List<String>> allowedOrganizations) {
             $.allowedOrganizations = allowedOrganizations;
             return this;
         }
 
+        /**
+         * @param allowedOrganizations Require user to be member of one of the listed organizations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedOrganizations(List<String> allowedOrganizations) {
             return allowedOrganizations(Output.of(allowedOrganizations));
         }
 
+        /**
+         * @param allowedOrganizations Require user to be member of one of the listed organizations.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedOrganizations(String... allowedOrganizations) {
             return allowedOrganizations(List.of(allowedOrganizations));
         }
 
+        /**
+         * @param apiUrl API URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiUrl(Output<String> apiUrl) {
             $.apiUrl = apiUrl;
             return this;
         }
 
+        /**
+         * @param apiUrl API URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder apiUrl(String apiUrl) {
             return apiUrl(Output.of(apiUrl));
         }
 
+        /**
+         * @param authUrl Authorization URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(Output<String> authUrl) {
             $.authUrl = authUrl;
             return this;
         }
 
+        /**
+         * @param authUrl Authorization URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder authUrl(String authUrl) {
             return authUrl(Output.of(authUrl));
         }
 
+        /**
+         * @param autoLogin Allow users to bypass the login screen and automatically log in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoLogin(@Nullable Output<Boolean> autoLogin) {
             $.autoLogin = autoLogin;
             return this;
         }
 
+        /**
+         * @param autoLogin Allow users to bypass the login screen and automatically log in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder autoLogin(Boolean autoLogin) {
             return autoLogin(Output.of(autoLogin));
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }
 
+        /**
+         * @param name Name of the OAuth integration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the OAuth integration.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param scopes OAuth scopes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(@Nullable Output<List<String>> scopes) {
             $.scopes = scopes;
             return this;
         }
 
+        /**
+         * @param scopes OAuth scopes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(List<String> scopes) {
             return scopes(Output.of(scopes));
         }
 
+        /**
+         * @param scopes OAuth scopes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
         }
 
+        /**
+         * @param tokenUrl Token URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenUrl(Output<String> tokenUrl) {
             $.tokenUrl = tokenUrl;
             return this;
         }
 
+        /**
+         * @param tokenUrl Token URL.
+         * 
+         * @return builder
+         * 
+         */
         public Builder tokenUrl(String tokenUrl) {
             return tokenUrl(Output.of(tokenUrl));
         }

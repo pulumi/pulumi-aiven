@@ -17,30 +17,62 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
 
     public static final M3DbM3dbUserConfigNamespaceArgs Empty = new M3DbM3dbUserConfigNamespaceArgs();
 
+    /**
+     * The name of the namespace.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return The name of the namespace.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Namespace options.
+     * 
+     */
     @Import(name="options")
     private @Nullable Output<M3DbM3dbUserConfigNamespaceOptionsArgs> options;
 
+    /**
+     * @return Namespace options.
+     * 
+     */
     public Optional<Output<M3DbM3dbUserConfigNamespaceOptionsArgs>> options() {
         return Optional.ofNullable(this.options);
     }
 
+    /**
+     * The resolution for an aggregated namespace.
+     * 
+     */
     @Import(name="resolution")
     private @Nullable Output<String> resolution;
 
+    /**
+     * @return The resolution for an aggregated namespace.
+     * 
+     */
     public Optional<Output<String>> resolution() {
         return Optional.ofNullable(this.resolution);
     }
 
+    /**
+     * The type of aggregation (aggregated/unaggregated).
+     * 
+     */
     @Import(name="type", required=true)
     private Output<String> type;
 
+    /**
+     * @return The type of aggregation (aggregated/unaggregated).
+     * 
+     */
     public Output<String> type() {
         return this.type;
     }
@@ -72,38 +104,86 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
             $ = new M3DbM3dbUserConfigNamespaceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param options Namespace options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(@Nullable Output<M3DbM3dbUserConfigNamespaceOptionsArgs> options) {
             $.options = options;
             return this;
         }
 
+        /**
+         * @param options Namespace options.
+         * 
+         * @return builder
+         * 
+         */
         public Builder options(M3DbM3dbUserConfigNamespaceOptionsArgs options) {
             return options(Output.of(options));
         }
 
+        /**
+         * @param resolution The resolution for an aggregated namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolution(@Nullable Output<String> resolution) {
             $.resolution = resolution;
             return this;
         }
 
+        /**
+         * @param resolution The resolution for an aggregated namespace.
+         * 
+         * @return builder
+         * 
+         */
         public Builder resolution(String resolution) {
             return resolution(Output.of(resolution));
         }
 
+        /**
+         * @param type The type of aggregation (aggregated/unaggregated).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of aggregation (aggregated/unaggregated).
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

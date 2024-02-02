@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPrivateAccess {
+    /**
+     * @return Allow clients to connect to pg with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean pg;
+    /**
+     * @return Allow clients to connect to pgbouncer with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean pgbouncer;
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetPgPgUserConfigPrivateAccess() {}
+    /**
+     * @return Allow clients to connect to pg with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }
+    /**
+     * @return Allow clients to connect to pgbouncer with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

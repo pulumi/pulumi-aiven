@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigM3
     {
+        /// <summary>
+        /// M3 Tag Options.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigM3TagOptions? TagOptions;
 
         [OutputConstructor]

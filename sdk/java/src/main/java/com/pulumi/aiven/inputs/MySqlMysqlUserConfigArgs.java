@@ -24,63 +24,129 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
 
     public static final MySqlMysqlUserConfigArgs Empty = new MySqlMysqlUserConfigArgs();
 
+    /**
+     * Additional Cloud Regions for Backup Replication.
+     * 
+     */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
 
+    /**
+     * Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     @Import(name="adminPassword")
     private @Nullable Output<String> adminPassword;
 
+    /**
+     * @return Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> adminPassword() {
         return Optional.ofNullable(this.adminPassword);
     }
 
+    /**
+     * Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     @Import(name="adminUsername")
     private @Nullable Output<String> adminUsername;
 
+    /**
+     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
 
+    /**
+     * The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     @Import(name="backupHour")
     private @Nullable Output<Integer> backupHour;
 
+    /**
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<Output<Integer>> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
 
+    /**
+     * The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     @Import(name="backupMinute")
     private @Nullable Output<Integer> backupMinute;
 
+    /**
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * 
+     */
     public Optional<Output<Integer>> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
 
+    /**
+     * The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
     @Import(name="binlogRetentionPeriod")
     private @Nullable Output<Integer> binlogRetentionPeriod;
 
+    /**
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * 
+     */
     public Optional<Output<Integer>> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
 
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public Optional<Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
         return Optional.ofNullable(this.ipFilterObjects);
     }
 
+    /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public Optional<Output<List<String>>> ipFilterStrings() {
         return Optional.ofNullable(this.ipFilterStrings);
     }
 
     /**
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -90,6 +156,8 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> ipFilters;
 
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -99,79 +167,167 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.ipFilters);
     }
 
+    /**
+     * Migrate data from existing server.
+     * 
+     */
     @Import(name="migration")
     private @Nullable Output<MySqlMysqlUserConfigMigrationArgs> migration;
 
+    /**
+     * @return Migrate data from existing server.
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigMigrationArgs>> migration() {
         return Optional.ofNullable(this.migration);
     }
 
+    /**
+     * mysql.conf configuration values.
+     * 
+     */
     @Import(name="mysql")
     private @Nullable Output<MySqlMysqlUserConfigMysqlArgs> mysql;
 
+    /**
+     * @return mysql.conf configuration values.
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigMysqlArgs>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
 
+    /**
+     * MySQL major version.
+     * 
+     */
     @Import(name="mysqlVersion")
     private @Nullable Output<String> mysqlVersion;
 
+    /**
+     * @return MySQL major version.
+     * 
+     */
     public Optional<Output<String>> mysqlVersion() {
         return Optional.ofNullable(this.mysqlVersion);
     }
 
+    /**
+     * Allow access to selected service ports from private networks.
+     * 
+     */
     @Import(name="privateAccess")
     private @Nullable Output<MySqlMysqlUserConfigPrivateAccessArgs> privateAccess;
 
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigPrivateAccessArgs>> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
 
+    /**
+     * Allow access to selected service components through Privatelink.
+     * 
+     */
     @Import(name="privatelinkAccess")
     private @Nullable Output<MySqlMysqlUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
+    /**
+     * @return Allow access to selected service components through Privatelink.
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
 
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
 
+    /**
+     * Allow access to selected service ports from the public Internet.
+     * 
+     */
     @Import(name="publicAccess")
     private @Nullable Output<MySqlMysqlUserConfigPublicAccessArgs> publicAccess;
 
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<Output<MySqlMysqlUserConfigPublicAccessArgs>> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
 
+    /**
+     * Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="recoveryTargetTime")
     private @Nullable Output<String> recoveryTargetTime;
 
+    /**
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> recoveryTargetTime() {
         return Optional.ofNullable(this.recoveryTargetTime);
     }
 
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     @Import(name="serviceLog")
     private @Nullable Output<Boolean> serviceLog;
 
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Output<Boolean>> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
 
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<Output<String>> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
 
+    /**
+     * Use static public IP addresses.
+     * 
+     */
     @Import(name="staticIps")
     private @Nullable Output<Boolean> staticIps;
 
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Output<Boolean>> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }
@@ -219,87 +375,197 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
             $ = new MySqlMysqlUserConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
         }
 
+        /**
+         * @param additionalBackupRegions Additional Cloud Regions for Backup Replication.
+         * 
+         * @return builder
+         * 
+         */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
+        /**
+         * @param adminPassword Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminPassword(@Nullable Output<String> adminPassword) {
             $.adminPassword = adminPassword;
             return this;
         }
 
+        /**
+         * @param adminPassword Custom password for admin user. Defaults to random string. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminPassword(String adminPassword) {
             return adminPassword(Output.of(adminPassword));
         }
 
+        /**
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminUsername(@Nullable Output<String> adminUsername) {
             $.adminUsername = adminUsername;
             return this;
         }
 
+        /**
+         * @param adminUsername Custom username for admin user. This must be set only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder adminUsername(String adminUsername) {
             return adminUsername(Output.of(adminUsername));
         }
 
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupHour(@Nullable Output<Integer> backupHour) {
             $.backupHour = backupHour;
             return this;
         }
 
+        /**
+         * @param backupHour The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupHour(Integer backupHour) {
             return backupHour(Output.of(backupHour));
         }
 
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupMinute(@Nullable Output<Integer> backupMinute) {
             $.backupMinute = backupMinute;
             return this;
         }
 
+        /**
+         * @param backupMinute The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupMinute(Integer backupMinute) {
             return backupMinute(Output.of(backupMinute));
         }
 
+        /**
+         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binlogRetentionPeriod(@Nullable Output<Integer> binlogRetentionPeriod) {
             $.binlogRetentionPeriod = binlogRetentionPeriod;
             return this;
         }
 
+        /**
+         * @param binlogRetentionPeriod The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+         * 
+         * @return builder
+         * 
+         */
         public Builder binlogRetentionPeriod(Integer binlogRetentionPeriod) {
             return binlogRetentionPeriod(Output.of(binlogRetentionPeriod));
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(@Nullable Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>> ipFilterObjects) {
             $.ipFilterObjects = ipFilterObjects;
             return this;
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(List<MySqlMysqlUserConfigIpFilterObjectArgs> ipFilterObjects) {
             return ipFilterObjects(Output.of(ipFilterObjects));
         }
 
+        /**
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterObjects(MySqlMysqlUserConfigIpFilterObjectArgs... ipFilterObjects) {
             return ipFilterObjects(List.of(ipFilterObjects));
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(@Nullable Output<List<String>> ipFilterStrings) {
             $.ipFilterStrings = ipFilterStrings;
             return this;
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(List<String> ipFilterStrings) {
             return ipFilterStrings(Output.of(ipFilterStrings));
         }
 
+        /**
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ipFilterStrings(String... ipFilterStrings) {
             return ipFilterStrings(List.of(ipFilterStrings));
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -313,6 +579,8 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -325,6 +593,8 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * 
          * @return builder
          * 
          * @deprecated
@@ -336,101 +606,233 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
             return ipFilters(List.of(ipFilters));
         }
 
+        /**
+         * @param migration Migrate data from existing server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder migration(@Nullable Output<MySqlMysqlUserConfigMigrationArgs> migration) {
             $.migration = migration;
             return this;
         }
 
+        /**
+         * @param migration Migrate data from existing server.
+         * 
+         * @return builder
+         * 
+         */
         public Builder migration(MySqlMysqlUserConfigMigrationArgs migration) {
             return migration(Output.of(migration));
         }
 
+        /**
+         * @param mysql mysql.conf configuration values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(@Nullable Output<MySqlMysqlUserConfigMysqlArgs> mysql) {
             $.mysql = mysql;
             return this;
         }
 
+        /**
+         * @param mysql mysql.conf configuration values.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(MySqlMysqlUserConfigMysqlArgs mysql) {
             return mysql(Output.of(mysql));
         }
 
+        /**
+         * @param mysqlVersion MySQL major version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlVersion(@Nullable Output<String> mysqlVersion) {
             $.mysqlVersion = mysqlVersion;
             return this;
         }
 
+        /**
+         * @param mysqlVersion MySQL major version.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlVersion(String mysqlVersion) {
             return mysqlVersion(Output.of(mysqlVersion));
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(@Nullable Output<MySqlMysqlUserConfigPrivateAccessArgs> privateAccess) {
             $.privateAccess = privateAccess;
             return this;
         }
 
+        /**
+         * @param privateAccess Allow access to selected service ports from private networks.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privateAccess(MySqlMysqlUserConfigPrivateAccessArgs privateAccess) {
             return privateAccess(Output.of(privateAccess));
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(@Nullable Output<MySqlMysqlUserConfigPrivatelinkAccessArgs> privatelinkAccess) {
             $.privatelinkAccess = privatelinkAccess;
             return this;
         }
 
+        /**
+         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * 
+         * @return builder
+         * 
+         */
         public Builder privatelinkAccess(MySqlMysqlUserConfigPrivatelinkAccessArgs privatelinkAccess) {
             return privatelinkAccess(Output.of(privatelinkAccess));
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(@Nullable Output<String> projectToForkFrom) {
             $.projectToForkFrom = projectToForkFrom;
             return this;
         }
 
+        /**
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder projectToForkFrom(String projectToForkFrom) {
             return projectToForkFrom(Output.of(projectToForkFrom));
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(@Nullable Output<MySqlMysqlUserConfigPublicAccessArgs> publicAccess) {
             $.publicAccess = publicAccess;
             return this;
         }
 
+        /**
+         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder publicAccess(MySqlMysqlUserConfigPublicAccessArgs publicAccess) {
             return publicAccess(Output.of(publicAccess));
         }
 
+        /**
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryTargetTime(@Nullable Output<String> recoveryTargetTime) {
             $.recoveryTargetTime = recoveryTargetTime;
             return this;
         }
 
+        /**
+         * @param recoveryTargetTime Recovery target time when forking a service. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder recoveryTargetTime(String recoveryTargetTime) {
             return recoveryTargetTime(Output.of(recoveryTargetTime));
         }
 
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceLog(@Nullable Output<Boolean> serviceLog) {
             $.serviceLog = serviceLog;
             return this;
         }
 
+        /**
+         * @param serviceLog Store logs for the service so that they are available in the HTTP API and console.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceLog(Boolean serviceLog) {
             return serviceLog(Output.of(serviceLog));
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(@Nullable Output<String> serviceToForkFrom) {
             $.serviceToForkFrom = serviceToForkFrom;
             return this;
         }
 
+        /**
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceToForkFrom(String serviceToForkFrom) {
             return serviceToForkFrom(Output.of(serviceToForkFrom));
         }
 
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(@Nullable Output<Boolean> staticIps) {
             $.staticIps = staticIps;
             return this;
         }
 
+        /**
+         * @param staticIps Use static public IP addresses.
+         * 
+         * @return builder
+         * 
+         */
         public Builder staticIps(Boolean staticIps) {
             return staticIps(Output.of(staticIps));
         }

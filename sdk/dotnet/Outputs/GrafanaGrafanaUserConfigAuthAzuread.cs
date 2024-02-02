@@ -13,12 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigAuthAzuread
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         public readonly bool? AllowSignUp;
+        /// <summary>
+        /// Allowed domains.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedDomains;
+        /// <summary>
+        /// Require users to belong to one of given groups.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedGroups;
+        /// <summary>
+        /// Authorization URL.
+        /// </summary>
         public readonly string AuthUrl;
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         public readonly string ClientId;
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         public readonly string ClientSecret;
+        /// <summary>
+        /// Token URL.
+        /// </summary>
         public readonly string TokenUrl;
 
         [OutputConstructor]

@@ -15,9 +15,17 @@ public final class GrafanaGrafanaUserConfigPublicAccessArgs extends com.pulumi.r
 
     public static final GrafanaGrafanaUserConfigPublicAccessArgs Empty = new GrafanaGrafanaUserConfigPublicAccessArgs();
 
+    /**
+     * Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="grafana")
     private @Nullable Output<Boolean> grafana;
 
+    /**
+     * @return Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> grafana() {
         return Optional.ofNullable(this.grafana);
     }
@@ -46,11 +54,23 @@ public final class GrafanaGrafanaUserConfigPublicAccessArgs extends com.pulumi.r
             $ = new GrafanaGrafanaUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param grafana Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder grafana(@Nullable Output<Boolean> grafana) {
             $.grafana = grafana;
             return this;
         }
 
+        /**
+         * @param grafana Allow clients to connect to grafana from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder grafana(Boolean grafana) {
             return grafana(Output.of(grafana));
         }

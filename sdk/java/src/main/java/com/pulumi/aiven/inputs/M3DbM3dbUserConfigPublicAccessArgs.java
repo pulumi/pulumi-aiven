@@ -15,9 +15,17 @@ public final class M3DbM3dbUserConfigPublicAccessArgs extends com.pulumi.resourc
 
     public static final M3DbM3dbUserConfigPublicAccessArgs Empty = new M3DbM3dbUserConfigPublicAccessArgs();
 
+    /**
+     * Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="m3coordinator")
     private @Nullable Output<Boolean> m3coordinator;
 
+    /**
+     * @return Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> m3coordinator() {
         return Optional.ofNullable(this.m3coordinator);
     }
@@ -46,11 +54,23 @@ public final class M3DbM3dbUserConfigPublicAccessArgs extends com.pulumi.resourc
             $ = new M3DbM3dbUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param m3coordinator Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinator(@Nullable Output<Boolean> m3coordinator) {
             $.m3coordinator = m3coordinator;
             return this;
         }
 
+        /**
+         * @param m3coordinator Allow clients to connect to m3coordinator from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder m3coordinator(Boolean m3coordinator) {
             return m3coordinator(Output.of(m3coordinator));
         }

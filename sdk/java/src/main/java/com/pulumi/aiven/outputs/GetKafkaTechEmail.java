@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaTechEmail {
+    /**
+     * @return An email address to contact for technical issues
+     * 
+     */
     private String email;
 
     private GetKafkaTechEmail() {}
+    /**
+     * @return An email address to contact for technical issues
+     * 
+     */
     public String email() {
         return this.email;
     }

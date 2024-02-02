@@ -11,9 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetFlinkFlink {
+    /**
+     * @return Host and Port of a Flink server
+     * 
+     */
     private List<String> hostPorts;
 
     private GetFlinkFlink() {}
+    /**
+     * @return Host and Port of a Flink server
+     * 
+     */
     public List<String> hostPorts() {
         return this.hostPorts;
     }

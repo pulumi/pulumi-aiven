@@ -16,9 +16,17 @@ public final class M3DbM3dbUserConfigRulesArgs extends com.pulumi.resources.Reso
 
     public static final M3DbM3dbUserConfigRulesArgs Empty = new M3DbM3dbUserConfigRulesArgs();
 
+    /**
+     * List of M3 mapping rules.
+     * 
+     */
     @Import(name="mappings")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingArgs>> mappings;
 
+    /**
+     * @return List of M3 mapping rules.
+     * 
+     */
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingArgs>>> mappings() {
         return Optional.ofNullable(this.mappings);
     }
@@ -47,15 +55,33 @@ public final class M3DbM3dbUserConfigRulesArgs extends com.pulumi.resources.Reso
             $ = new M3DbM3dbUserConfigRulesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mappings List of M3 mapping rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappings(@Nullable Output<List<M3DbM3dbUserConfigRulesMappingArgs>> mappings) {
             $.mappings = mappings;
             return this;
         }
 
+        /**
+         * @param mappings List of M3 mapping rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappings(List<M3DbM3dbUserConfigRulesMappingArgs> mappings) {
             return mappings(Output.of(mappings));
         }
 
+        /**
+         * @param mappings List of M3 mapping rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mappings(M3DbM3dbUserConfigRulesMappingArgs... mappings) {
             return mappings(List.of(mappings));
         }

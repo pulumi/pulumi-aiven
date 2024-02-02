@@ -14,10 +14,24 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3AggregatorM3aggregatorUserConfig {
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * 
+     */
     private @Nullable String customDomain;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<GetM3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<String> ipFilterStrings;
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -25,27 +39,55 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
     /**
+     * @return M3 major version (deprecated, use m3aggregator_version).
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
      */
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
+    /**
+     * @return M3 major version (the minimum compatible version).
+     * 
+     */
     private @Nullable String m3aggregatorVersion;
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     private @Nullable Boolean staticIps;
 
     private GetM3AggregatorM3aggregatorUserConfig() {}
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<GetM3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -55,6 +97,8 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
+     * @return M3 major version (deprecated, use m3aggregator_version).
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -63,12 +107,24 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
+    /**
+     * @return M3 major version (the minimum compatible version).
+     * 
+     */
     public Optional<String> m3aggregatorVersion() {
         return Optional.ofNullable(this.m3aggregatorVersion);
     }
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Boolean> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

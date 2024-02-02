@@ -15,23 +15,47 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs exten
 
     public static final KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs Empty = new KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs();
 
+    /**
+     * Enable jolokia.
+     * 
+     */
     @Import(name="jolokia")
     private @Nullable Output<Boolean> jolokia;
 
+    /**
+     * @return Enable jolokia.
+     * 
+     */
     public Optional<Output<Boolean>> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
 
+    /**
+     * Enable kafka_connect.
+     * 
+     */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
+    /**
+     * @return Enable kafka_connect.
+     * 
+     */
     public Optional<Output<Boolean>> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
 
+    /**
+     * Enable prometheus.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -62,29 +86,65 @@ public final class KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs exten
             $ = new KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param jolokia Enable jolokia.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jolokia(@Nullable Output<Boolean> jolokia) {
             $.jolokia = jolokia;
             return this;
         }
 
+        /**
+         * @param jolokia Enable jolokia.
+         * 
+         * @return builder
+         * 
+         */
         public Builder jolokia(Boolean jolokia) {
             return jolokia(Output.of(jolokia));
         }
 
+        /**
+         * @param kafkaConnect Enable kafka_connect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(@Nullable Output<Boolean> kafkaConnect) {
             $.kafkaConnect = kafkaConnect;
             return this;
         }
 
+        /**
+         * @param kafkaConnect Enable kafka_connect.
+         * 
+         * @return builder
+         * 
+         */
         public Builder kafkaConnect(Boolean kafkaConnect) {
             return kafkaConnect(Output.of(kafkaConnect));
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

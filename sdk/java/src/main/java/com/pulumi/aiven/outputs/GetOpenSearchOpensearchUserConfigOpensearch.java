@@ -15,169 +15,497 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearch {
+    /**
+     * @return Explicitly allow or block automatic creation of indices. Defaults to true.
+     * 
+     */
     private @Nullable Boolean actionAutoCreateIndexEnabled;
+    /**
+     * @return Require explicit index names when deleting.
+     * 
+     */
     private @Nullable Boolean actionDestructiveRequiresName;
+    /**
+     * @return Opensearch Security Plugin Settings.
+     * 
+     */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners authFailureListeners;
+    /**
+     * @return Controls the number of shards allowed in the cluster per data node.
+     * 
+     */
     private @Nullable Integer clusterMaxShardsPerNode;
+    /**
+     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * 
+     */
     private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
+    /**
+     * @return This should be identical to the Sender name defined in Opensearch dashboards.
+     * 
+     */
     private @Nullable String emailSenderName;
+    /**
+     * @return Sender password for Opensearch alerts to authenticate with SMTP server.
+     * 
+     */
     private @Nullable String emailSenderPassword;
+    /**
+     * @return Sender username for Opensearch alerts.
+     * 
+     */
     private @Nullable String emailSenderUsername;
+    /**
+     * @return Enable/Disable security audit. The default value is `false`.
+     * 
+     */
     private @Nullable Boolean enableSecurityAudit;
+    /**
+     * @return Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+     * 
+     */
     private @Nullable Integer httpMaxContentLength;
+    /**
+     * @return The max size of allowed headers, in bytes.
+     * 
+     */
     private @Nullable Integer httpMaxHeaderSize;
+    /**
+     * @return The max length of an HTTP URL, in bytes.
+     * 
+     */
     private @Nullable Integer httpMaxInitialLineLength;
+    /**
+     * @return Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+     * 
+     */
     private @Nullable Integer indicesFielddataCacheSize;
+    /**
+     * @return Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * 
+     */
     private @Nullable Integer indicesMemoryIndexBufferSize;
+    /**
+     * @return Absolute value. Default is unbound. Doesn&#39;t work without indices.memory.index_buffer_size. Maximum amount of heap used for query cache, an absolute indices.memory.index_buffer_size maximum hard limit.
+     * 
+     */
     private @Nullable Integer indicesMemoryMaxIndexBufferSize;
+    /**
+     * @return Absolute value. Default is 48mb. Doesn&#39;t work without indices.memory.index_buffer_size. Minimum amount of heap used for query cache, an absolute indices.memory.index_buffer_size minimal hard limit.
+     * 
+     */
     private @Nullable Integer indicesMemoryMinIndexBufferSize;
+    /**
+     * @return Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * 
+     */
     private @Nullable Integer indicesQueriesCacheSize;
+    /**
+     * @return Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+     * 
+     */
     private @Nullable Integer indicesQueryBoolMaxClauseCount;
+    /**
+     * @return Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+     * 
+     */
     private @Nullable Integer indicesRecoveryMaxBytesPerSec;
+    /**
+     * @return Number of file chunks sent in parallel for each recovery. Defaults to 2.
+     * 
+     */
     private @Nullable Integer indicesRecoveryMaxConcurrentFileChunks;
+    /**
+     * @return Specifies whether ISM is enabled or not. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean ismEnabled;
+    /**
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean ismHistoryEnabled;
+    /**
+     * @return The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * 
+     */
     private @Nullable Integer ismHistoryMaxAge;
+    /**
+     * @return The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * 
+     */
     private @Nullable Integer ismHistoryMaxDocs;
+    /**
+     * @return The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * 
+     */
     private @Nullable Integer ismHistoryRolloverCheckPeriod;
+    /**
+     * @return How long audit history indices are kept in days. The default value is `30`.
+     * 
+     */
     private @Nullable Integer ismHistoryRolloverRetentionPeriod;
+    /**
+     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * 
+     */
     private @Nullable Boolean overrideMainResponseVersion;
+    /**
+     * @return Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+     * 
+     */
     private @Nullable List<String> reindexRemoteWhitelists;
+    /**
+     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * 
+     */
     private @Nullable String scriptMaxCompilationsRate;
+    /**
+     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * 
+     */
     private @Nullable Integer searchMaxBuckets;
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     private @Nullable Integer threadPoolAnalyzeQueueSize;
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     private @Nullable Integer threadPoolAnalyzeSize;
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     private @Nullable Integer threadPoolForceMergeSize;
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     private @Nullable Integer threadPoolGetQueueSize;
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     private @Nullable Integer threadPoolGetSize;
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     private @Nullable Integer threadPoolSearchQueueSize;
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     private @Nullable Integer threadPoolSearchSize;
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     private @Nullable Integer threadPoolSearchThrottledQueueSize;
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     private @Nullable Integer threadPoolSearchThrottledSize;
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     private @Nullable Integer threadPoolWriteQueueSize;
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     private @Nullable Integer threadPoolWriteSize;
 
     private GetOpenSearchOpensearchUserConfigOpensearch() {}
+    /**
+     * @return Explicitly allow or block automatic creation of indices. Defaults to true.
+     * 
+     */
     public Optional<Boolean> actionAutoCreateIndexEnabled() {
         return Optional.ofNullable(this.actionAutoCreateIndexEnabled);
     }
+    /**
+     * @return Require explicit index names when deleting.
+     * 
+     */
     public Optional<Boolean> actionDestructiveRequiresName() {
         return Optional.ofNullable(this.actionDestructiveRequiresName);
     }
+    /**
+     * @return Opensearch Security Plugin Settings.
+     * 
+     */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners> authFailureListeners() {
         return Optional.ofNullable(this.authFailureListeners);
     }
+    /**
+     * @return Controls the number of shards allowed in the cluster per data node.
+     * 
+     */
     public Optional<Integer> clusterMaxShardsPerNode() {
         return Optional.ofNullable(this.clusterMaxShardsPerNode);
     }
+    /**
+     * @return How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
+     * 
+     */
     public Optional<Integer> clusterRoutingAllocationNodeConcurrentRecoveries() {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
+    /**
+     * @return This should be identical to the Sender name defined in Opensearch dashboards.
+     * 
+     */
     public Optional<String> emailSenderName() {
         return Optional.ofNullable(this.emailSenderName);
     }
+    /**
+     * @return Sender password for Opensearch alerts to authenticate with SMTP server.
+     * 
+     */
     public Optional<String> emailSenderPassword() {
         return Optional.ofNullable(this.emailSenderPassword);
     }
+    /**
+     * @return Sender username for Opensearch alerts.
+     * 
+     */
     public Optional<String> emailSenderUsername() {
         return Optional.ofNullable(this.emailSenderUsername);
     }
+    /**
+     * @return Enable/Disable security audit. The default value is `false`.
+     * 
+     */
     public Optional<Boolean> enableSecurityAudit() {
         return Optional.ofNullable(this.enableSecurityAudit);
     }
+    /**
+     * @return Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes.
+     * 
+     */
     public Optional<Integer> httpMaxContentLength() {
         return Optional.ofNullable(this.httpMaxContentLength);
     }
+    /**
+     * @return The max size of allowed headers, in bytes.
+     * 
+     */
     public Optional<Integer> httpMaxHeaderSize() {
         return Optional.ofNullable(this.httpMaxHeaderSize);
     }
+    /**
+     * @return The max length of an HTTP URL, in bytes.
+     * 
+     */
     public Optional<Integer> httpMaxInitialLineLength() {
         return Optional.ofNullable(this.httpMaxInitialLineLength);
     }
+    /**
+     * @return Relative amount. Maximum amount of heap memory used for field data cache. This is an expert setting; decreasing the value too much will increase overhead of loading field data; too much memory used for field data cache will decrease amount of heap available for other operations.
+     * 
+     */
     public Optional<Integer> indicesFielddataCacheSize() {
         return Optional.ofNullable(this.indicesFielddataCacheSize);
     }
+    /**
+     * @return Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * 
+     */
     public Optional<Integer> indicesMemoryIndexBufferSize() {
         return Optional.ofNullable(this.indicesMemoryIndexBufferSize);
     }
+    /**
+     * @return Absolute value. Default is unbound. Doesn&#39;t work without indices.memory.index_buffer_size. Maximum amount of heap used for query cache, an absolute indices.memory.index_buffer_size maximum hard limit.
+     * 
+     */
     public Optional<Integer> indicesMemoryMaxIndexBufferSize() {
         return Optional.ofNullable(this.indicesMemoryMaxIndexBufferSize);
     }
+    /**
+     * @return Absolute value. Default is 48mb. Doesn&#39;t work without indices.memory.index_buffer_size. Minimum amount of heap used for query cache, an absolute indices.memory.index_buffer_size minimal hard limit.
+     * 
+     */
     public Optional<Integer> indicesMemoryMinIndexBufferSize() {
         return Optional.ofNullable(this.indicesMemoryMinIndexBufferSize);
     }
+    /**
+     * @return Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * 
+     */
     public Optional<Integer> indicesQueriesCacheSize() {
         return Optional.ofNullable(this.indicesQueriesCacheSize);
     }
+    /**
+     * @return Maximum number of clauses Lucene BooleanQuery can have. The default value (1024) is relatively high, and increasing it may cause performance issues. Investigate other approaches first before increasing this value.
+     * 
+     */
     public Optional<Integer> indicesQueryBoolMaxClauseCount() {
         return Optional.ofNullable(this.indicesQueryBoolMaxClauseCount);
     }
+    /**
+     * @return Limits total inbound and outbound recovery traffic for each node. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Defaults to 40mb.
+     * 
+     */
     public Optional<Integer> indicesRecoveryMaxBytesPerSec() {
         return Optional.ofNullable(this.indicesRecoveryMaxBytesPerSec);
     }
+    /**
+     * @return Number of file chunks sent in parallel for each recovery. Defaults to 2.
+     * 
+     */
     public Optional<Integer> indicesRecoveryMaxConcurrentFileChunks() {
         return Optional.ofNullable(this.indicesRecoveryMaxConcurrentFileChunks);
     }
+    /**
+     * @return Specifies whether ISM is enabled or not. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> ismEnabled() {
         return Optional.ofNullable(this.ismEnabled);
     }
+    /**
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> ismHistoryEnabled() {
         return Optional.ofNullable(this.ismHistoryEnabled);
     }
+    /**
+     * @return The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * 
+     */
     public Optional<Integer> ismHistoryMaxAge() {
         return Optional.ofNullable(this.ismHistoryMaxAge);
     }
+    /**
+     * @return The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * 
+     */
     public Optional<Integer> ismHistoryMaxDocs() {
         return Optional.ofNullable(this.ismHistoryMaxDocs);
     }
+    /**
+     * @return The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * 
+     */
     public Optional<Integer> ismHistoryRolloverCheckPeriod() {
         return Optional.ofNullable(this.ismHistoryRolloverCheckPeriod);
     }
+    /**
+     * @return How long audit history indices are kept in days. The default value is `30`.
+     * 
+     */
     public Optional<Integer> ismHistoryRolloverRetentionPeriod() {
         return Optional.ofNullable(this.ismHistoryRolloverRetentionPeriod);
     }
+    /**
+     * @return Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default is false.
+     * 
+     */
     public Optional<Boolean> overrideMainResponseVersion() {
         return Optional.ofNullable(this.overrideMainResponseVersion);
     }
+    /**
+     * @return Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
+     * 
+     */
     public List<String> reindexRemoteWhitelists() {
         return this.reindexRemoteWhitelists == null ? List.of() : this.reindexRemoteWhitelists;
     }
+    /**
+     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * 
+     */
     public Optional<String> scriptMaxCompilationsRate() {
         return Optional.ofNullable(this.scriptMaxCompilationsRate);
     }
+    /**
+     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * 
+     */
     public Optional<Integer> searchMaxBuckets() {
         return Optional.ofNullable(this.searchMaxBuckets);
     }
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Integer> threadPoolAnalyzeQueueSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeQueueSize);
     }
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Integer> threadPoolAnalyzeSize() {
         return Optional.ofNullable(this.threadPoolAnalyzeSize);
     }
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Integer> threadPoolForceMergeSize() {
         return Optional.ofNullable(this.threadPoolForceMergeSize);
     }
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Integer> threadPoolGetQueueSize() {
         return Optional.ofNullable(this.threadPoolGetQueueSize);
     }
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Integer> threadPoolGetSize() {
         return Optional.ofNullable(this.threadPoolGetSize);
     }
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Integer> threadPoolSearchQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchQueueSize);
     }
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Integer> threadPoolSearchSize() {
         return Optional.ofNullable(this.threadPoolSearchSize);
     }
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Integer> threadPoolSearchThrottledQueueSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledQueueSize);
     }
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Integer> threadPoolSearchThrottledSize() {
         return Optional.ofNullable(this.threadPoolSearchThrottledSize);
     }
+    /**
+     * @return Size for the thread pool queue. See documentation for exact details.
+     * 
+     */
     public Optional<Integer> threadPoolWriteQueueSize() {
         return Optional.ofNullable(this.threadPoolWriteQueueSize);
     }
+    /**
+     * @return Size for the thread pool. See documentation for exact details. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
+     * 
+     */
     public Optional<Integer> threadPoolWriteSize() {
         return Optional.ofNullable(this.threadPoolWriteSize);
     }

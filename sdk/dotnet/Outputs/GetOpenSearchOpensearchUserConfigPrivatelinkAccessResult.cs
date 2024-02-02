@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult
     {
+        /// <summary>
+        /// Enable opensearch.
+        /// </summary>
         public readonly bool? Opensearch;
+        /// <summary>
+        /// Enable opensearch_dashboards.
+        /// </summary>
         public readonly bool? OpensearchDashboards;
+        /// <summary>
+        /// Enable prometheus.
+        /// </summary>
         public readonly bool? Prometheus;
 
         [OutputConstructor]

@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigTieredStorageLocalCache {
+    /**
+     * @return Local cache size in bytes.
+     * 
+     */
     private @Nullable Integer size;
 
     private GetKafkaKafkaUserConfigTieredStorageLocalCache() {}
+    /**
+     * @return Local cache size in bytes.
+     * 
+     */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

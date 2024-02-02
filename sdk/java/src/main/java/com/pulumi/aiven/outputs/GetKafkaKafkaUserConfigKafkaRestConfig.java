@@ -13,45 +13,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigKafkaRestConfig {
+    /**
+     * @return If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean consumerEnableAutoCommit;
+    /**
+     * @return Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * 
+     */
     private @Nullable Integer consumerRequestMaxBytes;
+    /**
+     * @return The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * 
+     */
     private @Nullable Integer consumerRequestTimeoutMs;
+    /**
+     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * 
+     */
     private @Nullable String nameStrategy;
+    /**
+     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * 
+     */
     private @Nullable Boolean nameStrategyValidation;
+    /**
+     * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * 
+     */
     private @Nullable String producerAcks;
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     private @Nullable String producerCompressionType;
+    /**
+     * @return Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * 
+     */
     private @Nullable Integer producerLingerMs;
+    /**
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * 
+     */
     private @Nullable Integer producerMaxRequestSize;
+    /**
+     * @return Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * 
+     */
     private @Nullable Integer simpleconsumerPoolSizeMax;
 
     private GetKafkaKafkaUserConfigKafkaRestConfig() {}
+    /**
+     * @return If true the consumer&#39;s offset will be periodically committed to Kafka in the background. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> consumerEnableAutoCommit() {
         return Optional.ofNullable(this.consumerEnableAutoCommit);
     }
+    /**
+     * @return Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
+     * 
+     */
     public Optional<Integer> consumerRequestMaxBytes() {
         return Optional.ofNullable(this.consumerRequestMaxBytes);
     }
+    /**
+     * @return The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * 
+     */
     public Optional<Integer> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
+    /**
+     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * 
+     */
     public Optional<String> nameStrategy() {
         return Optional.ofNullable(this.nameStrategy);
     }
+    /**
+     * @return If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
+     * 
+     */
     public Optional<Boolean> nameStrategyValidation() {
         return Optional.ofNullable(this.nameStrategyValidation);
     }
+    /**
+     * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * 
+     */
     public Optional<String> producerAcks() {
         return Optional.ofNullable(this.producerAcks);
     }
+    /**
+     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * 
+     */
     public Optional<String> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
+    /**
+     * @return Wait for up to the given delay to allow batching records together. The default value is `0`.
+     * 
+     */
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
+    /**
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
+     * 
+     */
     public Optional<Integer> producerMaxRequestSize() {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
+    /**
+     * @return Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
+     * 
+     */
     public Optional<Integer> simpleconsumerPoolSizeMax() {
         return Optional.ofNullable(this.simpleconsumerPoolSizeMax);
     }

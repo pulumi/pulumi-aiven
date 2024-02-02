@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("opensearchDashboardsUri")]
         private Input<string>? _opensearchDashboardsUri;
+
+        /// <summary>
+        /// URI for OpenSearch dashboard frontend
+        /// </summary>
         public Input<string>? OpensearchDashboardsUri
         {
             get => _opensearchDashboardsUri;

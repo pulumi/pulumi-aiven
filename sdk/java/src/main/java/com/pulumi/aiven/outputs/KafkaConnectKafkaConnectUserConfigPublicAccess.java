@@ -11,13 +11,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KafkaConnectKafkaConnectUserConfigPublicAccess {
+    /**
+     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean kafkaConnect;
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private KafkaConnectKafkaConnectUserConfigPublicAccess() {}
+    /**
+     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

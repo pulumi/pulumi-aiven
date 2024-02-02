@@ -14,125 +14,365 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class MySqlMysqlUserConfigMysql {
+    /**
+     * @return The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * 
+     */
     private @Nullable Integer connectTimeout;
+    /**
+     * @return Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or &#39;SYSTEM&#39; to use the MySQL server default.
+     * 
+     */
     private @Nullable String defaultTimeZone;
+    /**
+     * @return The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * 
+     */
     private @Nullable Integer groupConcatMaxLen;
+    /**
+     * @return The time, in seconds, before cached statistics expire.
+     * 
+     */
     private @Nullable Integer informationSchemaStatsExpiry;
+    /**
+     * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     */
     private @Nullable Integer innodbChangeBufferMaxSize;
+    /**
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * 
+     */
     private @Nullable Integer innodbFlushNeighbors;
+    /**
+     * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     private @Nullable Integer innodbFtMinTokenSize;
+    /**
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     */
     private @Nullable String innodbFtServerStopwordTable;
+    /**
+     * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     */
     private @Nullable Integer innodbLockWaitTimeout;
+    /**
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     */
     private @Nullable Integer innodbLogBufferSize;
+    /**
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     */
     private @Nullable Integer innodbOnlineAlterLogMaxSize;
+    /**
+     * @return When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+     * 
+     */
     private @Nullable Boolean innodbPrintAllDeadlocks;
+    /**
+     * @return The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     private @Nullable Integer innodbReadIoThreads;
+    /**
+     * @return When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     private @Nullable Boolean innodbRollbackOnTimeout;
+    /**
+     * @return Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     */
     private @Nullable Integer innodbThreadConcurrency;
+    /**
+     * @return The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     private @Nullable Integer innodbWriteIoThreads;
+    /**
+     * @return The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     */
     private @Nullable Integer interactiveTimeout;
+    /**
+     * @return The storage engine for in-memory internal temporary tables.
+     * 
+     */
     private @Nullable String internalTmpMemStorageEngine;
+    /**
+     * @return The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+     * 
+     */
     private @Nullable Double longQueryTime;
+    /**
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     */
     private @Nullable Integer maxAllowedPacket;
+    /**
+     * @return Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     */
     private @Nullable Integer maxHeapTableSize;
+    /**
+     * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     private @Nullable Integer netBufferLength;
+    /**
+     * @return The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     */
     private @Nullable Integer netReadTimeout;
+    /**
+     * @return The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     */
     private @Nullable Integer netWriteTimeout;
+    /**
+     * @return Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+     * 
+     */
     private @Nullable Boolean slowQueryLog;
+    /**
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     */
     private @Nullable Integer sortBufferSize;
+    /**
+     * @return Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     */
     private @Nullable String sqlMode;
+    /**
+     * @return Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     */
     private @Nullable Boolean sqlRequirePrimaryKey;
+    /**
+     * @return Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     */
     private @Nullable Integer tmpTableSize;
+    /**
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     */
     private @Nullable Integer waitTimeout;
 
     private MySqlMysqlUserConfigMysql() {}
+    /**
+     * @return The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * 
+     */
     public Optional<Integer> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
+    /**
+     * @return Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or &#39;SYSTEM&#39; to use the MySQL server default.
+     * 
+     */
     public Optional<String> defaultTimeZone() {
         return Optional.ofNullable(this.defaultTimeZone);
     }
+    /**
+     * @return The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * 
+     */
     public Optional<Integer> groupConcatMaxLen() {
         return Optional.ofNullable(this.groupConcatMaxLen);
     }
+    /**
+     * @return The time, in seconds, before cached statistics expire.
+     * 
+     */
     public Optional<Integer> informationSchemaStatsExpiry() {
         return Optional.ofNullable(this.informationSchemaStatsExpiry);
     }
+    /**
+     * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * 
+     */
     public Optional<Integer> innodbChangeBufferMaxSize() {
         return Optional.ofNullable(this.innodbChangeBufferMaxSize);
     }
+    /**
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * 
+     */
     public Optional<Integer> innodbFlushNeighbors() {
         return Optional.ofNullable(this.innodbFlushNeighbors);
     }
+    /**
+     * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     public Optional<Integer> innodbFtMinTokenSize() {
         return Optional.ofNullable(this.innodbFtMinTokenSize);
     }
+    /**
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * 
+     */
     public Optional<String> innodbFtServerStopwordTable() {
         return Optional.ofNullable(this.innodbFtServerStopwordTable);
     }
+    /**
+     * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * 
+     */
     public Optional<Integer> innodbLockWaitTimeout() {
         return Optional.ofNullable(this.innodbLockWaitTimeout);
     }
+    /**
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * 
+     */
     public Optional<Integer> innodbLogBufferSize() {
         return Optional.ofNullable(this.innodbLogBufferSize);
     }
+    /**
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * 
+     */
     public Optional<Integer> innodbOnlineAlterLogMaxSize() {
         return Optional.ofNullable(this.innodbOnlineAlterLogMaxSize);
     }
+    /**
+     * @return When enabled, information about all deadlocks in InnoDB user transactions is recorded in the error log. Disabled by default.
+     * 
+     */
     public Optional<Boolean> innodbPrintAllDeadlocks() {
         return Optional.ofNullable(this.innodbPrintAllDeadlocks);
     }
+    /**
+     * @return The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     public Optional<Integer> innodbReadIoThreads() {
         return Optional.ofNullable(this.innodbReadIoThreads);
     }
+    /**
+     * @return When enabled a transaction timeout causes InnoDB to abort and roll back the entire transaction. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     public Optional<Boolean> innodbRollbackOnTimeout() {
         return Optional.ofNullable(this.innodbRollbackOnTimeout);
     }
+    /**
+     * @return Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * 
+     */
     public Optional<Integer> innodbThreadConcurrency() {
         return Optional.ofNullable(this.innodbThreadConcurrency);
     }
+    /**
+     * @return The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     public Optional<Integer> innodbWriteIoThreads() {
         return Optional.ofNullable(this.innodbWriteIoThreads);
     }
+    /**
+     * @return The number of seconds the server waits for activity on an interactive connection before closing it.
+     * 
+     */
     public Optional<Integer> interactiveTimeout() {
         return Optional.ofNullable(this.interactiveTimeout);
     }
+    /**
+     * @return The storage engine for in-memory internal temporary tables.
+     * 
+     */
     public Optional<String> internalTmpMemStorageEngine() {
         return Optional.ofNullable(this.internalTmpMemStorageEngine);
     }
+    /**
+     * @return The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+     * 
+     */
     public Optional<Double> longQueryTime() {
         return Optional.ofNullable(this.longQueryTime);
     }
+    /**
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * 
+     */
     public Optional<Integer> maxAllowedPacket() {
         return Optional.ofNullable(this.maxAllowedPacket);
     }
+    /**
+     * @return Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * 
+     */
     public Optional<Integer> maxHeapTableSize() {
         return Optional.ofNullable(this.maxHeapTableSize);
     }
+    /**
+     * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * 
+     */
     public Optional<Integer> netBufferLength() {
         return Optional.ofNullable(this.netBufferLength);
     }
+    /**
+     * @return The number of seconds to wait for more data from a connection before aborting the read.
+     * 
+     */
     public Optional<Integer> netReadTimeout() {
         return Optional.ofNullable(this.netReadTimeout);
     }
+    /**
+     * @return The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * 
+     */
     public Optional<Integer> netWriteTimeout() {
         return Optional.ofNullable(this.netWriteTimeout);
     }
+    /**
+     * @return Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+     * 
+     */
     public Optional<Boolean> slowQueryLog() {
         return Optional.ofNullable(this.slowQueryLog);
     }
+    /**
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * 
+     */
     public Optional<Integer> sortBufferSize() {
         return Optional.ofNullable(this.sortBufferSize);
     }
+    /**
+     * @return Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * 
+     */
     public Optional<String> sqlMode() {
         return Optional.ofNullable(this.sqlMode);
     }
+    /**
+     * @return Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
+     * 
+     */
     public Optional<Boolean> sqlRequirePrimaryKey() {
         return Optional.ofNullable(this.sqlRequirePrimaryKey);
     }
+    /**
+     * @return Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * 
+     */
     public Optional<Integer> tmpTableSize() {
         return Optional.ofNullable(this.tmpTableSize);
     }
+    /**
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * 
+     */
     public Optional<Integer> waitTimeout() {
         return Optional.ofNullable(this.waitTimeout);
     }

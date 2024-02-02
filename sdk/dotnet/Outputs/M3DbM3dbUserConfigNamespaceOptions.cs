@@ -13,8 +13,17 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class M3DbM3dbUserConfigNamespaceOptions
     {
+        /// <summary>
+        /// Retention options.
+        /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions? RetentionOptions;
+        /// <summary>
+        /// Controls whether M3DB will create snapshot files for this namespace.
+        /// </summary>
         public readonly bool? SnapshotEnabled;
+        /// <summary>
+        /// Controls whether M3DB will include writes to this namespace in the commitlog.
+        /// </summary>
         public readonly bool? WritesToCommitlog;
 
         [OutputConstructor]

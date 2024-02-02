@@ -20,51 +20,137 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfig {
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     private @Nullable String additionalBackupRegions;
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * 
+     */
     private @Nullable String customDomain;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     private @Nullable List<String> ipFilterStrings;
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
     private @Nullable List<String> ipFilters;
+    /**
+     * @return M3 limits.
+     * 
+     */
     private @Nullable M3DbM3dbUserConfigLimits limits;
+    /**
+     * @return M3 specific configuration options.
+     * 
+     */
     private @Nullable M3DbM3dbUserConfigM3 m3;
     /**
+     * @return M3 major version (deprecated, use m3db_version).
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
      */
     @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
+    /**
+     * @return Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+     * 
+     */
     private @Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest;
+    /**
+     * @return M3 major version (the minimum compatible version).
+     * 
+     */
     private @Nullable String m3dbVersion;
+    /**
+     * @return List of M3 namespaces.
+     * 
+     */
     private @Nullable List<M3DbM3dbUserConfigNamespace> namespaces;
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     private @Nullable M3DbM3dbUserConfigPrivateAccess privateAccess;
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String projectToForkFrom;
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     private @Nullable M3DbM3dbUserConfigPublicAccess publicAccess;
+    /**
+     * @return M3 rules.
+     * 
+     */
     private @Nullable M3DbM3dbUserConfigRules rules;
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     private @Nullable Boolean serviceLog;
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     private @Nullable String serviceToForkFrom;
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     private @Nullable Boolean staticIps;
 
     private M3DbM3dbUserConfig() {}
+    /**
+     * @return Additional Cloud Regions for Backup Replication.
+     * 
+     */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
+    /**
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * 
+     */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<M3DbM3dbUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
+    /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
+     */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
      * 
@@ -73,13 +159,23 @@ public final class M3DbM3dbUserConfig {
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
+    /**
+     * @return M3 limits.
+     * 
+     */
     public Optional<M3DbM3dbUserConfigLimits> limits() {
         return Optional.ofNullable(this.limits);
     }
+    /**
+     * @return M3 specific configuration options.
+     * 
+     */
     public Optional<M3DbM3dbUserConfigM3> m3() {
         return Optional.ofNullable(this.m3);
     }
     /**
+     * @return M3 major version (deprecated, use m3db_version).
+     * 
      * @deprecated
      * Usage of this field is discouraged.
      * 
@@ -88,33 +184,73 @@ public final class M3DbM3dbUserConfig {
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
+    /**
+     * @return Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+     * 
+     */
     public Optional<Boolean> m3coordinatorEnableGraphiteCarbonIngest() {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
+    /**
+     * @return M3 major version (the minimum compatible version).
+     * 
+     */
     public Optional<String> m3dbVersion() {
         return Optional.ofNullable(this.m3dbVersion);
     }
+    /**
+     * @return List of M3 namespaces.
+     * 
+     */
     public List<M3DbM3dbUserConfigNamespace> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
+    /**
+     * @return Allow access to selected service ports from private networks.
+     * 
+     */
     public Optional<M3DbM3dbUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
+    /**
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> projectToForkFrom() {
         return Optional.ofNullable(this.projectToForkFrom);
     }
+    /**
+     * @return Allow access to selected service ports from the public Internet.
+     * 
+     */
     public Optional<M3DbM3dbUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    /**
+     * @return M3 rules.
+     * 
+     */
     public Optional<M3DbM3dbUserConfigRules> rules() {
         return Optional.ofNullable(this.rules);
     }
+    /**
+     * @return Store logs for the service so that they are available in the HTTP API and console.
+     * 
+     */
     public Optional<Boolean> serviceLog() {
         return Optional.ofNullable(this.serviceLog);
     }
+    /**
+     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * 
+     */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
+    /**
+     * @return Use static public IP addresses.
+     * 
+     */
     public Optional<Boolean> staticIps() {
         return Optional.ofNullable(this.staticIps);
     }

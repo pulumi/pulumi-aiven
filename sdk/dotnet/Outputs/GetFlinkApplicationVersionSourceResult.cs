@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetFlinkApplicationVersionSourceResult
     {
+        /// <summary>
+        /// The CREATE TABLE statement
+        /// </summary>
         public readonly string CreateTable;
+        /// <summary>
+        /// The integration ID
+        /// </summary>
         public readonly string? IntegrationId;
 
         [OutputConstructor]

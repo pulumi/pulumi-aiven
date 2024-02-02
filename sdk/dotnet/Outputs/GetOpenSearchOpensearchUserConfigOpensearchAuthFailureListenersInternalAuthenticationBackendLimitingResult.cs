@@ -13,12 +13,33 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingResult
     {
+        /// <summary>
+        /// The number of login attempts allowed before login is blocked.
+        /// </summary>
         public readonly int? AllowedTries;
+        /// <summary>
+        /// The internal backend. Enter `internal`.
+        /// </summary>
         public readonly string? AuthenticationBackend;
+        /// <summary>
+        /// The duration of time that login remains blocked after a failed login.
+        /// </summary>
         public readonly int? BlockExpirySeconds;
+        /// <summary>
+        /// The maximum number of blocked IP addresses.
+        /// </summary>
         public readonly int? MaxBlockedClients;
+        /// <summary>
+        /// The maximum number of tracked IP addresses that have failed login.
+        /// </summary>
         public readonly int? MaxTrackedClients;
+        /// <summary>
+        /// The window of time in which the value for `allowed_tries` is enforced.
+        /// </summary>
         public readonly int? TimeWindowSeconds;
+        /// <summary>
+        /// The type of rate limiting.
+        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

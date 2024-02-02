@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationClickhousePostgresqlUserConfigResult
     {
+        /// <summary>
+        /// Databases to expose.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseResult> Databases;
 
         [OutputConstructor]

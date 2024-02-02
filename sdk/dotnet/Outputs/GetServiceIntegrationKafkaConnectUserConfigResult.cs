@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationKafkaConnectUserConfigResult
     {
+        /// <summary>
+        /// Kafka Connect service configuration values.
+        /// </summary>
         public readonly Outputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnectResult? KafkaConnect;
 
         [OutputConstructor]

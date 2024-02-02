@@ -17,45 +17,125 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetServiceIntegrationDatadogUserConfig {
+    /**
+     * @return Enable Datadog Database Monitoring.
+     * 
+     */
     private @Nullable Boolean datadogDbmEnabled;
+    /**
+     * @return Custom tags provided by user.
+     * 
+     */
     private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
+    /**
+     * @return List of custom metrics.
+     * 
+     */
     private @Nullable List<String> excludeConsumerGroups;
+    /**
+     * @return List of topics to exclude.
+     * 
+     */
     private @Nullable List<String> excludeTopics;
+    /**
+     * @return List of custom metrics.
+     * 
+     */
     private @Nullable List<String> includeConsumerGroups;
+    /**
+     * @return List of topics to include.
+     * 
+     */
     private @Nullable List<String> includeTopics;
+    /**
+     * @return List of custom metrics.
+     * 
+     */
     private @Nullable List<String> kafkaCustomMetrics;
+    /**
+     * @return Maximum number of JMX metrics to send.
+     * 
+     */
     private @Nullable Integer maxJmxMetrics;
+    /**
+     * @return Datadog Opensearch Options.
+     * 
+     */
     private @Nullable GetServiceIntegrationDatadogUserConfigOpensearch opensearch;
+    /**
+     * @return Datadog Redis Options.
+     * 
+     */
     private @Nullable GetServiceIntegrationDatadogUserConfigRedis redis;
 
     private GetServiceIntegrationDatadogUserConfig() {}
+    /**
+     * @return Enable Datadog Database Monitoring.
+     * 
+     */
     public Optional<Boolean> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
     }
+    /**
+     * @return Custom tags provided by user.
+     * 
+     */
     public List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags() {
         return this.datadogTags == null ? List.of() : this.datadogTags;
     }
+    /**
+     * @return List of custom metrics.
+     * 
+     */
     public List<String> excludeConsumerGroups() {
         return this.excludeConsumerGroups == null ? List.of() : this.excludeConsumerGroups;
     }
+    /**
+     * @return List of topics to exclude.
+     * 
+     */
     public List<String> excludeTopics() {
         return this.excludeTopics == null ? List.of() : this.excludeTopics;
     }
+    /**
+     * @return List of custom metrics.
+     * 
+     */
     public List<String> includeConsumerGroups() {
         return this.includeConsumerGroups == null ? List.of() : this.includeConsumerGroups;
     }
+    /**
+     * @return List of topics to include.
+     * 
+     */
     public List<String> includeTopics() {
         return this.includeTopics == null ? List.of() : this.includeTopics;
     }
+    /**
+     * @return List of custom metrics.
+     * 
+     */
     public List<String> kafkaCustomMetrics() {
         return this.kafkaCustomMetrics == null ? List.of() : this.kafkaCustomMetrics;
     }
+    /**
+     * @return Maximum number of JMX metrics to send.
+     * 
+     */
     public Optional<Integer> maxJmxMetrics() {
         return Optional.ofNullable(this.maxJmxMetrics);
     }
+    /**
+     * @return Datadog Opensearch Options.
+     * 
+     */
     public Optional<GetServiceIntegrationDatadogUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
+    /**
+     * @return Datadog Redis Options.
+     * 
+     */
     public Optional<GetServiceIntegrationDatadogUserConfigRedis> redis() {
         return Optional.ofNullable(this.redis);
     }

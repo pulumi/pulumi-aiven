@@ -14,16 +14,32 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
 
     public static final M3DbM3dbUserConfigRulesMappingTagArgs Empty = new M3DbM3dbUserConfigRulesMappingTagArgs();
 
+    /**
+     * Name of the tag.
+     * 
+     */
     @Import(name="name", required=true)
     private Output<String> name;
 
+    /**
+     * @return Name of the tag.
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
 
+    /**
+     * Value of the tag.
+     * 
+     */
     @Import(name="value", required=true)
     private Output<String> value;
 
+    /**
+     * @return Value of the tag.
+     * 
+     */
     public Output<String> value() {
         return this.value;
     }
@@ -53,20 +69,44 @@ public final class M3DbM3dbUserConfigRulesMappingTagArgs extends com.pulumi.reso
             $ = new M3DbM3dbUserConfigRulesMappingTagArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name Name of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name Name of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param value Value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value Value of the tag.
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

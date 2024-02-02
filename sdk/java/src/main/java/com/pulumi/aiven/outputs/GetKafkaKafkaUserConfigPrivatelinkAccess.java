@@ -11,29 +11,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaKafkaUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable jolokia.
+     * 
+     */
     private @Nullable Boolean jolokia;
+    /**
+     * @return Enable kafka.
+     * 
+     */
     private @Nullable Boolean kafka;
+    /**
+     * @return Enable kafka_connect.
+     * 
+     */
     private @Nullable Boolean kafkaConnect;
+    /**
+     * @return Enable kafka_rest.
+     * 
+     */
     private @Nullable Boolean kafkaRest;
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     private @Nullable Boolean prometheus;
+    /**
+     * @return Enable schema_registry.
+     * 
+     */
     private @Nullable Boolean schemaRegistry;
 
     private GetKafkaKafkaUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable jolokia.
+     * 
+     */
     public Optional<Boolean> jolokia() {
         return Optional.ofNullable(this.jolokia);
     }
+    /**
+     * @return Enable kafka.
+     * 
+     */
     public Optional<Boolean> kafka() {
         return Optional.ofNullable(this.kafka);
     }
+    /**
+     * @return Enable kafka_connect.
+     * 
+     */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
+    /**
+     * @return Enable kafka_rest.
+     * 
+     */
     public Optional<Boolean> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
+    /**
+     * @return Enable schema_registry.
+     * 
+     */
     public Optional<Boolean> schemaRegistry() {
         return Optional.ofNullable(this.schemaRegistry);
     }

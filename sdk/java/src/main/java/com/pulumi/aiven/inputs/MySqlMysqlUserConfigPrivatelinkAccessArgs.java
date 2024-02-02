@@ -15,23 +15,47 @@ public final class MySqlMysqlUserConfigPrivatelinkAccessArgs extends com.pulumi.
 
     public static final MySqlMysqlUserConfigPrivatelinkAccessArgs Empty = new MySqlMysqlUserConfigPrivatelinkAccessArgs();
 
+    /**
+     * Enable mysql.
+     * 
+     */
     @Import(name="mysql")
     private @Nullable Output<Boolean> mysql;
 
+    /**
+     * @return Enable mysql.
+     * 
+     */
     public Optional<Output<Boolean>> mysql() {
         return Optional.ofNullable(this.mysql);
     }
 
+    /**
+     * Enable mysqlx.
+     * 
+     */
     @Import(name="mysqlx")
     private @Nullable Output<Boolean> mysqlx;
 
+    /**
+     * @return Enable mysqlx.
+     * 
+     */
     public Optional<Output<Boolean>> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
 
+    /**
+     * Enable prometheus.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
@@ -62,29 +86,65 @@ public final class MySqlMysqlUserConfigPrivatelinkAccessArgs extends com.pulumi.
             $ = new MySqlMysqlUserConfigPrivatelinkAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mysql Enable mysql.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(@Nullable Output<Boolean> mysql) {
             $.mysql = mysql;
             return this;
         }
 
+        /**
+         * @param mysql Enable mysql.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysql(Boolean mysql) {
             return mysql(Output.of(mysql));
         }
 
+        /**
+         * @param mysqlx Enable mysqlx.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlx(@Nullable Output<Boolean> mysqlx) {
             $.mysqlx = mysqlx;
             return this;
         }
 
+        /**
+         * @param mysqlx Enable mysqlx.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mysqlx(Boolean mysqlx) {
             return mysqlx(Output.of(mysqlx));
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Enable prometheus.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }

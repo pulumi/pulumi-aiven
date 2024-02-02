@@ -11,13 +11,29 @@ import java.util.Objects;
 
 @CustomType
 public final class GetKafkaConnectorTask {
+    /**
+     * @return The name of the related connector.
+     * 
+     */
     private String connector;
+    /**
+     * @return The task id of the task.
+     * 
+     */
     private Integer task;
 
     private GetKafkaConnectorTask() {}
+    /**
+     * @return The name of the related connector.
+     * 
+     */
     public String connector() {
         return this.connector;
     }
+    /**
+     * @return The task id of the task.
+     * 
+     */
     public Integer task() {
         return this.task;
     }

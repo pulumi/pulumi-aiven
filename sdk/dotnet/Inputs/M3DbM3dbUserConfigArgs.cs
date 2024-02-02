@@ -12,14 +12,24 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         [Input("additionalBackupRegions")]
         public Input<string>? AdditionalBackupRegions { get; set; }
 
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         [Input("customDomain")]
         public Input<string>? CustomDomain { get; set; }
 
         [Input("ipFilterObjects")]
         private InputList<Inputs.M3DbM3dbUserConfigIpFilterObjectArgs>? _ipFilterObjects;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigIpFilterObjectArgs> IpFilterObjects
         {
             get => _ipFilterObjects ?? (_ipFilterObjects = new InputList<Inputs.M3DbM3dbUserConfigIpFilterObjectArgs>());
@@ -28,6 +38,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilterStrings")]
         private InputList<string>? _ipFilterStrings;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public InputList<string> IpFilterStrings
         {
             get => _ipFilterStrings ?? (_ipFilterStrings = new InputList<string>());
@@ -36,6 +50,10 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("ipFilters")]
         private InputList<string>? _ipFilters;
+
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
         public InputList<string> IpFilters
         {
@@ -43,47 +61,87 @@ namespace Pulumi.Aiven.Inputs
             set => _ipFilters = value;
         }
 
+        /// <summary>
+        /// M3 limits.
+        /// </summary>
         [Input("limits")]
         public Input<Inputs.M3DbM3dbUserConfigLimitsArgs>? Limits { get; set; }
 
+        /// <summary>
+        /// M3 specific configuration options.
+        /// </summary>
         [Input("m3")]
         public Input<Inputs.M3DbM3dbUserConfigM3Args>? M3 { get; set; }
 
+        /// <summary>
+        /// M3 major version (deprecated, use m3db_version).
+        /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
+        /// <summary>
+        /// Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
+        /// </summary>
         [Input("m3coordinatorEnableGraphiteCarbonIngest")]
         public Input<bool>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
 
+        /// <summary>
+        /// M3 major version (the minimum compatible version).
+        /// </summary>
         [Input("m3dbVersion")]
         public Input<string>? M3dbVersion { get; set; }
 
         [Input("namespaces")]
         private InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>? _namespaces;
+
+        /// <summary>
+        /// List of M3 namespaces.
+        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>());
             set => _namespaces = value;
         }
 
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
+        /// <summary>
+        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("projectToForkFrom")]
         public Input<string>? ProjectToForkFrom { get; set; }
 
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
+        /// <summary>
+        /// M3 rules.
+        /// </summary>
         [Input("rules")]
         public Input<Inputs.M3DbM3dbUserConfigRulesArgs>? Rules { get; set; }
 
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         [Input("serviceLog")]
         public Input<bool>? ServiceLog { get; set; }
 
+        /// <summary>
+        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// </summary>
         [Input("serviceToForkFrom")]
         public Input<string>? ServiceToForkFrom { get; set; }
 
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         [Input("staticIps")]
         public Input<bool>? StaticIps { get; set; }
 

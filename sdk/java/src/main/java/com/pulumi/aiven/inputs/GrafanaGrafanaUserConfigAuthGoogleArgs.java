@@ -18,30 +18,62 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
 
     public static final GrafanaGrafanaUserConfigAuthGoogleArgs Empty = new GrafanaGrafanaUserConfigAuthGoogleArgs();
 
+    /**
+     * Automatically sign-up users on successful sign-in.
+     * 
+     */
     @Import(name="allowSignUp")
     private @Nullable Output<Boolean> allowSignUp;
 
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Output<Boolean>> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
 
+    /**
+     * Domains allowed to sign-in to this Grafana.
+     * 
+     */
     @Import(name="allowedDomains")
     private @Nullable Output<List<String>> allowedDomains;
 
+    /**
+     * @return Domains allowed to sign-in to this Grafana.
+     * 
+     */
     public Optional<Output<List<String>>> allowedDomains() {
         return Optional.ofNullable(this.allowedDomains);
     }
 
+    /**
+     * Client ID from provider.
+     * 
+     */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public Output<String> clientId() {
         return this.clientId;
     }
 
+    /**
+     * Client secret from provider.
+     * 
+     */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public Output<String> clientSecret() {
         return this.clientSecret;
     }
@@ -73,42 +105,96 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
             $ = new GrafanaGrafanaUserConfigAuthGoogleArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(@Nullable Output<Boolean> allowSignUp) {
             $.allowSignUp = allowSignUp;
             return this;
         }
 
+        /**
+         * @param allowSignUp Automatically sign-up users on successful sign-in.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowSignUp(Boolean allowSignUp) {
             return allowSignUp(Output.of(allowSignUp));
         }
 
+        /**
+         * @param allowedDomains Domains allowed to sign-in to this Grafana.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(@Nullable Output<List<String>> allowedDomains) {
             $.allowedDomains = allowedDomains;
             return this;
         }
 
+        /**
+         * @param allowedDomains Domains allowed to sign-in to this Grafana.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(List<String> allowedDomains) {
             return allowedDomains(Output.of(allowedDomains));
         }
 
+        /**
+         * @param allowedDomains Domains allowed to sign-in to this Grafana.
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedDomains(String... allowedDomains) {
             return allowedDomains(List.of(allowedDomains));
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(Output<String> clientId) {
             $.clientId = clientId;
             return this;
         }
 
+        /**
+         * @param clientId Client ID from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(Output<String> clientSecret) {
             $.clientSecret = clientSecret;
             return this;
         }
 
+        /**
+         * @param clientSecret Client secret from provider.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clientSecret(String clientSecret) {
             return clientSecret(Output.of(clientSecret));
         }

@@ -13,13 +13,37 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3DbM3dbUserConfigRulesMappingResult
     {
+        /// <summary>
+        /// List of aggregations to be applied.
+        /// </summary>
         public readonly ImmutableArray<string> Aggregations;
+        /// <summary>
+        /// Only store the derived metric (as specified in the roll-up rules), if any.
+        /// </summary>
         public readonly bool? Drop;
+        /// <summary>
+        /// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        /// </summary>
         public readonly string Filter;
+        /// <summary>
+        /// The (optional) name of the rule.
+        /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+        /// </summary>
         public readonly ImmutableArray<string> Namespaces;
+        /// <summary>
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult> NamespacesObjects;
+        /// <summary>
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+        /// </summary>
         public readonly ImmutableArray<string> NamespacesStrings;
+        /// <summary>
+        /// List of tags to be appended to matching metrics.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigRulesMappingTagResult> Tags;
 
         [OutputConstructor]

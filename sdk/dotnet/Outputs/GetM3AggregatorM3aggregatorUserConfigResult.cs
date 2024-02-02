@@ -13,13 +13,37 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetM3AggregatorM3aggregatorUserConfigResult
     {
+        /// <summary>
+        /// Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+        /// </summary>
         public readonly string? CustomDomain;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// M3 major version (deprecated, use m3aggregator_version).
+        /// </summary>
         public readonly string? M3Version;
+        /// <summary>
+        /// M3 major version (the minimum compatible version).
+        /// </summary>
         public readonly string? M3aggregatorVersion;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

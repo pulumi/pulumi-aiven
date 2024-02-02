@@ -13,13 +13,37 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GrafanaGrafanaUserConfigDateFormats
     {
+        /// <summary>
+        /// Default time zone for user preferences. Value 'browser' uses browser local time zone.
+        /// </summary>
         public readonly string? DefaultTimezone;
+        /// <summary>
+        /// Moment.js style format string for cases where full date is shown.
+        /// </summary>
         public readonly string? FullDate;
+        /// <summary>
+        /// Moment.js style format string used when a time requiring day accuracy is shown.
+        /// </summary>
         public readonly string? IntervalDay;
+        /// <summary>
+        /// Moment.js style format string used when a time requiring hour accuracy is shown.
+        /// </summary>
         public readonly string? IntervalHour;
+        /// <summary>
+        /// Moment.js style format string used when a time requiring minute accuracy is shown.
+        /// </summary>
         public readonly string? IntervalMinute;
+        /// <summary>
+        /// Moment.js style format string used when a time requiring month accuracy is shown.
+        /// </summary>
         public readonly string? IntervalMonth;
+        /// <summary>
+        /// Moment.js style format string used when a time requiring second accuracy is shown.
+        /// </summary>
         public readonly string? IntervalSecond;
+        /// <summary>
+        /// Moment.js style format string used when a time requiring year accuracy is shown.
+        /// </summary>
         public readonly string? IntervalYear;
 
         [OutputConstructor]

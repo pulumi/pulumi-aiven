@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetMySqlMysqlUserConfigPrivateAccess {
+    /**
+     * @return Allow clients to connect to mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean mysql;
+    /**
+     * @return Allow clients to connect to mysqlx with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean mysqlx;
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetMySqlMysqlUserConfigPrivateAccess() {}
+    /**
+     * @return Allow clients to connect to mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> mysql() {
         return Optional.ofNullable(this.mysql);
     }
+    /**
+     * @return Allow clients to connect to mysqlx with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> mysqlx() {
         return Optional.ofNullable(this.mysqlx);
     }
+    /**
+     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

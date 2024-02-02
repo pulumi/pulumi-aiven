@@ -15,16 +15,32 @@ public final class RedisRedisUserConfigPublicAccessArgs extends com.pulumi.resou
 
     public static final RedisRedisUserConfigPublicAccessArgs Empty = new RedisRedisUserConfigPublicAccessArgs();
 
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
+    /**
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
 
+    /**
+     * Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     @Import(name="redis")
     private @Nullable Output<Boolean> redis;
 
+    /**
+     * @return Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+     * 
+     */
     public Optional<Output<Boolean>> redis() {
         return Optional.ofNullable(this.redis);
     }
@@ -54,20 +70,44 @@ public final class RedisRedisUserConfigPublicAccessArgs extends com.pulumi.resou
             $ = new RedisRedisUserConfigPublicAccessArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(@Nullable Output<Boolean> prometheus) {
             $.prometheus = prometheus;
             return this;
         }
 
+        /**
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder prometheus(Boolean prometheus) {
             return prometheus(Output.of(prometheus));
         }
 
+        /**
+         * @param redis Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redis(@Nullable Output<Boolean> redis) {
             $.redis = redis;
             return this;
         }
 
+        /**
+         * @param redis Allow clients to connect to redis from the public internet for service nodes that are in a project VPC or another type of private network.
+         * 
+         * @return builder
+         * 
+         */
         public Builder redis(Boolean redis) {
             return redis(Output.of(redis));
         }

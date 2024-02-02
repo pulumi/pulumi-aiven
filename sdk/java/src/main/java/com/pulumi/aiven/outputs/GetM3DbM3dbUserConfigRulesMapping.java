@@ -16,35 +16,83 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetM3DbM3dbUserConfigRulesMapping {
+    /**
+     * @return List of aggregations to be applied.
+     * 
+     */
     private @Nullable List<String> aggregations;
+    /**
+     * @return Only store the derived metric (as specified in the roll-up rules), if any.
+     * 
+     */
     private @Nullable Boolean drop;
+    /**
+     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * 
+     */
     private String filter;
+    /**
+     * @return The (optional) name of the rule.
+     * 
+     */
     private @Nullable String name;
     /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
      */
     @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
     private @Nullable List<String> namespaces;
+    /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * 
+     */
     private @Nullable List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects;
+    /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
+     */
     private @Nullable List<String> namespacesStrings;
+    /**
+     * @return List of tags to be appended to matching metrics.
+     * 
+     */
     private @Nullable List<GetM3DbM3dbUserConfigRulesMappingTag> tags;
 
     private GetM3DbM3dbUserConfigRulesMapping() {}
+    /**
+     * @return List of aggregations to be applied.
+     * 
+     */
     public List<String> aggregations() {
         return this.aggregations == null ? List.of() : this.aggregations;
     }
+    /**
+     * @return Only store the derived metric (as specified in the roll-up rules), if any.
+     * 
+     */
     public Optional<Boolean> drop() {
         return Optional.ofNullable(this.drop);
     }
+    /**
+     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * 
+     */
     public String filter() {
         return this.filter;
     }
+    /**
+     * @return The (optional) name of the rule.
+     * 
+     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
      * @deprecated
      * This will be removed in v5.0.0 and replaced with namespaces_string instead.
      * 
@@ -53,12 +101,24 @@ public final class GetM3DbM3dbUserConfigRulesMapping {
     public List<String> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
+    /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * 
+     */
     public List<GetM3DbM3dbUserConfigRulesMappingNamespacesObject> namespacesObjects() {
         return this.namespacesObjects == null ? List.of() : this.namespacesObjects;
     }
+    /**
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
+     * 
+     */
     public List<String> namespacesStrings() {
         return this.namespacesStrings == null ? List.of() : this.namespacesStrings;
     }
+    /**
+     * @return List of tags to be appended to matching metrics.
+     * 
+     */
     public List<GetM3DbM3dbUserConfigRulesMappingTag> tags() {
         return this.tags == null ? List.of() : this.tags;
     }

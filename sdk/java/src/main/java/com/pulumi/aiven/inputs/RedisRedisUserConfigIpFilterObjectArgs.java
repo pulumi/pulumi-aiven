@@ -16,16 +16,32 @@ public final class RedisRedisUserConfigIpFilterObjectArgs extends com.pulumi.res
 
     public static final RedisRedisUserConfigIpFilterObjectArgs Empty = new RedisRedisUserConfigIpFilterObjectArgs();
 
+    /**
+     * Description for IP filter list entry.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return Description for IP filter list entry.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * CIDR address block.
+     * 
+     */
     @Import(name="network", required=true)
     private Output<String> network;
 
+    /**
+     * @return CIDR address block.
+     * 
+     */
     public Output<String> network() {
         return this.network;
     }
@@ -55,20 +71,44 @@ public final class RedisRedisUserConfigIpFilterObjectArgs extends com.pulumi.res
             $ = new RedisRedisUserConfigIpFilterObjectArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param description Description for IP filter list entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description Description for IP filter list entry.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
+        /**
+         * @param network CIDR address block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(Output<String> network) {
             $.network = network;
             return this;
         }
 
+        /**
+         * @param network CIDR address block.
+         * 
+         * @return builder
+         * 
+         */
         public Builder network(String network) {
             return network(Output.of(network));
         }

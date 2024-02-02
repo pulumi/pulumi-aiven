@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetPgPgUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable pg.
+     * 
+     */
     private @Nullable Boolean pg;
+    /**
+     * @return Enable pgbouncer.
+     * 
+     */
     private @Nullable Boolean pgbouncer;
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     private @Nullable Boolean prometheus;
 
     private GetPgPgUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable pg.
+     * 
+     */
     public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }
+    /**
+     * @return Enable pgbouncer.
+     * 
+     */
     public Optional<Boolean> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
+    /**
+     * @return Enable prometheus.
+     * 
+     */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }

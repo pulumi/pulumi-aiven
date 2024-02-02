@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGrafanaGrafanaUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable grafana.
+     * 
+     */
     private @Nullable Boolean grafana;
 
     private GetGrafanaGrafanaUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable grafana.
+     * 
+     */
     public Optional<Boolean> grafana() {
         return Optional.ofNullable(this.grafana);
     }

@@ -13,15 +13,45 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class KafkaConnectKafkaConnectUserConfig
     {
+        /// <summary>
+        /// Additional Cloud Regions for Backup Replication.
+        /// </summary>
         public readonly string? AdditionalBackupRegions;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<Outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject> IpFilterObjects;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
+        /// <summary>
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// </summary>
         public readonly ImmutableArray<string> IpFilters;
+        /// <summary>
+        /// Kafka Connect configuration values.
+        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect? KafkaConnect;
+        /// <summary>
+        /// Allow access to selected service ports from private networks.
+        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess? PrivateAccess;
+        /// <summary>
+        /// Allow access to selected service components through Privatelink.
+        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess? PrivatelinkAccess;
+        /// <summary>
+        /// Allow access to selected service ports from the public Internet.
+        /// </summary>
         public readonly Outputs.KafkaConnectKafkaConnectUserConfigPublicAccess? PublicAccess;
+        /// <summary>
+        /// Store logs for the service so that they are available in the HTTP API and console.
+        /// </summary>
         public readonly bool? ServiceLog;
+        /// <summary>
+        /// Use static public IP addresses.
+        /// </summary>
         public readonly bool? StaticIps;
 
         [OutputConstructor]

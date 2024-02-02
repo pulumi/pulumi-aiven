@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetInfluxDbInfluxdbUserConfigPrivatelinkAccess {
+    /**
+     * @return Enable influxdb.
+     * 
+     */
     private @Nullable Boolean influxdb;
 
     private GetInfluxDbInfluxdbUserConfigPrivatelinkAccess() {}
+    /**
+     * @return Enable influxdb.
+     * 
+     */
     public Optional<Boolean> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }

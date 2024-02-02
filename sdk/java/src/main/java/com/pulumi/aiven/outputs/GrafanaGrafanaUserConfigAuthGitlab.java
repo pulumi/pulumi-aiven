@@ -14,33 +14,89 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GrafanaGrafanaUserConfigAuthGitlab {
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     private @Nullable Boolean allowSignUp;
+    /**
+     * @return Require users to belong to one of given groups.
+     * 
+     */
     private @Nullable List<String> allowedGroups;
+    /**
+     * @return API URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     private @Nullable String apiUrl;
+    /**
+     * @return Authorization URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     private @Nullable String authUrl;
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     private String clientId;
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     private String clientSecret;
+    /**
+     * @return Token URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     private @Nullable String tokenUrl;
 
     private GrafanaGrafanaUserConfigAuthGitlab() {}
+    /**
+     * @return Automatically sign-up users on successful sign-in.
+     * 
+     */
     public Optional<Boolean> allowSignUp() {
         return Optional.ofNullable(this.allowSignUp);
     }
+    /**
+     * @return Require users to belong to one of given groups.
+     * 
+     */
     public List<String> allowedGroups() {
         return this.allowedGroups == null ? List.of() : this.allowedGroups;
     }
+    /**
+     * @return API URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     public Optional<String> apiUrl() {
         return Optional.ofNullable(this.apiUrl);
     }
+    /**
+     * @return Authorization URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     public Optional<String> authUrl() {
         return Optional.ofNullable(this.authUrl);
     }
+    /**
+     * @return Client ID from provider.
+     * 
+     */
     public String clientId() {
         return this.clientId;
     }
+    /**
+     * @return Client secret from provider.
+     * 
+     */
     public String clientSecret() {
         return this.clientSecret;
     }
+    /**
+     * @return Token URL. This only needs to be set when using self hosted GitLab.
+     * 
+     */
     public Optional<String> tokenUrl() {
         return Optional.ofNullable(this.tokenUrl);
     }

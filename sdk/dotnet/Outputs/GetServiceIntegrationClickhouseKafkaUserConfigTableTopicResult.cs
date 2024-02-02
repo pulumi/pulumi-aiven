@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigTableTopicResult
     {
+        /// <summary>
+        /// Name of the topic.
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

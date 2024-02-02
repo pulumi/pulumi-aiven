@@ -12,13 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKafkaTopicTag {
+    /**
+     * @return Topic tag key. Maximum length: `64`.
+     * 
+     */
     private String key;
+    /**
+     * @return Topic tag value. Maximum length: `256`.
+     * 
+     */
     private @Nullable String value;
 
     private GetKafkaTopicTag() {}
+    /**
+     * @return Topic tag key. Maximum length: `64`.
+     * 
+     */
     public String key() {
         return this.key;
     }
+    /**
+     * @return Topic tag value. Maximum length: `256`.
+     * 
+     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

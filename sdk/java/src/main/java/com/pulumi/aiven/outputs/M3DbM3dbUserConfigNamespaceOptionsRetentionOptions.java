@@ -11,25 +11,65 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptions {
+    /**
+     * @return Controls how long we wait before expiring stale data.
+     * 
+     */
     private @Nullable String blockDataExpiryDuration;
+    /**
+     * @return Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * 
+     */
     private @Nullable String blocksizeDuration;
+    /**
+     * @return Controls how far into the future writes to the namespace will be accepted.
+     * 
+     */
     private @Nullable String bufferFutureDuration;
+    /**
+     * @return Controls how far into the past writes to the namespace will be accepted.
+     * 
+     */
     private @Nullable String bufferPastDuration;
+    /**
+     * @return Controls the duration of time that M3DB will retain data for the namespace.
+     * 
+     */
     private @Nullable String retentionPeriodDuration;
 
     private M3DbM3dbUserConfigNamespaceOptionsRetentionOptions() {}
+    /**
+     * @return Controls how long we wait before expiring stale data.
+     * 
+     */
     public Optional<String> blockDataExpiryDuration() {
         return Optional.ofNullable(this.blockDataExpiryDuration);
     }
+    /**
+     * @return Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * 
+     */
     public Optional<String> blocksizeDuration() {
         return Optional.ofNullable(this.blocksizeDuration);
     }
+    /**
+     * @return Controls how far into the future writes to the namespace will be accepted.
+     * 
+     */
     public Optional<String> bufferFutureDuration() {
         return Optional.ofNullable(this.bufferFutureDuration);
     }
+    /**
+     * @return Controls how far into the past writes to the namespace will be accepted.
+     * 
+     */
     public Optional<String> bufferPastDuration() {
         return Optional.ofNullable(this.bufferPastDuration);
     }
+    /**
+     * @return Controls the duration of time that M3DB will retain data for the namespace.
+     * 
+     */
     public Optional<String> retentionPeriodDuration() {
         return Optional.ofNullable(this.retentionPeriodDuration);
     }

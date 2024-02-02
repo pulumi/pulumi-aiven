@@ -13,7 +13,13 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetKafkaKafkaUserConfigTieredStorageResult
     {
+        /// <summary>
+        /// Whether to enable the tiered storage functionality.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// Local cache configuration.
+        /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigTieredStorageLocalCacheResult? LocalCache;
 
         [OutputConstructor]

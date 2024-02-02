@@ -12,11 +12,18 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigAuthGenericOauthGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         [Input("allowSignUp")]
         public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedDomains")]
         private InputList<string>? _allowedDomains;
+
+        /// <summary>
+        /// Allowed domains.
+        /// </summary>
         public InputList<string> AllowedDomains
         {
             get => _allowedDomains ?? (_allowedDomains = new InputList<string>());
@@ -25,38 +32,67 @@ namespace Pulumi.Aiven.Inputs
 
         [Input("allowedOrganizations")]
         private InputList<string>? _allowedOrganizations;
+
+        /// <summary>
+        /// Require user to be member of one of the listed organizations.
+        /// </summary>
         public InputList<string> AllowedOrganizations
         {
             get => _allowedOrganizations ?? (_allowedOrganizations = new InputList<string>());
             set => _allowedOrganizations = value;
         }
 
+        /// <summary>
+        /// API URL.
+        /// </summary>
         [Input("apiUrl", required: true)]
         public Input<string> ApiUrl { get; set; } = null!;
 
+        /// <summary>
+        /// Authorization URL.
+        /// </summary>
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
 
+        /// <summary>
+        /// Allow users to bypass the login screen and automatically log in.
+        /// </summary>
         [Input("autoLogin")]
         public Input<bool>? AutoLogin { get; set; }
 
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
+        /// <summary>
+        /// Name of the OAuth integration.
+        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("scopes")]
         private InputList<string>? _scopes;
+
+        /// <summary>
+        /// OAuth scopes.
+        /// </summary>
         public InputList<string> Scopes
         {
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
 
+        /// <summary>
+        /// Token URL.
+        /// </summary>
         [Input("tokenUrl", required: true)]
         public Input<string> TokenUrl { get; set; } = null!;
 

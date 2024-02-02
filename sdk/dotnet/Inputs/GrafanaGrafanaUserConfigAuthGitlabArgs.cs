@@ -12,29 +12,51 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class GrafanaGrafanaUserConfigAuthGitlabArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Automatically sign-up users on successful sign-in.
+        /// </summary>
         [Input("allowSignUp")]
         public Input<bool>? AllowSignUp { get; set; }
 
         [Input("allowedGroups")]
         private InputList<string>? _allowedGroups;
+
+        /// <summary>
+        /// Require users to belong to one of given groups.
+        /// </summary>
         public InputList<string> AllowedGroups
         {
             get => _allowedGroups ?? (_allowedGroups = new InputList<string>());
             set => _allowedGroups = value;
         }
 
+        /// <summary>
+        /// API URL. This only needs to be set when using self hosted GitLab.
+        /// </summary>
         [Input("apiUrl")]
         public Input<string>? ApiUrl { get; set; }
 
+        /// <summary>
+        /// Authorization URL. This only needs to be set when using self hosted GitLab.
+        /// </summary>
         [Input("authUrl")]
         public Input<string>? AuthUrl { get; set; }
 
+        /// <summary>
+        /// Client ID from provider.
+        /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
+        /// <summary>
+        /// Client secret from provider.
+        /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
+        /// <summary>
+        /// Token URL. This only needs to be set when using self hosted GitLab.
+        /// </summary>
         [Input("tokenUrl")]
         public Input<string>? TokenUrl { get; set; }
 

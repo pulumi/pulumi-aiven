@@ -13,10 +13,25 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationEndpointExternalElasticsearchLogsUserConfigResult
     {
+        /// <summary>
+        /// PEM encoded CA certificate.
+        /// </summary>
         public readonly string? Ca;
+        /// <summary>
+        /// Maximum number of days of logs to keep. The default value is `3`.
+        /// </summary>
         public readonly int? IndexDaysMax;
+        /// <summary>
+        /// Elasticsearch index prefix. The default value is `logs`.
+        /// </summary>
         public readonly string IndexPrefix;
+        /// <summary>
+        /// Elasticsearch request timeout limit. The default value is `10.0`.
+        /// </summary>
         public readonly double? Timeout;
+        /// <summary>
+        /// Elasticsearch connection URL.
+        /// </summary>
         public readonly string Url;
 
         [OutputConstructor]

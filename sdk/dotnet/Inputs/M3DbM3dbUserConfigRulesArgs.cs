@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Inputs
     {
         [Input("mappings")]
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingArgs>? _mappings;
+
+        /// <summary>
+        /// List of M3 mapping rules.
+        /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingArgs> Mappings
         {
             get => _mappings ?? (_mappings = new InputList<Inputs.M3DbM3dbUserConfigRulesMappingArgs>());

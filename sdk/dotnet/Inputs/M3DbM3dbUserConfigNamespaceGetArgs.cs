@@ -12,15 +12,27 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class M3DbM3dbUserConfigNamespaceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the namespace.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Namespace options.
+        /// </summary>
         [Input("options")]
         public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsGetArgs>? Options { get; set; }
 
+        /// <summary>
+        /// The resolution for an aggregated namespace.
+        /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
 
+        /// <summary>
+        /// The type of aggregation (aggregated/unaggregated).
+        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -13,6 +13,9 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetServiceIntegrationDatadogUserConfigRedisResult
     {
+        /// <summary>
+        /// Enable command_stats option in the agent's configuration. The default value is `false`.
+        /// </summary>
         public readonly bool? CommandStatsEnabled;
 
         [OutputConstructor]

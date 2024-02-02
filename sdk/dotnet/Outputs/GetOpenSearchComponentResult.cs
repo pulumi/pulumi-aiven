@@ -13,13 +13,37 @@ namespace Pulumi.Aiven.Outputs
     [OutputType]
     public sealed class GetOpenSearchComponentResult
     {
+        /// <summary>
+        /// Service component name
+        /// </summary>
         public readonly string Component;
+        /// <summary>
+        /// Connection info for connecting to the service component. This is a combination of host and port.
+        /// </summary>
         public readonly string ConnectionUri;
+        /// <summary>
+        /// Host name for connecting to the service component
+        /// </summary>
         public readonly string Host;
+        /// <summary>
+        /// Kafka authentication method. This is a value specific to the 'kafka' service component
+        /// </summary>
         public readonly string KafkaAuthenticationMethod;
+        /// <summary>
+        /// Port number for connecting to the service component
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// Network access route
+        /// </summary>
         public readonly string Route;
+        /// <summary>
+        /// Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+        /// </summary>
         public readonly bool Ssl;
+        /// <summary>
+        /// DNS usage name
+        /// </summary>
         public readonly string Usage;
 
         [OutputConstructor]
