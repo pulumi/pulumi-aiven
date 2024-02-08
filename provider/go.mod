@@ -4,16 +4,16 @@ go 1.21.1
 
 replace (
 	github.com/aiven/terraform-provider-aiven => ../upstream
-	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240129205329-74776a5cd5f9
+	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240202163305-e2a20ae13ef9
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.26.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.0
-	github.com/pulumi/pulumi/pkg/v3 v3.104.2 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.104.2
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.26.1-0.20240208124624-45cdb2507f38
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.73.1-0.20240208124624-45cdb2507f38
+	github.com/pulumi/pulumi/pkg/v3 v3.105.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.105.0
 )
 
 require github.com/aiven/terraform-provider-aiven v0.0.0-00010101000000-000000000000
