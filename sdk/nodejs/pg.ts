@@ -86,7 +86,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     public readonly pg!: pulumi.Output<outputs.PgPg>;
     /**
@@ -290,7 +290,7 @@ export interface PgState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: pulumi.Input<inputs.PgPg>;
     /**
@@ -390,7 +390,7 @@ export interface PgArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: pulumi.Input<inputs.PgPg>;
     /**

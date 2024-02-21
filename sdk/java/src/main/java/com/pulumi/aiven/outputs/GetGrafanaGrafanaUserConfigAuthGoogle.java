@@ -23,7 +23,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
      * @return Domains allowed to sign-in to this Grafana.
      * 
      */
-    private @Nullable List<String> allowedDomains;
+    private List<String> allowedDomains;
     /**
      * @return Client ID from provider.
      * 
@@ -48,7 +48,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
      * 
      */
     public List<String> allowedDomains() {
-        return this.allowedDomains == null ? List.of() : this.allowedDomains;
+        return this.allowedDomains;
     }
     /**
      * @return Client ID from provider.
@@ -75,7 +75,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowSignUp;
-        private @Nullable List<String> allowedDomains;
+        private List<String> allowedDomains;
         private String clientId;
         private String clientSecret;
         public Builder() {}
@@ -94,8 +94,10 @@ public final class GetGrafanaGrafanaUserConfigAuthGoogle {
             return this;
         }
         @CustomType.Setter
-        public Builder allowedDomains(@Nullable List<String> allowedDomains) {
-
+        public Builder allowedDomains(List<String> allowedDomains) {
+            if (allowedDomains == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigAuthGoogle", "allowedDomains");
+            }
             this.allowedDomains = allowedDomains;
             return this;
         }

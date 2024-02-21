@@ -12,27 +12,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
-    /**
-     * @return .
-     * 
-     */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting internalAuthenticationBackendLimiting;
     /**
-     * @return IP address rate limiting settings.
+     * @return IP address rate limiting settings
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting ipRateLimiting;
 
     private GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners() {}
-    /**
-     * @return .
-     * 
-     */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting> internalAuthenticationBackendLimiting() {
         return Optional.ofNullable(this.internalAuthenticationBackendLimiting);
     }
     /**
-     * @return IP address rate limiting settings.
+     * @return IP address rate limiting settings
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting> ipRateLimiting() {

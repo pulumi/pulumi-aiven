@@ -19,7 +19,7 @@ type OrganizationUserGroup struct {
 	// Time of creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The ID of the user group.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
@@ -37,6 +37,9 @@ func NewOrganizationUserGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -98,7 +101,7 @@ func (OrganizationUserGroupState) ElementType() reflect.Type {
 
 type organizationUserGroupArgs struct {
 	// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
 	Name *string `pulumi:"name"`
 	// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
@@ -108,7 +111,7 @@ type organizationUserGroupArgs struct {
 // The set of arguments for constructing a OrganizationUserGroup resource.
 type OrganizationUserGroupArgs struct {
 	// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-	Description pulumi.StringPtrInput
+	Description pulumi.StringInput
 	// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
 	Name pulumi.StringPtrInput
 	// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
@@ -208,8 +211,8 @@ func (o OrganizationUserGroupOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-func (o OrganizationUserGroupOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o OrganizationUserGroupOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *OrganizationUserGroup) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The ID of the user group.

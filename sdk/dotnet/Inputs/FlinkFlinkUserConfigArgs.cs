@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<Inputs.FlinkFlinkUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? NumberOfTaskSlots { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.FlinkFlinkUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }

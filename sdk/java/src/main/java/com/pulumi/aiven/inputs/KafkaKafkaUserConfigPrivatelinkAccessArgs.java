@@ -31,14 +31,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     }
 
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      * 
      */
     @Import(name="kafka")
     private @Nullable Output<Boolean> kafka;
 
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Optional<Output<Boolean>> kafka() {
@@ -156,7 +156,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafka Kafka broker configuration values.
+         * @param kafka Kafka broker configuration values
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafka Kafka broker configuration values.
+         * @param kafka Kafka broker configuration values
          * 
          * @return builder
          * 

@@ -26,7 +26,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Boolean actionDestructiveRequiresName;
     /**
-     * @return Opensearch Security Plugin Settings.
+     * @return Opensearch Security Plugin Settings
      * 
      */
     private @Nullable OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners authFailureListeners;
@@ -41,7 +41,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer clusterRoutingAllocationNodeConcurrentRecoveries;
     /**
-     * @return This should be identical to the Sender name defined in Opensearch dashboards.
+     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      * 
      */
     private @Nullable String emailSenderName;
@@ -237,7 +237,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.actionDestructiveRequiresName);
     }
     /**
-     * @return Opensearch Security Plugin Settings.
+     * @return Opensearch Security Plugin Settings
      * 
      */
     public Optional<OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners> authFailureListeners() {
@@ -258,7 +258,7 @@ public final class OpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.clusterRoutingAllocationNodeConcurrentRecoveries);
     }
     /**
-     * @return This should be identical to the Sender name defined in Opensearch dashboards.
+     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      * 
      */
     public Optional<String> emailSenderName() {

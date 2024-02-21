@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.M3DbM3dbUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -62,13 +62,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// M3 limits.
+        /// M3 limits
         /// </summary>
         [Input("limits")]
         public Input<Inputs.M3DbM3dbUserConfigLimitsArgs>? Limits { get; set; }
 
         /// <summary>
-        /// M3 specific configuration options.
+        /// M3 specific configuration options
         /// </summary>
         [Input("m3")]
         public Input<Inputs.M3DbM3dbUserConfigM3Args>? M3 { get; set; }
@@ -95,7 +95,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs>? _namespaces;
 
         /// <summary>
-        /// List of M3 namespaces.
+        /// List of M3 namespaces
         /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigNamespaceArgs> Namespaces
         {
@@ -104,7 +104,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
@@ -116,13 +116,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.M3DbM3dbUserConfigPublicAccessArgs>? PublicAccess { get; set; }
 
         /// <summary>
-        /// M3 rules.
+        /// M3 rules
         /// </summary>
         [Input("rules")]
         public Input<Inputs.M3DbM3dbUserConfigRulesArgs>? Rules { get; set; }

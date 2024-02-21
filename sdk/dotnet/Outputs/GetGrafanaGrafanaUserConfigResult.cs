@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AllowEmbedding;
         /// <summary>
-        /// Azure AD OAuth integration.
+        /// Azure AD OAuth integration
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthAzureadResult? AuthAzuread;
         /// <summary>
@@ -46,19 +46,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AuthBasicEnabled;
         /// <summary>
-        /// Generic OAuth integration.
+        /// Generic OAuth integration
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGenericOauthResult? AuthGenericOauth;
         /// <summary>
-        /// Github Auth integration.
+        /// Github Auth integration
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGithubResult? AuthGithub;
         /// <summary>
-        /// GitLab Auth integration.
+        /// GitLab Auth integration
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGitlabResult? AuthGitlab;
         /// <summary>
-        /// Google Auth integration.
+        /// Google Auth integration
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult? AuthGoogle;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? DataproxyTimeout;
         /// <summary>
-        /// Grafana date format specifications.
+        /// Grafana date format specifications
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigDateFormatsResult? DateFormats;
         /// <summary>
@@ -102,7 +102,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? EditorsCanAdmin;
         /// <summary>
-        /// External image store settings.
+        /// External image store settings
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult? ExternalImageStorage;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? GoogleAnalyticsUaId;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
@@ -130,11 +130,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? OauthAllowInsecureEmailLookup;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigPublicAccessResult? PublicAccess;
         /// <summary>
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>
-        /// SMTP server settings.
+        /// SMTP server settings
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigSmtpServerResult? SmtpServer;
         /// <summary>

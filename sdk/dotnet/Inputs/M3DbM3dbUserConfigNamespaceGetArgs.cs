@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Namespace options.
+        /// Namespace options
         /// </summary>
         [Input("options")]
         public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsGetArgs>? Options { get; set; }

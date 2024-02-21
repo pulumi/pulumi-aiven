@@ -5,6 +5,7 @@ package com.pulumi.aiven.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -19,15 +20,15 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
      * The resolution for the matching namespace.
      * 
      */
-    @Import(name="resolution")
-    private @Nullable Output<String> resolution;
+    @Import(name="resolution", required=true)
+    private Output<String> resolution;
 
     /**
      * @return The resolution for the matching namespace.
      * 
      */
-    public Optional<Output<String>> resolution() {
-        return Optional.ofNullable(this.resolution);
+    public Output<String> resolution() {
+        return this.resolution;
     }
 
     /**
@@ -76,7 +77,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
          * @return builder
          * 
          */
-        public Builder resolution(@Nullable Output<String> resolution) {
+        public Builder resolution(Output<String> resolution) {
             $.resolution = resolution;
             return this;
         }
@@ -113,6 +114,9 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
         }
 
         public M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs build() {
+            if ($.resolution == null) {
+                throw new MissingRequiredPropertyException("M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs", "resolution");
+            }
             return $;
         }
     }

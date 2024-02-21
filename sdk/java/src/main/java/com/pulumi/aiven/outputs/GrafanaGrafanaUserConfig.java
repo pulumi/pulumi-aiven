@@ -29,7 +29,11 @@ public final class GrafanaGrafanaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
@@ -57,7 +61,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean allowEmbedding;
     /**
-     * @return Azure AD OAuth integration.
+     * @return Azure AD OAuth integration
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigAuthAzuread authAzuread;
@@ -67,22 +71,22 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean authBasicEnabled;
     /**
-     * @return Generic OAuth integration.
+     * @return Generic OAuth integration
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigAuthGenericOauth authGenericOauth;
     /**
-     * @return Github Auth integration.
+     * @return Github Auth integration
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigAuthGithub authGithub;
     /**
-     * @return GitLab Auth integration.
+     * @return GitLab Auth integration
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigAuthGitlab authGitlab;
     /**
-     * @return Google Auth integration.
+     * @return Google Auth integration
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
@@ -122,7 +126,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Integer dataproxyTimeout;
     /**
-     * @return Grafana date format specifications.
+     * @return Grafana date format specifications
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigDateFormats dateFormats;
@@ -137,7 +141,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean editorsCanAdmin;
     /**
-     * @return External image store settings.
+     * @return External image store settings
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigExternalImageStorage externalImageStorage;
@@ -147,7 +151,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable String googleAnalyticsUaId;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects;
@@ -160,10 +164,10 @@ public final class GrafanaGrafanaUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Enable Grafana /metrics endpoint.
@@ -176,12 +180,12 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean oauthAllowInsecureEmailLookup;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigPrivatelinkAccess privatelinkAccess;
@@ -191,7 +195,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigPublicAccess publicAccess;
@@ -211,7 +215,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return SMTP server settings.
+     * @return SMTP server settings
      * 
      */
     private @Nullable GrafanaGrafanaUserConfigSmtpServer smtpServer;
@@ -245,7 +249,11 @@ public final class GrafanaGrafanaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -285,7 +293,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.allowEmbedding);
     }
     /**
-     * @return Azure AD OAuth integration.
+     * @return Azure AD OAuth integration
      * 
      */
     public Optional<GrafanaGrafanaUserConfigAuthAzuread> authAzuread() {
@@ -299,28 +307,28 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.authBasicEnabled);
     }
     /**
-     * @return Generic OAuth integration.
+     * @return Generic OAuth integration
      * 
      */
     public Optional<GrafanaGrafanaUserConfigAuthGenericOauth> authGenericOauth() {
         return Optional.ofNullable(this.authGenericOauth);
     }
     /**
-     * @return Github Auth integration.
+     * @return Github Auth integration
      * 
      */
     public Optional<GrafanaGrafanaUserConfigAuthGithub> authGithub() {
         return Optional.ofNullable(this.authGithub);
     }
     /**
-     * @return GitLab Auth integration.
+     * @return GitLab Auth integration
      * 
      */
     public Optional<GrafanaGrafanaUserConfigAuthGitlab> authGitlab() {
         return Optional.ofNullable(this.authGitlab);
     }
     /**
-     * @return Google Auth integration.
+     * @return Google Auth integration
      * 
      */
     public Optional<GrafanaGrafanaUserConfigAuthGoogle> authGoogle() {
@@ -376,7 +384,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.dataproxyTimeout);
     }
     /**
-     * @return Grafana date format specifications.
+     * @return Grafana date format specifications
      * 
      */
     public Optional<GrafanaGrafanaUserConfigDateFormats> dateFormats() {
@@ -397,7 +405,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.editorsCanAdmin);
     }
     /**
-     * @return External image store settings.
+     * @return External image store settings
      * 
      */
     public Optional<GrafanaGrafanaUserConfigExternalImageStorage> externalImageStorage() {
@@ -411,7 +419,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.googleAnalyticsUaId);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<GrafanaGrafanaUserConfigIpFilterObject> ipFilterObjects() {
@@ -428,10 +436,10 @@ public final class GrafanaGrafanaUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -450,14 +458,14 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.oauthAllowInsecureEmailLookup);
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<GrafanaGrafanaUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<GrafanaGrafanaUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -471,7 +479,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<GrafanaGrafanaUserConfigPublicAccess> publicAccess() {
@@ -499,7 +507,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return SMTP server settings.
+     * @return SMTP server settings
      * 
      */
     public Optional<GrafanaGrafanaUserConfigSmtpServer> smtpServer() {

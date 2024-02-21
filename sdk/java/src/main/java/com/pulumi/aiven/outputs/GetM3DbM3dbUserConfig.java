@@ -23,7 +23,11 @@ public final class GetM3DbM3dbUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -31,7 +35,7 @@ public final class GetM3DbM3dbUserConfig {
      */
     private @Nullable String customDomain;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects;
@@ -44,29 +48,25 @@ public final class GetM3DbM3dbUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return M3 limits.
+     * @return M3 limits
      * 
      */
     private @Nullable GetM3DbM3dbUserConfigLimits limits;
     /**
-     * @return M3 specific configuration options.
+     * @return M3 specific configuration options
      * 
      */
     private @Nullable GetM3DbM3dbUserConfigM3 m3;
     /**
      * @return M3 major version (deprecated, use m3db_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
     /**
      * @return Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
@@ -79,12 +79,12 @@ public final class GetM3DbM3dbUserConfig {
      */
     private @Nullable String m3dbVersion;
     /**
-     * @return List of M3 namespaces.
+     * @return List of M3 namespaces
      * 
      */
     private @Nullable List<GetM3DbM3dbUserConfigNamespace> namespaces;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable GetM3DbM3dbUserConfigPrivateAccess privateAccess;
@@ -94,12 +94,12 @@ public final class GetM3DbM3dbUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable GetM3DbM3dbUserConfigPublicAccess publicAccess;
     /**
-     * @return M3 rules.
+     * @return M3 rules
      * 
      */
     private @Nullable GetM3DbM3dbUserConfigRules rules;
@@ -123,7 +123,11 @@ public final class GetM3DbM3dbUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -135,7 +139,7 @@ public final class GetM3DbM3dbUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<GetM3DbM3dbUserConfigIpFilterObject> ipFilterObjects() {
@@ -152,22 +156,22 @@ public final class GetM3DbM3dbUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return M3 limits.
+     * @return M3 limits
      * 
      */
     public Optional<GetM3DbM3dbUserConfigLimits> limits() {
         return Optional.ofNullable(this.limits);
     }
     /**
-     * @return M3 specific configuration options.
+     * @return M3 specific configuration options
      * 
      */
     public Optional<GetM3DbM3dbUserConfigM3> m3() {
@@ -176,11 +180,7 @@ public final class GetM3DbM3dbUserConfig {
     /**
      * @return M3 major version (deprecated, use m3db_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
@@ -199,14 +199,14 @@ public final class GetM3DbM3dbUserConfig {
         return Optional.ofNullable(this.m3dbVersion);
     }
     /**
-     * @return List of M3 namespaces.
+     * @return List of M3 namespaces
      * 
      */
     public List<GetM3DbM3dbUserConfigNamespace> namespaces() {
         return this.namespaces == null ? List.of() : this.namespaces;
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<GetM3DbM3dbUserConfigPrivateAccess> privateAccess() {
@@ -220,14 +220,14 @@ public final class GetM3DbM3dbUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<GetM3DbM3dbUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return M3 rules.
+     * @return M3 rules
      * 
      */
     public Optional<GetM3DbM3dbUserConfigRules> rules() {

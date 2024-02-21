@@ -17,14 +17,14 @@ public final class M3DbM3dbUserConfigRulesArgs extends com.pulumi.resources.Reso
     public static final M3DbM3dbUserConfigRulesArgs Empty = new M3DbM3dbUserConfigRulesArgs();
 
     /**
-     * List of M3 mapping rules.
+     * List of M3 mapping rules
      * 
      */
     @Import(name="mappings")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingArgs>> mappings;
 
     /**
-     * @return List of M3 mapping rules.
+     * @return List of M3 mapping rules
      * 
      */
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingArgs>>> mappings() {
@@ -56,7 +56,7 @@ public final class M3DbM3dbUserConfigRulesArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mappings List of M3 mapping rules.
+         * @param mappings List of M3 mapping rules
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class M3DbM3dbUserConfigRulesArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mappings List of M3 mapping rules.
+         * @param mappings List of M3 mapping rules
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class M3DbM3dbUserConfigRulesArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mappings List of M3 mapping rules.
+         * @param mappings List of M3 mapping rules
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
      */
     private @Nullable Integer logQueriesAfter;
     /**
-     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
      * 
      */
     private @Nullable Integer maxConnectionLimit;
@@ -57,7 +57,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdb {
         return Optional.ofNullable(this.logQueriesAfter);
     }
     /**
-     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
      * 
      */
     public Optional<Integer> maxConnectionLimit() {

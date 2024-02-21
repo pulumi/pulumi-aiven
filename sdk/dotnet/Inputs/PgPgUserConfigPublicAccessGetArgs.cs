@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         [Input("pg")]
         public Input<bool>? Pg { get; set; }
 
         /// <summary>
-        /// PGBouncer connection pooling settings.
+        /// PGBouncer connection pooling settings
         /// </summary>
         [Input("pgbouncer")]
         public Input<bool>? Pgbouncer { get; set; }

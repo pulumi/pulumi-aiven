@@ -56,7 +56,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean enableIpv6;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects;
@@ -69,43 +69,39 @@ public final class PgPgUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Migrate data from existing server.
+     * @return Migrate data from existing server
      * 
      */
     private @Nullable PgPgUserConfigMigration migration;
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     private @Nullable PgPgUserConfigPg pg;
     /**
-     * @return System-wide settings for the pg*qualstats extension.
-     * 
-     */
-    private @Nullable PgPgUserConfigPgQualstats pgQualstats;
-    /**
-     * @return Use read_replica service integration instead.
+     * @return System-wide settings for the pg*qualstats extension
      * 
      * @deprecated
-     * Usage of this field is discouraged.
+     * This property is deprecated.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
+    @Deprecated /* This property is deprecated. */
+    private @Nullable PgPgUserConfigPgQualstats pgQualstats;
+    /**
+     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
+     * 
+     */
     private @Nullable Boolean pgReadReplica;
     /**
      * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String pgServiceToForkFrom;
     /**
      * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
@@ -118,22 +114,22 @@ public final class PgPgUserConfig {
      */
     private @Nullable String pgVersion;
     /**
-     * @return PGBouncer connection pooling settings.
+     * @return PGBouncer connection pooling settings
      * 
      */
     private @Nullable PgPgUserConfigPgbouncer pgbouncer;
     /**
-     * @return System-wide settings for pglookout.
+     * @return System-wide settings for pglookout
      * 
      */
     private @Nullable PgPgUserConfigPglookout pglookout;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable PgPgUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable PgPgUserConfigPrivatelinkAccess privatelinkAccess;
@@ -143,7 +139,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable PgPgUserConfigPublicAccess publicAccess;
@@ -178,7 +174,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable String synchronousReplication;
     /**
-     * @return System-wide settings for the timescaledb extension.
+     * @return System-wide settings for the timescaledb extension
      * 
      */
     private @Nullable PgPgUserConfigTimescaledb timescaledb;
@@ -237,7 +233,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.enableIpv6);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<PgPgUserConfigIpFilterObject> ipFilterObjects() {
@@ -254,53 +250,49 @@ public final class PgPgUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Migrate data from existing server.
+     * @return Migrate data from existing server
      * 
      */
     public Optional<PgPgUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     public Optional<PgPgUserConfigPg> pg() {
         return Optional.ofNullable(this.pg);
     }
     /**
-     * @return System-wide settings for the pg*qualstats extension.
+     * @return System-wide settings for the pg*qualstats extension
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<PgPgUserConfigPgQualstats> pgQualstats() {
         return Optional.ofNullable(this.pgQualstats);
     }
     /**
-     * @return Use read_replica service integration instead.
-     * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @return Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Boolean> pgReadReplica() {
         return Optional.ofNullable(this.pgReadReplica);
     }
     /**
      * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<String> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
@@ -319,28 +311,28 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
-     * @return PGBouncer connection pooling settings.
+     * @return PGBouncer connection pooling settings
      * 
      */
     public Optional<PgPgUserConfigPgbouncer> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
     /**
-     * @return System-wide settings for pglookout.
+     * @return System-wide settings for pglookout
      * 
      */
     public Optional<PgPgUserConfigPglookout> pglookout() {
         return Optional.ofNullable(this.pglookout);
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<PgPgUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<PgPgUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -354,7 +346,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<PgPgUserConfigPublicAccess> publicAccess() {
@@ -403,7 +395,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.synchronousReplication);
     }
     /**
-     * @return System-wide settings for the timescaledb extension.
+     * @return System-wide settings for the timescaledb extension
      * 
      */
     public Optional<PgPgUserConfigTimescaledb> timescaledb() {

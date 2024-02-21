@@ -20,7 +20,7 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
      */
     private @Nullable String customDomain;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<GetM3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects;
@@ -33,19 +33,15 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return M3 major version (deprecated, use m3aggregator_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable String m3Version;
     /**
      * @return M3 major version (the minimum compatible version).
@@ -72,7 +68,7 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<GetM3AggregatorM3aggregatorUserConfigIpFilterObject> ipFilterObjects() {
@@ -89,21 +85,17 @@ public final class GetM3AggregatorM3aggregatorUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
      * @return M3 major version (deprecated, use m3aggregator_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }

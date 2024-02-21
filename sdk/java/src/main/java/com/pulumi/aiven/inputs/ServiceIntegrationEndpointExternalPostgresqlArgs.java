@@ -36,15 +36,15 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
      * Password.
      * 
      */
-    @Import(name="password", required=true)
-    private Output<String> password;
+    @Import(name="password")
+    private @Nullable Output<String> password;
 
     /**
      * @return Password.
      * 
      */
-    public Output<String> password() {
-        return this.password;
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
     }
 
     /**
@@ -60,6 +60,36 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
      */
     public Output<Integer> port() {
         return this.port;
+    }
+
+    /**
+     * Client certificate.
+     * 
+     */
+    @Import(name="sslClientCertificate")
+    private @Nullable Output<String> sslClientCertificate;
+
+    /**
+     * @return Client certificate.
+     * 
+     */
+    public Optional<Output<String>> sslClientCertificate() {
+        return Optional.ofNullable(this.sslClientCertificate);
+    }
+
+    /**
+     * Client key.
+     * 
+     */
+    @Import(name="sslClientKey")
+    private @Nullable Output<String> sslClientKey;
+
+    /**
+     * @return Client key.
+     * 
+     */
+    public Optional<Output<String>> sslClientKey() {
+        return Optional.ofNullable(this.sslClientKey);
     }
 
     /**
@@ -113,6 +143,8 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         this.host = $.host;
         this.password = $.password;
         this.port = $.port;
+        this.sslClientCertificate = $.sslClientCertificate;
+        this.sslClientKey = $.sslClientKey;
         this.sslMode = $.sslMode;
         this.sslRootCert = $.sslRootCert;
         this.username = $.username;
@@ -163,7 +195,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
          * @return builder
          * 
          */
-        public Builder password(Output<String> password) {
+        public Builder password(@Nullable Output<String> password) {
             $.password = password;
             return this;
         }
@@ -197,6 +229,48 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
          */
         public Builder port(Integer port) {
             return port(Output.of(port));
+        }
+
+        /**
+         * @param sslClientCertificate Client certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslClientCertificate(@Nullable Output<String> sslClientCertificate) {
+            $.sslClientCertificate = sslClientCertificate;
+            return this;
+        }
+
+        /**
+         * @param sslClientCertificate Client certificate.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslClientCertificate(String sslClientCertificate) {
+            return sslClientCertificate(Output.of(sslClientCertificate));
+        }
+
+        /**
+         * @param sslClientKey Client key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslClientKey(@Nullable Output<String> sslClientKey) {
+            $.sslClientKey = sslClientKey;
+            return this;
+        }
+
+        /**
+         * @param sslClientKey Client key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sslClientKey(String sslClientKey) {
+            return sslClientKey(Output.of(sslClientKey));
         }
 
         /**
@@ -265,9 +339,6 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         public ServiceIntegrationEndpointExternalPostgresqlArgs build() {
             if ($.host == null) {
                 throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalPostgresqlArgs", "host");
-            }
-            if ($.password == null) {
-                throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalPostgresqlArgs", "password");
             }
             if ($.port == null) {
                 throw new MissingRequiredPropertyException("ServiceIntegrationEndpointExternalPostgresqlArgs", "port");

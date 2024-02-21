@@ -115,14 +115,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<MySqlMysqlUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -148,10 +148,10 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
      * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -159,23 +159,23 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      * 
      */
     @Import(name="migration")
     private @Nullable Output<MySqlMysqlUserConfigMigrationArgs> migration;
 
     /**
-     * @return Migrate data from existing server.
+     * @return Migrate data from existing server
      * 
      */
     public Optional<Output<MySqlMysqlUserConfigMigrationArgs>> migration() {
@@ -183,14 +183,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * mysql.conf configuration values.
+     * mysql.conf configuration values
      * 
      */
     @Import(name="mysql")
     private @Nullable Output<MySqlMysqlUserConfigMysqlArgs> mysql;
 
     /**
-     * @return mysql.conf configuration values.
+     * @return mysql.conf configuration values
      * 
      */
     public Optional<Output<MySqlMysqlUserConfigMysqlArgs>> mysql() {
@@ -213,14 +213,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<MySqlMysqlUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<Output<MySqlMysqlUserConfigPrivateAccessArgs>> privateAccess() {
@@ -228,14 +228,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      * 
      */
     @Import(name="privatelinkAccess")
     private @Nullable Output<MySqlMysqlUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<Output<MySqlMysqlUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
@@ -258,14 +258,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<MySqlMysqlUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<Output<MySqlMysqlUserConfigPublicAccessArgs>> publicAccess() {
@@ -502,7 +502,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -513,7 +513,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -569,10 +569,10 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -584,10 +584,10 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -598,16 +598,16 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
         /**
-         * @param migration Migrate data from existing server.
+         * @param migration Migrate data from existing server
          * 
          * @return builder
          * 
@@ -618,7 +618,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param migration Migrate data from existing server.
+         * @param migration Migrate data from existing server
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mysql mysql.conf configuration values.
+         * @param mysql mysql.conf configuration values
          * 
          * @return builder
          * 
@@ -639,7 +639,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mysql mysql.conf configuration values.
+         * @param mysql mysql.conf configuration values
          * 
          * @return builder
          * 
@@ -670,7 +670,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -681,7 +681,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -691,7 +691,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
          * 
@@ -702,7 +702,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
          * 
@@ -733,7 +733,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -744,7 +744,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 

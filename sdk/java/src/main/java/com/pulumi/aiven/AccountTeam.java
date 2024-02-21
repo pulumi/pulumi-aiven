@@ -14,7 +14,42 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Account Team resource allows the creation and management of an Account Team.
+ * Creates and manages a team.
+ * 
+ * &gt; **Teams are becoming groups**
+ * Groups are an easier way to control access to your organization&#39;s projects and
+ * services for a group of users.
+ * Migrate your teams to groups.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.AccountTeam;
+ * import com.pulumi.aiven.AccountTeamArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleTeam = new AccountTeam(&#34;exampleTeam&#34;, AccountTeamArgs.builder()        
+ *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

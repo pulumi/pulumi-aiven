@@ -26,15 +26,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DisableReplicationFactorAdjustment;
         /// <summary>
-        /// Index patterns.
+        /// Index patterns
         /// </summary>
         public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIndexPattern> IndexPatterns;
         /// <summary>
-        /// Template settings for all new indexes.
+        /// Template settings for all new indexes
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigIndexTemplate? IndexTemplate;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.OpenSearchOpensearchUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
@@ -50,19 +50,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? KeepIndexRefreshInterval;
         /// <summary>
-        /// Use index_patterns instead. The default value is `0`.
+        /// use index_patterns instead. The default value is `0`.
         /// </summary>
         public readonly int? MaxIndexCount;
         /// <summary>
-        /// OpenSearch OpenID Connect Configuration.
+        /// OpenSearch OpenID Connect Configuration
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpenid? Openid;
         /// <summary>
-        /// OpenSearch settings.
+        /// OpenSearch settings
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearch? Opensearch;
         /// <summary>
-        /// OpenSearch Dashboards settings.
+        /// OpenSearch Dashboards settings
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchDashboards? OpensearchDashboards;
         /// <summary>
@@ -70,11 +70,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? OpensearchVersion;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigPublicAccess? PublicAccess;
         /// <summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
-        /// OpenSearch SAML configuration.
+        /// OpenSearch SAML configuration
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigSaml? Saml;
         /// <summary>

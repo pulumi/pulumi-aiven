@@ -245,7 +245,10 @@ def get_service_integration(destination_service_name: Optional[str] = None,
     """
     The Service Integration data source provides information about the existing Aiven Service Integration.
 
-    Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+    Service Integration defines an integration between two Aiven services or between Aiven service and an external
+    integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
+    getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
+    OpenSearch, etc.
 
     ## Example Usage
 
@@ -302,7 +305,10 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     """
     The Service Integration data source provides information about the existing Aiven Service Integration.
 
-    Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+    Service Integration defines an integration between two Aiven services or between Aiven service and an external
+    integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
+    getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
+    OpenSearch, etc.
 
     ## Example Usage
 

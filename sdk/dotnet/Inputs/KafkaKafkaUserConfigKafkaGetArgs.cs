@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? GroupMinSessionTimeoutMs { get; set; }
 
         /// <summary>
-        /// How long are delete records retained?.
+        /// How long are delete records retained?
         /// </summary>
         [Input("logCleanerDeleteRetentionMs")]
         public Input<int>? LogCleanerDeleteRetentionMs { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? LogMessageTimestampType { get; set; }
 
         /// <summary>
-        /// Should pre allocate file when create new segment?.
+        /// Should pre allocate file when create new segment?
         /// </summary>
         [Input("logPreallocate")]
         public Input<bool>? LogPreallocate { get; set; }

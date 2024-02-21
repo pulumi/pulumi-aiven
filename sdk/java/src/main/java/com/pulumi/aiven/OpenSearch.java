@@ -243,14 +243,14 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.opensearchUserConfig);
     }
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      * 
      */
     @Export(name="opensearches", refs={List.class,OpenSearchOpensearch.class}, tree="[0,1]")
     private Output<List<OpenSearchOpensearch>> opensearches;
 
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     public Output<List<OpenSearchOpensearch>> opensearches() {

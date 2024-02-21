@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .kafkaRest(true)
  *                 .kafkaConnect(true)
  *                 .schemaRegistry(true)
- *                 .kafkaVersion(&#34;3.1&#34;)
+ *                 .kafkaVersion(&#34;3.5&#34;)
  *                 .kafka(KafkaKafkaUserConfigKafkaArgs.builder()
  *                     .groupMaxSessionTimeoutMs(70000)
  *                     .logRetentionBytes(1000000000)
@@ -232,14 +232,14 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kafkaUserConfig);
     }
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      * 
      */
     @Export(name="kafkas", refs={List.class,KafkaKafka.class}, tree="[0,1]")
     private Output<List<KafkaKafka>> kafkas;
 
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Output<List<KafkaKafka>> kafkas() {

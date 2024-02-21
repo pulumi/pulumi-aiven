@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Inputs
         [Input("allowSignUp")]
         public Input<bool>? AllowSignUp { get; set; }
 
-        [Input("allowedDomains")]
+        [Input("allowedDomains", required: true)]
         private InputList<string>? _allowedDomains;
 
         /// <summary>

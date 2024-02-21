@@ -37,15 +37,15 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
      * Require users to belong to one of given groups.
      * 
      */
-    @Import(name="allowedGroups")
-    private @Nullable Output<List<String>> allowedGroups;
+    @Import(name="allowedGroups", required=true)
+    private Output<List<String>> allowedGroups;
 
     /**
      * @return Require users to belong to one of given groups.
      * 
      */
-    public Optional<Output<List<String>>> allowedGroups() {
-        return Optional.ofNullable(this.allowedGroups);
+    public Output<List<String>> allowedGroups() {
+        return this.allowedGroups;
     }
 
     /**
@@ -180,7 +180,7 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder allowedGroups(@Nullable Output<List<String>> allowedGroups) {
+        public Builder allowedGroups(Output<List<String>> allowedGroups) {
             $.allowedGroups = allowedGroups;
             return this;
         }
@@ -311,6 +311,9 @@ public final class GrafanaGrafanaUserConfigAuthGitlabArgs extends com.pulumi.res
         }
 
         public GrafanaGrafanaUserConfigAuthGitlabArgs build() {
+            if ($.allowedGroups == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGitlabArgs", "allowedGroups");
+            }
             if ($.clientId == null) {
                 throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGitlabArgs", "clientId");
             }

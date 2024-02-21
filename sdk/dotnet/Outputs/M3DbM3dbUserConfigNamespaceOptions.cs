@@ -14,9 +14,9 @@ namespace Pulumi.Aiven.Outputs
     public sealed class M3DbM3dbUserConfigNamespaceOptions
     {
         /// <summary>
-        /// Retention options.
+        /// Retention options
         /// </summary>
-        public readonly Outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions? RetentionOptions;
+        public readonly Outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions RetentionOptions;
         /// <summary>
         /// Controls whether M3DB will create snapshot files for this namespace.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private M3DbM3dbUserConfigNamespaceOptions(
-            Outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions? retentionOptions,
+            Outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions,
 
             bool? snapshotEnabled,
 

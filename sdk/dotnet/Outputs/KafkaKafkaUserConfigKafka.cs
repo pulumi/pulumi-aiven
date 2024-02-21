@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? GroupMinSessionTimeoutMs;
         /// <summary>
-        /// How long are delete records retained?.
+        /// How long are delete records retained?
         /// </summary>
         public readonly int? LogCleanerDeleteRetentionMs;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogMessageTimestampType;
         /// <summary>
-        /// Should pre allocate file when create new segment?.
+        /// Should pre allocate file when create new segment?
         /// </summary>
         public readonly bool? LogPreallocate;
         /// <summary>

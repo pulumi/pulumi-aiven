@@ -48,7 +48,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with namespaces_string instead.")]
+        [Obsolete(@"Deprecated. Use `namespaces_string` instead.")]
         public InputList<string> Namespaces
         {
             get => _namespaces ?? (_namespaces = new InputList<string>());
@@ -59,7 +59,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectGetArgs>? _namespacesObjects;
 
         /// <summary>
-        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
         /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingNamespacesObjectGetArgs> NamespacesObjects
         {
@@ -83,7 +83,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagGetArgs>? _tags;
 
         /// <summary>
-        /// List of tags to be appended to matching metrics.
+        /// List of tags to be appended to matching metrics
         /// </summary>
         public InputList<Inputs.M3DbM3dbUserConfigRulesMappingTagGetArgs> Tags
         {

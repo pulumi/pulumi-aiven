@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafkaUserConfigPrivateAccess {
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     private @Nullable Boolean kafka;
@@ -39,7 +39,7 @@ public final class KafkaKafkaUserConfigPrivateAccess {
 
     private KafkaKafkaUserConfigPrivateAccess() {}
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Optional<Boolean> kafka() {

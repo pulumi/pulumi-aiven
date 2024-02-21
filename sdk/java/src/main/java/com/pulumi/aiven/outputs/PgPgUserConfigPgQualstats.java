@@ -15,62 +15,102 @@ public final class PgPgUserConfigPgQualstats {
     /**
      * @return Enable / Disable pg_qualstats. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean enabled;
     /**
      * @return Error estimation num threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Integer minErrEstimateNum;
     /**
      * @return Error estimation ratio threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Integer minErrEstimateRatio;
     /**
      * @return Enable / Disable pg_qualstats constants tracking. The default value is `true`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean trackConstants;
     /**
      * @return Track quals on system catalogs too. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Boolean trackPgCatalog;
 
     private PgPgUserConfigPgQualstats() {}
     /**
      * @return Enable / Disable pg_qualstats. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
      * @return Error estimation num threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Integer> minErrEstimateNum() {
         return Optional.ofNullable(this.minErrEstimateNum);
     }
     /**
      * @return Error estimation ratio threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Integer> minErrEstimateRatio() {
         return Optional.ofNullable(this.minErrEstimateRatio);
     }
     /**
      * @return Enable / Disable pg_qualstats constants tracking. The default value is `true`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> trackConstants() {
         return Optional.ofNullable(this.trackConstants);
     }
     /**
      * @return Track quals on system catalogs too. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Boolean> trackPgCatalog() {
         return Optional.ofNullable(this.trackPgCatalog);
     }

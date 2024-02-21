@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<double>? AutovacuumAnalyzeScaleFactor { get; set; }
 
         /// <summary>
-        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+        /// Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         /// </summary>
         [Input("autovacuumAnalyzeThreshold")]
         public Input<int>? AutovacuumAnalyzeThreshold { get; set; }

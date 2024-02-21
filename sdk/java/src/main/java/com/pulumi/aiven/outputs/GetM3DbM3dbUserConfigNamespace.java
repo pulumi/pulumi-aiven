@@ -19,7 +19,7 @@ public final class GetM3DbM3dbUserConfigNamespace {
      */
     private String name;
     /**
-     * @return Namespace options.
+     * @return Namespace options
      * 
      */
     private @Nullable GetM3DbM3dbUserConfigNamespaceOptions options;
@@ -43,7 +43,7 @@ public final class GetM3DbM3dbUserConfigNamespace {
         return this.name;
     }
     /**
-     * @return Namespace options.
+     * @return Namespace options
      * 
      */
     public Optional<GetM3DbM3dbUserConfigNamespaceOptions> options() {

@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AllowedTries;
         /// <summary>
-        /// The internal backend. Enter `internal`.
+        /// internal_authentication_backend_limiting.authentication_backend.
         /// </summary>
         public readonly string? AuthenticationBackend;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BlockExpirySeconds;
         /// <summary>
-        /// The maximum number of blocked IP addresses.
+        /// internal_authentication_backend_limiting.max_blocked_clients.
         /// </summary>
         public readonly int? MaxBlockedClients;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>
-        /// The type of rate limiting.
+        /// internal_authentication_backend_limiting.type.
         /// </summary>
         public readonly string? Type;
 

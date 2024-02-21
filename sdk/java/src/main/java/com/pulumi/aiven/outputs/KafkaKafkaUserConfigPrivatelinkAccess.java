@@ -17,7 +17,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
      */
     private @Nullable Boolean jolokia;
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     private @Nullable Boolean kafka;
@@ -51,7 +51,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
         return Optional.ofNullable(this.jolokia);
     }
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Optional<Boolean> kafka() {

@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         [Input("kafka")]
         public Input<bool>? Kafka { get; set; }

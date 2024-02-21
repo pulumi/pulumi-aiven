@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigPrivatelinkAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OpenSearch settings.
+        /// OpenSearch settings
         /// </summary>
         [Input("opensearch")]
         public Input<bool>? Opensearch { get; set; }
 
         /// <summary>
-        /// OpenSearch Dashboards settings.
+        /// OpenSearch Dashboards settings
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<bool>? OpensearchDashboards { get; set; }

@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? EnableIpv6;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPgPgUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
@@ -50,19 +50,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Migrate data from existing server.
+        /// Migrate data from existing server
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigMigrationResult? Migration;
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgResult? Pg;
         /// <summary>
-        /// System-wide settings for the pg_qualstats extension.
+        /// System-wide settings for the pg_qualstats extension
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgQualstatsResult? PgQualstats;
         /// <summary>
-        /// Use read_replica service integration instead.
+        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         /// </summary>
         public readonly bool? PgReadReplica;
         /// <summary>
@@ -78,19 +78,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>
-        /// PGBouncer connection pooling settings.
+        /// PGBouncer connection pooling settings
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPgbouncerResult? Pgbouncer;
         /// <summary>
-        /// System-wide settings for pglookout.
+        /// System-wide settings for pglookout
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPglookoutResult? Pglookout;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigPublicAccessResult? PublicAccess;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SynchronousReplication;
         /// <summary>
-        /// System-wide settings for the timescaledb extension.
+        /// System-wide settings for the timescaledb extension
         /// </summary>
         public readonly Outputs.GetPgPgUserConfigTimescaledbResult? Timescaledb;
         /// <summary>

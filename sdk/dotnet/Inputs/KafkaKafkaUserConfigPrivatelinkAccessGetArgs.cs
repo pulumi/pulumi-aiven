@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Jolokia { get; set; }
 
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         [Input("kafka")]
         public Input<bool>? Kafka { get; set; }

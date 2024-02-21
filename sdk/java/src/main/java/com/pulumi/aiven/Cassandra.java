@@ -107,14 +107,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cassandraUserConfig);
     }
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      * 
      */
     @Export(name="cassandras", refs={List.class,CassandraCassandra.class}, tree="[0,1]")
     private Output<List<CassandraCassandra>> cassandras;
 
     /**
-     * @return cassandra configuration values.
+     * @return cassandra configuration values
      * 
      */
     public Output<List<CassandraCassandra>> cassandras() {

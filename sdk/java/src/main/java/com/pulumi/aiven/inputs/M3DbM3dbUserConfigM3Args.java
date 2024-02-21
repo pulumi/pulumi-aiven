@@ -16,14 +16,14 @@ public final class M3DbM3dbUserConfigM3Args extends com.pulumi.resources.Resourc
     public static final M3DbM3dbUserConfigM3Args Empty = new M3DbM3dbUserConfigM3Args();
 
     /**
-     * M3 Tag Options.
+     * M3 Tag Options
      * 
      */
     @Import(name="tagOptions")
     private @Nullable Output<M3DbM3dbUserConfigM3TagOptionsArgs> tagOptions;
 
     /**
-     * @return M3 Tag Options.
+     * @return M3 Tag Options
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigM3TagOptionsArgs>> tagOptions() {
@@ -55,7 +55,7 @@ public final class M3DbM3dbUserConfigM3Args extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tagOptions M3 Tag Options.
+         * @param tagOptions M3 Tag Options
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class M3DbM3dbUserConfigM3Args extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param tagOptions M3 Tag Options.
+         * @param tagOptions M3 Tag Options
          * 
          * @return builder
          * 

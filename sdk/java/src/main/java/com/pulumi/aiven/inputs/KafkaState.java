@@ -183,14 +183,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      * 
      */
     @Import(name="kafkas")
     private @Nullable Output<List<KafkaKafkaArgs>> kafkas;
 
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Optional<Output<List<KafkaKafkaArgs>>> kafkas() {
@@ -772,7 +772,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkas Kafka broker configuration values.
+         * @param kafkas Kafka broker configuration values
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkas Kafka broker configuration values.
+         * @param kafkas Kafka broker configuration values
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkas Kafka broker configuration values.
+         * @param kafkas Kafka broker configuration values
          * 
          * @return builder
          * 

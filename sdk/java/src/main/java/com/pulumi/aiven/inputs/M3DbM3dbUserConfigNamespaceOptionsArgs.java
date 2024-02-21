@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,18 +18,18 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
     public static final M3DbM3dbUserConfigNamespaceOptionsArgs Empty = new M3DbM3dbUserConfigNamespaceOptionsArgs();
 
     /**
-     * Retention options.
+     * Retention options
      * 
      */
-    @Import(name="retentionOptions")
-    private @Nullable Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions;
+    @Import(name="retentionOptions", required=true)
+    private Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions;
 
     /**
-     * @return Retention options.
+     * @return Retention options
      * 
      */
-    public Optional<Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs>> retentionOptions() {
-        return Optional.ofNullable(this.retentionOptions);
+    public Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions() {
+        return this.retentionOptions;
     }
 
     /**
@@ -88,18 +89,18 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
         }
 
         /**
-         * @param retentionOptions Retention options.
+         * @param retentionOptions Retention options
          * 
          * @return builder
          * 
          */
-        public Builder retentionOptions(@Nullable Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions) {
+        public Builder retentionOptions(Output<M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> retentionOptions) {
             $.retentionOptions = retentionOptions;
             return this;
         }
 
         /**
-         * @param retentionOptions Retention options.
+         * @param retentionOptions Retention options
          * 
          * @return builder
          * 
@@ -151,6 +152,9 @@ public final class M3DbM3dbUserConfigNamespaceOptionsArgs extends com.pulumi.res
         }
 
         public M3DbM3dbUserConfigNamespaceOptionsArgs build() {
+            if ($.retentionOptions == null) {
+                throw new MissingRequiredPropertyException("M3DbM3dbUserConfigNamespaceOptionsArgs", "retentionOptions");
+            }
             return $;
         }
     }

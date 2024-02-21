@@ -10,7 +10,30 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Account Team resource allows the creation and management of an Account Team.
+    /// Creates and manages a team.
+    /// 
+    /// &gt; **Teams are becoming groups**
+    /// Groups are an easier way to control access to your organization's projects and
+    /// services for a group of users.
+    /// Migrate your teams to groups.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleTeam = new Aiven.AccountTeam("exampleTeam", new()
+    ///     {
+    ///         AccountId = aiven_account.ACCOUNT_RESOURCE_NAME.Account_id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

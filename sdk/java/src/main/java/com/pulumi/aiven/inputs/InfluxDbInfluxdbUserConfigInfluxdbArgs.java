@@ -32,14 +32,14 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
     }
 
     /**
-     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
      * 
      */
     @Import(name="maxConnectionLimit")
     private @Nullable Output<Integer> maxConnectionLimit;
 
     /**
-     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * @return Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
      * 
      */
     public Optional<Output<Integer>> maxConnectionLimit() {
@@ -173,7 +173,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxConnectionLimit Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+         * @param maxConnectionLimit Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class InfluxDbInfluxdbUserConfigInfluxdbArgs extends com.pulumi.res
         }
 
         /**
-         * @param maxConnectionLimit Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+         * @param maxConnectionLimit Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
     public static final PgPgUserConfigPrivatelinkAccessArgs Empty = new PgPgUserConfigPrivatelinkAccessArgs();
 
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      * 
      */
     @Import(name="pg")
     private @Nullable Output<Boolean> pg;
 
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     public Optional<Output<Boolean>> pg() {
@@ -31,14 +31,14 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
     }
 
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      * 
      */
     @Import(name="pgbouncer")
     private @Nullable Output<Boolean> pgbouncer;
 
     /**
-     * @return PGBouncer connection pooling settings.
+     * @return PGBouncer connection pooling settings
      * 
      */
     public Optional<Output<Boolean>> pgbouncer() {
@@ -87,7 +87,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pg postgresql.conf configuration values.
+         * @param pg postgresql.conf configuration values
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pg postgresql.conf configuration values.
+         * @param pg postgresql.conf configuration values
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings.
+         * @param pgbouncer PGBouncer connection pooling settings
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings.
+         * @param pgbouncer PGBouncer connection pooling settings
          * 
          * @return builder
          * 

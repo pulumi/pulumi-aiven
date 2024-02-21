@@ -14,49 +14,6 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
-/**
- * The InfluxDB User resource allows the creation and management of Aiven InfluxDB Users.
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.aiven.InfluxdbUser;
- * import com.pulumi.aiven.InfluxdbUserArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo = new InfluxdbUser(&#34;foo&#34;, InfluxdbUserArgs.builder()        
- *             .serviceName(aiven_influxdb.bar().service_name())
- *             .project(&#34;my-project&#34;)
- *             .username(&#34;user-1&#34;)
- *             .password(&#34;Test$1234&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- * ## Import
- * 
- * ```sh
- *  $ pulumi import aiven:index/influxdbUser:InfluxdbUser foo project/service_name/username
- * ```
- * 
- */
 @ResourceType(type="aiven:index/influxdbUser:InfluxdbUser")
 public class InfluxdbUser extends com.pulumi.resources.CustomResource {
     /**
@@ -102,28 +59,32 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
         return this.password;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
+     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -144,14 +105,16 @@ public class InfluxdbUser extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This
+     * property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the InfluxDB User. To set up proper dependencies please refer to this variable as a reference. This
+     * property cannot be changed, doing so forces recreation of the resource.
      * 
      */
     public Output<String> username() {

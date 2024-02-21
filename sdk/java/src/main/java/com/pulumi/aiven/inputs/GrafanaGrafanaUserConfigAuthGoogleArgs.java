@@ -37,15 +37,15 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
      * Domains allowed to sign-in to this Grafana.
      * 
      */
-    @Import(name="allowedDomains")
-    private @Nullable Output<List<String>> allowedDomains;
+    @Import(name="allowedDomains", required=true)
+    private Output<List<String>> allowedDomains;
 
     /**
      * @return Domains allowed to sign-in to this Grafana.
      * 
      */
-    public Optional<Output<List<String>>> allowedDomains() {
-        return Optional.ofNullable(this.allowedDomains);
+    public Output<List<String>> allowedDomains() {
+        return this.allowedDomains;
     }
 
     /**
@@ -132,7 +132,7 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder allowedDomains(@Nullable Output<List<String>> allowedDomains) {
+        public Builder allowedDomains(Output<List<String>> allowedDomains) {
             $.allowedDomains = allowedDomains;
             return this;
         }
@@ -200,6 +200,9 @@ public final class GrafanaGrafanaUserConfigAuthGoogleArgs extends com.pulumi.res
         }
 
         public GrafanaGrafanaUserConfigAuthGoogleArgs build() {
+            if ($.allowedDomains == null) {
+                throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGoogleArgs", "allowedDomains");
+            }
             if ($.clientId == null) {
                 throw new MissingRequiredPropertyException("GrafanaGrafanaUserConfigAuthGoogleArgs", "clientId");
             }

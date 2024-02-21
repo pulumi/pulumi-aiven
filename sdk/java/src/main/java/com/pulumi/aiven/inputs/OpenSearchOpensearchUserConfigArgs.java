@@ -31,14 +31,22 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -61,35 +69,27 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="disableReplicationFactorAdjustment")
     private @Nullable Output<Boolean> disableReplicationFactorAdjustment;
 
     /**
      * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<Boolean>> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
 
     /**
-     * Index patterns.
+     * Index patterns
      * 
      */
     @Import(name="indexPatterns")
     private @Nullable Output<List<OpenSearchOpensearchUserConfigIndexPatternArgs>> indexPatterns;
 
     /**
-     * @return Index patterns.
+     * @return Index patterns
      * 
      */
     public Optional<Output<List<OpenSearchOpensearchUserConfigIndexPatternArgs>>> indexPatterns() {
@@ -97,14 +97,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Template settings for all new indexes.
+     * Template settings for all new indexes
      * 
      */
     @Import(name="indexTemplate")
     private @Nullable Output<OpenSearchOpensearchUserConfigIndexTemplateArgs> indexTemplate;
 
     /**
-     * @return Template settings for all new indexes.
+     * @return Template settings for all new indexes
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigIndexTemplateArgs>> indexTemplate() {
@@ -112,14 +112,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -145,10 +145,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
      * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -156,10 +156,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -180,37 +180,29 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Use index_patterns instead. The default value is `0`.
-     * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * use index_patterns instead. The default value is `0`.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="maxIndexCount")
     private @Nullable Output<Integer> maxIndexCount;
 
     /**
-     * @return Use index_patterns instead. The default value is `0`.
-     * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @return use index_patterns instead. The default value is `0`.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<Integer>> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
 
     /**
-     * OpenSearch OpenID Connect Configuration.
+     * OpenSearch OpenID Connect Configuration
      * 
      */
     @Import(name="openid")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpenidArgs> openid;
 
     /**
-     * @return OpenSearch OpenID Connect Configuration.
+     * @return OpenSearch OpenID Connect Configuration
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigOpenidArgs>> openid() {
@@ -218,14 +210,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchArgs> opensearch;
 
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchArgs>> opensearch() {
@@ -233,14 +225,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchDashboardsArgs> opensearchDashboards;
 
     /**
-     * @return OpenSearch Dashboards settings.
+     * @return OpenSearch Dashboards settings
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchDashboardsArgs>> opensearchDashboards() {
@@ -263,14 +255,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<OpenSearchOpensearchUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigPrivateAccessArgs>> privateAccess() {
@@ -278,14 +270,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      * 
      */
     @Import(name="privatelinkAccess")
     private @Nullable Output<OpenSearchOpensearchUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
@@ -308,14 +300,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<OpenSearchOpensearchUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigPublicAccessArgs>> publicAccess() {
@@ -338,14 +330,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * OpenSearch SAML configuration.
+     * OpenSearch SAML configuration
      * 
      */
     @Import(name="saml")
     private @Nullable Output<OpenSearchOpensearchUserConfigSamlArgs> saml;
 
     /**
-     * @return OpenSearch SAML configuration.
+     * @return OpenSearch SAML configuration
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigSamlArgs>> saml() {
@@ -448,7 +440,11 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -459,7 +455,11 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
@@ -490,11 +490,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder disableReplicationFactorAdjustment(@Nullable Output<Boolean> disableReplicationFactorAdjustment) {
             $.disableReplicationFactorAdjustment = disableReplicationFactorAdjustment;
             return this;
@@ -505,17 +501,13 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder disableReplicationFactorAdjustment(Boolean disableReplicationFactorAdjustment) {
             return disableReplicationFactorAdjustment(Output.of(disableReplicationFactorAdjustment));
         }
 
         /**
-         * @param indexPatterns Index patterns.
+         * @param indexPatterns Index patterns
          * 
          * @return builder
          * 
@@ -526,7 +518,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param indexPatterns Index patterns.
+         * @param indexPatterns Index patterns
          * 
          * @return builder
          * 
@@ -536,7 +528,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param indexPatterns Index patterns.
+         * @param indexPatterns Index patterns
          * 
          * @return builder
          * 
@@ -546,7 +538,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param indexTemplate Template settings for all new indexes.
+         * @param indexTemplate Template settings for all new indexes
          * 
          * @return builder
          * 
@@ -557,7 +549,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param indexTemplate Template settings for all new indexes.
+         * @param indexTemplate Template settings for all new indexes
          * 
          * @return builder
          * 
@@ -567,7 +559,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -578,7 +570,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -588,7 +580,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -634,10 +626,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -649,10 +641,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -663,10 +655,10 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -693,36 +685,28 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxIndexCount Use index_patterns instead. The default value is `0`.
+         * @param maxIndexCount use index_patterns instead. The default value is `0`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder maxIndexCount(@Nullable Output<Integer> maxIndexCount) {
             $.maxIndexCount = maxIndexCount;
             return this;
         }
 
         /**
-         * @param maxIndexCount Use index_patterns instead. The default value is `0`.
+         * @param maxIndexCount use index_patterns instead. The default value is `0`.
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder maxIndexCount(Integer maxIndexCount) {
             return maxIndexCount(Output.of(maxIndexCount));
         }
 
         /**
-         * @param openid OpenSearch OpenID Connect Configuration.
+         * @param openid OpenSearch OpenID Connect Configuration
          * 
          * @return builder
          * 
@@ -733,7 +717,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param openid OpenSearch OpenID Connect Configuration.
+         * @param openid OpenSearch OpenID Connect Configuration
          * 
          * @return builder
          * 
@@ -743,7 +727,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearch OpenSearch settings.
+         * @param opensearch OpenSearch settings
          * 
          * @return builder
          * 
@@ -754,7 +738,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearch OpenSearch settings.
+         * @param opensearch OpenSearch settings
          * 
          * @return builder
          * 
@@ -764,7 +748,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings.
+         * @param opensearchDashboards OpenSearch Dashboards settings
          * 
          * @return builder
          * 
@@ -775,7 +759,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings.
+         * @param opensearchDashboards OpenSearch Dashboards settings
          * 
          * @return builder
          * 
@@ -806,7 +790,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -817,7 +801,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -827,7 +811,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
          * 
@@ -838,7 +822,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
          * 
@@ -869,7 +853,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -880,7 +864,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -911,7 +895,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param saml OpenSearch SAML configuration.
+         * @param saml OpenSearch SAML configuration
          * 
          * @return builder
          * 
@@ -922,7 +906,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param saml OpenSearch SAML configuration.
+         * @param saml OpenSearch SAML configuration
          * 
          * @return builder
          * 

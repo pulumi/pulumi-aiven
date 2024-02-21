@@ -27,14 +27,22 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -55,14 +63,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<M3DbM3dbUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<M3DbM3dbUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -88,10 +96,10 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
      * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -99,23 +107,23 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     /**
-     * M3 limits.
+     * M3 limits
      * 
      */
     @Import(name="limits")
     private @Nullable Output<M3DbM3dbUserConfigLimitsArgs> limits;
 
     /**
-     * @return M3 limits.
+     * @return M3 limits
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigLimitsArgs>> limits() {
@@ -123,14 +131,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * M3 specific configuration options.
+     * M3 specific configuration options
      * 
      */
     @Import(name="m3")
     private @Nullable Output<M3DbM3dbUserConfigM3Args> m3;
 
     /**
-     * @return M3 specific configuration options.
+     * @return M3 specific configuration options
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigM3Args>> m3() {
@@ -140,22 +148,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * M3 major version (deprecated, use m3db_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
     /**
      * @return M3 major version (deprecated, use m3db_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<String>> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
@@ -191,14 +191,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * List of M3 namespaces.
+     * List of M3 namespaces
      * 
      */
     @Import(name="namespaces")
     private @Nullable Output<List<M3DbM3dbUserConfigNamespaceArgs>> namespaces;
 
     /**
-     * @return List of M3 namespaces.
+     * @return List of M3 namespaces
      * 
      */
     public Optional<Output<List<M3DbM3dbUserConfigNamespaceArgs>>> namespaces() {
@@ -206,14 +206,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<M3DbM3dbUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigPrivateAccessArgs>> privateAccess() {
@@ -236,14 +236,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<M3DbM3dbUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigPublicAccessArgs>> publicAccess() {
@@ -251,14 +251,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * M3 rules.
+     * M3 rules
      * 
      */
     @Import(name="rules")
     private @Nullable Output<M3DbM3dbUserConfigRulesArgs> rules;
 
     /**
-     * @return M3 rules.
+     * @return M3 rules
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigRulesArgs>> rules() {
@@ -356,7 +356,11 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -367,7 +371,11 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
@@ -394,7 +402,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -405,7 +413,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -415,7 +423,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -461,10 +469,10 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -476,10 +484,10 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -490,16 +498,16 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
         /**
-         * @param limits M3 limits.
+         * @param limits M3 limits
          * 
          * @return builder
          * 
@@ -510,7 +518,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param limits M3 limits.
+         * @param limits M3 limits
          * 
          * @return builder
          * 
@@ -520,7 +528,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param m3 M3 specific configuration options.
+         * @param m3 M3 specific configuration options
          * 
          * @return builder
          * 
@@ -531,7 +539,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param m3 M3 specific configuration options.
+         * @param m3 M3 specific configuration options
          * 
          * @return builder
          * 
@@ -545,11 +553,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder m3Version(@Nullable Output<String> m3Version) {
             $.m3Version = m3Version;
             return this;
@@ -560,11 +564,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder m3Version(String m3Version) {
             return m3Version(Output.of(m3Version));
         }
@@ -612,7 +612,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param namespaces List of M3 namespaces.
+         * @param namespaces List of M3 namespaces
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param namespaces List of M3 namespaces.
+         * @param namespaces List of M3 namespaces
          * 
          * @return builder
          * 
@@ -633,7 +633,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param namespaces List of M3 namespaces.
+         * @param namespaces List of M3 namespaces
          * 
          * @return builder
          * 
@@ -643,7 +643,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -654,7 +654,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -696,7 +696,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -706,7 +706,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rules M3 rules.
+         * @param rules M3 rules
          * 
          * @return builder
          * 
@@ -717,7 +717,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rules M3 rules.
+         * @param rules M3 rules
          * 
          * @return builder
          * 

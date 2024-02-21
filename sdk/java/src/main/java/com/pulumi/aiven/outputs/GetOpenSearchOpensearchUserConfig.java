@@ -27,7 +27,11 @@ public final class GetOpenSearchOpensearchUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -37,24 +41,20 @@ public final class GetOpenSearchOpensearchUserConfig {
     /**
      * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable Boolean disableReplicationFactorAdjustment;
     /**
-     * @return Index patterns.
+     * @return Index patterns
      * 
      */
     private @Nullable List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns;
     /**
-     * @return Template settings for all new indexes.
+     * @return Template settings for all new indexes
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
@@ -67,10 +67,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn&#39;t fit your case, you can disable this by setting up this flag to true.
@@ -78,26 +78,22 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable Boolean keepIndexRefreshInterval;
     /**
-     * @return Use index_patterns instead. The default value is `0`.
-     * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @return use index_patterns instead. The default value is `0`.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     private @Nullable Integer maxIndexCount;
     /**
-     * @return OpenSearch OpenID Connect Configuration.
+     * @return OpenSearch OpenID Connect Configuration
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpenid openid;
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearch opensearch;
     /**
-     * @return OpenSearch Dashboards settings.
+     * @return OpenSearch Dashboards settings
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigOpensearchDashboards opensearchDashboards;
@@ -107,12 +103,12 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable String opensearchVersion;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
@@ -122,7 +118,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigPublicAccess publicAccess;
@@ -132,7 +128,7 @@ public final class GetOpenSearchOpensearchUserConfig {
      */
     private @Nullable String recoveryBasebackupName;
     /**
-     * @return OpenSearch SAML configuration.
+     * @return OpenSearch SAML configuration
      * 
      */
     private @Nullable GetOpenSearchOpensearchUserConfigSaml saml;
@@ -156,7 +152,11 @@ public final class GetOpenSearchOpensearchUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -170,30 +170,26 @@ public final class GetOpenSearchOpensearchUserConfig {
     /**
      * @return Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Boolean> disableReplicationFactorAdjustment() {
         return Optional.ofNullable(this.disableReplicationFactorAdjustment);
     }
     /**
-     * @return Index patterns.
+     * @return Index patterns
      * 
      */
     public List<GetOpenSearchOpensearchUserConfigIndexPattern> indexPatterns() {
         return this.indexPatterns == null ? List.of() : this.indexPatterns;
     }
     /**
-     * @return Template settings for all new indexes.
+     * @return Template settings for all new indexes
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigIndexTemplate> indexTemplate() {
         return Optional.ofNullable(this.indexTemplate);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<GetOpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects() {
@@ -210,10 +206,10 @@ public final class GetOpenSearchOpensearchUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -225,32 +221,28 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
     /**
-     * @return Use index_patterns instead. The default value is `0`.
-     * 
-     * @deprecated
-     * Usage of this field is discouraged.
+     * @return use index_patterns instead. The default value is `0`.
      * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Integer> maxIndexCount() {
         return Optional.ofNullable(this.maxIndexCount);
     }
     /**
-     * @return OpenSearch OpenID Connect Configuration.
+     * @return OpenSearch OpenID Connect Configuration
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigOpenid> openid() {
         return Optional.ofNullable(this.openid);
     }
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return OpenSearch Dashboards settings.
+     * @return OpenSearch Dashboards settings
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigOpensearchDashboards> opensearchDashboards() {
@@ -264,14 +256,14 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.opensearchVersion);
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -285,7 +277,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigPublicAccess> publicAccess() {
@@ -299,7 +291,7 @@ public final class GetOpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
     /**
-     * @return OpenSearch SAML configuration.
+     * @return OpenSearch SAML configuration
      * 
      */
     public Optional<GetOpenSearchOpensearchUserConfigSaml> saml() {

@@ -164,11 +164,29 @@ class AccountTeamProject(pulumi.CustomResource):
                  team_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Account Team Project resource allows the creation and management of an Account Team Project.
+        Links an existing project to an existing team. Both the project and team should have the same `account_id`.
 
-        It is intended to link an existing project to the existing account team.
-        It is important to note that the project should have an `account_id` property set equal to the
-        account team you are trying to link to this project.
+        > **Teams are becoming groups**
+        Groups are an easier way to control access to your organization's projects and
+        services for a group of users.
+        Migrate your teams to groups.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_project = aiven.Project("exampleProject",
+            project="project-1",
+            account_id=aiven_account_team["ACCOUNT_RESOURCE_NAME"]["account_id"])
+        example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
+        main = aiven.AccountTeamProject("main",
+            account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"],
+            team_id=example_team.team_id,
+            project_name=example_project.project,
+            team_type="admin")
+        ```
 
         ## Import
 
@@ -190,11 +208,29 @@ class AccountTeamProject(pulumi.CustomResource):
                  args: AccountTeamProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Account Team Project resource allows the creation and management of an Account Team Project.
+        Links an existing project to an existing team. Both the project and team should have the same `account_id`.
 
-        It is intended to link an existing project to the existing account team.
-        It is important to note that the project should have an `account_id` property set equal to the
-        account team you are trying to link to this project.
+        > **Teams are becoming groups**
+        Groups are an easier way to control access to your organization's projects and
+        services for a group of users.
+        Migrate your teams to groups.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_project = aiven.Project("exampleProject",
+            project="project-1",
+            account_id=aiven_account_team["ACCOUNT_RESOURCE_NAME"]["account_id"])
+        example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
+        main = aiven.AccountTeamProject("main",
+            account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"],
+            team_id=example_team.team_id,
+            project_name=example_project.project,
+            team_type="admin")
+        ```
 
         ## Import
 

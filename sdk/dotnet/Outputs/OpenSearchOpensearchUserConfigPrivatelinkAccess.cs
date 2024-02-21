@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// OpenSearch settings.
+        /// OpenSearch settings
         /// </summary>
         public readonly bool? Opensearch;
         /// <summary>
-        /// OpenSearch Dashboards settings.
+        /// OpenSearch Dashboards settings
         /// </summary>
         public readonly bool? OpensearchDashboards;
         /// <summary>

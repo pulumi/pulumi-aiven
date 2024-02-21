@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
         /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
         [Output("description")]
-        public Output<string?> Description { get; private set; } = null!;
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the user group.
@@ -100,8 +100,8 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("description", required: true)]
+        public Input<string> Description { get; set; } = null!;
 
         /// <summary>
         /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.

@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *         kafkaRest: true,
  *         kafkaConnect: true,
  *         schemaRegistry: true,
- *         kafkaVersion: "3.1",
+ *         kafkaVersion: "3.5",
  *         kafka: {
  *             groupMaxSessionTimeoutMs: 70000,
  *             logRetentionBytes: 1000000000,
@@ -116,7 +116,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly kafkaUserConfig!: pulumi.Output<outputs.KafkaKafkaUserConfig | undefined>;
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     public /*out*/ readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
     /**
@@ -337,7 +337,7 @@ export interface KafkaState {
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
     /**

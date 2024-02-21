@@ -5,11 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Account Team Project resource allows the creation and management of an Account Team Project.
+ * Links an existing project to an existing team. Both the project and team should have the same `accountId`.
  *
- * It is intended to link an existing project to the existing account team.
- * It is important to note that the project should have an `accountId` property set equal to the
- * account team you are trying to link to this project.
+ * > **Teams are becoming groups**
+ * Groups are an easier way to control access to your organization's projects and
+ * services for a group of users.
+ * Migrate your teams to groups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleProject = new aiven.Project("exampleProject", {
+ *     project: "project-1",
+ *     accountId: aiven_account_team.ACCOUNT_RESOURCE_NAME.account_id,
+ * });
+ * const exampleTeam = new aiven.AccountTeam("exampleTeam", {accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id});
+ * const main = new aiven.AccountTeamProject("main", {
+ *     accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id,
+ *     teamId: exampleTeam.teamId,
+ *     projectName: exampleProject.project,
+ *     teamType: "admin",
+ * });
+ * ```
  *
  * ## Import
  *

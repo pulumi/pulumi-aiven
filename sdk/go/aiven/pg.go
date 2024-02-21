@@ -46,7 +46,7 @@ type Pg struct {
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// postgresql.conf configuration values.
+	// postgresql.conf configuration values
 	Pg PgPgOutput `pulumi:"pg"`
 	// Pg user configurable settings
 	PgUserConfig PgPgUserConfigPtrOutput `pulumi:"pgUserConfig"`
@@ -147,7 +147,7 @@ type pgState struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// postgresql.conf configuration values.
+	// postgresql.conf configuration values
 	Pg *PgPg `pulumi:"pg"`
 	// Pg user configurable settings
 	PgUserConfig *PgPgUserConfig `pulumi:"pgUserConfig"`
@@ -208,7 +208,7 @@ type PgState struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// postgresql.conf configuration values.
+	// postgresql.conf configuration values
 	Pg PgPgPtrInput
 	// Pg user configurable settings
 	PgUserConfig PgPgUserConfigPtrInput
@@ -263,7 +263,7 @@ type pgArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// postgresql.conf configuration values.
+	// postgresql.conf configuration values
 	Pg *PgPg `pulumi:"pg"`
 	// Pg user configurable settings
 	PgUserConfig *PgPgUserConfig `pulumi:"pgUserConfig"`
@@ -301,7 +301,7 @@ type PgArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// postgresql.conf configuration values.
+	// postgresql.conf configuration values
 	Pg PgPgPtrInput
 	// Pg user configurable settings
 	PgUserConfig PgPgUserConfigPtrInput
@@ -464,7 +464,7 @@ func (o PgOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pg) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// postgresql.conf configuration values.
+// postgresql.conf configuration values
 func (o PgOutput) Pg() PgPgOutput {
 	return o.ApplyT(func(v *Pg) PgPgOutput { return v.Pg }).(PgPgOutput)
 }

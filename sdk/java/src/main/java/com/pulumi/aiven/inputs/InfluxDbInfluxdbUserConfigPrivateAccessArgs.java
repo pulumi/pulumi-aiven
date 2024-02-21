@@ -16,14 +16,14 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
     public static final InfluxDbInfluxdbUserConfigPrivateAccessArgs Empty = new InfluxDbInfluxdbUserConfigPrivateAccessArgs();
 
     /**
-     * influxdb.conf configuration values.
+     * Allow clients to connect to influxdb with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="influxdb")
     private @Nullable Output<Boolean> influxdb;
 
     /**
-     * @return influxdb.conf configuration values.
+     * @return Allow clients to connect to influxdb with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> influxdb() {
@@ -55,7 +55,7 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
         }
 
         /**
-         * @param influxdb influxdb.conf configuration values.
+         * @param influxdb Allow clients to connect to influxdb with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class InfluxDbInfluxdbUserConfigPrivateAccessArgs extends com.pulum
         }
 
         /**
-         * @param influxdb influxdb.conf configuration values.
+         * @param influxdb Allow clients to connect to influxdb with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

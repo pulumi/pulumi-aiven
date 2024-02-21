@@ -12,14 +12,11 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// .
-        /// </summary>
         [Input("internalAuthenticationBackendLimiting")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingGetArgs>? InternalAuthenticationBackendLimiting { get; set; }
 
         /// <summary>
-        /// IP address rate limiting settings.
+        /// IP address rate limiting settings
         /// </summary>
         [Input("ipRateLimiting")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingGetArgs>? IpRateLimiting { get; set; }

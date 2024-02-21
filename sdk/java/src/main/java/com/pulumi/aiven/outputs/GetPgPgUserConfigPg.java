@@ -20,7 +20,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Double autovacuumAnalyzeScaleFactor;
     /**
-     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      * 
      */
     private @Nullable Integer autovacuumAnalyzeThreshold;
@@ -269,7 +269,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.autovacuumAnalyzeScaleFactor);
     }
     /**
-     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * @return Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      * 
      */
     public Optional<Integer> autovacuumAnalyzeThreshold() {

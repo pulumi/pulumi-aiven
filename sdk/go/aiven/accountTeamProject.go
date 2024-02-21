@@ -12,11 +12,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Account Team Project resource allows the creation and management of an Account Team Project.
+// Links an existing project to an existing team. Both the project and team should have the same `accountId`.
 //
-// It is intended to link an existing project to the existing account team.
-// It is important to note that the project should have an `accountId` property set equal to the
-// account team you are trying to link to this project.
+// > **Teams are becoming groups**
+// Groups are an easier way to control access to your organization's projects and
+// services for a group of users.
+// Migrate your teams to groups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleProject, err := aiven.NewProject(ctx, "exampleProject", &aiven.ProjectArgs{
+//				Project:   pulumi.String("project-1"),
+//				AccountId: pulumi.Any(aiven_account_team.ACCOUNT_RESOURCE_NAME.Account_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleTeam, err := aiven.NewAccountTeam(ctx, "exampleTeam", &aiven.AccountTeamArgs{
+//				AccountId: pulumi.Any(aiven_account.ACCOUNT_RESOURCE_NAME.Account_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewAccountTeamProject(ctx, "main", &aiven.AccountTeamProjectArgs{
+//				AccountId:   pulumi.Any(aiven_account.ACCOUNT_RESOURCE_NAME.Account_id),
+//				TeamId:      exampleTeam.TeamId,
+//				ProjectName: exampleProject.Project,
+//				TeamType:    pulumi.String("admin"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

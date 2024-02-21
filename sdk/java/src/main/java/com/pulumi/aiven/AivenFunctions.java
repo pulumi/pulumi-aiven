@@ -2987,339 +2987,39 @@ public final class AivenFunctions {
     public static CompletableFuture<GetGrafanaResult> getGrafanaPlain(GetGrafanaPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getGrafana:getGrafana", TypeShape.of(GetGrafanaResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxDbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var inf1 = AivenFunctions.getInfluxDb(GetInfluxDbArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
-     *             .serviceName(&#34;my-inf1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args) {
         return getInfluxDb(args, InvokeOptions.Empty);
     }
-    /**
-     * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxDbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var inf1 = AivenFunctions.getInfluxDb(GetInfluxDbArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
-     *             .serviceName(&#34;my-inf1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetInfluxDbResult> getInfluxDbPlain(GetInfluxDbPlainArgs args) {
         return getInfluxDbPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxDbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var inf1 = AivenFunctions.getInfluxDb(GetInfluxDbArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
-     *             .serviceName(&#34;my-inf1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetInfluxDbResult> getInfluxDb(GetInfluxDbArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The InfluxDB data source provides information about the existing Aiven InfluxDB service.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxDbArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var inf1 = AivenFunctions.getInfluxDb(GetInfluxDbArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
-     *             .serviceName(&#34;my-inf1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetInfluxDbResult> getInfluxDbPlain(GetInfluxDbPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getInfluxDb:getInfluxDb", TypeShape.of(GetInfluxDbResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
-     * 
-     */
     public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args) {
         return getInfluxdbDatabase(args, InvokeOptions.Empty);
     }
-    /**
-     * The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
-     * 
-     */
     public static CompletableFuture<GetInfluxdbDatabaseResult> getInfluxdbDatabasePlain(GetInfluxdbDatabasePlainArgs args) {
         return getInfluxdbDatabasePlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
-     * 
-     */
     public static Output<GetInfluxdbDatabaseResult> getInfluxdbDatabase(GetInfluxdbDatabaseArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
-     * 
-     */
     public static CompletableFuture<GetInfluxdbDatabaseResult> getInfluxdbDatabasePlain(GetInfluxdbDatabasePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getInfluxdbDatabase:getInfluxdbDatabase", TypeShape.of(GetInfluxdbDatabaseResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxdbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getInfluxdbUser(GetInfluxdbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
-     *             .serviceName(&#34;my-service&#34;)
-     *             .username(&#34;user1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args) {
         return getInfluxdbUser(args, InvokeOptions.Empty);
     }
-    /**
-     * The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxdbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getInfluxdbUser(GetInfluxdbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
-     *             .serviceName(&#34;my-service&#34;)
-     *             .username(&#34;user1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetInfluxdbUserResult> getInfluxdbUserPlain(GetInfluxdbUserPlainArgs args) {
         return getInfluxdbUserPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxdbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getInfluxdbUser(GetInfluxdbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
-     *             .serviceName(&#34;my-service&#34;)
-     *             .username(&#34;user1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static Output<GetInfluxdbUserResult> getInfluxdbUser(GetInfluxdbUserArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * The InfluxDB User data source provides information about the existing Aiven InfluxDB User.
-     * 
-     * ## Example Usage
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.aiven.AivenFunctions;
-     * import com.pulumi.aiven.inputs.GetInfluxdbUserArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var user = AivenFunctions.getInfluxdbUser(GetInfluxdbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
-     *             .serviceName(&#34;my-service&#34;)
-     *             .username(&#34;user1&#34;)
-     *             .build());
-     * 
-     *     }
-     * }
-     * ```
-     * 
-     */
     public static CompletableFuture<GetInfluxdbUserResult> getInfluxdbUserPlain(GetInfluxdbUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
     }
@@ -8536,7 +8236,10 @@ public final class AivenFunctions {
     /**
      * The Service Integration data source provides information about the existing Aiven Service Integration.
      * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
+     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
+     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
+     * OpenSearch, etc.
      * 
      * ## Example Usage
      * ```java
@@ -8578,7 +8281,10 @@ public final class AivenFunctions {
     /**
      * The Service Integration data source provides information about the existing Aiven Service Integration.
      * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
+     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
+     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
+     * OpenSearch, etc.
      * 
      * ## Example Usage
      * ```java
@@ -8620,7 +8326,10 @@ public final class AivenFunctions {
     /**
      * The Service Integration data source provides information about the existing Aiven Service Integration.
      * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
+     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
+     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
+     * OpenSearch, etc.
      * 
      * ## Example Usage
      * ```java
@@ -8662,7 +8371,10 @@ public final class AivenFunctions {
     /**
      * The Service Integration data source provides information about the existing Aiven Service Integration.
      * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external integration endpoint. Integration could be for example sending metrics from Kafka service to an InfluxDB service, getting metrics from an InfluxDB service to a Grafana service to show dashboards, sending logs from any service to Elasticsearch, etc.
+     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
+     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
+     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
+     * OpenSearch, etc.
      * 
      * ## Example Usage
      * ```java

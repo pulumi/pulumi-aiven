@@ -174,8 +174,9 @@ class OrganizationUser(pulumi.CustomResource):
                  user_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        This resource is deprecated; please use OrganizationUser data source instead.
-        The Organization User resource allows the creation and management of an Aiven Organization User.
+        **This resource is deprecated**. Use the OrganizationUser data source instead.
+
+        The organization user resource allows the creation and management of an Aiven organization user.
 
         During the creation of `OrganizationUser`resource, an email invitation will be sent
         to a user using `user_email` address. If the user accepts an invitation, they will become
@@ -195,8 +196,9 @@ class OrganizationUser(pulumi.CustomResource):
                  args: OrganizationUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        This resource is deprecated; please use OrganizationUser data source instead.
-        The Organization User resource allows the creation and management of an Aiven Organization User.
+        **This resource is deprecated**. Use the OrganizationUser data source instead.
+
+        The organization user resource allows the creation and management of an Aiven organization user.
 
         During the creation of `OrganizationUser`resource, an email invitation will be sent
         to a user using `user_email` address. If the user accepts an invitation, they will become

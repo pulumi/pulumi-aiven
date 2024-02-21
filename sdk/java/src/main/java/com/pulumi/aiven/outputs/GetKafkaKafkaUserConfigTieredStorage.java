@@ -18,9 +18,13 @@ public final class GetKafkaKafkaUserConfigTieredStorage {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Local cache configuration.
+     * @return Local cache configuration
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable GetKafkaKafkaUserConfigTieredStorageLocalCache localCache;
 
     private GetKafkaKafkaUserConfigTieredStorage() {}
@@ -32,9 +36,13 @@ public final class GetKafkaKafkaUserConfigTieredStorage {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Local cache configuration.
+     * @return Local cache configuration
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<GetKafkaKafkaUserConfigTieredStorageLocalCache> localCache() {
         return Optional.ofNullable(this.localCache);
     }

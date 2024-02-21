@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigPgbouncer
     {
         /// <summary>
-        /// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+        /// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         /// </summary>
         public readonly int? AutodbIdleTimeout;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AutodbMaxDbConnections;
         /// <summary>
-        /// PGBouncer pool mode.
+        /// PGBouncer pool mode. The default value is `transaction`.
         /// </summary>
         public readonly string? AutodbPoolMode;
         /// <summary>
-        /// If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+        /// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         /// </summary>
         public readonly int? AutodbPoolSize;
         /// <summary>
@@ -34,19 +34,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IgnoreStartupParameters;
         /// <summary>
-        /// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+        /// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
         /// </summary>
         public readonly int? MinPoolSize;
         /// <summary>
-        /// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+        /// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
         /// </summary>
         public readonly int? ServerIdleTimeout;
         /// <summary>
-        /// The pooler will close an unused server connection that has been connected longer than this. (seconds).
+        /// The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
         /// </summary>
         public readonly int? ServerLifetime;
         /// <summary>
-        /// Run server*reset*query (DISCARD ALL) in all pooling modes.
+        /// Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
         /// </summary>
         public readonly bool? ServerResetQueryAlways;
 

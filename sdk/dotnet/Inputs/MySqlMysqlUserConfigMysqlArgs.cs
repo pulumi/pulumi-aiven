@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? InnodbChangeBufferMaxSize { get; set; }
 
         /// <summary>
-        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         /// </summary>
         [Input("innodbFlushNeighbors")]
         public Input<int>? InnodbFlushNeighbors { get; set; }

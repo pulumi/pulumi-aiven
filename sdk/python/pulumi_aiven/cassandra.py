@@ -299,7 +299,7 @@ class _CassandraState:
         Input properties used for looking up and filtering Cassandra resources.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]] cassandras: cassandra configuration values.
+        :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]] cassandras: cassandra configuration values
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -414,7 +414,7 @@ class _CassandraState:
     @pulumi.getter
     def cassandras(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CassandraCassandraArgs']]]]:
         """
-        cassandra configuration values.
+        cassandra configuration values
         """
         return pulumi.get(self, "cassandras")
 
@@ -953,7 +953,7 @@ class Cassandra(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]]] cassandras: cassandra configuration values.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]]] cassandras: cassandra configuration values
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -1034,7 +1034,7 @@ class Cassandra(pulumi.CustomResource):
     @pulumi.getter
     def cassandras(self) -> pulumi.Output[Sequence['outputs.CassandraCassandra']]:
         """
-        cassandra configuration values.
+        cassandra configuration values
         """
         return pulumi.get(self, "cassandras")
 
