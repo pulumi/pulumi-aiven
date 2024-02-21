@@ -21,7 +21,11 @@ public final class GetInfluxDbInfluxdbUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -29,12 +33,12 @@ public final class GetInfluxDbInfluxdbUserConfig {
      */
     private @Nullable String customDomain;
     /**
-     * @return influxdb.conf configuration values.
+     * @return influxdb.conf configuration values
      * 
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigInfluxdb influxdb;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects;
@@ -47,18 +51,18 @@ public final class GetInfluxDbInfluxdbUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigPrivatelinkAccess privatelinkAccess;
@@ -68,7 +72,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable GetInfluxDbInfluxdbUserConfigPublicAccess publicAccess;
@@ -97,7 +101,11 @@ public final class GetInfluxDbInfluxdbUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -109,14 +117,14 @@ public final class GetInfluxDbInfluxdbUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return influxdb.conf configuration values.
+     * @return influxdb.conf configuration values
      * 
      */
     public Optional<GetInfluxDbInfluxdbUserConfigInfluxdb> influxdb() {
         return Optional.ofNullable(this.influxdb);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<GetInfluxDbInfluxdbUserConfigIpFilterObject> ipFilterObjects() {
@@ -133,22 +141,22 @@ public final class GetInfluxDbInfluxdbUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<GetInfluxDbInfluxdbUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<GetInfluxDbInfluxdbUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -162,7 +170,7 @@ public final class GetInfluxDbInfluxdbUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<GetInfluxDbInfluxdbUserConfigPublicAccess> publicAccess() {

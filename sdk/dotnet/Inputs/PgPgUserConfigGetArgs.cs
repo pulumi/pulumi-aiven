@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.PgPgUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<Inputs.PgPgUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -88,7 +88,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -96,25 +96,25 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Migrate data from existing server.
+        /// Migrate data from existing server
         /// </summary>
         [Input("migration")]
         public Input<Inputs.PgPgUserConfigMigrationGetArgs>? Migration { get; set; }
 
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgUserConfigPgGetArgs>? Pg { get; set; }
 
         /// <summary>
-        /// System-wide settings for the pg*qualstats extension.
+        /// System-wide settings for the pg*qualstats extension
         /// </summary>
         [Input("pgQualstats")]
         public Input<Inputs.PgPgUserConfigPgQualstatsGetArgs>? PgQualstats { get; set; }
 
         /// <summary>
-        /// Use read_replica service integration instead.
+        /// Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         /// </summary>
         [Input("pgReadReplica")]
         public Input<bool>? PgReadReplica { get; set; }
@@ -138,25 +138,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgVersion { get; set; }
 
         /// <summary>
-        /// PGBouncer connection pooling settings.
+        /// PGBouncer connection pooling settings
         /// </summary>
         [Input("pgbouncer")]
         public Input<Inputs.PgPgUserConfigPgbouncerGetArgs>? Pgbouncer { get; set; }
 
         /// <summary>
-        /// System-wide settings for pglookout.
+        /// System-wide settings for pglookout
         /// </summary>
         [Input("pglookout")]
         public Input<Inputs.PgPgUserConfigPglookoutGetArgs>? Pglookout { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.PgPgUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.PgPgUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
@@ -168,7 +168,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.PgPgUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SynchronousReplication { get; set; }
 
         /// <summary>
-        /// System-wide settings for the timescaledb extension.
+        /// System-wide settings for the timescaledb extension
         /// </summary>
         [Input("timescaledb")]
         public Input<Inputs.PgPgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }

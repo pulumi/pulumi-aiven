@@ -13,10 +13,10 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigNamespaceOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Retention options.
+        /// Retention options
         /// </summary>
-        [Input("retentionOptions")]
-        public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs>? RetentionOptions { get; set; }
+        [Input("retentionOptions", required: true)]
+        public Input<Inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs> RetentionOptions { get; set; } = null!;
 
         /// <summary>
         /// Controls whether M3DB will create snapshot files for this namespace.

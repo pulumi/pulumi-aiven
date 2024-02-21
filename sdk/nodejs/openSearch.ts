@@ -117,7 +117,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.OpenSearchOpensearchUserConfig | undefined>;
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     public /*out*/ readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
     /**
@@ -324,7 +324,7 @@ export interface OpenSearchState {
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**

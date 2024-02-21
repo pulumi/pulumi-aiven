@@ -94,14 +94,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      * 
      */
     @Import(name="innodbFlushNeighbors")
     private @Nullable Output<Integer> innodbFlushNeighbors;
 
     /**
-     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      * 
      */
     public Optional<Output<Integer>> innodbFlushNeighbors() {
@@ -627,7 +627,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
          * 
          * @return builder
          * 

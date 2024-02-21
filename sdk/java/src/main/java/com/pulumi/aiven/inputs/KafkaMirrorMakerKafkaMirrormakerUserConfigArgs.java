@@ -22,27 +22,35 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -68,10 +76,10 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
      * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -79,23 +87,23 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
 
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      * 
      */
     @Import(name="kafkaMirrormaker")
     private @Nullable Output<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs> kafkaMirrormaker;
 
     /**
-     * @return Kafka MirrorMaker configuration values.
+     * @return Kafka MirrorMaker configuration values
      * 
      */
     public Optional<Output<KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs>> kafkaMirrormaker() {
@@ -167,7 +175,11 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -178,13 +190,17 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -195,7 +211,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -205,7 +221,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -251,10 +267,10 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -266,10 +282,10 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -280,16 +296,16 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
 
         /**
-         * @param kafkaMirrormaker Kafka MirrorMaker configuration values.
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
          * 
          * @return builder
          * 
@@ -300,7 +316,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs extends com.pu
         }
 
         /**
-         * @param kafkaMirrormaker Kafka MirrorMaker configuration values.
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
          * 
          * @return builder
          * 

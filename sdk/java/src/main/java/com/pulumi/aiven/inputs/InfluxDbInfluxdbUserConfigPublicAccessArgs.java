@@ -16,14 +16,14 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
     public static final InfluxDbInfluxdbUserConfigPublicAccessArgs Empty = new InfluxDbInfluxdbUserConfigPublicAccessArgs();
 
     /**
-     * influxdb.conf configuration values.
+     * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="influxdb")
     private @Nullable Output<Boolean> influxdb;
 
     /**
-     * @return influxdb.conf configuration values.
+     * @return Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> influxdb() {
@@ -55,7 +55,7 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
         }
 
         /**
-         * @param influxdb influxdb.conf configuration values.
+         * @param influxdb Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class InfluxDbInfluxdbUserConfigPublicAccessArgs extends com.pulumi
         }
 
         /**
-         * @param influxdb influxdb.conf configuration values.
+         * @param influxdb Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

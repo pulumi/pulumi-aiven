@@ -12,7 +12,38 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Account Team resource allows the creation and management of an Account Team.
+// Creates and manages a team.
+//
+// > **Teams are becoming groups**
+// Groups are an easier way to control access to your organization's projects and
+// services for a group of users.
+// Migrate your teams to groups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewAccountTeam(ctx, "exampleTeam", &aiven.AccountTeamArgs{
+//				AccountId: pulumi.Any(aiven_account.ACCOUNT_RESOURCE_NAME.Account_id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

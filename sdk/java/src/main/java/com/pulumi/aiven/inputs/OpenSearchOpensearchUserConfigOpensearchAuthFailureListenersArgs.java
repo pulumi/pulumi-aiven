@@ -16,30 +16,22 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersA
 
     public static final OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs Empty = new OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs();
 
-    /**
-     * .
-     * 
-     */
     @Import(name="internalAuthenticationBackendLimiting")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs> internalAuthenticationBackendLimiting;
 
-    /**
-     * @return .
-     * 
-     */
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs>> internalAuthenticationBackendLimiting() {
         return Optional.ofNullable(this.internalAuthenticationBackendLimiting);
     }
 
     /**
-     * IP address rate limiting settings.
+     * IP address rate limiting settings
      * 
      */
     @Import(name="ipRateLimiting")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs> ipRateLimiting;
 
     /**
-     * @return IP address rate limiting settings.
+     * @return IP address rate limiting settings
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs>> ipRateLimiting() {
@@ -71,29 +63,17 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersA
             $ = new OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param internalAuthenticationBackendLimiting .
-         * 
-         * @return builder
-         * 
-         */
         public Builder internalAuthenticationBackendLimiting(@Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs> internalAuthenticationBackendLimiting) {
             $.internalAuthenticationBackendLimiting = internalAuthenticationBackendLimiting;
             return this;
         }
 
-        /**
-         * @param internalAuthenticationBackendLimiting .
-         * 
-         * @return builder
-         * 
-         */
         public Builder internalAuthenticationBackendLimiting(OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs internalAuthenticationBackendLimiting) {
             return internalAuthenticationBackendLimiting(Output.of(internalAuthenticationBackendLimiting));
         }
 
         /**
-         * @param ipRateLimiting IP address rate limiting settings.
+         * @param ipRateLimiting IP address rate limiting settings
          * 
          * @return builder
          * 
@@ -104,7 +84,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersA
         }
 
         /**
-         * @param ipRateLimiting IP address rate limiting settings.
+         * @param ipRateLimiting IP address rate limiting settings
          * 
          * @return builder
          * 

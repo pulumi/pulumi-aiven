@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -13,10 +14,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class M3DbM3dbUserConfigNamespaceOptions {
     /**
-     * @return Retention options.
+     * @return Retention options
      * 
      */
-    private @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
+    private M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
     /**
      * @return Controls whether M3DB will create snapshot files for this namespace.
      * 
@@ -30,11 +31,11 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
 
     private M3DbM3dbUserConfigNamespaceOptions() {}
     /**
-     * @return Retention options.
+     * @return Retention options
      * 
      */
-    public Optional<M3DbM3dbUserConfigNamespaceOptionsRetentionOptions> retentionOptions() {
-        return Optional.ofNullable(this.retentionOptions);
+    public M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions() {
+        return this.retentionOptions;
     }
     /**
      * @return Controls whether M3DB will create snapshot files for this namespace.
@@ -60,7 +61,7 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
+        private M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions;
         private @Nullable Boolean snapshotEnabled;
         private @Nullable Boolean writesToCommitlog;
         public Builder() {}
@@ -72,8 +73,10 @@ public final class M3DbM3dbUserConfigNamespaceOptions {
         }
 
         @CustomType.Setter
-        public Builder retentionOptions(@Nullable M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions) {
-
+        public Builder retentionOptions(M3DbM3dbUserConfigNamespaceOptionsRetentionOptions retentionOptions) {
+            if (retentionOptions == null) {
+              throw new MissingRequiredPropertyException("M3DbM3dbUserConfigNamespaceOptions", "retentionOptions");
+            }
             this.retentionOptions = retentionOptions;
             return this;
         }

@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     private @Nullable Boolean opensearch;
     /**
-     * @return OpenSearch Dashboards settings.
+     * @return OpenSearch Dashboards settings
      * 
      */
     private @Nullable Boolean opensearchDashboards;
@@ -29,14 +29,14 @@ public final class OpenSearchOpensearchUserConfigPublicAccess {
 
     private OpenSearchOpensearchUserConfigPublicAccess() {}
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return OpenSearch Dashboards settings.
+     * @return OpenSearch Dashboards settings
      * 
      */
     public Optional<Boolean> opensearchDashboards() {

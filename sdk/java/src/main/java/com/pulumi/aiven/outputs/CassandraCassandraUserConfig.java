@@ -21,7 +21,11 @@ public final class CassandraCassandraUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
@@ -34,7 +38,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
-     * @return cassandra configuration values.
+     * @return cassandra configuration values
      * 
      */
     private @Nullable CassandraCassandraUserConfigCassandra cassandra;
@@ -44,7 +48,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable String cassandraVersion;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects;
@@ -57,10 +61,10 @@ public final class CassandraCassandraUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
      * @return Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
@@ -68,7 +72,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable Boolean migrateSstableloader;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable CassandraCassandraUserConfigPrivateAccess privateAccess;
@@ -78,7 +82,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable CassandraCassandraUserConfigPublicAccess publicAccess;
@@ -107,7 +111,11 @@ public final class CassandraCassandraUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -126,7 +134,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.backupMinute);
     }
     /**
-     * @return cassandra configuration values.
+     * @return cassandra configuration values
      * 
      */
     public Optional<CassandraCassandraUserConfigCassandra> cassandra() {
@@ -140,7 +148,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.cassandraVersion);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<CassandraCassandraUserConfigIpFilterObject> ipFilterObjects() {
@@ -157,10 +165,10 @@ public final class CassandraCassandraUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
@@ -172,7 +180,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.migrateSstableloader);
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<CassandraCassandraUserConfigPrivateAccess> privateAccess() {
@@ -186,7 +194,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<CassandraCassandraUserConfigPublicAccess> publicAccess() {

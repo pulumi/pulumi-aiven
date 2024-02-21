@@ -107,14 +107,14 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      * 
      */
     @Import(name="pg")
     private @Nullable Output<PgPgArgs> pg;
 
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     public Optional<Output<PgPgArgs>> pg() {
@@ -424,7 +424,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pg postgresql.conf configuration values.
+         * @param pg postgresql.conf configuration values
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class PgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param pg postgresql.conf configuration values.
+         * @param pg postgresql.conf configuration values
          * 
          * @return builder
          * 

@@ -227,14 +227,14 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
     }
 
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      * 
      */
     @Import(name="scheduledRebalanceMaxDelayMs")
     private @Nullable Output<Integer> scheduledRebalanceMaxDelayMs;
 
     /**
-     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      * 
      */
     public Optional<Output<Integer>> scheduledRebalanceMaxDelayMs() {
@@ -590,7 +590,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param scheduledRebalanceMaxDelayMs The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+         * @param scheduledRebalanceMaxDelayMs The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
          * 
          * @return builder
          * 
@@ -601,7 +601,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param scheduledRebalanceMaxDelayMs The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+         * @param scheduledRebalanceMaxDelayMs The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
          * 
          * @return builder
          * 

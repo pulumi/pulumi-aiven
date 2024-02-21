@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         [Output("pg")]
         public Output<Outputs.PgPg> PgServer { get; private set; } = null!;
@@ -271,7 +271,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgArgs>? PgServer { get; set; }
@@ -435,7 +435,7 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         [Input("pg")]
         public Input<Inputs.PgPgGetArgs>? PgServer { get; set; }

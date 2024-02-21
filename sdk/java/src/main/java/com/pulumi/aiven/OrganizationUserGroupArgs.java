@@ -20,15 +20,15 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
      * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    @Import(name="description")
-    private @Nullable Output<String> description;
+    @Import(name="description", required=true)
+    private Output<String> description;
 
     /**
      * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      * 
      */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
+    public Output<String> description() {
+        return this.description;
     }
 
     /**
@@ -93,7 +93,7 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder description(@Nullable Output<String> description) {
+        public Builder description(Output<String> description) {
             $.description = description;
             return this;
         }
@@ -151,6 +151,9 @@ public final class OrganizationUserGroupArgs extends com.pulumi.resources.Resour
         }
 
         public OrganizationUserGroupArgs build() {
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("OrganizationUserGroupArgs", "description");
+            }
             if ($.organizationId == null) {
                 throw new MissingRequiredPropertyException("OrganizationUserGroupArgs", "organizationId");
             }

@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;connector.class&#34;, &#34;io.aiven.kafka.connect.opensearch.OpensearchSinkConnector&#34;),
  *                 Map.entry(&#34;type.name&#34;, &#34;os-connector&#34;),
  *                 Map.entry(&#34;name&#34;, &#34;kafka-os-con1&#34;),
- *                 Map.entry(&#34;connection.url&#34;, aiven_elasticsearch.os-service1().service_uri()),
+ *                 Map.entry(&#34;connection.url&#34;, aiven_opensearch.os-service1().service_uri()),
  *                 Map.entry(&#34;connection.username&#34;, aiven_opensearch.os-service1().service_username()),
  *                 Map.entry(&#34;connection.password&#34;, aiven_opensearch.os-service1().service_password())
  *             ))

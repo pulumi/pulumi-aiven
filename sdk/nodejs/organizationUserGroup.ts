@@ -42,7 +42,7 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
     /**
      * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    public readonly description!: pulumi.Output<string>;
     /**
      * The ID of the user group.
      */
@@ -81,6 +81,9 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as OrganizationUserGroupArgs | undefined;
+            if ((!args || args.description === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'description'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -133,7 +136,7 @@ export interface OrganizationUserGroupArgs {
     /**
      * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */
-    description?: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
      */

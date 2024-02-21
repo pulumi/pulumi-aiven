@@ -1,6 +1,8 @@
 module github.com/pulumi/pulumi-aiven/provider/v6
 
-go 1.21.1
+go 1.22
+
+toolchain go1.22.0
 
 replace (
 	github.com/aiven/terraform-provider-aiven => ../upstream
@@ -9,7 +11,7 @@ replace (
 )
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.31.0 // indirect
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.32.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.27.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.74.0
 	github.com/pulumi/pulumi/pkg/v3 v3.105.0 // indirect
@@ -44,7 +46,7 @@ require (
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/aiven/aiven-go-client/v2 v2.12.0 // indirect
-	github.com/aiven/go-api-schemas v1.57.0 // indirect
+	github.com/aiven/go-api-schemas v1.60.0 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/armon/go-metrics v0.4.0 // indirect
@@ -132,14 +134,13 @@ require (
 	github.com/hashicorp/hcl/v2 v2.19.1 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-exec v0.19.0 // indirect
-	github.com/hashicorp/terraform-json v0.18.0 // indirect
+	github.com/hashicorp/terraform-exec v0.20.0 // indirect
+	github.com/hashicorp/terraform-json v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.5.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.4.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.12.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.21.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-mux v0.14.0 // indirect
 	github.com/hashicorp/terraform-plugin-testing v1.6.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
@@ -225,7 +226,7 @@ require (
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
-	github.com/zclconf/go-cty v1.14.1 // indirect
+	github.com/zclconf/go-cty v1.14.2 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.36.0 // indirect

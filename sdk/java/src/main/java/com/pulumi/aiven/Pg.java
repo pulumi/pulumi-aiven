@@ -180,14 +180,14 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      * 
      */
     @Export(name="pg", refs={PgPg.class}, tree="[0]")
     private Output<PgPg> pg;
 
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     public Output<PgPg> pg() {

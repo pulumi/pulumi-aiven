@@ -125,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OpenSearchOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// OpenSearch settings.
+        /// OpenSearch settings
         /// </summary>
         [Output("opensearches")]
         public Output<ImmutableArray<Outputs.OpenSearchOpensearch>> Opensearches { get; private set; } = null!;
@@ -475,7 +475,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OpenSearchOpensearchGetArgs>? _opensearches;
 
         /// <summary>
-        /// OpenSearch settings.
+        /// OpenSearch settings
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchGetArgs> Opensearches
         {

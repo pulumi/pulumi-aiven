@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.KafkaKafkaUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafka? Kafka;
         /// <summary>
-        /// Kafka authentication methods.
+        /// Kafka authentication methods
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods? KafkaAuthenticationMethods;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
-        /// Kafka Connect configuration values.
+        /// Kafka Connect configuration values
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaConnectConfig? KafkaConnectConfig;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? KafkaRestAuthorization;
         /// <summary>
-        /// Kafka REST configuration.
+        /// Kafka REST configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigKafkaRestConfig? KafkaRestConfig;
         /// <summary>
@@ -70,15 +70,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? KafkaVersion;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPrivatelinkAccess? PrivatelinkAccess;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigPublicAccess? PublicAccess;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? SchemaRegistry;
         /// <summary>
-        /// Schema Registry configuration.
+        /// Schema Registry configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigSchemaRegistryConfig? SchemaRegistryConfig;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? StaticIps;
         /// <summary>
-        /// Tiered storage configuration.
+        /// Tiered storage configuration
         /// </summary>
         public readonly Outputs.KafkaKafkaUserConfigTieredStorage? TieredStorage;
 

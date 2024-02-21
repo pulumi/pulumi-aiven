@@ -22,12 +22,22 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
      * @return Password.
      * 
      */
-    private String password;
+    private @Nullable String password;
     /**
      * @return Port number of the server.
      * 
      */
     private Integer port;
+    /**
+     * @return Client certificate.
+     * 
+     */
+    private @Nullable String sslClientCertificate;
+    /**
+     * @return Client key.
+     * 
+     */
+    private @Nullable String sslClientKey;
     /**
      * @return SSL Mode. The default value is `verify-full`.
      * 
@@ -56,8 +66,8 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
      * @return Password.
      * 
      */
-    public String password() {
-        return this.password;
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
     }
     /**
      * @return Port number of the server.
@@ -65,6 +75,20 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
      */
     public Integer port() {
         return this.port;
+    }
+    /**
+     * @return Client certificate.
+     * 
+     */
+    public Optional<String> sslClientCertificate() {
+        return Optional.ofNullable(this.sslClientCertificate);
+    }
+    /**
+     * @return Client key.
+     * 
+     */
+    public Optional<String> sslClientKey() {
+        return Optional.ofNullable(this.sslClientKey);
     }
     /**
      * @return SSL Mode. The default value is `verify-full`.
@@ -98,8 +122,10 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
     @CustomType.Builder
     public static final class Builder {
         private String host;
-        private String password;
+        private @Nullable String password;
         private Integer port;
+        private @Nullable String sslClientCertificate;
+        private @Nullable String sslClientKey;
         private @Nullable String sslMode;
         private @Nullable String sslRootCert;
         private String username;
@@ -109,6 +135,8 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
     	      this.host = defaults.host;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
+    	      this.sslClientCertificate = defaults.sslClientCertificate;
+    	      this.sslClientKey = defaults.sslClientKey;
     	      this.sslMode = defaults.sslMode;
     	      this.sslRootCert = defaults.sslRootCert;
     	      this.username = defaults.username;
@@ -123,10 +151,8 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
             return this;
         }
         @CustomType.Setter
-        public Builder password(String password) {
-            if (password == null) {
-              throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalPostgresql", "password");
-            }
+        public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
@@ -136,6 +162,18 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
               throw new MissingRequiredPropertyException("GetServiceIntegrationEndpointExternalPostgresql", "port");
             }
             this.port = port;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sslClientCertificate(@Nullable String sslClientCertificate) {
+
+            this.sslClientCertificate = sslClientCertificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sslClientKey(@Nullable String sslClientKey) {
+
+            this.sslClientKey = sslClientKey;
             return this;
         }
         @CustomType.Setter
@@ -163,6 +201,8 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
             _resultValue.host = host;
             _resultValue.password = password;
             _resultValue.port = port;
+            _resultValue.sslClientCertificate = sslClientCertificate;
+            _resultValue.sslClientKey = sslClientKey;
             _resultValue.sslMode = sslMode;
             _resultValue.sslRootCert = sslRootCert;
             _resultValue.username = username;

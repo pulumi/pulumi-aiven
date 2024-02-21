@@ -628,15 +628,15 @@ class CassandraCassandraUserConfig(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        :param 'CassandraCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values.
+        :param 'CassandraCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values
         :param str cassandra_version: Cassandra version.
-        :param Sequence['CassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['CassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-        :param 'CassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'CassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'CassandraCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'CassandraCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param str service_to_join_with: When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
@@ -681,6 +681,9 @@ class CassandraCassandraUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -703,7 +706,7 @@ class CassandraCassandraUserConfig(dict):
     @pulumi.getter
     def cassandra(self) -> Optional['outputs.CassandraCassandraUserConfigCassandra']:
         """
-        cassandra configuration values.
+        cassandra configuration values
         """
         return pulumi.get(self, "cassandra")
 
@@ -719,7 +722,7 @@ class CassandraCassandraUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.CassandraCassandraUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -737,8 +740,8 @@ class CassandraCassandraUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -754,7 +757,7 @@ class CassandraCassandraUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.CassandraCassandraUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -770,7 +773,7 @@ class CassandraCassandraUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.CassandraCassandraUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -1213,13 +1216,13 @@ class ClickhouseClickhouseUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['ClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['ClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'ClickhouseClickhouseUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'ClickhouseClickhouseUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'ClickhouseClickhouseUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'ClickhouseClickhouseUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'ClickhouseClickhouseUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'ClickhouseClickhouseUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -1253,13 +1256,16 @@ class ClickhouseClickhouseUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.ClickhouseClickhouseUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -1277,8 +1283,8 @@ class ClickhouseClickhouseUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -1286,7 +1292,7 @@ class ClickhouseClickhouseUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.ClickhouseClickhouseUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -1294,7 +1300,7 @@ class ClickhouseClickhouseUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -1310,7 +1316,7 @@ class ClickhouseClickhouseUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.ClickhouseClickhouseUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -2214,11 +2220,11 @@ class FlinkFlinkUserConfig(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str flink_version: Flink major version.
-        :param Sequence['FlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['FlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param int number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
-        :param 'FlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'FlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -2247,6 +2253,9 @@ class FlinkFlinkUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -2261,7 +2270,7 @@ class FlinkFlinkUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.FlinkFlinkUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -2279,8 +2288,8 @@ class FlinkFlinkUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -2296,7 +2305,7 @@ class FlinkFlinkUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.FlinkFlinkUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -2752,12 +2761,12 @@ class GrafanaGrafanaUserConfig(dict):
         :param int alerting_max_annotations_to_keep: Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
         :param str alerting_nodata_or_nullvalues: Default value for 'no data or null values' for new alerting rules.
         :param bool allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
-        :param 'GrafanaGrafanaUserConfigAuthAzureadArgs' auth_azuread: Azure AD OAuth integration.
+        :param 'GrafanaGrafanaUserConfigAuthAzureadArgs' auth_azuread: Azure AD OAuth integration
         :param bool auth_basic_enabled: Enable or disable basic authentication form, used by Grafana built-in login.
-        :param 'GrafanaGrafanaUserConfigAuthGenericOauthArgs' auth_generic_oauth: Generic OAuth integration.
-        :param 'GrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Github Auth integration.
-        :param 'GrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration.
-        :param 'GrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration.
+        :param 'GrafanaGrafanaUserConfigAuthGenericOauthArgs' auth_generic_oauth: Generic OAuth integration
+        :param 'GrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Github Auth integration
+        :param 'GrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration
+        :param 'GrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration
         :param str cookie_samesite: Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param bool dashboard_previews_enabled: This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
@@ -2765,24 +2774,24 @@ class GrafanaGrafanaUserConfig(dict):
         :param int dashboards_versions_to_keep: Dashboard versions to keep per dashboard.
         :param bool dataproxy_send_user_header: Send 'X-Grafana-User' header to data source.
         :param int dataproxy_timeout: Timeout for data proxy requests in seconds.
-        :param 'GrafanaGrafanaUserConfigDateFormatsArgs' date_formats: Grafana date format specifications.
+        :param 'GrafanaGrafanaUserConfigDateFormatsArgs' date_formats: Grafana date format specifications
         :param bool disable_gravatar: Set to true to disable gravatar. Defaults to false (gravatar is enabled).
         :param bool editors_can_admin: Editors can manage folders, teams and dashboards created by them.
-        :param 'GrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings.
+        :param 'GrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings
         :param str google_analytics_ua_id: Google Analytics ID.
-        :param Sequence['GrafanaGrafanaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GrafanaGrafanaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool metrics_enabled: Enable Grafana /metrics endpoint.
         :param bool oauth_allow_insecure_email_lookup: Enforce user lookup based on email instead of the unique ID provided by the IdP.
-        :param 'GrafanaGrafanaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GrafanaGrafanaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GrafanaGrafanaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GrafanaGrafanaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
-        :param 'GrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings.
+        :param 'GrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings
         :param bool static_ips: Use static public IP addresses.
         :param bool unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
@@ -2880,6 +2889,9 @@ class GrafanaGrafanaUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -2926,7 +2938,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="authAzuread")
     def auth_azuread(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthAzuread']:
         """
-        Azure AD OAuth integration.
+        Azure AD OAuth integration
         """
         return pulumi.get(self, "auth_azuread")
 
@@ -2942,7 +2954,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="authGenericOauth")
     def auth_generic_oauth(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGenericOauth']:
         """
-        Generic OAuth integration.
+        Generic OAuth integration
         """
         return pulumi.get(self, "auth_generic_oauth")
 
@@ -2950,7 +2962,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="authGithub")
     def auth_github(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGithub']:
         """
-        Github Auth integration.
+        Github Auth integration
         """
         return pulumi.get(self, "auth_github")
 
@@ -2958,7 +2970,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="authGitlab")
     def auth_gitlab(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGitlab']:
         """
-        GitLab Auth integration.
+        GitLab Auth integration
         """
         return pulumi.get(self, "auth_gitlab")
 
@@ -2966,7 +2978,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="authGoogle")
     def auth_google(self) -> Optional['outputs.GrafanaGrafanaUserConfigAuthGoogle']:
         """
-        Google Auth integration.
+        Google Auth integration
         """
         return pulumi.get(self, "auth_google")
 
@@ -3030,7 +3042,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="dateFormats")
     def date_formats(self) -> Optional['outputs.GrafanaGrafanaUserConfigDateFormats']:
         """
-        Grafana date format specifications.
+        Grafana date format specifications
         """
         return pulumi.get(self, "date_formats")
 
@@ -3054,7 +3066,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="externalImageStorage")
     def external_image_storage(self) -> Optional['outputs.GrafanaGrafanaUserConfigExternalImageStorage']:
         """
-        External image store settings.
+        External image store settings
         """
         return pulumi.get(self, "external_image_storage")
 
@@ -3070,7 +3082,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GrafanaGrafanaUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -3088,8 +3100,8 @@ class GrafanaGrafanaUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -3113,7 +3125,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GrafanaGrafanaUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -3121,7 +3133,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GrafanaGrafanaUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -3137,7 +3149,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GrafanaGrafanaUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -3169,7 +3181,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="smtpServer")
     def smtp_server(self) -> Optional['outputs.GrafanaGrafanaUserConfigSmtpServer']:
         """
-        SMTP server settings.
+        SMTP server settings
         """
         return pulumi.get(self, "smtp_server")
 
@@ -3620,14 +3632,14 @@ class GrafanaGrafanaUserConfigAuthGitlab(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clientId":
+        if key == "allowedGroups":
+            suggest = "allowed_groups"
+        elif key == "clientId":
             suggest = "client_id"
         elif key == "clientSecret":
             suggest = "client_secret"
         elif key == "allowSignUp":
             suggest = "allow_sign_up"
-        elif key == "allowedGroups":
-            suggest = "allowed_groups"
         elif key == "apiUrl":
             suggest = "api_url"
         elif key == "authUrl":
@@ -3647,34 +3659,41 @@ class GrafanaGrafanaUserConfigAuthGitlab(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allowed_groups: Sequence[str],
                  client_id: str,
                  client_secret: str,
                  allow_sign_up: Optional[bool] = None,
-                 allowed_groups: Optional[Sequence[str]] = None,
                  api_url: Optional[str] = None,
                  auth_url: Optional[str] = None,
                  token_url: Optional[str] = None):
         """
+        :param Sequence[str] allowed_groups: Require users to belong to one of given groups.
         :param str client_id: Client ID from provider.
         :param str client_secret: Client secret from provider.
         :param bool allow_sign_up: Automatically sign-up users on successful sign-in.
-        :param Sequence[str] allowed_groups: Require users to belong to one of given groups.
         :param str api_url: API URL. This only needs to be set when using self hosted GitLab.
         :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab.
         :param str token_url: Token URL. This only needs to be set when using self hosted GitLab.
         """
+        pulumi.set(__self__, "allowed_groups", allowed_groups)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
-        if allowed_groups is not None:
-            pulumi.set(__self__, "allowed_groups", allowed_groups)
         if api_url is not None:
             pulumi.set(__self__, "api_url", api_url)
         if auth_url is not None:
             pulumi.set(__self__, "auth_url", auth_url)
         if token_url is not None:
             pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="allowedGroups")
+    def allowed_groups(self) -> Sequence[str]:
+        """
+        Require users to belong to one of given groups.
+        """
+        return pulumi.get(self, "allowed_groups")
 
     @property
     @pulumi.getter(name="clientId")
@@ -3699,14 +3718,6 @@ class GrafanaGrafanaUserConfigAuthGitlab(dict):
         Automatically sign-up users on successful sign-in.
         """
         return pulumi.get(self, "allow_sign_up")
-
-    @property
-    @pulumi.getter(name="allowedGroups")
-    def allowed_groups(self) -> Optional[Sequence[str]]:
-        """
-        Require users to belong to one of given groups.
-        """
-        return pulumi.get(self, "allowed_groups")
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -3738,14 +3749,14 @@ class GrafanaGrafanaUserConfigAuthGoogle(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "clientId":
+        if key == "allowedDomains":
+            suggest = "allowed_domains"
+        elif key == "clientId":
             suggest = "client_id"
         elif key == "clientSecret":
             suggest = "client_secret"
         elif key == "allowSignUp":
             suggest = "allow_sign_up"
-        elif key == "allowedDomains":
-            suggest = "allowed_domains"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GrafanaGrafanaUserConfigAuthGoogle. Access the value via the '{suggest}' property getter instead.")
@@ -3759,22 +3770,29 @@ class GrafanaGrafanaUserConfigAuthGoogle(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allowed_domains: Sequence[str],
                  client_id: str,
                  client_secret: str,
-                 allow_sign_up: Optional[bool] = None,
-                 allowed_domains: Optional[Sequence[str]] = None):
+                 allow_sign_up: Optional[bool] = None):
         """
+        :param Sequence[str] allowed_domains: Domains allowed to sign-in to this Grafana.
         :param str client_id: Client ID from provider.
         :param str client_secret: Client secret from provider.
         :param bool allow_sign_up: Automatically sign-up users on successful sign-in.
-        :param Sequence[str] allowed_domains: Domains allowed to sign-in to this Grafana.
         """
+        pulumi.set(__self__, "allowed_domains", allowed_domains)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
-        if allowed_domains is not None:
-            pulumi.set(__self__, "allowed_domains", allowed_domains)
+
+    @property
+    @pulumi.getter(name="allowedDomains")
+    def allowed_domains(self) -> Sequence[str]:
+        """
+        Domains allowed to sign-in to this Grafana.
+        """
+        return pulumi.get(self, "allowed_domains")
 
     @property
     @pulumi.getter(name="clientId")
@@ -3799,14 +3817,6 @@ class GrafanaGrafanaUserConfigAuthGoogle(dict):
         Automatically sign-up users on successful sign-in.
         """
         return pulumi.get(self, "allow_sign_up")
-
-    @property
-    @pulumi.getter(name="allowedDomains")
-    def allowed_domains(self) -> Optional[Sequence[str]]:
-        """
-        Domains allowed to sign-in to this Grafana.
-        """
-        return pulumi.get(self, "allowed_domains")
 
 
 @pulumi.output_type
@@ -4539,14 +4549,14 @@ class InfluxDbInfluxdbUserConfig(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param 'InfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: influxdb.conf configuration values.
-        :param Sequence['InfluxDbInfluxdbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param 'InfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: influxdb.conf configuration values
+        :param Sequence['InfluxDbInfluxdbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'InfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'InfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'InfluxDbInfluxdbUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'InfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'InfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
@@ -4587,6 +4597,9 @@ class InfluxDbInfluxdbUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -4601,7 +4614,7 @@ class InfluxDbInfluxdbUserConfig(dict):
     @pulumi.getter
     def influxdb(self) -> Optional['outputs.InfluxDbInfluxdbUserConfigInfluxdb']:
         """
-        influxdb.conf configuration values.
+        influxdb.conf configuration values
         """
         return pulumi.get(self, "influxdb")
 
@@ -4609,7 +4622,7 @@ class InfluxDbInfluxdbUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.InfluxDbInfluxdbUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -4627,8 +4640,8 @@ class InfluxDbInfluxdbUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -4636,7 +4649,7 @@ class InfluxDbInfluxdbUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.InfluxDbInfluxdbUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -4644,7 +4657,7 @@ class InfluxDbInfluxdbUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -4660,7 +4673,7 @@ class InfluxDbInfluxdbUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.InfluxDbInfluxdbUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -4738,7 +4751,7 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
                  query_timeout: Optional[int] = None):
         """
         :param int log_queries_after: The maximum duration in seconds before a query is logged as a slow query. Setting this to 0 (the default) will never log slow queries.
-        :param int max_connection_limit: Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+        :param int max_connection_limit: Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
         :param int max_row_limit: The maximum number of rows returned in a non-chunked query. Setting this to 0 (the default) allows an unlimited number to be returned.
         :param int max_select_buckets: The maximum number of `GROUP BY time()` buckets that can be processed in a query. Setting this to 0 (the default) allows an unlimited number to be processed.
         :param int max_select_point: The maximum number of points that can be processed in a SELECT statement. Setting this to 0 (the default) allows an unlimited number to be processed.
@@ -4772,7 +4785,7 @@ class InfluxDbInfluxdbUserConfigInfluxdb(dict):
     @pulumi.getter(name="maxConnectionLimit")
     def max_connection_limit(self) -> Optional[int]:
         """
-        Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+        Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
         """
         return pulumi.get(self, "max_connection_limit")
 
@@ -4852,7 +4865,7 @@ class InfluxDbInfluxdbUserConfigPrivateAccess(dict):
     def __init__(__self__, *,
                  influxdb: Optional[bool] = None):
         """
-        :param bool influxdb: influxdb.conf configuration values.
+        :param bool influxdb: Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
@@ -4861,7 +4874,7 @@ class InfluxDbInfluxdbUserConfigPrivateAccess(dict):
     @pulumi.getter
     def influxdb(self) -> Optional[bool]:
         """
-        influxdb.conf configuration values.
+        Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "influxdb")
 
@@ -4871,7 +4884,7 @@ class InfluxDbInfluxdbUserConfigPrivatelinkAccess(dict):
     def __init__(__self__, *,
                  influxdb: Optional[bool] = None):
         """
-        :param bool influxdb: influxdb.conf configuration values.
+        :param bool influxdb: Enable influxdb.
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
@@ -4880,7 +4893,7 @@ class InfluxDbInfluxdbUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def influxdb(self) -> Optional[bool]:
         """
-        influxdb.conf configuration values.
+        Enable influxdb.
         """
         return pulumi.get(self, "influxdb")
 
@@ -4890,7 +4903,7 @@ class InfluxDbInfluxdbUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  influxdb: Optional[bool] = None):
         """
-        :param bool influxdb: influxdb.conf configuration values.
+        :param bool influxdb: Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if influxdb is not None:
             pulumi.set(__self__, "influxdb", influxdb)
@@ -4899,7 +4912,7 @@ class InfluxDbInfluxdbUserConfigPublicAccess(dict):
     @pulumi.getter
     def influxdb(self) -> Optional[bool]:
         """
-        influxdb.conf configuration values.
+        Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "influxdb")
 
@@ -5299,13 +5312,13 @@ class KafkaConnectKafkaConnectUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect configuration values.
-        :param 'KafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
-        :param 'KafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect configuration values
+        :param 'KafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'KafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
+        :param 'KafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -5336,13 +5349,16 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -5360,8 +5376,8 @@ class KafkaConnectKafkaConnectUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -5369,7 +5385,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect']:
         """
-        Kafka Connect configuration values.
+        Kafka Connect configuration values
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -5377,7 +5393,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -5385,7 +5401,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -5393,7 +5409,7 @@ class KafkaConnectKafkaConnectUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.KafkaConnectKafkaConnectUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -5525,7 +5541,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
-        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
         if connector_client_config_override_policy is not None:
@@ -5677,7 +5693,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
     def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
         """
-        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         """
         return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
@@ -6150,25 +6166,25 @@ class KafkaKafkaUserConfig(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param bool aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param Sequence['KafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['KafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'KafkaKafkaUserConfigKafkaArgs' kafka: Kafka broker configuration values.
-        :param 'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods.
+        :param 'KafkaKafkaUserConfigKafkaArgs' kafka: Kafka broker configuration values
+        :param 'KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
         :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
-        :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values.
+        :param 'KafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
-        :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration.
+        :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param str kafka_version: Kafka major version.
-        :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
-        :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
+        :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool schema_registry: Enable Schema-Registry service. The default value is `false`.
-        :param 'KafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration.
+        :param 'KafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
-        :param 'KafkaKafkaUserConfigTieredStorageArgs' tiered_storage: Tiered storage configuration.
+        :param 'KafkaKafkaUserConfigTieredStorageArgs' tiered_storage: Tiered storage configuration
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -6221,6 +6237,9 @@ class KafkaKafkaUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -6243,7 +6262,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.KafkaKafkaUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -6261,8 +6280,8 @@ class KafkaKafkaUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -6270,7 +6289,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter
     def kafka(self) -> Optional['outputs.KafkaKafkaUserConfigKafka']:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafka")
 
@@ -6278,7 +6297,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaAuthenticationMethods")
     def kafka_authentication_methods(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods']:
         """
-        Kafka authentication methods.
+        Kafka authentication methods
         """
         return pulumi.get(self, "kafka_authentication_methods")
 
@@ -6294,7 +6313,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaConnectConfig")
     def kafka_connect_config(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaConnectConfig']:
         """
-        Kafka Connect configuration values.
+        Kafka Connect configuration values
         """
         return pulumi.get(self, "kafka_connect_config")
 
@@ -6318,7 +6337,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaRestConfig")
     def kafka_rest_config(self) -> Optional['outputs.KafkaKafkaUserConfigKafkaRestConfig']:
         """
-        Kafka REST configuration.
+        Kafka REST configuration
         """
         return pulumi.get(self, "kafka_rest_config")
 
@@ -6334,7 +6353,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.KafkaKafkaUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -6342,7 +6361,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.KafkaKafkaUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -6350,7 +6369,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.KafkaKafkaUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -6366,7 +6385,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="schemaRegistryConfig")
     def schema_registry_config(self) -> Optional['outputs.KafkaKafkaUserConfigSchemaRegistryConfig']:
         """
-        Schema Registry configuration.
+        Schema Registry configuration
         """
         return pulumi.get(self, "schema_registry_config")
 
@@ -6390,7 +6409,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="tieredStorage")
     def tiered_storage(self) -> Optional['outputs.KafkaKafkaUserConfigTieredStorage']:
         """
-        Tiered storage configuration.
+        Tiered storage configuration
         """
         return pulumi.get(self, "tiered_storage")
 
@@ -6589,7 +6608,7 @@ class KafkaKafkaUserConfigKafka(dict):
         :param int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
         :param int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
         :param int group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
-        :param int log_cleaner_delete_retention_ms: How long are delete records retained?.
+        :param int log_cleaner_delete_retention_ms: How long are delete records retained?
         :param int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
         :param float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
         :param int log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
@@ -6603,7 +6622,7 @@ class KafkaKafkaUserConfigKafka(dict):
         :param bool log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
         :param int log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
         :param str log_message_timestamp_type: Define whether the timestamp in the message is message create time or log append time.
-        :param bool log_preallocate: Should pre allocate file when create new segment?.
+        :param bool log_preallocate: Should pre allocate file when create new segment?
         :param int log_retention_bytes: The maximum size of the log before deleting messages.
         :param int log_retention_hours: The number of hours to keep a log file before deleting it.
         :param int log_retention_ms: The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
@@ -6782,7 +6801,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
     def log_cleaner_delete_retention_ms(self) -> Optional[int]:
         """
-        How long are delete records retained?.
+        How long are delete records retained?
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
@@ -6894,7 +6913,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logPreallocate")
     def log_preallocate(self) -> Optional[bool]:
         """
-        Should pre allocate file when create new segment?.
+        Should pre allocate file when create new segment?
         """
         return pulumi.get(self, "log_preallocate")
 
@@ -7203,7 +7222,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
-        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
         if connector_client_config_override_policy is not None:
@@ -7355,7 +7374,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
     def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
         """
-        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         """
         return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
@@ -7560,7 +7579,7 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
                  prometheus: Optional[bool] = None,
                  schema_registry: Optional[bool] = None):
         """
-        :param bool kafka: Kafka broker configuration values.
+        :param bool kafka: Kafka broker configuration values
         :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
@@ -7581,7 +7600,7 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[bool]:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafka")
 
@@ -7650,7 +7669,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
                  schema_registry: Optional[bool] = None):
         """
         :param bool jolokia: Enable jolokia.
-        :param bool kafka: Kafka broker configuration values.
+        :param bool kafka: Kafka broker configuration values
         :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
@@ -7681,7 +7700,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[bool]:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafka")
 
@@ -7748,7 +7767,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
                  prometheus: Optional[bool] = None,
                  schema_registry: Optional[bool] = None):
         """
-        :param bool kafka: Kafka broker configuration values.
+        :param bool kafka: Kafka broker configuration values
         :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
@@ -7769,7 +7788,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[bool]:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafka")
 
@@ -7880,7 +7899,7 @@ class KafkaKafkaUserConfigTieredStorage(dict):
                  local_cache: Optional['outputs.KafkaKafkaUserConfigTieredStorageLocalCache'] = None):
         """
         :param bool enabled: Whether to enable the tiered storage functionality.
-        :param 'KafkaKafkaUserConfigTieredStorageLocalCacheArgs' local_cache: Local cache configuration.
+        :param 'KafkaKafkaUserConfigTieredStorageLocalCacheArgs' local_cache: Local cache configuration
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -7899,8 +7918,11 @@ class KafkaKafkaUserConfigTieredStorage(dict):
     @pulumi.getter(name="localCache")
     def local_cache(self) -> Optional['outputs.KafkaKafkaUserConfigTieredStorageLocalCache']:
         """
-        Local cache configuration.
+        Local cache configuration
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""local_cache is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "local_cache")
 
 
@@ -7920,6 +7942,9 @@ class KafkaKafkaUserConfigTieredStorageLocalCache(dict):
         """
         Local cache size in bytes.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""size is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "size")
 
 
@@ -8092,10 +8117,10 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values.
+        :param 'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -8120,13 +8145,16 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -8144,8 +8172,8 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -8153,7 +8181,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> Optional['outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker']:
         """
-        Kafka MirrorMaker configuration values.
+        Kafka MirrorMaker configuration values
         """
         return pulumi.get(self, "kafka_mirrormaker")
 
@@ -9199,7 +9227,7 @@ class M3AggregatorM3aggregatorUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param Sequence['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param str m3_version: M3 major version (deprecated, use m3aggregator_version).
@@ -9236,7 +9264,7 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -9254,8 +9282,8 @@ class M3AggregatorM3aggregatorUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -9265,9 +9293,6 @@ class M3AggregatorM3aggregatorUserConfig(dict):
         """
         M3 major version (deprecated, use m3aggregator_version).
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "m3_version")
 
     @property
@@ -9615,19 +9640,19 @@ class M3DbM3dbUserConfig(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param Sequence['M3DbM3dbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['M3DbM3dbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'M3DbM3dbUserConfigLimitsArgs' limits: M3 limits.
-        :param 'M3DbM3dbUserConfigM3Args' m3: M3 specific configuration options.
+        :param 'M3DbM3dbUserConfigLimitsArgs' limits: M3 limits
+        :param 'M3DbM3dbUserConfigM3Args' m3: M3 specific configuration options
         :param str m3_version: M3 major version (deprecated, use m3db_version).
         :param bool m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
         :param str m3db_version: M3 major version (the minimum compatible version).
-        :param Sequence['M3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces.
-        :param 'M3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param Sequence['M3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
+        :param 'M3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'M3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
-        :param 'M3DbM3dbUserConfigRulesArgs' rules: M3 rules.
+        :param 'M3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param 'M3DbM3dbUserConfigRulesArgs' rules: M3 rules
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -9675,6 +9700,9 @@ class M3DbM3dbUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -9689,7 +9717,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -9707,8 +9735,8 @@ class M3DbM3dbUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -9716,7 +9744,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter
     def limits(self) -> Optional['outputs.M3DbM3dbUserConfigLimits']:
         """
-        M3 limits.
+        M3 limits
         """
         return pulumi.get(self, "limits")
 
@@ -9724,7 +9752,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter
     def m3(self) -> Optional['outputs.M3DbM3dbUserConfigM3']:
         """
-        M3 specific configuration options.
+        M3 specific configuration options
         """
         return pulumi.get(self, "m3")
 
@@ -9734,9 +9762,6 @@ class M3DbM3dbUserConfig(dict):
         """
         M3 major version (deprecated, use m3db_version).
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "m3_version")
 
     @property
@@ -9759,7 +9784,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter
     def namespaces(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigNamespace']]:
         """
-        List of M3 namespaces.
+        List of M3 namespaces
         """
         return pulumi.get(self, "namespaces")
 
@@ -9767,7 +9792,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.M3DbM3dbUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -9783,7 +9808,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.M3DbM3dbUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -9791,7 +9816,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter
     def rules(self) -> Optional['outputs.M3DbM3dbUserConfigRules']:
         """
-        M3 rules.
+        M3 rules
         """
         return pulumi.get(self, "rules")
 
@@ -9978,7 +10003,7 @@ class M3DbM3dbUserConfigM3(dict):
     def __init__(__self__, *,
                  tag_options: Optional['outputs.M3DbM3dbUserConfigM3TagOptions'] = None):
         """
-        :param 'M3DbM3dbUserConfigM3TagOptionsArgs' tag_options: M3 Tag Options.
+        :param 'M3DbM3dbUserConfigM3TagOptionsArgs' tag_options: M3 Tag Options
         """
         if tag_options is not None:
             pulumi.set(__self__, "tag_options", tag_options)
@@ -9987,7 +10012,7 @@ class M3DbM3dbUserConfigM3(dict):
     @pulumi.getter(name="tagOptions")
     def tag_options(self) -> Optional['outputs.M3DbM3dbUserConfigM3TagOptions']:
         """
-        M3 Tag Options.
+        M3 Tag Options
         """
         return pulumi.get(self, "tag_options")
 
@@ -10052,7 +10077,7 @@ class M3DbM3dbUserConfigNamespace(dict):
         """
         :param str name: The name of the namespace.
         :param str type: The type of aggregation (aggregated/unaggregated).
-        :param 'M3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options.
+        :param 'M3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options
         :param str resolution: The resolution for an aggregated namespace.
         """
         pulumi.set(__self__, "name", name)
@@ -10082,7 +10107,7 @@ class M3DbM3dbUserConfigNamespace(dict):
     @pulumi.getter
     def options(self) -> Optional['outputs.M3DbM3dbUserConfigNamespaceOptions']:
         """
-        Namespace options.
+        Namespace options
         """
         return pulumi.get(self, "options")
 
@@ -10119,16 +10144,15 @@ class M3DbM3dbUserConfigNamespaceOptions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 retention_options: Optional['outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions'] = None,
+                 retention_options: 'outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions',
                  snapshot_enabled: Optional[bool] = None,
                  writes_to_commitlog: Optional[bool] = None):
         """
-        :param 'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs' retention_options: Retention options.
+        :param 'M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs' retention_options: Retention options
         :param bool snapshot_enabled: Controls whether M3DB will create snapshot files for this namespace.
         :param bool writes_to_commitlog: Controls whether M3DB will include writes to this namespace in the commitlog.
         """
-        if retention_options is not None:
-            pulumi.set(__self__, "retention_options", retention_options)
+        pulumi.set(__self__, "retention_options", retention_options)
         if snapshot_enabled is not None:
             pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
         if writes_to_commitlog is not None:
@@ -10136,9 +10160,9 @@ class M3DbM3dbUserConfigNamespaceOptions(dict):
 
     @property
     @pulumi.getter(name="retentionOptions")
-    def retention_options(self) -> Optional['outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions']:
+    def retention_options(self) -> 'outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions':
         """
-        Retention options.
+        Retention options
         """
         return pulumi.get(self, "retention_options")
 
@@ -10294,7 +10318,7 @@ class M3DbM3dbUserConfigRules(dict):
     def __init__(__self__, *,
                  mappings: Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMapping']] = None):
         """
-        :param Sequence['M3DbM3dbUserConfigRulesMappingArgs'] mappings: List of M3 mapping rules.
+        :param Sequence['M3DbM3dbUserConfigRulesMappingArgs'] mappings: List of M3 mapping rules
         """
         if mappings is not None:
             pulumi.set(__self__, "mappings", mappings)
@@ -10303,7 +10327,7 @@ class M3DbM3dbUserConfigRules(dict):
     @pulumi.getter
     def mappings(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMapping']]:
         """
-        List of M3 mapping rules.
+        List of M3 mapping rules
         """
         return pulumi.get(self, "mappings")
 
@@ -10344,9 +10368,9 @@ class M3DbM3dbUserConfigRulesMapping(dict):
         :param bool drop: Only store the derived metric (as specified in the roll-up rules), if any.
         :param str name: The (optional) name of the rule.
         :param Sequence[str] namespaces: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        :param Sequence['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs'] namespaces_objects: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        :param Sequence['M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs'] namespaces_objects: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
         :param Sequence[str] namespaces_strings: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        :param Sequence['M3DbM3dbUserConfigRulesMappingTagArgs'] tags: List of tags to be appended to matching metrics.
+        :param Sequence['M3DbM3dbUserConfigRulesMappingTagArgs'] tags: List of tags to be appended to matching metrics
         """
         pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
@@ -10402,8 +10426,8 @@ class M3DbM3dbUserConfigRulesMapping(dict):
         """
         This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
+        warnings.warn("""Deprecated. Use `namespaces_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""namespaces is deprecated: Deprecated. Use `namespaces_string` instead.""")
 
         return pulumi.get(self, "namespaces")
 
@@ -10411,7 +10435,7 @@ class M3DbM3dbUserConfigRulesMapping(dict):
     @pulumi.getter(name="namespacesObjects")
     def namespaces_objects(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject']]:
         """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
         """
         return pulumi.get(self, "namespaces_objects")
 
@@ -10427,7 +10451,7 @@ class M3DbM3dbUserConfigRulesMapping(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence['outputs.M3DbM3dbUserConfigRulesMappingTag']]:
         """
-        List of tags to be appended to matching metrics.
+        List of tags to be appended to matching metrics
         """
         return pulumi.get(self, "tags")
 
@@ -10435,20 +10459,19 @@ class M3DbM3dbUserConfigRulesMapping(dict):
 @pulumi.output_type
 class M3DbM3dbUserConfigRulesMappingNamespacesObject(dict):
     def __init__(__self__, *,
-                 resolution: Optional[str] = None,
+                 resolution: str,
                  retention: Optional[str] = None):
         """
         :param str resolution: The resolution for the matching namespace.
         :param str retention: The retention period of the matching namespace.
         """
-        if resolution is not None:
-            pulumi.set(__self__, "resolution", resolution)
+        pulumi.set(__self__, "resolution", resolution)
         if retention is not None:
             pulumi.set(__self__, "retention", retention)
 
     @property
     @pulumi.getter
-    def resolution(self) -> Optional[str]:
+    def resolution(self) -> str:
         """
         The resolution for the matching namespace.
         """
@@ -10796,16 +10819,16 @@ class MySqlMysqlUserConfig(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-        :param Sequence['MySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['MySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'MySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server.
-        :param 'MySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values.
+        :param 'MySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'MySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values
         :param str mysql_version: MySQL major version.
-        :param 'MySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'MySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'MySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'MySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'MySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'MySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect only when a new service is being created.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
@@ -10904,7 +10927,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.MySqlMysqlUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -10922,8 +10945,8 @@ class MySqlMysqlUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -10931,7 +10954,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter
     def migration(self) -> Optional['outputs.MySqlMysqlUserConfigMigration']:
         """
-        Migrate data from existing server.
+        Migrate data from existing server
         """
         return pulumi.get(self, "migration")
 
@@ -10939,7 +10962,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter
     def mysql(self) -> Optional['outputs.MySqlMysqlUserConfigMysql']:
         """
-        mysql.conf configuration values.
+        mysql.conf configuration values
         """
         return pulumi.get(self, "mysql")
 
@@ -10955,7 +10978,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.MySqlMysqlUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -10963,7 +10986,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.MySqlMysqlUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -10979,7 +11002,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.MySqlMysqlUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -11278,7 +11301,7 @@ class MySqlMysqlUserConfigMysql(dict):
         :param int group_concat_max_len: The maximum permitted result length in bytes for the GROUP_CONCAT() function.
         :param int information_schema_stats_expiry: The time, in seconds, before cached statistics expire.
         :param int innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
-        :param int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+        :param int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         :param int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
         :param str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
         :param int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
@@ -11409,7 +11432,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="innodbFlushNeighbors")
     def innodb_flush_neighbors(self) -> Optional[int]:
         """
-        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         """
         return pulumi.get(self, "innodb_flush_neighbors")
 
@@ -12073,23 +12096,23 @@ class OpenSearchOpensearchUserConfig(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
-        :param Sequence['OpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns.
-        :param 'OpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes.
-        :param Sequence['OpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['OpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
+        :param 'OpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes
+        :param Sequence['OpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
-        :param int max_index_count: Use index_patterns instead. The default value is `0`.
-        :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration.
-        :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings.
-        :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings.
+        :param int max_index_count: use index_patterns instead. The default value is `0`.
+        :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
+        :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
+        :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
         :param str opensearch_version: OpenSearch major version.
-        :param 'OpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'OpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'OpenSearchOpensearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'OpenSearchOpensearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
-        :param 'OpenSearchOpensearchUserConfigSamlArgs' saml: OpenSearch SAML configuration.
+        :param 'OpenSearchOpensearchUserConfigSamlArgs' saml: OpenSearch SAML configuration
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -12147,6 +12170,9 @@ class OpenSearchOpensearchUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -12163,16 +12189,13 @@ class OpenSearchOpensearchUserConfig(dict):
         """
         Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""disable_replication_factor_adjustment is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIndexPattern']]:
         """
-        Index patterns.
+        Index patterns
         """
         return pulumi.get(self, "index_patterns")
 
@@ -12180,7 +12203,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="indexTemplate")
     def index_template(self) -> Optional['outputs.OpenSearchOpensearchUserConfigIndexTemplate']:
         """
-        Template settings for all new indexes.
+        Template settings for all new indexes
         """
         return pulumi.get(self, "index_template")
 
@@ -12188,7 +12211,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.OpenSearchOpensearchUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -12206,8 +12229,8 @@ class OpenSearchOpensearchUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -12223,18 +12246,15 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[int]:
         """
-        Use index_patterns instead. The default value is `0`.
+        use index_patterns instead. The default value is `0`.
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter
     def openid(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpenid']:
         """
-        OpenSearch OpenID Connect Configuration.
+        OpenSearch OpenID Connect Configuration
         """
         return pulumi.get(self, "openid")
 
@@ -12242,7 +12262,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter
     def opensearch(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearch']:
         """
-        OpenSearch settings.
+        OpenSearch settings
         """
         return pulumi.get(self, "opensearch")
 
@@ -12250,7 +12270,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchDashboards']:
         """
-        OpenSearch Dashboards settings.
+        OpenSearch Dashboards settings
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -12266,7 +12286,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.OpenSearchOpensearchUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -12274,7 +12294,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -12290,7 +12310,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.OpenSearchOpensearchUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -12306,7 +12326,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter
     def saml(self) -> Optional['outputs.OpenSearchOpensearchUserConfigSaml']:
         """
-        OpenSearch SAML configuration.
+        OpenSearch SAML configuration
         """
         return pulumi.get(self, "saml")
 
@@ -12813,10 +12833,10 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
         """
         :param bool action_auto_create_index_enabled: Explicitly allow or block automatic creation of indices. Defaults to true.
         :param bool action_destructive_requires_name: Require explicit index names when deleting.
-        :param 'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs' auth_failure_listeners: Opensearch Security Plugin Settings.
+        :param 'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs' auth_failure_listeners: Opensearch Security Plugin Settings
         :param int cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node.
         :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
-        :param str email_sender_name: This should be identical to the Sender name defined in Opensearch dashboards.
+        :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server.
         :param str email_sender_username: Sender username for Opensearch alerts.
         :param bool enable_security_audit: Enable/Disable security audit. The default value is `false`.
@@ -12956,7 +12976,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="authFailureListeners")
     def auth_failure_listeners(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners']:
         """
-        Opensearch Security Plugin Settings.
+        Opensearch Security Plugin Settings
         """
         return pulumi.get(self, "auth_failure_listeners")
 
@@ -12980,7 +13000,7 @@ class OpenSearchOpensearchUserConfigOpensearch(dict):
     @pulumi.getter(name="emailSenderName")
     def email_sender_name(self) -> Optional[str]:
         """
-        This should be identical to the Sender name defined in Opensearch dashboards.
+        Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
         """
         return pulumi.get(self, "email_sender_name")
 
@@ -13290,8 +13310,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners(dict):
                  internal_authentication_backend_limiting: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting'] = None,
                  ip_rate_limiting: Optional['outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting'] = None):
         """
-        :param 'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs' internal_authentication_backend_limiting: .
-        :param 'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs' ip_rate_limiting: IP address rate limiting settings.
+        :param 'OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs' ip_rate_limiting: IP address rate limiting settings
         """
         if internal_authentication_backend_limiting is not None:
             pulumi.set(__self__, "internal_authentication_backend_limiting", internal_authentication_backend_limiting)
@@ -13301,16 +13320,13 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners(dict):
     @property
     @pulumi.getter(name="internalAuthenticationBackendLimiting")
     def internal_authentication_backend_limiting(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting']:
-        """
-        .
-        """
         return pulumi.get(self, "internal_authentication_backend_limiting")
 
     @property
     @pulumi.getter(name="ipRateLimiting")
     def ip_rate_limiting(self) -> Optional['outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting']:
         """
-        IP address rate limiting settings.
+        IP address rate limiting settings
         """
         return pulumi.get(self, "ip_rate_limiting")
 
@@ -13354,12 +13370,12 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
                  type: Optional[str] = None):
         """
         :param int allowed_tries: The number of login attempts allowed before login is blocked.
-        :param str authentication_backend: The internal backend. Enter `internal`.
+        :param str authentication_backend: internal*authentication*backend*limiting.authentication*backend.
         :param int block_expiry_seconds: The duration of time that login remains blocked after a failed login.
-        :param int max_blocked_clients: The maximum number of blocked IP addresses.
+        :param int max_blocked_clients: internal*authentication*backend*limiting.max*blocked_clients.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: The type of rate limiting.
+        :param str type: internal*authentication*backend_limiting.type.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -13388,7 +13404,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
     @pulumi.getter(name="authenticationBackend")
     def authentication_backend(self) -> Optional[str]:
         """
-        The internal backend. Enter `internal`.
+        internal*authentication*backend*limiting.authentication*backend.
         """
         return pulumi.get(self, "authentication_backend")
 
@@ -13404,7 +13420,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
     @pulumi.getter(name="maxBlockedClients")
     def max_blocked_clients(self) -> Optional[int]:
         """
-        The maximum number of blocked IP addresses.
+        internal*authentication*backend*limiting.max*blocked_clients.
         """
         return pulumi.get(self, "max_blocked_clients")
 
@@ -13428,7 +13444,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of rate limiting.
+        internal*authentication*backend_limiting.type.
         """
         return pulumi.get(self, "type")
 
@@ -13470,10 +13486,10 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
         """
         :param int allowed_tries: The number of login attempts allowed before login is blocked.
         :param int block_expiry_seconds: The duration of time that login remains blocked after a failed login.
-        :param int max_blocked_clients: The maximum number of blocked IP addresses.
+        :param int max_blocked_clients: internal*authentication*backend*limiting.max*blocked_clients.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: The type of rate limiting.
+        :param str type: internal*authentication*backend_limiting.type.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -13508,7 +13524,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
     @pulumi.getter(name="maxBlockedClients")
     def max_blocked_clients(self) -> Optional[int]:
         """
-        The maximum number of blocked IP addresses.
+        internal*authentication*backend*limiting.max*blocked_clients.
         """
         return pulumi.get(self, "max_blocked_clients")
 
@@ -13532,7 +13548,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of rate limiting.
+        internal*authentication*backend_limiting.type.
         """
         return pulumi.get(self, "type")
 
@@ -13623,8 +13639,8 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: OpenSearch settings.
-        :param bool opensearch_dashboards: OpenSearch Dashboards settings.
+        :param bool opensearch: OpenSearch settings
+        :param bool opensearch_dashboards: OpenSearch Dashboards settings
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if opensearch is not None:
@@ -13638,7 +13654,7 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        OpenSearch settings.
+        OpenSearch settings
         """
         return pulumi.get(self, "opensearch")
 
@@ -13646,7 +13662,7 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[bool]:
         """
-        OpenSearch Dashboards settings.
+        OpenSearch Dashboards settings
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -13683,8 +13699,8 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: OpenSearch settings.
-        :param bool opensearch_dashboards: OpenSearch Dashboards settings.
+        :param bool opensearch: OpenSearch settings
+        :param bool opensearch_dashboards: OpenSearch Dashboards settings
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if opensearch is not None:
@@ -13698,7 +13714,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        OpenSearch settings.
+        OpenSearch settings
         """
         return pulumi.get(self, "opensearch")
 
@@ -13706,7 +13722,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[bool]:
         """
-        OpenSearch Dashboards settings.
+        OpenSearch Dashboards settings
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -13743,8 +13759,8 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: OpenSearch settings.
-        :param bool opensearch_dashboards: OpenSearch Dashboards settings.
+        :param bool opensearch: OpenSearch settings
+        :param bool opensearch_dashboards: OpenSearch Dashboards settings
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if opensearch is not None:
@@ -13758,7 +13774,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        OpenSearch settings.
+        OpenSearch settings
         """
         return pulumi.get(self, "opensearch")
 
@@ -13766,7 +13782,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[bool]:
         """
-        OpenSearch Dashboards settings.
+        OpenSearch Dashboards settings
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -14405,29 +14421,29 @@ class PgPgUserConfig(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        :param Sequence['PgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['PgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'PgPgUserConfigMigrationArgs' migration: Migrate data from existing server.
-        :param 'PgPgUserConfigPgArgs' pg: postgresql.conf configuration values.
-        :param 'PgPgUserConfigPgQualstatsArgs' pg_qualstats: System-wide settings for the pg*qualstats extension.
-        :param bool pg_read_replica: Use read_replica service integration instead.
+        :param 'PgPgUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'PgPgUserConfigPgArgs' pg: postgresql.conf configuration values
+        :param 'PgPgUserConfigPgQualstatsArgs' pg_qualstats: System-wide settings for the pg*qualstats extension
+        :param bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         :param bool pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
         :param str pg_version: PostgreSQL major version.
-        :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings.
-        :param 'PgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout.
-        :param 'PgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'PgPgUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
+        :param 'PgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
+        :param 'PgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'PgPgUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'PgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'PgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect only when a new service is being created.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param float shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         :param bool static_ips: Use static public IP addresses.
         :param str synchronous_replication: Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        :param 'PgPgUserConfigTimescaledbArgs' timescaledb: System-wide settings for the timescaledb extension.
+        :param 'PgPgUserConfigTimescaledbArgs' timescaledb: System-wide settings for the timescaledb extension
         :param str variant: Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param int work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
@@ -14546,7 +14562,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.PgPgUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -14564,8 +14580,8 @@ class PgPgUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -14573,7 +14589,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def migration(self) -> Optional['outputs.PgPgUserConfigMigration']:
         """
-        Migrate data from existing server.
+        Migrate data from existing server
         """
         return pulumi.get(self, "migration")
 
@@ -14581,7 +14597,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def pg(self) -> Optional['outputs.PgPgUserConfigPg']:
         """
-        postgresql.conf configuration values.
+        postgresql.conf configuration values
         """
         return pulumi.get(self, "pg")
 
@@ -14589,19 +14605,19 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="pgQualstats")
     def pg_qualstats(self) -> Optional['outputs.PgPgUserConfigPgQualstats']:
         """
-        System-wide settings for the pg*qualstats extension.
+        System-wide settings for the pg*qualstats extension
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""pg_qualstats is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "pg_qualstats")
 
     @property
     @pulumi.getter(name="pgReadReplica")
     def pg_read_replica(self) -> Optional[bool]:
         """
-        Use read_replica service integration instead.
+        Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""pg_read_replica is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "pg_read_replica")
 
     @property
@@ -14610,9 +14626,6 @@ class PgPgUserConfig(dict):
         """
         Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""pg_service_to_fork_from is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "pg_service_to_fork_from")
 
     @property
@@ -14635,7 +14648,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional['outputs.PgPgUserConfigPgbouncer']:
         """
-        PGBouncer connection pooling settings.
+        PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -14643,7 +14656,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def pglookout(self) -> Optional['outputs.PgPgUserConfigPglookout']:
         """
-        System-wide settings for pglookout.
+        System-wide settings for pglookout
         """
         return pulumi.get(self, "pglookout")
 
@@ -14651,7 +14664,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.PgPgUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -14659,7 +14672,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.PgPgUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -14675,7 +14688,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.PgPgUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -14731,7 +14744,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def timescaledb(self) -> Optional['outputs.PgPgUserConfigTimescaledb']:
         """
-        System-wide settings for the timescaledb extension.
+        System-wide settings for the timescaledb extension
         """
         return pulumi.get(self, "timescaledb")
 
@@ -15063,7 +15076,7 @@ class PgPgUserConfigPg(dict):
                  wal_writer_delay: Optional[int] = None):
         """
         :param float autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
-        :param int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+        :param int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         :param int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
         :param int autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
         :param int autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
@@ -15223,7 +15236,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
     def autovacuum_analyze_threshold(self) -> Optional[int]:
         """
-        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         """
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
@@ -15659,6 +15672,9 @@ class PgPgUserConfigPgQualstats(dict):
         """
         Enable / Disable pg_qualstats. The default value is `false`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "enabled")
 
     @property
@@ -15667,6 +15683,9 @@ class PgPgUserConfigPgQualstats(dict):
         """
         Error estimation num threshold to save quals. The default value is `0`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""min_err_estimate_num is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "min_err_estimate_num")
 
     @property
@@ -15675,6 +15694,9 @@ class PgPgUserConfigPgQualstats(dict):
         """
         Error estimation ratio threshold to save quals. The default value is `0`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""min_err_estimate_ratio is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "min_err_estimate_ratio")
 
     @property
@@ -15683,6 +15705,9 @@ class PgPgUserConfigPgQualstats(dict):
         """
         Enable / Disable pg_qualstats constants tracking. The default value is `true`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""track_constants is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "track_constants")
 
     @property
@@ -15691,6 +15716,9 @@ class PgPgUserConfigPgQualstats(dict):
         """
         Track quals on system catalogs too. The default value is `false`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""track_pg_catalog is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "track_pg_catalog")
 
 
@@ -15740,15 +15768,15 @@ class PgPgUserConfigPgbouncer(dict):
                  server_lifetime: Optional[int] = None,
                  server_reset_query_always: Optional[bool] = None):
         """
-        :param int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+        :param int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         :param int autodb_max_db_connections: Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
-        :param str autodb_pool_mode: PGBouncer pool mode.
-        :param int autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+        :param str autodb_pool_mode: PGBouncer pool mode. The default value is `transaction`.
+        :param int autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         :param Sequence[str] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
-        :param int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
-        :param int server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
-        :param int server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds).
-        :param bool server_reset_query_always: Run server*reset*query (DISCARD ALL) in all pooling modes.
+        :param int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+        :param int server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+        :param int server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+        :param bool server_reset_query_always: Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
         """
         if autodb_idle_timeout is not None:
             pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
@@ -15773,7 +15801,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="autodbIdleTimeout")
     def autodb_idle_timeout(self) -> Optional[int]:
         """
-        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         """
         return pulumi.get(self, "autodb_idle_timeout")
 
@@ -15789,7 +15817,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="autodbPoolMode")
     def autodb_pool_mode(self) -> Optional[str]:
         """
-        PGBouncer pool mode.
+        PGBouncer pool mode. The default value is `transaction`.
         """
         return pulumi.get(self, "autodb_pool_mode")
 
@@ -15797,7 +15825,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="autodbPoolSize")
     def autodb_pool_size(self) -> Optional[int]:
         """
-        If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+        If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         """
         return pulumi.get(self, "autodb_pool_size")
 
@@ -15813,7 +15841,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="minPoolSize")
     def min_pool_size(self) -> Optional[int]:
         """
-        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
         """
         return pulumi.get(self, "min_pool_size")
 
@@ -15821,7 +15849,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="serverIdleTimeout")
     def server_idle_timeout(self) -> Optional[int]:
         """
-        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
         """
         return pulumi.get(self, "server_idle_timeout")
 
@@ -15829,7 +15857,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="serverLifetime")
     def server_lifetime(self) -> Optional[int]:
         """
-        The pooler will close an unused server connection that has been connected longer than this. (seconds).
+        The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
         """
         return pulumi.get(self, "server_lifetime")
 
@@ -15837,7 +15865,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="serverResetQueryAlways")
     def server_reset_query_always(self) -> Optional[bool]:
         """
-        Run server*reset*query (DISCARD ALL) in all pooling modes.
+        Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
         """
         return pulumi.get(self, "server_reset_query_always")
 
@@ -15885,8 +15913,8 @@ class PgPgUserConfigPrivateAccess(dict):
                  pgbouncer: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool pg: postgresql.conf configuration values.
-        :param bool pgbouncer: PGBouncer connection pooling settings.
+        :param bool pg: postgresql.conf configuration values
+        :param bool pgbouncer: PGBouncer connection pooling settings
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if pg is not None:
@@ -15900,7 +15928,7 @@ class PgPgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[bool]:
         """
-        postgresql.conf configuration values.
+        postgresql.conf configuration values
         """
         return pulumi.get(self, "pg")
 
@@ -15908,7 +15936,7 @@ class PgPgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[bool]:
         """
-        PGBouncer connection pooling settings.
+        PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -15928,8 +15956,8 @@ class PgPgUserConfigPrivatelinkAccess(dict):
                  pgbouncer: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool pg: postgresql.conf configuration values.
-        :param bool pgbouncer: PGBouncer connection pooling settings.
+        :param bool pg: postgresql.conf configuration values
+        :param bool pgbouncer: PGBouncer connection pooling settings
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if pg is not None:
@@ -15943,7 +15971,7 @@ class PgPgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[bool]:
         """
-        postgresql.conf configuration values.
+        postgresql.conf configuration values
         """
         return pulumi.get(self, "pg")
 
@@ -15951,7 +15979,7 @@ class PgPgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[bool]:
         """
-        PGBouncer connection pooling settings.
+        PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -15971,8 +15999,8 @@ class PgPgUserConfigPublicAccess(dict):
                  pgbouncer: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool pg: postgresql.conf configuration values.
-        :param bool pgbouncer: PGBouncer connection pooling settings.
+        :param bool pg: postgresql.conf configuration values
+        :param bool pgbouncer: PGBouncer connection pooling settings
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if pg is not None:
@@ -15986,7 +16014,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[bool]:
         """
-        postgresql.conf configuration values.
+        postgresql.conf configuration values
         """
         return pulumi.get(self, "pg")
 
@@ -15994,7 +16022,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[bool]:
         """
-        PGBouncer connection pooling settings.
+        PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -16388,14 +16416,14 @@ class RedisRedisUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['RedisRedisUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['RedisRedisUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'RedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server.
-        :param 'RedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'RedisRedisUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'RedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'RedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'RedisRedisUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'RedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'RedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param str redis_acl_channels_default: Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         :param int redis_io_threads: Set Redis IO thread count. Changing this will cause a restart of the Redis service.
@@ -16470,13 +16498,16 @@ class RedisRedisUserConfig(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.RedisRedisUserConfigIpFilterObject']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -16494,8 +16525,8 @@ class RedisRedisUserConfig(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -16503,7 +16534,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter
     def migration(self) -> Optional['outputs.RedisRedisUserConfigMigration']:
         """
-        Migrate data from existing server.
+        Migrate data from existing server
         """
         return pulumi.get(self, "migration")
 
@@ -16511,7 +16542,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.RedisRedisUserConfigPrivateAccess']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -16519,7 +16550,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.RedisRedisUserConfigPrivatelinkAccess']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -16535,7 +16566,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.RedisRedisUserConfigPublicAccess']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -18321,7 +18352,11 @@ class ServiceIntegrationEndpointExternalPostgresql(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sslMode":
+        if key == "sslClientCertificate":
+            suggest = "ssl_client_certificate"
+        elif key == "sslClientKey":
+            suggest = "ssl_client_key"
+        elif key == "sslMode":
             suggest = "ssl_mode"
         elif key == "sslRootCert":
             suggest = "ssl_root_cert"
@@ -18339,23 +18374,32 @@ class ServiceIntegrationEndpointExternalPostgresql(dict):
 
     def __init__(__self__, *,
                  host: str,
-                 password: str,
                  port: int,
                  username: str,
+                 password: Optional[str] = None,
+                 ssl_client_certificate: Optional[str] = None,
+                 ssl_client_key: Optional[str] = None,
                  ssl_mode: Optional[str] = None,
                  ssl_root_cert: Optional[str] = None):
         """
         :param str host: Hostname or IP address of the server.
-        :param str password: Password.
         :param int port: Port number of the server.
         :param str username: User name.
+        :param str password: Password.
+        :param str ssl_client_certificate: Client certificate.
+        :param str ssl_client_key: Client key.
         :param str ssl_mode: SSL Mode. The default value is `verify-full`.
         :param str ssl_root_cert: SSL Root Cert.
         """
         pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssl_client_certificate is not None:
+            pulumi.set(__self__, "ssl_client_certificate", ssl_client_certificate)
+        if ssl_client_key is not None:
+            pulumi.set(__self__, "ssl_client_key", ssl_client_key)
         if ssl_mode is not None:
             pulumi.set(__self__, "ssl_mode", ssl_mode)
         if ssl_root_cert is not None:
@@ -18368,14 +18412,6 @@ class ServiceIntegrationEndpointExternalPostgresql(dict):
         Hostname or IP address of the server.
         """
         return pulumi.get(self, "host")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        """
-        Password.
-        """
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -18392,6 +18428,30 @@ class ServiceIntegrationEndpointExternalPostgresql(dict):
         User name.
         """
         return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="sslClientCertificate")
+    def ssl_client_certificate(self) -> Optional[str]:
+        """
+        Client certificate.
+        """
+        return pulumi.get(self, "ssl_client_certificate")
+
+    @property
+    @pulumi.getter(name="sslClientKey")
+    def ssl_client_key(self) -> Optional[str]:
+        """
+        Client key.
+        """
+        return pulumi.get(self, "ssl_client_key")
 
     @property
     @pulumi.getter(name="sslMode")
@@ -19634,15 +19694,15 @@ class GetCassandaCassandraUserConfigResult(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        :param 'GetCassandaCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values.
+        :param 'GetCassandaCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values
         :param str cassandra_version: Cassandra version.
-        :param Sequence['GetCassandaCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetCassandaCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-        :param 'GetCassandaCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetCassandaCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetCassandaCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetCassandaCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param str service_to_join_with: When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
@@ -19687,6 +19747,9 @@ class GetCassandaCassandraUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -19709,7 +19772,7 @@ class GetCassandaCassandraUserConfigResult(dict):
     @pulumi.getter
     def cassandra(self) -> Optional['outputs.GetCassandaCassandraUserConfigCassandraResult']:
         """
-        cassandra configuration values.
+        cassandra configuration values
         """
         return pulumi.get(self, "cassandra")
 
@@ -19725,7 +19788,7 @@ class GetCassandaCassandraUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetCassandaCassandraUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -19743,8 +19806,8 @@ class GetCassandaCassandraUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -19760,7 +19823,7 @@ class GetCassandaCassandraUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetCassandaCassandraUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -19776,7 +19839,7 @@ class GetCassandaCassandraUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetCassandaCassandraUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -20124,15 +20187,15 @@ class GetCassandraCassandraUserConfigResult(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        :param 'GetCassandraCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values.
+        :param 'GetCassandraCassandraUserConfigCassandraArgs' cassandra: cassandra configuration values
         :param str cassandra_version: Cassandra version.
-        :param Sequence['GetCassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetCassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool migrate_sstableloader: Sets the service into migration mode enabling the sstableloader utility to be used to upload Cassandra data files. Available only on service create.
-        :param 'GetCassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param 'GetCassandraCassandraUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetCassandraCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetCassandraCassandraUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param str service_to_join_with: When bootstrapping, instead of creating a new Cassandra cluster try to join an existing one from another service. Can only be set on service creation.
@@ -20177,6 +20240,9 @@ class GetCassandraCassandraUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -20199,7 +20265,7 @@ class GetCassandraCassandraUserConfigResult(dict):
     @pulumi.getter
     def cassandra(self) -> Optional['outputs.GetCassandraCassandraUserConfigCassandraResult']:
         """
-        cassandra configuration values.
+        cassandra configuration values
         """
         return pulumi.get(self, "cassandra")
 
@@ -20215,7 +20281,7 @@ class GetCassandraCassandraUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetCassandraCassandraUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -20233,8 +20299,8 @@ class GetCassandraCassandraUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -20250,7 +20316,7 @@ class GetCassandraCassandraUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetCassandraCassandraUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -20266,7 +20332,7 @@ class GetCassandraCassandraUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetCassandraCassandraUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -20607,13 +20673,13 @@ class GetClickhouseClickhouseUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['GetClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetClickhouseClickhouseUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetClickhouseClickhouseUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetClickhouseClickhouseUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetClickhouseClickhouseUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetClickhouseClickhouseUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetClickhouseClickhouseUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -20647,13 +20713,16 @@ class GetClickhouseClickhouseUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetClickhouseClickhouseUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -20671,8 +20740,8 @@ class GetClickhouseClickhouseUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -20680,7 +20749,7 @@ class GetClickhouseClickhouseUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetClickhouseClickhouseUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -20688,7 +20757,7 @@ class GetClickhouseClickhouseUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -20704,7 +20773,7 @@ class GetClickhouseClickhouseUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetClickhouseClickhouseUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -21287,11 +21356,11 @@ class GetFlinkFlinkUserConfigResult(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str flink_version: Flink major version.
-        :param Sequence['GetFlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetFlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param int number_of_task_slots: Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
-        :param 'GetFlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetFlinkFlinkUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -21320,6 +21389,9 @@ class GetFlinkFlinkUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -21334,7 +21406,7 @@ class GetFlinkFlinkUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetFlinkFlinkUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -21352,8 +21424,8 @@ class GetFlinkFlinkUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -21369,7 +21441,7 @@ class GetFlinkFlinkUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetFlinkFlinkUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -21680,12 +21752,12 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param int alerting_max_annotations_to_keep: Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
         :param str alerting_nodata_or_nullvalues: Default value for 'no data or null values' for new alerting rules.
         :param bool allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
-        :param 'GetGrafanaGrafanaUserConfigAuthAzureadArgs' auth_azuread: Azure AD OAuth integration.
+        :param 'GetGrafanaGrafanaUserConfigAuthAzureadArgs' auth_azuread: Azure AD OAuth integration
         :param bool auth_basic_enabled: Enable or disable basic authentication form, used by Grafana built-in login.
-        :param 'GetGrafanaGrafanaUserConfigAuthGenericOauthArgs' auth_generic_oauth: Generic OAuth integration.
-        :param 'GetGrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Github Auth integration.
-        :param 'GetGrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration.
-        :param 'GetGrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration.
+        :param 'GetGrafanaGrafanaUserConfigAuthGenericOauthArgs' auth_generic_oauth: Generic OAuth integration
+        :param 'GetGrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Github Auth integration
+        :param 'GetGrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration
+        :param 'GetGrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration
         :param str cookie_samesite: Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param bool dashboard_previews_enabled: This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
@@ -21693,24 +21765,24 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param int dashboards_versions_to_keep: Dashboard versions to keep per dashboard.
         :param bool dataproxy_send_user_header: Send 'X-Grafana-User' header to data source.
         :param int dataproxy_timeout: Timeout for data proxy requests in seconds.
-        :param 'GetGrafanaGrafanaUserConfigDateFormatsArgs' date_formats: Grafana date format specifications.
+        :param 'GetGrafanaGrafanaUserConfigDateFormatsArgs' date_formats: Grafana date format specifications
         :param bool disable_gravatar: Set to true to disable gravatar. Defaults to false (gravatar is enabled).
         :param bool editors_can_admin: Editors can manage folders, teams and dashboards created by them.
-        :param 'GetGrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings.
+        :param 'GetGrafanaGrafanaUserConfigExternalImageStorageArgs' external_image_storage: External image store settings
         :param str google_analytics_ua_id: Google Analytics ID.
-        :param Sequence['GetGrafanaGrafanaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetGrafanaGrafanaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool metrics_enabled: Enable Grafana /metrics endpoint.
         :param bool oauth_allow_insecure_email_lookup: Enforce user lookup based on email instead of the unique ID provided by the IdP.
-        :param 'GetGrafanaGrafanaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetGrafanaGrafanaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetGrafanaGrafanaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetGrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetGrafanaGrafanaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
-        :param 'GetGrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings.
+        :param 'GetGrafanaGrafanaUserConfigSmtpServerArgs' smtp_server: SMTP server settings
         :param bool static_ips: Use static public IP addresses.
         :param bool unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
@@ -21808,6 +21880,9 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -21854,7 +21929,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="authAzuread")
     def auth_azuread(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthAzureadResult']:
         """
-        Azure AD OAuth integration.
+        Azure AD OAuth integration
         """
         return pulumi.get(self, "auth_azuread")
 
@@ -21870,7 +21945,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="authGenericOauth")
     def auth_generic_oauth(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGenericOauthResult']:
         """
-        Generic OAuth integration.
+        Generic OAuth integration
         """
         return pulumi.get(self, "auth_generic_oauth")
 
@@ -21878,7 +21953,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="authGithub")
     def auth_github(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGithubResult']:
         """
-        Github Auth integration.
+        Github Auth integration
         """
         return pulumi.get(self, "auth_github")
 
@@ -21886,7 +21961,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="authGitlab")
     def auth_gitlab(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGitlabResult']:
         """
-        GitLab Auth integration.
+        GitLab Auth integration
         """
         return pulumi.get(self, "auth_gitlab")
 
@@ -21894,7 +21969,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="authGoogle")
     def auth_google(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult']:
         """
-        Google Auth integration.
+        Google Auth integration
         """
         return pulumi.get(self, "auth_google")
 
@@ -21958,7 +22033,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="dateFormats")
     def date_formats(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigDateFormatsResult']:
         """
-        Grafana date format specifications.
+        Grafana date format specifications
         """
         return pulumi.get(self, "date_formats")
 
@@ -21982,7 +22057,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="externalImageStorage")
     def external_image_storage(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigExternalImageStorageResult']:
         """
-        External image store settings.
+        External image store settings
         """
         return pulumi.get(self, "external_image_storage")
 
@@ -21998,7 +22073,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetGrafanaGrafanaUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -22016,8 +22091,8 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -22041,7 +22116,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -22049,7 +22124,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -22065,7 +22140,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -22097,7 +22172,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="smtpServer")
     def smtp_server(self) -> Optional['outputs.GetGrafanaGrafanaUserConfigSmtpServerResult']:
         """
-        SMTP server settings.
+        SMTP server settings
         """
         return pulumi.get(self, "smtp_server")
 
@@ -22455,34 +22530,41 @@ class GetGrafanaGrafanaUserConfigAuthGithubResult(dict):
 @pulumi.output_type
 class GetGrafanaGrafanaUserConfigAuthGitlabResult(dict):
     def __init__(__self__, *,
+                 allowed_groups: Sequence[str],
                  client_id: str,
                  client_secret: str,
                  allow_sign_up: Optional[bool] = None,
-                 allowed_groups: Optional[Sequence[str]] = None,
                  api_url: Optional[str] = None,
                  auth_url: Optional[str] = None,
                  token_url: Optional[str] = None):
         """
+        :param Sequence[str] allowed_groups: Require users to belong to one of given groups.
         :param str client_id: Client ID from provider.
         :param str client_secret: Client secret from provider.
         :param bool allow_sign_up: Automatically sign-up users on successful sign-in.
-        :param Sequence[str] allowed_groups: Require users to belong to one of given groups.
         :param str api_url: API URL. This only needs to be set when using self hosted GitLab.
         :param str auth_url: Authorization URL. This only needs to be set when using self hosted GitLab.
         :param str token_url: Token URL. This only needs to be set when using self hosted GitLab.
         """
+        pulumi.set(__self__, "allowed_groups", allowed_groups)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
-        if allowed_groups is not None:
-            pulumi.set(__self__, "allowed_groups", allowed_groups)
         if api_url is not None:
             pulumi.set(__self__, "api_url", api_url)
         if auth_url is not None:
             pulumi.set(__self__, "auth_url", auth_url)
         if token_url is not None:
             pulumi.set(__self__, "token_url", token_url)
+
+    @property
+    @pulumi.getter(name="allowedGroups")
+    def allowed_groups(self) -> Sequence[str]:
+        """
+        Require users to belong to one of given groups.
+        """
+        return pulumi.get(self, "allowed_groups")
 
     @property
     @pulumi.getter(name="clientId")
@@ -22507,14 +22589,6 @@ class GetGrafanaGrafanaUserConfigAuthGitlabResult(dict):
         Automatically sign-up users on successful sign-in.
         """
         return pulumi.get(self, "allow_sign_up")
-
-    @property
-    @pulumi.getter(name="allowedGroups")
-    def allowed_groups(self) -> Optional[Sequence[str]]:
-        """
-        Require users to belong to one of given groups.
-        """
-        return pulumi.get(self, "allowed_groups")
 
     @property
     @pulumi.getter(name="apiUrl")
@@ -22544,22 +22618,29 @@ class GetGrafanaGrafanaUserConfigAuthGitlabResult(dict):
 @pulumi.output_type
 class GetGrafanaGrafanaUserConfigAuthGoogleResult(dict):
     def __init__(__self__, *,
+                 allowed_domains: Sequence[str],
                  client_id: str,
                  client_secret: str,
-                 allow_sign_up: Optional[bool] = None,
-                 allowed_domains: Optional[Sequence[str]] = None):
+                 allow_sign_up: Optional[bool] = None):
         """
+        :param Sequence[str] allowed_domains: Domains allowed to sign-in to this Grafana.
         :param str client_id: Client ID from provider.
         :param str client_secret: Client secret from provider.
         :param bool allow_sign_up: Automatically sign-up users on successful sign-in.
-        :param Sequence[str] allowed_domains: Domains allowed to sign-in to this Grafana.
         """
+        pulumi.set(__self__, "allowed_domains", allowed_domains)
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "client_secret", client_secret)
         if allow_sign_up is not None:
             pulumi.set(__self__, "allow_sign_up", allow_sign_up)
-        if allowed_domains is not None:
-            pulumi.set(__self__, "allowed_domains", allowed_domains)
+
+    @property
+    @pulumi.getter(name="allowedDomains")
+    def allowed_domains(self) -> Sequence[str]:
+        """
+        Domains allowed to sign-in to this Grafana.
+        """
+        return pulumi.get(self, "allowed_domains")
 
     @property
     @pulumi.getter(name="clientId")
@@ -22584,14 +22665,6 @@ class GetGrafanaGrafanaUserConfigAuthGoogleResult(dict):
         Automatically sign-up users on successful sign-in.
         """
         return pulumi.get(self, "allow_sign_up")
-
-    @property
-    @pulumi.getter(name="allowedDomains")
-    def allowed_domains(self) -> Optional[Sequence[str]]:
-        """
-        Domains allowed to sign-in to this Grafana.
-        """
-        return pulumi.get(self, "allowed_domains")
 
 
 @pulumi.output_type
@@ -23144,14 +23217,14 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param 'GetInfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: influxdb.conf configuration values.
-        :param Sequence['GetInfluxDbInfluxdbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param 'GetInfluxDbInfluxdbUserConfigInfluxdbArgs' influxdb: influxdb.conf configuration values
+        :param Sequence['GetInfluxDbInfluxdbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetInfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetInfluxDbInfluxdbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetInfluxDbInfluxdbUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetInfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetInfluxDbInfluxdbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
@@ -23192,6 +23265,9 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -23206,7 +23282,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @pulumi.getter
     def influxdb(self) -> Optional['outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult']:
         """
-        influxdb.conf configuration values.
+        influxdb.conf configuration values
         """
         return pulumi.get(self, "influxdb")
 
@@ -23214,7 +23290,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -23232,8 +23308,8 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -23241,7 +23317,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -23249,7 +23325,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -23265,7 +23341,7 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -23767,13 +23843,13 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetKafkaConnectKafkaConnectUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect configuration values.
-        :param 'GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
-        :param 'GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetKafkaConnectKafkaConnectUserConfigKafkaConnectArgs' kafka_connect: Kafka Connect configuration values
+        :param 'GetKafkaConnectKafkaConnectUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
+        :param 'GetKafkaConnectKafkaConnectUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -23804,13 +23880,16 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -23828,8 +23907,8 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -23837,7 +23916,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult']:
         """
-        Kafka Connect configuration values.
+        Kafka Connect configuration values
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -23845,7 +23924,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -23853,7 +23932,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -23861,7 +23940,7 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -23946,7 +24025,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
         :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
-        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
         if connector_client_config_override_policy is not None:
@@ -24098,7 +24177,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
     def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
         """
-        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         """
         return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
@@ -24412,25 +24491,25 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param bool aiven_kafka_topic_messages: Allow access to read Kafka topic messages in the Aiven Console and REST API.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param Sequence['GetKafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetKafkaKafkaUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetKafkaKafkaUserConfigKafkaArgs' kafka: Kafka broker configuration values.
-        :param 'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods.
+        :param 'GetKafkaKafkaUserConfigKafkaArgs' kafka: Kafka broker configuration values
+        :param 'GetKafkaKafkaUserConfigKafkaAuthenticationMethodsArgs' kafka_authentication_methods: Kafka authentication methods
         :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
-        :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values.
+        :param 'GetKafkaKafkaUserConfigKafkaConnectConfigArgs' kafka_connect_config: Kafka Connect configuration values
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
-        :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration.
+        :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
         :param str kafka_version: Kafka major version.
-        :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
-        :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
+        :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param bool schema_registry: Enable Schema-Registry service. The default value is `false`.
-        :param 'GetKafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration.
+        :param 'GetKafkaKafkaUserConfigSchemaRegistryConfigArgs' schema_registry_config: Schema Registry configuration
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
-        :param 'GetKafkaKafkaUserConfigTieredStorageArgs' tiered_storage: Tiered storage configuration.
+        :param 'GetKafkaKafkaUserConfigTieredStorageArgs' tiered_storage: Tiered storage configuration
         """
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
@@ -24483,6 +24562,9 @@ class GetKafkaKafkaUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -24505,7 +24587,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetKafkaKafkaUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -24523,8 +24605,8 @@ class GetKafkaKafkaUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -24532,7 +24614,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter
     def kafka(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaResult']:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafka")
 
@@ -24540,7 +24622,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaAuthenticationMethods")
     def kafka_authentication_methods(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethodsResult']:
         """
-        Kafka authentication methods.
+        Kafka authentication methods
         """
         return pulumi.get(self, "kafka_authentication_methods")
 
@@ -24556,7 +24638,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaConnectConfig")
     def kafka_connect_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaConnectConfigResult']:
         """
-        Kafka Connect configuration values.
+        Kafka Connect configuration values
         """
         return pulumi.get(self, "kafka_connect_config")
 
@@ -24580,7 +24662,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaRestConfig")
     def kafka_rest_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult']:
         """
-        Kafka REST configuration.
+        Kafka REST configuration
         """
         return pulumi.get(self, "kafka_rest_config")
 
@@ -24596,7 +24678,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -24604,7 +24686,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -24612,7 +24694,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetKafkaKafkaUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -24628,7 +24710,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="schemaRegistryConfig")
     def schema_registry_config(self) -> Optional['outputs.GetKafkaKafkaUserConfigSchemaRegistryConfigResult']:
         """
-        Schema Registry configuration.
+        Schema Registry configuration
         """
         return pulumi.get(self, "schema_registry_config")
 
@@ -24652,7 +24734,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="tieredStorage")
     def tiered_storage(self) -> Optional['outputs.GetKafkaKafkaUserConfigTieredStorageResult']:
         """
-        Tiered storage configuration.
+        Tiered storage configuration
         """
         return pulumi.get(self, "tiered_storage")
 
@@ -24744,7 +24826,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
         :param int group_max_session_timeout_ms: The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
         :param int group_min_session_timeout_ms: The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
-        :param int log_cleaner_delete_retention_ms: How long are delete records retained?.
+        :param int log_cleaner_delete_retention_ms: How long are delete records retained?
         :param int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
         :param float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
         :param int log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
@@ -24758,7 +24840,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param bool log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
         :param int log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
         :param str log_message_timestamp_type: Define whether the timestamp in the message is message create time or log append time.
-        :param bool log_preallocate: Should pre allocate file when create new segment?.
+        :param bool log_preallocate: Should pre allocate file when create new segment?
         :param int log_retention_bytes: The maximum size of the log before deleting messages.
         :param int log_retention_hours: The number of hours to keep a log file before deleting it.
         :param int log_retention_ms: The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
@@ -24937,7 +25019,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
     def log_cleaner_delete_retention_ms(self) -> Optional[int]:
         """
-        How long are delete records retained?.
+        How long are delete records retained?
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
@@ -25049,7 +25131,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logPreallocate")
     def log_preallocate(self) -> Optional[bool]:
         """
-        Should pre allocate file when create new segment?.
+        Should pre allocate file when create new segment?
         """
         return pulumi.get(self, "log_preallocate")
 
@@ -25311,7 +25393,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
-        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         :param int session_timeout_ms: The timeout in milliseconds used to detect failures when using Kafka’s group management facilities (defaults to 10000).
         """
         if connector_client_config_override_policy is not None:
@@ -25463,7 +25545,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="scheduledRebalanceMaxDelayMs")
     def scheduled_rebalance_max_delay_ms(self) -> Optional[int]:
         """
-        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         """
         return pulumi.get(self, "scheduled_rebalance_max_delay_ms")
 
@@ -25854,7 +25936,7 @@ class GetKafkaKafkaUserConfigTieredStorageResult(dict):
                  local_cache: Optional['outputs.GetKafkaKafkaUserConfigTieredStorageLocalCacheResult'] = None):
         """
         :param bool enabled: Whether to enable the tiered storage functionality.
-        :param 'GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs' local_cache: Local cache configuration.
+        :param 'GetKafkaKafkaUserConfigTieredStorageLocalCacheArgs' local_cache: Local cache configuration
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -25873,8 +25955,11 @@ class GetKafkaKafkaUserConfigTieredStorageResult(dict):
     @pulumi.getter(name="localCache")
     def local_cache(self) -> Optional['outputs.GetKafkaKafkaUserConfigTieredStorageLocalCacheResult']:
         """
-        Local cache configuration.
+        Local cache configuration
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""local_cache is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "local_cache")
 
 
@@ -25894,6 +25979,9 @@ class GetKafkaKafkaUserConfigTieredStorageLocalCacheResult(dict):
         """
         Local cache size in bytes.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""size is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "size")
 
 
@@ -26010,10 +26098,10 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values.
+        :param 'GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs' kafka_mirrormaker: Kafka MirrorMaker configuration values
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -26038,13 +26126,16 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -26062,8 +26153,8 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -26071,7 +26162,7 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
     @pulumi.getter(name="kafkaMirrormaker")
     def kafka_mirrormaker(self) -> Optional['outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerResult']:
         """
-        Kafka MirrorMaker configuration values.
+        Kafka MirrorMaker configuration values
         """
         return pulumi.get(self, "kafka_mirrormaker")
 
@@ -26915,7 +27006,7 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param Sequence['GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param str m3_version: M3 major version (deprecated, use m3aggregator_version).
@@ -26952,7 +27043,7 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -26970,8 +27061,8 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -26981,9 +27072,6 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
         """
         M3 major version (deprecated, use m3aggregator_version).
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "m3_version")
 
     @property
@@ -27242,19 +27330,19 @@ class GetM3DbM3dbUserConfigResult(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
-        :param Sequence['GetM3DbM3dbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetM3DbM3dbUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetM3DbM3dbUserConfigLimitsArgs' limits: M3 limits.
-        :param 'GetM3DbM3dbUserConfigM3Args' m3: M3 specific configuration options.
+        :param 'GetM3DbM3dbUserConfigLimitsArgs' limits: M3 limits
+        :param 'GetM3DbM3dbUserConfigM3Args' m3: M3 specific configuration options
         :param str m3_version: M3 major version (deprecated, use m3db_version).
         :param bool m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
         :param str m3db_version: M3 major version (the minimum compatible version).
-        :param Sequence['GetM3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces.
-        :param 'GetM3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
+        :param Sequence['GetM3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
+        :param 'GetM3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetM3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
-        :param 'GetM3DbM3dbUserConfigRulesArgs' rules: M3 rules.
+        :param 'GetM3DbM3dbUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
+        :param 'GetM3DbM3dbUserConfigRulesArgs' rules: M3 rules
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -27302,6 +27390,9 @@ class GetM3DbM3dbUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -27316,7 +27407,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -27334,8 +27425,8 @@ class GetM3DbM3dbUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -27343,7 +27434,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter
     def limits(self) -> Optional['outputs.GetM3DbM3dbUserConfigLimitsResult']:
         """
-        M3 limits.
+        M3 limits
         """
         return pulumi.get(self, "limits")
 
@@ -27351,7 +27442,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter
     def m3(self) -> Optional['outputs.GetM3DbM3dbUserConfigM3Result']:
         """
-        M3 specific configuration options.
+        M3 specific configuration options
         """
         return pulumi.get(self, "m3")
 
@@ -27361,9 +27452,6 @@ class GetM3DbM3dbUserConfigResult(dict):
         """
         M3 major version (deprecated, use m3db_version).
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""m3_version is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "m3_version")
 
     @property
@@ -27386,7 +27474,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter
     def namespaces(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigNamespaceResult']]:
         """
-        List of M3 namespaces.
+        List of M3 namespaces
         """
         return pulumi.get(self, "namespaces")
 
@@ -27394,7 +27482,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetM3DbM3dbUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -27410,7 +27498,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetM3DbM3dbUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -27418,7 +27506,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter
     def rules(self) -> Optional['outputs.GetM3DbM3dbUserConfigRulesResult']:
         """
-        M3 rules.
+        M3 rules
         """
         return pulumi.get(self, "rules")
 
@@ -27561,7 +27649,7 @@ class GetM3DbM3dbUserConfigM3Result(dict):
     def __init__(__self__, *,
                  tag_options: Optional['outputs.GetM3DbM3dbUserConfigM3TagOptionsResult'] = None):
         """
-        :param 'GetM3DbM3dbUserConfigM3TagOptionsArgs' tag_options: M3 Tag Options.
+        :param 'GetM3DbM3dbUserConfigM3TagOptionsArgs' tag_options: M3 Tag Options
         """
         if tag_options is not None:
             pulumi.set(__self__, "tag_options", tag_options)
@@ -27570,7 +27658,7 @@ class GetM3DbM3dbUserConfigM3Result(dict):
     @pulumi.getter(name="tagOptions")
     def tag_options(self) -> Optional['outputs.GetM3DbM3dbUserConfigM3TagOptionsResult']:
         """
-        M3 Tag Options.
+        M3 Tag Options
         """
         return pulumi.get(self, "tag_options")
 
@@ -27616,7 +27704,7 @@ class GetM3DbM3dbUserConfigNamespaceResult(dict):
         """
         :param str name: The name of the namespace.
         :param str type: The type of aggregation (aggregated/unaggregated).
-        :param 'GetM3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options.
+        :param 'GetM3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options
         :param str resolution: The resolution for an aggregated namespace.
         """
         pulumi.set(__self__, "name", name)
@@ -27646,7 +27734,7 @@ class GetM3DbM3dbUserConfigNamespaceResult(dict):
     @pulumi.getter
     def options(self) -> Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsResult']:
         """
-        Namespace options.
+        Namespace options
         """
         return pulumi.get(self, "options")
 
@@ -27662,16 +27750,15 @@ class GetM3DbM3dbUserConfigNamespaceResult(dict):
 @pulumi.output_type
 class GetM3DbM3dbUserConfigNamespaceOptionsResult(dict):
     def __init__(__self__, *,
-                 retention_options: Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult'] = None,
+                 retention_options: 'outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult',
                  snapshot_enabled: Optional[bool] = None,
                  writes_to_commitlog: Optional[bool] = None):
         """
-        :param 'GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs' retention_options: Retention options.
+        :param 'GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs' retention_options: Retention options
         :param bool snapshot_enabled: Controls whether M3DB will create snapshot files for this namespace.
         :param bool writes_to_commitlog: Controls whether M3DB will include writes to this namespace in the commitlog.
         """
-        if retention_options is not None:
-            pulumi.set(__self__, "retention_options", retention_options)
+        pulumi.set(__self__, "retention_options", retention_options)
         if snapshot_enabled is not None:
             pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
         if writes_to_commitlog is not None:
@@ -27679,9 +27766,9 @@ class GetM3DbM3dbUserConfigNamespaceOptionsResult(dict):
 
     @property
     @pulumi.getter(name="retentionOptions")
-    def retention_options(self) -> Optional['outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult']:
+    def retention_options(self) -> 'outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptionsResult':
         """
-        Retention options.
+        Retention options
         """
         return pulumi.get(self, "retention_options")
 
@@ -27812,7 +27899,7 @@ class GetM3DbM3dbUserConfigRulesResult(dict):
     def __init__(__self__, *,
                  mappings: Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingResult']] = None):
         """
-        :param Sequence['GetM3DbM3dbUserConfigRulesMappingArgs'] mappings: List of M3 mapping rules.
+        :param Sequence['GetM3DbM3dbUserConfigRulesMappingArgs'] mappings: List of M3 mapping rules
         """
         if mappings is not None:
             pulumi.set(__self__, "mappings", mappings)
@@ -27821,7 +27908,7 @@ class GetM3DbM3dbUserConfigRulesResult(dict):
     @pulumi.getter
     def mappings(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingResult']]:
         """
-        List of M3 mapping rules.
+        List of M3 mapping rules
         """
         return pulumi.get(self, "mappings")
 
@@ -27843,9 +27930,9 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
         :param bool drop: Only store the derived metric (as specified in the roll-up rules), if any.
         :param str name: The (optional) name of the rule.
         :param Sequence[str] namespaces: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        :param Sequence['GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs'] namespaces_objects: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        :param Sequence['GetM3DbM3dbUserConfigRulesMappingNamespacesObjectArgs'] namespaces_objects: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
         :param Sequence[str] namespaces_strings: This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
-        :param Sequence['GetM3DbM3dbUserConfigRulesMappingTagArgs'] tags: List of tags to be appended to matching metrics.
+        :param Sequence['GetM3DbM3dbUserConfigRulesMappingTagArgs'] tags: List of tags to be appended to matching metrics
         """
         pulumi.set(__self__, "filter", filter)
         if aggregations is not None:
@@ -27901,8 +27988,8 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
         """
         This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with namespaces_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""namespaces is deprecated: This will be removed in v5.0.0 and replaced with namespaces_string instead.""")
+        warnings.warn("""Deprecated. Use `namespaces_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""namespaces is deprecated: Deprecated. Use `namespaces_string` instead.""")
 
         return pulumi.get(self, "namespaces")
 
@@ -27910,7 +27997,7 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
     @pulumi.getter(name="namespacesObjects")
     def namespaces_objects(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult']]:
         """
-        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
         """
         return pulumi.get(self, "namespaces_objects")
 
@@ -27926,7 +28013,7 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
     @pulumi.getter
     def tags(self) -> Optional[Sequence['outputs.GetM3DbM3dbUserConfigRulesMappingTagResult']]:
         """
-        List of tags to be appended to matching metrics.
+        List of tags to be appended to matching metrics
         """
         return pulumi.get(self, "tags")
 
@@ -27934,20 +28021,19 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
 @pulumi.output_type
 class GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult(dict):
     def __init__(__self__, *,
-                 resolution: Optional[str] = None,
+                 resolution: str,
                  retention: Optional[str] = None):
         """
         :param str resolution: The resolution for the matching namespace.
         :param str retention: The retention period of the matching namespace.
         """
-        if resolution is not None:
-            pulumi.set(__self__, "resolution", resolution)
+        pulumi.set(__self__, "resolution", resolution)
         if retention is not None:
             pulumi.set(__self__, "retention", retention)
 
     @property
     @pulumi.getter
-    def resolution(self) -> Optional[str]:
+    def resolution(self) -> str:
         """
         The resolution for the matching namespace.
         """
@@ -28198,16 +28284,16 @@ class GetMySqlMysqlUserConfigResult(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int binlog_retention_period: The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
-        :param Sequence['GetMySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetMySqlMysqlUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetMySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server.
-        :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values.
+        :param 'GetMySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values
         :param str mysql_version: MySQL major version.
-        :param 'GetMySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetMySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetMySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetMySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetMySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetMySqlMysqlUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect only when a new service is being created.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
@@ -28306,7 +28392,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetMySqlMysqlUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -28324,8 +28410,8 @@ class GetMySqlMysqlUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -28333,7 +28419,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter
     def migration(self) -> Optional['outputs.GetMySqlMysqlUserConfigMigrationResult']:
         """
-        Migrate data from existing server.
+        Migrate data from existing server
         """
         return pulumi.get(self, "migration")
 
@@ -28341,7 +28427,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter
     def mysql(self) -> Optional['outputs.GetMySqlMysqlUserConfigMysqlResult']:
         """
-        mysql.conf configuration values.
+        mysql.conf configuration values
         """
         return pulumi.get(self, "mysql")
 
@@ -28357,7 +28443,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetMySqlMysqlUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -28365,7 +28451,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetMySqlMysqlUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -28381,7 +28467,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetMySqlMysqlUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -28588,7 +28674,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param int group_concat_max_len: The maximum permitted result length in bytes for the GROUP_CONCAT() function.
         :param int information_schema_stats_expiry: The time, in seconds, before cached statistics expire.
         :param int innodb_change_buffer_max_size: Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
-        :param int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+        :param int innodb_flush_neighbors: Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         :param int innodb_ft_min_token_size: Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
         :param str innodb_ft_server_stopword_table: This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
         :param int innodb_lock_wait_timeout: The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
@@ -28719,7 +28805,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="innodbFlushNeighbors")
     def innodb_flush_neighbors(self) -> Optional[int]:
         """
-        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+        Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
         """
         return pulumi.get(self, "innodb_flush_neighbors")
 
@@ -29264,23 +29350,23 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param bool disable_replication_factor_adjustment: Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
-        :param Sequence['GetOpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns.
-        :param 'GetOpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes.
-        :param Sequence['GetOpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetOpenSearchOpensearchUserConfigIndexPatternArgs'] index_patterns: Index patterns
+        :param 'GetOpenSearchOpensearchUserConfigIndexTemplateArgs' index_template: Template settings for all new indexes
+        :param Sequence['GetOpenSearchOpensearchUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param bool keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
-        :param int max_index_count: Use index_patterns instead. The default value is `0`.
-        :param 'GetOpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration.
-        :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings.
-        :param 'GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings.
+        :param int max_index_count: use index_patterns instead. The default value is `0`.
+        :param 'GetOpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
         :param str opensearch_version: OpenSearch major version.
-        :param 'GetOpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetOpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetOpenSearchOpensearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetOpenSearchOpensearchUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
-        :param 'GetOpenSearchOpensearchUserConfigSamlArgs' saml: OpenSearch SAML configuration.
+        :param 'GetOpenSearchOpensearchUserConfigSamlArgs' saml: OpenSearch SAML configuration
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -29338,6 +29424,9 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -29354,16 +29443,13 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         """
         Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""disable_replication_factor_adjustment is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "disable_replication_factor_adjustment")
 
     @property
     @pulumi.getter(name="indexPatterns")
     def index_patterns(self) -> Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIndexPatternResult']]:
         """
-        Index patterns.
+        Index patterns
         """
         return pulumi.get(self, "index_patterns")
 
@@ -29371,7 +29457,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="indexTemplate")
     def index_template(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigIndexTemplateResult']:
         """
-        Template settings for all new indexes.
+        Template settings for all new indexes
         """
         return pulumi.get(self, "index_template")
 
@@ -29379,7 +29465,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetOpenSearchOpensearchUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -29397,8 +29483,8 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -29414,18 +29500,15 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[int]:
         """
-        Use index_patterns instead. The default value is `0`.
+        use index_patterns instead. The default value is `0`.
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""max_index_count is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "max_index_count")
 
     @property
     @pulumi.getter
     def openid(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpenidResult']:
         """
-        OpenSearch OpenID Connect Configuration.
+        OpenSearch OpenID Connect Configuration
         """
         return pulumi.get(self, "openid")
 
@@ -29433,7 +29516,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter
     def opensearch(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchResult']:
         """
-        OpenSearch settings.
+        OpenSearch settings
         """
         return pulumi.get(self, "opensearch")
 
@@ -29441,7 +29524,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboardsResult']:
         """
-        OpenSearch Dashboards settings.
+        OpenSearch Dashboards settings
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -29457,7 +29540,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -29465,7 +29548,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -29481,7 +29564,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -29497,7 +29580,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter
     def saml(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigSamlResult']:
         """
-        OpenSearch SAML configuration.
+        OpenSearch SAML configuration
         """
         return pulumi.get(self, "saml")
 
@@ -29834,10 +29917,10 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
         """
         :param bool action_auto_create_index_enabled: Explicitly allow or block automatic creation of indices. Defaults to true.
         :param bool action_destructive_requires_name: Require explicit index names when deleting.
-        :param 'GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs' auth_failure_listeners: Opensearch Security Plugin Settings.
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs' auth_failure_listeners: Opensearch Security Plugin Settings
         :param int cluster_max_shards_per_node: Controls the number of shards allowed in the cluster per data node.
         :param int cluster_routing_allocation_node_concurrent_recoveries: How many concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen on a node. Defaults to 2.
-        :param str email_sender_name: This should be identical to the Sender name defined in Opensearch dashboards.
+        :param str email_sender_name: Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
         :param str email_sender_password: Sender password for Opensearch alerts to authenticate with SMTP server.
         :param str email_sender_username: Sender username for Opensearch alerts.
         :param bool enable_security_audit: Enable/Disable security audit. The default value is `false`.
@@ -29977,7 +30060,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="authFailureListeners")
     def auth_failure_listeners(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult']:
         """
-        Opensearch Security Plugin Settings.
+        Opensearch Security Plugin Settings
         """
         return pulumi.get(self, "auth_failure_listeners")
 
@@ -30001,7 +30084,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchResult(dict):
     @pulumi.getter(name="emailSenderName")
     def email_sender_name(self) -> Optional[str]:
         """
-        This should be identical to the Sender name defined in Opensearch dashboards.
+        Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
         """
         return pulumi.get(self, "email_sender_name")
 
@@ -30292,8 +30375,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult(dict
                  internal_authentication_backend_limiting: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingResult'] = None,
                  ip_rate_limiting: Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingResult'] = None):
         """
-        :param 'GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs' internal_authentication_backend_limiting: .
-        :param 'GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs' ip_rate_limiting: IP address rate limiting settings.
+        :param 'GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingArgs' ip_rate_limiting: IP address rate limiting settings
         """
         if internal_authentication_backend_limiting is not None:
             pulumi.set(__self__, "internal_authentication_backend_limiting", internal_authentication_backend_limiting)
@@ -30303,16 +30385,13 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersResult(dict
     @property
     @pulumi.getter(name="internalAuthenticationBackendLimiting")
     def internal_authentication_backend_limiting(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingResult']:
-        """
-        .
-        """
         return pulumi.get(self, "internal_authentication_backend_limiting")
 
     @property
     @pulumi.getter(name="ipRateLimiting")
     def ip_rate_limiting(self) -> Optional['outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingResult']:
         """
-        IP address rate limiting settings.
+        IP address rate limiting settings
         """
         return pulumi.get(self, "ip_rate_limiting")
 
@@ -30329,12 +30408,12 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
                  type: Optional[str] = None):
         """
         :param int allowed_tries: The number of login attempts allowed before login is blocked.
-        :param str authentication_backend: The internal backend. Enter `internal`.
+        :param str authentication_backend: internal_authentication_backend_limiting.authentication_backend.
         :param int block_expiry_seconds: The duration of time that login remains blocked after a failed login.
-        :param int max_blocked_clients: The maximum number of blocked IP addresses.
+        :param int max_blocked_clients: internal_authentication_backend_limiting.max_blocked_clients.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: The type of rate limiting.
+        :param str type: internal_authentication_backend_limiting.type.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -30363,7 +30442,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
     @pulumi.getter(name="authenticationBackend")
     def authentication_backend(self) -> Optional[str]:
         """
-        The internal backend. Enter `internal`.
+        internal_authentication_backend_limiting.authentication_backend.
         """
         return pulumi.get(self, "authentication_backend")
 
@@ -30379,7 +30458,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
     @pulumi.getter(name="maxBlockedClients")
     def max_blocked_clients(self) -> Optional[int]:
         """
-        The maximum number of blocked IP addresses.
+        internal_authentication_backend_limiting.max_blocked_clients.
         """
         return pulumi.get(self, "max_blocked_clients")
 
@@ -30403,7 +30482,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of rate limiting.
+        internal_authentication_backend_limiting.type.
         """
         return pulumi.get(self, "type")
 
@@ -31064,29 +31143,29 @@ class GetPgPgUserConfigResult(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param bool enable_ipv6: Register AAAA DNS records for the service, and allow IPv6 packets to service ports.
-        :param Sequence['GetPgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetPgPgUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetPgPgUserConfigMigrationArgs' migration: Migrate data from existing server.
-        :param 'GetPgPgUserConfigPgArgs' pg: postgresql.conf configuration values.
-        :param 'GetPgPgUserConfigPgQualstatsArgs' pg_qualstats: System-wide settings for the pg_qualstats extension.
-        :param bool pg_read_replica: Use read_replica service integration instead.
+        :param 'GetPgPgUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'GetPgPgUserConfigPgArgs' pg: postgresql.conf configuration values
+        :param 'GetPgPgUserConfigPgQualstatsArgs' pg_qualstats: System-wide settings for the pg_qualstats extension
+        :param bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
         :param bool pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg_stat_statements results for utility commands are unreliable. The default value is `false`.
         :param str pg_version: PostgreSQL major version.
-        :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings.
-        :param 'GetPgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout.
-        :param 'GetPgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetPgPgUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
+        :param 'GetPgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
+        :param 'GetPgPgUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetPgPgUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetPgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetPgPgUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_target_time: Recovery target time when forking a service. This has effect only when a new service is being created.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param float shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         :param bool static_ips: Use static public IP addresses.
         :param str synchronous_replication: Synchronous replication type. Note that the service plan also needs to support synchronous replication.
-        :param 'GetPgPgUserConfigTimescaledbArgs' timescaledb: System-wide settings for the timescaledb extension.
+        :param 'GetPgPgUserConfigTimescaledbArgs' timescaledb: System-wide settings for the timescaledb extension
         :param str variant: Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param int work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
@@ -31205,7 +31284,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetPgPgUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -31223,8 +31302,8 @@ class GetPgPgUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -31232,7 +31311,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def migration(self) -> Optional['outputs.GetPgPgUserConfigMigrationResult']:
         """
-        Migrate data from existing server.
+        Migrate data from existing server
         """
         return pulumi.get(self, "migration")
 
@@ -31240,7 +31319,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def pg(self) -> Optional['outputs.GetPgPgUserConfigPgResult']:
         """
-        postgresql.conf configuration values.
+        postgresql.conf configuration values
         """
         return pulumi.get(self, "pg")
 
@@ -31248,19 +31327,19 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="pgQualstats")
     def pg_qualstats(self) -> Optional['outputs.GetPgPgUserConfigPgQualstatsResult']:
         """
-        System-wide settings for the pg_qualstats extension.
+        System-wide settings for the pg_qualstats extension
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""pg_qualstats is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "pg_qualstats")
 
     @property
     @pulumi.getter(name="pgReadReplica")
     def pg_read_replica(self) -> Optional[bool]:
         """
-        Use read_replica service integration instead.
+        Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""pg_read_replica is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "pg_read_replica")
 
     @property
@@ -31269,9 +31348,6 @@ class GetPgPgUserConfigResult(dict):
         """
         Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
         """
-        warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
-        pulumi.log.warn("""pg_service_to_fork_from is deprecated: Usage of this field is discouraged.""")
-
         return pulumi.get(self, "pg_service_to_fork_from")
 
     @property
@@ -31294,7 +31370,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional['outputs.GetPgPgUserConfigPgbouncerResult']:
         """
-        PGBouncer connection pooling settings.
+        PGBouncer connection pooling settings
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -31302,7 +31378,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def pglookout(self) -> Optional['outputs.GetPgPgUserConfigPglookoutResult']:
         """
-        System-wide settings for pglookout.
+        System-wide settings for pglookout
         """
         return pulumi.get(self, "pglookout")
 
@@ -31310,7 +31386,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetPgPgUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -31318,7 +31394,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetPgPgUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -31334,7 +31410,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetPgPgUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -31390,7 +31466,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def timescaledb(self) -> Optional['outputs.GetPgPgUserConfigTimescaledbResult']:
         """
-        System-wide settings for the timescaledb extension.
+        System-wide settings for the timescaledb extension
         """
         return pulumi.get(self, "timescaledb")
 
@@ -31596,7 +31672,7 @@ class GetPgPgUserConfigPgResult(dict):
                  wal_writer_delay: Optional[int] = None):
         """
         :param float autovacuum_analyze_scale_factor: Specifies a fraction of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
-        :param int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+        :param int autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         :param int autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
         :param int autovacuum_max_workers: Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
         :param int autovacuum_naptime: Specifies the minimum delay between autovacuum runs on any given database. The delay is measured in seconds, and the default is one minute.
@@ -31756,7 +31832,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="autovacuumAnalyzeThreshold")
     def autovacuum_analyze_threshold(self) -> Optional[int]:
         """
-        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+        Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         """
         return pulumi.get(self, "autovacuum_analyze_threshold")
 
@@ -32169,6 +32245,9 @@ class GetPgPgUserConfigPgQualstatsResult(dict):
         """
         Enable / Disable pg_qualstats. The default value is `false`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "enabled")
 
     @property
@@ -32177,6 +32256,9 @@ class GetPgPgUserConfigPgQualstatsResult(dict):
         """
         Error estimation num threshold to save quals. The default value is `0`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""min_err_estimate_num is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "min_err_estimate_num")
 
     @property
@@ -32185,6 +32267,9 @@ class GetPgPgUserConfigPgQualstatsResult(dict):
         """
         Error estimation ratio threshold to save quals. The default value is `0`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""min_err_estimate_ratio is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "min_err_estimate_ratio")
 
     @property
@@ -32193,6 +32278,9 @@ class GetPgPgUserConfigPgQualstatsResult(dict):
         """
         Enable / Disable pg_qualstats constants tracking. The default value is `true`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""track_constants is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "track_constants")
 
     @property
@@ -32201,6 +32289,9 @@ class GetPgPgUserConfigPgQualstatsResult(dict):
         """
         Track quals on system catalogs too. The default value is `false`.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""track_pg_catalog is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "track_pg_catalog")
 
 
@@ -32217,15 +32308,15 @@ class GetPgPgUserConfigPgbouncerResult(dict):
                  server_lifetime: Optional[int] = None,
                  server_reset_query_always: Optional[bool] = None):
         """
-        :param int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+        :param int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         :param int autodb_max_db_connections: Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
-        :param str autodb_pool_mode: PGBouncer pool mode.
-        :param int autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+        :param str autodb_pool_mode: PGBouncer pool mode. The default value is `transaction`.
+        :param int autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         :param Sequence[str] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
-        :param int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
-        :param int server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
-        :param int server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds).
-        :param bool server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes.
+        :param int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+        :param int server_idle_timeout: If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+        :param int server_lifetime: The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+        :param bool server_reset_query_always: Run server_reset_query (DISCARD ALL) in all pooling modes. The default value is `false`.
         """
         if autodb_idle_timeout is not None:
             pulumi.set(__self__, "autodb_idle_timeout", autodb_idle_timeout)
@@ -32250,7 +32341,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="autodbIdleTimeout")
     def autodb_idle_timeout(self) -> Optional[int]:
         """
-        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+        If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         """
         return pulumi.get(self, "autodb_idle_timeout")
 
@@ -32266,7 +32357,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="autodbPoolMode")
     def autodb_pool_mode(self) -> Optional[str]:
         """
-        PGBouncer pool mode.
+        PGBouncer pool mode. The default value is `transaction`.
         """
         return pulumi.get(self, "autodb_pool_mode")
 
@@ -32274,7 +32365,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="autodbPoolSize")
     def autodb_pool_size(self) -> Optional[int]:
         """
-        If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+        If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         """
         return pulumi.get(self, "autodb_pool_size")
 
@@ -32290,7 +32381,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="minPoolSize")
     def min_pool_size(self) -> Optional[int]:
         """
-        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+        Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
         """
         return pulumi.get(self, "min_pool_size")
 
@@ -32298,7 +32389,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="serverIdleTimeout")
     def server_idle_timeout(self) -> Optional[int]:
         """
-        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+        If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
         """
         return pulumi.get(self, "server_idle_timeout")
 
@@ -32306,7 +32397,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="serverLifetime")
     def server_lifetime(self) -> Optional[int]:
         """
-        The pooler will close an unused server connection that has been connected longer than this. (seconds).
+        The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
         """
         return pulumi.get(self, "server_lifetime")
 
@@ -32314,7 +32405,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="serverResetQueryAlways")
     def server_reset_query_always(self) -> Optional[bool]:
         """
-        Run server_reset_query (DISCARD ALL) in all pooling modes.
+        Run server_reset_query (DISCARD ALL) in all pooling modes. The default value is `false`.
         """
         return pulumi.get(self, "server_reset_query_always")
 
@@ -32722,14 +32813,14 @@ class GetRedisRedisUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param Sequence['GetRedisRedisUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        :param Sequence['GetRedisRedisUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param 'GetRedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server.
-        :param 'GetRedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks.
-        :param 'GetRedisRedisUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink.
+        :param 'GetRedisRedisUserConfigMigrationArgs' migration: Migrate data from existing server
+        :param 'GetRedisRedisUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
+        :param 'GetRedisRedisUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
-        :param 'GetRedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet.
+        :param 'GetRedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
         :param str redis_acl_channels_default: Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         :param int redis_io_threads: Set Redis IO thread count. Changing this will cause a restart of the Redis service.
@@ -32804,13 +32895,16 @@ class GetRedisRedisUserConfigResult(dict):
         """
         Additional Cloud Regions for Backup Replication.
         """
+        warnings.warn("""This property is deprecated.""", DeprecationWarning)
+        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
+
         return pulumi.get(self, "additional_backup_regions")
 
     @property
     @pulumi.getter(name="ipFilterObjects")
     def ip_filter_objects(self) -> Optional[Sequence['outputs.GetRedisRedisUserConfigIpFilterObjectResult']]:
         """
-        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         """
         return pulumi.get(self, "ip_filter_objects")
 
@@ -32828,8 +32922,8 @@ class GetRedisRedisUserConfigResult(dict):
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""This will be removed in v5.0.0 and replaced with ip_filter_string instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: This will be removed in v5.0.0 and replaced with ip_filter_string instead.""")
+        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
+        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
 
         return pulumi.get(self, "ip_filters")
 
@@ -32837,7 +32931,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter
     def migration(self) -> Optional['outputs.GetRedisRedisUserConfigMigrationResult']:
         """
-        Migrate data from existing server.
+        Migrate data from existing server
         """
         return pulumi.get(self, "migration")
 
@@ -32845,7 +32939,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="privateAccess")
     def private_access(self) -> Optional['outputs.GetRedisRedisUserConfigPrivateAccessResult']:
         """
-        Allow access to selected service ports from private networks.
+        Allow access to selected service ports from private networks
         """
         return pulumi.get(self, "private_access")
 
@@ -32853,7 +32947,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="privatelinkAccess")
     def privatelink_access(self) -> Optional['outputs.GetRedisRedisUserConfigPrivatelinkAccessResult']:
         """
-        Allow access to selected service components through Privatelink.
+        Allow access to selected service components through Privatelink
         """
         return pulumi.get(self, "privatelink_access")
 
@@ -32869,7 +32963,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="publicAccess")
     def public_access(self) -> Optional['outputs.GetRedisRedisUserConfigPublicAccessResult']:
         """
-        Allow access to selected service ports from the public Internet.
+        Allow access to selected service ports from the public Internet
         """
         return pulumi.get(self, "public_access")
 
@@ -34336,23 +34430,32 @@ class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfigResult(dict):
 class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
     def __init__(__self__, *,
                  host: str,
-                 password: str,
                  port: int,
                  username: str,
+                 password: Optional[str] = None,
+                 ssl_client_certificate: Optional[str] = None,
+                 ssl_client_key: Optional[str] = None,
                  ssl_mode: Optional[str] = None,
                  ssl_root_cert: Optional[str] = None):
         """
         :param str host: Hostname or IP address of the server.
-        :param str password: Password.
         :param int port: Port number of the server.
         :param str username: User name.
+        :param str password: Password.
+        :param str ssl_client_certificate: Client certificate.
+        :param str ssl_client_key: Client key.
         :param str ssl_mode: SSL Mode. The default value is `verify-full`.
         :param str ssl_root_cert: SSL Root Cert.
         """
         pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "username", username)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if ssl_client_certificate is not None:
+            pulumi.set(__self__, "ssl_client_certificate", ssl_client_certificate)
+        if ssl_client_key is not None:
+            pulumi.set(__self__, "ssl_client_key", ssl_client_key)
         if ssl_mode is not None:
             pulumi.set(__self__, "ssl_mode", ssl_mode)
         if ssl_root_cert is not None:
@@ -34365,14 +34468,6 @@ class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
         Hostname or IP address of the server.
         """
         return pulumi.get(self, "host")
-
-    @property
-    @pulumi.getter
-    def password(self) -> str:
-        """
-        Password.
-        """
-        return pulumi.get(self, "password")
 
     @property
     @pulumi.getter
@@ -34389,6 +34484,30 @@ class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
         User name.
         """
         return pulumi.get(self, "username")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="sslClientCertificate")
+    def ssl_client_certificate(self) -> Optional[str]:
+        """
+        Client certificate.
+        """
+        return pulumi.get(self, "ssl_client_certificate")
+
+    @property
+    @pulumi.getter(name="sslClientKey")
+    def ssl_client_key(self) -> Optional[str]:
+        """
+        Client key.
+        """
+        return pulumi.get(self, "ssl_client_key")
 
     @property
     @pulumi.getter(name="sslMode")

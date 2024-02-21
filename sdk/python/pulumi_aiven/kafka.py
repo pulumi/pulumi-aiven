@@ -347,7 +347,7 @@ class _KafkaState:
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka broker configuration values.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka broker configuration values
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -562,7 +562,7 @@ class _KafkaState:
     @pulumi.getter
     def kafkas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]]:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafkas")
 
@@ -845,7 +845,7 @@ class Kafka(pulumi.CustomResource):
                 kafka_rest=True,
                 kafka_connect=True,
                 schema_registry=True,
-                kafka_version="3.1",
+                kafka_version="3.5",
                 kafka=aiven.KafkaKafkaUserConfigKafkaArgs(
                     group_max_session_timeout_ms=70000,
                     log_retention_bytes=1000000000,
@@ -909,7 +909,7 @@ class Kafka(pulumi.CustomResource):
                 kafka_rest=True,
                 kafka_connect=True,
                 schema_registry=True,
-                kafka_version="3.1",
+                kafka_version="3.5",
                 kafka=aiven.KafkaKafkaUserConfigKafkaArgs(
                     group_max_session_timeout_ms=70000,
                     log_retention_bytes=1000000000,
@@ -1063,7 +1063,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]] kafkas: Kafka broker configuration values.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]] kafkas: Kafka broker configuration values
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1207,7 +1207,7 @@ class Kafka(pulumi.CustomResource):
     @pulumi.getter
     def kafkas(self) -> pulumi.Output[Sequence['outputs.KafkaKafka']]:
         """
-        Kafka broker configuration values.
+        Kafka broker configuration values
         """
         return pulumi.get(self, "kafkas")
 

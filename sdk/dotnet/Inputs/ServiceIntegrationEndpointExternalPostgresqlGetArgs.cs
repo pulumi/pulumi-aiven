@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Inputs
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
-        [Input("password", required: true)]
+        [Input("password")]
         private Input<string>? _password;
 
         /// <summary>
@@ -39,6 +39,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
+
+        /// <summary>
+        /// Client certificate.
+        /// </summary>
+        [Input("sslClientCertificate")]
+        public Input<string>? SslClientCertificate { get; set; }
+
+        /// <summary>
+        /// Client key.
+        /// </summary>
+        [Input("sslClientKey")]
+        public Input<string>? SslClientKey { get; set; }
 
         /// <summary>
         /// SSL Mode. The default value is `verify-full`.

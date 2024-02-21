@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BinlogRetentionPeriod;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMySqlMysqlUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Migrate data from existing server.
+        /// Migrate data from existing server
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMigrationResult? Migration;
         /// <summary>
-        /// mysql.conf configuration values.
+        /// mysql.conf configuration values
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMysqlResult? Mysql;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? MysqlVersion;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigPublicAccessResult? PublicAccess;
         /// <summary>

@@ -147,7 +147,21 @@ class AccountTeam(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Account Team resource allows the creation and management of an Account Team.
+        Creates and manages a team.
+
+        > **Teams are becoming groups**
+        Groups are an easier way to control access to your organization's projects and
+        services for a group of users.
+        Migrate your teams to groups.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
+        ```
 
         ## Import
 
@@ -167,7 +181,21 @@ class AccountTeam(pulumi.CustomResource):
                  args: AccountTeamArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Account Team resource allows the creation and management of an Account Team.
+        Creates and manages a team.
+
+        > **Teams are becoming groups**
+        Groups are an easier way to control access to your organization's projects and
+        services for a group of users.
+        Migrate your teams to groups.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
+        ```
 
         ## Import
 

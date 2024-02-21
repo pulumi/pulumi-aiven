@@ -16,14 +16,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     public static final KafkaKafkaUserConfigPrivateAccessArgs Empty = new KafkaKafkaUserConfigPrivateAccessArgs();
 
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      * 
      */
     @Import(name="kafka")
     private @Nullable Output<Boolean> kafka;
 
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Optional<Output<Boolean>> kafka() {
@@ -119,7 +119,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafka Kafka broker configuration values.
+         * @param kafka Kafka broker configuration values
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafka Kafka broker configuration values.
+         * @param kafka Kafka broker configuration values
          * 
          * @return builder
          * 

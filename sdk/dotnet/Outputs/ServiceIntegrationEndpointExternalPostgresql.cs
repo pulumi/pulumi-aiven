@@ -20,11 +20,19 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// Password.
         /// </summary>
-        public readonly string Password;
+        public readonly string? Password;
         /// <summary>
         /// Port number of the server.
         /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// Client certificate.
+        /// </summary>
+        public readonly string? SslClientCertificate;
+        /// <summary>
+        /// Client key.
+        /// </summary>
+        public readonly string? SslClientKey;
         /// <summary>
         /// SSL Mode. The default value is `verify-full`.
         /// </summary>
@@ -42,9 +50,13 @@ namespace Pulumi.Aiven.Outputs
         private ServiceIntegrationEndpointExternalPostgresql(
             string host,
 
-            string password,
+            string? password,
 
             int port,
+
+            string? sslClientCertificate,
+
+            string? sslClientKey,
 
             string? sslMode,
 
@@ -55,6 +67,8 @@ namespace Pulumi.Aiven.Outputs
             Host = host;
             Password = password;
             Port = port;
+            SslClientCertificate = sslClientCertificate;
+            SslClientKey = sslClientKey;
             SslMode = sslMode;
             SslRootCert = sslRootCert;
             Username = username;

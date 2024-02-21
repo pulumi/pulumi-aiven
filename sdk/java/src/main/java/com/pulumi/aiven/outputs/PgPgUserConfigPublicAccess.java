@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPgUserConfigPublicAccess {
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     private @Nullable Boolean pg;
     /**
-     * @return PGBouncer connection pooling settings.
+     * @return PGBouncer connection pooling settings
      * 
      */
     private @Nullable Boolean pgbouncer;
@@ -29,14 +29,14 @@ public final class PgPgUserConfigPublicAccess {
 
     private PgPgUserConfigPublicAccess() {}
     /**
-     * @return postgresql.conf configuration values.
+     * @return postgresql.conf configuration values
      * 
      */
     public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }
     /**
-     * @return PGBouncer connection pooling settings.
+     * @return PGBouncer connection pooling settings
      * 
      */
     public Optional<Boolean> pgbouncer() {

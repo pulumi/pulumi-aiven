@@ -33,14 +33,22 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -121,14 +129,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Azure AD OAuth integration.
+     * Azure AD OAuth integration
      * 
      */
     @Import(name="authAzuread")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthAzureadArgs> authAzuread;
 
     /**
-     * @return Azure AD OAuth integration.
+     * @return Azure AD OAuth integration
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigAuthAzureadArgs>> authAzuread() {
@@ -151,14 +159,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Generic OAuth integration.
+     * Generic OAuth integration
      * 
      */
     @Import(name="authGenericOauth")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGenericOauthArgs> authGenericOauth;
 
     /**
-     * @return Generic OAuth integration.
+     * @return Generic OAuth integration
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGenericOauthArgs>> authGenericOauth() {
@@ -166,14 +174,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Github Auth integration.
+     * Github Auth integration
      * 
      */
     @Import(name="authGithub")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGithubArgs> authGithub;
 
     /**
-     * @return Github Auth integration.
+     * @return Github Auth integration
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGithubArgs>> authGithub() {
@@ -181,14 +189,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * GitLab Auth integration.
+     * GitLab Auth integration
      * 
      */
     @Import(name="authGitlab")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGitlabArgs> authGitlab;
 
     /**
-     * @return GitLab Auth integration.
+     * @return GitLab Auth integration
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGitlabArgs>> authGitlab() {
@@ -196,14 +204,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Google Auth integration.
+     * Google Auth integration
      * 
      */
     @Import(name="authGoogle")
     private @Nullable Output<GrafanaGrafanaUserConfigAuthGoogleArgs> authGoogle;
 
     /**
-     * @return Google Auth integration.
+     * @return Google Auth integration
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigAuthGoogleArgs>> authGoogle() {
@@ -316,14 +324,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Grafana date format specifications.
+     * Grafana date format specifications
      * 
      */
     @Import(name="dateFormats")
     private @Nullable Output<GrafanaGrafanaUserConfigDateFormatsArgs> dateFormats;
 
     /**
-     * @return Grafana date format specifications.
+     * @return Grafana date format specifications
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigDateFormatsArgs>> dateFormats() {
@@ -361,14 +369,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * External image store settings.
+     * External image store settings
      * 
      */
     @Import(name="externalImageStorage")
     private @Nullable Output<GrafanaGrafanaUserConfigExternalImageStorageArgs> externalImageStorage;
 
     /**
-     * @return External image store settings.
+     * @return External image store settings
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigExternalImageStorageArgs>> externalImageStorage() {
@@ -391,14 +399,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<GrafanaGrafanaUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<GrafanaGrafanaUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -424,10 +432,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
      * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -435,10 +443,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -474,14 +482,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      * 
      */
     @Import(name="privateAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPrivateAccessArgs> privateAccess;
 
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigPrivateAccessArgs>> privateAccess() {
@@ -489,14 +497,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      * 
      */
     @Import(name="privatelinkAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPrivatelinkAccessArgs> privatelinkAccess;
 
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigPrivatelinkAccessArgs>> privatelinkAccess() {
@@ -519,14 +527,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      * 
      */
     @Import(name="publicAccess")
     private @Nullable Output<GrafanaGrafanaUserConfigPublicAccessArgs> publicAccess;
 
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigPublicAccessArgs>> publicAccess() {
@@ -579,14 +587,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * SMTP server settings.
+     * SMTP server settings
      * 
      */
     @Import(name="smtpServer")
     private @Nullable Output<GrafanaGrafanaUserConfigSmtpServerArgs> smtpServer;
 
     /**
-     * @return SMTP server settings.
+     * @return SMTP server settings
      * 
      */
     public Optional<Output<GrafanaGrafanaUserConfigSmtpServerArgs>> smtpServer() {
@@ -738,7 +746,11 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -749,7 +761,11 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
@@ -860,7 +876,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authAzuread Azure AD OAuth integration.
+         * @param authAzuread Azure AD OAuth integration
          * 
          * @return builder
          * 
@@ -871,7 +887,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authAzuread Azure AD OAuth integration.
+         * @param authAzuread Azure AD OAuth integration
          * 
          * @return builder
          * 
@@ -902,7 +918,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGenericOauth Generic OAuth integration.
+         * @param authGenericOauth Generic OAuth integration
          * 
          * @return builder
          * 
@@ -913,7 +929,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGenericOauth Generic OAuth integration.
+         * @param authGenericOauth Generic OAuth integration
          * 
          * @return builder
          * 
@@ -923,7 +939,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGithub Github Auth integration.
+         * @param authGithub Github Auth integration
          * 
          * @return builder
          * 
@@ -934,7 +950,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGithub Github Auth integration.
+         * @param authGithub Github Auth integration
          * 
          * @return builder
          * 
@@ -944,7 +960,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGitlab GitLab Auth integration.
+         * @param authGitlab GitLab Auth integration
          * 
          * @return builder
          * 
@@ -955,7 +971,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGitlab GitLab Auth integration.
+         * @param authGitlab GitLab Auth integration
          * 
          * @return builder
          * 
@@ -965,7 +981,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGoogle Google Auth integration.
+         * @param authGoogle Google Auth integration
          * 
          * @return builder
          * 
@@ -976,7 +992,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param authGoogle Google Auth integration.
+         * @param authGoogle Google Auth integration
          * 
          * @return builder
          * 
@@ -1133,7 +1149,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dateFormats Grafana date format specifications.
+         * @param dateFormats Grafana date format specifications
          * 
          * @return builder
          * 
@@ -1144,7 +1160,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dateFormats Grafana date format specifications.
+         * @param dateFormats Grafana date format specifications
          * 
          * @return builder
          * 
@@ -1196,7 +1212,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param externalImageStorage External image store settings.
+         * @param externalImageStorage External image store settings
          * 
          * @return builder
          * 
@@ -1207,7 +1223,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param externalImageStorage External image store settings.
+         * @param externalImageStorage External image store settings
          * 
          * @return builder
          * 
@@ -1238,7 +1254,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -1249,7 +1265,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -1259,7 +1275,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -1305,10 +1321,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -1320,10 +1336,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -1334,10 +1350,10 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -1385,7 +1401,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -1396,7 +1412,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privateAccess Allow access to selected service ports from private networks.
+         * @param privateAccess Allow access to selected service ports from private networks
          * 
          * @return builder
          * 
@@ -1406,7 +1422,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
          * 
@@ -1417,7 +1433,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param privatelinkAccess Allow access to selected service components through Privatelink.
+         * @param privatelinkAccess Allow access to selected service components through Privatelink
          * 
          * @return builder
          * 
@@ -1448,7 +1464,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -1459,7 +1475,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param publicAccess Allow access to selected service ports from the public Internet.
+         * @param publicAccess Allow access to selected service ports from the public Internet
          * 
          * @return builder
          * 
@@ -1532,7 +1548,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param smtpServer SMTP server settings.
+         * @param smtpServer SMTP server settings
          * 
          * @return builder
          * 
@@ -1543,7 +1559,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param smtpServer SMTP server settings.
+         * @param smtpServer SMTP server settings
          * 
          * @return builder
          * 

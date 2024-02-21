@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
     public static final OpenSearchOpensearchUserConfigPrivatelinkAccessArgs Empty = new OpenSearchOpensearchUserConfigPrivatelinkAccessArgs();
 
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
     /**
-     * @return OpenSearch Dashboards settings.
+     * @return OpenSearch Dashboards settings
      * 
      */
     public Optional<Output<Boolean>> opensearchDashboards() {
@@ -87,7 +87,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearch OpenSearch settings.
+         * @param opensearch OpenSearch settings
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearch OpenSearch settings.
+         * @param opensearch OpenSearch settings
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings.
+         * @param opensearchDashboards OpenSearch Dashboards settings
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings.
+         * @param opensearchDashboards OpenSearch Dashboards settings
          * 
          * @return builder
          * 

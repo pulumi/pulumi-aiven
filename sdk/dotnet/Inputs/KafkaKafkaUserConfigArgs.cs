@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<Inputs.KafkaKafkaUserConfigIpFilterObjectArgs> IpFilterObjects
         {
@@ -60,7 +60,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -68,13 +68,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         [Input("kafka")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaArgs>? Kafka { get; set; }
 
         /// <summary>
-        /// Kafka authentication methods.
+        /// Kafka authentication methods
         /// </summary>
         [Input("kafkaAuthenticationMethods")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaAuthenticationMethodsArgs>? KafkaAuthenticationMethods { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Kafka Connect configuration values.
+        /// Kafka Connect configuration values
         /// </summary>
         [Input("kafkaConnectConfig")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaConnectConfigArgs>? KafkaConnectConfig { get; set; }
@@ -104,7 +104,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? KafkaRestAuthorization { get; set; }
 
         /// <summary>
-        /// Kafka REST configuration.
+        /// Kafka REST configuration
         /// </summary>
         [Input("kafkaRestConfig")]
         public Input<Inputs.KafkaKafkaUserConfigKafkaRestConfigArgs>? KafkaRestConfig { get; set; }
@@ -116,19 +116,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? KafkaVersion { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.KafkaKafkaUserConfigPrivateAccessArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.KafkaKafkaUserConfigPrivatelinkAccessArgs>? PrivatelinkAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.KafkaKafkaUserConfigPublicAccessArgs>? PublicAccess { get; set; }
@@ -140,7 +140,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SchemaRegistry { get; set; }
 
         /// <summary>
-        /// Schema Registry configuration.
+        /// Schema Registry configuration
         /// </summary>
         [Input("schemaRegistryConfig")]
         public Input<Inputs.KafkaKafkaUserConfigSchemaRegistryConfigArgs>? SchemaRegistryConfig { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Tiered storage configuration.
+        /// Tiered storage configuration
         /// </summary>
         [Input("tieredStorage")]
         public Input<Inputs.KafkaKafkaUserConfigTieredStorageArgs>? TieredStorage { get; set; }

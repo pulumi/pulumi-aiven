@@ -14,14 +14,22 @@ public final class KafkaKafkaUserConfigTieredStorageLocalCache {
     /**
      * @return Local cache size in bytes.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable Integer size;
 
     private KafkaKafkaUserConfigTieredStorageLocalCache() {}
     /**
      * @return Local cache size in bytes.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
     }

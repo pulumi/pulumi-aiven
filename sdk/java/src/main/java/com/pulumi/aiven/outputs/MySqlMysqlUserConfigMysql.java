@@ -40,7 +40,7 @@ public final class MySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer innodbChangeBufferMaxSize;
     /**
-     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      * 
      */
     private @Nullable Integer innodbFlushNeighbors;
@@ -202,7 +202,7 @@ public final class MySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.innodbChangeBufferMaxSize);
     }
     /**
-     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      * 
      */
     public Optional<Integer> innodbFlushNeighbors() {

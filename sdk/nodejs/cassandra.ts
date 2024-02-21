@@ -74,7 +74,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      */
     public /*out*/ readonly cassandras!: pulumi.Output<outputs.CassandraCassandra[]>;
     /**
@@ -281,7 +281,7 @@ export interface CassandraState {
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      */
     cassandras?: pulumi.Input<pulumi.Input<inputs.CassandraCassandra>[]>;
     /**

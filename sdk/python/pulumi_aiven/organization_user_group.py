@@ -14,20 +14,31 @@ __all__ = ['OrganizationUserGroupArgs', 'OrganizationUserGroup']
 @pulumi.input_type
 class OrganizationUserGroupArgs:
     def __init__(__self__, *,
+                 description: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationUserGroup resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] description: The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
         :param pulumi.Input[str] name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
         """
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "organization_id", organization_id)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -40,18 +51,6 @@ class OrganizationUserGroupArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -224,6 +223,8 @@ class OrganizationUserGroup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationUserGroupArgs.__new__(OrganizationUserGroupArgs)
 
+            if description is None and not opts.urn:
+                raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
@@ -284,7 +285,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> pulumi.Output[Optional[str]]:
+    def description(self) -> pulumi.Output[str]:
         """
         The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
         """

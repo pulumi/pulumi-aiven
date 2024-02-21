@@ -19,14 +19,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     public static final PgPgUserConfigPgbouncerArgs Empty = new PgPgUserConfigPgbouncerArgs();
 
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
      * 
      */
     @Import(name="autodbIdleTimeout")
     private @Nullable Output<Integer> autodbIdleTimeout;
 
     /**
-     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
      * 
      */
     public Optional<Output<Integer>> autodbIdleTimeout() {
@@ -49,14 +49,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * PGBouncer pool mode.
+     * PGBouncer pool mode. The default value is `transaction`.
      * 
      */
     @Import(name="autodbPoolMode")
     private @Nullable Output<String> autodbPoolMode;
 
     /**
-     * @return PGBouncer pool mode.
+     * @return PGBouncer pool mode. The default value is `transaction`.
      * 
      */
     public Optional<Output<String>> autodbPoolMode() {
@@ -64,14 +64,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. The default value is `0`.
      * 
      */
     @Import(name="autodbPoolSize")
     private @Nullable Output<Integer> autodbPoolSize;
 
     /**
-     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist.
+     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. The default value is `0`.
      * 
      */
     public Optional<Output<Integer>> autodbPoolSize() {
@@ -94,14 +94,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
      * 
      */
     @Import(name="minPoolSize")
     private @Nullable Output<Integer> minPoolSize;
 
     /**
-     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
      * 
      */
     public Optional<Output<Integer>> minPoolSize() {
@@ -109,14 +109,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
      * 
      */
     @Import(name="serverIdleTimeout")
     private @Nullable Output<Integer> serverIdleTimeout;
 
     /**
-     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
      * 
      */
     public Optional<Output<Integer>> serverIdleTimeout() {
@@ -124,14 +124,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
      * 
      */
     @Import(name="serverLifetime")
     private @Nullable Output<Integer> serverLifetime;
 
     /**
-     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
      * 
      */
     public Optional<Output<Integer>> serverLifetime() {
@@ -139,14 +139,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes.
+     * Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
      * 
      */
     @Import(name="serverResetQueryAlways")
     private @Nullable Output<Boolean> serverResetQueryAlways;
 
     /**
-     * @return Run server*reset*query (DISCARD ALL) in all pooling modes.
+     * @return Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
      * 
      */
     public Optional<Output<Boolean>> serverResetQueryAlways() {
@@ -186,7 +186,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbIdleTimeout If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+         * @param autodbIdleTimeout If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
          * 
          * @return builder
          * 
@@ -197,7 +197,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbIdleTimeout If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+         * @param autodbIdleTimeout If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbPoolMode PGBouncer pool mode.
+         * @param autodbPoolMode PGBouncer pool mode. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbPoolMode PGBouncer pool mode.
+         * @param autodbPoolMode PGBouncer pool mode. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbPoolSize If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist.
+         * @param autodbPoolSize If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. The default value is `0`.
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbPoolSize If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist.
+         * @param autodbPoolSize If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. The default value is `0`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param minPoolSize Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+         * @param minPoolSize Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param minPoolSize Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+         * @param minPoolSize Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverIdleTimeout If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+         * @param serverIdleTimeout If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverIdleTimeout If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+         * @param serverIdleTimeout If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverLifetime The pooler will close an unused server connection that has been connected longer than this. (seconds).
+         * @param serverLifetime The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverLifetime The pooler will close an unused server connection that has been connected longer than this. (seconds).
+         * @param serverLifetime The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverResetQueryAlways Run server*reset*query (DISCARD ALL) in all pooling modes.
+         * @param serverResetQueryAlways Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param serverResetQueryAlways Run server*reset*query (DISCARD ALL) in all pooling modes.
+         * @param serverResetQueryAlways Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
          * 
          * @return builder
          * 

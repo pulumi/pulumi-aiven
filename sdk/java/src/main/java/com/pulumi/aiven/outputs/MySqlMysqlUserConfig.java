@@ -51,7 +51,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable Integer binlogRetentionPeriod;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
@@ -64,18 +64,18 @@ public final class MySqlMysqlUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Migrate data from existing server.
+     * @return Migrate data from existing server
      * 
      */
     private @Nullable MySqlMysqlUserConfigMigration migration;
     /**
-     * @return mysql.conf configuration values.
+     * @return mysql.conf configuration values
      * 
      */
     private @Nullable MySqlMysqlUserConfigMysql mysql;
@@ -85,12 +85,12 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable String mysqlVersion;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable MySqlMysqlUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
@@ -100,7 +100,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable MySqlMysqlUserConfigPublicAccess publicAccess;
@@ -169,7 +169,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects() {
@@ -186,22 +186,22 @@ public final class MySqlMysqlUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Migrate data from existing server.
+     * @return Migrate data from existing server
      * 
      */
     public Optional<MySqlMysqlUserConfigMigration> migration() {
         return Optional.ofNullable(this.migration);
     }
     /**
-     * @return mysql.conf configuration values.
+     * @return mysql.conf configuration values
      * 
      */
     public Optional<MySqlMysqlUserConfigMysql> mysql() {
@@ -215,14 +215,14 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.mysqlVersion);
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<MySqlMysqlUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<MySqlMysqlUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -236,7 +236,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<MySqlMysqlUserConfigPublicAccess> publicAccess() {

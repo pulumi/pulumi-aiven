@@ -65,7 +65,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.CassandraCassandraUserConfig?> CassandraUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// cassandra configuration values.
+        /// cassandra configuration values
         /// </summary>
         [Output("cassandras")]
         public Output<ImmutableArray<Outputs.CassandraCassandra>> CassandraServer { get; private set; } = null!;
@@ -409,7 +409,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.CassandraCassandraGetArgs>? _cassandras;
 
         /// <summary>
-        /// cassandra configuration values.
+        /// cassandra configuration values
         /// </summary>
         public InputList<Inputs.CassandraCassandraGetArgs> CassandraServer
         {

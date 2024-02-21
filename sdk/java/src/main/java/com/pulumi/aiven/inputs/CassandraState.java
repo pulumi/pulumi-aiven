@@ -55,14 +55,14 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      * 
      */
     @Import(name="cassandras")
     private @Nullable Output<List<CassandraCassandraArgs>> cassandras;
 
     /**
-     * @return cassandra configuration values.
+     * @return cassandra configuration values
      * 
      */
     public Optional<Output<List<CassandraCassandraArgs>>> cassandras() {
@@ -546,7 +546,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandras cassandra configuration values.
+         * @param cassandras cassandra configuration values
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandras cassandra configuration values.
+         * @param cassandras cassandra configuration values
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandras cassandra configuration values.
+         * @param cassandras cassandra configuration values
          * 
          * @return builder
          * 

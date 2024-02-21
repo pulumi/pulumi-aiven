@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
-        /// cassandra configuration values.
+        /// cassandra configuration values
         /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigCassandraResult? Cassandra;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CassandraVersion;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.GetCassandraCassandraUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? MigrateSstableloader;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetCassandraCassandraUserConfigPublicAccessResult? PublicAccess;
         /// <summary>

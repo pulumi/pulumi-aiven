@@ -10,11 +10,44 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Account Team Project resource allows the creation and management of an Account Team Project.
+    /// Links an existing project to an existing team. Both the project and team should have the same `account_id`.
     /// 
-    /// It is intended to link an existing project to the existing account team.
-    /// It is important to note that the project should have an `account_id` property set equal to the
-    /// account team you are trying to link to this project.
+    /// &gt; **Teams are becoming groups**
+    /// Groups are an easier way to control access to your organization's projects and
+    /// services for a group of users.
+    /// Migrate your teams to groups.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new Aiven.Project("exampleProject", new()
+    ///     {
+    ///         ProjectName = "project-1",
+    ///         AccountId = aiven_account_team.ACCOUNT_RESOURCE_NAME.Account_id,
+    ///     });
+    /// 
+    ///     var exampleTeam = new Aiven.AccountTeam("exampleTeam", new()
+    ///     {
+    ///         AccountId = aiven_account.ACCOUNT_RESOURCE_NAME.Account_id,
+    ///     });
+    /// 
+    ///     var main = new Aiven.AccountTeamProject("main", new()
+    ///     {
+    ///         AccountId = aiven_account.ACCOUNT_RESOURCE_NAME.Account_id,
+    ///         TeamId = exampleTeam.TeamId,
+    ///         ProjectName = exampleProject.ProjectName,
+    ///         TeamType = "admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

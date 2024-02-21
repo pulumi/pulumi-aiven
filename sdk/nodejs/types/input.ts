@@ -34,6 +34,8 @@ export interface CassandraCassandra {
 export interface CassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -45,7 +47,7 @@ export interface CassandraCassandraUserConfig {
      */
     backupMinute?: pulumi.Input<number>;
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
     /**
@@ -53,7 +55,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandraVersion?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.CassandraCassandraUserConfigIpFilterObject>[]>;
     /**
@@ -63,7 +65,7 @@ export interface CassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -71,7 +73,7 @@ export interface CassandraCassandraUserConfig {
      */
     migrateSstableloader?: pulumi.Input<boolean>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPrivateAccess>;
     /**
@@ -79,7 +81,7 @@ export interface CassandraCassandraUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.CassandraCassandraUserConfigPublicAccess>;
     /**
@@ -210,10 +212,12 @@ export interface ClickhouseClickhouse {
 export interface ClickhouseClickhouseUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.ClickhouseClickhouseUserConfigIpFilterObject>[]>;
     /**
@@ -223,15 +227,15 @@ export interface ClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPrivatelinkAccess>;
     /**
@@ -239,7 +243,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.ClickhouseClickhouseUserConfigPublicAccess>;
     /**
@@ -485,6 +489,8 @@ export interface FlinkFlink {
 export interface FlinkFlinkUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -492,7 +498,7 @@ export interface FlinkFlinkUserConfig {
      */
     flinkVersion?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.FlinkFlinkUserConfigIpFilterObject>[]>;
     /**
@@ -502,7 +508,7 @@ export interface FlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -510,7 +516,7 @@ export interface FlinkFlinkUserConfig {
      */
     numberOfTaskSlots?: pulumi.Input<number>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.FlinkFlinkUserConfigPrivatelinkAccess>;
     /**
@@ -615,6 +621,8 @@ export interface GrafanaGrafana {
 export interface GrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -638,7 +646,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     allowEmbedding?: pulumi.Input<boolean>;
     /**
-     * Azure AD OAuth integration.
+     * Azure AD OAuth integration
      */
     authAzuread?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthAzuread>;
     /**
@@ -646,19 +654,19 @@ export interface GrafanaGrafanaUserConfig {
      */
     authBasicEnabled?: pulumi.Input<boolean>;
     /**
-     * Generic OAuth integration.
+     * Generic OAuth integration
      */
     authGenericOauth?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGenericOauth>;
     /**
-     * Github Auth integration.
+     * Github Auth integration
      */
     authGithub?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGithub>;
     /**
-     * GitLab Auth integration.
+     * GitLab Auth integration
      */
     authGitlab?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGitlab>;
     /**
-     * Google Auth integration.
+     * Google Auth integration
      */
     authGoogle?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGoogle>;
     /**
@@ -690,7 +698,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     dataproxyTimeout?: pulumi.Input<number>;
     /**
-     * Grafana date format specifications.
+     * Grafana date format specifications
      */
     dateFormats?: pulumi.Input<inputs.GrafanaGrafanaUserConfigDateFormats>;
     /**
@@ -702,7 +710,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     editorsCanAdmin?: pulumi.Input<boolean>;
     /**
-     * External image store settings.
+     * External image store settings
      */
     externalImageStorage?: pulumi.Input<inputs.GrafanaGrafanaUserConfigExternalImageStorage>;
     /**
@@ -710,7 +718,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     googleAnalyticsUaId?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.GrafanaGrafanaUserConfigIpFilterObject>[]>;
     /**
@@ -720,7 +728,7 @@ export interface GrafanaGrafanaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -732,11 +740,11 @@ export interface GrafanaGrafanaUserConfig {
      */
     oauthAllowInsecureEmailLookup?: pulumi.Input<boolean>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPrivatelinkAccess>;
     /**
@@ -744,7 +752,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.GrafanaGrafanaUserConfigPublicAccess>;
     /**
@@ -760,7 +768,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     serviceToForkFrom?: pulumi.Input<string>;
     /**
-     * SMTP server settings.
+     * SMTP server settings
      */
     smtpServer?: pulumi.Input<inputs.GrafanaGrafanaUserConfigSmtpServer>;
     /**
@@ -902,7 +910,7 @@ export interface GrafanaGrafanaUserConfigAuthGitlab {
     /**
      * Require users to belong to one of given groups.
      */
-    allowedGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedGroups: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * API URL. This only needs to be set when using self hosted GitLab.
      */
@@ -933,7 +941,7 @@ export interface GrafanaGrafanaUserConfigAuthGoogle {
     /**
      * Domains allowed to sign-in to this Grafana.
      */
-    allowedDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedDomains: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Client ID from provider.
      */
@@ -1139,6 +1147,8 @@ export interface InfluxDbInfluxdb {
 export interface InfluxDbInfluxdbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -1146,11 +1156,11 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * influxdb.conf configuration values.
+     * influxdb.conf configuration values
      */
     influxdb?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigInfluxdb>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdbUserConfigIpFilterObject>[]>;
     /**
@@ -1160,15 +1170,15 @@ export interface InfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess>;
     /**
@@ -1176,7 +1186,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfigPublicAccess>;
     /**
@@ -1203,7 +1213,7 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
      */
     logQueriesAfter?: pulumi.Input<number>;
     /**
-     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
      */
     maxConnectionLimit?: pulumi.Input<number>;
     /**
@@ -1241,21 +1251,21 @@ export interface InfluxDbInfluxdbUserConfigIpFilterObject {
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
-     * influxdb.conf configuration values.
+     * Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     influxdb?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
-     * influxdb.conf configuration values.
+     * Enable influxdb.
      */
     influxdb?: pulumi.Input<boolean>;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * influxdb.conf configuration values.
+     * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     influxdb?: pulumi.Input<boolean>;
 }
@@ -1365,10 +1375,12 @@ export interface KafkaConnectKafkaConnect {
 export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigIpFilterObject>[]>;
     /**
@@ -1378,23 +1390,23 @@ export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kafka Connect configuration values.
+     * Kafka Connect configuration values
      */
     kafkaConnect?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigKafkaConnect>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.KafkaConnectKafkaConnectUserConfigPublicAccess>;
     /**
@@ -1476,7 +1488,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      */
     scheduledRebalanceMaxDelayMs?: pulumi.Input<number>;
     /**
@@ -1588,6 +1600,8 @@ export interface KafkaKafka {
 export interface KafkaKafkaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -1599,7 +1613,7 @@ export interface KafkaKafkaUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaKafkaUserConfigIpFilterObject>[]>;
     /**
@@ -1609,15 +1623,15 @@ export interface KafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: pulumi.Input<inputs.KafkaKafkaUserConfigKafka>;
     /**
-     * Kafka authentication methods.
+     * Kafka authentication methods
      */
     kafkaAuthenticationMethods?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaAuthenticationMethods>;
     /**
@@ -1625,7 +1639,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaConnect?: pulumi.Input<boolean>;
     /**
-     * Kafka Connect configuration values.
+     * Kafka Connect configuration values
      */
     kafkaConnectConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaConnectConfig>;
     /**
@@ -1637,7 +1651,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaRestAuthorization?: pulumi.Input<boolean>;
     /**
-     * Kafka REST configuration.
+     * Kafka REST configuration
      */
     kafkaRestConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaRestConfig>;
     /**
@@ -1645,15 +1659,15 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPrivatelinkAccess>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.KafkaKafkaUserConfigPublicAccess>;
     /**
@@ -1661,7 +1675,7 @@ export interface KafkaKafkaUserConfig {
      */
     schemaRegistry?: pulumi.Input<boolean>;
     /**
-     * Schema Registry configuration.
+     * Schema Registry configuration
      */
     schemaRegistryConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigSchemaRegistryConfig>;
     /**
@@ -1673,7 +1687,7 @@ export interface KafkaKafkaUserConfig {
      */
     staticIps?: pulumi.Input<boolean>;
     /**
-     * Tiered storage configuration.
+     * Tiered storage configuration
      */
     tieredStorage?: pulumi.Input<inputs.KafkaKafkaUserConfigTieredStorage>;
 }
@@ -1719,7 +1733,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     groupMinSessionTimeoutMs?: pulumi.Input<number>;
     /**
-     * How long are delete records retained?.
+     * How long are delete records retained?
      */
     logCleanerDeleteRetentionMs?: pulumi.Input<number>;
     /**
@@ -1775,7 +1789,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logMessageTimestampType?: pulumi.Input<string>;
     /**
-     * Should pre allocate file when create new segment?.
+     * Should pre allocate file when create new segment?
      */
     logPreallocate?: pulumi.Input<boolean>;
     /**
@@ -1945,7 +1959,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerMaxRequestSize?: pulumi.Input<number>;
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      */
     scheduledRebalanceMaxDelayMs?: pulumi.Input<number>;
     /**
@@ -1999,7 +2013,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
 
 export interface KafkaKafkaUserConfigPrivateAccess {
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: pulumi.Input<boolean>;
     /**
@@ -2026,7 +2040,7 @@ export interface KafkaKafkaUserConfigPrivatelinkAccess {
      */
     jolokia?: pulumi.Input<boolean>;
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: pulumi.Input<boolean>;
     /**
@@ -2049,7 +2063,7 @@ export interface KafkaKafkaUserConfigPrivatelinkAccess {
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: pulumi.Input<boolean>;
     /**
@@ -2087,7 +2101,9 @@ export interface KafkaKafkaUserConfigTieredStorage {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Local cache configuration.
+     * Local cache configuration
+     *
+     * @deprecated This property is deprecated.
      */
     localCache?: pulumi.Input<inputs.KafkaKafkaUserConfigTieredStorageLocalCache>;
 }
@@ -2095,6 +2111,8 @@ export interface KafkaKafkaUserConfigTieredStorage {
 export interface KafkaKafkaUserConfigTieredStorageLocalCache {
     /**
      * Local cache size in bytes.
+     *
+     * @deprecated This property is deprecated.
      */
     size?: pulumi.Input<number>;
 }
@@ -2140,10 +2158,12 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject>[]>;
     /**
@@ -2153,11 +2173,11 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker>;
     /**
@@ -2462,7 +2482,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3AggregatorM3aggregatorUserConfigIpFilterObject>[]>;
     /**
@@ -2472,13 +2492,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * M3 major version (deprecated, use m3aggregator_version).
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     m3Version?: pulumi.Input<string>;
     /**
@@ -2576,6 +2594,8 @@ export interface M3DbM3db {
 export interface M3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -2583,7 +2603,7 @@ export interface M3DbM3dbUserConfig {
      */
     customDomain?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigIpFilterObject>[]>;
     /**
@@ -2593,21 +2613,19 @@ export interface M3DbM3dbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * M3 limits.
+     * M3 limits
      */
     limits?: pulumi.Input<inputs.M3DbM3dbUserConfigLimits>;
     /**
-     * M3 specific configuration options.
+     * M3 specific configuration options
      */
     m3?: pulumi.Input<inputs.M3DbM3dbUserConfigM3>;
     /**
      * M3 major version (deprecated, use m3db_version).
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     m3Version?: pulumi.Input<string>;
     /**
@@ -2619,11 +2637,11 @@ export interface M3DbM3dbUserConfig {
      */
     m3dbVersion?: pulumi.Input<string>;
     /**
-     * List of M3 namespaces.
+     * List of M3 namespaces
      */
     namespaces?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigNamespace>[]>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPrivateAccess>;
     /**
@@ -2631,11 +2649,11 @@ export interface M3DbM3dbUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.M3DbM3dbUserConfigPublicAccess>;
     /**
-     * M3 rules.
+     * M3 rules
      */
     rules?: pulumi.Input<inputs.M3DbM3dbUserConfigRules>;
     /**
@@ -2692,7 +2710,7 @@ export interface M3DbM3dbUserConfigLimits {
 
 export interface M3DbM3dbUserConfigM3 {
     /**
-     * M3 Tag Options.
+     * M3 Tag Options
      */
     tagOptions?: pulumi.Input<inputs.M3DbM3dbUserConfigM3TagOptions>;
 }
@@ -2714,7 +2732,7 @@ export interface M3DbM3dbUserConfigNamespace {
      */
     name: pulumi.Input<string>;
     /**
-     * Namespace options.
+     * Namespace options
      */
     options?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptions>;
     /**
@@ -2729,9 +2747,9 @@ export interface M3DbM3dbUserConfigNamespace {
 
 export interface M3DbM3dbUserConfigNamespaceOptions {
     /**
-     * Retention options.
+     * Retention options
      */
-    retentionOptions?: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions>;
+    retentionOptions: pulumi.Input<inputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions>;
     /**
      * Controls whether M3DB will create snapshot files for this namespace.
      */
@@ -2781,7 +2799,7 @@ export interface M3DbM3dbUserConfigPublicAccess {
 
 export interface M3DbM3dbUserConfigRules {
     /**
-     * List of M3 mapping rules.
+     * List of M3 mapping rules
      */
     mappings?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMapping>[]>;
 }
@@ -2806,11 +2824,11 @@ export interface M3DbM3dbUserConfigRulesMapping {
     /**
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * @deprecated Deprecated. Use `namespaces_string` instead.
      */
     namespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
      */
     namespacesObjects?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingNamespacesObject>[]>;
     /**
@@ -2818,7 +2836,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
      */
     namespacesStrings?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of tags to be appended to matching metrics.
+     * List of tags to be appended to matching metrics
      */
     tags?: pulumi.Input<pulumi.Input<inputs.M3DbM3dbUserConfigRulesMappingTag>[]>;
 }
@@ -2827,7 +2845,7 @@ export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
      * The resolution for the matching namespace.
      */
-    resolution?: pulumi.Input<string>;
+    resolution: pulumi.Input<string>;
     /**
      * The retention period of the matching namespace.
      */
@@ -2938,7 +2956,7 @@ export interface MySqlMysqlUserConfig {
      */
     binlogRetentionPeriod?: pulumi.Input<number>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.MySqlMysqlUserConfigIpFilterObject>[]>;
     /**
@@ -2948,15 +2966,15 @@ export interface MySqlMysqlUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: pulumi.Input<inputs.MySqlMysqlUserConfigMigration>;
     /**
-     * mysql.conf configuration values.
+     * mysql.conf configuration values
      */
     mysql?: pulumi.Input<inputs.MySqlMysqlUserConfigMysql>;
     /**
@@ -2964,11 +2982,11 @@ export interface MySqlMysqlUserConfig {
      */
     mysqlVersion?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPrivatelinkAccess>;
     /**
@@ -2976,7 +2994,7 @@ export interface MySqlMysqlUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.MySqlMysqlUserConfigPublicAccess>;
     /**
@@ -3065,7 +3083,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbChangeBufferMaxSize?: pulumi.Input<number>;
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      */
     innodbFlushNeighbors?: pulumi.Input<number>;
     /**
@@ -3285,6 +3303,8 @@ export interface OpenSearchOpensearch {
 export interface OpenSearchOpensearchUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -3293,20 +3313,18 @@ export interface OpenSearchOpensearchUserConfig {
     customDomain?: pulumi.Input<string>;
     /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     disableReplicationFactorAdjustment?: pulumi.Input<boolean>;
     /**
-     * Index patterns.
+     * Index patterns
      */
     indexPatterns?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexPattern>[]>;
     /**
-     * Template settings for all new indexes.
+     * Template settings for all new indexes
      */
     indexTemplate?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigIndexTemplate>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearchUserConfigIpFilterObject>[]>;
     /**
@@ -3316,7 +3334,7 @@ export interface OpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3324,21 +3342,19 @@ export interface OpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: pulumi.Input<boolean>;
     /**
-     * Use indexPatterns instead. The default value is `0`.
-     *
-     * @deprecated Usage of this field is discouraged.
+     * use indexPatterns instead. The default value is `0`.
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
-     * OpenSearch OpenID Connect Configuration.
+     * OpenSearch OpenID Connect Configuration
      */
     openid?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpenid>;
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearch>;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards>;
     /**
@@ -3346,11 +3362,11 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchVersion?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPrivatelinkAccess>;
     /**
@@ -3358,7 +3374,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigPublicAccess>;
     /**
@@ -3366,7 +3382,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
-     * OpenSearch SAML configuration.
+     * OpenSearch SAML configuration
      */
     saml?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigSaml>;
     /**
@@ -3485,7 +3501,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     actionDestructiveRequiresName?: pulumi.Input<boolean>;
     /**
-     * Opensearch Security Plugin Settings.
+     * Opensearch Security Plugin Settings
      */
     authFailureListeners?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners>;
     /**
@@ -3497,7 +3513,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: pulumi.Input<number>;
     /**
-     * This should be identical to the Sender name defined in Opensearch dashboards.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      */
     emailSenderName?: pulumi.Input<string>;
     /**
@@ -3643,12 +3659,9 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
-    /**
-     * .
-     */
     internalAuthenticationBackendLimiting?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting>;
     /**
-     * IP address rate limiting settings.
+     * IP address rate limiting settings
      */
     ipRateLimiting?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting>;
 }
@@ -3659,7 +3672,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     allowedTries?: pulumi.Input<number>;
     /**
-     * The internal backend. Enter `internal`.
+     * internal*authentication*backend*limiting.authentication*backend.
      */
     authenticationBackend?: pulumi.Input<string>;
     /**
@@ -3667,7 +3680,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     blockExpirySeconds?: pulumi.Input<number>;
     /**
-     * The maximum number of blocked IP addresses.
+     * internal*authentication*backend*limiting.max*blocked_clients.
      */
     maxBlockedClients?: pulumi.Input<number>;
     /**
@@ -3679,7 +3692,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     timeWindowSeconds?: pulumi.Input<number>;
     /**
-     * The type of rate limiting.
+     * internal*authentication*backend_limiting.type.
      */
     type?: pulumi.Input<string>;
 }
@@ -3694,7 +3707,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     blockExpirySeconds?: pulumi.Input<number>;
     /**
-     * The maximum number of blocked IP addresses.
+     * internal*authentication*backend*limiting.max*blocked_clients.
      */
     maxBlockedClients?: pulumi.Input<number>;
     /**
@@ -3706,7 +3719,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     timeWindowSeconds?: pulumi.Input<number>;
     /**
-     * The type of rate limiting.
+     * internal*authentication*backend_limiting.type.
      */
     type?: pulumi.Input<string>;
 }
@@ -3728,11 +3741,11 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: pulumi.Input<boolean>;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: pulumi.Input<boolean>;
     /**
@@ -3743,11 +3756,11 @@ export interface OpenSearchOpensearchUserConfigPrivateAccess {
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: pulumi.Input<boolean>;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: pulumi.Input<boolean>;
     /**
@@ -3758,11 +3771,11 @@ export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: pulumi.Input<boolean>;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: pulumi.Input<boolean>;
     /**
@@ -3950,7 +3963,7 @@ export interface PgPgUserConfig {
      */
     enableIpv6?: pulumi.Input<boolean>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.PgPgUserConfigIpFilterObject>[]>;
     /**
@@ -3960,31 +3973,29 @@ export interface PgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: pulumi.Input<inputs.PgPgUserConfigMigration>;
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: pulumi.Input<inputs.PgPgUserConfigPg>;
     /**
-     * System-wide settings for the pg*qualstats extension.
+     * System-wide settings for the pg*qualstats extension
+     *
+     * @deprecated This property is deprecated.
      */
     pgQualstats?: pulumi.Input<inputs.PgPgUserConfigPgQualstats>;
     /**
-     * Use readReplica service integration instead.
-     *
-     * @deprecated Usage of this field is discouraged.
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      */
     pgReadReplica?: pulumi.Input<boolean>;
     /**
      * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     pgServiceToForkFrom?: pulumi.Input<string>;
     /**
@@ -3996,19 +4007,19 @@ export interface PgPgUserConfig {
      */
     pgVersion?: pulumi.Input<string>;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: pulumi.Input<inputs.PgPgUserConfigPgbouncer>;
     /**
-     * System-wide settings for pglookout.
+     * System-wide settings for pglookout
      */
     pglookout?: pulumi.Input<inputs.PgPgUserConfigPglookout>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.PgPgUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.PgPgUserConfigPrivatelinkAccess>;
     /**
@@ -4016,7 +4027,7 @@ export interface PgPgUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.PgPgUserConfigPublicAccess>;
     /**
@@ -4044,7 +4055,7 @@ export interface PgPgUserConfig {
      */
     synchronousReplication?: pulumi.Input<string>;
     /**
-     * System-wide settings for the timescaledb extension.
+     * System-wide settings for the timescaledb extension
      */
     timescaledb?: pulumi.Input<inputs.PgPgUserConfigTimescaledb>;
     /**
@@ -4109,7 +4120,7 @@ export interface PgPgUserConfigPg {
      */
     autovacuumAnalyzeScaleFactor?: pulumi.Input<number>;
     /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      */
     autovacuumAnalyzeThreshold?: pulumi.Input<number>;
     /**
@@ -4305,29 +4316,39 @@ export interface PgPgUserConfigPg {
 export interface PgPgUserConfigPgQualstats {
     /**
      * Enable / Disable pg_qualstats. The default value is `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     enabled?: pulumi.Input<boolean>;
     /**
      * Error estimation num threshold to save quals. The default value is `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     minErrEstimateNum?: pulumi.Input<number>;
     /**
      * Error estimation ratio threshold to save quals. The default value is `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     minErrEstimateRatio?: pulumi.Input<number>;
     /**
      * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     trackConstants?: pulumi.Input<boolean>;
     /**
      * Track quals on system catalogs too. The default value is `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     trackPgCatalog?: pulumi.Input<boolean>;
 }
 
 export interface PgPgUserConfigPgbouncer {
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
      */
     autodbIdleTimeout?: pulumi.Input<number>;
     /**
@@ -4335,11 +4356,11 @@ export interface PgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: pulumi.Input<number>;
     /**
-     * PGBouncer pool mode.
+     * PGBouncer pool mode. The default value is `transaction`.
      */
     autodbPoolMode?: pulumi.Input<string>;
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
      */
     autodbPoolSize?: pulumi.Input<number>;
     /**
@@ -4347,19 +4368,19 @@ export interface PgPgUserConfigPgbouncer {
      */
     ignoreStartupParameters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
      */
     minPoolSize?: pulumi.Input<number>;
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
      */
     serverIdleTimeout?: pulumi.Input<number>;
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
      */
     serverLifetime?: pulumi.Input<number>;
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes.
+     * Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
      */
     serverResetQueryAlways?: pulumi.Input<boolean>;
 }
@@ -4373,11 +4394,11 @@ export interface PgPgUserConfigPglookout {
 
 export interface PgPgUserConfigPrivateAccess {
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: pulumi.Input<boolean>;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: pulumi.Input<boolean>;
     /**
@@ -4388,11 +4409,11 @@ export interface PgPgUserConfigPrivateAccess {
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: pulumi.Input<boolean>;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: pulumi.Input<boolean>;
     /**
@@ -4403,11 +4424,11 @@ export interface PgPgUserConfigPrivatelinkAccess {
 
 export interface PgPgUserConfigPublicAccess {
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: pulumi.Input<boolean>;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: pulumi.Input<boolean>;
     /**
@@ -4504,10 +4525,12 @@ export interface RedisRedi {
 export interface RedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.RedisRedisUserConfigIpFilterObject>[]>;
     /**
@@ -4517,19 +4540,19 @@ export interface RedisRedisUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: pulumi.Input<inputs.RedisRedisUserConfigMigration>;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivateAccess>;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: pulumi.Input<inputs.RedisRedisUserConfigPrivatelinkAccess>;
     /**
@@ -4537,7 +4560,7 @@ export interface RedisRedisUserConfig {
      */
     projectToForkFrom?: pulumi.Input<string>;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: pulumi.Input<inputs.RedisRedisUserConfigPublicAccess>;
     /**
@@ -5087,11 +5110,19 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
     /**
      * Password.
      */
-    password: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * Port number of the server.
      */
     port: pulumi.Input<number>;
+    /**
+     * Client certificate.
+     */
+    sslClientCertificate?: pulumi.Input<string>;
+    /**
+     * Client key.
+     */
+    sslClientKey?: pulumi.Input<string>;
     /**
      * SSL Mode. The default value is `verify-full`.
      */

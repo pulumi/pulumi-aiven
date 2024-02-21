@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Jolokia;
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         public readonly bool? Kafka;
         /// <summary>

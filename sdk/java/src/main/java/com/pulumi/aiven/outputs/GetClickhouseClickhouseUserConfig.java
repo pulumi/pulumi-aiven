@@ -20,10 +20,14 @@ public final class GetClickhouseClickhouseUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects;
@@ -36,18 +40,18 @@ public final class GetClickhouseClickhouseUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable GetClickhouseClickhouseUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable GetClickhouseClickhouseUserConfigPrivatelinkAccess privatelinkAccess;
@@ -57,7 +61,7 @@ public final class GetClickhouseClickhouseUserConfig {
      */
     private @Nullable String projectToForkFrom;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable GetClickhouseClickhouseUserConfigPublicAccess publicAccess;
@@ -81,12 +85,16 @@ public final class GetClickhouseClickhouseUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<GetClickhouseClickhouseUserConfigIpFilterObject> ipFilterObjects() {
@@ -103,22 +111,22 @@ public final class GetClickhouseClickhouseUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<GetClickhouseClickhouseUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<GetClickhouseClickhouseUserConfigPrivatelinkAccess> privatelinkAccess() {
@@ -132,7 +140,7 @@ public final class GetClickhouseClickhouseUserConfig {
         return Optional.ofNullable(this.projectToForkFrom);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<GetClickhouseClickhouseUserConfigPublicAccess> publicAccess() {

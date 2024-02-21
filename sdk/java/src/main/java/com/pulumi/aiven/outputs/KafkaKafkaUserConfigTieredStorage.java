@@ -18,9 +18,13 @@ public final class KafkaKafkaUserConfigTieredStorage {
      */
     private @Nullable Boolean enabled;
     /**
-     * @return Local cache configuration.
+     * @return Local cache configuration
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable KafkaKafkaUserConfigTieredStorageLocalCache localCache;
 
     private KafkaKafkaUserConfigTieredStorage() {}
@@ -32,9 +36,13 @@ public final class KafkaKafkaUserConfigTieredStorage {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return Local cache configuration.
+     * @return Local cache configuration
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<KafkaKafkaUserConfigTieredStorageLocalCache> localCache() {
         return Optional.ofNullable(this.localCache);
     }

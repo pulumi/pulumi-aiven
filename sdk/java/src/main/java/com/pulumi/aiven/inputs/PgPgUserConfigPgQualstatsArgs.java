@@ -19,14 +19,22 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     /**
      * Enable / Disable pg_qualstats. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
      * @return Enable / Disable pg_qualstats. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -34,14 +42,22 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     /**
      * Error estimation num threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="minErrEstimateNum")
     private @Nullable Output<Integer> minErrEstimateNum;
 
     /**
      * @return Error estimation num threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<Integer>> minErrEstimateNum() {
         return Optional.ofNullable(this.minErrEstimateNum);
     }
@@ -49,14 +65,22 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     /**
      * Error estimation ratio threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="minErrEstimateRatio")
     private @Nullable Output<Integer> minErrEstimateRatio;
 
     /**
      * @return Error estimation ratio threshold to save quals. The default value is `0`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<Integer>> minErrEstimateRatio() {
         return Optional.ofNullable(this.minErrEstimateRatio);
     }
@@ -64,14 +88,22 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     /**
      * Enable / Disable pg_qualstats constants tracking. The default value is `true`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="trackConstants")
     private @Nullable Output<Boolean> trackConstants;
 
     /**
      * @return Enable / Disable pg_qualstats constants tracking. The default value is `true`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> trackConstants() {
         return Optional.ofNullable(this.trackConstants);
     }
@@ -79,14 +111,22 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     /**
      * Track quals on system catalogs too. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="trackPgCatalog")
     private @Nullable Output<Boolean> trackPgCatalog;
 
     /**
      * @return Track quals on system catalogs too. The default value is `false`.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<Boolean>> trackPgCatalog() {
         return Optional.ofNullable(this.trackPgCatalog);
     }
@@ -124,7 +164,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
@@ -135,7 +179,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
@@ -145,7 +193,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder minErrEstimateNum(@Nullable Output<Integer> minErrEstimateNum) {
             $.minErrEstimateNum = minErrEstimateNum;
             return this;
@@ -156,7 +208,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder minErrEstimateNum(Integer minErrEstimateNum) {
             return minErrEstimateNum(Output.of(minErrEstimateNum));
         }
@@ -166,7 +222,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder minErrEstimateRatio(@Nullable Output<Integer> minErrEstimateRatio) {
             $.minErrEstimateRatio = minErrEstimateRatio;
             return this;
@@ -177,7 +237,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder minErrEstimateRatio(Integer minErrEstimateRatio) {
             return minErrEstimateRatio(Output.of(minErrEstimateRatio));
         }
@@ -187,7 +251,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder trackConstants(@Nullable Output<Boolean> trackConstants) {
             $.trackConstants = trackConstants;
             return this;
@@ -198,7 +266,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder trackConstants(Boolean trackConstants) {
             return trackConstants(Output.of(trackConstants));
         }
@@ -208,7 +280,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder trackPgCatalog(@Nullable Output<Boolean> trackPgCatalog) {
             $.trackPgCatalog = trackPgCatalog;
             return this;
@@ -219,7 +295,11 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder trackPgCatalog(Boolean trackPgCatalog) {
             return trackPgCatalog(Output.of(trackPgCatalog));
         }

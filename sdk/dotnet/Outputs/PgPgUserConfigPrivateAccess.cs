@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigPrivateAccess
     {
         /// <summary>
-        /// postgresql.conf configuration values.
+        /// postgresql.conf configuration values
         /// </summary>
         public readonly bool? Pg;
         /// <summary>
-        /// PGBouncer connection pooling settings.
+        /// PGBouncer connection pooling settings
         /// </summary>
         public readonly bool? Pgbouncer;
         /// <summary>

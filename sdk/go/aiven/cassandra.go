@@ -65,7 +65,7 @@ type Cassandra struct {
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrOutput `pulumi:"cassandraUserConfig"`
-	// cassandra configuration values.
+	// cassandra configuration values
 	Cassandras CassandraCassandraArrayOutput `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -169,7 +169,7 @@ type cassandraState struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfig *CassandraCassandraUserConfig `pulumi:"cassandraUserConfig"`
-	// cassandra configuration values.
+	// cassandra configuration values
 	Cassandras []CassandraCassandra `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -230,7 +230,7 @@ type CassandraState struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Cassandra user configurable settings
 	CassandraUserConfig CassandraCassandraUserConfigPtrInput
-	// cassandra configuration values.
+	// cassandra configuration values
 	Cassandras CassandraCassandraArrayInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -458,7 +458,7 @@ func (o CassandraOutput) CassandraUserConfig() CassandraCassandraUserConfigPtrOu
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraUserConfigPtrOutput { return v.CassandraUserConfig }).(CassandraCassandraUserConfigPtrOutput)
 }
 
-// cassandra configuration values.
+// cassandra configuration values
 func (o CassandraOutput) Cassandras() CassandraCassandraArrayOutput {
 	return o.ApplyT(func(v *Cassandra) CassandraCassandraArrayOutput { return v.Cassandras }).(CassandraCassandraArrayOutput)
 }

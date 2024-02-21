@@ -83,7 +83,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable Integer producerMaxRequestSize;
     /**
-     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      * 
      */
     private @Nullable Integer scheduledRebalanceMaxDelayMs;
@@ -193,7 +193,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.producerMaxRequestSize);
     }
     /**
-     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * @return The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      * 
      */
     public Optional<Integer> scheduledRebalanceMaxDelayMs() {

@@ -15,11 +15,58 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Account Team Project resource allows the creation and management of an Account Team Project.
+ * Links an existing project to an existing team. Both the project and team should have the same `account_id`.
  * 
- * It is intended to link an existing project to the existing account team.
- * It is important to note that the project should have an `account_id` property set equal to the
- * account team you are trying to link to this project.
+ * &gt; **Teams are becoming groups**
+ * Groups are an easier way to control access to your organization&#39;s projects and
+ * services for a group of users.
+ * Migrate your teams to groups.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Project;
+ * import com.pulumi.aiven.ProjectArgs;
+ * import com.pulumi.aiven.AccountTeam;
+ * import com.pulumi.aiven.AccountTeamArgs;
+ * import com.pulumi.aiven.AccountTeamProject;
+ * import com.pulumi.aiven.AccountTeamProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .project(&#34;project-1&#34;)
+ *             .accountId(aiven_account_team.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .build());
+ * 
+ *         var exampleTeam = new AccountTeam(&#34;exampleTeam&#34;, AccountTeamArgs.builder()        
+ *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .build());
+ * 
+ *         var main = new AccountTeamProject(&#34;main&#34;, AccountTeamProjectArgs.builder()        
+ *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .teamId(exampleTeam.teamId())
+ *             .projectName(exampleProject.project())
+ *             .teamType(&#34;admin&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

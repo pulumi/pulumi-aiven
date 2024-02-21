@@ -15,8 +15,8 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// The resolution for the matching namespace.
         /// </summary>
-        [Input("resolution")]
-        public Input<string>? Resolution { get; set; }
+        [Input("resolution", required: true)]
+        public Input<string> Resolution { get; set; } = null!;
 
         /// <summary>
         /// The retention period of the matching namespace.

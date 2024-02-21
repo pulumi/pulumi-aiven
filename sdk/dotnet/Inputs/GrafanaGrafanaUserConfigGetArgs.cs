@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AllowEmbedding { get; set; }
 
         /// <summary>
-        /// Azure AD OAuth integration.
+        /// Azure AD OAuth integration
         /// </summary>
         [Input("authAzuread")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthAzureadGetArgs>? AuthAzuread { get; set; }
@@ -61,25 +61,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AuthBasicEnabled { get; set; }
 
         /// <summary>
-        /// Generic OAuth integration.
+        /// Generic OAuth integration
         /// </summary>
         [Input("authGenericOauth")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGenericOauthGetArgs>? AuthGenericOauth { get; set; }
 
         /// <summary>
-        /// Github Auth integration.
+        /// Github Auth integration
         /// </summary>
         [Input("authGithub")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGithubGetArgs>? AuthGithub { get; set; }
 
         /// <summary>
-        /// GitLab Auth integration.
+        /// GitLab Auth integration
         /// </summary>
         [Input("authGitlab")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGitlabGetArgs>? AuthGitlab { get; set; }
 
         /// <summary>
-        /// Google Auth integration.
+        /// Google Auth integration
         /// </summary>
         [Input("authGoogle")]
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGoogleGetArgs>? AuthGoogle { get; set; }
@@ -127,7 +127,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? DataproxyTimeout { get; set; }
 
         /// <summary>
-        /// Grafana date format specifications.
+        /// Grafana date format specifications
         /// </summary>
         [Input("dateFormats")]
         public Input<Inputs.GrafanaGrafanaUserConfigDateFormatsGetArgs>? DateFormats { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? EditorsCanAdmin { get; set; }
 
         /// <summary>
-        /// External image store settings.
+        /// External image store settings
         /// </summary>
         [Input("externalImageStorage")]
         public Input<Inputs.GrafanaGrafanaUserConfigExternalImageStorageGetArgs>? ExternalImageStorage { get; set; }
@@ -160,7 +160,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.GrafanaGrafanaUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<Inputs.GrafanaGrafanaUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -186,7 +186,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -206,13 +206,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? OauthAllowInsecureEmailLookup { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.GrafanaGrafanaUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.GrafanaGrafanaUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
@@ -224,7 +224,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.GrafanaGrafanaUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ServiceToForkFrom { get; set; }
 
         /// <summary>
-        /// SMTP server settings.
+        /// SMTP server settings
         /// </summary>
         [Input("smtpServer")]
         public Input<Inputs.GrafanaGrafanaUserConfigSmtpServerGetArgs>? SmtpServer { get; set; }

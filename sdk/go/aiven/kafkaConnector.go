@@ -37,7 +37,7 @@ import (
 //					"connector.class":     pulumi.String("io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
 //					"type.name":           pulumi.String("os-connector"),
 //					"name":                pulumi.String("kafka-os-con1"),
-//					"connection.url":      pulumi.Any(aiven_elasticsearch.OsService1.Service_uri),
+//					"connection.url":      pulumi.Any(aiven_opensearch.OsService1.Service_uri),
 //					"connection.username": pulumi.Any(aiven_opensearch.OsService1.Service_username),
 //					"connection.password": pulumi.Any(aiven_opensearch.OsService1.Service_password),
 //				},

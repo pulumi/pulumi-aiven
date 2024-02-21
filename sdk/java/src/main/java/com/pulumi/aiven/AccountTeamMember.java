@@ -15,13 +15,48 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Account Team Member resource allows the creation and management of an Aiven Account Team Member.
+ * Adds a user as a team member.
  * 
- * During the creation of `aiven.AccountTeamMember`resource, an email invitation will be sent
- * to a user using `user_email` address. If the user accepts an invitation, he or she will become
- * a member of the account team. The deletion of `aiven.AccountTeamMember` will not only
- * delete the invitation if one was sent but not yet accepted by the user, it will also
- * eliminate an account team member if one has accepted an invitation previously.
+ * During the creation of this resource, an invite is sent to the address specified in `user_email`.
+ * The user is added to the team after they accept the invite. Deleting `aiven.AccountTeamMember`
+ * deletes the pending invite if not accepted or removes the user from the team if they already accepted the invite.
+ * 
+ * &gt; **Teams are becoming groups**
+ * Groups are an easier way to control access to your organization&#39;s projects and
+ * services for a group of users.
+ * Migrate your teams to groups.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.AccountTeamMember;
+ * import com.pulumi.aiven.AccountTeamMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new AccountTeamMember(&#34;main&#34;, AccountTeamMemberArgs.builder()        
+ *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .teamId(aiven_account_team.TEAM_RESOURCE_NAME().team_id())
+ *             .userEmail(&#34;user+1@example.com&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

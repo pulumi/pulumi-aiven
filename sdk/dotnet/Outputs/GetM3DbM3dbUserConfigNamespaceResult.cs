@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Namespace options.
+        /// Namespace options
         /// </summary>
         public readonly Outputs.GetM3DbM3dbUserConfigNamespaceOptionsResult? Options;
         /// <summary>

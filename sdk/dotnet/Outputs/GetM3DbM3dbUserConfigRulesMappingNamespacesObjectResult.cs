@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Outputs
         /// <summary>
         /// The resolution for the matching namespace.
         /// </summary>
-        public readonly string? Resolution;
+        public readonly string Resolution;
         /// <summary>
         /// The retention period of the matching namespace.
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetM3DbM3dbUserConfigRulesMappingNamespacesObjectResult(
-            string? resolution,
+            string resolution,
 
             string? retention)
         {

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// M3 limits.
+        /// M3 limits
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigLimits? Limits;
         /// <summary>
-        /// M3 specific configuration options.
+        /// M3 specific configuration options
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigM3? M3;
         /// <summary>
@@ -54,11 +54,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? M3dbVersion;
         /// <summary>
-        /// List of M3 namespaces.
+        /// List of M3 namespaces
         /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigNamespace> Namespaces;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPrivateAccess? PrivateAccess;
         /// <summary>
@@ -66,11 +66,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigPublicAccess? PublicAccess;
         /// <summary>
-        /// M3 rules.
+        /// M3 rules
         /// </summary>
         public readonly Outputs.M3DbM3dbUserConfigRules? Rules;
         /// <summary>

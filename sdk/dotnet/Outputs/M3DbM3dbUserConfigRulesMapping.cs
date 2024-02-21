@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Namespaces;
         /// <summary>
-        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+        /// This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
         /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject> NamespacesObjects;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> NamespacesStrings;
         /// <summary>
-        /// List of tags to be appended to matching metrics.
+        /// List of tags to be appended to matching metrics
         /// </summary>
         public readonly ImmutableArray<Outputs.M3DbM3dbUserConfigRulesMappingTag> Tags;
 

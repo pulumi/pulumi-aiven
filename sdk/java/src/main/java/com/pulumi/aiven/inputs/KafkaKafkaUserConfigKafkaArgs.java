@@ -124,14 +124,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * How long are delete records retained?.
+     * How long are delete records retained?
      * 
      */
     @Import(name="logCleanerDeleteRetentionMs")
     private @Nullable Output<Integer> logCleanerDeleteRetentionMs;
 
     /**
-     * @return How long are delete records retained?.
+     * @return How long are delete records retained?
      * 
      */
     public Optional<Output<Integer>> logCleanerDeleteRetentionMs() {
@@ -334,14 +334,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Should pre allocate file when create new segment?.
+     * Should pre allocate file when create new segment?
      * 
      */
     @Import(name="logPreallocate")
     private @Nullable Output<Boolean> logPreallocate;
 
     /**
-     * @return Should pre allocate file when create new segment?.
+     * @return Should pre allocate file when create new segment?
      * 
      */
     public Optional<Output<Boolean>> logPreallocate() {
@@ -925,7 +925,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerDeleteRetentionMs How long are delete records retained?.
+         * @param logCleanerDeleteRetentionMs How long are delete records retained?
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerDeleteRetentionMs How long are delete records retained?.
+         * @param logCleanerDeleteRetentionMs How long are delete records retained?
          * 
          * @return builder
          * 
@@ -1219,7 +1219,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logPreallocate Should pre allocate file when create new segment?.
+         * @param logPreallocate Should pre allocate file when create new segment?
          * 
          * @return builder
          * 
@@ -1230,7 +1230,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logPreallocate Should pre allocate file when create new segment?.
+         * @param logPreallocate Should pre allocate file when create new segment?
          * 
          * @return builder
          * 

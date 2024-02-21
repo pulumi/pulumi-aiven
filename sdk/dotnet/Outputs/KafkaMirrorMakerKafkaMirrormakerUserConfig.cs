@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject> IpFilterObjects;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Kafka MirrorMaker configuration values.
+        /// Kafka MirrorMaker configuration values
         /// </summary>
         public readonly Outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker? KafkaMirrormaker;
         /// <summary>

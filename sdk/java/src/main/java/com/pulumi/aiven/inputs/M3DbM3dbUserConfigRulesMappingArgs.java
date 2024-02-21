@@ -84,10 +84,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * Deprecated. Use `namespaces_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+    @Deprecated /* Deprecated. Use `namespaces_string` instead. */
     @Import(name="namespaces")
     private @Nullable Output<List<String>> namespaces;
 
@@ -95,23 +95,23 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
      * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * Deprecated. Use `namespaces_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+    @Deprecated /* Deprecated. Use `namespaces_string` instead. */
     public Optional<Output<List<String>>> namespaces() {
         return Optional.ofNullable(this.namespaces);
     }
 
     /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
      * 
      */
     @Import(name="namespacesObjects")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>> namespacesObjects;
 
     /**
-     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * @return This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
      * 
      */
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs>>> namespacesObjects() {
@@ -134,14 +134,14 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
     }
 
     /**
-     * List of tags to be appended to matching metrics.
+     * List of tags to be appended to matching metrics
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>> tags;
 
     /**
-     * @return List of tags to be appended to matching metrics.
+     * @return List of tags to be appended to matching metrics
      * 
      */
     public Optional<Output<List<M3DbM3dbUserConfigRulesMappingTagArgs>>> tags() {
@@ -279,10 +279,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * Deprecated. Use `namespaces_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+        @Deprecated /* Deprecated. Use `namespaces_string` instead. */
         public Builder namespaces(@Nullable Output<List<String>> namespaces) {
             $.namespaces = namespaces;
             return this;
@@ -294,10 +294,10 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * Deprecated. Use `namespaces_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+        @Deprecated /* Deprecated. Use `namespaces_string` instead. */
         public Builder namespaces(List<String> namespaces) {
             return namespaces(Output.of(namespaces));
         }
@@ -308,16 +308,16 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with namespaces_string instead.
+         * Deprecated. Use `namespaces_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with namespaces_string instead. */
+        @Deprecated /* Deprecated. Use `namespaces_string` instead. */
         public Builder namespaces(String... namespaces) {
             return namespaces(List.of(namespaces));
         }
 
         /**
-         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+         * @param namespacesObjects This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
          * 
          * @return builder
          * 
@@ -379,7 +379,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags List of tags to be appended to matching metrics.
+         * @param tags List of tags to be appended to matching metrics
          * 
          * @return builder
          * 
@@ -390,7 +390,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags List of tags to be appended to matching metrics.
+         * @param tags List of tags to be appended to matching metrics
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param tags List of tags to be appended to matching metrics.
+         * @param tags List of tags to be appended to matching metrics
          * 
          * @return builder
          * 

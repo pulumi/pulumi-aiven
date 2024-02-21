@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs>? _indexPatterns;
 
         /// <summary>
-        /// Index patterns.
+        /// Index patterns
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchUserConfigIndexPatternGetArgs> IndexPatterns
         {
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Template settings for all new indexes.
+        /// Template settings for all new indexes
         /// </summary>
         [Input("indexTemplate")]
         public Input<Inputs.OpenSearchOpensearchUserConfigIndexTemplateGetArgs>? IndexTemplate { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectGetArgs>? _ipFilterObjects;
 
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchUserConfigIpFilterObjectGetArgs> IpFilterObjects
         {
@@ -78,7 +78,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         /// </summary>
-        [Obsolete(@"This will be removed in v5.0.0 and replaced with ip_filter_string instead.")]
+        [Obsolete(@"Deprecated. Use `ip_filter_string` instead.")]
         public InputList<string> IpFilters
         {
             get => _ipFilters ?? (_ipFilters = new InputList<string>());
@@ -92,25 +92,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? KeepIndexRefreshInterval { get; set; }
 
         /// <summary>
-        /// Use index_patterns instead. The default value is `0`.
+        /// use index_patterns instead. The default value is `0`.
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }
 
         /// <summary>
-        /// OpenSearch OpenID Connect Configuration.
+        /// OpenSearch OpenID Connect Configuration
         /// </summary>
         [Input("openid")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpenidGetArgs>? Openid { get; set; }
 
         /// <summary>
-        /// OpenSearch settings.
+        /// OpenSearch settings
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchGetArgs>? Opensearch { get; set; }
 
         /// <summary>
-        /// OpenSearch Dashboards settings.
+        /// OpenSearch Dashboards settings
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsGetArgs>? OpensearchDashboards { get; set; }
@@ -122,13 +122,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? OpensearchVersion { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         [Input("privateAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivateAccessGetArgs>? PrivateAccess { get; set; }
 
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         [Input("privatelinkAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPrivatelinkAccessGetArgs>? PrivatelinkAccess { get; set; }
@@ -140,7 +140,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ProjectToForkFrom { get; set; }
 
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         [Input("publicAccess")]
         public Input<Inputs.OpenSearchOpensearchUserConfigPublicAccessGetArgs>? PublicAccess { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
-        /// OpenSearch SAML configuration.
+        /// OpenSearch SAML configuration
         /// </summary>
         [Input("saml")]
         public Input<Inputs.OpenSearchOpensearchUserConfigSamlGetArgs>? Saml { get; set; }

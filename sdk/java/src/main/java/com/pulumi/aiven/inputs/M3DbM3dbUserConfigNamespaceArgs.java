@@ -33,14 +33,14 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
     }
 
     /**
-     * Namespace options.
+     * Namespace options
      * 
      */
     @Import(name="options")
     private @Nullable Output<M3DbM3dbUserConfigNamespaceOptionsArgs> options;
 
     /**
-     * @return Namespace options.
+     * @return Namespace options
      * 
      */
     public Optional<Output<M3DbM3dbUserConfigNamespaceOptionsArgs>> options() {
@@ -126,7 +126,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param options Namespace options.
+         * @param options Namespace options
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param options Namespace options.
+         * @param options Namespace options
          * 
          * @return builder
          * 

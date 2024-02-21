@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? CustomDomain;
         /// <summary>
-        /// influxdb.conf configuration values.
+        /// influxdb.conf configuration values
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigInfluxdbResult? Influxdb;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         /// </summary>
         public readonly ImmutableArray<Outputs.GetInfluxDbInfluxdbUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Allow access to selected service ports from private networks.
+        /// Allow access to selected service ports from private networks
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivateAccessResult? PrivateAccess;
         /// <summary>
-        /// Allow access to selected service components through Privatelink.
+        /// Allow access to selected service components through Privatelink
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
-        /// Allow access to selected service ports from the public Internet.
+        /// Allow access to selected service ports from the public Internet
         /// </summary>
         public readonly Outputs.GetInfluxDbInfluxdbUserConfigPublicAccessResult? PublicAccess;
         /// <summary>

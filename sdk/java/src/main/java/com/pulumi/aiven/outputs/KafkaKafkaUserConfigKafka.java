@@ -50,7 +50,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer groupMinSessionTimeoutMs;
     /**
-     * @return How long are delete records retained?.
+     * @return How long are delete records retained?
      * 
      */
     private @Nullable Integer logCleanerDeleteRetentionMs;
@@ -120,7 +120,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable String logMessageTimestampType;
     /**
-     * @return Should pre allocate file when create new segment?.
+     * @return Should pre allocate file when create new segment?
      * 
      */
     private @Nullable Boolean logPreallocate;
@@ -296,7 +296,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.groupMinSessionTimeoutMs);
     }
     /**
-     * @return How long are delete records retained?.
+     * @return How long are delete records retained?
      * 
      */
     public Optional<Integer> logCleanerDeleteRetentionMs() {
@@ -394,7 +394,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logMessageTimestampType);
     }
     /**
-     * @return Should pre allocate file when create new segment?.
+     * @return Should pre allocate file when create new segment?
      * 
      */
     public Optional<Boolean> logPreallocate() {

@@ -198,14 +198,14 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      * 
      */
     @Import(name="opensearches")
     private @Nullable Output<List<OpenSearchOpensearchArgs>> opensearches;
 
     /**
-     * @return OpenSearch settings.
+     * @return OpenSearch settings
      * 
      */
     public Optional<Output<List<OpenSearchOpensearchArgs>>> opensearches() {
@@ -753,7 +753,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches OpenSearch settings.
+         * @param opensearches OpenSearch settings
          * 
          * @return builder
          * 
@@ -764,7 +764,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches OpenSearch settings.
+         * @param opensearches OpenSearch settings
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class OpenSearchState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opensearches OpenSearch settings.
+         * @param opensearches OpenSearch settings
          * 
          * @return builder
          * 

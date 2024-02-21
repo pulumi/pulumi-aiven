@@ -34,6 +34,8 @@ export interface CassandraCassandra {
 export interface CassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -45,7 +47,7 @@ export interface CassandraCassandraUserConfig {
      */
     backupMinute?: number;
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
     /**
@@ -53,7 +55,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.CassandraCassandraUserConfigIpFilterObject[];
     /**
@@ -63,7 +65,7 @@ export interface CassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -71,7 +73,7 @@ export interface CassandraCassandraUserConfig {
      */
     migrateSstableloader?: boolean;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.CassandraCassandraUserConfigPrivateAccess;
     /**
@@ -79,7 +81,7 @@ export interface CassandraCassandraUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.CassandraCassandraUserConfigPublicAccess;
     /**
@@ -210,10 +212,12 @@ export interface ClickhouseClickhouse {
 export interface ClickhouseClickhouseUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.ClickhouseClickhouseUserConfigIpFilterObject[];
     /**
@@ -223,15 +227,15 @@ export interface ClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.ClickhouseClickhouseUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.ClickhouseClickhouseUserConfigPrivatelinkAccess;
     /**
@@ -239,7 +243,7 @@ export interface ClickhouseClickhouseUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.ClickhouseClickhouseUserConfigPublicAccess;
     /**
@@ -485,6 +489,8 @@ export interface FlinkFlink {
 export interface FlinkFlinkUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -492,7 +498,7 @@ export interface FlinkFlinkUserConfig {
      */
     flinkVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.FlinkFlinkUserConfigIpFilterObject[];
     /**
@@ -502,7 +508,7 @@ export interface FlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -510,7 +516,7 @@ export interface FlinkFlinkUserConfig {
      */
     numberOfTaskSlots?: number;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.FlinkFlinkUserConfigPrivatelinkAccess;
     /**
@@ -603,6 +609,8 @@ export interface GetCassandaCassandra {
 export interface GetCassandaCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -614,7 +622,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     backupMinute?: number;
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     /**
@@ -622,7 +630,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetCassandaCassandraUserConfigIpFilterObject[];
     /**
@@ -632,7 +640,7 @@ export interface GetCassandaCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -640,7 +648,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     migrateSstableloader?: boolean;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetCassandaCassandraUserConfigPrivateAccess;
     /**
@@ -648,7 +656,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetCassandaCassandraUserConfigPublicAccess;
     /**
@@ -779,6 +787,8 @@ export interface GetCassandraCassandra {
 export interface GetCassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -790,7 +800,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     backupMinute?: number;
     /**
-     * cassandra configuration values.
+     * cassandra configuration values
      */
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     /**
@@ -798,7 +808,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     cassandraVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetCassandraCassandraUserConfigIpFilterObject[];
     /**
@@ -808,7 +818,7 @@ export interface GetCassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -816,7 +826,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     migrateSstableloader?: boolean;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetCassandraCassandraUserConfigPrivateAccess;
     /**
@@ -824,7 +834,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetCassandraCassandraUserConfigPublicAccess;
     /**
@@ -955,10 +965,12 @@ export interface GetClickhouseClickhouse {
 export interface GetClickhouseClickhouseUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetClickhouseClickhouseUserConfigIpFilterObject[];
     /**
@@ -968,15 +980,15 @@ export interface GetClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetClickhouseClickhouseUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetClickhouseClickhouseUserConfigPrivatelinkAccess;
     /**
@@ -984,7 +996,7 @@ export interface GetClickhouseClickhouseUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetClickhouseClickhouseUserConfigPublicAccess;
     /**
@@ -1200,6 +1212,8 @@ export interface GetFlinkFlink {
 export interface GetFlinkFlinkUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -1207,7 +1221,7 @@ export interface GetFlinkFlinkUserConfig {
      */
     flinkVersion?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetFlinkFlinkUserConfigIpFilterObject[];
     /**
@@ -1217,7 +1231,7 @@ export interface GetFlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -1225,7 +1239,7 @@ export interface GetFlinkFlinkUserConfig {
      */
     numberOfTaskSlots?: number;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetFlinkFlinkUserConfigPrivatelinkAccess;
     /**
@@ -1330,6 +1344,8 @@ export interface GetGrafanaGrafana {
 export interface GetGrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -1353,7 +1369,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     allowEmbedding?: boolean;
     /**
-     * Azure AD OAuth integration.
+     * Azure AD OAuth integration
      */
     authAzuread?: outputs.GetGrafanaGrafanaUserConfigAuthAzuread;
     /**
@@ -1361,19 +1377,19 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     authBasicEnabled?: boolean;
     /**
-     * Generic OAuth integration.
+     * Generic OAuth integration
      */
     authGenericOauth?: outputs.GetGrafanaGrafanaUserConfigAuthGenericOauth;
     /**
-     * Github Auth integration.
+     * Github Auth integration
      */
     authGithub?: outputs.GetGrafanaGrafanaUserConfigAuthGithub;
     /**
-     * GitLab Auth integration.
+     * GitLab Auth integration
      */
     authGitlab?: outputs.GetGrafanaGrafanaUserConfigAuthGitlab;
     /**
-     * Google Auth integration.
+     * Google Auth integration
      */
     authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
     /**
@@ -1405,7 +1421,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     dataproxyTimeout?: number;
     /**
-     * Grafana date format specifications.
+     * Grafana date format specifications
      */
     dateFormats?: outputs.GetGrafanaGrafanaUserConfigDateFormats;
     /**
@@ -1417,7 +1433,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     editorsCanAdmin?: boolean;
     /**
-     * External image store settings.
+     * External image store settings
      */
     externalImageStorage?: outputs.GetGrafanaGrafanaUserConfigExternalImageStorage;
     /**
@@ -1425,7 +1441,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     googleAnalyticsUaId?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetGrafanaGrafanaUserConfigIpFilterObject[];
     /**
@@ -1435,7 +1451,7 @@ export interface GetGrafanaGrafanaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -1447,11 +1463,11 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     oauthAllowInsecureEmailLookup?: boolean;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetGrafanaGrafanaUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetGrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
@@ -1459,7 +1475,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetGrafanaGrafanaUserConfigPublicAccess;
     /**
@@ -1475,7 +1491,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     serviceToForkFrom?: string;
     /**
-     * SMTP server settings.
+     * SMTP server settings
      */
     smtpServer?: outputs.GetGrafanaGrafanaUserConfigSmtpServer;
     /**
@@ -1617,7 +1633,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGitlab {
     /**
      * Require users to belong to one of given groups.
      */
-    allowedGroups?: string[];
+    allowedGroups: string[];
     /**
      * API URL. This only needs to be set when using self hosted GitLab.
      */
@@ -1648,7 +1664,7 @@ export interface GetGrafanaGrafanaUserConfigAuthGoogle {
     /**
      * Domains allowed to sign-in to this Grafana.
      */
-    allowedDomains?: string[];
+    allowedDomains: string[];
     /**
      * Client ID from provider.
      */
@@ -1854,6 +1870,8 @@ export interface GetInfluxDbInfluxdb {
 export interface GetInfluxDbInfluxdbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -1861,11 +1879,11 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     customDomain?: string;
     /**
-     * influxdb.conf configuration values.
+     * influxdb.conf configuration values
      */
     influxdb?: outputs.GetInfluxDbInfluxdbUserConfigInfluxdb;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetInfluxDbInfluxdbUserConfigIpFilterObject[];
     /**
@@ -1875,15 +1893,15 @@ export interface GetInfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetInfluxDbInfluxdbUserConfigPrivatelinkAccess;
     /**
@@ -1891,7 +1909,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetInfluxDbInfluxdbUserConfigPublicAccess;
     /**
@@ -2080,10 +2098,12 @@ export interface GetKafkaConnectKafkaConnect {
 export interface GetKafkaConnectKafkaConnectUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetKafkaConnectKafkaConnectUserConfigIpFilterObject[];
     /**
@@ -2093,23 +2113,23 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka Connect configuration values.
+     * Kafka Connect configuration values
      */
     kafkaConnect?: outputs.GetKafkaConnectKafkaConnectUserConfigKafkaConnect;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetKafkaConnectKafkaConnectUserConfigPublicAccess;
     /**
@@ -2191,7 +2211,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerMaxRequestSize?: number;
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      */
     scheduledRebalanceMaxDelayMs?: number;
     /**
@@ -2303,6 +2323,8 @@ export interface GetKafkaKafka {
 export interface GetKafkaKafkaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -2314,7 +2336,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetKafkaKafkaUserConfigIpFilterObject[];
     /**
@@ -2324,15 +2346,15 @@ export interface GetKafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: outputs.GetKafkaKafkaUserConfigKafka;
     /**
-     * Kafka authentication methods.
+     * Kafka authentication methods
      */
     kafkaAuthenticationMethods?: outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
@@ -2340,7 +2362,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaConnect?: boolean;
     /**
-     * Kafka Connect configuration values.
+     * Kafka Connect configuration values
      */
     kafkaConnectConfig?: outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
     /**
@@ -2352,7 +2374,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaRestAuthorization?: boolean;
     /**
-     * Kafka REST configuration.
+     * Kafka REST configuration
      */
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
     /**
@@ -2360,15 +2382,15 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetKafkaKafkaUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetKafkaKafkaUserConfigPublicAccess;
     /**
@@ -2376,7 +2398,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     schemaRegistry?: boolean;
     /**
-     * Schema Registry configuration.
+     * Schema Registry configuration
      */
     schemaRegistryConfig?: outputs.GetKafkaKafkaUserConfigSchemaRegistryConfig;
     /**
@@ -2388,7 +2410,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     staticIps?: boolean;
     /**
-     * Tiered storage configuration.
+     * Tiered storage configuration
      */
     tieredStorage?: outputs.GetKafkaKafkaUserConfigTieredStorage;
 }
@@ -2434,7 +2456,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     groupMinSessionTimeoutMs?: number;
     /**
-     * How long are delete records retained?.
+     * How long are delete records retained?
      */
     logCleanerDeleteRetentionMs?: number;
     /**
@@ -2490,7 +2512,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logMessageTimestampType?: string;
     /**
-     * Should pre allocate file when create new segment?.
+     * Should pre allocate file when create new segment?
      */
     logPreallocate?: boolean;
     /**
@@ -2660,7 +2682,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerMaxRequestSize?: number;
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      */
     scheduledRebalanceMaxDelayMs?: number;
     /**
@@ -2802,7 +2824,9 @@ export interface GetKafkaKafkaUserConfigTieredStorage {
      */
     enabled?: boolean;
     /**
-     * Local cache configuration.
+     * Local cache configuration
+     *
+     * @deprecated This property is deprecated.
      */
     localCache?: outputs.GetKafkaKafkaUserConfigTieredStorageLocalCache;
 }
@@ -2810,6 +2834,8 @@ export interface GetKafkaKafkaUserConfigTieredStorage {
 export interface GetKafkaKafkaUserConfigTieredStorageLocalCache {
     /**
      * Local cache size in bytes.
+     *
+     * @deprecated This property is deprecated.
      */
     size?: number;
 }
@@ -2855,10 +2881,12 @@ export interface GetKafkaMirrorMakerKafkaMirrormaker {
 export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
     /**
@@ -2868,11 +2896,11 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
     /**
@@ -3177,7 +3205,7 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetM3AggregatorM3aggregatorUserConfigIpFilterObject[];
     /**
@@ -3187,13 +3215,11 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
      * M3 major version (deprecated, use m3aggregator_version).
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     m3Version?: string;
     /**
@@ -3291,6 +3317,8 @@ export interface GetM3DbM3db {
 export interface GetM3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -3298,7 +3326,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetM3DbM3dbUserConfigIpFilterObject[];
     /**
@@ -3308,21 +3336,19 @@ export interface GetM3DbM3dbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * M3 limits.
+     * M3 limits
      */
     limits?: outputs.GetM3DbM3dbUserConfigLimits;
     /**
-     * M3 specific configuration options.
+     * M3 specific configuration options
      */
     m3?: outputs.GetM3DbM3dbUserConfigM3;
     /**
      * M3 major version (deprecated, use m3db_version).
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     m3Version?: string;
     /**
@@ -3334,11 +3360,11 @@ export interface GetM3DbM3dbUserConfig {
      */
     m3dbVersion?: string;
     /**
-     * List of M3 namespaces.
+     * List of M3 namespaces
      */
     namespaces?: outputs.GetM3DbM3dbUserConfigNamespace[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetM3DbM3dbUserConfigPrivateAccess;
     /**
@@ -3346,11 +3372,11 @@ export interface GetM3DbM3dbUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetM3DbM3dbUserConfigPublicAccess;
     /**
-     * M3 rules.
+     * M3 rules
      */
     rules?: outputs.GetM3DbM3dbUserConfigRules;
     /**
@@ -3407,7 +3433,7 @@ export interface GetM3DbM3dbUserConfigLimits {
 
 export interface GetM3DbM3dbUserConfigM3 {
     /**
-     * M3 Tag Options.
+     * M3 Tag Options
      */
     tagOptions?: outputs.GetM3DbM3dbUserConfigM3TagOptions;
 }
@@ -3429,7 +3455,7 @@ export interface GetM3DbM3dbUserConfigNamespace {
      */
     name: string;
     /**
-     * Namespace options.
+     * Namespace options
      */
     options?: outputs.GetM3DbM3dbUserConfigNamespaceOptions;
     /**
@@ -3444,9 +3470,9 @@ export interface GetM3DbM3dbUserConfigNamespace {
 
 export interface GetM3DbM3dbUserConfigNamespaceOptions {
     /**
-     * Retention options.
+     * Retention options
      */
-    retentionOptions?: outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
+    retentionOptions: outputs.GetM3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
     /**
      * Controls whether M3DB will create snapshot files for this namespace.
      */
@@ -3496,7 +3522,7 @@ export interface GetM3DbM3dbUserConfigPublicAccess {
 
 export interface GetM3DbM3dbUserConfigRules {
     /**
-     * List of M3 mapping rules.
+     * List of M3 mapping rules
      */
     mappings?: outputs.GetM3DbM3dbUserConfigRulesMapping[];
 }
@@ -3521,11 +3547,11 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
     /**
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * @deprecated Deprecated. Use `namespaces_string` instead.
      */
     namespaces?: string[];
     /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
      */
     namespacesObjects?: outputs.GetM3DbM3dbUserConfigRulesMappingNamespacesObject[];
     /**
@@ -3533,7 +3559,7 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
      */
     namespacesStrings?: string[];
     /**
-     * List of tags to be appended to matching metrics.
+     * List of tags to be appended to matching metrics
      */
     tags?: outputs.GetM3DbM3dbUserConfigRulesMappingTag[];
 }
@@ -3542,7 +3568,7 @@ export interface GetM3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
      * The resolution for the matching namespace.
      */
-    resolution?: string;
+    resolution: string;
     /**
      * The retention period of the matching namespace.
      */
@@ -3653,7 +3679,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     binlogRetentionPeriod?: number;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetMySqlMysqlUserConfigIpFilterObject[];
     /**
@@ -3663,15 +3689,15 @@ export interface GetMySqlMysqlUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: outputs.GetMySqlMysqlUserConfigMigration;
     /**
-     * mysql.conf configuration values.
+     * mysql.conf configuration values
      */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
     /**
@@ -3679,11 +3705,11 @@ export interface GetMySqlMysqlUserConfig {
      */
     mysqlVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetMySqlMysqlUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetMySqlMysqlUserConfigPrivatelinkAccess;
     /**
@@ -3691,7 +3717,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetMySqlMysqlUserConfigPublicAccess;
     /**
@@ -3780,7 +3806,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     innodbChangeBufferMaxSize?: number;
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      */
     innodbFlushNeighbors?: number;
     /**
@@ -4000,6 +4026,8 @@ export interface GetOpenSearchOpensearch {
 export interface GetOpenSearchOpensearchUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -4008,20 +4036,18 @@ export interface GetOpenSearchOpensearchUserConfig {
     customDomain?: string;
     /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     disableReplicationFactorAdjustment?: boolean;
     /**
-     * Index patterns.
+     * Index patterns
      */
     indexPatterns?: outputs.GetOpenSearchOpensearchUserConfigIndexPattern[];
     /**
-     * Template settings for all new indexes.
+     * Template settings for all new indexes
      */
     indexTemplate?: outputs.GetOpenSearchOpensearchUserConfigIndexTemplate;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetOpenSearchOpensearchUserConfigIpFilterObject[];
     /**
@@ -4031,7 +4057,7 @@ export interface GetOpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -4039,21 +4065,19 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: boolean;
     /**
-     * Use indexPatterns instead. The default value is `0`.
-     *
-     * @deprecated Usage of this field is discouraged.
+     * use indexPatterns instead. The default value is `0`.
      */
     maxIndexCount?: number;
     /**
-     * OpenSearch OpenID Connect Configuration.
+     * OpenSearch OpenID Connect Configuration
      */
     openid?: outputs.GetOpenSearchOpensearchUserConfigOpenid;
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: outputs.GetOpenSearchOpensearchUserConfigOpensearch;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
@@ -4061,11 +4085,11 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     opensearchVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetOpenSearchOpensearchUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetOpenSearchOpensearchUserConfigPrivatelinkAccess;
     /**
@@ -4073,7 +4097,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetOpenSearchOpensearchUserConfigPublicAccess;
     /**
@@ -4081,7 +4105,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
-     * OpenSearch SAML configuration.
+     * OpenSearch SAML configuration
      */
     saml?: outputs.GetOpenSearchOpensearchUserConfigSaml;
     /**
@@ -4200,7 +4224,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     actionDestructiveRequiresName?: boolean;
     /**
-     * Opensearch Security Plugin Settings.
+     * Opensearch Security Plugin Settings
      */
     authFailureListeners?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
     /**
@@ -4212,7 +4236,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
     /**
-     * This should be identical to the Sender name defined in Opensearch dashboards.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      */
     emailSenderName?: string;
     /**
@@ -4358,12 +4382,9 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
 }
 
 export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
-    /**
-     * .
-     */
     internalAuthenticationBackendLimiting?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting;
     /**
-     * IP address rate limiting settings.
+     * IP address rate limiting settings
      */
     ipRateLimiting?: outputs.GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting;
 }
@@ -4374,7 +4395,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     allowedTries?: number;
     /**
-     * The internal backend. Enter `internal`.
+     * internal_authentication_backend_limiting.authentication_backend.
      */
     authenticationBackend?: string;
     /**
@@ -4382,7 +4403,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     blockExpirySeconds?: number;
     /**
-     * The maximum number of blocked IP addresses.
+     * internal_authentication_backend_limiting.max_blocked_clients.
      */
     maxBlockedClients?: number;
     /**
@@ -4394,7 +4415,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     timeWindowSeconds?: number;
     /**
-     * The type of rate limiting.
+     * internal_authentication_backend_limiting.type.
      */
     type?: string;
 }
@@ -4646,7 +4667,7 @@ export interface GetPgPgUserConfig {
      */
     enableIpv6?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetPgPgUserConfigIpFilterObject[];
     /**
@@ -4656,31 +4677,29 @@ export interface GetPgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: outputs.GetPgPgUserConfigMigration;
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: outputs.GetPgPgUserConfigPg;
     /**
-     * System-wide settings for the pgQualstats extension.
+     * System-wide settings for the pgQualstats extension
+     *
+     * @deprecated This property is deprecated.
      */
     pgQualstats?: outputs.GetPgPgUserConfigPgQualstats;
     /**
-     * Use readReplica service integration instead.
-     *
-     * @deprecated Usage of this field is discouraged.
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      */
     pgReadReplica?: boolean;
     /**
      * Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     pgServiceToForkFrom?: string;
     /**
@@ -4692,19 +4711,19 @@ export interface GetPgPgUserConfig {
      */
     pgVersion?: string;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
     /**
-     * System-wide settings for pglookout.
+     * System-wide settings for pglookout
      */
     pglookout?: outputs.GetPgPgUserConfigPglookout;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetPgPgUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetPgPgUserConfigPrivatelinkAccess;
     /**
@@ -4712,7 +4731,7 @@ export interface GetPgPgUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetPgPgUserConfigPublicAccess;
     /**
@@ -4740,7 +4759,7 @@ export interface GetPgPgUserConfig {
      */
     synchronousReplication?: string;
     /**
-     * System-wide settings for the timescaledb extension.
+     * System-wide settings for the timescaledb extension
      */
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
     /**
@@ -4805,7 +4824,7 @@ export interface GetPgPgUserConfigPg {
      */
     autovacuumAnalyzeScaleFactor?: number;
     /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      */
     autovacuumAnalyzeThreshold?: number;
     /**
@@ -5001,29 +5020,39 @@ export interface GetPgPgUserConfigPg {
 export interface GetPgPgUserConfigPgQualstats {
     /**
      * Enable / Disable pg_qualstats. The default value is `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     enabled?: boolean;
     /**
      * Error estimation num threshold to save quals. The default value is `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     minErrEstimateNum?: number;
     /**
      * Error estimation ratio threshold to save quals. The default value is `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     minErrEstimateRatio?: number;
     /**
      * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     trackConstants?: boolean;
     /**
      * Track quals on system catalogs too. The default value is `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     trackPgCatalog?: boolean;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
      */
     autodbIdleTimeout?: number;
     /**
@@ -5031,11 +5060,11 @@ export interface GetPgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: number;
     /**
-     * PGBouncer pool mode.
+     * PGBouncer pool mode. The default value is `transaction`.
      */
     autodbPoolMode?: string;
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
      */
     autodbPoolSize?: number;
     /**
@@ -5043,19 +5072,19 @@ export interface GetPgPgUserConfigPgbouncer {
      */
     ignoreStartupParameters?: string[];
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
      */
     minPoolSize?: number;
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
      */
     serverIdleTimeout?: number;
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
      */
     serverLifetime?: number;
     /**
-     * Run serverResetQuery (DISCARD ALL) in all pooling modes.
+     * Run serverResetQuery (DISCARD ALL) in all pooling modes. The default value is `false`.
      */
     serverResetQueryAlways?: boolean;
 }
@@ -5200,10 +5229,12 @@ export interface GetRedisRedi {
 export interface GetRedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GetRedisRedisUserConfigIpFilterObject[];
     /**
@@ -5213,19 +5244,19 @@ export interface GetRedisRedisUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: outputs.GetRedisRedisUserConfigMigration;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GetRedisRedisUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GetRedisRedisUserConfigPrivatelinkAccess;
     /**
@@ -5233,7 +5264,7 @@ export interface GetRedisRedisUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GetRedisRedisUserConfigPublicAccess;
     /**
@@ -5783,11 +5814,19 @@ export interface GetServiceIntegrationEndpointExternalPostgresql {
     /**
      * Password.
      */
-    password: string;
+    password?: string;
     /**
      * Port number of the server.
      */
     port: number;
+    /**
+     * Client certificate.
+     */
+    sslClientCertificate?: string;
+    /**
+     * Client key.
+     */
+    sslClientKey?: string;
     /**
      * SSL Mode. The default value is `verify-full`.
      */
@@ -6139,6 +6178,8 @@ export interface GrafanaGrafana {
 export interface GrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -6162,7 +6203,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     allowEmbedding?: boolean;
     /**
-     * Azure AD OAuth integration.
+     * Azure AD OAuth integration
      */
     authAzuread?: outputs.GrafanaGrafanaUserConfigAuthAzuread;
     /**
@@ -6170,19 +6211,19 @@ export interface GrafanaGrafanaUserConfig {
      */
     authBasicEnabled?: boolean;
     /**
-     * Generic OAuth integration.
+     * Generic OAuth integration
      */
     authGenericOauth?: outputs.GrafanaGrafanaUserConfigAuthGenericOauth;
     /**
-     * Github Auth integration.
+     * Github Auth integration
      */
     authGithub?: outputs.GrafanaGrafanaUserConfigAuthGithub;
     /**
-     * GitLab Auth integration.
+     * GitLab Auth integration
      */
     authGitlab?: outputs.GrafanaGrafanaUserConfigAuthGitlab;
     /**
-     * Google Auth integration.
+     * Google Auth integration
      */
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
     /**
@@ -6214,7 +6255,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     dataproxyTimeout?: number;
     /**
-     * Grafana date format specifications.
+     * Grafana date format specifications
      */
     dateFormats?: outputs.GrafanaGrafanaUserConfigDateFormats;
     /**
@@ -6226,7 +6267,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     editorsCanAdmin?: boolean;
     /**
-     * External image store settings.
+     * External image store settings
      */
     externalImageStorage?: outputs.GrafanaGrafanaUserConfigExternalImageStorage;
     /**
@@ -6234,7 +6275,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     googleAnalyticsUaId?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.GrafanaGrafanaUserConfigIpFilterObject[];
     /**
@@ -6244,7 +6285,7 @@ export interface GrafanaGrafanaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -6256,11 +6297,11 @@ export interface GrafanaGrafanaUserConfig {
      */
     oauthAllowInsecureEmailLookup?: boolean;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.GrafanaGrafanaUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.GrafanaGrafanaUserConfigPrivatelinkAccess;
     /**
@@ -6268,7 +6309,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.GrafanaGrafanaUserConfigPublicAccess;
     /**
@@ -6284,7 +6325,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     serviceToForkFrom?: string;
     /**
-     * SMTP server settings.
+     * SMTP server settings
      */
     smtpServer?: outputs.GrafanaGrafanaUserConfigSmtpServer;
     /**
@@ -6426,7 +6467,7 @@ export interface GrafanaGrafanaUserConfigAuthGitlab {
     /**
      * Require users to belong to one of given groups.
      */
-    allowedGroups?: string[];
+    allowedGroups: string[];
     /**
      * API URL. This only needs to be set when using self hosted GitLab.
      */
@@ -6457,7 +6498,7 @@ export interface GrafanaGrafanaUserConfigAuthGoogle {
     /**
      * Domains allowed to sign-in to this Grafana.
      */
-    allowedDomains?: string[];
+    allowedDomains: string[];
     /**
      * Client ID from provider.
      */
@@ -6663,6 +6704,8 @@ export interface InfluxDbInfluxdb {
 export interface InfluxDbInfluxdbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -6670,11 +6713,11 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     customDomain?: string;
     /**
-     * influxdb.conf configuration values.
+     * influxdb.conf configuration values
      */
     influxdb?: outputs.InfluxDbInfluxdbUserConfigInfluxdb;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.InfluxDbInfluxdbUserConfigIpFilterObject[];
     /**
@@ -6684,15 +6727,15 @@ export interface InfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.InfluxDbInfluxdbUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.InfluxDbInfluxdbUserConfigPrivatelinkAccess;
     /**
@@ -6700,7 +6743,7 @@ export interface InfluxDbInfluxdbUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.InfluxDbInfluxdbUserConfigPublicAccess;
     /**
@@ -6727,7 +6770,7 @@ export interface InfluxDbInfluxdbUserConfigInfluxdb {
      */
     logQueriesAfter?: number;
     /**
-     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max*connection*limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
+     * Maximum number of connections to InfluxDB. Setting this to 0 (default) means no limit. If using max_connection_limit, it is recommended to set the value to be large enough in order to not block clients unnecessarily.
      */
     maxConnectionLimit?: number;
     /**
@@ -6765,21 +6808,21 @@ export interface InfluxDbInfluxdbUserConfigIpFilterObject {
 
 export interface InfluxDbInfluxdbUserConfigPrivateAccess {
     /**
-     * influxdb.conf configuration values.
+     * Allow clients to connect to influxdb with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     influxdb?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigPrivatelinkAccess {
     /**
-     * influxdb.conf configuration values.
+     * Enable influxdb.
      */
     influxdb?: boolean;
 }
 
 export interface InfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * influxdb.conf configuration values.
+     * Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     influxdb?: boolean;
 }
@@ -6889,10 +6932,12 @@ export interface KafkaConnectKafkaConnect {
 export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.KafkaConnectKafkaConnectUserConfigIpFilterObject[];
     /**
@@ -6902,23 +6947,23 @@ export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka Connect configuration values.
+     * Kafka Connect configuration values
      */
     kafkaConnect?: outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
     /**
@@ -7000,7 +7045,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerMaxRequestSize?: number;
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      */
     scheduledRebalanceMaxDelayMs?: number;
     /**
@@ -7112,6 +7157,8 @@ export interface KafkaKafka {
 export interface KafkaKafkaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -7123,7 +7170,7 @@ export interface KafkaKafkaUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.KafkaKafkaUserConfigIpFilterObject[];
     /**
@@ -7133,15 +7180,15 @@ export interface KafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: outputs.KafkaKafkaUserConfigKafka;
     /**
-     * Kafka authentication methods.
+     * Kafka authentication methods
      */
     kafkaAuthenticationMethods?: outputs.KafkaKafkaUserConfigKafkaAuthenticationMethods;
     /**
@@ -7149,7 +7196,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaConnect?: boolean;
     /**
-     * Kafka Connect configuration values.
+     * Kafka Connect configuration values
      */
     kafkaConnectConfig?: outputs.KafkaKafkaUserConfigKafkaConnectConfig;
     /**
@@ -7161,7 +7208,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaRestAuthorization?: boolean;
     /**
-     * Kafka REST configuration.
+     * Kafka REST configuration
      */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
     /**
@@ -7169,15 +7216,15 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.KafkaKafkaUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.KafkaKafkaUserConfigPrivatelinkAccess;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.KafkaKafkaUserConfigPublicAccess;
     /**
@@ -7185,7 +7232,7 @@ export interface KafkaKafkaUserConfig {
      */
     schemaRegistry?: boolean;
     /**
-     * Schema Registry configuration.
+     * Schema Registry configuration
      */
     schemaRegistryConfig?: outputs.KafkaKafkaUserConfigSchemaRegistryConfig;
     /**
@@ -7197,7 +7244,7 @@ export interface KafkaKafkaUserConfig {
      */
     staticIps?: boolean;
     /**
-     * Tiered storage configuration.
+     * Tiered storage configuration
      */
     tieredStorage?: outputs.KafkaKafkaUserConfigTieredStorage;
 }
@@ -7243,7 +7290,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     groupMinSessionTimeoutMs?: number;
     /**
-     * How long are delete records retained?.
+     * How long are delete records retained?
      */
     logCleanerDeleteRetentionMs?: number;
     /**
@@ -7299,7 +7346,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logMessageTimestampType?: string;
     /**
-     * Should pre allocate file when create new segment?.
+     * Should pre allocate file when create new segment?
      */
     logPreallocate?: boolean;
     /**
@@ -7469,7 +7516,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerMaxRequestSize?: number;
     /**
-     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+     * The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
      */
     scheduledRebalanceMaxDelayMs?: number;
     /**
@@ -7523,7 +7570,7 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
 
 export interface KafkaKafkaUserConfigPrivateAccess {
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: boolean;
     /**
@@ -7550,7 +7597,7 @@ export interface KafkaKafkaUserConfigPrivatelinkAccess {
      */
     jolokia?: boolean;
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: boolean;
     /**
@@ -7573,7 +7620,7 @@ export interface KafkaKafkaUserConfigPrivatelinkAccess {
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
-     * Kafka broker configuration values.
+     * Kafka broker configuration values
      */
     kafka?: boolean;
     /**
@@ -7611,7 +7658,9 @@ export interface KafkaKafkaUserConfigTieredStorage {
      */
     enabled?: boolean;
     /**
-     * Local cache configuration.
+     * Local cache configuration
+     *
+     * @deprecated This property is deprecated.
      */
     localCache?: outputs.KafkaKafkaUserConfigTieredStorageLocalCache;
 }
@@ -7619,6 +7668,8 @@ export interface KafkaKafkaUserConfigTieredStorage {
 export interface KafkaKafkaUserConfigTieredStorageLocalCache {
     /**
      * Local cache size in bytes.
+     *
+     * @deprecated This property is deprecated.
      */
     size?: number;
 }
@@ -7664,10 +7715,12 @@ export interface KafkaMirrorMakerKafkaMirrormaker {
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObject[];
     /**
@@ -7677,11 +7730,11 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker;
     /**
@@ -7986,7 +8039,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.M3AggregatorM3aggregatorUserConfigIpFilterObject[];
     /**
@@ -7996,13 +8049,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
      * M3 major version (deprecated, use m3aggregator_version).
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     m3Version?: string;
     /**
@@ -8100,6 +8151,8 @@ export interface M3DbM3db {
 export interface M3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -8107,7 +8160,7 @@ export interface M3DbM3dbUserConfig {
      */
     customDomain?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.M3DbM3dbUserConfigIpFilterObject[];
     /**
@@ -8117,21 +8170,19 @@ export interface M3DbM3dbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * M3 limits.
+     * M3 limits
      */
     limits?: outputs.M3DbM3dbUserConfigLimits;
     /**
-     * M3 specific configuration options.
+     * M3 specific configuration options
      */
     m3?: outputs.M3DbM3dbUserConfigM3;
     /**
      * M3 major version (deprecated, use m3db_version).
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     m3Version?: string;
     /**
@@ -8143,11 +8194,11 @@ export interface M3DbM3dbUserConfig {
      */
     m3dbVersion?: string;
     /**
-     * List of M3 namespaces.
+     * List of M3 namespaces
      */
     namespaces?: outputs.M3DbM3dbUserConfigNamespace[];
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.M3DbM3dbUserConfigPrivateAccess;
     /**
@@ -8155,11 +8206,11 @@ export interface M3DbM3dbUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.M3DbM3dbUserConfigPublicAccess;
     /**
-     * M3 rules.
+     * M3 rules
      */
     rules?: outputs.M3DbM3dbUserConfigRules;
     /**
@@ -8216,7 +8267,7 @@ export interface M3DbM3dbUserConfigLimits {
 
 export interface M3DbM3dbUserConfigM3 {
     /**
-     * M3 Tag Options.
+     * M3 Tag Options
      */
     tagOptions?: outputs.M3DbM3dbUserConfigM3TagOptions;
 }
@@ -8238,7 +8289,7 @@ export interface M3DbM3dbUserConfigNamespace {
      */
     name: string;
     /**
-     * Namespace options.
+     * Namespace options
      */
     options?: outputs.M3DbM3dbUserConfigNamespaceOptions;
     /**
@@ -8253,9 +8304,9 @@ export interface M3DbM3dbUserConfigNamespace {
 
 export interface M3DbM3dbUserConfigNamespaceOptions {
     /**
-     * Retention options.
+     * Retention options
      */
-    retentionOptions?: outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
+    retentionOptions: outputs.M3DbM3dbUserConfigNamespaceOptionsRetentionOptions;
     /**
      * Controls whether M3DB will create snapshot files for this namespace.
      */
@@ -8305,7 +8356,7 @@ export interface M3DbM3dbUserConfigPublicAccess {
 
 export interface M3DbM3dbUserConfigRules {
     /**
-     * List of M3 mapping rules.
+     * List of M3 mapping rules
      */
     mappings?: outputs.M3DbM3dbUserConfigRulesMapping[];
 }
@@ -8330,11 +8381,11 @@ export interface M3DbM3dbUserConfigRulesMapping {
     /**
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with namespaces_string instead.
+     * @deprecated Deprecated. Use `namespaces_string` instead.
      */
     namespaces?: string[];
     /**
-     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution.
+     * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by exact match of retention period and resolution
      */
     namespacesObjects?: outputs.M3DbM3dbUserConfigRulesMappingNamespacesObject[];
     /**
@@ -8342,7 +8393,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
      */
     namespacesStrings?: string[];
     /**
-     * List of tags to be appended to matching metrics.
+     * List of tags to be appended to matching metrics
      */
     tags?: outputs.M3DbM3dbUserConfigRulesMappingTag[];
 }
@@ -8351,7 +8402,7 @@ export interface M3DbM3dbUserConfigRulesMappingNamespacesObject {
     /**
      * The resolution for the matching namespace.
      */
-    resolution?: string;
+    resolution: string;
     /**
      * The retention period of the matching namespace.
      */
@@ -8462,7 +8513,7 @@ export interface MySqlMysqlUserConfig {
      */
     binlogRetentionPeriod?: number;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.MySqlMysqlUserConfigIpFilterObject[];
     /**
@@ -8472,15 +8523,15 @@ export interface MySqlMysqlUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: outputs.MySqlMysqlUserConfigMigration;
     /**
-     * mysql.conf configuration values.
+     * mysql.conf configuration values
      */
     mysql?: outputs.MySqlMysqlUserConfigMysql;
     /**
@@ -8488,11 +8539,11 @@ export interface MySqlMysqlUserConfig {
      */
     mysqlVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.MySqlMysqlUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.MySqlMysqlUserConfigPrivatelinkAccess;
     /**
@@ -8500,7 +8551,7 @@ export interface MySqlMysqlUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.MySqlMysqlUserConfigPublicAccess;
     /**
@@ -8589,7 +8640,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     innodbChangeBufferMaxSize?: number;
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed,  1 - flush contiguous dirty pages in the same extent,  2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
      */
     innodbFlushNeighbors?: number;
     /**
@@ -8809,6 +8860,8 @@ export interface OpenSearchOpensearch {
 export interface OpenSearchOpensearchUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
@@ -8817,20 +8870,18 @@ export interface OpenSearchOpensearchUserConfig {
     customDomain?: string;
     /**
      * Disable automatic replication factor adjustment for multi-node services. By default, Aiven ensures all indexes are replicated at least to two nodes. Note: Due to potential data loss in case of losing a service node, this setting can no longer be activated.
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     disableReplicationFactorAdjustment?: boolean;
     /**
-     * Index patterns.
+     * Index patterns
      */
     indexPatterns?: outputs.OpenSearchOpensearchUserConfigIndexPattern[];
     /**
-     * Template settings for all new indexes.
+     * Template settings for all new indexes
      */
     indexTemplate?: outputs.OpenSearchOpensearchUserConfigIndexTemplate;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.OpenSearchOpensearchUserConfigIpFilterObject[];
     /**
@@ -8840,7 +8891,7 @@ export interface OpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
@@ -8848,21 +8899,19 @@ export interface OpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: boolean;
     /**
-     * Use indexPatterns instead. The default value is `0`.
-     *
-     * @deprecated Usage of this field is discouraged.
+     * use indexPatterns instead. The default value is `0`.
      */
     maxIndexCount?: number;
     /**
-     * OpenSearch OpenID Connect Configuration.
+     * OpenSearch OpenID Connect Configuration
      */
     openid?: outputs.OpenSearchOpensearchUserConfigOpenid;
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: outputs.OpenSearchOpensearchUserConfigOpensearch;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
@@ -8870,11 +8919,11 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchVersion?: string;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.OpenSearchOpensearchUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.OpenSearchOpensearchUserConfigPrivatelinkAccess;
     /**
@@ -8882,7 +8931,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.OpenSearchOpensearchUserConfigPublicAccess;
     /**
@@ -8890,7 +8939,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
-     * OpenSearch SAML configuration.
+     * OpenSearch SAML configuration
      */
     saml?: outputs.OpenSearchOpensearchUserConfigSaml;
     /**
@@ -9009,7 +9058,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     actionDestructiveRequiresName?: boolean;
     /**
-     * Opensearch Security Plugin Settings.
+     * Opensearch Security Plugin Settings
      */
     authFailureListeners?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners;
     /**
@@ -9021,7 +9070,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     clusterRoutingAllocationNodeConcurrentRecoveries?: number;
     /**
-     * This should be identical to the Sender name defined in Opensearch dashboards.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      */
     emailSenderName?: string;
     /**
@@ -9167,12 +9216,9 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners {
-    /**
-     * .
-     */
     internalAuthenticationBackendLimiting?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimiting;
     /**
-     * IP address rate limiting settings.
+     * IP address rate limiting settings
      */
     ipRateLimiting?: outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting;
 }
@@ -9183,7 +9229,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     allowedTries?: number;
     /**
-     * The internal backend. Enter `internal`.
+     * internal*authentication*backend*limiting.authentication*backend.
      */
     authenticationBackend?: string;
     /**
@@ -9191,7 +9237,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     blockExpirySeconds?: number;
     /**
-     * The maximum number of blocked IP addresses.
+     * internal*authentication*backend*limiting.max*blocked_clients.
      */
     maxBlockedClients?: number;
     /**
@@ -9203,7 +9249,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     timeWindowSeconds?: number;
     /**
-     * The type of rate limiting.
+     * internal*authentication*backend_limiting.type.
      */
     type?: string;
 }
@@ -9218,7 +9264,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     blockExpirySeconds?: number;
     /**
-     * The maximum number of blocked IP addresses.
+     * internal*authentication*backend*limiting.max*blocked_clients.
      */
     maxBlockedClients?: number;
     /**
@@ -9230,7 +9276,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     timeWindowSeconds?: number;
     /**
-     * The type of rate limiting.
+     * internal*authentication*backend_limiting.type.
      */
     type?: string;
 }
@@ -9252,11 +9298,11 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: boolean;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: boolean;
     /**
@@ -9267,11 +9313,11 @@ export interface OpenSearchOpensearchUserConfigPrivateAccess {
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: boolean;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: boolean;
     /**
@@ -9282,11 +9328,11 @@ export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * OpenSearch settings.
+     * OpenSearch settings
      */
     opensearch?: boolean;
     /**
-     * OpenSearch Dashboards settings.
+     * OpenSearch Dashboards settings
      */
     opensearchDashboards?: boolean;
     /**
@@ -9474,7 +9520,7 @@ export interface PgPgUserConfig {
      */
     enableIpv6?: boolean;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.PgPgUserConfigIpFilterObject[];
     /**
@@ -9484,31 +9530,29 @@ export interface PgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: outputs.PgPgUserConfigMigration;
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: outputs.PgPgUserConfigPg;
     /**
-     * System-wide settings for the pg*qualstats extension.
+     * System-wide settings for the pg*qualstats extension
+     *
+     * @deprecated This property is deprecated.
      */
     pgQualstats?: outputs.PgPgUserConfigPgQualstats;
     /**
-     * Use readReplica service integration instead.
-     *
-     * @deprecated Usage of this field is discouraged.
+     * Should the service which is being forked be a read replica (deprecated, use readReplica service integration instead).
      */
     pgReadReplica?: boolean;
     /**
      * Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
-     *
-     * @deprecated Usage of this field is discouraged.
      */
     pgServiceToForkFrom?: string;
     /**
@@ -9520,19 +9564,19 @@ export interface PgPgUserConfig {
      */
     pgVersion?: string;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: outputs.PgPgUserConfigPgbouncer;
     /**
-     * System-wide settings for pglookout.
+     * System-wide settings for pglookout
      */
     pglookout?: outputs.PgPgUserConfigPglookout;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.PgPgUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.PgPgUserConfigPrivatelinkAccess;
     /**
@@ -9540,7 +9584,7 @@ export interface PgPgUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.PgPgUserConfigPublicAccess;
     /**
@@ -9568,7 +9612,7 @@ export interface PgPgUserConfig {
      */
     synchronousReplication?: string;
     /**
-     * System-wide settings for the timescaledb extension.
+     * System-wide settings for the timescaledb extension
      */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
     /**
@@ -9633,7 +9677,7 @@ export interface PgPgUserConfigPg {
      */
     autovacuumAnalyzeScaleFactor?: number;
     /**
-     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an  ANALYZE in any one table. The default is 50 tuples.
+     * Specifies the minimum number of inserted, updated or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      */
     autovacuumAnalyzeThreshold?: number;
     /**
@@ -9829,29 +9873,39 @@ export interface PgPgUserConfigPg {
 export interface PgPgUserConfigPgQualstats {
     /**
      * Enable / Disable pg_qualstats. The default value is `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     enabled?: boolean;
     /**
      * Error estimation num threshold to save quals. The default value is `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     minErrEstimateNum?: number;
     /**
      * Error estimation ratio threshold to save quals. The default value is `0`.
+     *
+     * @deprecated This property is deprecated.
      */
     minErrEstimateRatio?: number;
     /**
      * Enable / Disable pgQualstats constants tracking. The default value is `true`.
+     *
+     * @deprecated This property is deprecated.
      */
     trackConstants?: boolean;
     /**
      * Track quals on system catalogs too. The default value is `false`.
+     *
+     * @deprecated This property is deprecated.
      */
     trackPgCatalog?: boolean;
 }
 
 export interface PgPgUserConfigPgbouncer {
     /**
-     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds).
+     * If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
      */
     autodbIdleTimeout?: number;
     /**
@@ -9859,11 +9913,11 @@ export interface PgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: number;
     /**
-     * PGBouncer pool mode.
+     * PGBouncer pool mode. The default value is `transaction`.
      */
     autodbPoolMode?: string;
     /**
-     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist.
+     * If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
      */
     autodbPoolSize?: number;
     /**
@@ -9871,19 +9925,19 @@ export interface PgPgUserConfigPgbouncer {
      */
     ignoreStartupParameters?: string[];
     /**
-     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size.
+     * Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
      */
     minPoolSize?: number;
     /**
-     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds).
+     * If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
      */
     serverIdleTimeout?: number;
     /**
-     * The pooler will close an unused server connection that has been connected longer than this. (seconds).
+     * The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
      */
     serverLifetime?: number;
     /**
-     * Run server*reset*query (DISCARD ALL) in all pooling modes.
+     * Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
      */
     serverResetQueryAlways?: boolean;
 }
@@ -9897,11 +9951,11 @@ export interface PgPgUserConfigPglookout {
 
 export interface PgPgUserConfigPrivateAccess {
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: boolean;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: boolean;
     /**
@@ -9912,11 +9966,11 @@ export interface PgPgUserConfigPrivateAccess {
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: boolean;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: boolean;
     /**
@@ -9927,11 +9981,11 @@ export interface PgPgUserConfigPrivatelinkAccess {
 
 export interface PgPgUserConfigPublicAccess {
     /**
-     * postgresql.conf configuration values.
+     * postgresql.conf configuration values
      */
     pg?: boolean;
     /**
-     * PGBouncer connection pooling settings.
+     * PGBouncer connection pooling settings
      */
     pgbouncer?: boolean;
     /**
@@ -10028,10 +10082,12 @@ export interface RedisRedi {
 export interface RedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
+     *
+     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: string;
     /**
-     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
      */
     ipFilterObjects?: outputs.RedisRedisUserConfigIpFilterObject[];
     /**
@@ -10041,19 +10097,19 @@ export interface RedisRedisUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * @deprecated Deprecated. Use `ip_filter_string` instead.
      */
     ipFilters?: string[];
     /**
-     * Migrate data from existing server.
+     * Migrate data from existing server
      */
     migration?: outputs.RedisRedisUserConfigMigration;
     /**
-     * Allow access to selected service ports from private networks.
+     * Allow access to selected service ports from private networks
      */
     privateAccess?: outputs.RedisRedisUserConfigPrivateAccess;
     /**
-     * Allow access to selected service components through Privatelink.
+     * Allow access to selected service components through Privatelink
      */
     privatelinkAccess?: outputs.RedisRedisUserConfigPrivatelinkAccess;
     /**
@@ -10061,7 +10117,7 @@ export interface RedisRedisUserConfig {
      */
     projectToForkFrom?: string;
     /**
-     * Allow access to selected service ports from the public Internet.
+     * Allow access to selected service ports from the public Internet
      */
     publicAccess?: outputs.RedisRedisUserConfigPublicAccess;
     /**
@@ -10611,11 +10667,19 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
     /**
      * Password.
      */
-    password: string;
+    password?: string;
     /**
      * Port number of the server.
      */
     port: number;
+    /**
+     * Client certificate.
+     */
+    sslClientCertificate?: string;
+    /**
+     * Client key.
+     */
+    sslClientKey?: string;
     /**
      * SSL Mode. The default value is `verify-full`.
      */

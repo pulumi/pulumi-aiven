@@ -26,7 +26,11 @@ public final class KafkaKafkaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Allow access to read Kafka topic messages in the Aiven Console and REST API.
@@ -39,7 +43,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable String customDomain;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     private @Nullable List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
@@ -52,18 +56,18 @@ public final class KafkaKafkaUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafka kafka;
     /**
-     * @return Kafka authentication methods.
+     * @return Kafka authentication methods
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
@@ -73,7 +77,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable Boolean kafkaConnect;
     /**
-     * @return Kafka Connect configuration values.
+     * @return Kafka Connect configuration values
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
@@ -88,7 +92,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable Boolean kafkaRestAuthorization;
     /**
-     * @return Kafka REST configuration.
+     * @return Kafka REST configuration
      * 
      */
     private @Nullable KafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
@@ -98,17 +102,17 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable String kafkaVersion;
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     private @Nullable KafkaKafkaUserConfigPrivateAccess privateAccess;
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     private @Nullable KafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     private @Nullable KafkaKafkaUserConfigPublicAccess publicAccess;
@@ -118,7 +122,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable Boolean schemaRegistry;
     /**
-     * @return Schema Registry configuration.
+     * @return Schema Registry configuration
      * 
      */
     private @Nullable KafkaKafkaUserConfigSchemaRegistryConfig schemaRegistryConfig;
@@ -133,7 +137,7 @@ public final class KafkaKafkaUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return Tiered storage configuration.
+     * @return Tiered storage configuration
      * 
      */
     private @Nullable KafkaKafkaUserConfigTieredStorage tieredStorage;
@@ -142,7 +146,11 @@ public final class KafkaKafkaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -161,7 +169,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public List<KafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
@@ -178,22 +186,22 @@ public final class KafkaKafkaUserConfig {
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public List<String> ipFilters() {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return Kafka broker configuration values.
+     * @return Kafka broker configuration values
      * 
      */
     public Optional<KafkaKafkaUserConfigKafka> kafka() {
         return Optional.ofNullable(this.kafka);
     }
     /**
-     * @return Kafka authentication methods.
+     * @return Kafka authentication methods
      * 
      */
     public Optional<KafkaKafkaUserConfigKafkaAuthenticationMethods> kafkaAuthenticationMethods() {
@@ -207,7 +215,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
-     * @return Kafka Connect configuration values.
+     * @return Kafka Connect configuration values
      * 
      */
     public Optional<KafkaKafkaUserConfigKafkaConnectConfig> kafkaConnectConfig() {
@@ -228,7 +236,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaRestAuthorization);
     }
     /**
-     * @return Kafka REST configuration.
+     * @return Kafka REST configuration
      * 
      */
     public Optional<KafkaKafkaUserConfigKafkaRestConfig> kafkaRestConfig() {
@@ -242,21 +250,21 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaVersion);
     }
     /**
-     * @return Allow access to selected service ports from private networks.
+     * @return Allow access to selected service ports from private networks
      * 
      */
     public Optional<KafkaKafkaUserConfigPrivateAccess> privateAccess() {
         return Optional.ofNullable(this.privateAccess);
     }
     /**
-     * @return Allow access to selected service components through Privatelink.
+     * @return Allow access to selected service components through Privatelink
      * 
      */
     public Optional<KafkaKafkaUserConfigPrivatelinkAccess> privatelinkAccess() {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Allow access to selected service ports from the public Internet.
+     * @return Allow access to selected service ports from the public Internet
      * 
      */
     public Optional<KafkaKafkaUserConfigPublicAccess> publicAccess() {
@@ -270,7 +278,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.schemaRegistry);
     }
     /**
-     * @return Schema Registry configuration.
+     * @return Schema Registry configuration
      * 
      */
     public Optional<KafkaKafkaUserConfigSchemaRegistryConfig> schemaRegistryConfig() {
@@ -291,7 +299,7 @@ public final class KafkaKafkaUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return Tiered storage configuration.
+     * @return Tiered storage configuration
      * 
      */
     public Optional<KafkaKafkaUserConfigTieredStorage> tieredStorage() {

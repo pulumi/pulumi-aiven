@@ -34,14 +34,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
      * 
      */
     public Optional<Output<List<M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -67,10 +67,10 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
      * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     @Import(name="ipFilters")
     private @Nullable Output<List<String>> ipFilters;
 
@@ -78,10 +78,10 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
      * 
      * @deprecated
-     * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+     * Deprecated. Use `ip_filter_string` instead.
      * 
      */
-    @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+    @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     public Optional<Output<List<String>>> ipFilters() {
         return Optional.ofNullable(this.ipFilters);
     }
@@ -89,22 +89,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     /**
      * M3 major version (deprecated, use m3aggregator_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
     /**
      * @return M3 major version (deprecated, use m3aggregator_version).
      * 
-     * @deprecated
-     * Usage of this field is discouraged.
-     * 
      */
-    @Deprecated /* Usage of this field is discouraged. */
     public Optional<Output<String>> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
@@ -207,7 +199,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -218,7 +210,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -228,7 +220,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
          * 
          * @return builder
          * 
@@ -274,10 +266,10 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(@Nullable Output<List<String>> ipFilters) {
             $.ipFilters = ipFilters;
             return this;
@@ -289,10 +281,10 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(List<String> ipFilters) {
             return ipFilters(Output.of(ipFilters));
         }
@@ -303,10 +295,10 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
          * @return builder
          * 
          * @deprecated
-         * This will be removed in v5.0.0 and replaced with ip_filter_string instead.
+         * Deprecated. Use `ip_filter_string` instead.
          * 
          */
-        @Deprecated /* This will be removed in v5.0.0 and replaced with ip_filter_string instead. */
+        @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
         public Builder ipFilters(String... ipFilters) {
             return ipFilters(List.of(ipFilters));
         }
@@ -316,11 +308,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder m3Version(@Nullable Output<String> m3Version) {
             $.m3Version = m3Version;
             return this;
@@ -331,11 +319,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
          * 
          * @return builder
          * 
-         * @deprecated
-         * Usage of this field is discouraged.
-         * 
          */
-        @Deprecated /* Usage of this field is discouraged. */
         public Builder m3Version(String m3Version) {
             return m3Version(Output.of(m3Version));
         }

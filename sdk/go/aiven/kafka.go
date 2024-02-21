@@ -39,7 +39,7 @@ import (
 //					KafkaRest:      pulumi.Bool(true),
 //					KafkaConnect:   pulumi.Bool(true),
 //					SchemaRegistry: pulumi.Bool(true),
-//					KafkaVersion:   pulumi.String("3.1"),
+//					KafkaVersion:   pulumi.String("3.5"),
 //					Kafka: &aiven.KafkaKafkaUserConfigKafkaArgs{
 //						GroupMaxSessionTimeoutMs: pulumi.Int(70000),
 //						LogRetentionBytes:        pulumi.Int(1000000000),
@@ -91,7 +91,7 @@ type Kafka struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
-	// Kafka broker configuration values.
+	// Kafka broker configuration values
 	Kafkas KafkaKafkaArrayOutput `pulumi:"kafkas"`
 	// Switch the service to use Karapace for schema registry and REST proxy
 	//
@@ -201,7 +201,7 @@ type kafkaState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
-	// Kafka broker configuration values.
+	// Kafka broker configuration values
 	Kafkas []KafkaKafka `pulumi:"kafkas"`
 	// Switch the service to use Karapace for schema registry and REST proxy
 	//
@@ -268,7 +268,7 @@ type KafkaState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
-	// Kafka broker configuration values.
+	// Kafka broker configuration values
 	Kafkas KafkaKafkaArrayInput
 	// Switch the service to use Karapace for schema registry and REST proxy
 	//
@@ -538,7 +538,7 @@ func (o KafkaOutput) KafkaUserConfig() KafkaKafkaUserConfigPtrOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaUserConfigPtrOutput { return v.KafkaUserConfig }).(KafkaKafkaUserConfigPtrOutput)
 }
 
-// Kafka broker configuration values.
+// Kafka broker configuration values
 func (o KafkaOutput) Kafkas() KafkaKafkaArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaArrayOutput { return v.Kafkas }).(KafkaKafkaArrayOutput)
 }

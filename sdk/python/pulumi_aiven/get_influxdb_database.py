@@ -41,9 +41,6 @@ class GetInfluxdbDatabaseResult:
     @property
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
-        """
-        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "database_name")
 
     @property
@@ -57,17 +54,11 @@ class GetInfluxdbDatabaseResult:
     @property
     @pulumi.getter
     def project(self) -> str:
-        """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
-        """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        """
         return pulumi.get(self, "service_name")
 
     @property
@@ -94,12 +85,7 @@ def get_influxdb_database(database_name: Optional[str] = None,
                           service_name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInfluxdbDatabaseResult:
     """
-    The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
-
-
-    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -122,11 +108,6 @@ def get_influxdb_database_output(database_name: Optional[pulumi.Input[str]] = No
                                  service_name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInfluxdbDatabaseResult]:
     """
-    The InfluxDB Database data source provides information about the existing Aiven InfluxDB Database.
-
-
-    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    Use this data source to access information about an existing resource.
     """
     ...

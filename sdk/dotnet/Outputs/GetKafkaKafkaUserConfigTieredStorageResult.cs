@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Local cache configuration.
+        /// Local cache configuration
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigTieredStorageLocalCacheResult? LocalCache;
 

@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Local cache configuration.
+        /// Local cache configuration
         /// </summary>
         [Input("localCache")]
         public Input<Inputs.KafkaKafkaUserConfigTieredStorageLocalCacheGetArgs>? LocalCache { get; set; }

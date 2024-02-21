@@ -32,16 +32,24 @@ public final class KafkaKafkaUserConfigTieredStorageArgs extends com.pulumi.reso
     }
 
     /**
-     * Local cache configuration.
+     * Local cache configuration
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     @Import(name="localCache")
     private @Nullable Output<KafkaKafkaUserConfigTieredStorageLocalCacheArgs> localCache;
 
     /**
-     * @return Local cache configuration.
+     * @return Local cache configuration
+     * 
+     * @deprecated
+     * This property is deprecated.
      * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<Output<KafkaKafkaUserConfigTieredStorageLocalCacheArgs>> localCache() {
         return Optional.ofNullable(this.localCache);
     }
@@ -93,22 +101,30 @@ public final class KafkaKafkaUserConfigTieredStorageArgs extends com.pulumi.reso
         }
 
         /**
-         * @param localCache Local cache configuration.
+         * @param localCache Local cache configuration
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder localCache(@Nullable Output<KafkaKafkaUserConfigTieredStorageLocalCacheArgs> localCache) {
             $.localCache = localCache;
             return this;
         }
 
         /**
-         * @param localCache Local cache configuration.
+         * @param localCache Local cache configuration
          * 
          * @return builder
          * 
+         * @deprecated
+         * This property is deprecated.
+         * 
          */
+        @Deprecated /* This property is deprecated. */
         public Builder localCache(KafkaKafkaUserConfigTieredStorageLocalCacheArgs localCache) {
             return localCache(Output.of(localCache));
         }

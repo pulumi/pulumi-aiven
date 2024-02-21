@@ -11,33 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInfluxdbDatabaseResult {
-    /**
-     * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
     private String databaseName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
     private String project;
-    /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
     private String serviceName;
     private Boolean terminationProtection;
 
     private GetInfluxdbDatabaseResult() {}
-    /**
-     * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
     public String databaseName() {
         return this.databaseName;
     }
@@ -48,17 +32,9 @@ public final class GetInfluxdbDatabaseResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
     public String project() {
         return this.project;
     }
-    /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }

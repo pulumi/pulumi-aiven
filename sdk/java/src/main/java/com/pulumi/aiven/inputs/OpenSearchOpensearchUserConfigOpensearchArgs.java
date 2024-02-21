@@ -50,14 +50,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Opensearch Security Plugin Settings.
+     * Opensearch Security Plugin Settings
      * 
      */
     @Import(name="authFailureListeners")
     private @Nullable Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs> authFailureListeners;
 
     /**
-     * @return Opensearch Security Plugin Settings.
+     * @return Opensearch Security Plugin Settings
      * 
      */
     public Optional<Output<OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersArgs>> authFailureListeners() {
@@ -95,14 +95,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * This should be identical to the Sender name defined in Opensearch dashboards.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      * 
      */
     @Import(name="emailSenderName")
     private @Nullable Output<String> emailSenderName;
 
     /**
-     * @return This should be identical to the Sender name defined in Opensearch dashboards.
+     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
      * 
      */
     public Optional<Output<String>> emailSenderName() {
@@ -741,7 +741,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param authFailureListeners Opensearch Security Plugin Settings.
+         * @param authFailureListeners Opensearch Security Plugin Settings
          * 
          * @return builder
          * 
@@ -752,7 +752,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param authFailureListeners Opensearch Security Plugin Settings.
+         * @param authFailureListeners Opensearch Security Plugin Settings
          * 
          * @return builder
          * 
@@ -804,7 +804,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderName This should be identical to the Sender name defined in Opensearch dashboards.
+         * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
          * 
          * @return builder
          * 
@@ -815,7 +815,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderName This should be identical to the Sender name defined in Opensearch dashboards.
+         * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
          * 
          * @return builder
          * 

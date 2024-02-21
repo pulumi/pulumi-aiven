@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -15,7 +16,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObject {
      * @return The resolution for the matching namespace.
      * 
      */
-    private @Nullable String resolution;
+    private String resolution;
     /**
      * @return The retention period of the matching namespace.
      * 
@@ -27,8 +28,8 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObject {
      * @return The resolution for the matching namespace.
      * 
      */
-    public Optional<String> resolution() {
-        return Optional.ofNullable(this.resolution);
+    public String resolution() {
+        return this.resolution;
     }
     /**
      * @return The retention period of the matching namespace.
@@ -47,7 +48,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObject {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable String resolution;
+        private String resolution;
         private @Nullable String retention;
         public Builder() {}
         public Builder(M3DbM3dbUserConfigRulesMappingNamespacesObject defaults) {
@@ -57,8 +58,10 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObject {
         }
 
         @CustomType.Setter
-        public Builder resolution(@Nullable String resolution) {
-
+        public Builder resolution(String resolution) {
+            if (resolution == null) {
+              throw new MissingRequiredPropertyException("M3DbM3dbUserConfigRulesMappingNamespacesObject", "resolution");
+            }
             this.resolution = resolution;
             return this;
         }

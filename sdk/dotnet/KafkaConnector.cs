@@ -33,7 +33,7 @@ namespace Pulumi.Aiven
     ///             { "connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector" },
     ///             { "type.name", "os-connector" },
     ///             { "name", "kafka-os-con1" },
-    ///             { "connection.url", aiven_elasticsearch.Os_service1.Service_uri },
+    ///             { "connection.url", aiven_opensearch.Os_service1.Service_uri },
     ///             { "connection.username", aiven_opensearch.Os_service1.Service_username },
     ///             { "connection.password", aiven_opensearch.Os_service1.Service_password },
     ///         },

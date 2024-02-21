@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InfluxDbInfluxdbUserConfigPublicAccess {
     /**
-     * @return influxdb.conf configuration values.
+     * @return Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean influxdb;
 
     private InfluxDbInfluxdbUserConfigPublicAccess() {}
     /**
-     * @return influxdb.conf configuration values.
+     * @return Allow clients to connect to influxdb from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> influxdb() {

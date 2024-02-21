@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
         /// <summary>
-        /// The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned.  Defaults to 5 minutes.
+        /// The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
         /// </summary>
         public readonly int? ScheduledRebalanceMaxDelayMs;
         /// <summary>

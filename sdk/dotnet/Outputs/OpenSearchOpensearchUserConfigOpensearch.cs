@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ActionDestructiveRequiresName;
         /// <summary>
-        /// Opensearch Security Plugin Settings.
+        /// Opensearch Security Plugin Settings
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? AuthFailureListeners;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
         /// <summary>
-        /// This should be identical to the Sender name defined in Opensearch dashboards.
+        /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
         /// </summary>
         public readonly string? EmailSenderName;
         /// <summary>

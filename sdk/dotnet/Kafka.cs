@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
     ///             KafkaRest = true,
     ///             KafkaConnect = true,
     ///             SchemaRegistry = true,
-    ///             KafkaVersion = "3.1",
+    ///             KafkaVersion = "3.5",
     ///             Kafka = new Aiven.Inputs.KafkaKafkaUserConfigKafkaArgs
     ///             {
     ///                 GroupMaxSessionTimeoutMs = 70000,
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaKafkaUserConfig?> KafkaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         [Output("kafkas")]
         public Output<ImmutableArray<Outputs.KafkaKafka>> KafkaServer { get; private set; } = null!;
@@ -496,7 +496,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaKafkaGetArgs>? _kafkas;
 
         /// <summary>
-        /// Kafka broker configuration values.
+        /// Kafka broker configuration values
         /// </summary>
         public InputList<Inputs.KafkaKafkaGetArgs> KafkaServer
         {

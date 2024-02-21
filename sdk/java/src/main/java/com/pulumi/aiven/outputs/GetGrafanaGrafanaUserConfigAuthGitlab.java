@@ -23,7 +23,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGitlab {
      * @return Require users to belong to one of given groups.
      * 
      */
-    private @Nullable List<String> allowedGroups;
+    private List<String> allowedGroups;
     /**
      * @return API URL. This only needs to be set when using self hosted GitLab.
      * 
@@ -63,7 +63,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGitlab {
      * 
      */
     public List<String> allowedGroups() {
-        return this.allowedGroups == null ? List.of() : this.allowedGroups;
+        return this.allowedGroups;
     }
     /**
      * @return API URL. This only needs to be set when using self hosted GitLab.
@@ -111,7 +111,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGitlab {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean allowSignUp;
-        private @Nullable List<String> allowedGroups;
+        private List<String> allowedGroups;
         private @Nullable String apiUrl;
         private @Nullable String authUrl;
         private String clientId;
@@ -136,8 +136,10 @@ public final class GetGrafanaGrafanaUserConfigAuthGitlab {
             return this;
         }
         @CustomType.Setter
-        public Builder allowedGroups(@Nullable List<String> allowedGroups) {
-
+        public Builder allowedGroups(List<String> allowedGroups) {
+            if (allowedGroups == null) {
+              throw new MissingRequiredPropertyException("GetGrafanaGrafanaUserConfigAuthGitlab", "allowedGroups");
+            }
             this.allowedGroups = allowedGroups;
             return this;
         }

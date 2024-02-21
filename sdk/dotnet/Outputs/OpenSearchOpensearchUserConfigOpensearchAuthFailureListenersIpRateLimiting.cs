@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BlockExpirySeconds;
         /// <summary>
-        /// The maximum number of blocked IP addresses.
+        /// internal*authentication*backend*limiting.max*blocked_clients.
         /// </summary>
         public readonly int? MaxBlockedClients;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>
-        /// The type of rate limiting.
+        /// internal*authentication*backend_limiting.type.
         /// </summary>
         public readonly string? Type;
 
