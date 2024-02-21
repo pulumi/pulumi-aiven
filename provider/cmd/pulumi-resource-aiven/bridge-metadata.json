@@ -4166,6 +4166,8 @@
                 "indexPrefix": "index_prefix"
             },
             "aiven:index/ServiceIntegrationEndpointExternalPostgresql:ServiceIntegrationEndpointExternalPostgresql": {
+                "sslClientCertificate": "ssl_client_certificate",
+                "sslClientKey": "ssl_client_key",
                 "sslMode": "ssl_mode",
                 "sslRootCert": "ssl_root_cert"
             },
@@ -6223,6 +6225,8 @@
                 "indexPrefix": "index_prefix"
             },
             "aiven:index/getServiceIntegrationEndpointExternalPostgresql:getServiceIntegrationEndpointExternalPostgresql": {
+                "sslClientCertificate": "ssl_client_certificate",
+                "sslClientKey": "ssl_client_key",
                 "sslMode": "ssl_mode",
                 "sslRootCert": "ssl_root_cert"
             },

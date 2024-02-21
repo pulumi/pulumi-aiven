@@ -68,9 +68,7 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-func refProviderLicense(license tfbridge.TFProviderLicense) *tfbridge.TFProviderLicense {
-	return &license
-}
+func ref[T any](val T) *T { return &val }
 
 func Provider(ctx context.Context) tfbridge.ProviderInfo {
 	p := pfbridge.MuxShimWithDisjointgPF(ctx,
@@ -86,13 +84,12 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 		License:           "Apache-2.0",
 		Homepage:          "https://pulumi.io",
 		Repository:        "https://github.com/pulumi/pulumi-aiven",
-		TFProviderLicense: refProviderLicense(tfbridge.MITLicenseType),
+		TFProviderLicense: ref(tfbridge.MITLicenseType),
 		UpstreamRepoPath:  "./upstream",
 		Version:           version.Version,
+		MetadataInfo:      tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
-			"api_token": {
-				Secret: tfbridge.True(),
-			},
+			"api_token": {Secret: tfbridge.True()},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"aiven_account":                               {Tok: makeResource(mainMod, "Account")},
@@ -136,22 +133,21 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
 				},
 			},
-			"aiven_influxdb": {Tok: makeResource(mainMod, "InfluxDb")},
+			"aiven_influxdb": {
+				Tok:  makeResource(mainMod, "InfluxDb"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 			"aiven_kafka": {
 				Tok: makeResource(mainMod, "Kafka"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"kafka": {
-						CSharpName: "KafkaServer",
-					},
+					"kafka": {CSharpName: "KafkaServer"},
 				},
 			},
 			"aiven_kafka_acl": {Tok: makeResource(mainMod, "KafkaAcl")},
 			"aiven_kafka_connect": {
 				Tok: makeResource(mainMod, "KafkaConnect"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"kafka_connect": {
-						CSharpName: "KafkaConnectServer",
-					},
+					"kafka_connect": {CSharpName: "KafkaConnectServer"},
 				},
 			},
 			"aiven_kafka_connector":              {Tok: makeResource(mainMod, "KafkaConnector")},
@@ -164,9 +160,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_pg": {
 				Tok: makeResource(mainMod, "Pg"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"pg": {
-						CSharpName: "PgServer",
-					},
+					"pg":           {CSharpName: "PgServer"},
 					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
 				},
 			},
@@ -216,27 +210,25 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_azure_vpc_peering_connection": {Tok: makeResource(mainMod, "AzureVpcPeeringConnection")},
 			"aiven_gcp_vpc_peering_connection":   {Tok: makeResource(mainMod, "GcpVpcPeeringConnection")},
 			"aiven_cassandra_user":               {Tok: makeResource(mainMod, "CassandraUser")},
-			"aiven_influxdb_database":            {Tok: makeResource(mainMod, "InfluxdbDatabase")},
-			"aiven_influxdb_user":                {Tok: makeResource(mainMod, "InfluxdbUser")},
-			"aiven_kafka_user":                   {Tok: makeResource(mainMod, "KafkaUser")},
-			"aiven_m3db_user":                    {Tok: makeResource(mainMod, "M3dbUser")},
-			"aiven_mysql_database":               {Tok: makeResource(mainMod, "MysqlDatabase")},
-			"aiven_mysql_user":                   {Tok: makeResource(mainMod, "MysqlUser")},
-			"aiven_opensearch_user":              {Tok: makeResource(mainMod, "OpensearchUser")},
-			"aiven_pg_database":                  {Tok: makeResource(mainMod, "PgDatabase")},
-			"aiven_pg_user":                      {Tok: makeResource(mainMod, "PgUser")},
-			"aiven_redis_user":                   {Tok: makeResource(mainMod, "RedisUser")},
-			"aiven_kafka_schema_registry_acl":    {Tok: makeResource(mainMod, "KafkaSchemaRegistryAcl")},
+			"aiven_influxdb_database": {
+				Tok:  makeResource(mainMod, "InfluxdbDatabase"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"aiven_influxdb_user": {
+				Tok:  makeResource(mainMod, "InfluxdbUser"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"aiven_m3db_user":                 {Tok: makeResource(mainMod, "M3dbUser")},
+			"aiven_kafka_schema_registry_acl": {Tok: makeResource(mainMod, "KafkaSchemaRegistryAcl")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"aiven_account":                        {Tok: makeDataSource(mainMod, "getAccount")},
-			"aiven_account_team":                   {Tok: makeDataSource(mainMod, "getAccountTeam")},
-			"aiven_account_team_member":            {Tok: makeDataSource(mainMod, "getAccountTeamMember")},
-			"aiven_account_team_project":           {Tok: makeDataSource(mainMod, "getAccountTeamProject")},
-			"aiven_account_authentication":         {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
-			"aiven_connection_pool":                {Tok: makeDataSource(mainMod, "getConnectionPool")},
-			"aiven_grafana":                        {Tok: makeDataSource(mainMod, "getGrafana")},
-			"aiven_influxdb":                       {Tok: makeDataSource(mainMod, "getInfluxDb")},
+			"aiven_account_authentication": {Tok: makeDataSource(mainMod, "getAccountAuthentication")},
+			"aiven_connection_pool":        {Tok: makeDataSource(mainMod, "getConnectionPool")},
+			"aiven_grafana":                {Tok: makeDataSource(mainMod, "getGrafana")},
+			"aiven_influxdb": {
+				Tok:  makeDataSource(mainMod, "getInfluxDb"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
 			"aiven_kafka":                          {Tok: makeDataSource(mainMod, "getKafka")},
 			"aiven_kafka_acl":                      {Tok: makeDataSource(mainMod, "getKafkaAcl")},
 			"aiven_kafka_topic":                    {Tok: makeDataSource(mainMod, "getKafkaTopic")},
@@ -277,17 +269,23 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_azure_vpc_peering_connection": {Tok: makeDataSource(mainMod, "getAzureVpcPeeringConnection")},
 			"aiven_gcp_vpc_peering_connection":   {Tok: makeDataSource(mainMod, "getGcpVpcPeeringConnection")},
 			"aiven_cassandra_user":               {Tok: makeDataSource(mainMod, "getCassandraUser")},
-			"aiven_influxdb_database":            {Tok: makeDataSource(mainMod, "getInfluxdbDatabase")},
-			"aiven_influxdb_user":                {Tok: makeDataSource(mainMod, "getInfluxdbUser")},
-			"aiven_kafka_user":                   {Tok: makeDataSource(mainMod, "getKafkaUser")},
-			"aiven_m3db_user":                    {Tok: makeDataSource(mainMod, "getM3dbUser")},
-			"aiven_mysql_database":               {Tok: makeDataSource(mainMod, "getMysqlDatabase")},
-			"aiven_mysql_user":                   {Tok: makeDataSource(mainMod, "getMysqlUser")},
-			"aiven_opensearch_user":              {Tok: makeDataSource(mainMod, "getOpensearchUser")},
-			"aiven_pg_database":                  {Tok: makeDataSource(mainMod, "getPgDatabase")},
-			"aiven_pg_user":                      {Tok: makeDataSource(mainMod, "getPgUser")},
-			"aiven_redis_user":                   {Tok: makeDataSource(mainMod, "getRedisUser")},
-			"aiven_kafka_schema_registry_acl":    {Tok: makeDataSource(mainMod, "getKafkaSchemaRegistryAcl")},
+			"aiven_influxdb_database": {
+				Tok:  makeDataSource(mainMod, "getInfluxdbDatabase"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"aiven_influxdb_user": {
+				Tok:  makeDataSource(mainMod, "getInfluxdbUser"),
+				Docs: &tfbridge.DocInfo{AllowMissing: true},
+			},
+			"aiven_kafka_user":                {Tok: makeDataSource(mainMod, "getKafkaUser")},
+			"aiven_m3db_user":                 {Tok: makeDataSource(mainMod, "getM3dbUser")},
+			"aiven_mysql_database":            {Tok: makeDataSource(mainMod, "getMysqlDatabase")},
+			"aiven_mysql_user":                {Tok: makeDataSource(mainMod, "getMysqlUser")},
+			"aiven_opensearch_user":           {Tok: makeDataSource(mainMod, "getOpensearchUser")},
+			"aiven_pg_database":               {Tok: makeDataSource(mainMod, "getPgDatabase")},
+			"aiven_pg_user":                   {Tok: makeDataSource(mainMod, "getPgUser")},
+			"aiven_redis_user":                {Tok: makeDataSource(mainMod, "getRedisUser")},
+			"aiven_kafka_schema_registry_acl": {Tok: makeDataSource(mainMod, "getKafkaSchemaRegistryAcl")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -308,15 +306,12 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			GenerateResourceContainerTypes: true,
 		},
 
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
-
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
@@ -324,7 +319,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				mainPkg: "Aiven",
 			},
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
 	}
 
 	prov.RenameDataSource("aiven_cassandra", makeDataSource(mainMod, "getCassanda"),
