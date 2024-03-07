@@ -168,6 +168,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -190,11 +191,12 @@ class OpenSearchAclConfig(pulumi.CustomResource):
             enabled=True,
             extended_acl=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
+        $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -215,6 +217,7 @@ class OpenSearchAclConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -237,11 +240,12 @@ class OpenSearchAclConfig(pulumi.CustomResource):
             enabled=True,
             extended_acl=False)
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
+        $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Creates and manages billing groups and assigns them to projects.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,11 +57,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+ * $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
  * ```
  * 
  */

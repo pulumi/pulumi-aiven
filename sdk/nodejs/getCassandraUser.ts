@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     username: "user1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCassandraUser(args: GetCassandraUserArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraUserResult> {
 
@@ -90,6 +92,7 @@ export interface GetCassandraUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -100,6 +103,7 @@ export interface GetCassandraUserResult {
  *     username: "user1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getCassandraUserOutput(args: GetCassandraUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraUserResult> {
     return pulumi.output(args).apply((a: any) => getCassandraUser(a, opts))

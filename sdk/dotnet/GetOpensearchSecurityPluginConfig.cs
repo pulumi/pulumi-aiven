@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOpensearchSecurityPluginConfigResult> InvokeAsync(GetOpensearchSecurityPluginConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchSecurityPluginConfigResult>("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args ?? new GetOpensearchSecurityPluginConfigArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOpensearchSecurityPluginConfigResult> Invoke(GetOpensearchSecurityPluginConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchSecurityPluginConfigResult>("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args ?? new GetOpensearchSecurityPluginConfigInvokeArgs(), options.WithDefaults());

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     username: "user1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPgUser(args: GetPgUserArgs, opts?: pulumi.InvokeOptions): Promise<GetPgUserResult> {
 
@@ -94,6 +96,7 @@ export interface GetPgUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -104,6 +107,7 @@ export interface GetPgUserResult {
  *     username: "user1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPgUserOutput(args: GetPgUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgUserResult> {
     return pulumi.output(args).apply((a: any) => getPgUser(a, opts))

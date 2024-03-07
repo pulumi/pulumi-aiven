@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Cassandra data source provides information about the existing Aiven Cassandra service.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCassandraResult> InvokeAsync(GetCassandraArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Cassandra data source provides information about the existing Aiven Cassandra service.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCassandraResult> Invoke(GetCassandraInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraResult>("aiven:index/getCassandra:getCassandra", args ?? new GetCassandraInvokeArgs(), options.WithDefaults());

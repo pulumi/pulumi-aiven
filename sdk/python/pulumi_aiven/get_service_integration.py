@@ -252,6 +252,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -261,6 +262,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
         integration_type="datadog",
         source_service_name="<SOURCE_SERVICE_NAME>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str destination_service_name: Destination service for the integration (if any)
@@ -312,6 +314,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -321,6 +324,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
         integration_type="datadog",
         source_service_name="<SOURCE_SERVICE_NAME>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str destination_service_name: Destination service for the integration (if any)

@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * The Flink Application resource allows the creation and management of Aiven Flink Applications.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -46,11 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
+ * $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
  * ```
  * 
  */

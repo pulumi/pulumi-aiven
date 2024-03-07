@@ -198,6 +198,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -254,11 +255,12 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+        $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
         ```
 
         :param str resource_name: The name of the resource.
@@ -280,6 +282,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -336,11 +339,12 @@ class OpenSearchAclRule(pulumi.CustomResource):
 
         pulumi.Output.all({i: v for i, v in acl_rules}).apply(lambda resolved_outputs: create_os_acl_rule(resolved_outputs[0]))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+        $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
         ```
 
         :param str resource_name: The name of the resource.

@@ -149,6 +149,7 @@ def get_connection_pool(pool_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -157,6 +158,7 @@ def get_connection_pool(pool_name: Optional[str] = None,
         service_name=aiven_pg["mypg"]["service_name"],
         pool_name="mypool")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
@@ -192,6 +194,7 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -200,6 +203,7 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
         service_name=aiven_pg["mypg"]["service_name"],
         pool_name="mypool")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.

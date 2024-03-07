@@ -391,6 +391,7 @@ def get_cassanda(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -398,6 +399,7 @@ def get_cassanda(project: Optional[str] = None,
     bar = aiven.get_cassandra(project=data["aiven_project"]["foo"]["project"],
         service_name="<SERVICE_NAME>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -451,6 +453,7 @@ def get_cassanda_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -458,6 +461,7 @@ def get_cassanda_output(project: Optional[pulumi.Input[str]] = None,
     bar = aiven.get_cassandra(project=data["aiven_project"]["foo"]["project"],
         service_name="<SERVICE_NAME>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

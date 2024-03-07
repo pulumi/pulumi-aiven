@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGcpVpcPeeringConnectionResult> InvokeAsync(GetGcpVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGcpVpcPeeringConnectionResult> Invoke(GetGcpVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpVpcPeeringConnectionResult>("aiven:index/getGcpVpcPeeringConnection:getGcpVpcPeeringConnection", args ?? new GetGcpVpcPeeringConnectionInvokeArgs(), options.WithDefaults());

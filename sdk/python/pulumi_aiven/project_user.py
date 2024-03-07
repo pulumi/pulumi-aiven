@@ -150,6 +150,7 @@ class ProjectUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -159,11 +160,12 @@ class ProjectUser(pulumi.CustomResource):
             email="john.doe@example.com",
             member_type="admin")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+        $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
         ```
 
         :param str resource_name: The name of the resource.
@@ -183,6 +185,7 @@ class ProjectUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -192,11 +195,12 @@ class ProjectUser(pulumi.CustomResource):
             email="john.doe@example.com",
             member_type="admin")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+        $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
         ```
 
         :param str resource_name: The name of the resource.

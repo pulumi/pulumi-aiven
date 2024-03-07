@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,11 +36,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+    /// $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/connectionPool:ConnectionPool")]

@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     name: "<APPLICATION_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlinkApplication(args: GetFlinkApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkApplicationResult> {
 
@@ -94,6 +96,7 @@ export interface GetFlinkApplicationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -104,6 +107,7 @@ export interface GetFlinkApplicationResult {
  *     name: "<APPLICATION_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlinkApplicationOutput(args: GetFlinkApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationResult> {
     return pulumi.output(args).apply((a: any) => getFlinkApplication(a, opts))

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -24,11 +25,12 @@ import * as utilities from "./utilities";
  *     maintenanceWindowTime: "10:00:00",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
+ * $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
  * ```
  */
 export class Clickhouse extends pulumi.CustomResource {

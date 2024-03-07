@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+ * $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
  * ```
  */
 export class ProjectVpc extends pulumi.CustomResource {

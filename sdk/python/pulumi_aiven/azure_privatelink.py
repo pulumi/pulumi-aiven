@@ -198,6 +198,7 @@ class AzurePrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -207,11 +208,12 @@ class AzurePrivatelink(pulumi.CustomResource):
             service_name=aiven_kafka["bar"]["service_name"],
             user_subscription_ids=["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+        $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -231,6 +233,7 @@ class AzurePrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -240,11 +243,12 @@ class AzurePrivatelink(pulumi.CustomResource):
             service_name=aiven_kafka["bar"]["service_name"],
             user_subscription_ids=["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+        $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.

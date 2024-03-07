@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // Deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra
 func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.InvokeOption) (*GetCassandaResult, error) {

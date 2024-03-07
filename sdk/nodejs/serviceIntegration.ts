@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -29,11 +30,12 @@ import * as utilities from "./utilities";
  *     destinationServiceName: aiven_m3db.m3db.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+ * $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
  * ```
  */
 export class ServiceIntegration extends pulumi.CustomResource {

@@ -156,17 +156,19 @@ class AccountTeam(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+        $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -190,17 +192,19 @@ class AccountTeam(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+        $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
         ```
 
         :param str resource_name: The name of the resource.

@@ -278,6 +278,7 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -290,11 +291,12 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
             peer_azure_app_id="xxxxxx",
             peer_azure_tenant_id="xxxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
+        $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -317,6 +319,7 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -329,11 +332,12 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
             peer_azure_app_id="xxxxxx",
             peer_azure_tenant_id="xxxxxx")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
+        $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
         ```
 
         :param str resource_name: The name of the resource.

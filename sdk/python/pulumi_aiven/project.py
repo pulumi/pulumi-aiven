@@ -470,7 +470,7 @@ class Project(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/project:Project myproject project
+        $ pulumi import aiven:index/project:Project myproject project
         ```
 
         :param str resource_name: The name of the resource.
@@ -498,7 +498,7 @@ class Project(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/project:Project myproject project
+        $ pulumi import aiven:index/project:Project myproject project
         ```
 
         :param str resource_name: The name of the resource.

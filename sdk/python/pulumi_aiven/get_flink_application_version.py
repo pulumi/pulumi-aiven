@@ -199,6 +199,7 @@ def get_flink_application_version(application_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -208,6 +209,7 @@ def get_flink_application_version(application_id: Optional[str] = None,
         application_id="<APPLICATION_ID>",
         application_version_id="<APPLICATION_VERSION_ID>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str application_id: Application ID
@@ -250,6 +252,7 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -259,6 +262,7 @@ def get_flink_application_version_output(application_id: Optional[pulumi.Input[s
         application_id="<APPLICATION_ID>",
         application_version_id="<APPLICATION_VERSION_ID>")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str application_id: Application ID

@@ -98,6 +98,7 @@ def get_clickhouse_database(name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -106,6 +107,7 @@ def get_clickhouse_database(name: Optional[str] = None,
         service_name=aiven_clickhouse["ch"]["service_name"],
         name="my-ch-db")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.
@@ -137,6 +139,7 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -145,6 +148,7 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[str]] = None,
         service_name=aiven_clickhouse["ch"]["service_name"],
         name="my-ch-db")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the Clickhouse database. This property cannot be changed, doing so forces recreation of the resource.

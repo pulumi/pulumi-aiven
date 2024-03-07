@@ -17,9 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
-//
+// $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
 // ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState

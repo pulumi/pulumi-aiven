@@ -113,6 +113,7 @@ def get_project_vpc(cloud_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -121,6 +122,7 @@ def get_project_vpc(cloud_name: Optional[str] = None,
         cloud_name="google-europe-west1")
     myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
@@ -153,6 +155,7 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -161,6 +164,7 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
         cloud_name="google-europe-west1")
     myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.

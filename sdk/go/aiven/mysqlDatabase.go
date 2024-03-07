@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,13 +42,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
-//
+// $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
 // ```
 type MysqlDatabase struct {
 	pulumi.CustomResourceState

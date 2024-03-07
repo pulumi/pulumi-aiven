@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     compatibilityLevel: "BACKWARD",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaSchemaConfiguration(args: GetKafkaSchemaConfigurationArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaSchemaConfigurationResult> {
 
@@ -85,6 +87,7 @@ export interface GetKafkaSchemaConfigurationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -95,6 +98,7 @@ export interface GetKafkaSchemaConfigurationResult {
  *     compatibilityLevel: "BACKWARD",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaSchemaConfigurationOutput(args: GetKafkaSchemaConfigurationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaSchemaConfigurationResult> {
     return pulumi.output(args).apply((a: any) => getKafkaSchemaConfiguration(a, opts))

@@ -11,17 +11,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
  * const organization1 = new aiven.Organization("organization1", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/organization:Organization organization1 organization_id
+ * $ pulumi import aiven:index/organization:Organization organization1 organization_id
  * ```
  */
 export class Organization extends pulumi.CustomResource {

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupCassandra(ctx *pulumi.Context, args *LookupCassandraArgs, opts ...pulumi.InvokeOption) (*LookupCassandraResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCassandraResult

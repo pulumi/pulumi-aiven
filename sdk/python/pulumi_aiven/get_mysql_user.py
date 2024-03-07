@@ -149,6 +149,7 @@ def get_mysql_user(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -157,6 +158,7 @@ def get_mysql_user(project: Optional[str] = None,
         service_name="my-service",
         username="user1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -192,6 +194,7 @@ def get_mysql_user_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -200,6 +203,7 @@ def get_mysql_user_output(project: Optional[pulumi.Input[str]] = None,
         service_name="my-service",
         username="user1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

@@ -15,7 +15,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+    /// $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaTopic:KafkaTopic")]

@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     serviceName: "my-mm1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaMirrorMaker(args: GetKafkaMirrorMakerArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaMirrorMakerResult> {
 
@@ -170,6 +172,7 @@ export interface GetKafkaMirrorMakerResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -179,6 +182,7 @@ export interface GetKafkaMirrorMakerResult {
  *     serviceName: "my-mm1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaMirrorMakerOutput(args: GetKafkaMirrorMakerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaMirrorMakerResult> {
     return pulumi.output(args).apply((a: any) => getKafkaMirrorMaker(a, opts))

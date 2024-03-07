@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IndicesFielddataCacheSize;
         /// <summary>
-        /// Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+        /// Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
         /// </summary>
         public readonly int? IndicesMemoryIndexBufferSize;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IndicesMemoryMinIndexBufferSize;
         /// <summary>
-        /// Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+        /// Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
         /// </summary>
         public readonly int? IndicesQueriesCacheSize;
         /// <summary>
