@@ -315,6 +315,7 @@ class RedisUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -325,11 +326,12 @@ class RedisUser(pulumi.CustomResource):
             username="user-1",
             password="Test$1234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+        $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.
@@ -354,6 +356,7 @@ class RedisUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -364,11 +367,12 @@ class RedisUser(pulumi.CustomResource):
             username="user-1",
             password="Test$1234")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+        $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.

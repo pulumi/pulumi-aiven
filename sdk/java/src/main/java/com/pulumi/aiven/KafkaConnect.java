@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * The Kafka Connect resource allows the creation and management of Aiven Kafka Connect services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -71,11 +73,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/kafkaConnect:KafkaConnect kc1 project/service_name
+ * $ pulumi import aiven:index/kafkaConnect:KafkaConnect kc1 project/service_name
  * ```
  * 
  */

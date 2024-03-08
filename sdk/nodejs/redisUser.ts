@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,11 +21,12 @@ import * as utilities from "./utilities";
  *     password: "Test$1234",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+ * $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
  * ```
  */
 export class RedisUser extends pulumi.CustomResource {

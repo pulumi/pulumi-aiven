@@ -413,6 +413,7 @@ def get_kafka(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -420,6 +421,7 @@ def get_kafka(project: Optional[str] = None,
     kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-kafka1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -474,6 +476,7 @@ def get_kafka_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -481,6 +484,7 @@ def get_kafka_output(project: Optional[pulumi.Input[str]] = None,
     kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
         service_name="my-kafka1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPgUserConfigPg {
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     private @Nullable Double autovacuumAnalyzeScaleFactor;
@@ -50,7 +50,7 @@ public final class PgPgUserConfigPg {
      */
     private @Nullable Integer autovacuumVacuumCostLimit;
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     private @Nullable Double autovacuumVacuumScaleFactor;
@@ -262,7 +262,7 @@ public final class PgPgUserConfigPg {
 
     private PgPgUserConfigPg() {}
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     public Optional<Double> autovacuumAnalyzeScaleFactor() {
@@ -311,7 +311,7 @@ public final class PgPgUserConfigPg {
         return Optional.ofNullable(this.autovacuumVacuumCostLimit);
     }
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     public Optional<Double> autovacuumVacuumScaleFactor() {

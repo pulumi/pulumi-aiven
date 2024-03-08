@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClickhouse(args: GetClickhouseArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseResult> {
 
@@ -170,6 +172,7 @@ export interface GetClickhouseResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -179,6 +182,7 @@ export interface GetClickhouseResult {
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClickhouseOutput(args: GetClickhouseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseResult> {
     return pulumi.output(args).apply((a: any) => getClickhouse(a, opts))

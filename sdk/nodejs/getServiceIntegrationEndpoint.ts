@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     endpointName: "<ENDPOINT_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceIntegrationEndpoint(args: GetServiceIntegrationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIntegrationEndpointResult> {
 
@@ -126,6 +128,7 @@ export interface GetServiceIntegrationEndpointResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -135,6 +138,7 @@ export interface GetServiceIntegrationEndpointResult {
  *     endpointName: "<ENDPOINT_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getServiceIntegrationEndpointOutput(args: GetServiceIntegrationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIntegrationEndpointResult> {
     return pulumi.output(args).apply((a: any) => getServiceIntegrationEndpoint(a, opts))

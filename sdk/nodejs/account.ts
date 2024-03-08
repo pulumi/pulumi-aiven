@@ -9,17 +9,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
  * const account1 = new aiven.Account("account1", {});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/account:Account account1 account_id
+ * $ pulumi import aiven:index/account:Account account1 account_id
  * ```
  */
 export class Account extends pulumi.CustomResource {

@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,13 +41,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
-//
+// $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
 // ```
 type FlinkApplication struct {
 	pulumi.CustomResourceState

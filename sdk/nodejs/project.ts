@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/project:Project myproject project
+ * $ pulumi import aiven:index/project:Project myproject project
  * ```
  */
 export class Project extends pulumi.CustomResource {

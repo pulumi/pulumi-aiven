@@ -304,7 +304,7 @@ class KafkaTopic(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+        $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -331,7 +331,7 @@ class KafkaTopic(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+        $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
         ```
 
         :param str resource_name: The name of the resource.

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The Account resource allows the creation and management of an Aiven Account.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -44,11 +46,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/account:Account account1 account_id
+ * $ pulumi import aiven:index/account:Account account1 account_id
  * ```
  * 
  */

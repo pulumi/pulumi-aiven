@@ -15,7 +15,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+    /// $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval")]

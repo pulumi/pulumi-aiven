@@ -230,17 +230,19 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         account1 = aiven.Account("account1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/account:Account account1 account_id
+        $ pulumi import aiven:index/account:Account account1 account_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -259,17 +261,19 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         account1 = aiven.Account("account1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/account:Account account1 account_id
+        $ pulumi import aiven:index/account:Account account1 account_id
         ```
 
         :param str resource_name: The name of the resource.

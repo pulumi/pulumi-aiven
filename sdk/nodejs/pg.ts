@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/pg:Pg pg project/service_name
+ * $ pulumi import aiven:index/pg:Pg pg project/service_name
  * ```
  */
 export class Pg extends pulumi.CustomResource {

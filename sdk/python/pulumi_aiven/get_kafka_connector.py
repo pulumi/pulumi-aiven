@@ -186,6 +186,7 @@ def get_kafka_connector(connector_name: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -194,6 +195,7 @@ def get_kafka_connector(connector_name: Optional[str] = None,
         service_name=aiven_kafka["kafka-service1"]["service_name"],
         connector_name="kafka-es-con1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
@@ -232,6 +234,7 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -240,6 +243,7 @@ def get_kafka_connector_output(connector_name: Optional[pulumi.Input[str]] = Non
         service_name=aiven_kafka["kafka-service1"]["service_name"],
         connector_name="kafka-es-con1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str connector_name: The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.

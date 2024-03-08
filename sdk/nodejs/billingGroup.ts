@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -22,11 +23,12 @@ import * as utilities from "./utilities";
  *     billingGroup: bybg1.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+ * $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
  * ```
  */
 export class BillingGroup extends pulumi.CustomResource {

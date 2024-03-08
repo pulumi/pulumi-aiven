@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "<ORGANIZATION_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationResult> {
     args = args || {};
@@ -72,6 +74,7 @@ export interface GetOrganizationResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -80,6 +83,7 @@ export interface GetOrganizationResult {
  *     name: "<ORGANIZATION_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationResult> {
     return pulumi.output(args).apply((a: any) => getOrganization(a, opts))

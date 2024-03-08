@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     targetCluster: aiven_kafka.target.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMirrorMakerReplicationFlow(args: GetMirrorMakerReplicationFlowArgs, opts?: pulumi.InvokeOptions): Promise<GetMirrorMakerReplicationFlowResult> {
 
@@ -120,6 +122,7 @@ export interface GetMirrorMakerReplicationFlowResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -131,6 +134,7 @@ export interface GetMirrorMakerReplicationFlowResult {
  *     targetCluster: aiven_kafka.target.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getMirrorMakerReplicationFlowOutput(args: GetMirrorMakerReplicationFlowOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMirrorMakerReplicationFlowResult> {
     return pulumi.output(args).apply((a: any) => getMirrorMakerReplicationFlow(a, opts))

@@ -771,7 +771,7 @@ class Pg(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/pg:Pg pg project/service_name
+        $ pulumi import aiven:index/pg:Pg pg project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -805,7 +805,7 @@ class Pg(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/pg:Pg pg project/service_name
+        $ pulumi import aiven:index/pg:Pg pg project/service_name
         ```
 
         :param str resource_name: The name of the resource.

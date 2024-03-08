@@ -23,6 +23,7 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -40,11 +41,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
+    /// $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountTeamMember:AccountTeamMember")]

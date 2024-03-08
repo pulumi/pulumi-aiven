@@ -151,7 +151,7 @@ class ProjectVpc(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+        $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
         ```
 
         :param str resource_name: The name of the resource.
@@ -172,7 +172,7 @@ class ProjectVpc(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+        $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
         ```
 
         :param str resource_name: The name of the resource.

@@ -15,7 +15,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+    /// $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/accountAuthentication:AccountAuthentication")]

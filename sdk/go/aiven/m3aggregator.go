@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,13 +48,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
-//
+// $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
 // ```
 type M3Aggregator struct {
 	pulumi.CustomResourceState

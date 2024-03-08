@@ -182,6 +182,7 @@ class ClickhouseUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -191,11 +192,12 @@ class ClickhouseUser(pulumi.CustomResource):
             service_name=aiven_clickhouse["myservice"]["service_name"],
             username="<USERNAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.
@@ -215,6 +217,7 @@ class ClickhouseUser(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -224,11 +227,12 @@ class ClickhouseUser(pulumi.CustomResource):
             service_name=aiven_clickhouse["myservice"]["service_name"],
             username="<USERNAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
+        $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
         ```
 
         :param str resource_name: The name of the resource.

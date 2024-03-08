@@ -4268,7 +4268,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     indicesFielddataCacheSize?: number;
     /**
-     * Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
      */
     indicesMemoryIndexBufferSize?: number;
     /**
@@ -4280,7 +4280,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     indicesMemoryMinIndexBufferSize?: number;
     /**
-     * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      */
     indicesQueriesCacheSize?: number;
     /**
@@ -4747,7 +4747,7 @@ export interface GetPgPgUserConfig {
      */
     serviceToForkFrom?: string;
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20%. This setting adjusts the sharedBuffers configuration value.
      */
     sharedBuffersPercentage?: number;
     /**
@@ -4767,7 +4767,7 @@ export interface GetPgPgUserConfig {
      */
     variant?: string;
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075%!o(MISSING)f total RAM (up to 32MB).
      */
     workMem?: number;
 }
@@ -4820,7 +4820,7 @@ export interface GetPgPgUserConfigMigration {
 
 export interface GetPgPgUserConfigPg {
     /**
-     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
      */
     autovacuumAnalyzeScaleFactor?: number;
     /**
@@ -4848,7 +4848,7 @@ export interface GetPgPgUserConfigPg {
      */
     autovacuumVacuumCostLimit?: number;
     /**
-     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
      */
     autovacuumVacuumScaleFactor?: number;
     /**
@@ -9102,7 +9102,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     indicesFielddataCacheSize?: number;
     /**
-     * Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
      */
     indicesMemoryIndexBufferSize?: number;
     /**
@@ -9114,7 +9114,7 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     indicesMemoryMinIndexBufferSize?: number;
     /**
-     * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      */
     indicesQueriesCacheSize?: number;
     /**
@@ -9600,7 +9600,7 @@ export interface PgPgUserConfig {
      */
     serviceToForkFrom?: string;
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20%. This setting adjusts the sharedBuffers configuration value.
      */
     sharedBuffersPercentage?: number;
     /**
@@ -9620,7 +9620,7 @@ export interface PgPgUserConfig {
      */
     variant?: string;
     /**
-     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075%!o(MISSING)f total RAM (up to 32MB).
      */
     workMem?: number;
 }
@@ -9673,7 +9673,7 @@ export interface PgPgUserConfigMigration {
 
 export interface PgPgUserConfigPg {
     /**
-     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
      */
     autovacuumAnalyzeScaleFactor?: number;
     /**
@@ -9701,7 +9701,7 @@ export interface PgPgUserConfigPg {
      */
     autovacuumVacuumCostLimit?: number;
     /**
-     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
      */
     autovacuumVacuumScaleFactor?: number;
     /**

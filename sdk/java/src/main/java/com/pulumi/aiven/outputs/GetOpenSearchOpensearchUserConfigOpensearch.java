@@ -81,7 +81,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer indicesFielddataCacheSize;
     /**
-     * @return Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * @return Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
      * 
      */
     private @Nullable Integer indicesMemoryIndexBufferSize;
@@ -96,7 +96,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Integer indicesMemoryMinIndexBufferSize;
     /**
-     * @return Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * @return Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      * 
      */
     private @Nullable Integer indicesQueriesCacheSize;
@@ -314,7 +314,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.indicesFielddataCacheSize);
     }
     /**
-     * @return Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * @return Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
      * 
      */
     public Optional<Integer> indicesMemoryIndexBufferSize() {
@@ -335,7 +335,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.indicesMemoryMinIndexBufferSize);
     }
     /**
-     * @return Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * @return Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      * 
      */
     public Optional<Integer> indicesQueriesCacheSize() {

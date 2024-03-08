@@ -136,6 +136,7 @@ def get_azure_privatelink(project: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -143,6 +144,7 @@ def get_azure_privatelink(project: Optional[str] = None,
     foo = aiven.get_azure_privatelink(project=data["aiven_project"]["foo"]["project"],
         service_name=aiven_kafka["bar"]["service_name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
@@ -174,6 +176,7 @@ def get_azure_privatelink_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -181,6 +184,7 @@ def get_azure_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     foo = aiven.get_azure_privatelink(project=data["aiven_project"]["foo"]["project"],
         service_name=aiven_kafka["bar"]["service_name"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.

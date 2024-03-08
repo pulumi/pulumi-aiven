@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     index: "<INDEX>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclRuleResult> {
 
@@ -93,6 +95,7 @@ export interface GetOpenSearchAclRuleResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -104,6 +107,7 @@ export interface GetOpenSearchAclRuleResult {
  *     index: "<INDEX>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclRuleResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearchAclRule(a, opts))

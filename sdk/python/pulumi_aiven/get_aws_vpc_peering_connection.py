@@ -138,6 +138,7 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -146,6 +147,7 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
         aws_account_id="XXXXX",
         aws_vpc_id="XXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -183,6 +185,7 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -191,6 +194,7 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
         aws_account_id="XXXXX",
         aws_vpc_id="XXXXX")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.

@@ -389,7 +389,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+        $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -415,7 +415,7 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
+        $ pulumi import aiven:index/flinkApplicationVersion:FlinkApplicationVersion v1 project/service/application_id/application_version_id
         ```
 
         :param str resource_name: The name of the resource.

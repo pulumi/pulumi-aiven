@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * The Connection Pool resource allows the creation and management of Aiven Connection Pools.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -54,11 +56,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+ * $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
  * ```
  * 
  */

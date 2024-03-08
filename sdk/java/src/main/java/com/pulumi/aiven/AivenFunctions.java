@@ -207,6 +207,8 @@ public final class AivenFunctions {
      * The Account data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -235,6 +237,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args) {
@@ -244,6 +247,8 @@ public final class AivenFunctions {
      * The Account data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -272,6 +277,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(GetAccountPlainArgs args) {
@@ -281,6 +287,8 @@ public final class AivenFunctions {
      * The Account data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -309,6 +317,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAccountResult> getAccount(GetAccountArgs args, InvokeOptions options) {
@@ -318,6 +327,8 @@ public final class AivenFunctions {
      * The Account data source provides information about the existing Aiven Account.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -346,6 +357,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAccountResult> getAccountPlain(GetAccountPlainArgs args, InvokeOptions options) {
@@ -467,6 +479,8 @@ public final class AivenFunctions {
      * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -496,6 +510,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsPrivatelinkResult> getAwsPrivatelink(GetAwsPrivatelinkArgs args) {
@@ -505,6 +520,8 @@ public final class AivenFunctions {
      * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -534,6 +551,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsPrivatelinkResult> getAwsPrivatelinkPlain(GetAwsPrivatelinkPlainArgs args) {
@@ -543,6 +561,8 @@ public final class AivenFunctions {
      * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -572,6 +592,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsPrivatelinkResult> getAwsPrivatelink(GetAwsPrivatelinkArgs args, InvokeOptions options) {
@@ -581,6 +602,8 @@ public final class AivenFunctions {
      * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -610,6 +633,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsPrivatelinkResult> getAwsPrivatelinkPlain(GetAwsPrivatelinkPlainArgs args, InvokeOptions options) {
@@ -619,6 +643,8 @@ public final class AivenFunctions {
      * The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -649,6 +675,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs args) {
@@ -658,6 +685,8 @@ public final class AivenFunctions {
      * The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -688,6 +717,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnectionPlain(GetAwsVpcPeeringConnectionPlainArgs args) {
@@ -697,6 +727,8 @@ public final class AivenFunctions {
      * The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -727,6 +759,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs args, InvokeOptions options) {
@@ -736,6 +769,8 @@ public final class AivenFunctions {
      * The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -766,6 +801,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAwsVpcPeeringConnectionResult> getAwsVpcPeeringConnectionPlain(GetAwsVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
@@ -775,6 +811,8 @@ public final class AivenFunctions {
      * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -804,6 +842,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAzurePrivatelinkResult> getAzurePrivatelink(GetAzurePrivatelinkArgs args) {
@@ -813,6 +852,8 @@ public final class AivenFunctions {
      * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -842,6 +883,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAzurePrivatelinkResult> getAzurePrivatelinkPlain(GetAzurePrivatelinkPlainArgs args) {
@@ -851,6 +893,8 @@ public final class AivenFunctions {
      * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -880,6 +924,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetAzurePrivatelinkResult> getAzurePrivatelink(GetAzurePrivatelinkArgs args, InvokeOptions options) {
@@ -889,6 +934,8 @@ public final class AivenFunctions {
      * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -918,6 +965,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetAzurePrivatelinkResult> getAzurePrivatelinkPlain(GetAzurePrivatelinkPlainArgs args, InvokeOptions options) {
@@ -956,6 +1004,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -984,6 +1033,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBillingGroupResult> getBillingGroup(GetBillingGroupArgs args) {
@@ -994,6 +1044,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1022,6 +1073,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBillingGroupResult> getBillingGroupPlain(GetBillingGroupPlainArgs args) {
@@ -1032,6 +1084,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1060,6 +1113,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetBillingGroupResult> getBillingGroup(GetBillingGroupArgs args, InvokeOptions options) {
@@ -1070,6 +1124,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1098,6 +1153,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetBillingGroupResult> getBillingGroupPlain(GetBillingGroupPlainArgs args, InvokeOptions options) {
@@ -1107,6 +1163,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1136,6 +1194,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -1149,6 +1208,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1178,6 +1239,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -1191,6 +1253,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1220,6 +1284,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -1233,6 +1298,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1262,6 +1329,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
      * aiven.getCassanda has been deprecated in favor of aiven.getCassandra
@@ -1275,6 +1343,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1304,6 +1374,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args) {
@@ -1313,6 +1384,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1342,6 +1415,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCassandraResult> getCassandraPlain(GetCassandraPlainArgs args) {
@@ -1351,6 +1425,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1380,6 +1456,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCassandraResult> getCassandra(GetCassandraArgs args, InvokeOptions options) {
@@ -1389,6 +1466,8 @@ public final class AivenFunctions {
      * The Cassandra data source provides information about the existing Aiven Cassandra service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1418,6 +1497,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCassandraResult> getCassandraPlain(GetCassandraPlainArgs args, InvokeOptions options) {
@@ -1427,6 +1507,8 @@ public final class AivenFunctions {
      * The Cassandra User data source provides information about the existing Aiven Cassandra User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1457,6 +1539,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args) {
@@ -1466,6 +1549,8 @@ public final class AivenFunctions {
      * The Cassandra User data source provides information about the existing Aiven Cassandra User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1496,6 +1581,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args) {
@@ -1505,6 +1591,8 @@ public final class AivenFunctions {
      * The Cassandra User data source provides information about the existing Aiven Cassandra User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1535,6 +1623,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCassandraUserResult> getCassandraUser(GetCassandraUserArgs args, InvokeOptions options) {
@@ -1544,6 +1633,8 @@ public final class AivenFunctions {
      * The Cassandra User data source provides information about the existing Aiven Cassandra User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1574,6 +1665,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCassandraUserResult> getCassandraUserPlain(GetCassandraUserPlainArgs args, InvokeOptions options) {
@@ -1583,6 +1675,8 @@ public final class AivenFunctions {
      * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1612,6 +1706,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClickhouseResult> getClickhouse(GetClickhouseArgs args) {
@@ -1621,6 +1716,8 @@ public final class AivenFunctions {
      * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1650,6 +1747,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClickhouseResult> getClickhousePlain(GetClickhousePlainArgs args) {
@@ -1659,6 +1757,8 @@ public final class AivenFunctions {
      * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1688,6 +1788,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClickhouseResult> getClickhouse(GetClickhouseArgs args, InvokeOptions options) {
@@ -1697,6 +1798,8 @@ public final class AivenFunctions {
      * The Clickhouse data source provides information about the existing Aiven Clickhouse service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1726,6 +1829,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClickhouseResult> getClickhousePlain(GetClickhousePlainArgs args, InvokeOptions options) {
@@ -1735,6 +1839,8 @@ public final class AivenFunctions {
      * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1765,6 +1871,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClickhouseDatabaseResult> getClickhouseDatabase(GetClickhouseDatabaseArgs args) {
@@ -1774,6 +1881,8 @@ public final class AivenFunctions {
      * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1804,6 +1913,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClickhouseDatabaseResult> getClickhouseDatabasePlain(GetClickhouseDatabasePlainArgs args) {
@@ -1813,6 +1923,8 @@ public final class AivenFunctions {
      * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1843,6 +1955,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClickhouseDatabaseResult> getClickhouseDatabase(GetClickhouseDatabaseArgs args, InvokeOptions options) {
@@ -1852,6 +1965,8 @@ public final class AivenFunctions {
      * The Clickhouse database data source provides information about the existing Aiven Clickhouse Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1882,6 +1997,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClickhouseDatabaseResult> getClickhouseDatabasePlain(GetClickhouseDatabasePlainArgs args, InvokeOptions options) {
@@ -1891,6 +2007,8 @@ public final class AivenFunctions {
      * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1921,6 +2039,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClickhouseUserResult> getClickhouseUser(GetClickhouseUserArgs args) {
@@ -1930,6 +2049,8 @@ public final class AivenFunctions {
      * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1960,6 +2081,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClickhouseUserResult> getClickhouseUserPlain(GetClickhouseUserPlainArgs args) {
@@ -1969,6 +2091,8 @@ public final class AivenFunctions {
      * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -1999,6 +2123,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetClickhouseUserResult> getClickhouseUser(GetClickhouseUserArgs args, InvokeOptions options) {
@@ -2008,6 +2133,8 @@ public final class AivenFunctions {
      * The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2038,6 +2165,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetClickhouseUserResult> getClickhouseUserPlain(GetClickhouseUserPlainArgs args, InvokeOptions options) {
@@ -2047,6 +2175,8 @@ public final class AivenFunctions {
      * The Connection Pool data source provides information about the existing Aiven Connection Pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2077,6 +2207,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionPoolResult> getConnectionPool(GetConnectionPoolArgs args) {
@@ -2086,6 +2217,8 @@ public final class AivenFunctions {
      * The Connection Pool data source provides information about the existing Aiven Connection Pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2116,6 +2249,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionPoolResult> getConnectionPoolPlain(GetConnectionPoolPlainArgs args) {
@@ -2125,6 +2259,8 @@ public final class AivenFunctions {
      * The Connection Pool data source provides information about the existing Aiven Connection Pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2155,6 +2291,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetConnectionPoolResult> getConnectionPool(GetConnectionPoolArgs args, InvokeOptions options) {
@@ -2164,6 +2301,8 @@ public final class AivenFunctions {
      * The Connection Pool data source provides information about the existing Aiven Connection Pool.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2194,6 +2333,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionPoolResult> getConnectionPoolPlain(GetConnectionPoolPlainArgs args, InvokeOptions options) {
@@ -2203,6 +2343,8 @@ public final class AivenFunctions {
      * The Flink data source provides information about the existing Aiven Flink service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2232,6 +2374,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlinkResult> getFlink(GetFlinkArgs args) {
@@ -2241,6 +2384,8 @@ public final class AivenFunctions {
      * The Flink data source provides information about the existing Aiven Flink service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2270,6 +2415,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlinkResult> getFlinkPlain(GetFlinkPlainArgs args) {
@@ -2279,6 +2425,8 @@ public final class AivenFunctions {
      * The Flink data source provides information about the existing Aiven Flink service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2308,6 +2456,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlinkResult> getFlink(GetFlinkArgs args, InvokeOptions options) {
@@ -2317,6 +2466,8 @@ public final class AivenFunctions {
      * The Flink data source provides information about the existing Aiven Flink service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2346,6 +2497,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlinkResult> getFlinkPlain(GetFlinkPlainArgs args, InvokeOptions options) {
@@ -2355,6 +2507,8 @@ public final class AivenFunctions {
      * The Flink Application data source provides information about the existing Aiven Flink Application.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2385,6 +2539,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlinkApplicationResult> getFlinkApplication(GetFlinkApplicationArgs args) {
@@ -2394,6 +2549,8 @@ public final class AivenFunctions {
      * The Flink Application data source provides information about the existing Aiven Flink Application.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2424,6 +2581,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlinkApplicationResult> getFlinkApplicationPlain(GetFlinkApplicationPlainArgs args) {
@@ -2433,6 +2591,8 @@ public final class AivenFunctions {
      * The Flink Application data source provides information about the existing Aiven Flink Application.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2463,6 +2623,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlinkApplicationResult> getFlinkApplication(GetFlinkApplicationArgs args, InvokeOptions options) {
@@ -2472,6 +2633,8 @@ public final class AivenFunctions {
      * The Flink Application data source provides information about the existing Aiven Flink Application.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2502,6 +2665,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlinkApplicationResult> getFlinkApplicationPlain(GetFlinkApplicationPlainArgs args, InvokeOptions options) {
@@ -2511,6 +2675,8 @@ public final class AivenFunctions {
      * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2542,6 +2708,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlinkApplicationVersionResult> getFlinkApplicationVersion(GetFlinkApplicationVersionArgs args) {
@@ -2551,6 +2718,8 @@ public final class AivenFunctions {
      * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2582,6 +2751,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args) {
@@ -2591,6 +2761,8 @@ public final class AivenFunctions {
      * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2622,6 +2794,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetFlinkApplicationVersionResult> getFlinkApplicationVersion(GetFlinkApplicationVersionArgs args, InvokeOptions options) {
@@ -2631,6 +2804,8 @@ public final class AivenFunctions {
      * The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2662,6 +2837,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args, InvokeOptions options) {
@@ -2683,6 +2859,8 @@ public final class AivenFunctions {
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2713,6 +2891,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGcpVpcPeeringConnectionResult> getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs args) {
@@ -2722,6 +2901,8 @@ public final class AivenFunctions {
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2752,6 +2933,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGcpVpcPeeringConnectionResult> getGcpVpcPeeringConnectionPlain(GetGcpVpcPeeringConnectionPlainArgs args) {
@@ -2761,6 +2943,8 @@ public final class AivenFunctions {
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2791,6 +2975,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGcpVpcPeeringConnectionResult> getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs args, InvokeOptions options) {
@@ -2800,6 +2985,8 @@ public final class AivenFunctions {
      * The GCP VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2830,6 +3017,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGcpVpcPeeringConnectionResult> getGcpVpcPeeringConnectionPlain(GetGcpVpcPeeringConnectionPlainArgs args, InvokeOptions options) {
@@ -2839,6 +3027,8 @@ public final class AivenFunctions {
      * The Grafana data source provides information about the existing Aiven Grafana service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2868,6 +3058,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGrafanaResult> getGrafana(GetGrafanaArgs args) {
@@ -2877,6 +3068,8 @@ public final class AivenFunctions {
      * The Grafana data source provides information about the existing Aiven Grafana service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2906,6 +3099,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGrafanaResult> getGrafanaPlain(GetGrafanaPlainArgs args) {
@@ -2915,6 +3109,8 @@ public final class AivenFunctions {
      * The Grafana data source provides information about the existing Aiven Grafana service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2944,6 +3140,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetGrafanaResult> getGrafana(GetGrafanaArgs args, InvokeOptions options) {
@@ -2953,6 +3150,8 @@ public final class AivenFunctions {
      * The Grafana data source provides information about the existing Aiven Grafana service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -2982,6 +3181,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetGrafanaResult> getGrafanaPlain(GetGrafanaPlainArgs args, InvokeOptions options) {
@@ -3027,6 +3227,8 @@ public final class AivenFunctions {
      * The Kafka data source provides information about the existing Aiven Kafka services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3056,6 +3258,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaResult> getKafka(GetKafkaArgs args) {
@@ -3065,6 +3268,8 @@ public final class AivenFunctions {
      * The Kafka data source provides information about the existing Aiven Kafka services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3094,6 +3299,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaResult> getKafkaPlain(GetKafkaPlainArgs args) {
@@ -3103,6 +3309,8 @@ public final class AivenFunctions {
      * The Kafka data source provides information about the existing Aiven Kafka services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3132,6 +3340,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaResult> getKafka(GetKafkaArgs args, InvokeOptions options) {
@@ -3141,6 +3350,8 @@ public final class AivenFunctions {
      * The Kafka data source provides information about the existing Aiven Kafka services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3170,6 +3381,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaResult> getKafkaPlain(GetKafkaPlainArgs args, InvokeOptions options) {
@@ -3179,6 +3391,8 @@ public final class AivenFunctions {
      * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3211,6 +3425,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args) {
@@ -3220,6 +3435,8 @@ public final class AivenFunctions {
      * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3252,6 +3469,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args) {
@@ -3261,6 +3479,8 @@ public final class AivenFunctions {
      * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3293,6 +3513,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaAclResult> getKafkaAcl(GetKafkaAclArgs args, InvokeOptions options) {
@@ -3302,6 +3523,8 @@ public final class AivenFunctions {
      * The Data Source Kafka ACL data source provides information about the existing Aiven Kafka ACL for a Kafka service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3334,6 +3557,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaAclResult> getKafkaAclPlain(GetKafkaAclPlainArgs args, InvokeOptions options) {
@@ -3343,6 +3567,8 @@ public final class AivenFunctions {
      * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3372,6 +3598,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaConnectResult> getKafkaConnect(GetKafkaConnectArgs args) {
@@ -3381,6 +3608,8 @@ public final class AivenFunctions {
      * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3410,6 +3639,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaConnectResult> getKafkaConnectPlain(GetKafkaConnectPlainArgs args) {
@@ -3419,6 +3649,8 @@ public final class AivenFunctions {
      * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3448,6 +3680,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaConnectResult> getKafkaConnect(GetKafkaConnectArgs args, InvokeOptions options) {
@@ -3457,6 +3690,8 @@ public final class AivenFunctions {
      * The Kafka Connect data source provides information about the existing Aiven Kafka Connect service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3486,6 +3721,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaConnectResult> getKafkaConnectPlain(GetKafkaConnectPlainArgs args, InvokeOptions options) {
@@ -3495,6 +3731,8 @@ public final class AivenFunctions {
      * The Kafka connector data source provides information about the existing Aiven Kafka connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3525,6 +3763,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaConnectorResult> getKafkaConnector(GetKafkaConnectorArgs args) {
@@ -3534,6 +3773,8 @@ public final class AivenFunctions {
      * The Kafka connector data source provides information about the existing Aiven Kafka connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3564,6 +3805,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaConnectorResult> getKafkaConnectorPlain(GetKafkaConnectorPlainArgs args) {
@@ -3573,6 +3815,8 @@ public final class AivenFunctions {
      * The Kafka connector data source provides information about the existing Aiven Kafka connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3603,6 +3847,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaConnectorResult> getKafkaConnector(GetKafkaConnectorArgs args, InvokeOptions options) {
@@ -3612,6 +3857,8 @@ public final class AivenFunctions {
      * The Kafka connector data source provides information about the existing Aiven Kafka connector.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3642,6 +3889,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaConnectorResult> getKafkaConnectorPlain(GetKafkaConnectorPlainArgs args, InvokeOptions options) {
@@ -3651,6 +3899,8 @@ public final class AivenFunctions {
      * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3680,6 +3930,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaMirrorMakerResult> getKafkaMirrorMaker(GetKafkaMirrorMakerArgs args) {
@@ -3689,6 +3940,8 @@ public final class AivenFunctions {
      * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3718,6 +3971,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaMirrorMakerResult> getKafkaMirrorMakerPlain(GetKafkaMirrorMakerPlainArgs args) {
@@ -3727,6 +3981,8 @@ public final class AivenFunctions {
      * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3756,6 +4012,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaMirrorMakerResult> getKafkaMirrorMaker(GetKafkaMirrorMakerArgs args, InvokeOptions options) {
@@ -3765,6 +4022,8 @@ public final class AivenFunctions {
      * The Kafka MirrorMaker data source provides information about the existing Aiven Kafka MirrorMaker 2 service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3794,6 +4053,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaMirrorMakerResult> getKafkaMirrorMakerPlain(GetKafkaMirrorMakerPlainArgs args, InvokeOptions options) {
@@ -3803,6 +4063,8 @@ public final class AivenFunctions {
      * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3832,6 +4094,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaResult> getKafkaSchema(GetKafkaSchemaArgs args) {
@@ -3841,6 +4104,8 @@ public final class AivenFunctions {
      * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3870,6 +4135,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaResult> getKafkaSchemaPlain(GetKafkaSchemaPlainArgs args) {
@@ -3879,6 +4145,8 @@ public final class AivenFunctions {
      * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3908,6 +4176,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaResult> getKafkaSchema(GetKafkaSchemaArgs args, InvokeOptions options) {
@@ -3917,6 +4186,8 @@ public final class AivenFunctions {
      * The Kafka Schema data source provides information about the existing Aiven Kafka Schema.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3946,6 +4217,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaResult> getKafkaSchemaPlain(GetKafkaSchemaPlainArgs args, InvokeOptions options) {
@@ -3955,6 +4227,8 @@ public final class AivenFunctions {
      * The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -3985,6 +4259,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaConfigurationResult> getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs args) {
@@ -3994,6 +4269,8 @@ public final class AivenFunctions {
      * The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4024,6 +4301,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaConfigurationResult> getKafkaSchemaConfigurationPlain(GetKafkaSchemaConfigurationPlainArgs args) {
@@ -4033,6 +4311,8 @@ public final class AivenFunctions {
      * The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4063,6 +4343,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaSchemaConfigurationResult> getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs args, InvokeOptions options) {
@@ -4072,6 +4353,8 @@ public final class AivenFunctions {
      * The Kafka Schema Configuration data source provides information about the existing Aiven Kafka Schema Configuration.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4102,6 +4385,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaSchemaConfigurationResult> getKafkaSchemaConfigurationPlain(GetKafkaSchemaConfigurationPlainArgs args, InvokeOptions options) {
@@ -4139,6 +4423,8 @@ public final class AivenFunctions {
      * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4169,6 +4455,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args) {
@@ -4178,6 +4465,8 @@ public final class AivenFunctions {
      * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4208,6 +4497,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args) {
@@ -4217,6 +4507,8 @@ public final class AivenFunctions {
      * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4247,6 +4539,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaTopicResult> getKafkaTopic(GetKafkaTopicArgs args, InvokeOptions options) {
@@ -4256,6 +4549,8 @@ public final class AivenFunctions {
      * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4286,6 +4581,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaTopicResult> getKafkaTopicPlain(GetKafkaTopicPlainArgs args, InvokeOptions options) {
@@ -4295,6 +4591,8 @@ public final class AivenFunctions {
      * The Kafka User data source provides information about the existing Aiven Kafka User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4325,6 +4623,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaUserResult> getKafkaUser(GetKafkaUserArgs args) {
@@ -4334,6 +4633,8 @@ public final class AivenFunctions {
      * The Kafka User data source provides information about the existing Aiven Kafka User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4364,6 +4665,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaUserResult> getKafkaUserPlain(GetKafkaUserPlainArgs args) {
@@ -4373,6 +4675,8 @@ public final class AivenFunctions {
      * The Kafka User data source provides information about the existing Aiven Kafka User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4403,6 +4707,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetKafkaUserResult> getKafkaUser(GetKafkaUserArgs args, InvokeOptions options) {
@@ -4412,6 +4717,8 @@ public final class AivenFunctions {
      * The Kafka User data source provides information about the existing Aiven Kafka User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4442,6 +4749,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKafkaUserResult> getKafkaUserPlain(GetKafkaUserPlainArgs args, InvokeOptions options) {
@@ -4451,6 +4759,8 @@ public final class AivenFunctions {
      * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4480,6 +4790,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args) {
@@ -4489,6 +4800,8 @@ public final class AivenFunctions {
      * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4518,6 +4831,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3AggregatorResult> getM3AggregatorPlain(GetM3AggregatorPlainArgs args) {
@@ -4527,6 +4841,8 @@ public final class AivenFunctions {
      * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4556,6 +4872,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3AggregatorResult> getM3Aggregator(GetM3AggregatorArgs args, InvokeOptions options) {
@@ -4565,6 +4882,8 @@ public final class AivenFunctions {
      * The M3 Aggregator data source provides information about the existing Aiven M3 Aggregator.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4594,6 +4913,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3AggregatorResult> getM3AggregatorPlain(GetM3AggregatorPlainArgs args, InvokeOptions options) {
@@ -4603,6 +4923,8 @@ public final class AivenFunctions {
      * The M3 DB data source provides information about the existing Aiven M3 services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4632,6 +4954,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args) {
@@ -4641,6 +4964,8 @@ public final class AivenFunctions {
      * The M3 DB data source provides information about the existing Aiven M3 services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4670,6 +4995,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args) {
@@ -4679,6 +5005,8 @@ public final class AivenFunctions {
      * The M3 DB data source provides information about the existing Aiven M3 services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4708,6 +5036,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3DbResult> getM3Db(GetM3DbArgs args, InvokeOptions options) {
@@ -4717,6 +5046,8 @@ public final class AivenFunctions {
      * The M3 DB data source provides information about the existing Aiven M3 services.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4746,6 +5077,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3DbResult> getM3DbPlain(GetM3DbPlainArgs args, InvokeOptions options) {
@@ -4755,6 +5087,8 @@ public final class AivenFunctions {
      * The M3DB User data source provides information about the existing Aiven M3DB User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4785,6 +5119,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args) {
@@ -4794,6 +5129,8 @@ public final class AivenFunctions {
      * The M3DB User data source provides information about the existing Aiven M3DB User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4824,6 +5161,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args) {
@@ -4833,6 +5171,8 @@ public final class AivenFunctions {
      * The M3DB User data source provides information about the existing Aiven M3DB User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4863,6 +5203,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetM3dbUserResult> getM3dbUser(GetM3dbUserArgs args, InvokeOptions options) {
@@ -4872,6 +5213,8 @@ public final class AivenFunctions {
      * The M3DB User data source provides information about the existing Aiven M3DB User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4902,6 +5245,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetM3dbUserResult> getM3dbUserPlain(GetM3dbUserPlainArgs args, InvokeOptions options) {
@@ -4911,6 +5255,8 @@ public final class AivenFunctions {
      * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4942,6 +5288,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMirrorMakerReplicationFlowResult> getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs args) {
@@ -4951,6 +5298,8 @@ public final class AivenFunctions {
      * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -4982,6 +5331,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMirrorMakerReplicationFlowResult> getMirrorMakerReplicationFlowPlain(GetMirrorMakerReplicationFlowPlainArgs args) {
@@ -4991,6 +5341,8 @@ public final class AivenFunctions {
      * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5022,6 +5374,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMirrorMakerReplicationFlowResult> getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs args, InvokeOptions options) {
@@ -5031,6 +5384,8 @@ public final class AivenFunctions {
      * The MirrorMaker 2 Replication Flow data source provides information about the existing MirrorMaker 2 Replication Flow on Aiven Cloud.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5062,6 +5417,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMirrorMakerReplicationFlowResult> getMirrorMakerReplicationFlowPlain(GetMirrorMakerReplicationFlowPlainArgs args, InvokeOptions options) {
@@ -5071,6 +5427,8 @@ public final class AivenFunctions {
      * The MySQL data source provides information about the existing Aiven MySQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5100,6 +5458,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMySqlResult> getMySql(GetMySqlArgs args) {
@@ -5109,6 +5468,8 @@ public final class AivenFunctions {
      * The MySQL data source provides information about the existing Aiven MySQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5138,6 +5499,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMySqlResult> getMySqlPlain(GetMySqlPlainArgs args) {
@@ -5147,6 +5509,8 @@ public final class AivenFunctions {
      * The MySQL data source provides information about the existing Aiven MySQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5176,6 +5540,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMySqlResult> getMySql(GetMySqlArgs args, InvokeOptions options) {
@@ -5185,6 +5550,8 @@ public final class AivenFunctions {
      * The MySQL data source provides information about the existing Aiven MySQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5214,6 +5581,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMySqlResult> getMySqlPlain(GetMySqlPlainArgs args, InvokeOptions options) {
@@ -5223,6 +5591,8 @@ public final class AivenFunctions {
      * The MySQL Database data source provides information about the existing Aiven MySQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5253,6 +5623,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMysqlDatabaseResult> getMysqlDatabase(GetMysqlDatabaseArgs args) {
@@ -5262,6 +5633,8 @@ public final class AivenFunctions {
      * The MySQL Database data source provides information about the existing Aiven MySQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5292,6 +5665,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMysqlDatabaseResult> getMysqlDatabasePlain(GetMysqlDatabasePlainArgs args) {
@@ -5301,6 +5675,8 @@ public final class AivenFunctions {
      * The MySQL Database data source provides information about the existing Aiven MySQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5331,6 +5707,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMysqlDatabaseResult> getMysqlDatabase(GetMysqlDatabaseArgs args, InvokeOptions options) {
@@ -5340,6 +5717,8 @@ public final class AivenFunctions {
      * The MySQL Database data source provides information about the existing Aiven MySQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5370,6 +5749,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMysqlDatabaseResult> getMysqlDatabasePlain(GetMysqlDatabasePlainArgs args, InvokeOptions options) {
@@ -5379,6 +5759,8 @@ public final class AivenFunctions {
      * The MySQL User data source provides information about the existing Aiven MySQL User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5409,6 +5791,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMysqlUserResult> getMysqlUser(GetMysqlUserArgs args) {
@@ -5418,6 +5801,8 @@ public final class AivenFunctions {
      * The MySQL User data source provides information about the existing Aiven MySQL User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5448,6 +5833,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMysqlUserResult> getMysqlUserPlain(GetMysqlUserPlainArgs args) {
@@ -5457,6 +5843,8 @@ public final class AivenFunctions {
      * The MySQL User data source provides information about the existing Aiven MySQL User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5487,6 +5875,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMysqlUserResult> getMysqlUser(GetMysqlUserArgs args, InvokeOptions options) {
@@ -5496,6 +5885,8 @@ public final class AivenFunctions {
      * The MySQL User data source provides information about the existing Aiven MySQL User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5526,6 +5917,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMysqlUserResult> getMysqlUserPlain(GetMysqlUserPlainArgs args, InvokeOptions options) {
@@ -5535,6 +5927,8 @@ public final class AivenFunctions {
      * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5564,6 +5958,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchResult> getOpenSearch(GetOpenSearchArgs args) {
@@ -5573,6 +5968,8 @@ public final class AivenFunctions {
      * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5602,6 +5999,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchResult> getOpenSearchPlain(GetOpenSearchPlainArgs args) {
@@ -5611,6 +6009,8 @@ public final class AivenFunctions {
      * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5640,6 +6040,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchResult> getOpenSearch(GetOpenSearchArgs args, InvokeOptions options) {
@@ -5649,6 +6050,8 @@ public final class AivenFunctions {
      * The OpenSearch data source provides information about the existing Aiven OpenSearch service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5678,6 +6081,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchResult> getOpenSearchPlain(GetOpenSearchPlainArgs args, InvokeOptions options) {
@@ -5687,6 +6091,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5716,6 +6122,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchAclConfigResult> getOpenSearchAclConfig(GetOpenSearchAclConfigArgs args) {
@@ -5725,6 +6132,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5754,6 +6163,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchAclConfigResult> getOpenSearchAclConfigPlain(GetOpenSearchAclConfigPlainArgs args) {
@@ -5763,6 +6173,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5792,6 +6204,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchAclConfigResult> getOpenSearchAclConfig(GetOpenSearchAclConfigArgs args, InvokeOptions options) {
@@ -5801,6 +6214,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Config data source provides information about an existing Aiven OpenSearch ACL Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5830,6 +6245,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchAclConfigResult> getOpenSearchAclConfigPlain(GetOpenSearchAclConfigPlainArgs args, InvokeOptions options) {
@@ -5839,6 +6255,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5870,6 +6288,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchAclRuleResult> getOpenSearchAclRule(GetOpenSearchAclRuleArgs args) {
@@ -5879,6 +6298,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5910,6 +6331,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchAclRuleResult> getOpenSearchAclRulePlain(GetOpenSearchAclRulePlainArgs args) {
@@ -5919,6 +6341,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5950,6 +6374,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpenSearchAclRuleResult> getOpenSearchAclRule(GetOpenSearchAclRuleArgs args, InvokeOptions options) {
@@ -5959,6 +6384,8 @@ public final class AivenFunctions {
      * The OpenSearch ACL Rule data source provides information about an existing Aiven OpenSearch ACL Rule.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -5990,6 +6417,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpenSearchAclRuleResult> getOpenSearchAclRulePlain(GetOpenSearchAclRulePlainArgs args, InvokeOptions options) {
@@ -5999,6 +6427,8 @@ public final class AivenFunctions {
      * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6028,6 +6458,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs args) {
@@ -6037,6 +6468,8 @@ public final class AivenFunctions {
      * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6066,6 +6499,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfigPlain(GetOpensearchSecurityPluginConfigPlainArgs args) {
@@ -6075,6 +6509,8 @@ public final class AivenFunctions {
      * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6104,6 +6540,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs args, InvokeOptions options) {
@@ -6113,6 +6550,8 @@ public final class AivenFunctions {
      * The OpenSearch Security Plugin Config data source provides information about an existing Aiven OpenSearch Security Plugin Config.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6142,6 +6581,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpensearchSecurityPluginConfigResult> getOpensearchSecurityPluginConfigPlain(GetOpensearchSecurityPluginConfigPlainArgs args, InvokeOptions options) {
@@ -6151,6 +6591,8 @@ public final class AivenFunctions {
      * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6181,6 +6623,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpensearchUserResult> getOpensearchUser(GetOpensearchUserArgs args) {
@@ -6190,6 +6633,8 @@ public final class AivenFunctions {
      * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6220,6 +6665,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpensearchUserResult> getOpensearchUserPlain(GetOpensearchUserPlainArgs args) {
@@ -6229,6 +6675,8 @@ public final class AivenFunctions {
      * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6259,6 +6707,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOpensearchUserResult> getOpensearchUser(GetOpensearchUserArgs args, InvokeOptions options) {
@@ -6268,6 +6717,8 @@ public final class AivenFunctions {
      * The OpenSearch User data source provides information about the existing Aiven OpenSearch User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6298,6 +6749,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOpensearchUserResult> getOpensearchUserPlain(GetOpensearchUserPlainArgs args, InvokeOptions options) {
@@ -6307,6 +6759,8 @@ public final class AivenFunctions {
      * Retrieves information about an organization from Aiven.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6335,6 +6789,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization() {
@@ -6344,6 +6799,8 @@ public final class AivenFunctions {
      * Retrieves information about an organization from Aiven.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6372,6 +6829,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain() {
@@ -6381,6 +6839,8 @@ public final class AivenFunctions {
      * Retrieves information about an organization from Aiven.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6409,6 +6869,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args) {
@@ -6418,6 +6879,8 @@ public final class AivenFunctions {
      * Retrieves information about an organization from Aiven.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6446,6 +6909,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args) {
@@ -6455,6 +6919,8 @@ public final class AivenFunctions {
      * Retrieves information about an organization from Aiven.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6483,6 +6949,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOptions options) {
@@ -6492,6 +6959,8 @@ public final class AivenFunctions {
      * Retrieves information about an organization from Aiven.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6520,6 +6989,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
@@ -6586,6 +7056,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6615,6 +7086,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args) {
@@ -6625,6 +7097,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6654,6 +7127,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationalUnitResult> getOrganizationalUnitPlain(GetOrganizationalUnitPlainArgs args) {
@@ -6664,6 +7138,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6693,6 +7168,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetOrganizationalUnitResult> getOrganizationalUnit(GetOrganizationalUnitArgs args, InvokeOptions options) {
@@ -6703,6 +7179,7 @@ public final class AivenFunctions {
      * 
      * ## Example Usage
      * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6732,6 +7209,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetOrganizationalUnitResult> getOrganizationalUnitPlain(GetOrganizationalUnitPlainArgs args, InvokeOptions options) {
@@ -6741,6 +7219,8 @@ public final class AivenFunctions {
      * The PG data source provides information about the existing Aiven PostgreSQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6770,6 +7250,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPgResult> getPg(GetPgArgs args) {
@@ -6779,6 +7260,8 @@ public final class AivenFunctions {
      * The PG data source provides information about the existing Aiven PostgreSQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6808,6 +7291,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPgResult> getPgPlain(GetPgPlainArgs args) {
@@ -6817,6 +7301,8 @@ public final class AivenFunctions {
      * The PG data source provides information about the existing Aiven PostgreSQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6846,6 +7332,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPgResult> getPg(GetPgArgs args, InvokeOptions options) {
@@ -6855,6 +7342,8 @@ public final class AivenFunctions {
      * The PG data source provides information about the existing Aiven PostgreSQL service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6884,6 +7373,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPgResult> getPgPlain(GetPgPlainArgs args, InvokeOptions options) {
@@ -6893,6 +7383,8 @@ public final class AivenFunctions {
      * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6923,6 +7415,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPgDatabaseResult> getPgDatabase(GetPgDatabaseArgs args) {
@@ -6932,6 +7425,8 @@ public final class AivenFunctions {
      * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -6962,6 +7457,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPgDatabaseResult> getPgDatabasePlain(GetPgDatabasePlainArgs args) {
@@ -6971,6 +7467,8 @@ public final class AivenFunctions {
      * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7001,6 +7499,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPgDatabaseResult> getPgDatabase(GetPgDatabaseArgs args, InvokeOptions options) {
@@ -7010,6 +7509,8 @@ public final class AivenFunctions {
      * The PG Database data source provides information about the existing Aiven PostgreSQL Database.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7040,6 +7541,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPgDatabaseResult> getPgDatabasePlain(GetPgDatabasePlainArgs args, InvokeOptions options) {
@@ -7049,6 +7551,8 @@ public final class AivenFunctions {
      * The PG User data source provides information about the existing Aiven PG User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7079,6 +7583,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPgUserResult> getPgUser(GetPgUserArgs args) {
@@ -7088,6 +7593,8 @@ public final class AivenFunctions {
      * The PG User data source provides information about the existing Aiven PG User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7118,6 +7625,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPgUserResult> getPgUserPlain(GetPgUserPlainArgs args) {
@@ -7127,6 +7635,8 @@ public final class AivenFunctions {
      * The PG User data source provides information about the existing Aiven PG User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7157,6 +7667,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetPgUserResult> getPgUser(GetPgUserArgs args, InvokeOptions options) {
@@ -7166,6 +7677,8 @@ public final class AivenFunctions {
      * The PG User data source provides information about the existing Aiven PG User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7196,6 +7709,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPgUserResult> getPgUserPlain(GetPgUserPlainArgs args, InvokeOptions options) {
@@ -7205,6 +7719,8 @@ public final class AivenFunctions {
      * The Project data source provides information about the existing Aiven Project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7233,6 +7749,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args) {
@@ -7242,6 +7759,8 @@ public final class AivenFunctions {
      * The Project data source provides information about the existing Aiven Project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7270,6 +7789,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args) {
@@ -7279,6 +7799,8 @@ public final class AivenFunctions {
      * The Project data source provides information about the existing Aiven Project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7307,6 +7829,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
@@ -7316,6 +7839,8 @@ public final class AivenFunctions {
      * The Project data source provides information about the existing Aiven Project.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7344,6 +7869,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
@@ -7353,6 +7879,8 @@ public final class AivenFunctions {
      * The Project User data source provides information about the existing Aiven Project User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7382,6 +7910,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectUserResult> getProjectUser(GetProjectUserArgs args) {
@@ -7391,6 +7920,8 @@ public final class AivenFunctions {
      * The Project User data source provides information about the existing Aiven Project User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7420,6 +7951,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectUserResult> getProjectUserPlain(GetProjectUserPlainArgs args) {
@@ -7429,6 +7961,8 @@ public final class AivenFunctions {
      * The Project User data source provides information about the existing Aiven Project User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7458,6 +7992,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectUserResult> getProjectUser(GetProjectUserArgs args, InvokeOptions options) {
@@ -7467,6 +8002,8 @@ public final class AivenFunctions {
      * The Project User data source provides information about the existing Aiven Project User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7496,6 +8033,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectUserResult> getProjectUserPlain(GetProjectUserPlainArgs args, InvokeOptions options) {
@@ -7505,6 +8043,8 @@ public final class AivenFunctions {
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7538,6 +8078,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVpcResult> getProjectVpc() {
@@ -7547,6 +8088,8 @@ public final class AivenFunctions {
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7580,6 +8123,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain() {
@@ -7589,6 +8133,8 @@ public final class AivenFunctions {
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7622,6 +8168,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVpcResult> getProjectVpc(GetProjectVpcArgs args) {
@@ -7631,6 +8178,8 @@ public final class AivenFunctions {
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7664,6 +8213,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args) {
@@ -7673,6 +8223,8 @@ public final class AivenFunctions {
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7706,6 +8258,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetProjectVpcResult> getProjectVpc(GetProjectVpcArgs args, InvokeOptions options) {
@@ -7715,6 +8268,8 @@ public final class AivenFunctions {
      * The Project VPC data source provides information about the existing Aiven Project VPC.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7748,6 +8303,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetProjectVpcResult> getProjectVpcPlain(GetProjectVpcPlainArgs args, InvokeOptions options) {
@@ -7757,6 +8313,8 @@ public final class AivenFunctions {
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7786,6 +8344,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRedisResult> getRedis(GetRedisArgs args) {
@@ -7795,6 +8354,8 @@ public final class AivenFunctions {
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7824,6 +8385,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRedisResult> getRedisPlain(GetRedisPlainArgs args) {
@@ -7833,6 +8395,8 @@ public final class AivenFunctions {
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7862,6 +8426,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRedisResult> getRedis(GetRedisArgs args, InvokeOptions options) {
@@ -7871,6 +8436,8 @@ public final class AivenFunctions {
      * The Redis data source provides information about the existing Aiven Redis service.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7900,6 +8467,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRedisResult> getRedisPlain(GetRedisPlainArgs args, InvokeOptions options) {
@@ -7909,6 +8477,8 @@ public final class AivenFunctions {
      * The Redis User data source provides information about the existing Aiven Redis User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7939,6 +8509,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args) {
@@ -7948,6 +8519,8 @@ public final class AivenFunctions {
      * The Redis User data source provides information about the existing Aiven Redis User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -7978,6 +8551,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args) {
@@ -7987,6 +8561,8 @@ public final class AivenFunctions {
      * The Redis User data source provides information about the existing Aiven Redis User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8017,6 +8593,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetRedisUserResult> getRedisUser(GetRedisUserArgs args, InvokeOptions options) {
@@ -8026,6 +8603,8 @@ public final class AivenFunctions {
      * The Redis User data source provides information about the existing Aiven Redis User.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8056,6 +8635,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetRedisUserResult> getRedisUserPlain(GetRedisUserPlainArgs args, InvokeOptions options) {
@@ -8067,6 +8647,8 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8099,6 +8681,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceComponentResult> getServiceComponent(GetServiceComponentArgs args) {
@@ -8110,6 +8693,8 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8142,6 +8727,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceComponentResult> getServiceComponentPlain(GetServiceComponentPlainArgs args) {
@@ -8153,6 +8739,8 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8185,6 +8773,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceComponentResult> getServiceComponent(GetServiceComponentArgs args, InvokeOptions options) {
@@ -8196,6 +8785,8 @@ public final class AivenFunctions {
      * Service components can be defined to get the connection info for specific service. Services may support multiple different access routes (VPC peering and public access), have additional components or support various authentication methods. Each of these may be represented by different DNS name or TCP port and the specific component to match can be selected by specifying appropriate filters as shown below.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8228,6 +8819,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceComponentResult> getServiceComponentPlain(GetServiceComponentPlainArgs args, InvokeOptions options) {
@@ -8242,6 +8834,8 @@ public final class AivenFunctions {
      * OpenSearch, etc.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8273,6 +8867,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIntegrationResult> getServiceIntegration(GetServiceIntegrationArgs args) {
@@ -8287,6 +8882,8 @@ public final class AivenFunctions {
      * OpenSearch, etc.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8318,6 +8915,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIntegrationResult> getServiceIntegrationPlain(GetServiceIntegrationPlainArgs args) {
@@ -8332,6 +8930,8 @@ public final class AivenFunctions {
      * OpenSearch, etc.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8363,6 +8963,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIntegrationResult> getServiceIntegration(GetServiceIntegrationArgs args, InvokeOptions options) {
@@ -8377,6 +8978,8 @@ public final class AivenFunctions {
      * OpenSearch, etc.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8408,6 +9011,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIntegrationResult> getServiceIntegrationPlain(GetServiceIntegrationPlainArgs args, InvokeOptions options) {
@@ -8417,6 +9021,8 @@ public final class AivenFunctions {
      * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8446,6 +9052,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs args) {
@@ -8455,6 +9062,8 @@ public final class AivenFunctions {
      * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8484,6 +9093,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpointPlain(GetServiceIntegrationEndpointPlainArgs args) {
@@ -8493,6 +9103,8 @@ public final class AivenFunctions {
      * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8522,6 +9134,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs args, InvokeOptions options) {
@@ -8531,6 +9144,8 @@ public final class AivenFunctions {
      * The Service Integration Endpoint data source provides information about the existing Aiven Service Integration Endpoint.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8560,6 +9175,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetServiceIntegrationEndpointResult> getServiceIntegrationEndpointPlain(GetServiceIntegrationEndpointPlainArgs args, InvokeOptions options) {
@@ -8569,6 +9185,8 @@ public final class AivenFunctions {
      * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8599,6 +9217,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs args) {
@@ -8608,6 +9227,8 @@ public final class AivenFunctions {
      * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8638,6 +9259,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachmentPlain(GetTransitGatewayVpcAttachmentPlainArgs args) {
@@ -8647,6 +9269,8 @@ public final class AivenFunctions {
      * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8677,6 +9301,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs args, InvokeOptions options) {
@@ -8686,6 +9311,8 @@ public final class AivenFunctions {
      * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -8716,6 +9343,7 @@ public final class AivenFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTransitGatewayVpcAttachmentResult> getTransitGatewayVpcAttachmentPlain(GetTransitGatewayVpcAttachmentPlainArgs args, InvokeOptions options) {
