@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,13 +52,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
-//
+// $ pulumi import aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow f1 project/service_name/source_cluster/target_cluster
 // ```
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState

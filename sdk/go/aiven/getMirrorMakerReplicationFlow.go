@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,6 +42,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMakerReplicationFlowArgs, opts ...pulumi.InvokeOption) (*LookupMirrorMakerReplicationFlowResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMirrorMakerReplicationFlowResult

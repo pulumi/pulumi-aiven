@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * The Transit Gateway VPC Attachment resource allows the creation and management Transit Gateway VPC Attachment VPC peering connection between Aiven and AWS.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -53,11 +55,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+ * $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
  * ```
  * 
  */

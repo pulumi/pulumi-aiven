@@ -17,9 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
-//
+// $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
 // ```
 type ProjectVpc struct {
 	pulumi.CustomResourceState

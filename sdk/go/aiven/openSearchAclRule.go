@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -99,13 +100,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
-//
+// $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
 // ```
 type OpenSearchAclRule struct {
 	pulumi.CustomResourceState

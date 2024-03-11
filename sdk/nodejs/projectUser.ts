@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,11 +20,12 @@ import * as utilities from "./utilities";
  *     memberType: "admin",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+ * $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
  * ```
  */
 export class ProjectUser extends pulumi.CustomResource {

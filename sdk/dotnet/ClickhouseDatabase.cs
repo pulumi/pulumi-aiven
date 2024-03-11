@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -30,11 +31,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
+    /// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouseDatabase:ClickhouseDatabase")]

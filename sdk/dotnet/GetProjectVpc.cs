@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Project VPC data source provides information about the existing Aiven Project VPC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,8 +38,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProjectVpcResult> InvokeAsync(GetProjectVpcArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcArgs(), options.WithDefaults());
@@ -48,10 +46,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Project VPC data source provides information about the existing Aiven Project VPC.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,8 +70,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProjectVpcResult> Invoke(GetProjectVpcInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcInvokeArgs(), options.WithDefaults());

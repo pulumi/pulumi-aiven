@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * The Flink resource allows the creation and management of Aiven Flink services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,11 +66,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/flink:Flink flink project/service_name
+ * $ pulumi import aiven:index/flink:Flink flink project/service_name
  * ```
  * 
  */

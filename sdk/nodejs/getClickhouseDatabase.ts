@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     name: "my-ch-db",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClickhouseDatabase(args: GetClickhouseDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetClickhouseDatabaseResult> {
 
@@ -75,6 +77,7 @@ export interface GetClickhouseDatabaseResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -85,6 +88,7 @@ export interface GetClickhouseDatabaseResult {
  *     name: "my-ch-db",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getClickhouseDatabaseOutput(args: GetClickhouseDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClickhouseDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getClickhouseDatabase(a, opts))

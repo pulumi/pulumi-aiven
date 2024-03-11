@@ -10,7 +10,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo project/service_name
+ * $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo project/service_name
  * ```
  */
 export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupOpenSearchAclConfig(ctx *pulumi.Context, args *LookupOpenSearchAclConfigArgs, opts ...pulumi.InvokeOption) (*LookupOpenSearchAclConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenSearchAclConfigResult

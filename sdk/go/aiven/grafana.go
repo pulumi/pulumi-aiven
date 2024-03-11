@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,13 +50,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/grafana:Grafana gr1 project/service_name
-//
+// $ pulumi import aiven:index/grafana:Grafana gr1 project/service_name
 // ```
 type Grafana struct {
 	pulumi.CustomResourceState

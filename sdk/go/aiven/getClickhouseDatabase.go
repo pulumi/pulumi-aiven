@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupClickhouseDatabase(ctx *pulumi.Context, args *LookupClickhouseDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupClickhouseDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClickhouseDatabaseResult

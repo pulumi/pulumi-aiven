@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,13 +42,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
-//
+// $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
 // ```
 type AwsVpcPeeringConnection struct {
 	pulumi.CustomResourceState

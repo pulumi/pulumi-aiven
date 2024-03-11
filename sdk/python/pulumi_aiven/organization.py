@@ -146,17 +146,19 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         organization1 = aiven.Organization("organization1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/organization:Organization organization1 organization_id
+        $ pulumi import aiven:index/organization:Organization organization1 organization_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -174,17 +176,19 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         organization1 = aiven.Organization("organization1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/organization:Organization organization1 organization_id
+        $ pulumi import aiven:index/organization:Organization organization1 organization_id
         ```
 
         :param str resource_name: The name of the resource.

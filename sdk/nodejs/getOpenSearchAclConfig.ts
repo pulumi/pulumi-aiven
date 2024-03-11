@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     serviceName: aiven_opensearch.os.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchAclConfig(args: GetOpenSearchAclConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchAclConfigResult> {
 
@@ -72,6 +74,7 @@ export interface GetOpenSearchAclConfigResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -81,6 +84,7 @@ export interface GetOpenSearchAclConfigResult {
  *     serviceName: aiven_opensearch.os.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchAclConfigOutput(args: GetOpenSearchAclConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchAclConfigResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearchAclConfig(a, opts))

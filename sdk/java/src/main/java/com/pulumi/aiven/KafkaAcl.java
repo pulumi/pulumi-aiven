@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * The Resource Kafka ACL resource allows the creation and management of ACLs for an Aiven Kafka service.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+ * $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
  * ```
  * 
  */

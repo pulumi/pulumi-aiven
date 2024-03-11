@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/project:Project myproject project
+ * $ pulumi import aiven:index/project:Project myproject project
  * ```
  * 
  */

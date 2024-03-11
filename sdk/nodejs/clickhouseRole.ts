@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -27,11 +28,12 @@ import * as utilities from "./utilities";
  *     role: "writer",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+ * $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
  * ```
  */
 export class ClickhouseRole extends pulumi.CustomResource {

@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupM3Db(ctx *pulumi.Context, args *LookupM3DbArgs, opts ...pulumi.InvokeOption) (*LookupM3DbResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3DbResult

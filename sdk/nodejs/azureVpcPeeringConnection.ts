@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -22,11 +23,12 @@ import * as utilities from "./utilities";
  *     peerAzureTenantId: "xxxxxx",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
+ * $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
  * ```
  */
 export class AzureVpcPeeringConnection extends pulumi.CustomResource {

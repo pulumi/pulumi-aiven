@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -39,6 +40,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupKafka(ctx *pulumi.Context, args *LookupKafkaArgs, opts ...pulumi.InvokeOption) (*LookupKafkaResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupKafkaResult

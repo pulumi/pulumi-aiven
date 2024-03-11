@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,13 +42,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
-//
+// $ pulumi import aiven:index/clickhouseUser:ClickhouseUser ch-user project/service_name/username
 // ```
 type ClickhouseUser struct {
 	pulumi.CustomResourceState

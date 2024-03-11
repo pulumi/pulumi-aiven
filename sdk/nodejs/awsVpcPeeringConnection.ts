@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,11 +20,12 @@ import * as utilities from "./utilities";
  *     awsVpcId: "XXXXX",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
+ * $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
  * ```
  */
 export class AwsVpcPeeringConnection extends pulumi.CustomResource {

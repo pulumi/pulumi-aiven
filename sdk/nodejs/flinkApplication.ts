@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -18,11 +19,12 @@ import * as utilities from "./utilities";
  *     serviceName: "flink-service-1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
+ * $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
  * ```
  */
 export class FlinkApplication extends pulumi.CustomResource {

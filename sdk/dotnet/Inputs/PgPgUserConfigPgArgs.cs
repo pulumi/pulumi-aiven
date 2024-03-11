@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+        /// Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
         /// </summary>
         [Input("autovacuumAnalyzeScaleFactor")]
         public Input<double>? AutovacuumAnalyzeScaleFactor { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
-        /// Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
         /// </summary>
         [Input("autovacuumVacuumScaleFactor")]
         public Input<double>? AutovacuumVacuumScaleFactor { get; set; }

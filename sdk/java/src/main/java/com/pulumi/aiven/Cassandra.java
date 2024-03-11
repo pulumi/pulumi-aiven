@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * The Cassandra resource allows the creation and management of Aiven Cassandra services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -68,11 +70,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
+ * $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
  * ```
  * 
  */

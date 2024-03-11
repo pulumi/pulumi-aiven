@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+ * $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
  * ```
  */
 export class AccountAuthentication extends pulumi.CustomResource {

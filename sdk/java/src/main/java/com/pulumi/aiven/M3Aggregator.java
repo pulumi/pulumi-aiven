@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * The M3 Aggregator resource allows the creation and management of Aiven M3 Aggregator services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -64,11 +66,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
+ * $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
  * ```
  * 
  */

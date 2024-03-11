@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The Kafka Schema resource allows the creation and management of Aiven Kafka Schemas.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,11 +67,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name
+ * $ pulumi import aiven:index/kafkaSchema:KafkaSchema kafka-schema1 project/service_name/subject_name
  * ```
  * 
  */

@@ -166,6 +166,7 @@ class AwsPrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -175,11 +176,12 @@ class AwsPrivatelink(pulumi.CustomResource):
             service_name=aiven_kafka["bar"]["service_name"],
             principals=["arn:aws:iam::012345678901:user/mwf"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+        $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -199,6 +201,7 @@ class AwsPrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -208,11 +211,12 @@ class AwsPrivatelink(pulumi.CustomResource):
             service_name=aiven_kafka["bar"]["service_name"],
             principals=["arn:aws:iam::012345678901:user/mwf"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+        $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
         ```
 
         :param str resource_name: The name of the resource.

@@ -215,6 +215,7 @@ class FlinkApplication(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -223,11 +224,12 @@ class FlinkApplication(pulumi.CustomResource):
             project=aiven_project["foo"]["project"],
             service_name="flink-service-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -247,6 +249,7 @@ class FlinkApplication(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -255,11 +258,12 @@ class FlinkApplication(pulumi.CustomResource):
             project=aiven_project["foo"]["project"],
             service_name="flink-service-1")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
+        $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
         ```
 
         :param str resource_name: The name of the resource.

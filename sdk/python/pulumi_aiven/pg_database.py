@@ -237,6 +237,7 @@ class PgDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -246,11 +247,12 @@ class PgDatabase(pulumi.CustomResource):
             service_name=aiven_pg["mypg"]["service_name"],
             database_name="<DATABASE_NAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase project/service_name/database_name
+        $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase project/service_name/database_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -274,6 +276,7 @@ class PgDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -283,11 +286,12 @@ class PgDatabase(pulumi.CustomResource):
             service_name=aiven_pg["mypg"]["service_name"],
             database_name="<DATABASE_NAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase project/service_name/database_name
+        $ pulumi import aiven:index/pgDatabase:PgDatabase mydatabase project/service_name/database_name
         ```
 
         :param str resource_name: The name of the resource.

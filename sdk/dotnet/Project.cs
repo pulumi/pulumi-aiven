@@ -15,7 +15,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/project:Project myproject project
+    /// $ pulumi import aiven:index/project:Project myproject project
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/project:Project")]

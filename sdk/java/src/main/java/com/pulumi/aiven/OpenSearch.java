@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * The OpenSearch resource allows the creation and management of Aiven OpenSearch services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -74,11 +76,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+ * $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
  * ```
  * 
  */

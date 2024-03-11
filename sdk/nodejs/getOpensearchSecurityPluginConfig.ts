@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     serviceName: aiven_opensearch.os.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpensearchSecurityPluginConfig(args: GetOpensearchSecurityPluginConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOpensearchSecurityPluginConfigResult> {
 
@@ -80,6 +82,7 @@ export interface GetOpensearchSecurityPluginConfigResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -89,6 +92,7 @@ export interface GetOpensearchSecurityPluginConfigResult {
  *     serviceName: aiven_opensearch.os.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOpensearchSecurityPluginConfigOutput(args: GetOpensearchSecurityPluginConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpensearchSecurityPluginConfigResult> {
     return pulumi.output(args).apply((a: any) => getOpensearchSecurityPluginConfig(a, opts))

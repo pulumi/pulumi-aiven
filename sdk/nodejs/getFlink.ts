@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlink(args: GetFlinkArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkResult> {
 
@@ -170,6 +172,7 @@ export interface GetFlinkResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -179,6 +182,7 @@ export interface GetFlinkResult {
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlinkOutput(args: GetFlinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkResult> {
     return pulumi.output(args).apply((a: any) => getFlink(a, opts))

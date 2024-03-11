@@ -840,6 +840,7 @@ class M3Aggregator(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -855,11 +856,12 @@ class M3Aggregator(pulumi.CustomResource):
                 m3aggregator_version="0.15",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
+        $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -912,6 +914,7 @@ class M3Aggregator(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -927,11 +930,12 @@ class M3Aggregator(pulumi.CustomResource):
                 m3aggregator_version="0.15",
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
+        $ pulumi import aiven:index/m3Aggregator:M3Aggregator m3a project/service_name
         ```
 
         :param str resource_name: The name of the resource.

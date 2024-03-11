@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     vpcId: aiven_project_vpc.vpc.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectVpc(args?: GetProjectVpcArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectVpcResult> {
     args = args || {};
@@ -85,6 +87,7 @@ export interface GetProjectVpcResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -97,6 +100,7 @@ export interface GetProjectVpcResult {
  *     vpcId: aiven_project_vpc.vpc.id,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectVpcResult> {
     return pulumi.output(args).apply((a: any) => getProjectVpc(a, opts))

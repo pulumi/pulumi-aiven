@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,6 +22,7 @@ import * as utilities from "./utilities";
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaTopicResult> {
 
@@ -93,6 +95,7 @@ export interface GetKafkaTopicResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -103,6 +106,7 @@ export interface GetKafkaTopicResult {
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaTopicResult> {
     return pulumi.output(args).apply((a: any) => getKafkaTopic(a, opts))

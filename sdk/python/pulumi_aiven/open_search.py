@@ -752,6 +752,7 @@ class OpenSearch(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -775,11 +776,12 @@ class OpenSearch(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+        $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -811,6 +813,7 @@ class OpenSearch(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -834,11 +837,12 @@ class OpenSearch(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
+        $ pulumi import aiven:index/openSearch:OpenSearch os1 project/service_name
         ```
 
         :param str resource_name: The name of the resource.

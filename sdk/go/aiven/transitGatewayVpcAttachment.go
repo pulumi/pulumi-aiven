@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,13 +46,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
-//
+// $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
 // ```
 type TransitGatewayVpcAttachment struct {
 	pulumi.CustomResourceState

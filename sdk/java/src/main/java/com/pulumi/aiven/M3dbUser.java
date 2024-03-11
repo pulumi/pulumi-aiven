@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * The M3DB User resource allows the creation and management of Aiven M3DB Users.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
+ * $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
  * ```
  * 
  */

@@ -17,6 +17,8 @@ import javax.annotation.Nullable;
  * The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -45,11 +47,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+ * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
  * ```
  * 
  */

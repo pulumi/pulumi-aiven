@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -18,6 +19,7 @@ import * as utilities from "./utilities";
  *     serviceName: aiven_kafka.bar.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetAzurePrivatelinkResult> {
 
@@ -84,6 +86,7 @@ export interface GetAzurePrivatelinkResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -93,6 +96,7 @@ export interface GetAzurePrivatelinkResult {
  *     serviceName: aiven_kafka.bar.service_name,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzurePrivatelinkResult> {
     return pulumi.output(args).apply((a: any) => getAzurePrivatelink(a, opts))

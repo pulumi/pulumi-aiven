@@ -14,6 +14,7 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,11 +34,12 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+    /// $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaAcl:KafkaAcl")]

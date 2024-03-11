@@ -840,6 +840,7 @@ class MySql(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -862,11 +863,12 @@ class MySql(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
+        $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -919,6 +921,7 @@ class MySql(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -941,11 +944,12 @@ class MySql(pulumi.CustomResource):
                 ),
             ))
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
+        $ pulumi import aiven:index/mySql:MySql mysql1 project/service_name
         ```
 
         :param str resource_name: The name of the resource.

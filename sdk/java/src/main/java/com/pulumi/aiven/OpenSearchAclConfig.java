@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The OpenSearch ACL Config resource allows the creation and management of Aiven OpenSearch ACLs.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -75,11 +77,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
+ * $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
  * ```
  * 
  */

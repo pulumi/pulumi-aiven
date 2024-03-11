@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * The Clickhouse resource allows the creation and management of Aiven Clickhouse services.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -60,11 +62,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
+ * $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
  * ```
  * 
  */

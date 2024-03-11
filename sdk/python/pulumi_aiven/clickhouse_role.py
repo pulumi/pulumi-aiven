@@ -134,6 +134,7 @@ class ClickhouseRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -150,11 +151,12 @@ class ClickhouseRole(pulumi.CustomResource):
             project=bar.project,
             role="writer")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+        $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
         ```
 
         :param str resource_name: The name of the resource.
@@ -174,6 +176,7 @@ class ClickhouseRole(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -190,11 +193,12 @@ class ClickhouseRole(pulumi.CustomResource):
             project=bar.project,
             role="writer")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
+        $ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo project/service_name/role
         ```
 
         :param str resource_name: The name of the resource.
