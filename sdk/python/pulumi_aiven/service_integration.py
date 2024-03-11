@@ -556,6 +556,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -566,11 +567,12 @@ class ServiceIntegration(pulumi.CustomResource):
             source_service_name=aiven_kafka["kfk1"]["service_name"],
             destination_service_name=aiven_m3db["m3db"]["service_name"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+        $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -609,6 +611,7 @@ class ServiceIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -619,11 +622,12 @@ class ServiceIntegration(pulumi.CustomResource):
             source_service_name=aiven_kafka["kfk1"]["service_name"],
             destination_service_name=aiven_m3db["m3db"]["service_name"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+        $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
         ```
 
         :param str resource_name: The name of the resource.

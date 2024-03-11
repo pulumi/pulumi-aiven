@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,11 +20,12 @@ import * as utilities from "./utilities";
  *     compatibilityLevel: "BACKWARD",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
+ * $ pulumi import aiven:index/kafkaSchemaConfiguration:KafkaSchemaConfiguration config project/service_name
  * ```
  */
 export class KafkaSchemaConfiguration extends pulumi.CustomResource {

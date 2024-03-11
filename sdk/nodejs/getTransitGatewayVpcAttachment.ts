@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     peerVpc: "google-project1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitGatewayVpcAttachmentResult> {
 
@@ -94,6 +96,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -104,6 +107,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
  *     peerVpc: "google-project1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitGatewayVpcAttachmentResult> {
     return pulumi.output(args).apply((a: any) => getTransitGatewayVpcAttachment(a, opts))

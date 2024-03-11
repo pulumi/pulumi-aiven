@@ -167,6 +167,7 @@ def get_service_component(component: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -177,6 +178,7 @@ def get_service_component(component: Optional[str] = None,
         route="dynamic",
         kafka_authentication_method="certificate")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str component: Service component name
@@ -227,6 +229,7 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -237,6 +240,7 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
         route="dynamic",
         kafka_authentication_method="certificate")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str component: Service component name

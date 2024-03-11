@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     serviceName: "my-m3db",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getM3Db(args: GetM3DbArgs, opts?: pulumi.InvokeOptions): Promise<GetM3DbResult> {
 
@@ -170,6 +172,7 @@ export interface GetM3DbResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -179,6 +182,7 @@ export interface GetM3DbResult {
  *     serviceName: "my-m3db",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getM3DbOutput(args: GetM3DbOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3DbResult> {
     return pulumi.output(args).apply((a: any) => getM3Db(a, opts))

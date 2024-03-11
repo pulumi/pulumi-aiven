@@ -16,6 +16,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,13 +43,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
-//
+// $ pulumi import aiven:index/m3dbUser:M3dbUser foo project/service_name/username
 // ```
 type M3dbUser struct {
 	pulumi.CustomResourceState

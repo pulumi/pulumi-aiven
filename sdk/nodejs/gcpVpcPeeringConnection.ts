@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,11 +20,12 @@ import * as utilities from "./utilities";
  *     peerVpc: "xxxx",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo project_name/vpc_id/gcp_project_id/peer_vpc
+ * $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo project_name/vpc_id/gcp_project_id/peer_vpc
  * ```
  */
 export class GcpVpcPeeringConnection extends pulumi.CustomResource {

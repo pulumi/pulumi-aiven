@@ -19,14 +19,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     public static final PgPgUserConfigPgArgs Empty = new PgPgUserConfigPgArgs();
 
     /**
-     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     @Import(name="autovacuumAnalyzeScaleFactor")
     private @Nullable Output<Double> autovacuumAnalyzeScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     public Optional<Output<Double>> autovacuumAnalyzeScaleFactor() {
@@ -124,14 +124,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     @Import(name="autovacuumVacuumScaleFactor")
     private @Nullable Output<Double> autovacuumVacuumScaleFactor;
 
     /**
-     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
      * 
      */
     public Optional<Output<Double>> autovacuumVacuumScaleFactor() {
@@ -826,7 +826,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction of the table size to add to autovacuum*analyze*threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20%!o(MISSING)f table size).
          * 
          * @return builder
          * 
@@ -973,7 +973,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
          * 
          * @return builder
          * 
@@ -984,7 +984,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+         * @param autovacuumVacuumScaleFactor Specifies a fraction of the table size to add to autovacuum*vacuum*threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20%!o(MISSING)f table size).
          * 
          * @return builder
          * 

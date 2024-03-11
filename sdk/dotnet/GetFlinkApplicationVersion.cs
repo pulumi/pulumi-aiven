@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,8 +35,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFlinkApplicationVersionResult> InvokeAsync(GetFlinkApplicationVersionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionArgs(), options.WithDefaults());
@@ -45,10 +43,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Flink Application Version data source provides information about the existing Aiven Flink Application Version.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -67,8 +64,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFlinkApplicationVersionResult> Invoke(GetFlinkApplicationVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlinkApplicationVersionResult>("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", args ?? new GetFlinkApplicationVersionInvokeArgs(), options.WithDefaults());

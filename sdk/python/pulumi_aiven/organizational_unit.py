@@ -151,17 +151,19 @@ class OrganizationalUnit(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
         ```
 
         :param str resource_name: The name of the resource.
@@ -180,17 +182,19 @@ class OrganizationalUnit(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
         ```
 
         :param str resource_name: The name of the resource.

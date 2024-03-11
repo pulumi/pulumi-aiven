@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     username: "user1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaUser(args: GetKafkaUserArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaUserResult> {
 
@@ -90,6 +92,7 @@ export interface GetKafkaUserResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -100,6 +103,7 @@ export interface GetKafkaUserResult {
  *     username: "user1",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getKafkaUserOutput(args: GetKafkaUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaUserResult> {
     return pulumi.output(args).apply((a: any) => getKafkaUser(a, opts))

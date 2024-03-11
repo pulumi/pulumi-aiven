@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAwsVpcPeeringConnectionResult> InvokeAsync(GetAwsVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAwsVpcPeeringConnectionResult>("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args ?? new GetAwsVpcPeeringConnectionArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAwsVpcPeeringConnectionResult> Invoke(GetAwsVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAwsVpcPeeringConnectionResult>("aiven:index/getAwsVpcPeeringConnection:getAwsVpcPeeringConnection", args ?? new GetAwsVpcPeeringConnectionInvokeArgs(), options.WithDefaults());

@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,13 +61,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
-//
+// $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
 // ```
 type AccountTeamProject struct {
 	pulumi.CustomResourceState

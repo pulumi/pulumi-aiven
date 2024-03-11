@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,11 +20,12 @@ import * as utilities from "./utilities";
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
+ * $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
  * ```
  */
 export class MysqlDatabase extends pulumi.CustomResource {

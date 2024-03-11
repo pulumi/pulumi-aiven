@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Cassandra User data source provides information about the existing Aiven Cassandra User.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCassandraUserResult> InvokeAsync(GetCassandraUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Cassandra User data source provides information about the existing Aiven Cassandra User.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCassandraUserResult> Invoke(GetCassandraUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCassandraUserResult>("aiven:index/getCassandraUser:getCassandraUser", args ?? new GetCassandraUserInvokeArgs(), options.WithDefaults());

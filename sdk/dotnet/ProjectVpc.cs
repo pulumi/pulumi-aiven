@@ -15,7 +15,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    ///  $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+    /// $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]

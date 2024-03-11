@@ -23,6 +23,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,13 +50,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
-//
+// $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
 // ```
 type ServiceIntegration struct {
 	pulumi.CustomResourceState

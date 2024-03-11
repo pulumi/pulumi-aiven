@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,11 +22,12 @@ import * as utilities from "./utilities";
  *     username: "<USERNAME_PATTERN>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+ * $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
  * ```
  */
 export class KafkaAcl extends pulumi.CustomResource {

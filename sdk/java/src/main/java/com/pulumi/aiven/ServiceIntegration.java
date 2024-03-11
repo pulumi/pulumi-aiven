@@ -34,6 +34,8 @@ import javax.annotation.Nullable;
  * OpenSearch, etc.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -65,11 +67,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+ * $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
  * ```
  * 
  */

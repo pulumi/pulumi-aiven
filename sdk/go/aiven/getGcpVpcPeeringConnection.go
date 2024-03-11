@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupGcpVpcPeeringConnection(ctx *pulumi.Context, args *LookupGcpVpcPeeringConnectionArgs, opts ...pulumi.InvokeOption) (*LookupGcpVpcPeeringConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGcpVpcPeeringConnectionResult

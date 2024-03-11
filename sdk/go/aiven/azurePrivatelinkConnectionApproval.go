@@ -17,9 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
-//
+// $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
 // ```
 type AzurePrivatelinkConnectionApproval struct {
 	pulumi.CustomResourceState

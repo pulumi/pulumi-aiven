@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -23,11 +24,12 @@ import * as utilities from "./utilities";
  *     username: aiven_pg_user.mypguser.username,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+ * $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
  * ```
  */
 export class ConnectionPool extends pulumi.CustomResource {

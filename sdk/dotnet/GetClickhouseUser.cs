@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClickhouseUserResult> InvokeAsync(GetClickhouseUserArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClickhouseUserResult>("aiven:index/getClickhouseUser:getClickhouseUser", args ?? new GetClickhouseUserArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Clickhouse User data source provides information about the existing Aiven Clickhouse User.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClickhouseUserResult> Invoke(GetClickhouseUserInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClickhouseUserResult>("aiven:index/getClickhouseUser:getClickhouseUser", args ?? new GetClickhouseUserInvokeArgs(), options.WithDefaults());

@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAzurePrivatelinkResult> InvokeAsync(GetAzurePrivatelinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzurePrivatelinkResult>("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args ?? new GetAzurePrivatelinkArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAzurePrivatelinkResult> Invoke(GetAzurePrivatelinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzurePrivatelinkResult>("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args ?? new GetAzurePrivatelinkInvokeArgs(), options.WithDefaults());

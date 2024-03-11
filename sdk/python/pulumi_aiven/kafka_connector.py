@@ -280,6 +280,7 @@ class KafkaConnector(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -298,11 +299,12 @@ class KafkaConnector(pulumi.CustomResource):
                 "connection.password": aiven_opensearch["os-service1"]["service_password"],
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+        $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -323,6 +325,7 @@ class KafkaConnector(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -341,11 +344,12 @@ class KafkaConnector(pulumi.CustomResource):
                 "connection.password": aiven_opensearch["os-service1"]["service_password"],
             })
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
+        $ pulumi import aiven:index/kafkaConnector:KafkaConnector kafka-os-con1 project/service_name/connector_name
         ```
 
         :param str resource_name: The name of the resource.

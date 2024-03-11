@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The Clickhouse Database resource allows the creation and management of Aiven Clickhouse Databases.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,11 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
+ * $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
  * ```
  * 
  */

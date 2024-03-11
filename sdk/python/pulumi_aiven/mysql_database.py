@@ -171,6 +171,7 @@ class MysqlDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -180,11 +181,12 @@ class MysqlDatabase(pulumi.CustomResource):
             service_name=aiven_mysql["mymysql"]["service_name"],
             database_name="<DATABASE_NAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
+        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -206,6 +208,7 @@ class MysqlDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -215,11 +218,12 @@ class MysqlDatabase(pulumi.CustomResource):
             service_name=aiven_mysql["mymysql"]["service_name"],
             database_name="<DATABASE_NAME>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
+        $ pulumi import aiven:index/mysqlDatabase:MysqlDatabase mydatabase project/service_name/database_name
         ```
 
         :param str resource_name: The name of the resource.

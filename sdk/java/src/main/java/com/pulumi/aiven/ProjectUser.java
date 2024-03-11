@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * The Project User resource allows the creation and management of Aiven Project Users.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -48,11 +50,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+ * $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
  * ```
  * 
  */

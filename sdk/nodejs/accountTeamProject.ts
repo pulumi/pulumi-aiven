@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -30,11 +31,12 @@ import * as utilities from "./utilities";
  *     teamType: "admin",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
+ * $ pulumi import aiven:index/accountTeamProject:AccountTeamProject account_team_project1 account_id/team_id/project_name
  * ```
  */
 export class AccountTeamProject extends pulumi.CustomResource {

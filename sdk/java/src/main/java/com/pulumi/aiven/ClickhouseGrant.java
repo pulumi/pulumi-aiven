@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * * Currently changes will first revoke all grants and then reissue the remaining grants for convergence.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -109,6 +111,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="aiven:index/clickhouseGrant:ClickhouseGrant")

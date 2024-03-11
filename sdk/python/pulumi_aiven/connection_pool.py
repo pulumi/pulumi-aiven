@@ -281,6 +281,7 @@ class ConnectionPool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -294,11 +295,12 @@ class ConnectionPool(pulumi.CustomResource):
             pool_size=10,
             username=aiven_pg_user["mypguser"]["username"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+        $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -322,6 +324,7 @@ class ConnectionPool(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -335,11 +338,12 @@ class ConnectionPool(pulumi.CustomResource):
             pool_size=10,
             username=aiven_pg_user["mypguser"]["username"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
+        $ pulumi import aiven:index/connectionPool:ConnectionPool mytestpool project/service_name/pool_name
         ```
 
         :param str resource_name: The name of the resource.

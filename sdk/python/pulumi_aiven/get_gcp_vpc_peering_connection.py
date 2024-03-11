@@ -125,6 +125,7 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -133,6 +134,7 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
         gcp_project_id="xxxx",
         peer_vpc="xxxx")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
@@ -166,6 +168,7 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -174,6 +177,7 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
         gcp_project_id="xxxx",
         peer_vpc="xxxx")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.

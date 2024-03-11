@@ -14,17 +14,19 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleTeam = new aiven.AccountTeam("exampleTeam", {accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- *  $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
+ * $ pulumi import aiven:index/accountTeam:AccountTeam account_team1 account_id/team_id
  * ```
  */
 export class AccountTeam extends pulumi.CustomResource {

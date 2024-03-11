@@ -149,6 +149,7 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -157,6 +158,7 @@ def get_transit_gateway_vpc_attachment(peer_cloud_account: Optional[str] = None,
         peer_cloud_account="<PEER_ACCOUNT_ID>",
         peer_vpc="google-project1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
@@ -192,6 +194,7 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -200,6 +203,7 @@ def get_transit_gateway_vpc_attachment_output(peer_cloud_account: Optional[pulum
         peer_cloud_account="<PEER_ACCOUNT_ID>",
         peer_vpc="google-project1")
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str peer_cloud_account: AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.

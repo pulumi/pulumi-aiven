@@ -17,9 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/project:Project myproject project
-//
+// $ pulumi import aiven:index/project:Project myproject project
 // ```
 type Project struct {
 	pulumi.CustomResourceState

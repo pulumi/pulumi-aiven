@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,13 +47,12 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
 // ```sh
-//
-//	$ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
-//
+// $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
 // ```
 type BillingGroup struct {
 	pulumi.CustomResourceState

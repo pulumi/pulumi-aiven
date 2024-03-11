@@ -214,6 +214,7 @@ class KafkaAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -225,11 +226,12 @@ class KafkaAcl(pulumi.CustomResource):
             permission="admin",
             username="<USERNAME_PATTERN>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+        $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
         ```
 
         :param str resource_name: The name of the resource.
@@ -251,6 +253,7 @@ class KafkaAcl(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -262,11 +265,12 @@ class KafkaAcl(pulumi.CustomResource):
             permission="admin",
             username="<USERNAME_PATTERN>")
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
+        $ pulumi import aiven:index/kafkaAcl:KafkaAcl mytestacl project/service_name/id
         ```
 
         :param str resource_name: The name of the resource.

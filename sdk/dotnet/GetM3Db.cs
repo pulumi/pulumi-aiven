@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The M3 DB data source provides information about the existing Aiven M3 services.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,8 +33,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetM3DbResult> InvokeAsync(GetM3DbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbArgs(), options.WithDefaults());
@@ -43,10 +41,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The M3 DB data source provides information about the existing Aiven M3 services.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,8 +60,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetM3DbResult> Invoke(GetM3DbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetM3DbResult>("aiven:index/getM3Db:getM3Db", args ?? new GetM3DbInvokeArgs(), options.WithDefaults());

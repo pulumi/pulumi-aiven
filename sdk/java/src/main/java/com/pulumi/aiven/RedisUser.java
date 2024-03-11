@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * The Redis User resource allows the creation and management of Aiven Redis Users.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,11 +52,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
+ * $ pulumi import aiven:index/redisUser:RedisUser foo project/service_name/username
  * ```
  * 
  */

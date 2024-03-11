@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,6 +20,7 @@ import * as utilities from "./utilities";
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPgDatabase(args: GetPgDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetPgDatabaseResult> {
 
@@ -83,6 +85,7 @@ export interface GetPgDatabaseResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -93,6 +96,7 @@ export interface GetPgDatabaseResult {
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPgDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getPgDatabase(a, opts))

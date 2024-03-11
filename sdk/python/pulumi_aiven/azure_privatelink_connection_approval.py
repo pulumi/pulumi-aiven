@@ -168,7 +168,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+        $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
         ```
 
         :param str resource_name: The name of the resource.
@@ -189,7 +189,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         ## Import
 
         ```sh
-         $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+        $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
         ```
 
         :param str resource_name: The name of the resource.

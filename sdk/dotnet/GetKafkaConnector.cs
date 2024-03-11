@@ -14,10 +14,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,8 +34,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKafkaConnectorResult> InvokeAsync(GetKafkaConnectorArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorArgs(), options.WithDefaults());
@@ -44,10 +42,9 @@ namespace Pulumi.Aiven
         /// <summary>
         /// The Kafka connector data source provides information about the existing Aiven Kafka connector.
         /// 
-        /// {{% examples %}}
         /// ## Example Usage
-        /// {{% example %}}
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -65,8 +62,7 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKafkaConnectorResult> Invoke(GetKafkaConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectorResult>("aiven:index/getKafkaConnector:getKafkaConnector", args ?? new GetKafkaConnectorInvokeArgs(), options.WithDefaults());

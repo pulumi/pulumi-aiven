@@ -15,6 +15,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,6 +41,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 func LookupMysqlUser(ctx *pulumi.Context, args *LookupMysqlUserArgs, opts ...pulumi.InvokeOption) (*LookupMysqlUserResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMysqlUserResult

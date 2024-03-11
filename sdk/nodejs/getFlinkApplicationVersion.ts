@@ -11,6 +11,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -22,6 +23,7 @@ import * as utilities from "./utilities";
  *     applicationVersionId: "<APPLICATION_VERSION_ID>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlinkApplicationVersion(args: GetFlinkApplicationVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetFlinkApplicationVersionResult> {
 
@@ -118,6 +120,7 @@ export interface GetFlinkApplicationVersionResult {
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -129,6 +132,7 @@ export interface GetFlinkApplicationVersionResult {
  *     applicationVersionId: "<APPLICATION_VERSION_ID>",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getFlinkApplicationVersionOutput(args: GetFlinkApplicationVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlinkApplicationVersionResult> {
     return pulumi.output(args).apply((a: any) => getFlinkApplicationVersion(a, opts))

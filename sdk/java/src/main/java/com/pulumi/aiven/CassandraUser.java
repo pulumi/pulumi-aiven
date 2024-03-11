@@ -18,6 +18,8 @@ import javax.annotation.Nullable;
  * The Cassandra User resource allows the creation and management of Aiven Cassandra Users.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -49,11 +51,12 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/cassandraUser:CassandraUser foo project/service_name/username
+ * $ pulumi import aiven:index/cassandraUser:CassandraUser foo project/service_name/username
  * ```
  * 
  */

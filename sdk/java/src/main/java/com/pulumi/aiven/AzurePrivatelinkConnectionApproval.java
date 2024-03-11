@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- *  $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+ * $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
  * ```
  * 
  */
