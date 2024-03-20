@@ -46,7 +46,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      *
-     * @deprecated Use parent_id instead. This field will be removed in the next major release.
+     * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -167,7 +167,7 @@ export interface ProjectState {
     /**
      * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      *
-     * @deprecated Use parent_id instead. This field will be removed in the next major release.
+     * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -235,7 +235,7 @@ export interface ProjectArgs {
     /**
      * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
      *
-     * @deprecated Use parent_id instead. This field will be removed in the next major release.
+     * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**

@@ -24,7 +24,7 @@ type Project struct {
 
 	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 	//
-	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
+	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	//
@@ -97,7 +97,7 @@ func GetProject(ctx *pulumi.Context,
 type projectState struct {
 	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 	//
-	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
+	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	//
@@ -134,7 +134,7 @@ type projectState struct {
 type ProjectState struct {
 	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 	//
-	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
+	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	//
@@ -175,7 +175,7 @@ func (ProjectState) ElementType() reflect.Type {
 type projectArgs struct {
 	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 	//
-	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
+	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	//
@@ -205,7 +205,7 @@ type projectArgs struct {
 type ProjectArgs struct {
 	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 	//
-	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
+	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// If parentId is set, grant account owner team admin access to the new project. The default value is `true`.
 	//
@@ -320,7 +320,7 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 
 // An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
 //
-// Deprecated: Use parent_id instead. This field will be removed in the next major release.
+// Deprecated: Use parentId instead. This field will be removed in the next major release.
 func (o ProjectOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }

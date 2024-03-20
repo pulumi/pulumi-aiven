@@ -34,10 +34,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
      * Billing group id
      * 
      * @deprecated
-     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * The new aiven.Organization resource won&#39;t have it, and will not have a replacement.
      * 
      */
-    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
+    @Deprecated /* The new aiven.Organization resource won't have it, and will not have a replacement. */
     @Import(name="primaryBillingGroupId")
     private @Nullable Output<String> primaryBillingGroupId;
 
@@ -45,10 +45,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
      * @return Billing group id
      * 
      * @deprecated
-     * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+     * The new aiven.Organization resource won&#39;t have it, and will not have a replacement.
      * 
      */
-    @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
+    @Deprecated /* The new aiven.Organization resource won't have it, and will not have a replacement. */
     public Optional<Output<String>> primaryBillingGroupId() {
         return Optional.ofNullable(this.primaryBillingGroupId);
     }
@@ -105,10 +105,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * The new aiven.Organization resource won&#39;t have it, and will not have a replacement.
          * 
          */
-        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
+        @Deprecated /* The new aiven.Organization resource won't have it, and will not have a replacement. */
         public Builder primaryBillingGroupId(@Nullable Output<String> primaryBillingGroupId) {
             $.primaryBillingGroupId = primaryBillingGroupId;
             return this;
@@ -120,10 +120,10 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The new aiven_organization resource won&#39;t have it, and will not have a replacement.
+         * The new aiven.Organization resource won&#39;t have it, and will not have a replacement.
          * 
          */
-        @Deprecated /* The new aiven_organization resource won't have it, and will not have a replacement. */
+        @Deprecated /* The new aiven.Organization resource won't have it, and will not have a replacement. */
         public Builder primaryBillingGroupId(String primaryBillingGroupId) {
             return primaryBillingGroupId(Output.of(primaryBillingGroupId));
         }
