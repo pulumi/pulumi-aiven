@@ -73,7 +73,7 @@ type M3Aggregator struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -200,7 +200,7 @@ type m3aggregatorState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -284,7 +284,7 @@ type M3AggregatorState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -370,7 +370,7 @@ type m3aggregatorArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
@@ -427,7 +427,7 @@ type M3AggregatorArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
@@ -580,7 +580,7 @@ func (o M3AggregatorOutput) Components() M3AggregatorComponentArrayOutput {
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o M3AggregatorOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *M3Aggregator) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
