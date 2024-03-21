@@ -84,7 +84,7 @@ export class Clickhouse extends pulumi.CustomResource {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     public readonly diskSpace!: pulumi.Output<string | undefined>;
     /**
@@ -291,7 +291,7 @@ export interface ClickhouseState {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**
@@ -403,7 +403,7 @@ export interface ClickhouseArgs {
     /**
      * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
-     * @deprecated This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+     * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
     /**

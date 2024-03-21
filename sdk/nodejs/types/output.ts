@@ -65,7 +65,7 @@ export interface CassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -227,7 +227,7 @@ export interface ClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -508,7 +508,7 @@ export interface FlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -640,7 +640,7 @@ export interface GetCassandaCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -818,7 +818,7 @@ export interface GetCassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -980,7 +980,7 @@ export interface GetClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -1231,7 +1231,7 @@ export interface GetFlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -1451,7 +1451,7 @@ export interface GetGrafanaGrafanaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -1893,7 +1893,7 @@ export interface GetInfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -2113,7 +2113,7 @@ export interface GetKafkaConnectKafkaConnectUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -2346,7 +2346,7 @@ export interface GetKafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -2896,7 +2896,7 @@ export interface GetKafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -3215,7 +3215,7 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -3336,7 +3336,7 @@ export interface GetM3DbM3dbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -3547,7 +3547,7 @@ export interface GetM3DbM3dbUserConfigRulesMapping {
     /**
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      *
-     * @deprecated Deprecated. Use `namespaces_string` instead.
+     * @deprecated Deprecated. Use `namespacesString` instead.
      */
     namespaces?: string[];
     /**
@@ -3689,7 +3689,7 @@ export interface GetMySqlMysqlUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -4057,7 +4057,7 @@ export interface GetOpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -4677,7 +4677,7 @@ export interface GetPgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -5244,7 +5244,7 @@ export interface GetRedisRedisUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -6285,7 +6285,7 @@ export interface GrafanaGrafanaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -6727,7 +6727,7 @@ export interface InfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -6947,7 +6947,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -7180,7 +7180,7 @@ export interface KafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -7730,7 +7730,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -8049,7 +8049,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -8170,7 +8170,7 @@ export interface M3DbM3dbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -8381,7 +8381,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
     /**
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      *
-     * @deprecated Deprecated. Use `namespaces_string` instead.
+     * @deprecated Deprecated. Use `namespacesString` instead.
      */
     namespaces?: string[];
     /**
@@ -8523,7 +8523,7 @@ export interface MySqlMysqlUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -8891,7 +8891,7 @@ export interface OpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -9530,7 +9530,7 @@ export interface PgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**
@@ -10097,7 +10097,7 @@ export interface RedisRedisUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: string[];
     /**

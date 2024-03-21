@@ -30,7 +30,7 @@ type Pg struct {
 	Components PgComponentArrayOutput `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -131,7 +131,7 @@ type pgState struct {
 	Components []PgComponent `pulumi:"components"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -192,7 +192,7 @@ type PgState struct {
 	Components PgComponentArrayInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -255,7 +255,7 @@ type pgArgs struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
@@ -293,7 +293,7 @@ type PgArgs struct {
 	CloudName pulumi.StringPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
@@ -427,7 +427,7 @@ func (o PgOutput) Components() PgComponentArrayOutput {
 
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o PgOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Pg) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

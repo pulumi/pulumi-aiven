@@ -78,7 +78,7 @@ type KafkaConnect struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -205,7 +205,7 @@ type kafkaConnectState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -289,7 +289,7 @@ type KafkaConnectState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -375,7 +375,7 @@ type kafkaConnectArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig *KafkaConnectKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -432,7 +432,7 @@ type KafkaConnectArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig KafkaConnectKafkaConnectUserConfigPtrInput
@@ -585,7 +585,7 @@ func (o KafkaConnectOutput) Components() KafkaConnectComponentArrayOutput {
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
+// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o KafkaConnectOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnect) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }

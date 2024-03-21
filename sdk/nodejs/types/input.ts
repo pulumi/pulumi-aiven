@@ -65,7 +65,7 @@ export interface CassandraCassandraUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -227,7 +227,7 @@ export interface ClickhouseClickhouseUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -508,7 +508,7 @@ export interface FlinkFlinkUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -728,7 +728,7 @@ export interface GrafanaGrafanaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1170,7 +1170,7 @@ export interface InfluxDbInfluxdbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1390,7 +1390,7 @@ export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1623,7 +1623,7 @@ export interface KafkaKafkaUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2173,7 +2173,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2492,7 +2492,7 @@ export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2613,7 +2613,7 @@ export interface M3DbM3dbUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2824,7 +2824,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
     /**
      * This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
      *
-     * @deprecated Deprecated. Use `namespaces_string` instead.
+     * @deprecated Deprecated. Use `namespacesString` instead.
      */
     namespaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2966,7 +2966,7 @@ export interface MySqlMysqlUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3334,7 +3334,7 @@ export interface OpenSearchOpensearchUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3973,7 +3973,7 @@ export interface PgPgUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -4540,7 +4540,7 @@ export interface RedisRedisUserConfig {
     /**
      * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
      *
-     * @deprecated Deprecated. Use `ip_filter_string` instead.
+     * @deprecated Deprecated. Use `ipFilterString` instead.
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
