@@ -32,7 +32,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs>? _datadogTags;
 
         /// <summary>
-        /// Custom tags provided by user.
+        /// Custom tags provided by user
         /// </summary>
         public InputList<Inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs> DatadogTags
         {

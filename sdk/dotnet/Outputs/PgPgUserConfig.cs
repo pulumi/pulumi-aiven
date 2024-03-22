@@ -78,6 +78,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>
+        /// System-wide settings for the pgaudit extension
+        /// </summary>
+        public readonly Outputs.PgPgUserConfigPgaudit? Pgaudit;
+        /// <summary>
         /// PGBouncer connection pooling settings
         /// </summary>
         public readonly Outputs.PgPgUserConfigPgbouncer? Pgbouncer;
@@ -172,6 +176,8 @@ namespace Pulumi.Aiven.Outputs
 
             string? pgVersion,
 
+            Outputs.PgPgUserConfigPgaudit? pgaudit,
+
             Outputs.PgPgUserConfigPgbouncer? pgbouncer,
 
             Outputs.PgPgUserConfigPglookout? pglookout,
@@ -218,6 +224,7 @@ namespace Pulumi.Aiven.Outputs
             PgServiceToForkFrom = pgServiceToForkFrom;
             PgStatMonitorEnable = pgStatMonitorEnable;
             PgVersion = pgVersion;
+            Pgaudit = pgaudit;
             Pgbouncer = pgbouncer;
             Pglookout = pglookout;
             PrivateAccess = privateAccess;

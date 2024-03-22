@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+    /// Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
     /// 
     /// ## Example Usage
     /// 
@@ -23,9 +23,9 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organizationalUnit1 = new Aiven.OrganizationalUnit("organizationalUnit1", new()
+    ///     var exampleUnit = new Aiven.OrganizationalUnit("exampleUnit", new()
     ///     {
-    ///         ParentId = "&lt;ORGANIZATION_ID&gt;",
+    ///         ParentId = aiven_organization.Main.Id,
     ///     });
     /// 
     /// });
@@ -35,38 +35,38 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+    /// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationalUnit:OrganizationalUnit")]
     public partial class OrganizationalUnit : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time of creation
+        /// Time of creation.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Organizational Unit name
+        /// The name of the organizational unit.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Parent ID
+        /// The ID of the organization that the unit is created in.
         /// </summary>
         [Output("parentId")]
         public Output<string> ParentId { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant ID
+        /// Tenant ID.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
 
         /// <summary>
-        /// Time of last update
+        /// Time of last update.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -118,13 +118,13 @@ namespace Pulumi.Aiven
     public sealed class OrganizationalUnitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Organizational Unit name
+        /// The name of the organizational unit.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Parent ID
+        /// The ID of the organization that the unit is created in.
         /// </summary>
         [Input("parentId", required: true)]
         public Input<string> ParentId { get; set; } = null!;
@@ -138,31 +138,31 @@ namespace Pulumi.Aiven
     public sealed class OrganizationalUnitState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time of creation
+        /// Time of creation.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Organizational Unit name
+        /// The name of the organizational unit.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Parent ID
+        /// The ID of the organization that the unit is created in.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
 
         /// <summary>
-        /// Tenant ID
+        /// Tenant ID.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
-        /// Time of last update
+        /// Time of last update.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

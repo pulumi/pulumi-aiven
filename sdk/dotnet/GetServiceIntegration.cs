@@ -90,7 +90,7 @@ namespace Pulumi.Aiven
         public string DestinationServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        /// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         /// </summary>
         [Input("integrationType", required: true)]
         public string IntegrationType { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
         public Input<string> DestinationServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        /// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         /// </summary>
         [Input("integrationType", required: true)]
         public Input<string> IntegrationType { get; set; } = null!;
@@ -170,9 +170,21 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DestinationServiceName;
         /// <summary>
+        /// ExternalAwsCloudwatchLogs user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult> ExternalAwsCloudwatchLogsUserConfigs;
+        /// <summary>
         /// ExternalAwsCloudwatchMetrics user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult> ExternalAwsCloudwatchMetricsUserConfigs;
+        /// <summary>
+        /// ExternalElasticsearchLogs user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult> ExternalElasticsearchLogsUserConfigs;
+        /// <summary>
+        /// ExternalOpensearchLogs user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalOpensearchLogsUserConfigResult> ExternalOpensearchLogsUserConfigs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -182,7 +194,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string IntegrationId;
         /// <summary>
-        /// Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        /// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         /// </summary>
         public readonly string IntegrationType;
         /// <summary>
@@ -210,6 +222,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// Prometheus user configurable settings
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> PrometheusUserConfigs;
+        /// <summary>
         /// Source endpoint for the integration (if any)
         /// </summary>
         public readonly string SourceEndpointId;
@@ -230,7 +246,13 @@ namespace Pulumi.Aiven
 
             string destinationServiceName,
 
+            ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfigResult> externalAwsCloudwatchLogsUserConfigs,
+
             ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult> externalAwsCloudwatchMetricsUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfigResult> externalElasticsearchLogsUserConfigs,
+
+            ImmutableArray<Outputs.GetServiceIntegrationExternalOpensearchLogsUserConfigResult> externalOpensearchLogsUserConfigs,
 
             string id,
 
@@ -250,6 +272,8 @@ namespace Pulumi.Aiven
 
             string project,
 
+            ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> prometheusUserConfigs,
+
             string sourceEndpointId,
 
             string sourceServiceName)
@@ -259,7 +283,10 @@ namespace Pulumi.Aiven
             DatadogUserConfigs = datadogUserConfigs;
             DestinationEndpointId = destinationEndpointId;
             DestinationServiceName = destinationServiceName;
+            ExternalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             ExternalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            ExternalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            ExternalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             Id = id;
             IntegrationId = integrationId;
             IntegrationType = integrationType;
@@ -269,6 +296,7 @@ namespace Pulumi.Aiven
             LogsUserConfigs = logsUserConfigs;
             MetricsUserConfigs = metricsUserConfigs;
             Project = project;
+            PrometheusUserConfigs = prometheusUserConfigs;
             SourceEndpointId = sourceEndpointId;
             SourceServiceName = sourceServiceName;
         }

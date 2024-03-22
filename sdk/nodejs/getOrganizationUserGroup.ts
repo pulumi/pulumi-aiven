@@ -5,7 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides information about an existing user group in an organization.
+ * Gets information about an existing user group in an organization.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationUserGroup({
+ *     name: "Example group",
+ *     organizationId: aiven_organization.main.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationUserGroup(args: GetOrganizationUserGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserGroupResult> {
 
@@ -21,11 +35,11 @@ export function getOrganizationUserGroup(args: GetOrganizationUserGroupArgs, opt
  */
 export interface GetOrganizationUserGroupArgs {
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      */
     name: string;
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      */
     organizationId: string;
 }
@@ -39,7 +53,7 @@ export interface GetOrganizationUserGroupResult {
      */
     readonly createTime: string;
     /**
-     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. Changing this property forces recreation of the resource.
      */
     readonly description: string;
     /**
@@ -51,11 +65,11 @@ export interface GetOrganizationUserGroupResult {
      */
     readonly id: string;
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      */
     readonly name: string;
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      */
     readonly organizationId: string;
     /**
@@ -64,7 +78,21 @@ export interface GetOrganizationUserGroupResult {
     readonly updateTime: string;
 }
 /**
- * Provides information about an existing user group in an organization.
+ * Gets information about an existing user group in an organization.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = aiven.getOrganizationUserGroup({
+ *     name: "Example group",
+ *     organizationId: aiven_organization.main.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationUserGroupResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationUserGroup(a, opts))
@@ -75,11 +103,11 @@ export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOut
  */
 export interface GetOrganizationUserGroupOutputArgs {
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
 }

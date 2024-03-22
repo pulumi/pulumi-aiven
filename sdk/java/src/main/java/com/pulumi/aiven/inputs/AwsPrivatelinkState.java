@@ -17,14 +17,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     public static final AwsPrivatelinkState Empty = new AwsPrivatelinkState();
 
     /**
-     * AWS service ID
+     * AWS service ID.
      * 
      */
     @Import(name="awsServiceId")
     private @Nullable Output<String> awsServiceId;
 
     /**
-     * @return AWS service ID
+     * @return AWS service ID.
      * 
      */
     public Optional<Output<String>> awsServiceId() {
@@ -32,14 +32,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * AWS service name
+     * AWS service name.
      * 
      */
     @Import(name="awsServiceName")
     private @Nullable Output<String> awsServiceName;
 
     /**
-     * @return AWS service name
+     * @return AWS service name.
      * 
      */
     public Optional<Output<String>> awsServiceName() {
@@ -47,14 +47,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * List of allowed principals
+     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      * 
      */
     @Import(name="principals")
     private @Nullable Output<List<String>> principals;
 
     /**
-     * @return List of allowed principals
+     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      * 
      */
     public Optional<Output<List<String>>> principals() {
@@ -62,14 +62,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -77,14 +77,14 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -120,7 +120,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceId AWS service ID
+         * @param awsServiceId AWS service ID.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceId AWS service ID
+         * @param awsServiceId AWS service ID.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceName AWS service name
+         * @param awsServiceName AWS service name.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param awsServiceName AWS service name
+         * @param awsServiceName AWS service name.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principals List of allowed principals
+         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principals List of allowed principals
+         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param principals List of allowed principals
+         * @param principals List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class AwsPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

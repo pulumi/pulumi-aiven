@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAzureVpcPeeringConnectionResult {
     /**
-     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     private String azureSubscriptionId;
@@ -23,22 +23,22 @@ public final class GetAzureVpcPeeringConnectionResult {
      */
     private String id;
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     private String peerAzureAppId;
     /**
-     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     private String peerAzureTenantId;
     /**
-     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      * 
      */
     private String peerResourceGroup;
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return The ID of the cloud provider for the peering connection.
      * 
      */
     private String peeringConnectionId;
@@ -48,24 +48,24 @@ public final class GetAzureVpcPeeringConnectionResult {
      */
     private String state;
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     private Map<String,Object> stateInfo;
     /**
-     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
      * 
      */
     private String vnetName;
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     private String vpcId;
 
     private GetAzureVpcPeeringConnectionResult() {}
     /**
-     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public String azureSubscriptionId() {
@@ -79,28 +79,28 @@ public final class GetAzureVpcPeeringConnectionResult {
         return this.id;
     }
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public String peerAzureAppId() {
         return this.peerAzureAppId;
     }
     /**
-     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public String peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
     /**
-     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      * 
      */
     public String peerResourceGroup() {
         return this.peerResourceGroup;
     }
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return The ID of the cloud provider for the peering connection.
      * 
      */
     public String peeringConnectionId() {
@@ -114,21 +114,21 @@ public final class GetAzureVpcPeeringConnectionResult {
         return this.state;
     }
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Map<String,Object> stateInfo() {
         return this.stateInfo;
     }
     /**
-     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
      * 
      */
     public String vnetName() {
         return this.vnetName;
     }
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     public String vpcId() {

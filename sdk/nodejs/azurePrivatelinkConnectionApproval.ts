@@ -5,12 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+ * Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+ * $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
  * ```
  */
 export class AzurePrivatelinkConnectionApproval extends pulumi.CustomResource {
@@ -42,23 +42,23 @@ export class AzurePrivatelinkConnectionApproval extends pulumi.CustomResource {
     }
 
     /**
-     * IP address of Azure private endpoint
+     * IP address of Azure private endpoint.
      */
     public readonly endpointIpAddress!: pulumi.Output<string | undefined>;
     /**
-     * Privatelink connection id
+     * The ID of the Private Link connection.
      */
     public /*out*/ readonly privatelinkConnectionId!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Privatelink connection state
+     * The state of the Private Link connection.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -104,23 +104,23 @@ export class AzurePrivatelinkConnectionApproval extends pulumi.CustomResource {
  */
 export interface AzurePrivatelinkConnectionApprovalState {
     /**
-     * IP address of Azure private endpoint
+     * IP address of Azure private endpoint.
      */
     endpointIpAddress?: pulumi.Input<string>;
     /**
-     * Privatelink connection id
+     * The ID of the Private Link connection.
      */
     privatelinkConnectionId?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Privatelink connection state
+     * The state of the Private Link connection.
      */
     state?: pulumi.Input<string>;
 }
@@ -130,15 +130,15 @@ export interface AzurePrivatelinkConnectionApprovalState {
  */
 export interface AzurePrivatelinkConnectionApprovalArgs {
     /**
-     * IP address of Azure private endpoint
+     * IP address of Azure private endpoint.
      */
     endpointIpAddress?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

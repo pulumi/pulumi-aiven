@@ -14,23 +14,23 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ClickhouseGrantPrivilegeGrant
     {
         /// <summary>
-        /// The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+        /// The column that the grant refers to. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string? Column;
         /// <summary>
-        /// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Database;
         /// <summary>
-        /// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
+        /// The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string? Privilege;
         /// <summary>
-        /// The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+        /// The table that the grant refers to. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string? Table;
         /// <summary>
-        /// If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+        /// If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly bool? WithGrant;
 

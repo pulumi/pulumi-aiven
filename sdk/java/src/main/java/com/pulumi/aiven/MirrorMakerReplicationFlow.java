@@ -118,24 +118,24 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="offsetSyncsTopicLocation", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> offsetSyncsTopicLocation;
+    private Output<String> offsetSyncsTopicLocation;
 
     /**
      * @return Offset syncs topic location.
      * 
      */
-    public Output<Optional<String>> offsetSyncsTopicLocation() {
-        return Codegen.optional(this.offsetSyncsTopicLocation);
+    public Output<String> offsetSyncsTopicLocation() {
+        return this.offsetSyncsTopicLocation;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -146,24 +146,24 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="replicationPolicyClass", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> replicationPolicyClass;
+    private Output<String> replicationPolicyClass;
 
     /**
      * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
-    public Output<Optional<String>> replicationPolicyClass() {
-        return Codegen.optional(this.replicationPolicyClass);
+    public Output<String> replicationPolicyClass() {
+        return this.replicationPolicyClass;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

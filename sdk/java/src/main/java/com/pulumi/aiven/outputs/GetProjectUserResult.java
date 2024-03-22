@@ -17,7 +17,7 @@ public final class GetProjectUserResult {
      */
     private Boolean accepted;
     /**
-     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     private String email;
@@ -32,7 +32,7 @@ public final class GetProjectUserResult {
      */
     private String memberType;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -46,7 +46,7 @@ public final class GetProjectUserResult {
         return this.accepted;
     }
     /**
-     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public String email() {
@@ -67,7 +67,7 @@ public final class GetProjectUserResult {
         return this.memberType;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {

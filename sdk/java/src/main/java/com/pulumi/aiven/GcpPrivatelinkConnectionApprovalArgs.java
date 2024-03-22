@@ -16,7 +16,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
@@ -24,7 +24,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -33,7 +33,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
@@ -41,7 +41,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -49,14 +49,14 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
     }
 
     /**
-     * Privatelink connection user IP address
+     * The Private Service Connect connection user IP address.
      * 
      */
     @Import(name="userIpAddress", required=true)
     private Output<String> userIpAddress;
 
     /**
-     * @return Privatelink connection user IP address
+     * @return The Private Service Connect connection user IP address.
      * 
      */
     public Output<String> userIpAddress() {
@@ -91,7 +91,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
         }
 
         /**
-         * @param userIpAddress Privatelink connection user IP address
+         * @param userIpAddress The Private Service Connect connection user IP address.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GcpPrivatelinkConnectionApprovalArgs extends com.pulumi.resou
         }
 
         /**
-         * @param userIpAddress Privatelink connection user IP address
+         * @param userIpAddress The Private Service Connect connection user IP address.
          * 
          * @return builder
          * 

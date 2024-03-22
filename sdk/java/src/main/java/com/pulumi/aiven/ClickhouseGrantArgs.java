@@ -20,14 +20,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     public static final ClickhouseGrantArgs Empty = new ClickhouseGrantArgs();
 
     /**
-     * Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="privilegeGrants")
     private @Nullable Output<List<ClickhouseGrantPrivilegeGrantArgs>> privilegeGrants;
 
     /**
-     * @return Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Configuration to grant a privilege. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<ClickhouseGrantPrivilegeGrantArgs>>> privilegeGrants() {
@@ -35,14 +35,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -50,14 +50,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> role() {
@@ -65,14 +65,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+     * Configuration to grant a role. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="roleGrants")
     private @Nullable Output<List<ClickhouseGrantRoleGrantArgs>> roleGrants;
 
     /**
-     * @return Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Configuration to grant a role. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<ClickhouseGrantRoleGrantArgs>>> roleGrants() {
@@ -80,14 +80,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -95,14 +95,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="user")
     private @Nullable Output<String> user;
 
     /**
-     * @return The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> user() {
@@ -139,7 +139,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privilegeGrants Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+         * @param privilegeGrants Configuration to grant a privilege. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privilegeGrants Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+         * @param privilegeGrants Configuration to grant a privilege. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param privilegeGrants Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+         * @param privilegeGrants Configuration to grant a privilege. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleGrants Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+         * @param roleGrants Configuration to grant a role. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleGrants Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+         * @param roleGrants Configuration to grant a role. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param roleGrants Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+         * @param roleGrants Configuration to grant a role. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param user The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param user The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param user The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param user The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

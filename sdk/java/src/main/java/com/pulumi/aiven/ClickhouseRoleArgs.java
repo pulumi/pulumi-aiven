@@ -15,14 +15,14 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
     public static final ClickhouseRoleArgs Empty = new ClickhouseRoleArgs();
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -30,14 +30,14 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The role that is to be created. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be created. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
 
     /**
-     * @return The role that is to be created. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The role that is to be created. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> role() {
@@ -45,14 +45,14 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -86,7 +86,7 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param role The role that is to be created. This property cannot be changed, doing so forces recreation of the resource.
+         * @param role The role that is to be created. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param role The role that is to be created. This property cannot be changed, doing so forces recreation of the resource.
+         * @param role The role that is to be created. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ClickhouseRoleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

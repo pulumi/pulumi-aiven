@@ -54,11 +54,11 @@ func LookupTransitGatewayVpcAttachment(ctx *pulumi.Context, args *LookupTransitG
 
 // A collection of arguments for invoking getTransitGatewayVpcAttachment.
 type LookupTransitGatewayVpcAttachmentArgs struct {
-	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`
-	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Transit gateway ID. Changing this property forces recreation of the resource.
 	PeerVpc string `pulumi:"peerVpc"`
-	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -66,11 +66,11 @@ type LookupTransitGatewayVpcAttachmentArgs struct {
 type LookupTransitGatewayVpcAttachmentResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
 	PeerCloudAccount string `pulumi:"peerCloudAccount"`
 	// AWS region of the peered VPC (if not in the same region as Aiven VPC)
 	PeerRegion string `pulumi:"peerRegion"`
-	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Transit gateway ID. Changing this property forces recreation of the resource.
 	PeerVpc string `pulumi:"peerVpc"`
 	// Cloud provider identifier for the peering connection if available
 	PeeringConnectionId string `pulumi:"peeringConnectionId"`
@@ -80,7 +80,7 @@ type LookupTransitGatewayVpcAttachmentResult struct {
 	StateInfo map[string]interface{} `pulumi:"stateInfo"`
 	// List of private IPv4 ranges to route through the peering connection
 	UserPeerNetworkCidrs []string `pulumi:"userPeerNetworkCidrs"`
-	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -99,11 +99,11 @@ func LookupTransitGatewayVpcAttachmentOutput(ctx *pulumi.Context, args LookupTra
 
 // A collection of arguments for invoking getTransitGatewayVpcAttachment.
 type LookupTransitGatewayVpcAttachmentOutputArgs struct {
-	// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+	// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
 	PeerCloudAccount pulumi.StringInput `pulumi:"peerCloudAccount"`
-	// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Transit gateway ID. Changing this property forces recreation of the resource.
 	PeerVpc pulumi.StringInput `pulumi:"peerVpc"`
-	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -131,7 +131,7 @@ func (o LookupTransitGatewayVpcAttachmentResultOutput) Id() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+// AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
 func (o LookupTransitGatewayVpcAttachmentResultOutput) PeerCloudAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.PeerCloudAccount }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupTransitGatewayVpcAttachmentResultOutput) PeerRegion() pulumi.Strin
 	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.PeerRegion }).(pulumi.StringOutput)
 }
 
-// Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+// Transit gateway ID. Changing this property forces recreation of the resource.
 func (o LookupTransitGatewayVpcAttachmentResultOutput) PeerVpc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.PeerVpc }).(pulumi.StringOutput)
 }
@@ -166,7 +166,7 @@ func (o LookupTransitGatewayVpcAttachmentResultOutput) UserPeerNetworkCidrs() pu
 	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) []string { return v.UserPeerNetworkCidrs }).(pulumi.StringArrayOutput)
 }
 
-// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupTransitGatewayVpcAttachmentResultOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransitGatewayVpcAttachmentResult) string { return v.VpcId }).(pulumi.StringOutput)
 }

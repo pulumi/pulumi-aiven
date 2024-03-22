@@ -64,7 +64,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def permission(self) -> str:
         """
-        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -72,7 +72,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -80,7 +80,7 @@ class GetKafkaAclResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -88,7 +88,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def topic(self) -> str:
         """
-        Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic")
 
@@ -96,7 +96,7 @@ class GetKafkaAclResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -141,11 +141,11 @@ def get_kafka_acl(permission: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['permission'] = permission
@@ -192,10 +192,10 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str topic: Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str topic: Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
     """
     ...

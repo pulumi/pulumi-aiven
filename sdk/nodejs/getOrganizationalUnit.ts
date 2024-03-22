@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+ * Gets information about an organizational unit.
  */
 export function getOrganizationalUnit(args: GetOrganizationalUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationalUnitResult> {
 
@@ -20,7 +20,7 @@ export function getOrganizationalUnit(args: GetOrganizationalUnitArgs, opts?: pu
  */
 export interface GetOrganizationalUnitArgs {
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      */
     name: string;
 }
@@ -30,7 +30,7 @@ export interface GetOrganizationalUnitArgs {
  */
 export interface GetOrganizationalUnitResult {
     /**
-     * Time of creation
+     * Time of creation.
      */
     readonly createTime: string;
     /**
@@ -38,24 +38,24 @@ export interface GetOrganizationalUnitResult {
      */
     readonly id: string;
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      */
     readonly name: string;
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      */
     readonly parentId: string;
     /**
-     * Tenant ID
+     * Tenant ID.
      */
     readonly tenantId: string;
     /**
-     * Time of last update
+     * Time of last update.
      */
     readonly updateTime: string;
 }
 /**
- * The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+ * Gets information about an organizational unit.
  */
 export function getOrganizationalUnitOutput(args: GetOrganizationalUnitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationalUnitResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationalUnit(a, opts))
@@ -66,7 +66,7 @@ export function getOrganizationalUnitOutput(args: GetOrganizationalUnitOutputArg
  */
 export interface GetOrganizationalUnitOutputArgs {
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      */
     name: pulumi.Input<string>;
 }

@@ -19,9 +19,9 @@ class OrganizationUserGroupArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationUserGroup resource.
-        :param pulumi.Input[str] description: The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] description: The description of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the user group. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -32,7 +32,7 @@ class OrganizationUserGroupArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The description of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -44,7 +44,7 @@ class OrganizationUserGroupArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         """
-        The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -56,7 +56,7 @@ class OrganizationUserGroupArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -77,10 +77,10 @@ class _OrganizationUserGroupState:
         """
         Input properties used for looking up and filtering OrganizationUserGroup resources.
         :param pulumi.Input[str] create_time: Time of creation.
-        :param pulumi.Input[str] description: The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] description: The description of the user group. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
-        :param pulumi.Input[str] name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] update_time: Time of last update.
         """
         if create_time is not None:
@@ -112,7 +112,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The description of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -136,7 +136,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -148,7 +148,7 @@ class _OrganizationUserGroupState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -179,13 +179,32 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates and manages a user group in an organization.
+        Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationUserGroup("example",
+            description="Example group of users.",
+            organization_id=aiven_organization["main"]["id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] description: The description of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -194,7 +213,26 @@ class OrganizationUserGroup(pulumi.CustomResource):
                  args: OrganizationUserGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages a user group in an organization.
+        Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationUserGroup("example",
+            description="Example group of users.",
+            organization_id=aiven_organization["main"]["id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+        ```
 
         :param str resource_name: The name of the resource.
         :param OrganizationUserGroupArgs args: The arguments to use to populate this resource's properties.
@@ -257,10 +295,10 @@ class OrganizationUserGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time of creation.
-        :param pulumi.Input[str] description: The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] description: The description of the user group. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] group_id: The ID of the user group.
-        :param pulumi.Input[str] name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] name: The name of the user group. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The ID of the organization. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] update_time: Time of last update.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -287,7 +325,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The description of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -303,7 +341,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -311,7 +349,7 @@ class OrganizationUserGroup(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         """
-        The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 

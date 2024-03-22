@@ -33,29 +33,29 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
     }
 
     /**
-     * Privatelink connection id
+     * Aiven internal ID for the private link connection.
      */
     public /*out*/ readonly privatelinkConnectionId!: pulumi.Output<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Privatelink connection PSC connection id
+     * The Google Private Service Connect connection ID.
      */
     public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Privatelink connection state
+     * The state of the connection.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Privatelink connection user IP address
+     * The Private Service Connect connection user IP address.
      */
     public readonly userIpAddress!: pulumi.Output<string>;
 
@@ -106,29 +106,29 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
  */
 export interface GcpPrivatelinkConnectionApprovalState {
     /**
-     * Privatelink connection id
+     * Aiven internal ID for the private link connection.
      */
     privatelinkConnectionId?: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Privatelink connection PSC connection id
+     * The Google Private Service Connect connection ID.
      */
     pscConnectionId?: pulumi.Input<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Privatelink connection state
+     * The state of the connection.
      */
     state?: pulumi.Input<string>;
     /**
-     * Privatelink connection user IP address
+     * The Private Service Connect connection user IP address.
      */
     userIpAddress?: pulumi.Input<string>;
 }
@@ -139,16 +139,16 @@ export interface GcpPrivatelinkConnectionApprovalState {
 export interface GcpPrivatelinkConnectionApprovalArgs {
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Privatelink connection user IP address
+     * The Private Service Connect connection user IP address.
      */
     userIpAddress: pulumi.Input<string>;
 }

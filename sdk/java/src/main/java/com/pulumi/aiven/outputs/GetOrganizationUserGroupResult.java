@@ -16,7 +16,7 @@ public final class GetOrganizationUserGroupResult {
      */
     private String createTime;
     /**
-     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. Changing this property forces recreation of the resource.
      * 
      */
     private String description;
@@ -31,12 +31,12 @@ public final class GetOrganizationUserGroupResult {
      */
     private String id;
     /**
-     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. Changing this property forces recreation of the resource.
      * 
      */
     private String name;
     /**
-     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. Changing this property forces recreation of the resource.
      * 
      */
     private String organizationId;
@@ -55,7 +55,7 @@ public final class GetOrganizationUserGroupResult {
         return this.createTime;
     }
     /**
-     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. Changing this property forces recreation of the resource.
      * 
      */
     public String description() {
@@ -76,14 +76,14 @@ public final class GetOrganizationUserGroupResult {
         return this.id;
     }
     /**
-     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. Changing this property forces recreation of the resource.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. Changing this property forces recreation of the resource.
      * 
      */
     public String organizationId() {

@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetOrganizationalUnitResult {
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     private String createTime;
@@ -21,29 +21,29 @@ public final class GetOrganizationalUnitResult {
      */
     private String id;
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     private String name;
     /**
-     * @return Parent ID
+     * @return The ID of the organization that the unit is created in.
      * 
      */
     private String parentId;
     /**
-     * @return Tenant ID
+     * @return Tenant ID.
      * 
      */
     private String tenantId;
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     private String updateTime;
 
     private GetOrganizationalUnitResult() {}
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     public String createTime() {
@@ -57,28 +57,28 @@ public final class GetOrganizationalUnitResult {
         return this.id;
     }
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Parent ID
+     * @return The ID of the organization that the unit is created in.
      * 
      */
     public String parentId() {
         return this.parentId;
     }
     /**
-     * @return Tenant ID
+     * @return Tenant ID.
      * 
      */
     public String tenantId() {
         return this.tenantId;
     }
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     public String updateTime() {

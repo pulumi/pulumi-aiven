@@ -70,13 +70,13 @@ namespace Pulumi.Aiven
     public sealed class GetProjectUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("email", required: true)]
         public string Email { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -90,13 +90,13 @@ namespace Pulumi.Aiven
     public sealed class GetProjectUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool Accepted;
         /// <summary>
-        /// Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Email;
         /// <summary>
@@ -128,7 +128,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string MemberType;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
 

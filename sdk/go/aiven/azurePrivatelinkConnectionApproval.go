@@ -12,25 +12,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+// Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
 //
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+// $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
 // ```
 type AzurePrivatelinkConnectionApproval struct {
 	pulumi.CustomResourceState
 
-	// IP address of Azure private endpoint
+	// IP address of Azure private endpoint.
 	EndpointIpAddress pulumi.StringPtrOutput `pulumi:"endpointIpAddress"`
-	// Privatelink connection id
+	// The ID of the Private Link connection.
 	PrivatelinkConnectionId pulumi.StringOutput `pulumi:"privatelinkConnectionId"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Privatelink connection state
+	// The state of the Private Link connection.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -70,28 +70,28 @@ func GetAzurePrivatelinkConnectionApproval(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzurePrivatelinkConnectionApproval resources.
 type azurePrivatelinkConnectionApprovalState struct {
-	// IP address of Azure private endpoint
+	// IP address of Azure private endpoint.
 	EndpointIpAddress *string `pulumi:"endpointIpAddress"`
-	// Privatelink connection id
+	// The ID of the Private Link connection.
 	PrivatelinkConnectionId *string `pulumi:"privatelinkConnectionId"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Privatelink connection state
+	// The state of the Private Link connection.
 	State *string `pulumi:"state"`
 }
 
 type AzurePrivatelinkConnectionApprovalState struct {
-	// IP address of Azure private endpoint
+	// IP address of Azure private endpoint.
 	EndpointIpAddress pulumi.StringPtrInput
-	// Privatelink connection id
+	// The ID of the Private Link connection.
 	PrivatelinkConnectionId pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Privatelink connection state
+	// The state of the Private Link connection.
 	State pulumi.StringPtrInput
 }
 
@@ -100,21 +100,21 @@ func (AzurePrivatelinkConnectionApprovalState) ElementType() reflect.Type {
 }
 
 type azurePrivatelinkConnectionApprovalArgs struct {
-	// IP address of Azure private endpoint
+	// IP address of Azure private endpoint.
 	EndpointIpAddress *string `pulumi:"endpointIpAddress"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a AzurePrivatelinkConnectionApproval resource.
 type AzurePrivatelinkConnectionApprovalArgs struct {
-	// IP address of Azure private endpoint
+	// IP address of Azure private endpoint.
 	EndpointIpAddress pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -205,27 +205,27 @@ func (o AzurePrivatelinkConnectionApprovalOutput) ToAzurePrivatelinkConnectionAp
 	return o
 }
 
-// IP address of Azure private endpoint
+// IP address of Azure private endpoint.
 func (o AzurePrivatelinkConnectionApprovalOutput) EndpointIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringPtrOutput { return v.EndpointIpAddress }).(pulumi.StringPtrOutput)
 }
 
-// Privatelink connection id
+// The ID of the Private Link connection.
 func (o AzurePrivatelinkConnectionApprovalOutput) PrivatelinkConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o AzurePrivatelinkConnectionApprovalOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o AzurePrivatelinkConnectionApprovalOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Privatelink connection state
+// The state of the Private Link connection.
 func (o AzurePrivatelinkConnectionApprovalOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelinkConnectionApproval) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

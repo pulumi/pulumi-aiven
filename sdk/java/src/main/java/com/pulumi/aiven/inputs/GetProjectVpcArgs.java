@@ -16,14 +16,14 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetProjectVpcArgs Empty = new GetProjectVpcArgs();
 
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      * 
      */
     @Import(name="cloudName")
     private @Nullable Output<String> cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      * 
      */
     public Optional<Output<String>> cloudName() {
@@ -46,14 +46,14 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * @return The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -87,7 +87,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpcId ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+         * @param vpcId The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetProjectVpcArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpcId ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+         * @param vpcId The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
          * 
          * @return builder
          * 

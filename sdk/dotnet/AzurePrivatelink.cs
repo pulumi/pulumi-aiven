@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+    /// Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
     /// 
     /// ## Example Usage
     /// 
@@ -23,13 +23,13 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.AzurePrivatelink("foo", new()
+    ///     var main = new Aiven.AzurePrivatelink("main", new()
     ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
-    ///         ServiceName = aiven_kafka.Bar.Service_name,
+    ///         Project = data.Aiven_project.Example_project.Project,
+    ///         ServiceName = aiven_kafka.Example_kafka.Service_name,
     ///         UserSubscriptionIds = new[]
     ///         {
-    ///             "xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+    ///             "00000000-0000-0000-0000-000000000000",
     ///         },
     ///     });
     /// 
@@ -40,50 +40,50 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+    /// $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelink:AzurePrivatelink")]
     public partial class AzurePrivatelink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Azure Privatelink service alias
+        /// The Azure Private Link service alias.
         /// </summary>
         [Output("azureServiceAlias")]
         public Output<string> AzureServiceAlias { get; private set; } = null!;
 
         /// <summary>
-        /// Azure Privatelink service ID
+        /// The Azure Private Link service ID.
         /// </summary>
         [Output("azureServiceId")]
         public Output<string> AzureServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// Printable result of the Azure Privatelink request
+        /// Printable result of the Azure Private Link request.
         /// </summary>
         [Output("message")]
         public Output<string> Message { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink resource state
+        /// The state of the Private Link resource.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// A List of allowed Subscription IDs. Maximum length: `16`.
+        /// A list of allowed subscription IDs. Maximum length: `16`.
         /// </summary>
         [Output("userSubscriptionIds")]
         public Output<ImmutableArray<string>> UserSubscriptionIds { get; private set; } = null!;
@@ -135,13 +135,13 @@ namespace Pulumi.Aiven
     public sealed class AzurePrivatelinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _userSubscriptionIds;
 
         /// <summary>
-        /// A List of allowed Subscription IDs. Maximum length: `16`.
+        /// A list of allowed subscription IDs. Maximum length: `16`.
         /// </summary>
         public InputList<string> UserSubscriptionIds
         {
@@ -167,37 +167,37 @@ namespace Pulumi.Aiven
     public sealed class AzurePrivatelinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Azure Privatelink service alias
+        /// The Azure Private Link service alias.
         /// </summary>
         [Input("azureServiceAlias")]
         public Input<string>? AzureServiceAlias { get; set; }
 
         /// <summary>
-        /// Azure Privatelink service ID
+        /// The Azure Private Link service ID.
         /// </summary>
         [Input("azureServiceId")]
         public Input<string>? AzureServiceId { get; set; }
 
         /// <summary>
-        /// Printable result of the Azure Privatelink request
+        /// Printable result of the Azure Private Link request.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Privatelink resource state
+        /// The state of the Private Link resource.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _userSubscriptionIds;
 
         /// <summary>
-        /// A List of allowed Subscription IDs. Maximum length: `16`.
+        /// A list of allowed subscription IDs. Maximum length: `16`.
         /// </summary>
         public InputList<string> UserSubscriptionIds
         {

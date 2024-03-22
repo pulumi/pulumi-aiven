@@ -12,6 +12,27 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Project resource allows the creation and management of Aiven Projects.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleProject = new Aiven.Project("exampleProject", new()
+    ///     {
+    ///         ProjectName = "Example project",
+    ///         ParentId = aiven_organization.Main.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

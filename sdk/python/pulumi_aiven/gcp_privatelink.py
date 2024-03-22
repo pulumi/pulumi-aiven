@@ -19,9 +19,9 @@ class GcpPrivatelinkArgs:
         """
         The set of arguments for constructing a GcpPrivatelink resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+               variable as a reference. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -31,7 +31,7 @@ class GcpPrivatelinkArgs:
     def project(self) -> pulumi.Input[str]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -44,7 +44,7 @@ class GcpPrivatelinkArgs:
     def service_name(self) -> pulumi.Input[str]:
         """
         Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -63,13 +63,13 @@ class _GcpPrivatelinkState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GcpPrivatelink resources.
-        :param pulumi.Input[str] google_service_attachment: Privatelink resource Google Service Attachment
-        :param pulumi.Input[str] message: Printable result of the GCP Privatelink request
+        :param pulumi.Input[str] google_service_attachment: Google Private Service Connect service attachment.
+        :param pulumi.Input[str] message: Printable result of the Google Cloud Private Service Connect request.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] state: Privatelink resource state
+               variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] state: The state of the Private Service Connect resource.
         """
         if google_service_attachment is not None:
             pulumi.set(__self__, "google_service_attachment", google_service_attachment)
@@ -86,7 +86,7 @@ class _GcpPrivatelinkState:
     @pulumi.getter(name="googleServiceAttachment")
     def google_service_attachment(self) -> Optional[pulumi.Input[str]]:
         """
-        Privatelink resource Google Service Attachment
+        Google Private Service Connect service attachment.
         """
         return pulumi.get(self, "google_service_attachment")
 
@@ -98,7 +98,7 @@ class _GcpPrivatelinkState:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
-        Printable result of the GCP Privatelink request
+        Printable result of the Google Cloud Private Service Connect request.
         """
         return pulumi.get(self, "message")
 
@@ -111,7 +111,7 @@ class _GcpPrivatelinkState:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -124,7 +124,7 @@ class _GcpPrivatelinkState:
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -136,7 +136,7 @@ class _GcpPrivatelinkState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Privatelink resource state
+        The state of the Private Service Connect resource.
         """
         return pulumi.get(self, "state")
 
@@ -158,9 +158,9 @@ class GcpPrivatelink(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+               variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -227,13 +227,13 @@ class GcpPrivatelink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] google_service_attachment: Privatelink resource Google Service Attachment
-        :param pulumi.Input[str] message: Printable result of the GCP Privatelink request
+        :param pulumi.Input[str] google_service_attachment: Google Private Service Connect service attachment.
+        :param pulumi.Input[str] message: Printable result of the Google Cloud Private Service Connect request.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] state: Privatelink resource state
+               variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] state: The state of the Private Service Connect resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -250,7 +250,7 @@ class GcpPrivatelink(pulumi.CustomResource):
     @pulumi.getter(name="googleServiceAttachment")
     def google_service_attachment(self) -> pulumi.Output[str]:
         """
-        Privatelink resource Google Service Attachment
+        Google Private Service Connect service attachment.
         """
         return pulumi.get(self, "google_service_attachment")
 
@@ -258,7 +258,7 @@ class GcpPrivatelink(pulumi.CustomResource):
     @pulumi.getter
     def message(self) -> pulumi.Output[str]:
         """
-        Printable result of the GCP Privatelink request
+        Printable result of the Google Cloud Private Service Connect request.
         """
         return pulumi.get(self, "message")
 
@@ -267,7 +267,7 @@ class GcpPrivatelink(pulumi.CustomResource):
     def project(self) -> pulumi.Output[str]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -276,7 +276,7 @@ class GcpPrivatelink(pulumi.CustomResource):
     def service_name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -284,7 +284,7 @@ class GcpPrivatelink(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Privatelink resource state
+        The state of the Private Service Connect resource.
         """
         return pulumi.get(self, "state")
 

@@ -20,10 +20,10 @@ class AwsVpcPeeringConnectionArgs:
                  vpc_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AwsVpcPeeringConnection resource.
-        :param pulumi.Input[str] aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "aws_account_id", aws_account_id)
         pulumi.set(__self__, "aws_vpc_id", aws_vpc_id)
@@ -34,7 +34,7 @@ class AwsVpcPeeringConnectionArgs:
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Input[str]:
         """
-        AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+        AWS account ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -46,7 +46,7 @@ class AwsVpcPeeringConnectionArgs:
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> pulumi.Input[str]:
         """
-        AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+        AWS VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -58,7 +58,7 @@ class AwsVpcPeeringConnectionArgs:
     @pulumi.getter(name="awsVpcRegion")
     def aws_vpc_region(self) -> pulumi.Input[str]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
@@ -70,7 +70,7 @@ class AwsVpcPeeringConnectionArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -91,13 +91,13 @@ class _AwsVpcPeeringConnectionState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AwsVpcPeeringConnection resources.
-        :param pulumi.Input[str] aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_peering_connection_id: AWS VPC peering connection ID
-        :param pulumi.Input[str] aws_vpc_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
+        :param pulumi.Input[str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] state: The state of the peering connection.
+        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[str] vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         if aws_account_id is not None:
             pulumi.set(__self__, "aws_account_id", aws_account_id)
@@ -118,7 +118,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+        AWS account ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -130,7 +130,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+        AWS VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -142,7 +142,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter(name="awsVpcPeeringConnectionId")
     def aws_vpc_peering_connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS VPC peering connection ID
+        The ID of the AWS VPC peering connection.
         """
         return pulumi.get(self, "aws_vpc_peering_connection_id")
 
@@ -154,7 +154,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter(name="awsVpcRegion")
     def aws_vpc_region(self) -> Optional[pulumi.Input[str]]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
@@ -166,7 +166,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of the peering connection
+        The state of the peering connection.
         """
         return pulumi.get(self, "state")
 
@@ -178,7 +178,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        State-specific help or error information
+        State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
@@ -190,7 +190,7 @@ class _AwsVpcPeeringConnectionState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -210,7 +210,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
+        Creates and manages an AWS VPC peering connection with an Aiven VPC.
 
         ## Example Usage
 
@@ -219,25 +219,30 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.AwsVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-            aws_account_id="XXXXX",
-            aws_vpc_id="XXXXX")
+        example_vpc = aiven.ProjectVpc("exampleVpc",
+            project=data["aiven_project"]["example_project"]["project"],
+            cloud_name="aws-us-east-2",
+            network_cidr="192.168.1.0/24")
+        aws_to_aiven_peering = aiven.AwsVpcPeeringConnection("awsToAivenPeering",
+            vpc_id=example_vpc.id,
+            aws_account_id=var["aws_id"],
+            aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
+            aws_vpc_region="aws-us-east-2")
         ```
         <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
+        $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection aws_to_aiven_peering PROJECT/VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -246,7 +251,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
                  args: AwsVpcPeeringConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
+        Creates and manages an AWS VPC peering connection with an Aiven VPC.
 
         ## Example Usage
 
@@ -255,17 +260,22 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo = aiven.AwsVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
-            aws_account_id="XXXXX",
-            aws_vpc_id="XXXXX")
+        example_vpc = aiven.ProjectVpc("exampleVpc",
+            project=data["aiven_project"]["example_project"]["project"],
+            cloud_name="aws-us-east-2",
+            network_cidr="192.168.1.0/24")
+        aws_to_aiven_peering = aiven.AwsVpcPeeringConnection("awsToAivenPeering",
+            vpc_id=example_vpc.id,
+            aws_account_id=var["aws_id"],
+            aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
+            aws_vpc_region="aws-us-east-2")
         ```
         <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
+        $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection aws_to_aiven_peering PROJECT/VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
         ```
 
         :param str resource_name: The name of the resource.
@@ -335,13 +345,13 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] aws_account_id: AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] aws_vpc_peering_connection_id: AWS VPC peering connection ID
-        :param pulumi.Input[str] aws_vpc_region: AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_id: AWS VPC ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] aws_vpc_peering_connection_id: The ID of the AWS VPC peering connection.
+        :param pulumi.Input[str] aws_vpc_region: The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] state: The state of the peering connection.
+        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[str] vpc_id: The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -360,7 +370,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="awsAccountId")
     def aws_account_id(self) -> pulumi.Output[str]:
         """
-        AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+        AWS account ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_account_id")
 
@@ -368,7 +378,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="awsVpcId")
     def aws_vpc_id(self) -> pulumi.Output[str]:
         """
-        AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+        AWS VPC ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_id")
 
@@ -376,7 +386,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="awsVpcPeeringConnectionId")
     def aws_vpc_peering_connection_id(self) -> pulumi.Output[str]:
         """
-        AWS VPC peering connection ID
+        The ID of the AWS VPC peering connection.
         """
         return pulumi.get(self, "aws_vpc_peering_connection_id")
 
@@ -384,7 +394,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="awsVpcRegion")
     def aws_vpc_region(self) -> pulumi.Output[str]:
         """
-        AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+        The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "aws_vpc_region")
 
@@ -392,7 +402,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of the peering connection
+        The state of the peering connection.
         """
         return pulumi.get(self, "state")
 
@@ -400,7 +410,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        State-specific help or error information
+        State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
@@ -408,7 +418,7 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the Aiven VPC. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 

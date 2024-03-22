@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * @return Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+     * @return Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
      * 
      */
     private @Nullable List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric> droppedMetrics;
     /**
-     * @return Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * @return Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      * 
      */
     private @Nullable List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric> extraMetrics;
 
     private ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig() {}
     /**
-     * @return Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+     * @return Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
      * 
      */
     public List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric> droppedMetrics() {
         return this.droppedMetrics == null ? List.of() : this.droppedMetrics;
     }
     /**
-     * @return Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * @return Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      * 
      */
     public List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric> extraMetrics() {

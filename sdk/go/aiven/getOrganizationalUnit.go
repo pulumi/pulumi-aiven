@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+// Gets information about an organizational unit.
 func LookupOrganizationalUnit(ctx *pulumi.Context, args *LookupOrganizationalUnitArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationalUnitResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationalUnitResult
@@ -24,23 +24,23 @@ func LookupOrganizationalUnit(ctx *pulumi.Context, args *LookupOrganizationalUni
 
 // A collection of arguments for invoking getOrganizationalUnit.
 type LookupOrganizationalUnitArgs struct {
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getOrganizationalUnit.
 type LookupOrganizationalUnitResult struct {
-	// Time of creation
+	// Time of creation.
 	CreateTime string `pulumi:"createTime"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name string `pulumi:"name"`
-	// Parent ID
+	// The ID of the organization that the unit is created in.
 	ParentId string `pulumi:"parentId"`
-	// Tenant ID
+	// Tenant ID.
 	TenantId string `pulumi:"tenantId"`
-	// Time of last update
+	// Time of last update.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -59,7 +59,7 @@ func LookupOrganizationalUnitOutput(ctx *pulumi.Context, args LookupOrganization
 
 // A collection of arguments for invoking getOrganizationalUnit.
 type LookupOrganizationalUnitOutputArgs struct {
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -82,7 +82,7 @@ func (o LookupOrganizationalUnitResultOutput) ToLookupOrganizationalUnitResultOu
 	return o
 }
 
-// Time of creation
+// Time of creation.
 func (o LookupOrganizationalUnitResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -92,22 +92,22 @@ func (o LookupOrganizationalUnitResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Organizational Unit name
+// The name of the organizational unit.
 func (o LookupOrganizationalUnitResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Parent ID
+// The ID of the organization that the unit is created in.
 func (o LookupOrganizationalUnitResultOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Tenant ID
+// Tenant ID.
 func (o LookupOrganizationalUnitResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Time of last update
+// Time of last update.
 func (o LookupOrganizationalUnitResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationalUnitResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

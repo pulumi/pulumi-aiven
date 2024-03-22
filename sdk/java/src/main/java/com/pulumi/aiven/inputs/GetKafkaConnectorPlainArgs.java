@@ -14,14 +14,14 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
     public static final GetKafkaConnectorPlainArgs Empty = new GetKafkaConnectorPlainArgs();
 
     /**
-     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * The kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="connectorName", required=true)
     private String connectorName;
 
     /**
-     * @return The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     public String connectorName() {
@@ -29,14 +29,14 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -44,14 +44,14 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
@@ -85,7 +85,7 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param connectorName The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param connectorName The kafka connector name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetKafkaConnectorPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

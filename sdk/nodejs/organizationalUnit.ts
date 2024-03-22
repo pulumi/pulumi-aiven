@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+ * Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
  *
  * ## Example Usage
  *
@@ -14,14 +14,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const organizationalUnit1 = new aiven.OrganizationalUnit("organizationalUnit1", {parentId: "<ORGANIZATION_ID>"});
+ * const exampleUnit = new aiven.OrganizationalUnit("exampleUnit", {parentId: aiven_organization.main.id});
  * ```
  * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+ * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
  * ```
  */
 export class OrganizationalUnit extends pulumi.CustomResource {
@@ -53,23 +53,23 @@ export class OrganizationalUnit extends pulumi.CustomResource {
     }
 
     /**
-     * Time of creation
+     * Time of creation.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      */
     public readonly parentId!: pulumi.Output<string>;
     /**
-     * Tenant ID
+     * Tenant ID.
      */
     public /*out*/ readonly tenantId!: pulumi.Output<string>;
     /**
-     * Time of last update
+     * Time of last update.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -112,23 +112,23 @@ export class OrganizationalUnit extends pulumi.CustomResource {
  */
 export interface OrganizationalUnitState {
     /**
-     * Time of creation
+     * Time of creation.
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      */
     name?: pulumi.Input<string>;
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Tenant ID
+     * Tenant ID.
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Time of last update
+     * Time of last update.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -138,11 +138,11 @@ export interface OrganizationalUnitState {
  */
 export interface OrganizationalUnitArgs {
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      */
     name?: pulumi.Input<string>;
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      */
     parentId: pulumi.Input<string>;
 }

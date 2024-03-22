@@ -37,15 +37,15 @@ export function getRedisUser(args: GetRedisUserArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetRedisUserArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -63,27 +63,27 @@ export interface GetRedisUserResult {
      */
     readonly password: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly redisAclCategories: string[];
     /**
-     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
      */
     readonly redisAclChannels: string[];
     /**
-     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly redisAclCommands: string[];
     /**
-     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
      */
     readonly redisAclKeys: string[];
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
@@ -91,7 +91,7 @@ export interface GetRedisUserResult {
      */
     readonly type: string;
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
@@ -122,15 +122,15 @@ export function getRedisUserOutput(args: GetRedisUserOutputArgs, opts?: pulumi.I
  */
 export interface GetRedisUserOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

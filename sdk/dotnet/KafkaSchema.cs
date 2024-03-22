@@ -30,17 +30,19 @@ namespace Pulumi.Aiven
     ///         SubjectName = "kafka-schema1",
     ///         CompatibilityLevel = "FORWARD",
     ///         Schema = @"    {
-    ///        ""doc"": ""example"",
-    ///        ""fields"": [{
-    ///            ""default"": 5,
-    ///            ""doc"": ""my test number"",
-    ///            ""name"": ""test"",
-    ///            ""namespace"": ""test"",
-    ///            ""type"": ""int""
-    ///        }],
-    ///        ""name"": ""example"",
-    ///        ""namespace"": ""example"",
-    ///        ""type"": ""record""
+    ///       ""doc"": ""example"",
+    ///       ""fields"": [
+    ///         {
+    ///           ""default"": 5,
+    ///           ""doc"": ""my test number"",
+    ///           ""name"": ""test"",
+    ///           ""namespace"": ""test"",
+    ///           ""type"": ""int""
+    ///         }
+    ///       ],
+    ///       ""name"": ""example"",
+    ///       ""namespace"": ""example"",
+    ///       ""type"": ""record""
     ///     }
     /// ",
     ///     });
@@ -65,7 +67,7 @@ namespace Pulumi.Aiven
         public Output<string?> CompatibilityLevel { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -83,13 +85,13 @@ namespace Pulumi.Aiven
         public Output<string?> SchemaType { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+        /// The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("subjectName")]
         public Output<string> SubjectName { get; private set; } = null!;
@@ -153,7 +155,7 @@ namespace Pulumi.Aiven
         public Input<string>? CompatibilityLevel { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -171,13 +173,13 @@ namespace Pulumi.Aiven
         public Input<string>? SchemaType { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+        /// The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("subjectName", required: true)]
         public Input<string> SubjectName { get; set; } = null!;
@@ -197,7 +199,7 @@ namespace Pulumi.Aiven
         public Input<string>? CompatibilityLevel { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -215,13 +217,13 @@ namespace Pulumi.Aiven
         public Input<string>? SchemaType { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+        /// The Kafka Schema Subject name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("subjectName")]
         public Input<string>? SubjectName { get; set; }

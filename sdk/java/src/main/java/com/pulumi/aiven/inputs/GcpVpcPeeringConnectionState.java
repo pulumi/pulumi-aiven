@@ -18,14 +18,14 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     public static final GcpVpcPeeringConnectionState Empty = new GcpVpcPeeringConnectionState();
 
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="gcpProjectId")
     private @Nullable Output<String> gcpProjectId;
 
     /**
-     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> gcpProjectId() {
@@ -33,14 +33,14 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerVpc")
     private @Nullable Output<String> peerVpc;
 
     /**
-     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerVpc() {
@@ -48,14 +48,14 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * Computed GCP network peering link
+     * Computed Google Cloud network peering link.
      * 
      */
     @Import(name="selfLink")
     private @Nullable Output<String> selfLink;
 
     /**
-     * @return Computed GCP network peering link
+     * @return Computed Google Cloud network peering link.
      * 
      */
     public Optional<Output<String>> selfLink() {
@@ -63,14 +63,14 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * State of the peering connection
+     * State of the peering connection.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection.
      * 
      */
     public Optional<Output<String>> state() {
@@ -78,14 +78,14 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Import(name="stateInfo")
     private @Nullable Output<Map<String,Object>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Optional<Output<Map<String,Object>>> stateInfo() {
@@ -93,14 +93,14 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
     }
 
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -137,7 +137,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param gcpProjectId GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param gcpProjectId GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param peerVpc GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param peerVpc GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param selfLink Computed GCP network peering link
+         * @param selfLink Computed Google Cloud network peering link.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param selfLink Computed GCP network peering link
+         * @param selfLink Computed Google Cloud network peering link.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param state State of the peering connection
+         * @param state State of the peering connection.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param state State of the peering connection
+         * @param state State of the peering connection.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param stateInfo State-specific help or error information
+         * @param stateInfo State-specific help or error information.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param stateInfo State-specific help or error information
+         * @param stateInfo State-specific help or error information.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GcpVpcPeeringConnectionState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

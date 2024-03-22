@@ -10,7 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+    /// **This resource is deprecated**.
+    /// 
+    /// Creates and manages an authentication method.
     /// 
     /// ## Import
     /// 

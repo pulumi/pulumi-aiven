@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClickhouseUser{}
 	case "aiven:index/connectionPool:ConnectionPool":
 		r = &ConnectionPool{}
+	case "aiven:index/dragonfly:Dragonfly":
+		r = &Dragonfly{}
 	case "aiven:index/flink:Flink":
 		r = &Flink{}
 	case "aiven:index/flinkApplication:FlinkApplication":
@@ -127,10 +129,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OpensearchUser{}
 	case "aiven:index/organization:Organization":
 		r = &Organization{}
+	case "aiven:index/organizationGroupProject:OrganizationGroupProject":
+		r = &OrganizationGroupProject{}
 	case "aiven:index/organizationUser:OrganizationUser":
 		r = &OrganizationUser{}
 	case "aiven:index/organizationUserGroup:OrganizationUserGroup":
 		r = &OrganizationUserGroup{}
+	case "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember":
+		r = &OrganizationUserGroupMember{}
 	case "aiven:index/organizationalUnit:OrganizationalUnit":
 		r = &OrganizationalUnit{}
 	case "aiven:index/pg:Pg":
@@ -281,6 +287,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/connectionPool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/dragonfly",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -455,12 +466,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
+		"index/organizationGroupProject",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
 		"index/organizationUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/organizationUserGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/organizationUserGroupMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -15,17 +15,17 @@ import (
 type GcpPrivatelink struct {
 	pulumi.CustomResourceState
 
-	// Privatelink resource Google Service Attachment
+	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment pulumi.StringOutput `pulumi:"googleServiceAttachment"`
-	// Printable result of the GCP Privatelink request
+	// Printable result of the Google Cloud Private Service Connect request.
 	Message pulumi.StringOutput `pulumi:"message"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Privatelink resource state
+	// The state of the Private Service Connect resource.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -65,32 +65,32 @@ func GetGcpPrivatelink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcpPrivatelink resources.
 type gcpPrivatelinkState struct {
-	// Privatelink resource Google Service Attachment
+	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment *string `pulumi:"googleServiceAttachment"`
-	// Printable result of the GCP Privatelink request
+	// Printable result of the Google Cloud Private Service Connect request.
 	Message *string `pulumi:"message"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Privatelink resource state
+	// The state of the Private Service Connect resource.
 	State *string `pulumi:"state"`
 }
 
 type GcpPrivatelinkState struct {
-	// Privatelink resource Google Service Attachment
+	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment pulumi.StringPtrInput
-	// Printable result of the GCP Privatelink request
+	// Printable result of the Google Cloud Private Service Connect request.
 	Message pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Privatelink resource state
+	// The state of the Private Service Connect resource.
 	State pulumi.StringPtrInput
 }
 
@@ -100,20 +100,20 @@ func (GcpPrivatelinkState) ElementType() reflect.Type {
 
 type gcpPrivatelinkArgs struct {
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a GcpPrivatelink resource.
 type GcpPrivatelinkArgs struct {
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -204,29 +204,29 @@ func (o GcpPrivatelinkOutput) ToGcpPrivatelinkOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Privatelink resource Google Service Attachment
+// Google Private Service Connect service attachment.
 func (o GcpPrivatelinkOutput) GoogleServiceAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.GoogleServiceAttachment }).(pulumi.StringOutput)
 }
 
-// Printable result of the GCP Privatelink request
+// Printable result of the Google Cloud Private Service Connect request.
 func (o GcpPrivatelinkOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// reference. Changing this property forces recreation of the resource.
 func (o GcpPrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// variable as a reference. Changing this property forces recreation of the resource.
 func (o GcpPrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Privatelink resource state
+// The state of the Private Service Connect resource.
 func (o GcpPrivatelinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

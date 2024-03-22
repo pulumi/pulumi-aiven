@@ -40,7 +40,7 @@ class MySqlArgs:
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
                service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
@@ -123,7 +123,7 @@ class MySqlArgs:
     def project(self) -> pulumi.Input[str]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -367,7 +367,7 @@ class _MySqlState:
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
@@ -629,7 +629,7 @@ class _MySqlState:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -893,7 +893,7 @@ class MySql(pulumi.CustomResource):
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
@@ -1100,7 +1100,7 @@ class MySql(pulumi.CustomResource):
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
                as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
@@ -1284,7 +1284,7 @@ class MySql(pulumi.CustomResource):
     def project(self) -> pulumi.Output[str]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 

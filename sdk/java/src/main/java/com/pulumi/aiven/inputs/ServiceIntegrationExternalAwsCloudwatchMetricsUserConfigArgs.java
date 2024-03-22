@@ -18,14 +18,14 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
     public static final ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs Empty = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs();
 
     /**
-     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
      * 
      */
     @Import(name="droppedMetrics")
     private @Nullable Output<List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs>> droppedMetrics;
 
     /**
-     * @return Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+     * @return Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
      * 
      */
     public Optional<Output<List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricArgs>>> droppedMetrics() {
@@ -33,14 +33,14 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
     }
 
     /**
-     * Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      * 
      */
     @Import(name="extraMetrics")
     private @Nullable Output<List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>> extraMetrics;
 
     /**
-     * @return Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * @return Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      * 
      */
     public Optional<Output<List<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs>>> extraMetrics() {
@@ -73,7 +73,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
         }
 
         /**
-         * @param droppedMetrics Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+         * @param droppedMetrics Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
         }
 
         /**
-         * @param droppedMetrics Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+         * @param droppedMetrics Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
         }
 
         /**
-         * @param droppedMetrics Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+         * @param droppedMetrics Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
         }
 
         /**
-         * @param extraMetrics Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+         * @param extraMetrics Metrics to allow through to AWS CloudWatch (in addition to default metrics)
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
         }
 
         /**
-         * @param extraMetrics Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+         * @param extraMetrics Metrics to allow through to AWS CloudWatch (in addition to default metrics)
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs 
         }
 
         /**
-         * @param extraMetrics Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+         * @param extraMetrics Metrics to allow through to AWS CloudWatch (in addition to default metrics)
          * 
          * @return builder
          * 

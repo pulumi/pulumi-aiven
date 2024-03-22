@@ -23,29 +23,37 @@ class ServiceIntegrationArgs:
                  datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_opensearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] = None,
                  kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
                  kafka_logs_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs']] = None,
                  kafka_mirrormaker_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] = None,
                  logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
+                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceIntegration resource.
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         :param pulumi.Input[str] project: Project the integration belongs to
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
         :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
+        :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
+        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -61,8 +69,14 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
             pulumi.set(__self__, "destination_service_name", destination_service_name)
+        if external_aws_cloudwatch_logs_user_config is not None:
+            pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
         if external_aws_cloudwatch_metrics_user_config is not None:
             pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
+        if external_elasticsearch_logs_user_config is not None:
+            pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
+        if external_opensearch_logs_user_config is not None:
+            pulumi.set(__self__, "external_opensearch_logs_user_config", external_opensearch_logs_user_config)
         if kafka_connect_user_config is not None:
             pulumi.set(__self__, "kafka_connect_user_config", kafka_connect_user_config)
         if kafka_logs_user_config is not None:
@@ -73,6 +87,8 @@ class ServiceIntegrationArgs:
             pulumi.set(__self__, "logs_user_config", logs_user_config)
         if metrics_user_config is not None:
             pulumi.set(__self__, "metrics_user_config", metrics_user_config)
+        if prometheus_user_config is not None:
+            pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
@@ -82,7 +98,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Input[str]:
         """
-        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         """
         return pulumi.get(self, "integration_type")
 
@@ -163,6 +179,18 @@ class ServiceIntegrationArgs:
         pulumi.set(self, "destination_service_name", value)
 
     @property
+    @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
+    def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
+        """
+        ExternalAwsCloudwatchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @external_aws_cloudwatch_logs_user_config.setter
+    def external_aws_cloudwatch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_aws_cloudwatch_logs_user_config", value)
+
+    @property
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
     def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
         """
@@ -173,6 +201,30 @@ class ServiceIntegrationArgs:
     @external_aws_cloudwatch_metrics_user_config.setter
     def external_aws_cloudwatch_metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]):
         pulumi.set(self, "external_aws_cloudwatch_metrics_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
+        """
+        ExternalElasticsearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @external_elasticsearch_logs_user_config.setter
+    def external_elasticsearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_elasticsearch_logs_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalOpensearchLogsUserConfig")
+    def external_opensearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
+        """
+        ExternalOpensearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_opensearch_logs_user_config")
+
+    @external_opensearch_logs_user_config.setter
+    def external_opensearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_opensearch_logs_user_config", value)
 
     @property
     @pulumi.getter(name="kafkaConnectUserConfig")
@@ -235,6 +287,18 @@ class ServiceIntegrationArgs:
         pulumi.set(self, "metrics_user_config", value)
 
     @property
+    @pulumi.getter(name="prometheusUserConfig")
+    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
+        """
+        Prometheus user configurable settings
+        """
+        return pulumi.get(self, "prometheus_user_config")
+
+    @prometheus_user_config.setter
+    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]):
+        pulumi.set(self, "prometheus_user_config", value)
+
+    @property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -267,7 +331,10 @@ class _ServiceIntegrationState:
                  datadog_user_config: Optional[pulumi.Input['ServiceIntegrationDatadogUserConfigArgs']] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] = None,
+                 external_opensearch_logs_user_config: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] = None,
                  integration_id: Optional[pulumi.Input[str]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs']] = None,
@@ -276,6 +343,7 @@ class _ServiceIntegrationState:
                  logs_user_config: Optional[pulumi.Input['ServiceIntegrationLogsUserConfigArgs']] = None,
                  metrics_user_config: Optional[pulumi.Input['ServiceIntegrationMetricsUserConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 prometheus_user_config: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None):
         """
@@ -285,15 +353,19 @@ class _ServiceIntegrationState:
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
+        :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -307,8 +379,14 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "destination_endpoint_id", destination_endpoint_id)
         if destination_service_name is not None:
             pulumi.set(__self__, "destination_service_name", destination_service_name)
+        if external_aws_cloudwatch_logs_user_config is not None:
+            pulumi.set(__self__, "external_aws_cloudwatch_logs_user_config", external_aws_cloudwatch_logs_user_config)
         if external_aws_cloudwatch_metrics_user_config is not None:
             pulumi.set(__self__, "external_aws_cloudwatch_metrics_user_config", external_aws_cloudwatch_metrics_user_config)
+        if external_elasticsearch_logs_user_config is not None:
+            pulumi.set(__self__, "external_elasticsearch_logs_user_config", external_elasticsearch_logs_user_config)
+        if external_opensearch_logs_user_config is not None:
+            pulumi.set(__self__, "external_opensearch_logs_user_config", external_opensearch_logs_user_config)
         if integration_id is not None:
             pulumi.set(__self__, "integration_id", integration_id)
         if integration_type is not None:
@@ -325,6 +403,8 @@ class _ServiceIntegrationState:
             pulumi.set(__self__, "metrics_user_config", metrics_user_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if prometheus_user_config is not None:
+            pulumi.set(__self__, "prometheus_user_config", prometheus_user_config)
         if source_endpoint_id is not None:
             pulumi.set(__self__, "source_endpoint_id", source_endpoint_id)
         if source_service_name is not None:
@@ -391,6 +471,18 @@ class _ServiceIntegrationState:
         pulumi.set(self, "destination_service_name", value)
 
     @property
+    @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
+    def external_aws_cloudwatch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]:
+        """
+        ExternalAwsCloudwatchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @external_aws_cloudwatch_logs_user_config.setter
+    def external_aws_cloudwatch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_aws_cloudwatch_logs_user_config", value)
+
+    @property
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
     def external_aws_cloudwatch_metrics_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]:
         """
@@ -401,6 +493,30 @@ class _ServiceIntegrationState:
     @external_aws_cloudwatch_metrics_user_config.setter
     def external_aws_cloudwatch_metrics_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]):
         pulumi.set(self, "external_aws_cloudwatch_metrics_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]:
+        """
+        ExternalElasticsearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @external_elasticsearch_logs_user_config.setter
+    def external_elasticsearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_elasticsearch_logs_user_config", value)
+
+    @property
+    @pulumi.getter(name="externalOpensearchLogsUserConfig")
+    def external_opensearch_logs_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]:
+        """
+        ExternalOpensearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_opensearch_logs_user_config")
+
+    @external_opensearch_logs_user_config.setter
+    def external_opensearch_logs_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]):
+        pulumi.set(self, "external_opensearch_logs_user_config", value)
 
     @property
     @pulumi.getter(name="integrationId")
@@ -418,7 +534,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         """
         return pulumi.get(self, "integration_type")
 
@@ -499,6 +615,18 @@ class _ServiceIntegrationState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="prometheusUserConfig")
+    def prometheus_user_config(self) -> Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]:
+        """
+        Prometheus user configurable settings
+        """
+        return pulumi.get(self, "prometheus_user_config")
+
+    @prometheus_user_config.setter
+    def prometheus_user_config(self, value: Optional[pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs']]):
+        pulumi.set(self, "prometheus_user_config", value)
+
+    @property
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -533,7 +661,10 @@ class ServiceIntegration(pulumi.CustomResource):
                  datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
                  kafka_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']]] = None,
@@ -541,6 +672,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
                  metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -582,14 +714,18 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -650,7 +786,10 @@ class ServiceIntegration(pulumi.CustomResource):
                  datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
                  destination_endpoint_id: Optional[pulumi.Input[str]] = None,
                  destination_service_name: Optional[pulumi.Input[str]] = None,
+                 external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
                  external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
+                 external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
+                 external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]] = None,
                  integration_type: Optional[pulumi.Input[str]] = None,
                  kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
                  kafka_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']]] = None,
@@ -658,6 +797,7 @@ class ServiceIntegration(pulumi.CustomResource):
                  logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
                  metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
                  source_endpoint_id: Optional[pulumi.Input[str]] = None,
                  source_service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -674,7 +814,10 @@ class ServiceIntegration(pulumi.CustomResource):
             __props__.__dict__["datadog_user_config"] = datadog_user_config
             __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
             __props__.__dict__["destination_service_name"] = destination_service_name
+            __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
             __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
+            __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
+            __props__.__dict__["external_opensearch_logs_user_config"] = external_opensearch_logs_user_config
             if integration_type is None and not opts.urn:
                 raise TypeError("Missing required property 'integration_type'")
             __props__.__dict__["integration_type"] = integration_type
@@ -686,6 +829,7 @@ class ServiceIntegration(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["prometheus_user_config"] = prometheus_user_config
             __props__.__dict__["source_endpoint_id"] = source_endpoint_id
             __props__.__dict__["source_service_name"] = source_service_name
             __props__.__dict__["integration_id"] = None
@@ -704,7 +848,10 @@ class ServiceIntegration(pulumi.CustomResource):
             datadog_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']]] = None,
             destination_endpoint_id: Optional[pulumi.Input[str]] = None,
             destination_service_name: Optional[pulumi.Input[str]] = None,
+            external_aws_cloudwatch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']]] = None,
             external_aws_cloudwatch_metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']]] = None,
+            external_elasticsearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']]] = None,
+            external_opensearch_logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']]] = None,
             integration_id: Optional[pulumi.Input[str]] = None,
             integration_type: Optional[pulumi.Input[str]] = None,
             kafka_connect_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']]] = None,
@@ -713,6 +860,7 @@ class ServiceIntegration(pulumi.CustomResource):
             logs_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']]] = None,
             metrics_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            prometheus_user_config: Optional[pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']]] = None,
             source_endpoint_id: Optional[pulumi.Input[str]] = None,
             source_service_name: Optional[pulumi.Input[str]] = None) -> 'ServiceIntegration':
         """
@@ -727,15 +875,19 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
         :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
         :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
         :param pulumi.Input[str] integration_id: Service Integration Id at aiven
-        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
         :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus user configurable settings
         :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
@@ -748,7 +900,10 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["datadog_user_config"] = datadog_user_config
         __props__.__dict__["destination_endpoint_id"] = destination_endpoint_id
         __props__.__dict__["destination_service_name"] = destination_service_name
+        __props__.__dict__["external_aws_cloudwatch_logs_user_config"] = external_aws_cloudwatch_logs_user_config
         __props__.__dict__["external_aws_cloudwatch_metrics_user_config"] = external_aws_cloudwatch_metrics_user_config
+        __props__.__dict__["external_elasticsearch_logs_user_config"] = external_elasticsearch_logs_user_config
+        __props__.__dict__["external_opensearch_logs_user_config"] = external_opensearch_logs_user_config
         __props__.__dict__["integration_id"] = integration_id
         __props__.__dict__["integration_type"] = integration_type
         __props__.__dict__["kafka_connect_user_config"] = kafka_connect_user_config
@@ -757,6 +912,7 @@ class ServiceIntegration(pulumi.CustomResource):
         __props__.__dict__["logs_user_config"] = logs_user_config
         __props__.__dict__["metrics_user_config"] = metrics_user_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["prometheus_user_config"] = prometheus_user_config
         __props__.__dict__["source_endpoint_id"] = source_endpoint_id
         __props__.__dict__["source_service_name"] = source_service_name
         return ServiceIntegration(resource_name, opts=opts, __props__=__props__)
@@ -802,12 +958,36 @@ class ServiceIntegration(pulumi.CustomResource):
         return pulumi.get(self, "destination_service_name")
 
     @property
+    @pulumi.getter(name="externalAwsCloudwatchLogsUserConfig")
+    def external_aws_cloudwatch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig']]:
+        """
+        ExternalAwsCloudwatchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_aws_cloudwatch_logs_user_config")
+
+    @property
     @pulumi.getter(name="externalAwsCloudwatchMetricsUserConfig")
     def external_aws_cloudwatch_metrics_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig']]:
         """
         ExternalAwsCloudwatchMetrics user configurable settings
         """
         return pulumi.get(self, "external_aws_cloudwatch_metrics_user_config")
+
+    @property
+    @pulumi.getter(name="externalElasticsearchLogsUserConfig")
+    def external_elasticsearch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig']]:
+        """
+        ExternalElasticsearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_elasticsearch_logs_user_config")
+
+    @property
+    @pulumi.getter(name="externalOpensearchLogsUserConfig")
+    def external_opensearch_logs_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationExternalOpensearchLogsUserConfig']]:
+        """
+        ExternalOpensearchLogs user configurable settings
+        """
+        return pulumi.get(self, "external_opensearch_logs_user_config")
 
     @property
     @pulumi.getter(name="integrationId")
@@ -821,7 +1001,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="integrationType")
     def integration_type(self) -> pulumi.Output[str]:
         """
-        Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+        Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         """
         return pulumi.get(self, "integration_type")
 
@@ -872,6 +1052,14 @@ class ServiceIntegration(pulumi.CustomResource):
         Project the integration belongs to
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="prometheusUserConfig")
+    def prometheus_user_config(self) -> pulumi.Output[Optional['outputs.ServiceIntegrationPrometheusUserConfig']]:
+        """
+        Prometheus user configurable settings
+        """
+        return pulumi.get(self, "prometheus_user_config")
 
     @property
     @pulumi.getter(name="sourceEndpointId")

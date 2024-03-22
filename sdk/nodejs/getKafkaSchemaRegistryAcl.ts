@@ -24,23 +24,23 @@ export function getKafkaSchemaRegistryAcl(args: GetKafkaSchemaRegistryAclArgs, o
  */
 export interface GetKafkaSchemaRegistryAclArgs {
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
     permission: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
      */
     resource: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
     /**
-     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -58,23 +58,23 @@ export interface GetKafkaSchemaRegistryAclResult {
      */
     readonly id: string;
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
     readonly permission: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
      */
     readonly resource: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
-     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
@@ -90,23 +90,23 @@ export function getKafkaSchemaRegistryAclOutput(args: GetKafkaSchemaRegistryAclO
  */
 export interface GetKafkaSchemaRegistryAclOutputArgs {
     /**
-     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka Schema Registry permission to grant. The possible values are `schemaRegistryRead` and `schemaRegistryWrite`. Changing this property forces recreation of the resource.
      */
     permission: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
      */
     resource: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

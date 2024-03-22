@@ -63,23 +63,23 @@ export class KafkaAcl extends pulumi.CustomResource {
      */
     public /*out*/ readonly aclId!: pulumi.Output<string>;
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     public readonly permission!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     public readonly topic!: pulumi.Output<string>;
     /**
-     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -140,23 +140,23 @@ export interface KafkaAclState {
      */
     aclId?: pulumi.Input<string>;
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     permission?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     topic?: pulumi.Input<string>;
     /**
-     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -166,23 +166,23 @@ export interface KafkaAclState {
  */
 export interface KafkaAclArgs {
     /**
-     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      */
     permission: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     topic: pulumi.Input<string>;
     /**
-     * Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

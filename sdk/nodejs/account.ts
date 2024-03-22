@@ -5,7 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Account resource allows the creation and management of an Aiven Account.
+ * Creates and manages an Aiven account.
+ *
+ * **This resource is deprecated.** Use `aiven.Organization` instead.
  *
  * ## Example Usage
  *

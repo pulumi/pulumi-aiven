@@ -117,84 +117,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/clickhouseGrant:ClickhouseGrant")
 public class ClickhouseGrant extends com.pulumi.resources.CustomResource {
     /**
-     * Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+     * Configuration to grant a privilege. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="privilegeGrants", refs={List.class,ClickhouseGrantPrivilegeGrant.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseGrantPrivilegeGrant>> privilegeGrants;
 
     /**
-     * @return Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Configuration to grant a privilege. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<ClickhouseGrantPrivilegeGrant>>> privilegeGrants() {
         return Codegen.optional(this.privilegeGrants);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
     /**
-     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> role() {
         return Codegen.optional(this.role);
     }
     /**
-     * Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+     * Configuration to grant a role. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="roleGrants", refs={List.class,ClickhouseGrantRoleGrant.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClickhouseGrantRoleGrant>> roleGrants;
 
     /**
-     * @return Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Configuration to grant a role. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<List<ClickhouseGrantRoleGrant>>> roleGrants() {
         return Codegen.optional(this.roleGrants);
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="user", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> user;
 
     /**
-     * @return The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<Optional<String>> user() {

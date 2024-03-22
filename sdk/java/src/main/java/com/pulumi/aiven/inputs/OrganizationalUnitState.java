@@ -16,14 +16,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     public static final OrganizationalUnitState Empty = new OrganizationalUnitState();
 
     /**
-     * Time of creation
+     * Time of creation.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -31,14 +31,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     public Optional<Output<String>> name() {
@@ -46,14 +46,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return Parent ID
+     * @return The ID of the organization that the unit is created in.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -61,14 +61,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Tenant ID
+     * Tenant ID.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant ID
+     * @return Tenant ID.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -76,14 +76,14 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Time of last update
+     * Time of last update.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -119,7 +119,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime Time of creation
+         * @param createTime Time of creation.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param createTime Time of creation
+         * @param createTime Time of creation.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parentId Parent ID
+         * @param parentId The ID of the organization that the unit is created in.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parentId Parent ID
+         * @param parentId The ID of the organization that the unit is created in.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tenantId Tenant ID
+         * @param tenantId Tenant ID.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tenantId Tenant ID
+         * @param tenantId Tenant ID.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param updateTime Time of last update
+         * @param updateTime Time of last update.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class OrganizationalUnitState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param updateTime Time of last update
+         * @param updateTime Time of last update.
          * 
          * @return builder
          * 

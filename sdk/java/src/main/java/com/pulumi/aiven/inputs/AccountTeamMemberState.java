@@ -32,14 +32,14 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique account id. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -77,14 +77,14 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="teamId")
     private @Nullable Output<String> teamId;
 
     /**
-     * @return An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * @return An account team id. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> teamId() {
@@ -92,14 +92,14 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="userEmail")
     private @Nullable Output<String> userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> userEmail() {
@@ -157,7 +157,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+         * @param accountId The unique account id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param accountId The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+         * @param accountId The unique account id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamId An account team id. This property cannot be changed, doing so forces recreation of the resource.
+         * @param teamId An account team id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param teamId An account team id. This property cannot be changed, doing so forces recreation of the resource.
+         * @param teamId An account team id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class AccountTeamMemberState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

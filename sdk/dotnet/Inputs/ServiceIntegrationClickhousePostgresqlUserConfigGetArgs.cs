@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabaseGetArgs>? _databases;
 
         /// <summary>
-        /// Databases to expose.
+        /// Databases to expose
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabaseGetArgs> Databases
         {

@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetGcpVpcPeeringConnectionResult {
     /**
-     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     private String gcpProjectId;
@@ -23,34 +23,34 @@ public final class GetGcpVpcPeeringConnectionResult {
      */
     private String id;
     /**
-     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     private String peerVpc;
     /**
-     * @return Computed GCP network peering link
+     * @return Computed Google Cloud network peering link.
      * 
      */
     private String selfLink;
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection.
      * 
      */
     private String state;
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     private Map<String,Object> stateInfo;
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     private String vpcId;
 
     private GetGcpVpcPeeringConnectionResult() {}
     /**
-     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     public String gcpProjectId() {
@@ -64,35 +64,35 @@ public final class GetGcpVpcPeeringConnectionResult {
         return this.id;
     }
     /**
-     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     public String peerVpc() {
         return this.peerVpc;
     }
     /**
-     * @return Computed GCP network peering link
+     * @return Computed Google Cloud network peering link.
      * 
      */
     public String selfLink() {
         return this.selfLink;
     }
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Map<String,Object> stateInfo() {
         return this.stateInfo;
     }
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     public String vpcId() {

@@ -56,7 +56,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter
     def description(self) -> str:
         """
-        The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The description of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "description")
 
@@ -80,7 +80,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the user group. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -88,7 +88,7 @@ class GetOrganizationUserGroupResult:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> str:
         """
-        The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        The ID of the organization. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -120,11 +120,23 @@ def get_organization_user_group(name: Optional[str] = None,
                                 organization_id: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationUserGroupResult:
     """
-    Provides information about an existing user group in an organization.
+    Gets information about an existing user group in an organization.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_user_group(name="Example group",
+        organization_id=aiven_organization["main"]["id"])
+    ```
+    <!--End PulumiCodeChooser -->
 
 
-    :param str name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
-    :param str organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+    :param str name: The name of the user group. Changing this property forces recreation of the resource.
+    :param str organization_id: The ID of the organization. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -147,10 +159,22 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
                                        organization_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationUserGroupResult]:
     """
-    Provides information about an existing user group in an organization.
+    Gets information about an existing user group in an organization.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    example = aiven.get_organization_user_group(name="Example group",
+        organization_id=aiven_organization["main"]["id"])
+    ```
+    <!--End PulumiCodeChooser -->
 
 
-    :param str name: The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
-    :param str organization_id: The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+    :param str name: The name of the user group. Changing this property forces recreation of the resource.
+    :param str organization_id: The ID of the organization. Changing this property forces recreation of the resource.
     """
     ...

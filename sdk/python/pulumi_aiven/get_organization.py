@@ -50,7 +50,7 @@ class GetOrganizationResult:
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        Identifier of the organization.
+        ID of the organization.
         """
         return pulumi.get(self, "id")
 
@@ -66,7 +66,7 @@ class GetOrganizationResult:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         """
-        Tenant identifier of the organization.
+        Tenant ID of the organization.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -96,7 +96,7 @@ def get_organization(id: Optional[str] = None,
                      name: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationResult:
     """
-    Retrieves information about an organization from Aiven.
+    Gets information about an organization.
 
     ## Example Usage
 
@@ -105,12 +105,12 @@ def get_organization(id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    organization1 = aiven.get_organization(name="<ORGANIZATION_NAME>")
+    main = aiven.get_organization(name="Example organization")
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str id: Identifier of the organization.
+    :param str id: ID of the organization.
     :param str name: Name of the organization.
     """
     __args__ = dict()
@@ -132,7 +132,7 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[str]]] = None,
                             name: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationResult]:
     """
-    Retrieves information about an organization from Aiven.
+    Gets information about an organization.
 
     ## Example Usage
 
@@ -141,12 +141,12 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    organization1 = aiven.get_organization(name="<ORGANIZATION_NAME>")
+    main = aiven.get_organization(name="Example organization")
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str id: Identifier of the organization.
+    :param str id: ID of the organization.
     :param str name: Name of the organization.
     """
     ...

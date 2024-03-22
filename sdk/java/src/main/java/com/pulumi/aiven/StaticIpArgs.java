@@ -15,14 +15,14 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
     public static final StaticIpArgs Empty = new StaticIpArgs();
 
     /**
-     * Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudName", required=true)
     private Output<String> cloudName;
 
     /**
-     * @return Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
@@ -30,14 +30,14 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -70,7 +70,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Specifies the cloud that the static ip belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class StaticIpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

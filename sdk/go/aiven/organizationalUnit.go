@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+// Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
 //
 // ## Example Usage
 //
@@ -29,8 +29,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationalUnit(ctx, "organizationalUnit1", &aiven.OrganizationalUnitArgs{
-//				ParentId: pulumi.String("<ORGANIZATION_ID>"),
+//			_, err := aiven.NewOrganizationalUnit(ctx, "exampleUnit", &aiven.OrganizationalUnitArgs{
+//				ParentId: pulumi.Any(aiven_organization.Main.Id),
 //			})
 //			if err != nil {
 //				return err
@@ -45,20 +45,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+// $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
 // ```
 type OrganizationalUnit struct {
 	pulumi.CustomResourceState
 
-	// Time of creation
+	// Time of creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Parent ID
+	// The ID of the organization that the unit is created in.
 	ParentId pulumi.StringOutput `pulumi:"parentId"`
-	// Tenant ID
+	// Tenant ID.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Time of last update
+	// Time of last update.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -95,28 +95,28 @@ func GetOrganizationalUnit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OrganizationalUnit resources.
 type organizationalUnitState struct {
-	// Time of creation
+	// Time of creation.
 	CreateTime *string `pulumi:"createTime"`
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name *string `pulumi:"name"`
-	// Parent ID
+	// The ID of the organization that the unit is created in.
 	ParentId *string `pulumi:"parentId"`
-	// Tenant ID
+	// Tenant ID.
 	TenantId *string `pulumi:"tenantId"`
-	// Time of last update
+	// Time of last update.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type OrganizationalUnitState struct {
-	// Time of creation
+	// Time of creation.
 	CreateTime pulumi.StringPtrInput
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name pulumi.StringPtrInput
-	// Parent ID
+	// The ID of the organization that the unit is created in.
 	ParentId pulumi.StringPtrInput
-	// Tenant ID
+	// Tenant ID.
 	TenantId pulumi.StringPtrInput
-	// Time of last update
+	// Time of last update.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -125,17 +125,17 @@ func (OrganizationalUnitState) ElementType() reflect.Type {
 }
 
 type organizationalUnitArgs struct {
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name *string `pulumi:"name"`
-	// Parent ID
+	// The ID of the organization that the unit is created in.
 	ParentId string `pulumi:"parentId"`
 }
 
 // The set of arguments for constructing a OrganizationalUnit resource.
 type OrganizationalUnitArgs struct {
-	// Organizational Unit name
+	// The name of the organizational unit.
 	Name pulumi.StringPtrInput
-	// Parent ID
+	// The ID of the organization that the unit is created in.
 	ParentId pulumi.StringInput
 }
 
@@ -226,27 +226,27 @@ func (o OrganizationalUnitOutput) ToOrganizationalUnitOutputWithContext(ctx cont
 	return o
 }
 
-// Time of creation
+// Time of creation.
 func (o OrganizationalUnitOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Organizational Unit name
+// The name of the organizational unit.
 func (o OrganizationalUnitOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Parent ID
+// The ID of the organization that the unit is created in.
 func (o OrganizationalUnitOutput) ParentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.ParentId }).(pulumi.StringOutput)
 }
 
-// Tenant ID
+// Tenant ID.
 func (o OrganizationalUnitOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Time of last update
+// Time of last update.
 func (o OrganizationalUnitOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationalUnit) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

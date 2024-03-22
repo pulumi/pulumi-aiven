@@ -61,7 +61,7 @@ class _OrganizationState:
         Input properties used for looking up and filtering Organization resources.
         :param pulumi.Input[str] create_time: Timestamp of the creation of the organization.
         :param pulumi.Input[str] name: Name of the organization.
-        :param pulumi.Input[str] tenant_id: Tenant identifier of the organization.
+        :param pulumi.Input[str] tenant_id: Tenant ID of the organization.
         :param pulumi.Input[str] update_time: Timestamp of the last update of the organization.
         """
         if create_time is not None:
@@ -103,7 +103,7 @@ class _OrganizationState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Tenant identifier of the organization.
+        Tenant ID of the organization.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -142,7 +142,7 @@ class Organization(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        Creates and manages an organization in Aiven.
+        Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
 
         ## Example Usage
 
@@ -151,14 +151,14 @@ class Organization(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        organization1 = aiven.Organization("organization1")
+        main = aiven.Organization("main")
         ```
         <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organization:Organization organization1 organization_id
+        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -172,7 +172,7 @@ class Organization(pulumi.CustomResource):
                  args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an organization in Aiven.
+        Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
 
         ## Example Usage
 
@@ -181,14 +181,14 @@ class Organization(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        organization1 = aiven.Organization("organization1")
+        main = aiven.Organization("main")
         ```
         <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organization:Organization organization1 organization_id
+        $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -246,7 +246,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Timestamp of the creation of the organization.
         :param pulumi.Input[str] name: Name of the organization.
-        :param pulumi.Input[str] tenant_id: Tenant identifier of the organization.
+        :param pulumi.Input[str] tenant_id: Tenant ID of the organization.
         :param pulumi.Input[str] update_time: Timestamp of the last update of the organization.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -280,7 +280,7 @@ class Organization(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        Tenant identifier of the organization.
+        Tenant ID of the organization.
         """
         return pulumi.get(self, "tenant_id")
 

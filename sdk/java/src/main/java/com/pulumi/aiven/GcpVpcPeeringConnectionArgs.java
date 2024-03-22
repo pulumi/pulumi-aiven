@@ -15,14 +15,14 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
     public static final GcpVpcPeeringConnectionArgs Empty = new GcpVpcPeeringConnectionArgs();
 
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="gcpProjectId", required=true)
     private Output<String> gcpProjectId;
 
     /**
-     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> gcpProjectId() {
@@ -30,14 +30,14 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerVpc", required=true)
     private Output<String> peerVpc;
 
     /**
-     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
@@ -45,14 +45,14 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {
@@ -86,7 +86,7 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gcpProjectId GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param gcpProjectId GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param gcpProjectId Google Cloud project ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param peerVpc GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param peerVpc GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerVpc Google Cloud VPC network name. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class GcpVpcPeeringConnectionArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

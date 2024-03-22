@@ -18,8 +18,8 @@ class OrganizationalUnitArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationalUnit resource.
-        :param pulumi.Input[str] parent_id: Parent ID
-        :param pulumi.Input[str] name: Organizational Unit name
+        :param pulumi.Input[str] parent_id: The ID of the organization that the unit is created in.
+        :param pulumi.Input[str] name: The name of the organizational unit.
         """
         pulumi.set(__self__, "parent_id", parent_id)
         if name is not None:
@@ -29,7 +29,7 @@ class OrganizationalUnitArgs:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Input[str]:
         """
-        Parent ID
+        The ID of the organization that the unit is created in.
         """
         return pulumi.get(self, "parent_id")
 
@@ -41,7 +41,7 @@ class OrganizationalUnitArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Organizational Unit name
+        The name of the organizational unit.
         """
         return pulumi.get(self, "name")
 
@@ -60,11 +60,11 @@ class _OrganizationalUnitState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering OrganizationalUnit resources.
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] name: Organizational Unit name
-        :param pulumi.Input[str] parent_id: Parent ID
-        :param pulumi.Input[str] tenant_id: Tenant ID
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] create_time: Time of creation.
+        :param pulumi.Input[str] name: The name of the organizational unit.
+        :param pulumi.Input[str] parent_id: The ID of the organization that the unit is created in.
+        :param pulumi.Input[str] tenant_id: Tenant ID.
+        :param pulumi.Input[str] update_time: Time of last update.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -81,7 +81,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time of creation
+        Time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -93,7 +93,7 @@ class _OrganizationalUnitState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Organizational Unit name
+        The name of the organizational unit.
         """
         return pulumi.get(self, "name")
 
@@ -105,7 +105,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Parent ID
+        The ID of the organization that the unit is created in.
         """
         return pulumi.get(self, "parent_id")
 
@@ -117,7 +117,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Tenant ID
+        Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -129,7 +129,7 @@ class _OrganizationalUnitState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time of last update
+        Time of last update.
         """
         return pulumi.get(self, "update_time")
 
@@ -147,7 +147,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  parent_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+        Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
 
         ## Example Usage
 
@@ -156,20 +156,20 @@ class OrganizationalUnit(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
+        example_unit = aiven.OrganizationalUnit("exampleUnit", parent_id=aiven_organization["main"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Organizational Unit name
-        :param pulumi.Input[str] parent_id: Parent ID
+        :param pulumi.Input[str] name: The name of the organizational unit.
+        :param pulumi.Input[str] parent_id: The ID of the organization that the unit is created in.
         """
         ...
     @overload
@@ -178,7 +178,7 @@ class OrganizationalUnit(pulumi.CustomResource):
                  args: OrganizationalUnitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+        Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
 
         ## Example Usage
 
@@ -187,14 +187,14 @@ class OrganizationalUnit(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        organizational_unit1 = aiven.OrganizationalUnit("organizationalUnit1", parent_id="<ORGANIZATION_ID>")
+        example_unit = aiven.OrganizationalUnit("exampleUnit", parent_id=aiven_organization["main"]["id"])
         ```
         <!--End PulumiCodeChooser -->
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+        $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -252,11 +252,11 @@ class OrganizationalUnit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Time of creation
-        :param pulumi.Input[str] name: Organizational Unit name
-        :param pulumi.Input[str] parent_id: Parent ID
-        :param pulumi.Input[str] tenant_id: Tenant ID
-        :param pulumi.Input[str] update_time: Time of last update
+        :param pulumi.Input[str] create_time: Time of creation.
+        :param pulumi.Input[str] name: The name of the organizational unit.
+        :param pulumi.Input[str] parent_id: The ID of the organization that the unit is created in.
+        :param pulumi.Input[str] tenant_id: Tenant ID.
+        :param pulumi.Input[str] update_time: Time of last update.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -273,7 +273,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time of creation
+        Time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -281,7 +281,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Organizational Unit name
+        The name of the organizational unit.
         """
         return pulumi.get(self, "name")
 
@@ -289,7 +289,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="parentId")
     def parent_id(self) -> pulumi.Output[str]:
         """
-        Parent ID
+        The ID of the organization that the unit is created in.
         """
         return pulumi.get(self, "parent_id")
 
@@ -297,7 +297,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[str]:
         """
-        Tenant ID
+        Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -305,7 +305,7 @@ class OrganizationalUnit(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time of last update
+        Time of last update.
         """
         return pulumi.get(self, "update_time")
 

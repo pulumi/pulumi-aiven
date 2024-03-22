@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ClusterAlias { get; set; }
 
         /// <summary>
-        /// Kafka MirrorMaker configuration values.
+        /// Kafka MirrorMaker configuration values
         /// </summary>
         [Input("kafkaMirrormaker")]
         public Input<Inputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerGetArgs>? KafkaMirrormaker { get; set; }

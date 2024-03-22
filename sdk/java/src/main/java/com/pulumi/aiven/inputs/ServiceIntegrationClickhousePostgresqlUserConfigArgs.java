@@ -17,14 +17,14 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigArgs extends 
     public static final ServiceIntegrationClickhousePostgresqlUserConfigArgs Empty = new ServiceIntegrationClickhousePostgresqlUserConfigArgs();
 
     /**
-     * Databases to expose.
+     * Databases to expose
      * 
      */
     @Import(name="databases")
     private @Nullable Output<List<ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs>> databases;
 
     /**
-     * @return Databases to expose.
+     * @return Databases to expose
      * 
      */
     public Optional<Output<List<ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs>>> databases() {
@@ -56,7 +56,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigArgs extends 
         }
 
         /**
-         * @param databases Databases to expose.
+         * @param databases Databases to expose
          * 
          * @return builder
          * 
@@ -67,7 +67,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigArgs extends 
         }
 
         /**
-         * @param databases Databases to expose.
+         * @param databases Databases to expose
          * 
          * @return builder
          * 
@@ -77,7 +77,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigArgs extends 
         }
 
         /**
-         * @param databases Databases to expose.
+         * @param databases Databases to expose
          * 
          * @return builder
          * 

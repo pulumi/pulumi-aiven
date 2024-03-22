@@ -47,14 +47,14 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Tenant identifier of the organization.
+     * Tenant ID of the organization.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant identifier of the organization.
+     * @return Tenant ID of the organization.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -154,7 +154,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant identifier of the organization.
+         * @param tenantId Tenant ID of the organization.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tenantId Tenant identifier of the organization.
+         * @param tenantId Tenant ID of the organization.
          * 
          * @return builder
          * 

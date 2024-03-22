@@ -18,7 +18,7 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
      */
     private @Nullable String clusterAlias;
     /**
-     * @return Kafka MirrorMaker configuration values.
+     * @return Kafka MirrorMaker configuration values
      * 
      */
     private @Nullable GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker kafkaMirrormaker;
@@ -32,7 +32,7 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
         return Optional.ofNullable(this.clusterAlias);
     }
     /**
-     * @return Kafka MirrorMaker configuration values.
+     * @return Kafka MirrorMaker configuration values
      * 
      */
     public Optional<GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker> kafkaMirrormaker() {

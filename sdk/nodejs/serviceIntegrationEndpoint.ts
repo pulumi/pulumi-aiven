@@ -50,7 +50,7 @@ export class ServiceIntegrationEndpoint extends pulumi.CustomResource {
      */
     public readonly endpointName!: pulumi.Output<string>;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
+     * Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog`
      */
     public readonly endpointType!: pulumi.Output<string>;
     /**
@@ -187,7 +187,7 @@ export interface ServiceIntegrationEndpointState {
      */
     endpointName?: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
+     * Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog`
      */
     endpointType?: pulumi.Input<string>;
     /**
@@ -257,7 +257,7 @@ export interface ServiceIntegrationEndpointArgs {
      */
     endpointName: pulumi.Input<string>;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
+     * Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog`
      */
     endpointType: pulumi.Input<string>;
     /**

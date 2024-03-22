@@ -32,14 +32,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -47,14 +47,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclCategories")
     private @Nullable Output<List<String>> redisAclCategories;
 
     /**
-     * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclCategories() {
@@ -62,14 +62,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclChannels")
     private @Nullable Output<List<String>> redisAclChannels;
 
     /**
-     * @return Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclChannels() {
@@ -77,14 +77,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclCommands")
     private @Nullable Output<List<String>> redisAclCommands;
 
     /**
-     * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclCommands() {
@@ -92,14 +92,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="redisAclKeys")
     private @Nullable Output<List<String>> redisAclKeys;
 
     /**
-     * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<List<String>>> redisAclKeys() {
@@ -107,14 +107,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -137,14 +137,14 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> username() {
@@ -205,7 +205,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCategories Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclCategories Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCategories Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclCategories Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCategories Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclCategories Defines command category rules. The field is required with`redis_acl_commands` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclChannels Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclChannels Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclChannels Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclChannels Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclChannels Defines the permitted pub/sub channel patterns. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclChannels Defines the permitted pub/sub channel patterns. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCommands Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclCommands Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCommands Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclCommands Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclCommands Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclCommands Defines rules for individual commands. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclKeys Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclKeys Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclKeys Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclKeys Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisAclKeys Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param redisAclKeys Defines key access rules. The field is required with`redis_acl_categories` and `redis_acl_keys`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class RedisUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

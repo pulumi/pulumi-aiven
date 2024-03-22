@@ -22,15 +22,15 @@ export function getAccountTeamMember(args: GetAccountTeamMemberArgs, opts?: pulu
  */
 export interface GetAccountTeamMemberArgs {
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      */
     accountId: string;
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      */
     teamId: string;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
     userEmail: string;
 }
@@ -44,7 +44,7 @@ export interface GetAccountTeamMemberResult {
      */
     readonly accepted: boolean;
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      */
     readonly accountId: string;
     /**
@@ -60,11 +60,11 @@ export interface GetAccountTeamMemberResult {
      */
     readonly invitedByUserEmail: string;
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      */
     readonly teamId: string;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
     readonly userEmail: string;
 }
@@ -80,15 +80,15 @@ export function getAccountTeamMemberOutput(args: GetAccountTeamMemberOutputArgs,
  */
 export interface GetAccountTeamMemberOutputArgs {
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      */
     teamId: pulumi.Input<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

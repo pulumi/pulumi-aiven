@@ -77,10 +77,10 @@ namespace Pulumi.Aiven
         /// Offset syncs topic location.
         /// </summary>
         [Output("offsetSyncsTopicLocation")]
-        public Output<string?> OffsetSyncsTopicLocation { get; private set; } = null!;
+        public Output<string> OffsetSyncsTopicLocation { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -89,10 +89,10 @@ namespace Pulumi.Aiven
         /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Output("replicationPolicyClass")]
-        public Output<string?> ReplicationPolicyClass { get; private set; } = null!;
+        public Output<string> ReplicationPolicyClass { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -200,11 +200,11 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Offset syncs topic location.
         /// </summary>
-        [Input("offsetSyncsTopicLocation")]
-        public Input<string>? OffsetSyncsTopicLocation { get; set; }
+        [Input("offsetSyncsTopicLocation", required: true)]
+        public Input<string> OffsetSyncsTopicLocation { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -212,11 +212,11 @@ namespace Pulumi.Aiven
         /// <summary>
         /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
-        [Input("replicationPolicyClass")]
-        public Input<string>? ReplicationPolicyClass { get; set; }
+        [Input("replicationPolicyClass", required: true)]
+        public Input<string> ReplicationPolicyClass { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -302,7 +302,7 @@ namespace Pulumi.Aiven
         public Input<string>? OffsetSyncsTopicLocation { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.Aiven
         public Input<string>? ReplicationPolicyClass { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

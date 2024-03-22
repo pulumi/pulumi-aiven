@@ -18,14 +18,14 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     public static final PgDatabaseArgs Empty = new PgDatabaseArgs();
 
     /**
-     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the service database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
     /**
-     * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the service database. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
@@ -33,14 +33,14 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="lcCollate")
     private @Nullable Output<String> lcCollate;
 
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> lcCollate() {
@@ -48,14 +48,14 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="lcCtype")
     private @Nullable Output<String> lcCtype;
 
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> lcCtype() {
@@ -63,14 +63,14 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -78,14 +78,14 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -139,7 +139,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseName The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCollate Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param lcCollate Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCollate Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param lcCollate Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCtype Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param lcCtype Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lcCtype Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param lcCtype Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class PgDatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

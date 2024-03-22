@@ -72,19 +72,19 @@ namespace Pulumi.Aiven
     public sealed class GetConnectionPoolArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the created pool. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("poolName", required: true)]
         public string PoolName { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -98,19 +98,19 @@ namespace Pulumi.Aiven
     public sealed class GetConnectionPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the created pool. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("poolName", required: true)]
         public Input<string> PoolName { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -130,7 +130,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ConnectionUri;
         /// <summary>
-        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
@@ -142,7 +142,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string PoolMode;
         /// <summary>
-        /// The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the created pool. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string PoolName;
         /// <summary>
@@ -150,11 +150,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int PoolSize;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>

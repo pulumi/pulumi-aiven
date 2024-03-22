@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an organization in Aiven.
+    /// Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
     /// 
     /// ## Example Usage
     /// 
@@ -23,7 +23,7 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var organization1 = new Aiven.Organization("organization1");
+    ///     var main = new Aiven.Organization("main");
     /// 
     /// });
     /// ```
@@ -32,7 +32,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/organization:Organization organization1 organization_id
+    /// $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organization:Organization")]
@@ -51,7 +51,7 @@ namespace Pulumi.Aiven
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Tenant identifier of the organization.
+        /// Tenant ID of the organization.
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.Aiven
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Tenant identifier of the organization.
+        /// Tenant ID of the organization.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

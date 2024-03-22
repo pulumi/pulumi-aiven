@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+// Creates and manages a Google Cloud VPC peering connection.
 //
 // ## Example Usage
 //
@@ -52,17 +52,17 @@ import (
 type GcpVpcPeeringConnection struct {
 	pulumi.CustomResourceState
 
-	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud project ID. Changing this property forces recreation of the resource.
 	GcpProjectId pulumi.StringOutput `pulumi:"gcpProjectId"`
-	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
 	PeerVpc pulumi.StringOutput `pulumi:"peerVpc"`
-	// Computed GCP network peering link
+	// Computed Google Cloud network peering link.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// State of the peering connection
+	// State of the peering connection.
 	State pulumi.StringOutput `pulumi:"state"`
-	// State-specific help or error information
+	// State-specific help or error information.
 	StateInfo pulumi.MapOutput `pulumi:"stateInfo"`
-	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 }
 
@@ -105,32 +105,32 @@ func GetGcpVpcPeeringConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcpVpcPeeringConnection resources.
 type gcpVpcPeeringConnectionState struct {
-	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud project ID. Changing this property forces recreation of the resource.
 	GcpProjectId *string `pulumi:"gcpProjectId"`
-	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
 	PeerVpc *string `pulumi:"peerVpc"`
-	// Computed GCP network peering link
+	// Computed Google Cloud network peering link.
 	SelfLink *string `pulumi:"selfLink"`
-	// State of the peering connection
+	// State of the peering connection.
 	State *string `pulumi:"state"`
-	// State-specific help or error information
+	// State-specific help or error information.
 	StateInfo map[string]interface{} `pulumi:"stateInfo"`
-	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 type GcpVpcPeeringConnectionState struct {
-	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud project ID. Changing this property forces recreation of the resource.
 	GcpProjectId pulumi.StringPtrInput
-	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
 	PeerVpc pulumi.StringPtrInput
-	// Computed GCP network peering link
+	// Computed Google Cloud network peering link.
 	SelfLink pulumi.StringPtrInput
-	// State of the peering connection
+	// State of the peering connection.
 	State pulumi.StringPtrInput
-	// State-specific help or error information
+	// State-specific help or error information.
 	StateInfo pulumi.MapInput
-	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -139,21 +139,21 @@ func (GcpVpcPeeringConnectionState) ElementType() reflect.Type {
 }
 
 type gcpVpcPeeringConnectionArgs struct {
-	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud project ID. Changing this property forces recreation of the resource.
 	GcpProjectId string `pulumi:"gcpProjectId"`
-	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
 	PeerVpc string `pulumi:"peerVpc"`
-	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a GcpVpcPeeringConnection resource.
 type GcpVpcPeeringConnectionArgs struct {
-	// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud project ID. Changing this property forces recreation of the resource.
 	GcpProjectId pulumi.StringInput
-	// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+	// Google Cloud VPC network name. Changing this property forces recreation of the resource.
 	PeerVpc pulumi.StringInput
-	// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+	// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 	VpcId pulumi.StringInput
 }
 
@@ -244,32 +244,32 @@ func (o GcpVpcPeeringConnectionOutput) ToGcpVpcPeeringConnectionOutputWithContex
 	return o
 }
 
-// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+// Google Cloud project ID. Changing this property forces recreation of the resource.
 func (o GcpVpcPeeringConnectionOutput) GcpProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.GcpProjectId }).(pulumi.StringOutput)
 }
 
-// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+// Google Cloud VPC network name. Changing this property forces recreation of the resource.
 func (o GcpVpcPeeringConnectionOutput) PeerVpc() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.PeerVpc }).(pulumi.StringOutput)
 }
 
-// Computed GCP network peering link
+// Computed Google Cloud network peering link.
 func (o GcpVpcPeeringConnectionOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// State of the peering connection
+// State of the peering connection.
 func (o GcpVpcPeeringConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// State-specific help or error information
+// State-specific help or error information.
 func (o GcpVpcPeeringConnectionOutput) StateInfo() pulumi.MapOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.MapOutput { return v.StateInfo }).(pulumi.MapOutput)
 }
 
-// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
 func (o GcpVpcPeeringConnectionOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpVpcPeeringConnection) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }

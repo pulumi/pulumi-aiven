@@ -22,7 +22,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
      */
     private String datadogApiKey;
     /**
-     * @return Custom tags provided by user.
+     * @return Custom tags provided by user
      * 
      */
     private @Nullable List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags;
@@ -61,7 +61,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfig {
         return this.datadogApiKey;
     }
     /**
-     * @return Custom tags provided by user.
+     * @return Custom tags provided by user
      * 
      */
     public List<ServiceIntegrationEndpointDatadogUserConfigDatadogTag> datadogTags() {

@@ -37,15 +37,15 @@ export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.Inv
  */
 export interface GetConnectionPoolArgs {
     /**
-     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the created pool. Changing this property forces recreation of the resource.
      */
     poolName: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
 }
@@ -59,7 +59,7 @@ export interface GetConnectionPoolResult {
      */
     readonly connectionUri: string;
     /**
-     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly databaseName: string;
     /**
@@ -71,7 +71,7 @@ export interface GetConnectionPoolResult {
      */
     readonly poolMode: string;
     /**
-     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the created pool. Changing this property forces recreation of the resource.
      */
     readonly poolName: string;
     /**
@@ -79,11 +79,11 @@ export interface GetConnectionPoolResult {
      */
     readonly poolSize: number;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
@@ -118,15 +118,15 @@ export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?
  */
 export interface GetConnectionPoolOutputArgs {
     /**
-     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the created pool. Changing this property forces recreation of the resource.
      */
     poolName: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

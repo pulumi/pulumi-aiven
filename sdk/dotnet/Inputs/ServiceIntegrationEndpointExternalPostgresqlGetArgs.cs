@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalPostgresqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Default database.
+        /// </summary>
+        [Input("defaultDatabase")]
+        public Input<string>? DefaultDatabase { get; set; }
+
+        /// <summary>
         /// Hostname or IP address of the server.
         /// </summary>
         [Input("host", required: true)]

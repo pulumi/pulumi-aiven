@@ -18,11 +18,11 @@ namespace Pulumi.Aiven.Inputs
         [Input("autoOffsetReset")]
         public Input<string>? AutoOffsetReset { get; set; }
 
-        [Input("columns")]
+        [Input("columns", required: true)]
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnGetArgs>? _columns;
 
         /// <summary>
-        /// Table columns.
+        /// Table columns
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumnGetArgs> Columns
         {
@@ -90,11 +90,11 @@ namespace Pulumi.Aiven.Inputs
         [Input("skipBrokenMessages")]
         public Input<int>? SkipBrokenMessages { get; set; }
 
-        [Input("topics")]
+        [Input("topics", required: true)]
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicGetArgs>? _topics;
 
         /// <summary>
-        /// Kafka topics.
+        /// Kafka topics
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopicGetArgs> Topics
         {

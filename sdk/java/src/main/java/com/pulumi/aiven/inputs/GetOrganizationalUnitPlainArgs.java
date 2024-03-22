@@ -14,14 +14,14 @@ public final class GetOrganizationalUnitPlainArgs extends com.pulumi.resources.I
     public static final GetOrganizationalUnitPlainArgs Empty = new GetOrganizationalUnitPlainArgs();
 
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     public String name() {
@@ -53,7 +53,7 @@ public final class GetOrganizationalUnitPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 

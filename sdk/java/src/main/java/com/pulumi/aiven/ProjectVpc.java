@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Project VPC resource allows the creation and management of Aiven Project VPCs.
+ * Creates and manages a VPC for an Aiven project.
  * 
  * ## Example Usage
  * 
@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myvpc = new ProjectVpc(&#34;myvpc&#34;, ProjectVpcArgs.builder()        
- *             .project(aiven_project.myproject().project())
+ *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+ *             .project(data.aiven_project().example_project().project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .networkCidr(&#34;192.168.1.0/24&#34;)
  *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
@@ -55,49 +55,49 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+ * $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/projectVpc:ProjectVpc")
 public class ProjectVpc extends com.pulumi.resources.CustomResource {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output<String> cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> cloudName() {
         return this.cloudName;
     }
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * Network address range used by the VPC. For example, `192.168.0.0/24`.
      * 
      */
     @Export(name="networkCidr", refs={String.class}, tree="[0]")
     private Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC like 192.168.0.0/24
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
      * 
      */
     public Output<String> networkCidr() {
         return this.networkCidr;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {

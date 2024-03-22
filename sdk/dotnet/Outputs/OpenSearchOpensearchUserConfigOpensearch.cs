@@ -122,6 +122,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? OverrideMainResponseVersion;
         /// <summary>
+        /// Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+        /// </summary>
+        public readonly bool? PluginsAlertingFilterByBackendRoles;
+        /// <summary>
         /// Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
         /// </summary>
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
@@ -234,6 +238,8 @@ namespace Pulumi.Aiven.Outputs
 
             bool? overrideMainResponseVersion,
 
+            bool? pluginsAlertingFilterByBackendRoles,
+
             ImmutableArray<string> reindexRemoteWhitelists,
 
             string? scriptMaxCompilationsRate,
@@ -289,6 +295,7 @@ namespace Pulumi.Aiven.Outputs
             IsmHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
             IsmHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             OverrideMainResponseVersion = overrideMainResponseVersion;
+            PluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             ReindexRemoteWhitelists = reindexRemoteWhitelists;
             ScriptMaxCompilationsRate = scriptMaxCompilationsRate;
             SearchMaxBuckets = searchMaxBuckets;

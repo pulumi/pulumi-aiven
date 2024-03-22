@@ -7,6 +7,7 @@ import com.pulumi.aiven.inputs.PgPgUserConfigIpFilterObjectArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigMigrationArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgQualstatsArgs;
+import com.pulumi.aiven.inputs.PgPgUserConfigPgauditArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPgbouncerArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPglookoutArgs;
 import com.pulumi.aiven.inputs.PgPgUserConfigPrivateAccessArgs;
@@ -286,6 +287,21 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * System-wide settings for the pgaudit extension
+     * 
+     */
+    @Import(name="pgaudit")
+    private @Nullable Output<PgPgUserConfigPgauditArgs> pgaudit;
+
+    /**
+     * @return System-wide settings for the pgaudit extension
+     * 
+     */
+    public Optional<Output<PgPgUserConfigPgauditArgs>> pgaudit() {
+        return Optional.ofNullable(this.pgaudit);
+    }
+
+    /**
      * PGBouncer connection pooling settings
      * 
      */
@@ -529,6 +545,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         this.pgServiceToForkFrom = $.pgServiceToForkFrom;
         this.pgStatMonitorEnable = $.pgStatMonitorEnable;
         this.pgVersion = $.pgVersion;
+        this.pgaudit = $.pgaudit;
         this.pgbouncer = $.pgbouncer;
         this.pglookout = $.pglookout;
         this.privateAccess = $.privateAccess;
@@ -948,6 +965,27 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder pgVersion(String pgVersion) {
             return pgVersion(Output.of(pgVersion));
+        }
+
+        /**
+         * @param pgaudit System-wide settings for the pgaudit extension
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgaudit(@Nullable Output<PgPgUserConfigPgauditArgs> pgaudit) {
+            $.pgaudit = pgaudit;
+            return this;
+        }
+
+        /**
+         * @param pgaudit System-wide settings for the pgaudit extension
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pgaudit(PgPgUserConfigPgauditArgs pgaudit) {
+            return pgaudit(Output.of(pgaudit));
         }
 
         /**

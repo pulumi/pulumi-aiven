@@ -16,14 +16,14 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
     public static final AzurePrivatelinkConnectionApprovalState Empty = new AzurePrivatelinkConnectionApprovalState();
 
     /**
-     * IP address of Azure private endpoint
+     * IP address of Azure private endpoint.
      * 
      */
     @Import(name="endpointIpAddress")
     private @Nullable Output<String> endpointIpAddress;
 
     /**
-     * @return IP address of Azure private endpoint
+     * @return IP address of Azure private endpoint.
      * 
      */
     public Optional<Output<String>> endpointIpAddress() {
@@ -31,14 +31,14 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
     }
 
     /**
-     * Privatelink connection id
+     * The ID of the Private Link connection.
      * 
      */
     @Import(name="privatelinkConnectionId")
     private @Nullable Output<String> privatelinkConnectionId;
 
     /**
-     * @return Privatelink connection id
+     * @return The ID of the Private Link connection.
      * 
      */
     public Optional<Output<String>> privatelinkConnectionId() {
@@ -46,14 +46,14 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -61,14 +61,14 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -76,14 +76,14 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
     }
 
     /**
-     * Privatelink connection state
+     * The state of the Private Link connection.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Privatelink connection state
+     * @return The state of the Private Link connection.
      * 
      */
     public Optional<Output<String>> state() {
@@ -119,7 +119,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param endpointIpAddress IP address of Azure private endpoint
+         * @param endpointIpAddress IP address of Azure private endpoint.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param endpointIpAddress IP address of Azure private endpoint
+         * @param endpointIpAddress IP address of Azure private endpoint.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param privatelinkConnectionId Privatelink connection id
+         * @param privatelinkConnectionId The ID of the Private Link connection.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param privatelinkConnectionId Privatelink connection id
+         * @param privatelinkConnectionId The ID of the Private Link connection.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param state Privatelink connection state
+         * @param state The state of the Private Link connection.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class AzurePrivatelinkConnectionApprovalState extends com.pulumi.re
         }
 
         /**
-         * @param state Privatelink connection state
+         * @param state The state of the Private Link connection.
          * 
          * @return builder
          * 

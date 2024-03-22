@@ -14,6 +14,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalPostgresql {
     /**
+     * @return Default database.
+     * 
+     */
+    private @Nullable String defaultDatabase;
+    /**
      * @return Hostname or IP address of the server.
      * 
      */
@@ -55,6 +60,13 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
     private String username;
 
     private GetServiceIntegrationEndpointExternalPostgresql() {}
+    /**
+     * @return Default database.
+     * 
+     */
+    public Optional<String> defaultDatabase() {
+        return Optional.ofNullable(this.defaultDatabase);
+    }
     /**
      * @return Hostname or IP address of the server.
      * 
@@ -121,6 +133,7 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String defaultDatabase;
         private String host;
         private @Nullable String password;
         private Integer port;
@@ -132,6 +145,7 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
         public Builder() {}
         public Builder(GetServiceIntegrationEndpointExternalPostgresql defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.defaultDatabase = defaults.defaultDatabase;
     	      this.host = defaults.host;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
@@ -142,6 +156,12 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
     	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder defaultDatabase(@Nullable String defaultDatabase) {
+
+            this.defaultDatabase = defaultDatabase;
+            return this;
+        }
         @CustomType.Setter
         public Builder host(String host) {
             if (host == null) {
@@ -198,6 +218,7 @@ public final class GetServiceIntegrationEndpointExternalPostgresql {
         }
         public GetServiceIntegrationEndpointExternalPostgresql build() {
             final var _resultValue = new GetServiceIntegrationEndpointExternalPostgresql();
+            _resultValue.defaultDatabase = defaultDatabase;
             _resultValue.host = host;
             _resultValue.password = password;
             _resultValue.port = port;

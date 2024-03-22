@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// **This resource is deprecated**. Use the aiven.OrganizationUser data source instead.
+    /// **This resource is deprecated**. Use the `aiven.OrganizationUser` data source instead.
     /// 
     /// The organization user resource allows the creation and management of an Aiven organization user.
     /// 
@@ -42,13 +42,13 @@ namespace Pulumi.Aiven
         public Output<string> InvitedBy { get; private set; } = null!;
 
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique organization ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
@@ -106,13 +106,13 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique organization ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -144,13 +144,13 @@ namespace Pulumi.Aiven
         public Input<string>? InvitedBy { get; set; }
 
         /// <summary>
-        /// The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique organization ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }

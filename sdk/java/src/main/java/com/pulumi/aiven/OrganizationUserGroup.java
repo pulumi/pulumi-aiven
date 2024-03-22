@@ -14,7 +14,47 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a user group in an organization.
+ * Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationUserGroup;
+ * import com.pulumi.aiven.OrganizationUserGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OrganizationUserGroup(&#34;example&#34;, OrganizationUserGroupArgs.builder()        
+ *             .description(&#34;Example group of users.&#34;)
+ *             .organizationId(aiven_organization.main().id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+ * ```
  * 
  */
 @ResourceType(type="aiven:index/organizationUserGroup:OrganizationUserGroup")
@@ -34,14 +74,14 @@ public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The description of the user group. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> description() {
@@ -62,28 +102,28 @@ public class OrganizationUserGroup extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the user group. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the organization. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {

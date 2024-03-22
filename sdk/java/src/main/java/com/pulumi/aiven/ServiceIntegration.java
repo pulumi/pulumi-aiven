@@ -9,12 +9,16 @@ import com.pulumi.aiven.inputs.ServiceIntegrationState;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhouseKafkaUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationClickhousePostgresqlUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationDatadogUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.ServiceIntegrationMetricsUserConfig;
+import com.pulumi.aiven.outputs.ServiceIntegrationPrometheusUserConfig;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
@@ -149,6 +153,20 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.destinationServiceName);
     }
     /**
+     * ExternalAwsCloudwatchLogs user configurable settings
+     * 
+     */
+    @Export(name="externalAwsCloudwatchLogsUserConfig", refs={ServiceIntegrationExternalAwsCloudwatchLogsUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfig;
+
+    /**
+     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>> externalAwsCloudwatchLogsUserConfig() {
+        return Codegen.optional(this.externalAwsCloudwatchLogsUserConfig);
+    }
+    /**
      * ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
@@ -161,6 +179,34 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>> externalAwsCloudwatchMetricsUserConfig() {
         return Codegen.optional(this.externalAwsCloudwatchMetricsUserConfig);
+    }
+    /**
+     * ExternalElasticsearchLogs user configurable settings
+     * 
+     */
+    @Export(name="externalElasticsearchLogsUserConfig", refs={ServiceIntegrationExternalElasticsearchLogsUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfig;
+
+    /**
+     * @return ExternalElasticsearchLogs user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationExternalElasticsearchLogsUserConfig>> externalElasticsearchLogsUserConfig() {
+        return Codegen.optional(this.externalElasticsearchLogsUserConfig);
+    }
+    /**
+     * ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    @Export(name="externalOpensearchLogsUserConfig", refs={ServiceIntegrationExternalOpensearchLogsUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfig;
+
+    /**
+     * @return ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationExternalOpensearchLogsUserConfig>> externalOpensearchLogsUserConfig() {
+        return Codegen.optional(this.externalOpensearchLogsUserConfig);
     }
     /**
      * Service Integration Id at aiven
@@ -177,14 +223,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return this.integrationId;
     }
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     @Export(name="integrationType", refs={String.class}, tree="[0]")
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     public Output<String> integrationType() {
@@ -273,6 +319,20 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Prometheus user configurable settings
+     * 
+     */
+    @Export(name="prometheusUserConfig", refs={ServiceIntegrationPrometheusUserConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ServiceIntegrationPrometheusUserConfig> prometheusUserConfig;
+
+    /**
+     * @return Prometheus user configurable settings
+     * 
+     */
+    public Output<Optional<ServiceIntegrationPrometheusUserConfig>> prometheusUserConfig() {
+        return Codegen.optional(this.prometheusUserConfig);
     }
     /**
      * Source endpoint for the integration (if any)

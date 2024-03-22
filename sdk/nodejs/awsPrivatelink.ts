@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+ * Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
  *
  * ## Example Usage
  *
@@ -14,9 +14,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.AwsPrivatelink("foo", {
- *     project: data.aiven_project.foo.project,
- *     serviceName: aiven_kafka.bar.service_name,
+ * const main = new aiven.AwsPrivatelink("main", {
+ *     project: data.aiven_project.example_project.project,
+ *     serviceName: aiven_kafka.example_kafka.service_name,
  *     principals: ["arn:aws:iam::012345678901:user/mwf"],
  * });
  * ```
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+ * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
  * ```
  */
 export class AwsPrivatelink extends pulumi.CustomResource {
@@ -57,23 +57,23 @@ export class AwsPrivatelink extends pulumi.CustomResource {
     }
 
     /**
-     * AWS service ID
+     * AWS service ID.
      */
     public /*out*/ readonly awsServiceId!: pulumi.Output<string>;
     /**
-     * AWS service name
+     * AWS service name.
      */
     public /*out*/ readonly awsServiceName!: pulumi.Output<string>;
     /**
-     * List of allowed principals
+     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      */
     public readonly principals!: pulumi.Output<string[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -122,23 +122,23 @@ export class AwsPrivatelink extends pulumi.CustomResource {
  */
 export interface AwsPrivatelinkState {
     /**
-     * AWS service ID
+     * AWS service ID.
      */
     awsServiceId?: pulumi.Input<string>;
     /**
-     * AWS service name
+     * AWS service name.
      */
     awsServiceName?: pulumi.Input<string>;
     /**
-     * List of allowed principals
+     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      */
     principals?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -148,15 +148,15 @@ export interface AwsPrivatelinkState {
  */
 export interface AwsPrivatelinkArgs {
     /**
-     * List of allowed principals
+     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      */
     principals: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

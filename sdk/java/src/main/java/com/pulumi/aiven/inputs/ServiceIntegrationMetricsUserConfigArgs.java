@@ -63,14 +63,14 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Configuration options for metrics where source service is MySQL.
+     * Configuration options for metrics where source service is MySQL
      * 
      */
     @Import(name="sourceMysql")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs> sourceMysql;
 
     /**
-     * @return Configuration options for metrics where source service is MySQL.
+     * @return Configuration options for metrics where source service is MySQL
      * 
      */
     public Optional<Output<ServiceIntegrationMetricsUserConfigSourceMysqlArgs>> sourceMysql() {
@@ -184,7 +184,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param sourceMysql Configuration options for metrics where source service is MySQL.
+         * @param sourceMysql Configuration options for metrics where source service is MySQL
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ServiceIntegrationMetricsUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param sourceMysql Configuration options for metrics where source service is MySQL.
+         * @param sourceMysql Configuration options for metrics where source service is MySQL
          * 
          * @return builder
          * 

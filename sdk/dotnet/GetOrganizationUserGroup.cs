@@ -12,13 +12,55 @@ namespace Pulumi.Aiven
     public static class GetOrganizationUserGroup
     {
         /// <summary>
-        /// Provides information about an existing user group in an organization.
+        /// Gets information about an existing user group in an organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
+        ///     {
+        ///         Name = "Example group",
+        ///         OrganizationId = aiven_organization.Main.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOrganizationUserGroupResult> InvokeAsync(GetOrganizationUserGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationUserGroupResult>("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", args ?? new GetOrganizationUserGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides information about an existing user group in an organization.
+        /// Gets information about an existing user group in an organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
+        ///     {
+        ///         Name = "Example group",
+        ///         OrganizationId = aiven_organization.Main.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOrganizationUserGroupResult> Invoke(GetOrganizationUserGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationUserGroupResult>("aiven:index/getOrganizationUserGroup:getOrganizationUserGroup", args ?? new GetOrganizationUserGroupInvokeArgs(), options.WithDefaults());
@@ -28,13 +70,13 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -48,13 +90,13 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationUserGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -74,7 +116,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -86,11 +128,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>

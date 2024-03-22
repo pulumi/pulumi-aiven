@@ -20,8 +20,8 @@ class OpensearchSecurityPluginConfigArgs:
         """
         The set of arguments for constructing a OpensearchSecurityPluginConfig resource.
         :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "admin_password", admin_password)
         pulumi.set(__self__, "project", project)
@@ -43,7 +43,7 @@ class OpensearchSecurityPluginConfigArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -55,7 +55,7 @@ class OpensearchSecurityPluginConfigArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -79,8 +79,8 @@ class _OpensearchSecurityPluginConfigState:
         :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[bool] available: Whether the security plugin is available. This is always true for recently created services.
         :param pulumi.Input[bool] enabled: Whether the security plugin is enabled. This is always true for recently created services.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         if admin_enabled is not None:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
@@ -147,7 +147,7 @@ class _OpensearchSecurityPluginConfigState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -159,7 +159,7 @@ class _OpensearchSecurityPluginConfigState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -180,6 +180,32 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         """
         The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo_project = aiven.get_project(project="example_project")
+        bar = aiven.OpenSearch("bar",
+            project=foo_project.project,
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example_service_name",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
+            service_name=bar.service_name,
+            project=foo_project.project,
+            username="user-example")
+        foo_opensearch_security_plugin_config = aiven.OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig",
+            project=foo_project.project,
+            service_name=bar.service_name,
+            admin_password="ThisIsATest123^=^")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -189,8 +215,8 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -200,6 +226,32 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo_project = aiven.get_project(project="example_project")
+        bar = aiven.OpenSearch("bar",
+            project=foo_project.project,
+            cloud_name="google-europe-west1",
+            plan="startup-4",
+            service_name="example_service_name",
+            maintenance_window_dow="monday",
+            maintenance_window_time="10:00:00")
+        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
+            service_name=bar.service_name,
+            project=foo_project.project,
+            username="user-example")
+        foo_opensearch_security_plugin_config = aiven.OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig",
+            project=foo_project.project,
+            service_name=bar.service_name,
+            admin_password="ThisIsATest123^=^")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,8 +327,8 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
         :param pulumi.Input[str] admin_password: The password for the os-sec-admin user.
         :param pulumi.Input[bool] available: Whether the security plugin is available. This is always true for recently created services.
         :param pulumi.Input[bool] enabled: Whether the security plugin is enabled. This is always true for recently created services.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -326,7 +378,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -334,7 +386,7 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 

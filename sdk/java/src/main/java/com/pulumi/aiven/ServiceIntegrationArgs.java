@@ -6,12 +6,16 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhouseKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationClickhousePostgresqlUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationDatadogUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationExternalElasticsearchLogsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationExternalOpensearchLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaConnectUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationKafkaMirrormakerUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationLogsUserConfigArgs;
 import com.pulumi.aiven.inputs.ServiceIntegrationMetricsUserConfigArgs;
+import com.pulumi.aiven.inputs.ServiceIntegrationPrometheusUserConfigArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -101,6 +105,21 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * ExternalAwsCloudwatchLogs user configurable settings
+     * 
+     */
+    @Import(name="externalAwsCloudwatchLogsUserConfig")
+    private @Nullable Output<ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs> externalAwsCloudwatchLogsUserConfig;
+
+    /**
+     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs>> externalAwsCloudwatchLogsUserConfig() {
+        return Optional.ofNullable(this.externalAwsCloudwatchLogsUserConfig);
+    }
+
+    /**
      * ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
@@ -116,14 +135,44 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+     * ExternalElasticsearchLogs user configurable settings
+     * 
+     */
+    @Import(name="externalElasticsearchLogsUserConfig")
+    private @Nullable Output<ServiceIntegrationExternalElasticsearchLogsUserConfigArgs> externalElasticsearchLogsUserConfig;
+
+    /**
+     * @return ExternalElasticsearchLogs user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationExternalElasticsearchLogsUserConfigArgs>> externalElasticsearchLogsUserConfig() {
+        return Optional.ofNullable(this.externalElasticsearchLogsUserConfig);
+    }
+
+    /**
+     * ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    @Import(name="externalOpensearchLogsUserConfig")
+    private @Nullable Output<ServiceIntegrationExternalOpensearchLogsUserConfigArgs> externalOpensearchLogsUserConfig;
+
+    /**
+     * @return ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationExternalOpensearchLogsUserConfigArgs>> externalOpensearchLogsUserConfig() {
+        return Optional.ofNullable(this.externalOpensearchLogsUserConfig);
+    }
+
+    /**
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     @Import(name="integrationType", required=true)
     private Output<String> integrationType;
 
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     public Output<String> integrationType() {
@@ -221,6 +270,21 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Prometheus user configurable settings
+     * 
+     */
+    @Import(name="prometheusUserConfig")
+    private @Nullable Output<ServiceIntegrationPrometheusUserConfigArgs> prometheusUserConfig;
+
+    /**
+     * @return Prometheus user configurable settings
+     * 
+     */
+    public Optional<Output<ServiceIntegrationPrometheusUserConfigArgs>> prometheusUserConfig() {
+        return Optional.ofNullable(this.prometheusUserConfig);
+    }
+
+    /**
      * Source endpoint for the integration (if any)
      * 
      */
@@ -258,7 +322,10 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         this.datadogUserConfig = $.datadogUserConfig;
         this.destinationEndpointId = $.destinationEndpointId;
         this.destinationServiceName = $.destinationServiceName;
+        this.externalAwsCloudwatchLogsUserConfig = $.externalAwsCloudwatchLogsUserConfig;
         this.externalAwsCloudwatchMetricsUserConfig = $.externalAwsCloudwatchMetricsUserConfig;
+        this.externalElasticsearchLogsUserConfig = $.externalElasticsearchLogsUserConfig;
+        this.externalOpensearchLogsUserConfig = $.externalOpensearchLogsUserConfig;
         this.integrationType = $.integrationType;
         this.kafkaConnectUserConfig = $.kafkaConnectUserConfig;
         this.kafkaLogsUserConfig = $.kafkaLogsUserConfig;
@@ -266,6 +333,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         this.logsUserConfig = $.logsUserConfig;
         this.metricsUserConfig = $.metricsUserConfig;
         this.project = $.project;
+        this.prometheusUserConfig = $.prometheusUserConfig;
         this.sourceEndpointId = $.sourceEndpointId;
         this.sourceServiceName = $.sourceServiceName;
     }
@@ -394,6 +462,27 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAwsCloudwatchLogsUserConfig(@Nullable Output<ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs> externalAwsCloudwatchLogsUserConfig) {
+            $.externalAwsCloudwatchLogsUserConfig = externalAwsCloudwatchLogsUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalAwsCloudwatchLogsUserConfig ExternalAwsCloudwatchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalAwsCloudwatchLogsUserConfig(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs externalAwsCloudwatchLogsUserConfig) {
+            return externalAwsCloudwatchLogsUserConfig(Output.of(externalAwsCloudwatchLogsUserConfig));
+        }
+
+        /**
          * @param externalAwsCloudwatchMetricsUserConfig ExternalAwsCloudwatchMetrics user configurable settings
          * 
          * @return builder
@@ -415,7 +504,49 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalElasticsearchLogsUserConfig(@Nullable Output<ServiceIntegrationExternalElasticsearchLogsUserConfigArgs> externalElasticsearchLogsUserConfig) {
+            $.externalElasticsearchLogsUserConfig = externalElasticsearchLogsUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalElasticsearchLogsUserConfig ExternalElasticsearchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalElasticsearchLogsUserConfig(ServiceIntegrationExternalElasticsearchLogsUserConfigArgs externalElasticsearchLogsUserConfig) {
+            return externalElasticsearchLogsUserConfig(Output.of(externalElasticsearchLogsUserConfig));
+        }
+
+        /**
+         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalOpensearchLogsUserConfig(@Nullable Output<ServiceIntegrationExternalOpensearchLogsUserConfigArgs> externalOpensearchLogsUserConfig) {
+            $.externalOpensearchLogsUserConfig = externalOpensearchLogsUserConfig;
+            return this;
+        }
+
+        /**
+         * @param externalOpensearchLogsUserConfig ExternalOpensearchLogs user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalOpensearchLogsUserConfig(ServiceIntegrationExternalOpensearchLogsUserConfigArgs externalOpensearchLogsUserConfig) {
+            return externalOpensearchLogsUserConfig(Output.of(externalOpensearchLogsUserConfig));
+        }
+
+        /**
+         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
          * 
          * @return builder
          * 
@@ -426,7 +557,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+         * @param integrationType Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
          * 
          * @return builder
          * 
@@ -559,6 +690,27 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param prometheusUserConfig Prometheus user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheusUserConfig(@Nullable Output<ServiceIntegrationPrometheusUserConfigArgs> prometheusUserConfig) {
+            $.prometheusUserConfig = prometheusUserConfig;
+            return this;
+        }
+
+        /**
+         * @param prometheusUserConfig Prometheus user configurable settings
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prometheusUserConfig(ServiceIntegrationPrometheusUserConfigArgs prometheusUserConfig) {
+            return prometheusUserConfig(Output.of(prometheusUserConfig));
         }
 
         /**

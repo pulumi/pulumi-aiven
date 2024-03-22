@@ -184,6 +184,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("overrideMainResponseVersion")]
         public Input<bool>? OverrideMainResponseVersion { get; set; }
 
+        /// <summary>
+        /// Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+        /// </summary>
+        [Input("pluginsAlertingFilterByBackendRoles")]
+        public Input<bool>? PluginsAlertingFilterByBackendRoles { get; set; }
+
         [Input("reindexRemoteWhitelists")]
         private InputList<string>? _reindexRemoteWhitelists;
 

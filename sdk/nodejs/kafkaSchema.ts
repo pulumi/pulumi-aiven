@@ -20,17 +20,19 @@ import * as utilities from "./utilities";
  *     subjectName: "kafka-schema1",
  *     compatibilityLevel: "FORWARD",
  *     schema: `    {
- *        "doc": "example",
- *        "fields": [{
- *            "default": 5,
- *            "doc": "my test number",
- *            "name": "test",
- *            "namespace": "test",
- *            "type": "int"
- *        }],
- *        "name": "example",
- *        "namespace": "example",
- *        "type": "record"
+ *       "doc": "example",
+ *       "fields": [
+ *         {
+ *           "default": 5,
+ *           "doc": "my test number",
+ *           "name": "test",
+ *           "namespace": "test",
+ *           "type": "int"
+ *         }
+ *       ],
+ *       "name": "example",
+ *       "namespace": "example",
+ *       "type": "record"
  *     }
  * `,
  * });
@@ -76,7 +78,7 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     public readonly compatibilityLevel!: pulumi.Output<string | undefined>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -88,11 +90,11 @@ export class KafkaSchema extends pulumi.CustomResource {
      */
     public readonly schemaType!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      */
     public readonly subjectName!: pulumi.Output<string>;
     /**
@@ -156,7 +158,7 @@ export interface KafkaSchemaState {
      */
     compatibilityLevel?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -168,11 +170,11 @@ export interface KafkaSchemaState {
      */
     schemaType?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      */
     subjectName?: pulumi.Input<string>;
     /**
@@ -190,7 +192,7 @@ export interface KafkaSchemaArgs {
      */
     compatibilityLevel?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -202,11 +204,11 @@ export interface KafkaSchemaArgs {
      */
     schemaType?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      */
     subjectName: pulumi.Input<string>;
 }

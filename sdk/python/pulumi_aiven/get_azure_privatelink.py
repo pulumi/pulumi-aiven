@@ -51,7 +51,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="azureServiceAlias")
     def azure_service_alias(self) -> str:
         """
-        Azure Privatelink service alias
+        The Azure Private Link service alias.
         """
         return pulumi.get(self, "azure_service_alias")
 
@@ -59,7 +59,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="azureServiceId")
     def azure_service_id(self) -> str:
         """
-        Azure Privatelink service ID
+        The Azure Private Link service ID.
         """
         return pulumi.get(self, "azure_service_id")
 
@@ -75,7 +75,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter
     def message(self) -> str:
         """
-        Printable result of the Azure Privatelink request
+        Printable result of the Azure Private Link request.
         """
         return pulumi.get(self, "message")
 
@@ -83,7 +83,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -91,7 +91,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -99,7 +99,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        Privatelink resource state
+        The state of the Private Link resource.
         """
         return pulumi.get(self, "state")
 
@@ -107,7 +107,7 @@ class GetAzurePrivatelinkResult:
     @pulumi.getter(name="userSubscriptionIds")
     def user_subscription_ids(self) -> Sequence[str]:
         """
-        A List of allowed Subscription IDs. Maximum length: `16`.
+        A list of allowed subscription IDs. Maximum length: `16`.
         """
         return pulumi.get(self, "user_subscription_ids")
 
@@ -132,7 +132,7 @@ def get_azure_privatelink(project: Optional[str] = None,
                           service_name: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAzurePrivatelinkResult:
     """
-    The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+    Gets information about an Azure Private Link connection for an Aiven service.
 
     ## Example Usage
 
@@ -141,14 +141,14 @@ def get_azure_privatelink(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_azure_privatelink(project=data["aiven_project"]["foo"]["project"],
-        service_name=aiven_kafka["bar"]["service_name"])
+    main = aiven.get_azure_privatelink(project=data["aiven_project"]["example_project"]["project"],
+        service_name=aiven_kafka["example_kafka"]["service_name"])
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -172,7 +172,7 @@ def get_azure_privatelink_output(project: Optional[pulumi.Input[str]] = None,
                                  service_name: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAzurePrivatelinkResult]:
     """
-    The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+    Gets information about an Azure Private Link connection for an Aiven service.
 
     ## Example Usage
 
@@ -181,13 +181,13 @@ def get_azure_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_azure_privatelink(project=data["aiven_project"]["foo"]["project"],
-        service_name=aiven_kafka["bar"]["service_name"])
+    main = aiven.get_azure_privatelink(project=data["aiven_project"]["example_project"]["project"],
+        service_name=aiven_kafka["example_kafka"]["service_name"])
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

@@ -226,7 +226,9 @@ class Account(pulumi.CustomResource):
                  primary_billing_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Account resource allows the creation and management of an Aiven Account.
+        Creates and manages an Aiven account.
+
+        **This resource is deprecated.** Use `Organization` instead.
 
         ## Example Usage
 
@@ -257,7 +259,9 @@ class Account(pulumi.CustomResource):
                  args: Optional[AccountArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Account resource allows the creation and management of an Aiven Account.
+        Creates and manages an Aiven account.
+
+        **This resource is deprecated.** Use `Organization` instead.
 
         ## Example Usage
 

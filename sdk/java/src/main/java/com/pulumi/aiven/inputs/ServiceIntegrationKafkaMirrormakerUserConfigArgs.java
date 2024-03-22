@@ -32,14 +32,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
     }
 
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      * 
      */
     @Import(name="kafkaMirrormaker")
     private @Nullable Output<ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs> kafkaMirrormaker;
 
     /**
-     * @return Kafka MirrorMaker configuration values.
+     * @return Kafka MirrorMaker configuration values
      * 
      */
     public Optional<Output<ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs>> kafkaMirrormaker() {
@@ -93,7 +93,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
         }
 
         /**
-         * @param kafkaMirrormaker Kafka MirrorMaker configuration values.
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigArgs extends com.
         }
 
         /**
-         * @param kafkaMirrormaker Kafka MirrorMaker configuration values.
+         * @param kafkaMirrormaker Kafka MirrorMaker configuration values
          * 
          * @return builder
          * 

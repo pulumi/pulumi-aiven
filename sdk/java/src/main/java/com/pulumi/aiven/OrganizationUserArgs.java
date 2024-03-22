@@ -15,14 +15,14 @@ public final class OrganizationUserArgs extends com.pulumi.resources.ResourceArg
     public static final OrganizationUserArgs Empty = new OrganizationUserArgs();
 
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="organizationId", required=true)
     private Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique organization ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
@@ -30,14 +30,14 @@ public final class OrganizationUserArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="userEmail", required=true)
     private Output<String> userEmail;
 
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userEmail() {
@@ -70,7 +70,7 @@ public final class OrganizationUserArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The unique organization ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class OrganizationUserArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param organizationId The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param organizationId The unique organization ID. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class OrganizationUserArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class OrganizationUserArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

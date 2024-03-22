@@ -54,23 +54,23 @@ func LookupMysqlDatabase(ctx *pulumi.Context, args *LookupMysqlDatabaseArgs, opt
 
 // A collection of arguments for invoking getMysqlDatabase.
 type LookupMysqlDatabaseArgs struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getMysqlDatabase.
 type LookupMysqlDatabaseResult struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           string `pulumi:"serviceName"`
 	TerminationProtection bool   `pulumi:"terminationProtection"`
 }
@@ -90,11 +90,11 @@ func LookupMysqlDatabaseOutput(ctx *pulumi.Context, args LookupMysqlDatabaseOutp
 
 // A collection of arguments for invoking getMysqlDatabase.
 type LookupMysqlDatabaseOutputArgs struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupMysqlDatabaseResultOutput) ToLookupMysqlDatabaseResultOutputWithCo
 	return o
 }
 
-// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+// The name of the service database. Changing this property forces recreation of the resource.
 func (o LookupMysqlDatabaseResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
@@ -127,12 +127,12 @@ func (o LookupMysqlDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupMysqlDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupMysqlDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMysqlDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

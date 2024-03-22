@@ -61,7 +61,7 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -69,7 +69,7 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     public readonly memberType!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -120,7 +120,7 @@ export interface ProjectUserState {
      */
     accepted?: pulumi.Input<boolean>;
     /**
-     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      */
     email?: pulumi.Input<string>;
     /**
@@ -128,7 +128,7 @@ export interface ProjectUserState {
      */
     memberType?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
 }
@@ -138,7 +138,7 @@ export interface ProjectUserState {
  */
 export interface ProjectUserArgs {
     /**
-     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      */
     email: pulumi.Input<string>;
     /**
@@ -146,7 +146,7 @@ export interface ProjectUserArgs {
      */
     memberType: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

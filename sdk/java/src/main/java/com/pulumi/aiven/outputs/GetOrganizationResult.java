@@ -18,7 +18,7 @@ public final class GetOrganizationResult {
      */
     private String createTime;
     /**
-     * @return Identifier of the organization.
+     * @return ID of the organization.
      * 
      */
     private @Nullable String id;
@@ -28,7 +28,7 @@ public final class GetOrganizationResult {
      */
     private @Nullable String name;
     /**
-     * @return Tenant identifier of the organization.
+     * @return Tenant ID of the organization.
      * 
      */
     private String tenantId;
@@ -47,7 +47,7 @@ public final class GetOrganizationResult {
         return this.createTime;
     }
     /**
-     * @return Identifier of the organization.
+     * @return ID of the organization.
      * 
      */
     public Optional<String> id() {
@@ -61,7 +61,7 @@ public final class GetOrganizationResult {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Tenant identifier of the organization.
+     * @return Tenant ID of the organization.
      * 
      */
     public String tenantId() {

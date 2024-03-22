@@ -64,7 +64,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def permission(self) -> str:
         """
-        Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+        Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "permission")
 
@@ -72,7 +72,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -80,7 +80,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def resource(self) -> str:
         """
-        Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "resource")
 
@@ -88,7 +88,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -96,7 +96,7 @@ class GetKafkaSchemaRegistryAclResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        Username pattern for the ACL entry. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -126,11 +126,11 @@ def get_kafka_schema_registry_acl(permission: Optional[str] = None,
     The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
 
 
-    :param str permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str resource: Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['permission'] = permission
@@ -162,10 +162,10 @@ def get_kafka_schema_registry_acl_output(permission: Optional[pulumi.Input[str]]
     The Data Source Kafka Schema Registry ACL data source provides information about the existing Aiven Kafka Schema Registry ACL for a Kafka service.
 
 
-    :param str permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str resource: Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+    :param str permission: Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str resource: Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: Username pattern for the ACL entry. Changing this property forces recreation of the resource.
     """
     ...

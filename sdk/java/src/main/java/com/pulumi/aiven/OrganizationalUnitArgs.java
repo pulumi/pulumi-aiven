@@ -17,14 +17,14 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
     public static final OrganizationalUnitArgs Empty = new OrganizationalUnitArgs();
 
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     public Optional<Output<String>> name() {
@@ -32,14 +32,14 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      * 
      */
     @Import(name="parentId", required=true)
     private Output<String> parentId;
 
     /**
-     * @return Parent ID
+     * @return The ID of the organization that the unit is created in.
      * 
      */
     public Output<String> parentId() {
@@ -72,7 +72,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parentId Parent ID
+         * @param parentId The ID of the organization that the unit is created in.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class OrganizationalUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param parentId Parent ID
+         * @param parentId The ID of the organization that the unit is created in.
          * 
          * @return builder
          * 

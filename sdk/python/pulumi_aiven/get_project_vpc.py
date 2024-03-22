@@ -45,7 +45,7 @@ class GetProjectVpcResult:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[str]:
         """
-        Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -61,7 +61,7 @@ class GetProjectVpcResult:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> str:
         """
-        Network address range used by the VPC like 192.168.0.0/24
+        Network address range used by the VPC. For example, `192.168.0.0/24`.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -85,7 +85,7 @@ class GetProjectVpcResult:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[str]:
         """
-        ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -109,7 +109,7 @@ def get_project_vpc(cloud_name: Optional[str] = None,
                     vpc_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectVpcResult:
     """
-    The Project VPC data source provides information about the existing Aiven Project VPC.
+    Gets information about the VPC for an Aiven project.
 
     ## Example Usage
 
@@ -118,16 +118,15 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
+    example_vpc = aiven.get_project_vpc(project=data["aiven_project"]["example_project"]["project"],
         cloud_name="google-europe-west1")
-    myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+    :param str cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
     :param str project: Identifies the project this resource belongs to.
-    :param str vpc_id: ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+    :param str vpc_id: The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
     """
     __args__ = dict()
     __args__['cloudName'] = cloud_name
@@ -151,7 +150,7 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
                            vpc_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectVpcResult]:
     """
-    The Project VPC data source provides information about the existing Aiven Project VPC.
+    Gets information about the VPC for an Aiven project.
 
     ## Example Usage
 
@@ -160,15 +159,14 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_aiven as aiven
 
-    myvpc = aiven.get_project_vpc(project=aiven_project["myproject"]["project"],
+    example_vpc = aiven.get_project_vpc(project=data["aiven_project"]["example_project"]["project"],
         cloud_name="google-europe-west1")
-    myvpc_id = aiven.get_project_vpc(vpc_id=aiven_project_vpc["vpc"]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+    :param str cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
     :param str project: Identifies the project this resource belongs to.
-    :param str vpc_id: ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+    :param str vpc_id: The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
     """
     ...

@@ -141,7 +141,7 @@ export class MySql extends pulumi.CustomResource {
     public readonly plan!: pulumi.Output<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -371,7 +371,7 @@ export interface MySqlState {
     plan?: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -488,7 +488,7 @@ export interface MySqlArgs {
     plan: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

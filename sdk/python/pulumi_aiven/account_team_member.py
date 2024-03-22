@@ -19,9 +19,9 @@ class AccountTeamMemberArgs:
                  user_email: pulumi.Input[str]):
         """
         The set of arguments for constructing a AccountTeamMember resource.
-        :param pulumi.Input[str] account_id: The unique account id. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] account_id: The unique account id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] team_id: An account team id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "account_id", account_id)
         pulumi.set(__self__, "team_id", team_id)
@@ -31,7 +31,7 @@ class AccountTeamMemberArgs:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[str]:
         """
-        The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        The unique account id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -43,7 +43,7 @@ class AccountTeamMemberArgs:
     @pulumi.getter(name="teamId")
     def team_id(self) -> pulumi.Input[str]:
         """
-        An account team id. This property cannot be changed, doing so forces recreation of the resource.
+        An account team id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "team_id")
 
@@ -55,7 +55,7 @@ class AccountTeamMemberArgs:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Input[str]:
         """
-        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 
@@ -76,11 +76,11 @@ class _AccountTeamMemberState:
         """
         Input properties used for looking up and filtering AccountTeamMember resources.
         :param pulumi.Input[bool] accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
-        :param pulumi.Input[str] account_id: The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] account_id: The unique account id. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] invited_by_user_email: The email address that invited this user.
-        :param pulumi.Input[str] team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] team_id: An account team id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         if accepted is not None:
             pulumi.set(__self__, "accepted", accepted)
@@ -111,7 +111,7 @@ class _AccountTeamMemberState:
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        The unique account id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -147,7 +147,7 @@ class _AccountTeamMemberState:
     @pulumi.getter(name="teamId")
     def team_id(self) -> Optional[pulumi.Input[str]]:
         """
-        An account team id. This property cannot be changed, doing so forces recreation of the resource.
+        An account team id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "team_id")
 
@@ -159,7 +159,7 @@ class _AccountTeamMemberState:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 
@@ -211,9 +211,9 @@ class AccountTeamMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] account_id: The unique account id. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] account_id: The unique account id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] team_id: An account team id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -316,11 +316,11 @@ class AccountTeamMember(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] accepted: is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an account team.
-        :param pulumi.Input[str] account_id: The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] account_id: The unique account id. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] invited_by_user_email: The email address that invited this user.
-        :param pulumi.Input[str] team_id: An account team id. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] team_id: An account team id. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -346,7 +346,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[str]:
         """
-        The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        The unique account id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "account_id")
 
@@ -370,7 +370,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="teamId")
     def team_id(self) -> pulumi.Output[str]:
         """
-        An account team id. This property cannot be changed, doing so forces recreation of the resource.
+        An account team id. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "team_id")
 
@@ -378,7 +378,7 @@ class AccountTeamMember(pulumi.CustomResource):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Output[str]:
         """
-        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 

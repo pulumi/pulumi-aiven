@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationMetricsUserConfigSourceMysql
     {
         /// <summary>
-        /// Configuration options for Telegraf MySQL input plugin.
+        /// Configuration options for Telegraf MySQL input plugin
         /// </summary>
         public readonly Outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf? Telegraf;
 

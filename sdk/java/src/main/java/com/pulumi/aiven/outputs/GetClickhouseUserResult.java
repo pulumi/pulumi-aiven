@@ -22,7 +22,7 @@ public final class GetClickhouseUserResult {
      */
     private String password;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -32,12 +32,12 @@ public final class GetClickhouseUserResult {
      */
     private Boolean required;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
@@ -63,7 +63,7 @@ public final class GetClickhouseUserResult {
         return this.password;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -77,14 +77,14 @@ public final class GetClickhouseUserResult {
         return this.required;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

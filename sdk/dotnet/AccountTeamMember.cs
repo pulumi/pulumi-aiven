@@ -59,7 +59,7 @@ namespace Pulumi.Aiven
         public Output<bool> Accepted { get; private set; } = null!;
 
         /// <summary>
-        /// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique account id. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -77,13 +77,13 @@ namespace Pulumi.Aiven
         public Output<string> InvitedByUserEmail { get; private set; } = null!;
 
         /// <summary>
-        /// An account team id. This property cannot be changed, doing so forces recreation of the resource.
+        /// An account team id. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("teamId")]
         public Output<string> TeamId { get; private set; } = null!;
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
@@ -135,19 +135,19 @@ namespace Pulumi.Aiven
     public sealed class AccountTeamMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique account id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// An account team id. This property cannot be changed, doing so forces recreation of the resource.
+        /// An account team id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("teamId", required: true)]
         public Input<string> TeamId { get; set; } = null!;
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userEmail", required: true)]
         public Input<string> UserEmail { get; set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Accepted { get; set; }
 
         /// <summary>
-        /// The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+        /// The unique account id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
@@ -185,13 +185,13 @@ namespace Pulumi.Aiven
         public Input<string>? InvitedByUserEmail { get; set; }
 
         /// <summary>
-        /// An account team id. This property cannot be changed, doing so forces recreation of the resource.
+        /// An account team id. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("teamId")]
         public Input<string>? TeamId { get; set; }
 
         /// <summary>
-        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        /// Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }

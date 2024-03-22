@@ -11,7 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Account resource allows the creation and management of an Aiven Account.
+// Creates and manages an Aiven account.
+//
+// **This resource is deprecated.** Use `Organization` instead.
 //
 // ## Example Usage
 //

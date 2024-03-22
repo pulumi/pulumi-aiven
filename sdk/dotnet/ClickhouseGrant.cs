@@ -99,37 +99,37 @@ namespace Pulumi.Aiven
     public partial class ClickhouseGrant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+        /// Configuration to grant a privilege. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("privilegeGrants")]
         public Output<ImmutableArray<Outputs.ClickhouseGrantPrivilegeGrant>> PrivilegeGrants { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("role")]
         public Output<string?> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+        /// Configuration to grant a role. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("roleGrants")]
         public Output<ImmutableArray<Outputs.ClickhouseGrantRoleGrant>> RoleGrants { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("user")]
         public Output<string?> User { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantPrivilegeGrantArgs>? _privilegeGrants;
 
         /// <summary>
-        /// Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+        /// Configuration to grant a privilege. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantPrivilegeGrantArgs> PrivilegeGrants
         {
@@ -193,13 +193,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantRoleGrantArgs>? _roleGrants;
 
         /// <summary>
-        /// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+        /// Configuration to grant a role. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantRoleGrantArgs> RoleGrants
         {
@@ -217,13 +217,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }
@@ -240,7 +240,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantPrivilegeGrantGetArgs>? _privilegeGrants;
 
         /// <summary>
-        /// Configuration to grant a privilege. This property cannot be changed, doing so forces recreation of the resource.
+        /// Configuration to grant a privilege. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantPrivilegeGrantGetArgs> PrivilegeGrants
         {
@@ -249,13 +249,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseGrantRoleGrantGetArgs>? _roleGrants;
 
         /// <summary>
-        /// Configuration to grant a role. This property cannot be changed, doing so forces recreation of the resource.
+        /// Configuration to grant a role. Changing this property forces recreation of the resource.
         /// </summary>
         public InputList<Inputs.ClickhouseGrantRoleGrantGetArgs> RoleGrants
         {
@@ -273,13 +273,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("user")]
         public Input<string>? User { get; set; }

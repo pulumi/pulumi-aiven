@@ -16,7 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Account resource allows the creation and management of an Aiven Account.
+ * Creates and manages an Aiven account.
+ * 
+ * **This resource is deprecated.** Use `aiven.Organization` instead.
  * 
  * ## Example Usage
  * 

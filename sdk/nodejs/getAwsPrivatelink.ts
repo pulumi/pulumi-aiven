@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+ * Gets information about an AWS PrivateLink connection for an Aiven service.
  *
  * ## Example Usage
  *
@@ -14,9 +14,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getAwsPrivatelink({
- *     project: data.aiven_project.foo.project,
- *     serviceName: aiven_kafka.bar.service_name,
+ * const main = aiven.getAwsPrivatelink({
+ *     project: data.aiven_project.example_project.project,
+ *     serviceName: aiven_kafka.example_kafka.service_name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -35,11 +35,11 @@ export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.Inv
  */
 export interface GetAwsPrivatelinkArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
 }
@@ -49,11 +49,11 @@ export interface GetAwsPrivatelinkArgs {
  */
 export interface GetAwsPrivatelinkResult {
     /**
-     * AWS service ID
+     * AWS service ID.
      */
     readonly awsServiceId: string;
     /**
-     * AWS service name
+     * AWS service name.
      */
     readonly awsServiceName: string;
     /**
@@ -61,20 +61,20 @@ export interface GetAwsPrivatelinkResult {
      */
     readonly id: string;
     /**
-     * List of allowed principals
+     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      */
     readonly principals: string[];
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
 }
 /**
- * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+ * Gets information about an AWS PrivateLink connection for an Aiven service.
  *
  * ## Example Usage
  *
@@ -83,9 +83,9 @@ export interface GetAwsPrivatelinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getAwsPrivatelink({
- *     project: data.aiven_project.foo.project,
- *     serviceName: aiven_kafka.bar.service_name,
+ * const main = aiven.getAwsPrivatelink({
+ *     project: data.aiven_project.example_project.project,
+ *     serviceName: aiven_kafka.example_kafka.service_name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -99,11 +99,11 @@ export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?
  */
 export interface GetAwsPrivatelinkOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

@@ -100,6 +100,11 @@ export type ConnectionPool = import("./connectionPool").ConnectionPool;
 export const ConnectionPool: typeof import("./connectionPool").ConnectionPool = null as any;
 utilities.lazyLoad(exports, ["ConnectionPool"], () => require("./connectionPool"));
 
+export { DragonflyArgs, DragonflyState } from "./dragonfly";
+export type Dragonfly = import("./dragonfly").Dragonfly;
+export const Dragonfly: typeof import("./dragonfly").Dragonfly = null as any;
+utilities.lazyLoad(exports, ["Dragonfly"], () => require("./dragonfly"));
+
 export { FlinkArgs, FlinkState } from "./flink";
 export type Flink = import("./flink").Flink;
 export const Flink: typeof import("./flink").Flink = null as any;
@@ -219,6 +224,11 @@ export { GetConnectionPoolArgs, GetConnectionPoolResult, GetConnectionPoolOutput
 export const getConnectionPool: typeof import("./getConnectionPool").getConnectionPool = null as any;
 export const getConnectionPoolOutput: typeof import("./getConnectionPool").getConnectionPoolOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionPool","getConnectionPoolOutput"], () => require("./getConnectionPool"));
+
+export { GetDragonflyArgs, GetDragonflyResult, GetDragonflyOutputArgs } from "./getDragonfly";
+export const getDragonfly: typeof import("./getDragonfly").getDragonfly = null as any;
+export const getDragonflyOutput: typeof import("./getDragonfly").getDragonflyOutput = null as any;
+utilities.lazyLoad(exports, ["getDragonfly","getDragonflyOutput"], () => require("./getDragonfly"));
 
 export { GetFlinkArgs, GetFlinkResult, GetFlinkOutputArgs } from "./getFlink";
 export const getFlink: typeof import("./getFlink").getFlink = null as any;
@@ -590,6 +600,11 @@ export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
 
+export { OrganizationGroupProjectArgs, OrganizationGroupProjectState } from "./organizationGroupProject";
+export type OrganizationGroupProject = import("./organizationGroupProject").OrganizationGroupProject;
+export const OrganizationGroupProject: typeof import("./organizationGroupProject").OrganizationGroupProject = null as any;
+utilities.lazyLoad(exports, ["OrganizationGroupProject"], () => require("./organizationGroupProject"));
+
 export { OrganizationUserArgs, OrganizationUserState } from "./organizationUser";
 export type OrganizationUser = import("./organizationUser").OrganizationUser;
 export const OrganizationUser: typeof import("./organizationUser").OrganizationUser = null as any;
@@ -599,6 +614,11 @@ export { OrganizationUserGroupArgs, OrganizationUserGroupState } from "./organiz
 export type OrganizationUserGroup = import("./organizationUserGroup").OrganizationUserGroup;
 export const OrganizationUserGroup: typeof import("./organizationUserGroup").OrganizationUserGroup = null as any;
 utilities.lazyLoad(exports, ["OrganizationUserGroup"], () => require("./organizationUserGroup"));
+
+export { OrganizationUserGroupMemberArgs, OrganizationUserGroupMemberState } from "./organizationUserGroupMember";
+export type OrganizationUserGroupMember = import("./organizationUserGroupMember").OrganizationUserGroupMember;
+export const OrganizationUserGroupMember: typeof import("./organizationUserGroupMember").OrganizationUserGroupMember = null as any;
+utilities.lazyLoad(exports, ["OrganizationUserGroupMember"], () => require("./organizationUserGroupMember"));
 
 export { OrganizationalUnitArgs, OrganizationalUnitState } from "./organizationalUnit";
 export type OrganizationalUnit = import("./organizationalUnit").OrganizationalUnit;
@@ -722,6 +742,8 @@ const _module = {
                 return new ClickhouseUser(name, <any>undefined, { urn })
             case "aiven:index/connectionPool:ConnectionPool":
                 return new ConnectionPool(name, <any>undefined, { urn })
+            case "aiven:index/dragonfly:Dragonfly":
+                return new Dragonfly(name, <any>undefined, { urn })
             case "aiven:index/flink:Flink":
                 return new Flink(name, <any>undefined, { urn })
             case "aiven:index/flinkApplication:FlinkApplication":
@@ -790,10 +812,14 @@ const _module = {
                 return new OpensearchUser(name, <any>undefined, { urn })
             case "aiven:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "aiven:index/organizationGroupProject:OrganizationGroupProject":
+                return new OrganizationGroupProject(name, <any>undefined, { urn })
             case "aiven:index/organizationUser:OrganizationUser":
                 return new OrganizationUser(name, <any>undefined, { urn })
             case "aiven:index/organizationUserGroup:OrganizationUserGroup":
                 return new OrganizationUserGroup(name, <any>undefined, { urn })
+            case "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember":
+                return new OrganizationUserGroupMember(name, <any>undefined, { urn })
             case "aiven:index/organizationalUnit:OrganizationalUnit":
                 return new OrganizationalUnit(name, <any>undefined, { urn })
             case "aiven:index/pg:Pg":
@@ -844,6 +870,7 @@ pulumi.runtime.registerResourceModule("aiven", "index/clickhouseGrant", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseRole", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/clickhouseUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/connectionPool", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/dragonfly", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flink", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplication", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/flinkApplicationDeployment", _module)
@@ -878,8 +905,10 @@ pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclRule", _modul
 pulumi.runtime.registerResourceModule("aiven", "index/opensearchSecurityPluginConfig", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/opensearchUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organization", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationGroupProject", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroup", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroupMember", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationalUnit", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pg", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/pgDatabase", _module)

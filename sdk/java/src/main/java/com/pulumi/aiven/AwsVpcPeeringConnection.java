@@ -16,7 +16,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * The AWS VPC Peering Connection resource allows the creation and management of Aiven AWS VPC Peering Connections.
+ * Creates and manages an AWS VPC peering connection with an Aiven VPC.
  * 
  * ## Example Usage
  * 
@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.ProjectVpc;
+ * import com.pulumi.aiven.ProjectVpcArgs;
  * import com.pulumi.aiven.AwsVpcPeeringConnection;
  * import com.pulumi.aiven.AwsVpcPeeringConnectionArgs;
  * import java.util.List;
@@ -42,10 +44,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AwsVpcPeeringConnection(&#34;foo&#34;, AwsVpcPeeringConnectionArgs.builder()        
- *             .vpcId(data.aiven_project_vpc().vpc().id())
- *             .awsAccountId(&#34;XXXXX&#34;)
- *             .awsVpcId(&#34;XXXXX&#34;)
+ *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+ *             .project(data.aiven_project().example_project().project())
+ *             .cloudName(&#34;aws-us-east-2&#34;)
+ *             .networkCidr(&#34;192.168.1.0/24&#34;)
+ *             .build());
+ * 
+ *         var awsToAivenPeering = new AwsVpcPeeringConnection(&#34;awsToAivenPeering&#34;, AwsVpcPeeringConnectionArgs.builder()        
+ *             .vpcId(exampleVpc.id())
+ *             .awsAccountId(var_.aws_id())
+ *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
+ *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
  *             .build());
  * 
  *     }
@@ -56,105 +65,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection foo project_name/vpc_id/aws_account_id/aws_vpc_id/aws_vpc_region
+ * $ pulumi import aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection aws_to_aiven_peering PROJECT/VPC_ID/AWS_ACCOUNT_ID/AWS_VPC_ID/AWS_VPC_REGION
  * ```
  * 
  */
 @ResourceType(type="aiven:index/awsVpcPeeringConnection:AwsVpcPeeringConnection")
 public class AwsVpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="awsAccountId", refs={String.class}, tree="[0]")
     private Output<String> awsAccountId;
 
     /**
-     * @return AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS account ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsAccountId() {
         return this.awsAccountId;
     }
     /**
-     * AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="awsVpcId", refs={String.class}, tree="[0]")
     private Output<String> awsVpcId;
 
     /**
-     * @return AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcId() {
         return this.awsVpcId;
     }
     /**
-     * AWS VPC peering connection ID
+     * The ID of the AWS VPC peering connection.
      * 
      */
     @Export(name="awsVpcPeeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> awsVpcPeeringConnectionId;
 
     /**
-     * @return AWS VPC peering connection ID
+     * @return The ID of the AWS VPC peering connection.
      * 
      */
     public Output<String> awsVpcPeeringConnectionId() {
         return this.awsVpcPeeringConnectionId;
     }
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="awsVpcRegion", refs={String.class}, tree="[0]")
     private Output<String> awsVpcRegion;
 
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * @return The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> awsVpcRegion() {
         return this.awsVpcRegion;
     }
     /**
-     * State of the peering connection
+     * The state of the peering connection.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the peering connection
+     * @return The state of the peering connection.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Output<Map<String,Object>> stateInfo() {
         return this.stateInfo;
     }
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {

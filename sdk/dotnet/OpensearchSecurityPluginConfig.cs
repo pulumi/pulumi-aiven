@@ -12,6 +12,50 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var fooProject = Aiven.GetProject.Invoke(new()
+    ///     {
+    ///         Project = "example_project",
+    ///     });
+    /// 
+    ///     var bar = new Aiven.OpenSearch("bar", new()
+    ///     {
+    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         CloudName = "google-europe-west1",
+    ///         Plan = "startup-4",
+    ///         ServiceName = "example_service_name",
+    ///         MaintenanceWindowDow = "monday",
+    ///         MaintenanceWindowTime = "10:00:00",
+    ///     });
+    /// 
+    ///     var fooOpensearchUser = new Aiven.OpensearchUser("fooOpensearchUser", new()
+    ///     {
+    ///         ServiceName = bar.ServiceName,
+    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         Username = "user-example",
+    ///     });
+    /// 
+    ///     var fooOpensearchSecurityPluginConfig = new Aiven.OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig", new()
+    ///     {
+    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         ServiceName = bar.ServiceName,
+    ///         AdminPassword = "ThisIsATest123^=^",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh
@@ -46,13 +90,13 @@ namespace Pulumi.Aiven
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -124,13 +168,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -178,13 +222,13 @@ namespace Pulumi.Aiven
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

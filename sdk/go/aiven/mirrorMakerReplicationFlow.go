@@ -69,12 +69,12 @@ type MirrorMakerReplicationFlow struct {
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolOutput `pulumi:"enable"`
 	// Offset syncs topic location.
-	OffsetSyncsTopicLocation pulumi.StringPtrOutput `pulumi:"offsetSyncsTopicLocation"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	OffsetSyncsTopicLocation pulumi.StringOutput `pulumi:"offsetSyncsTopicLocation"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-	ReplicationPolicyClass pulumi.StringPtrOutput `pulumi:"replicationPolicyClass"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ReplicationPolicyClass pulumi.StringOutput `pulumi:"replicationPolicyClass"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringOutput `pulumi:"sourceCluster"`
@@ -100,8 +100,14 @@ func NewMirrorMakerReplicationFlow(ctx *pulumi.Context,
 	if args.Enable == nil {
 		return nil, errors.New("invalid value for required argument 'Enable'")
 	}
+	if args.OffsetSyncsTopicLocation == nil {
+		return nil, errors.New("invalid value for required argument 'OffsetSyncsTopicLocation'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ReplicationPolicyClass == nil {
+		return nil, errors.New("invalid value for required argument 'ReplicationPolicyClass'")
 	}
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
@@ -143,11 +149,11 @@ type mirrorMakerReplicationFlowState struct {
 	Enable *bool `pulumi:"enable"`
 	// Offset syncs topic location.
 	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
 	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster *string `pulumi:"sourceCluster"`
@@ -172,11 +178,11 @@ type MirrorMakerReplicationFlowState struct {
 	Enable pulumi.BoolPtrInput
 	// Offset syncs topic location.
 	OffsetSyncsTopicLocation pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
 	ReplicationPolicyClass pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringPtrInput
@@ -204,12 +210,12 @@ type mirrorMakerReplicationFlowArgs struct {
 	// Enable of disable replication flows for a service.
 	Enable bool `pulumi:"enable"`
 	// Offset syncs topic location.
-	OffsetSyncsTopicLocation *string `pulumi:"offsetSyncsTopicLocation"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-	ReplicationPolicyClass *string `pulumi:"replicationPolicyClass"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ReplicationPolicyClass string `pulumi:"replicationPolicyClass"`
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster string `pulumi:"sourceCluster"`
@@ -234,12 +240,12 @@ type MirrorMakerReplicationFlowArgs struct {
 	// Enable of disable replication flows for a service.
 	Enable pulumi.BoolInput
 	// Offset syncs topic location.
-	OffsetSyncsTopicLocation pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	OffsetSyncsTopicLocation pulumi.StringInput
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-	ReplicationPolicyClass pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	ReplicationPolicyClass pulumi.StringInput
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringInput
@@ -358,21 +364,21 @@ func (o MirrorMakerReplicationFlowOutput) Enable() pulumi.BoolOutput {
 }
 
 // Offset syncs topic location.
-func (o MirrorMakerReplicationFlowOutput) OffsetSyncsTopicLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringPtrOutput { return v.OffsetSyncsTopicLocation }).(pulumi.StringPtrOutput)
+func (o MirrorMakerReplicationFlowOutput) OffsetSyncsTopicLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.OffsetSyncsTopicLocation }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o MirrorMakerReplicationFlowOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
-func (o MirrorMakerReplicationFlowOutput) ReplicationPolicyClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringPtrOutput { return v.ReplicationPolicyClass }).(pulumi.StringPtrOutput)
+func (o MirrorMakerReplicationFlowOutput) ReplicationPolicyClass() pulumi.StringOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.ReplicationPolicyClass }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o MirrorMakerReplicationFlowOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

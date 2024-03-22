@@ -31,7 +31,7 @@ public final class GetKafkaTopicResult {
      */
     private Integer partitions;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -41,7 +41,7 @@ public final class GetKafkaTopicResult {
      */
     private Integer replication;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
@@ -52,7 +52,7 @@ public final class GetKafkaTopicResult {
     private List<GetKafkaTopicTag> tags;
     private Boolean terminationProtection;
     /**
-     * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
     private String topicName;
@@ -80,7 +80,7 @@ public final class GetKafkaTopicResult {
         return this.partitions;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -94,7 +94,7 @@ public final class GetKafkaTopicResult {
         return this.replication;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
@@ -111,7 +111,7 @@ public final class GetKafkaTopicResult {
         return this.terminationProtection;
     }
     /**
-     * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
     public String topicName() {

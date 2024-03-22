@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetOrganization
     {
         /// <summary>
-        /// Retrieves information about an organization from Aiven.
+        /// Gets information about an organization.
         /// 
         /// ## Example Usage
         /// 
@@ -25,9 +25,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var organization1 = Aiven.GetOrganization.Invoke(new()
+        ///     var main = Aiven.GetOrganization.Invoke(new()
         ///     {
-        ///         Name = "&lt;ORGANIZATION_NAME&gt;",
+        ///         Name = "Example organization",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationResult>("aiven:index/getOrganization:getOrganization", args ?? new GetOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about an organization from Aiven.
+        /// Gets information about an organization.
         /// 
         /// ## Example Usage
         /// 
@@ -51,9 +51,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var organization1 = Aiven.GetOrganization.Invoke(new()
+        ///     var main = Aiven.GetOrganization.Invoke(new()
         ///     {
-        ///         Name = "&lt;ORGANIZATION_NAME&gt;",
+        ///         Name = "Example organization",
         ///     });
         /// 
         /// });
@@ -68,7 +68,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of the organization.
         /// </summary>
         [Input("id")]
         public string? Id { get; set; }
@@ -88,7 +88,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of the organization.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Identifier of the organization.
+        /// ID of the organization.
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Tenant identifier of the organization.
+        /// Tenant ID of the organization.
         /// </summary>
         public readonly string TenantId;
         /// <summary>

@@ -55,9 +55,9 @@ func LookupMirrorMakerReplicationFlow(ctx *pulumi.Context, args *LookupMirrorMak
 
 // A collection of arguments for invoking getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster string `pulumi:"sourceCluster"`
@@ -77,11 +77,11 @@ type LookupMirrorMakerReplicationFlowResult struct {
 	Id string `pulumi:"id"`
 	// Offset syncs topic location.
 	OffsetSyncsTopicLocation string `pulumi:"offsetSyncsTopicLocation"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
 	ReplicationPolicyClass string `pulumi:"replicationPolicyClass"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster string `pulumi:"sourceCluster"`
@@ -112,9 +112,9 @@ func LookupMirrorMakerReplicationFlowOutput(ctx *pulumi.Context, args LookupMirr
 
 // A collection of arguments for invoking getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// Source cluster alias. Maximum length: `128`.
 	SourceCluster pulumi.StringInput `pulumi:"sourceCluster"`
@@ -166,7 +166,7 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) OffsetSyncsTopicLocation()
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.OffsetSyncsTopicLocation }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupMirrorMakerReplicationFlowResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -176,7 +176,7 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ReplicationPolicyClass() p
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.ReplicationPolicyClass }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupMirrorMakerReplicationFlowResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

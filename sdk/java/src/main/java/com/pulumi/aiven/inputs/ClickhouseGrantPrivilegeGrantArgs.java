@@ -18,14 +18,14 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
     public static final ClickhouseGrantPrivilegeGrantArgs Empty = new ClickhouseGrantPrivilegeGrantArgs();
 
     /**
-     * The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * The column that the grant refers to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="column")
     private @Nullable Output<String> column;
 
     /**
-     * @return The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The column that the grant refers to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> column() {
@@ -33,14 +33,14 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
     }
 
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="database", required=true)
     private Output<String> database;
 
     /**
-     * @return The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> database() {
@@ -48,14 +48,14 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
     }
 
     /**
-     * The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+     * The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="privilege")
     private @Nullable Output<String> privilege;
 
     /**
-     * @return The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> privilege() {
@@ -63,14 +63,14 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
     }
 
     /**
-     * The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * The table that the grant refers to. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="table")
     private @Nullable Output<String> table;
 
     /**
-     * @return The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The table that the grant refers to. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> table() {
@@ -78,14 +78,14 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
     }
 
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="withGrant")
     private @Nullable Output<Boolean> withGrant;
 
     /**
-     * @return If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+     * @return If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<Boolean>> withGrant() {
@@ -121,7 +121,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param column The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param column The column that the grant refers to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param column The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param column The column that the grant refers to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param database The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param database The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param database The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param database The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param privilege The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+         * @param privilege The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param privilege The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. This property cannot be changed, doing so forces recreation of the resource.
+         * @param privilege The privilege to grant, i.e. &#39;INSERT&#39;, &#39;SELECT&#39;, etc. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param table The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param table The table that the grant refers to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param table The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param table The table that the grant refers to. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ClickhouseGrantPrivilegeGrantArgs extends com.pulumi.resource
         }
 
         /**
-         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+         * @param withGrant If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string DatadogApiKey;
         /// <summary>
-        /// Custom tags provided by user.
+        /// Custom tags provided by user
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag> DatadogTags;
         /// <summary>

@@ -85,14 +85,14 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
         return this.accepted;
     }
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique account id. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> accountId() {
@@ -127,28 +127,28 @@ public class AccountTeamMember extends com.pulumi.resources.CustomResource {
         return this.invitedByUserEmail;
     }
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="teamId", refs={String.class}, tree="[0]")
     private Output<String> teamId;
 
     /**
-     * @return An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * @return An account team id. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> teamId() {
         return this.teamId;
     }
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="userEmail", refs={String.class}, tree="[0]")
     private Output<String> userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userEmail() {

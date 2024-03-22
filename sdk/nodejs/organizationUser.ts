@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * **This resource is deprecated**. Use the aiven.OrganizationUser data source instead.
+ * **This resource is deprecated**. Use the `aiven.OrganizationUser` data source instead.
  *
  * The organization user resource allows the creation and management of an Aiven organization user.
  *
@@ -60,11 +60,11 @@ export class OrganizationUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly invitedBy!: pulumi.Output<string>;
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID. Changing this property forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      */
     public readonly userEmail!: pulumi.Output<string>;
     /**
@@ -132,11 +132,11 @@ export interface OrganizationUserState {
      */
     invitedBy?: pulumi.Input<string>;
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      */
     userEmail?: pulumi.Input<string>;
     /**
@@ -150,11 +150,11 @@ export interface OrganizationUserState {
  */
 export interface OrganizationUserArgs {
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

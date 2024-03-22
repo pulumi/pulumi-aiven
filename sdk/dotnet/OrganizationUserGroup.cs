@@ -10,7 +10,34 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages a user group in an organization.
+    /// Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Aiven.OrganizationUserGroup("example", new()
+    ///     {
+    ///         Description = "Example group of users.",
+    ///         OrganizationId = aiven_organization.Main.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+    /// ```
     /// </summary>
     [AivenResourceType("aiven:index/organizationUserGroup:OrganizationUserGroup")]
     public partial class OrganizationUserGroup : global::Pulumi.CustomResource
@@ -22,7 +49,7 @@ namespace Pulumi.Aiven
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -34,13 +61,13 @@ namespace Pulumi.Aiven
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
@@ -98,19 +125,19 @@ namespace Pulumi.Aiven
     public sealed class OrganizationUserGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -130,7 +157,7 @@ namespace Pulumi.Aiven
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The description of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -142,13 +169,13 @@ namespace Pulumi.Aiven
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the user group. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+        /// The ID of the organization. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("organizationId")]
         public Input<string>? OrganizationId { get; set; }

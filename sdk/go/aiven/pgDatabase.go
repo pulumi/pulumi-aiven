@@ -52,15 +52,15 @@ import (
 type PgDatabase struct {
 	pulumi.CustomResourceState
 
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringOutput `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrOutput `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrOutput `pulumi:"lcCtype"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -106,15 +106,15 @@ func GetPgDatabase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PgDatabase resources.
 type pgDatabaseState struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName *string `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -122,15 +122,15 @@ type pgDatabaseState struct {
 }
 
 type PgDatabaseState struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringPtrInput
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -142,15 +142,15 @@ func (PgDatabaseState) ElementType() reflect.Type {
 }
 
 type pgDatabaseArgs struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName string `pulumi:"databaseName"`
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate *string `pulumi:"lcCollate"`
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype *string `pulumi:"lcCtype"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -159,15 +159,15 @@ type pgDatabaseArgs struct {
 
 // The set of arguments for constructing a PgDatabase resource.
 type PgDatabaseArgs struct {
-	// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the service database. Changing this property forces recreation of the resource.
 	DatabaseName pulumi.StringInput
-	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCollate pulumi.StringPtrInput
-	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+	// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 	LcCtype pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
 	// recommended to enable this for any production databases containing critical data. The default value is `false`.
@@ -261,27 +261,27 @@ func (o PgDatabaseOutput) ToPgDatabaseOutputWithContext(ctx context.Context) PgD
 	return o
 }
 
-// The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+// The name of the service database. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+// Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) LcCollate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringPtrOutput { return v.LcCollate }).(pulumi.StringPtrOutput)
 }
 
-// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+// Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) LcCtype() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringPtrOutput { return v.LcCtype }).(pulumi.StringPtrOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o PgDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *PgDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+// Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
 //
 // ## Example Usage
 //
@@ -29,11 +29,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAzurePrivatelink(ctx, "foo", &aiven.AzurePrivatelinkArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Foo.Project),
-//				ServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),
+//			_, err := aiven.NewAzurePrivatelink(ctx, "main", &aiven.AzurePrivatelinkArgs{
+//				Project:     pulumi.Any(data.Aiven_project.Example_project.Project),
+//				ServiceName: pulumi.Any(aiven_kafka.Example_kafka.Service_name),
 //				UserSubscriptionIds: pulumi.StringArray{
-//					pulumi.String("xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"),
+//					pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				},
 //			})
 //			if err != nil {
@@ -49,24 +49,24 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+// $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
 // ```
 type AzurePrivatelink struct {
 	pulumi.CustomResourceState
 
-	// Azure Privatelink service alias
+	// The Azure Private Link service alias.
 	AzureServiceAlias pulumi.StringOutput `pulumi:"azureServiceAlias"`
-	// Azure Privatelink service ID
+	// The Azure Private Link service ID.
 	AzureServiceId pulumi.StringOutput `pulumi:"azureServiceId"`
-	// Printable result of the Azure Privatelink request
+	// Printable result of the Azure Private Link request.
 	Message pulumi.StringOutput `pulumi:"message"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Privatelink resource state
+	// The state of the Private Link resource.
 	State pulumi.StringOutput `pulumi:"state"`
-	// A List of allowed Subscription IDs. Maximum length: `16`.
+	// A list of allowed subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds pulumi.StringArrayOutput `pulumi:"userSubscriptionIds"`
 }
 
@@ -109,36 +109,36 @@ func GetAzurePrivatelink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AzurePrivatelink resources.
 type azurePrivatelinkState struct {
-	// Azure Privatelink service alias
+	// The Azure Private Link service alias.
 	AzureServiceAlias *string `pulumi:"azureServiceAlias"`
-	// Azure Privatelink service ID
+	// The Azure Private Link service ID.
 	AzureServiceId *string `pulumi:"azureServiceId"`
-	// Printable result of the Azure Privatelink request
+	// Printable result of the Azure Private Link request.
 	Message *string `pulumi:"message"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Privatelink resource state
+	// The state of the Private Link resource.
 	State *string `pulumi:"state"`
-	// A List of allowed Subscription IDs. Maximum length: `16`.
+	// A list of allowed subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds []string `pulumi:"userSubscriptionIds"`
 }
 
 type AzurePrivatelinkState struct {
-	// Azure Privatelink service alias
+	// The Azure Private Link service alias.
 	AzureServiceAlias pulumi.StringPtrInput
-	// Azure Privatelink service ID
+	// The Azure Private Link service ID.
 	AzureServiceId pulumi.StringPtrInput
-	// Printable result of the Azure Privatelink request
+	// Printable result of the Azure Private Link request.
 	Message pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Privatelink resource state
+	// The state of the Private Link resource.
 	State pulumi.StringPtrInput
-	// A List of allowed Subscription IDs. Maximum length: `16`.
+	// A list of allowed subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds pulumi.StringArrayInput
 }
 
@@ -147,21 +147,21 @@ func (AzurePrivatelinkState) ElementType() reflect.Type {
 }
 
 type azurePrivatelinkArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// A List of allowed Subscription IDs. Maximum length: `16`.
+	// A list of allowed subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds []string `pulumi:"userSubscriptionIds"`
 }
 
 // The set of arguments for constructing a AzurePrivatelink resource.
 type AzurePrivatelinkArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// A List of allowed Subscription IDs. Maximum length: `16`.
+	// A list of allowed subscription IDs. Maximum length: `16`.
 	UserSubscriptionIds pulumi.StringArrayInput
 }
 
@@ -252,37 +252,37 @@ func (o AzurePrivatelinkOutput) ToAzurePrivatelinkOutputWithContext(ctx context.
 	return o
 }
 
-// Azure Privatelink service alias
+// The Azure Private Link service alias.
 func (o AzurePrivatelinkOutput) AzureServiceAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.AzureServiceAlias }).(pulumi.StringOutput)
 }
 
-// Azure Privatelink service ID
+// The Azure Private Link service ID.
 func (o AzurePrivatelinkOutput) AzureServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.AzureServiceId }).(pulumi.StringOutput)
 }
 
-// Printable result of the Azure Privatelink request
+// Printable result of the Azure Private Link request.
 func (o AzurePrivatelinkOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o AzurePrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o AzurePrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Privatelink resource state
+// The state of the Private Link resource.
 func (o AzurePrivatelinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// A List of allowed Subscription IDs. Maximum length: `16`.
+// A list of allowed subscription IDs. Maximum length: `16`.
 func (o AzurePrivatelinkOutput) UserSubscriptionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzurePrivatelink) pulumi.StringArrayOutput { return v.UserSubscriptionIds }).(pulumi.StringArrayOutput)
 }

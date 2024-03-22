@@ -87,15 +87,27 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly destinationServiceName!: pulumi.Output<string | undefined>;
     /**
+     * ExternalAwsCloudwatchLogs user configurable settings
+     */
+    public readonly externalAwsCloudwatchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig | undefined>;
+    /**
      * ExternalAwsCloudwatchMetrics user configurable settings
      */
     public readonly externalAwsCloudwatchMetricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig | undefined>;
+    /**
+     * ExternalElasticsearchLogs user configurable settings
+     */
+    public readonly externalElasticsearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalElasticsearchLogsUserConfig | undefined>;
+    /**
+     * ExternalOpensearchLogs user configurable settings
+     */
+    public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalOpensearchLogsUserConfig | undefined>;
     /**
      * Service Integration Id at aiven
      */
     public /*out*/ readonly integrationId!: pulumi.Output<string>;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      */
     public readonly integrationType!: pulumi.Output<string>;
     /**
@@ -123,6 +135,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Prometheus user configurable settings
+     */
+    public readonly prometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationPrometheusUserConfig | undefined>;
+    /**
      * Source endpoint for the integration (if any)
      */
     public readonly sourceEndpointId!: pulumi.Output<string | undefined>;
@@ -149,7 +165,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["datadogUserConfig"] = state ? state.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = state ? state.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = state ? state.destinationServiceName : undefined;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = state ? state.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = state ? state.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = state ? state.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalOpensearchLogsUserConfig"] = state ? state.externalOpensearchLogsUserConfig : undefined;
             resourceInputs["integrationId"] = state ? state.integrationId : undefined;
             resourceInputs["integrationType"] = state ? state.integrationType : undefined;
             resourceInputs["kafkaConnectUserConfig"] = state ? state.kafkaConnectUserConfig : undefined;
@@ -158,6 +177,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["logsUserConfig"] = state ? state.logsUserConfig : undefined;
             resourceInputs["metricsUserConfig"] = state ? state.metricsUserConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["prometheusUserConfig"] = state ? state.prometheusUserConfig : undefined;
             resourceInputs["sourceEndpointId"] = state ? state.sourceEndpointId : undefined;
             resourceInputs["sourceServiceName"] = state ? state.sourceServiceName : undefined;
         } else {
@@ -173,7 +193,10 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["datadogUserConfig"] = args ? args.datadogUserConfig : undefined;
             resourceInputs["destinationEndpointId"] = args ? args.destinationEndpointId : undefined;
             resourceInputs["destinationServiceName"] = args ? args.destinationServiceName : undefined;
+            resourceInputs["externalAwsCloudwatchLogsUserConfig"] = args ? args.externalAwsCloudwatchLogsUserConfig : undefined;
             resourceInputs["externalAwsCloudwatchMetricsUserConfig"] = args ? args.externalAwsCloudwatchMetricsUserConfig : undefined;
+            resourceInputs["externalElasticsearchLogsUserConfig"] = args ? args.externalElasticsearchLogsUserConfig : undefined;
+            resourceInputs["externalOpensearchLogsUserConfig"] = args ? args.externalOpensearchLogsUserConfig : undefined;
             resourceInputs["integrationType"] = args ? args.integrationType : undefined;
             resourceInputs["kafkaConnectUserConfig"] = args ? args.kafkaConnectUserConfig : undefined;
             resourceInputs["kafkaLogsUserConfig"] = args ? args.kafkaLogsUserConfig : undefined;
@@ -181,6 +204,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
             resourceInputs["logsUserConfig"] = args ? args.logsUserConfig : undefined;
             resourceInputs["metricsUserConfig"] = args ? args.metricsUserConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["prometheusUserConfig"] = args ? args.prometheusUserConfig : undefined;
             resourceInputs["sourceEndpointId"] = args ? args.sourceEndpointId : undefined;
             resourceInputs["sourceServiceName"] = args ? args.sourceServiceName : undefined;
             resourceInputs["integrationId"] = undefined /*out*/;
@@ -215,15 +239,27 @@ export interface ServiceIntegrationState {
      */
     destinationServiceName?: pulumi.Input<string>;
     /**
+     * ExternalAwsCloudwatchLogs user configurable settings
+     */
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    /**
      * ExternalAwsCloudwatchMetrics user configurable settings
      */
     externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
+    /**
+     * ExternalElasticsearchLogs user configurable settings
+     */
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    /**
+     * ExternalOpensearchLogs user configurable settings
+     */
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig>;
     /**
      * Service Integration Id at aiven
      */
     integrationId?: pulumi.Input<string>;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      */
     integrationType?: pulumi.Input<string>;
     /**
@@ -250,6 +286,10 @@ export interface ServiceIntegrationState {
      * Project the integration belongs to
      */
     project?: pulumi.Input<string>;
+    /**
+     * Prometheus user configurable settings
+     */
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
      * Source endpoint for the integration (if any)
      */
@@ -285,11 +325,23 @@ export interface ServiceIntegrationArgs {
      */
     destinationServiceName?: pulumi.Input<string>;
     /**
+     * ExternalAwsCloudwatchLogs user configurable settings
+     */
+    externalAwsCloudwatchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchLogsUserConfig>;
+    /**
      * ExternalAwsCloudwatchMetrics user configurable settings
      */
     externalAwsCloudwatchMetricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig>;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+     * ExternalElasticsearchLogs user configurable settings
+     */
+    externalElasticsearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalElasticsearchLogsUserConfig>;
+    /**
+     * ExternalOpensearchLogs user configurable settings
+     */
+    externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig>;
+    /**
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      */
     integrationType: pulumi.Input<string>;
     /**
@@ -316,6 +368,10 @@ export interface ServiceIntegrationArgs {
      * Project the integration belongs to
      */
     project: pulumi.Input<string>;
+    /**
+     * Prometheus user configurable settings
+     */
+    prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
      * Source endpoint for the integration (if any)
      */

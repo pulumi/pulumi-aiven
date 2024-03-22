@@ -18,8 +18,8 @@ class OrganizationUserArgs:
                  user_email: pulumi.Input[str]):
         """
         The set of arguments for constructing a OrganizationUser resource.
-        :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "user_email", user_email)
@@ -28,7 +28,7 @@ class OrganizationUserArgs:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         """
-        The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        The unique organization ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -40,7 +40,7 @@ class OrganizationUserArgs:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Input[str]:
         """
-        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 
@@ -63,8 +63,8 @@ class _OrganizationUserState:
         :param pulumi.Input[bool] accepted: This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] invited_by: The email address of the user who sent an invitation to the user.
-        :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user_id: The unique organization user ID
         """
         if accepted is not None:
@@ -132,7 +132,7 @@ class _OrganizationUserState:
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        The unique organization ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -144,7 +144,7 @@ class _OrganizationUserState:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> Optional[pulumi.Input[str]]:
         """
-        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 
@@ -174,7 +174,7 @@ class OrganizationUser(pulumi.CustomResource):
                  user_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        **This resource is deprecated**. Use the OrganizationUser data source instead.
+        **This resource is deprecated**. Use the `OrganizationUser` data source instead.
 
         The organization user resource allows the creation and management of an Aiven organization user.
 
@@ -186,8 +186,8 @@ class OrganizationUser(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -196,7 +196,7 @@ class OrganizationUser(pulumi.CustomResource):
                  args: OrganizationUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **This resource is deprecated**. Use the OrganizationUser data source instead.
+        **This resource is deprecated**. Use the `OrganizationUser` data source instead.
 
         The organization user resource allows the creation and management of an Aiven organization user.
 
@@ -268,8 +268,8 @@ class OrganizationUser(pulumi.CustomResource):
         :param pulumi.Input[bool] accepted: This is a boolean flag that determines whether an invitation was accepted or not by the user. `false` value means that the invitation was sent to the user but not yet accepted. `true` means that the user accepted the invitation and now a member of an organization.
         :param pulumi.Input[str] create_time: Time of creation
         :param pulumi.Input[str] invited_by: The email address of the user who sent an invitation to the user.
-        :param pulumi.Input[str] organization_id: The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] user_email: This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user_id: The unique organization user ID
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -318,7 +318,7 @@ class OrganizationUser(pulumi.CustomResource):
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Output[str]:
         """
-        The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+        The unique organization ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "organization_id")
 
@@ -326,7 +326,7 @@ class OrganizationUser(pulumi.CustomResource):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Output[str]:
         """
-        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+        This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "user_email")
 

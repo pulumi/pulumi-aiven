@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Project VPC data source provides information about the existing Aiven Project VPC.
+// Gets information about the VPC for an Aiven project.
 //
 // ## Example Usage
 //
@@ -29,14 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-//				Project:   pulumi.StringRef(aiven_project.Myproject.Project),
+//				Project:   pulumi.StringRef(data.Aiven_project.Example_project.Project),
 //				CloudName: pulumi.StringRef("google-europe-west1"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-//				VpcId: pulumi.StringRef(aiven_project_vpc.Vpc.Id),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -59,27 +53,27 @@ func LookupProjectVpc(ctx *pulumi.Context, args *LookupProjectVpcArgs, opts ...p
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcArgs struct {
-	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
 	CloudName *string `pulumi:"cloudName"`
 	// Identifies the project this resource belongs to.
 	Project *string `pulumi:"project"`
-	// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
 	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getProjectVpc.
 type LookupProjectVpcResult struct {
-	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
 	CloudName *string `pulumi:"cloudName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Network address range used by the VPC like 192.168.0.0/24
+	// Network address range used by the VPC. For example, `192.168.0.0/24`.
 	NetworkCidr string `pulumi:"networkCidr"`
 	// Identifies the project this resource belongs to.
 	Project *string `pulumi:"project"`
 	// State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
 	State string `pulumi:"state"`
-	// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -98,11 +92,11 @@ func LookupProjectVpcOutput(ctx *pulumi.Context, args LookupProjectVpcOutputArgs
 
 // A collection of arguments for invoking getProjectVpc.
 type LookupProjectVpcOutputArgs struct {
-	// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+	// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
 	CloudName pulumi.StringPtrInput `pulumi:"cloudName"`
 	// Identifies the project this resource belongs to.
 	Project pulumi.StringPtrInput `pulumi:"project"`
-	// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+	// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
@@ -125,7 +119,7 @@ func (o LookupProjectVpcResultOutput) ToLookupProjectVpcResultOutputWithContext(
 	return o
 }
 
-// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
 func (o LookupProjectVpcResultOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.CloudName }).(pulumi.StringPtrOutput)
 }
@@ -135,7 +129,7 @@ func (o LookupProjectVpcResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Network address range used by the VPC like 192.168.0.0/24
+// Network address range used by the VPC. For example, `192.168.0.0/24`.
 func (o LookupProjectVpcResultOutput) NetworkCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.NetworkCidr }).(pulumi.StringOutput)
 }
@@ -150,7 +144,7 @@ func (o LookupProjectVpcResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
 func (o LookupProjectVpcResultOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupProjectVpcResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

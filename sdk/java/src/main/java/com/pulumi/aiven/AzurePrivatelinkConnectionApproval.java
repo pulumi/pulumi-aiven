@@ -15,82 +15,82 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+ * Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
  * 
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+ * $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval")
 public class AzurePrivatelinkConnectionApproval extends com.pulumi.resources.CustomResource {
     /**
-     * IP address of Azure private endpoint
+     * IP address of Azure private endpoint.
      * 
      */
     @Export(name="endpointIpAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointIpAddress;
 
     /**
-     * @return IP address of Azure private endpoint
+     * @return IP address of Azure private endpoint.
      * 
      */
     public Output<Optional<String>> endpointIpAddress() {
         return Codegen.optional(this.endpointIpAddress);
     }
     /**
-     * Privatelink connection id
+     * The ID of the Private Link connection.
      * 
      */
     @Export(name="privatelinkConnectionId", refs={String.class}, tree="[0]")
     private Output<String> privatelinkConnectionId;
 
     /**
-     * @return Privatelink connection id
+     * @return The ID of the Private Link connection.
      * 
      */
     public Output<String> privatelinkConnectionId() {
         return this.privatelinkConnectionId;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Privatelink connection state
+     * The state of the Private Link connection.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Privatelink connection state
+     * @return The state of the Private Link connection.
      * 
      */
     public Output<String> state() {

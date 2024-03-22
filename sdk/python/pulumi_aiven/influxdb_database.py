@@ -20,11 +20,11 @@ class InfluxdbDatabaseArgs:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a InfluxdbDatabase resource.
-        :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+               variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -38,7 +38,7 @@ class InfluxdbDatabaseArgs:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Input[str]:
         """
-        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the service database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -51,7 +51,7 @@ class InfluxdbDatabaseArgs:
     def project(self) -> pulumi.Input[str]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -64,7 +64,7 @@ class InfluxdbDatabaseArgs:
     def service_name(self) -> pulumi.Input[str]:
         """
         Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -95,11 +95,11 @@ class _InfluxdbDatabaseState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering InfluxdbDatabase resources.
-        :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+               variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -116,7 +116,7 @@ class _InfluxdbDatabaseState:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the service database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -129,7 +129,7 @@ class _InfluxdbDatabaseState:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -142,7 +142,7 @@ class _InfluxdbDatabaseState:
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
         Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -178,11 +178,11 @@ class InfluxdbDatabase(pulumi.CustomResource):
         Create a InfluxdbDatabase resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+               variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -253,11 +253,11 @@ class InfluxdbDatabase(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] database_name: The name of the service database. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. This property cannot be changed, doing so forces recreation of the resource.
+               reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-               variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+               variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
                recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
@@ -275,7 +275,7 @@ class InfluxdbDatabase(pulumi.CustomResource):
     @pulumi.getter(name="databaseName")
     def database_name(self) -> pulumi.Output[str]:
         """
-        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the service database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -284,7 +284,7 @@ class InfluxdbDatabase(pulumi.CustomResource):
     def project(self) -> pulumi.Output[str]:
         """
         Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. This property cannot be changed, doing so forces recreation of the resource.
+        reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -293,7 +293,7 @@ class InfluxdbDatabase(pulumi.CustomResource):
     def service_name(self) -> pulumi.Output[str]:
         """
         Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 

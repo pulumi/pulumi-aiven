@@ -36,18 +36,18 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Table columns.
+     * Table columns
      * 
      */
-    @Import(name="columns")
-    private @Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns;
+    @Import(name="columns", required=true)
+    private Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns;
 
     /**
-     * @return Table columns.
+     * @return Table columns
      * 
      */
-    public Optional<Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>>> columns() {
-        return Optional.ofNullable(this.columns);
+    public Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns() {
+        return this.columns;
     }
 
     /**
@@ -201,18 +201,18 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Kafka topics.
+     * Kafka topics
      * 
      */
-    @Import(name="topics")
-    private @Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics;
+    @Import(name="topics", required=true)
+    private Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics;
 
     /**
-     * @return Kafka topics.
+     * @return Kafka topics
      * 
      */
-    public Optional<Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>>> topics() {
-        return Optional.ofNullable(this.topics);
+    public Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics() {
+        return this.topics;
     }
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableArgs() {}
@@ -273,18 +273,18 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param columns Table columns.
+         * @param columns Table columns
          * 
          * @return builder
          * 
          */
-        public Builder columns(@Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns) {
+        public Builder columns(Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs>> columns) {
             $.columns = columns;
             return this;
         }
 
         /**
-         * @param columns Table columns.
+         * @param columns Table columns
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param columns Table columns.
+         * @param columns Table columns
          * 
          * @return builder
          * 
@@ -514,18 +514,18 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param topics Kafka topics.
+         * @param topics Kafka topics
          * 
          * @return builder
          * 
          */
-        public Builder topics(@Nullable Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics) {
+        public Builder topics(Output<List<ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs>> topics) {
             $.topics = topics;
             return this;
         }
 
         /**
-         * @param topics Kafka topics.
+         * @param topics Kafka topics
          * 
          * @return builder
          * 
@@ -535,7 +535,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param topics Kafka topics.
+         * @param topics Kafka topics
          * 
          * @return builder
          * 
@@ -545,6 +545,9 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         public ServiceIntegrationClickhouseKafkaUserConfigTableArgs build() {
+            if ($.columns == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "columns");
+            }
             if ($.dataFormat == null) {
                 throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "dataFormat");
             }
@@ -553,6 +556,9 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "name");
+            }
+            if ($.topics == null) {
+                throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTableArgs", "topics");
             }
             return $;
         }

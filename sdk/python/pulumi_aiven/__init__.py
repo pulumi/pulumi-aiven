@@ -24,6 +24,7 @@ from .clickhouse_grant import *
 from .clickhouse_role import *
 from .clickhouse_user import *
 from .connection_pool import *
+from .dragonfly import *
 from .flink import *
 from .flink_application import *
 from .flink_application_deployment import *
@@ -48,6 +49,7 @@ from .get_clickhouse import *
 from .get_clickhouse_database import *
 from .get_clickhouse_user import *
 from .get_connection_pool import *
+from .get_dragonfly import *
 from .get_flink import *
 from .get_flink_application import *
 from .get_flink_application_version import *
@@ -122,8 +124,10 @@ from .open_search_acl_rule import *
 from .opensearch_security_plugin_config import *
 from .opensearch_user import *
 from .organization import *
+from .organization_group_project import *
 from .organization_user import *
 from .organization_user_group import *
+from .organization_user_group_member import *
 from .organizational_unit import *
 from .pg import *
 from .pg_database import *
@@ -301,6 +305,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/connectionPool:ConnectionPool": "ConnectionPool"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/dragonfly",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/dragonfly:Dragonfly": "Dragonfly"
   }
  },
  {
@@ -577,6 +589,14 @@ _utilities.register(
  },
  {
   "pkg": "aiven",
+  "mod": "index/organizationGroupProject",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationGroupProject:OrganizationGroupProject": "OrganizationGroupProject"
+  }
+ },
+ {
+  "pkg": "aiven",
   "mod": "index/organizationUser",
   "fqn": "pulumi_aiven",
   "classes": {
@@ -589,6 +609,14 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organizationUserGroup:OrganizationUserGroup": "OrganizationUserGroup"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationUserGroupMember",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": "OrganizationUserGroupMember"
   }
  },
  {

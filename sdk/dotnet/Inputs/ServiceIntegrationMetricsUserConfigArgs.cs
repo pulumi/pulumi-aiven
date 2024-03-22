@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RoUsername { get; set; }
 
         /// <summary>
-        /// Configuration options for metrics where source service is MySQL.
+        /// Configuration options for metrics where source service is MySQL
         /// </summary>
         [Input("sourceMysql")]
         public Input<Inputs.ServiceIntegrationMetricsUserConfigSourceMysqlArgs>? SourceMysql { get; set; }

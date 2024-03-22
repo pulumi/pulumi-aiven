@@ -7,6 +7,37 @@ import * as utilities from "./utilities";
 /**
  * The OpenSearch Security Plugin Config resource allows the creation and management of AivenOpenSearch Security Plugin config.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const fooProject = aiven.getProject({
+ *     project: "example_project",
+ * });
+ * const bar = new aiven.OpenSearch("bar", {
+ *     project: fooProject.then(fooProject => fooProject.project),
+ *     cloudName: "google-europe-west1",
+ *     plan: "startup-4",
+ *     serviceName: "example_service_name",
+ *     maintenanceWindowDow: "monday",
+ *     maintenanceWindowTime: "10:00:00",
+ * });
+ * const fooOpensearchUser = new aiven.OpensearchUser("fooOpensearchUser", {
+ *     serviceName: bar.serviceName,
+ *     project: fooProject.then(fooProject => fooProject.project),
+ *     username: "user-example",
+ * });
+ * const fooOpensearchSecurityPluginConfig = new aiven.OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig", {
+ *     project: fooProject.then(fooProject => fooProject.project),
+ *     serviceName: bar.serviceName,
+ *     adminPassword: "ThisIsATest123^=^",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh
@@ -58,11 +89,11 @@ export class OpensearchSecurityPluginConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly enabled!: pulumi.Output<boolean>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -131,11 +162,11 @@ export interface OpensearchSecurityPluginConfigState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -149,11 +180,11 @@ export interface OpensearchSecurityPluginConfigArgs {
      */
     adminPassword: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

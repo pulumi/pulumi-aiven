@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+ * Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
  * 
  * ## Example Usage
  * 
@@ -41,10 +41,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AzurePrivatelink(&#34;foo&#34;, AzurePrivatelinkArgs.builder()        
- *             .project(data.aiven_project().foo().project())
- *             .serviceName(aiven_kafka.bar().service_name())
- *             .userSubscriptionIds(&#34;xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx&#34;)
+ *         var main = new AzurePrivatelink(&#34;main&#34;, AzurePrivatelinkArgs.builder()        
+ *             .project(data.aiven_project().example_project().project())
+ *             .serviceName(aiven_kafka.example_kafka().service_name())
+ *             .userSubscriptionIds(&#34;00000000-0000-0000-0000-000000000000&#34;)
  *             .build());
  * 
  *     }
@@ -55,105 +55,105 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+ * $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/azurePrivatelink:AzurePrivatelink")
 public class AzurePrivatelink extends com.pulumi.resources.CustomResource {
     /**
-     * Azure Privatelink service alias
+     * The Azure Private Link service alias.
      * 
      */
     @Export(name="azureServiceAlias", refs={String.class}, tree="[0]")
     private Output<String> azureServiceAlias;
 
     /**
-     * @return Azure Privatelink service alias
+     * @return The Azure Private Link service alias.
      * 
      */
     public Output<String> azureServiceAlias() {
         return this.azureServiceAlias;
     }
     /**
-     * Azure Privatelink service ID
+     * The Azure Private Link service ID.
      * 
      */
     @Export(name="azureServiceId", refs={String.class}, tree="[0]")
     private Output<String> azureServiceId;
 
     /**
-     * @return Azure Privatelink service ID
+     * @return The Azure Private Link service ID.
      * 
      */
     public Output<String> azureServiceId() {
         return this.azureServiceId;
     }
     /**
-     * Printable result of the Azure Privatelink request
+     * Printable result of the Azure Private Link request.
      * 
      */
     @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
-     * @return Printable result of the Azure Privatelink request
+     * @return Printable result of the Azure Private Link request.
      * 
      */
     public Output<String> message() {
         return this.message;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Privatelink resource state
+     * The state of the Private Link resource.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Privatelink resource state
+     * @return The state of the Private Link resource.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * A List of allowed Subscription IDs. Maximum length: `16`.
+     * A list of allowed subscription IDs. Maximum length: `16`.
      * 
      */
     @Export(name="userSubscriptionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userSubscriptionIds;
 
     /**
-     * @return A List of allowed Subscription IDs. Maximum length: `16`.
+     * @return A list of allowed subscription IDs. Maximum length: `16`.
      * 
      */
     public Output<List<String>> userSubscriptionIds() {

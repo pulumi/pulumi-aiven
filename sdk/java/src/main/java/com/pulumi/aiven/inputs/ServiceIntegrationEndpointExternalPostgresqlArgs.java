@@ -18,6 +18,21 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     public static final ServiceIntegrationEndpointExternalPostgresqlArgs Empty = new ServiceIntegrationEndpointExternalPostgresqlArgs();
 
     /**
+     * Default database.
+     * 
+     */
+    @Import(name="defaultDatabase")
+    private @Nullable Output<String> defaultDatabase;
+
+    /**
+     * @return Default database.
+     * 
+     */
+    public Optional<Output<String>> defaultDatabase() {
+        return Optional.ofNullable(this.defaultDatabase);
+    }
+
+    /**
      * Hostname or IP address of the server.
      * 
      */
@@ -140,6 +155,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     private ServiceIntegrationEndpointExternalPostgresqlArgs() {}
 
     private ServiceIntegrationEndpointExternalPostgresqlArgs(ServiceIntegrationEndpointExternalPostgresqlArgs $) {
+        this.defaultDatabase = $.defaultDatabase;
         this.host = $.host;
         this.password = $.password;
         this.port = $.port;
@@ -166,6 +182,27 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
 
         public Builder(ServiceIntegrationEndpointExternalPostgresqlArgs defaults) {
             $ = new ServiceIntegrationEndpointExternalPostgresqlArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param defaultDatabase Default database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultDatabase(@Nullable Output<String> defaultDatabase) {
+            $.defaultDatabase = defaultDatabase;
+            return this;
+        }
+
+        /**
+         * @param defaultDatabase Default database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder defaultDatabase(String defaultDatabase) {
+            return defaultDatabase(Output.of(defaultDatabase));
         }
 
         /**

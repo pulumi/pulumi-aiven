@@ -151,6 +151,11 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
      */
     private @Nullable Boolean overrideMainResponseVersion;
     /**
+     * @return Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     * 
+     */
+    private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
+    /**
      * @return Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      * 
      */
@@ -412,6 +417,13 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         return Optional.ofNullable(this.overrideMainResponseVersion);
     }
     /**
+     * @return Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     * 
+     */
+    public Optional<Boolean> pluginsAlertingFilterByBackendRoles() {
+        return Optional.ofNullable(this.pluginsAlertingFilterByBackendRoles);
+    }
+    /**
      * @return Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      * 
      */
@@ -546,6 +558,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
         private @Nullable Integer ismHistoryRolloverCheckPeriod;
         private @Nullable Integer ismHistoryRolloverRetentionPeriod;
         private @Nullable Boolean overrideMainResponseVersion;
+        private @Nullable Boolean pluginsAlertingFilterByBackendRoles;
         private @Nullable List<String> reindexRemoteWhitelists;
         private @Nullable String scriptMaxCompilationsRate;
         private @Nullable Integer searchMaxBuckets;
@@ -590,6 +603,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
     	      this.ismHistoryRolloverCheckPeriod = defaults.ismHistoryRolloverCheckPeriod;
     	      this.ismHistoryRolloverRetentionPeriod = defaults.ismHistoryRolloverRetentionPeriod;
     	      this.overrideMainResponseVersion = defaults.overrideMainResponseVersion;
+    	      this.pluginsAlertingFilterByBackendRoles = defaults.pluginsAlertingFilterByBackendRoles;
     	      this.reindexRemoteWhitelists = defaults.reindexRemoteWhitelists;
     	      this.scriptMaxCompilationsRate = defaults.scriptMaxCompilationsRate;
     	      this.searchMaxBuckets = defaults.searchMaxBuckets;
@@ -769,6 +783,12 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             return this;
         }
         @CustomType.Setter
+        public Builder pluginsAlertingFilterByBackendRoles(@Nullable Boolean pluginsAlertingFilterByBackendRoles) {
+
+            this.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
+            return this;
+        }
+        @CustomType.Setter
         public Builder reindexRemoteWhitelists(@Nullable List<String> reindexRemoteWhitelists) {
 
             this.reindexRemoteWhitelists = reindexRemoteWhitelists;
@@ -884,6 +904,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearch {
             _resultValue.ismHistoryRolloverCheckPeriod = ismHistoryRolloverCheckPeriod;
             _resultValue.ismHistoryRolloverRetentionPeriod = ismHistoryRolloverRetentionPeriod;
             _resultValue.overrideMainResponseVersion = overrideMainResponseVersion;
+            _resultValue.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
             _resultValue.reindexRemoteWhitelists = reindexRemoteWhitelists;
             _resultValue.scriptMaxCompilationsRate = scriptMaxCompilationsRate;
             _resultValue.searchMaxBuckets = searchMaxBuckets;
