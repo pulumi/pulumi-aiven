@@ -204,6 +204,58 @@
                 "current": "aiven:index/connectionPool:ConnectionPool",
                 "majorVersion": 6
             },
+            "aiven_dragonfly": {
+                "current": "aiven:index/dragonfly:Dragonfly",
+                "majorVersion": 6,
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "dragonfly": {
+                        "maxItemsOne": false
+                    },
+                    "dragonfly_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "migration": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_flink": {
                 "current": "aiven:index/flink:Flink",
                 "majorVersion": 6,
@@ -1040,12 +1092,20 @@
                 "current": "aiven:index/organization:Organization",
                 "majorVersion": 6
             },
+            "aiven_organization_group_project": {
+                "current": "aiven:index/organizationGroupProject:OrganizationGroupProject",
+                "majorVersion": 6
+            },
             "aiven_organization_user": {
                 "current": "aiven:index/organizationUser:OrganizationUser",
                 "majorVersion": 6
             },
             "aiven_organization_user_group": {
                 "current": "aiven:index/organizationUserGroup:OrganizationUserGroup",
+                "majorVersion": 6
+            },
+            "aiven_organization_user_group_member": {
+                "current": "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember",
                 "majorVersion": 6
             },
             "aiven_organizational_unit": {
@@ -1086,6 +1146,16 @@
                                 },
                                 "pg_qualstats": {
                                     "maxItemsOne": true
+                                },
+                                "pgaudit": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "log": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
                                 },
                                 "pgbouncer": {
                                     "maxItemsOne": true,
@@ -1295,6 +1365,16 @@
                             }
                         }
                     },
+                    "external_aws_cloudwatch_logs_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "external_aws_cloudwatch_metrics_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1303,6 +1383,26 @@
                                     "maxItemsOne": false
                                 },
                                 "extra_metrics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "external_elasticsearch_logs_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "external_opensearch_logs_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -1349,6 +1449,23 @@
                         }
                     },
                     "metrics_user_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "source_mysql": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "telegraf": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "prometheus_user_config": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
@@ -1668,6 +1785,58 @@
             "aiven_connection_pool": {
                 "current": "aiven:index/getConnectionPool:getConnectionPool",
                 "majorVersion": 6
+            },
+            "aiven_dragonfly": {
+                "current": "aiven:index/getDragonfly:getDragonfly",
+                "majorVersion": 6,
+                "fields": {
+                    "components": {
+                        "maxItemsOne": false
+                    },
+                    "dragonfly": {
+                        "maxItemsOne": false
+                    },
+                    "dragonfly_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_filter": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_object": {
+                                    "maxItemsOne": false
+                                },
+                                "ip_filter_string": {
+                                    "maxItemsOne": false
+                                },
+                                "migration": {
+                                    "maxItemsOne": true
+                                },
+                                "private_access": {
+                                    "maxItemsOne": true
+                                },
+                                "privatelink_access": {
+                                    "maxItemsOne": true
+                                },
+                                "public_access": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "service_integrations": {
+                        "maxItemsOne": false
+                    },
+                    "static_ips": {
+                        "maxItemsOne": false
+                    },
+                    "tag": {
+                        "maxItemsOne": false
+                    },
+                    "tech_emails": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "aiven_flink": {
                 "current": "aiven:index/getFlink:getFlink",
@@ -2544,6 +2713,16 @@
                                 "pg_qualstats": {
                                     "maxItemsOne": true
                                 },
+                                "pgaudit": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "log": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "pgbouncer": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -2756,6 +2935,16 @@
                             }
                         }
                     },
+                    "external_aws_cloudwatch_logs_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "external_aws_cloudwatch_metrics_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2764,6 +2953,26 @@
                                     "maxItemsOne": false
                                 },
                                 "extra_metrics": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "external_elasticsearch_logs_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "external_opensearch_logs_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "selected_log_fields": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2810,6 +3019,23 @@
                         }
                     },
                     "metrics_user_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "source_mysql": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "telegraf": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "prometheus_user_config": {
                         "maxItemsOne": false,
                         "elem": {
                             "fields": {
@@ -2913,6 +3139,7 @@
             "aiven:index/clickhouseRole:ClickhouseRole": 0,
             "aiven:index/clickhouseUser:ClickhouseUser": 0,
             "aiven:index/connectionPool:ConnectionPool": 0,
+            "aiven:index/dragonfly:Dragonfly": 0,
             "aiven:index/flink:Flink": 0,
             "aiven:index/flinkApplication:FlinkApplication": 0,
             "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": 0,
@@ -2947,8 +3174,10 @@
             "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": 0,
             "aiven:index/opensearchUser:OpensearchUser": 0,
             "aiven:index/organization:Organization": 1,
+            "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
+            "aiven:index/organizationUserGroupMember:OrganizationUserGroupMember": 1,
             "aiven:index/organizationalUnit:OrganizationalUnit": 0,
             "aiven:index/pg:Pg": 0,
             "aiven:index/pgDatabase:PgDatabase": 0,
@@ -2981,6 +3210,7 @@
             "aiven:index/getClickhouseDatabase:getClickhouseDatabase": 0,
             "aiven:index/getClickhouseUser:getClickhouseUser": 0,
             "aiven:index/getConnectionPool:getConnectionPool": 0,
+            "aiven:index/getDragonfly:getDragonfly": 0,
             "aiven:index/getFlink:getFlink": 0,
             "aiven:index/getFlinkApplication:getFlinkApplication": 0,
             "aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion": 0,
