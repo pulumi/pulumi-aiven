@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetProjectVpcResult {
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      * 
      */
     private @Nullable String cloudName;
@@ -23,7 +23,7 @@ public final class GetProjectVpcResult {
      */
     private String id;
     /**
-     * @return Network address range used by the VPC like 192.168.0.0/24
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
      * 
      */
     private String networkCidr;
@@ -38,14 +38,14 @@ public final class GetProjectVpcResult {
      */
     private String state;
     /**
-     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * @return The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      * 
      */
     private @Nullable String vpcId;
 
     private GetProjectVpcResult() {}
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      * 
      */
     public Optional<String> cloudName() {
@@ -59,7 +59,7 @@ public final class GetProjectVpcResult {
         return this.id;
     }
     /**
-     * @return Network address range used by the VPC like 192.168.0.0/24
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
      * 
      */
     public String networkCidr() {
@@ -80,7 +80,7 @@ public final class GetProjectVpcResult {
         return this.state;
     }
     /**
-     * @return ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * @return The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      * 
      */
     public Optional<String> vpcId() {

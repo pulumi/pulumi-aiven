@@ -68,26 +68,26 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
      * Offset syncs topic location.
      * 
      */
-    @Import(name="offsetSyncsTopicLocation")
-    private @Nullable Output<String> offsetSyncsTopicLocation;
+    @Import(name="offsetSyncsTopicLocation", required=true)
+    private Output<String> offsetSyncsTopicLocation;
 
     /**
      * @return Offset syncs topic location.
      * 
      */
-    public Optional<Output<String>> offsetSyncsTopicLocation() {
-        return Optional.ofNullable(this.offsetSyncsTopicLocation);
+    public Output<String> offsetSyncsTopicLocation() {
+        return this.offsetSyncsTopicLocation;
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -98,26 +98,26 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
-    @Import(name="replicationPolicyClass")
-    private @Nullable Output<String> replicationPolicyClass;
+    @Import(name="replicationPolicyClass", required=true)
+    private Output<String> replicationPolicyClass;
 
     /**
      * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
-    public Optional<Output<String>> replicationPolicyClass() {
-        return Optional.ofNullable(this.replicationPolicyClass);
+    public Output<String> replicationPolicyClass() {
+        return this.replicationPolicyClass;
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -319,7 +319,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder offsetSyncsTopicLocation(@Nullable Output<String> offsetSyncsTopicLocation) {
+        public Builder offsetSyncsTopicLocation(Output<String> offsetSyncsTopicLocation) {
             $.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             return this;
         }
@@ -335,7 +335,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -346,7 +346,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
          * @return builder
          * 
          */
-        public Builder replicationPolicyClass(@Nullable Output<String> replicationPolicyClass) {
+        public Builder replicationPolicyClass(Output<String> replicationPolicyClass) {
             $.replicationPolicyClass = replicationPolicyClass;
             return this;
         }
@@ -377,7 +377,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -547,8 +547,14 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
             if ($.enable == null) {
                 throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "enable");
             }
+            if ($.offsetSyncsTopicLocation == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "offsetSyncsTopicLocation");
+            }
             if ($.project == null) {
                 throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "project");
+            }
+            if ($.replicationPolicyClass == null) {
+                throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "replicationPolicyClass");
             }
             if ($.serviceName == null) {
                 throw new MissingRequiredPropertyException("MirrorMakerReplicationFlowArgs", "serviceName");

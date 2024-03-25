@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RoUsername;
         /// <summary>
-        /// Configuration options for metrics where source service is MySQL.
+        /// Configuration options for metrics where source service is MySQL
         /// </summary>
         public readonly Outputs.ServiceIntegrationMetricsUserConfigSourceMysql? SourceMysql;
         /// <summary>

@@ -67,14 +67,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment")
 public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerCloudAccount", refs={String.class}, tree="[0]")
     private Output<String> peerCloudAccount;
 
     /**
-     * @return AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerCloudAccount() {
@@ -99,14 +99,14 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
         return Codegen.optional(this.peerRegion);
     }
     /**
-     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerVpc", refs={String.class}, tree="[0]")
     private Output<String> peerVpc;
 
     /**
-     * @return Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Transit gateway ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
@@ -169,14 +169,14 @@ public class TransitGatewayVpcAttachment extends com.pulumi.resources.CustomReso
         return this.userPeerNetworkCidrs;
     }
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {

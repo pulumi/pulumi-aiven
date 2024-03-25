@@ -45,7 +45,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time of creation
+        Time of creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -61,7 +61,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Organizational Unit name
+        The name of the organizational unit.
         """
         return pulumi.get(self, "name")
 
@@ -69,7 +69,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
         """
-        Parent ID
+        The ID of the organization that the unit is created in.
         """
         return pulumi.get(self, "parent_id")
 
@@ -77,7 +77,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
         """
-        Tenant ID
+        Tenant ID.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -85,7 +85,7 @@ class GetOrganizationalUnitResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        Time of last update
+        Time of last update.
         """
         return pulumi.get(self, "update_time")
 
@@ -107,10 +107,10 @@ class AwaitableGetOrganizationalUnitResult(GetOrganizationalUnitResult):
 def get_organizational_unit(name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationalUnitResult:
     """
-    The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+    Gets information about an organizational unit.
 
 
-    :param str name: Organizational Unit name
+    :param str name: The name of the organizational unit.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -130,9 +130,9 @@ def get_organizational_unit(name: Optional[str] = None,
 def get_organizational_unit_output(name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationalUnitResult]:
     """
-    The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+    Gets information about an organizational unit.
 
 
-    :param str name: Organizational Unit name
+    :param str name: The name of the organizational unit.
     """
     ...

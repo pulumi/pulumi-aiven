@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Project VPC data source provides information about the existing Aiven Project VPC.
+ * Gets information about the VPC for an Aiven project.
  *
  * ## Example Usage
  *
@@ -14,12 +14,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myvpc = aiven.getProjectVpc({
- *     project: aiven_project.myproject.project,
+ * const exampleVpc = aiven.getProjectVpc({
+ *     project: data.aiven_project.example_project.project,
  *     cloudName: "google-europe-west1",
- * });
- * const myvpcId = aiven.getProjectVpc({
- *     vpcId: aiven_project_vpc.vpc.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -40,7 +37,7 @@ export function getProjectVpc(args?: GetProjectVpcArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetProjectVpcArgs {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      */
     cloudName?: string;
     /**
@@ -48,7 +45,7 @@ export interface GetProjectVpcArgs {
      */
     project?: string;
     /**
-     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      */
     vpcId?: string;
 }
@@ -58,7 +55,7 @@ export interface GetProjectVpcArgs {
  */
 export interface GetProjectVpcResult {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      */
     readonly cloudName?: string;
     /**
@@ -66,7 +63,7 @@ export interface GetProjectVpcResult {
      */
     readonly id: string;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
     readonly networkCidr: string;
     /**
@@ -78,12 +75,12 @@ export interface GetProjectVpcResult {
      */
     readonly state: string;
     /**
-     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      */
     readonly vpcId?: string;
 }
 /**
- * The Project VPC data source provides information about the existing Aiven Project VPC.
+ * Gets information about the VPC for an Aiven project.
  *
  * ## Example Usage
  *
@@ -92,12 +89,9 @@ export interface GetProjectVpcResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myvpc = aiven.getProjectVpc({
- *     project: aiven_project.myproject.project,
+ * const exampleVpc = aiven.getProjectVpc({
+ *     project: data.aiven_project.example_project.project,
  *     cloudName: "google-europe-west1",
- * });
- * const myvpcId = aiven.getProjectVpc({
- *     vpcId: aiven_project_vpc.vpc.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -111,7 +105,7 @@ export function getProjectVpcOutput(args?: GetProjectVpcOutputArgs, opts?: pulum
  */
 export interface GetProjectVpcOutputArgs {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
      */
     cloudName?: pulumi.Input<string>;
     /**
@@ -119,7 +113,7 @@ export interface GetProjectVpcOutputArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+     * The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
      */
     vpcId?: pulumi.Input<string>;
 }

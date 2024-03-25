@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetProjectVpc
     {
         /// <summary>
-        /// The Project VPC data source provides information about the existing Aiven Project VPC.
+        /// Gets information about the VPC for an Aiven project.
         /// 
         /// ## Example Usage
         /// 
@@ -25,15 +25,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myvpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = data.Aiven_project.Example_project.Project,
         ///         CloudName = "google-europe-west1",
-        ///     });
-        /// 
-        ///     var myvpcId = Aiven.GetProjectVpc.Invoke(new()
-        ///     {
-        ///         VpcId = aiven_project_vpc.Vpc.Id,
         ///     });
         /// 
         /// });
@@ -44,7 +39,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectVpcResult>("aiven:index/getProjectVpc:getProjectVpc", args ?? new GetProjectVpcArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Project VPC data source provides information about the existing Aiven Project VPC.
+        /// Gets information about the VPC for an Aiven project.
         /// 
         /// ## Example Usage
         /// 
@@ -57,15 +52,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myvpc = Aiven.GetProjectVpc.Invoke(new()
+        ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = data.Aiven_project.Example_project.Project,
         ///         CloudName = "google-europe-west1",
-        ///     });
-        /// 
-        ///     var myvpcId = Aiven.GetProjectVpc.Invoke(new()
-        ///     {
-        ///         VpcId = aiven_project_vpc.Vpc.Id,
         ///     });
         /// 
         /// });
@@ -80,7 +70,7 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
         /// </summary>
         [Input("cloudName")]
         public string? CloudName { get; set; }
@@ -92,7 +82,7 @@ namespace Pulumi.Aiven
         public string? Project { get; set; }
 
         /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -106,7 +96,7 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
@@ -118,7 +108,7 @@ namespace Pulumi.Aiven
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -134,7 +124,7 @@ namespace Pulumi.Aiven
     public sealed class GetProjectVpcResult
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`.
         /// </summary>
         public readonly string? CloudName;
         /// <summary>
@@ -142,7 +132,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
         /// </summary>
         public readonly string NetworkCidr;
         /// <summary>
@@ -154,7 +144,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// ID of the VPC. This can be used to filter out the specific VPC if there are more than one datasource returned.
+        /// The ID of the VPC. This can be used to filter out the other VPCs if there are more than one for the project and cloud.
         /// </summary>
         public readonly string? VpcId;
 

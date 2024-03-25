@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagGetArgs>? _datadogTags;
 
         /// <summary>
-        /// Custom tags provided by user.
+        /// Custom tags provided by user
         /// </summary>
         public InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagGetArgs> DatadogTags
         {
@@ -97,13 +97,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxJmxMetrics { get; set; }
 
         /// <summary>
-        /// Datadog Opensearch Options.
+        /// Datadog Opensearch Options
         /// </summary>
         [Input("opensearch")]
         public Input<Inputs.ServiceIntegrationDatadogUserConfigOpensearchGetArgs>? Opensearch { get; set; }
 
         /// <summary>
-        /// Datadog Redis Options.
+        /// Datadog Redis Options
         /// </summary>
         [Input("redis")]
         public Input<Inputs.ServiceIntegrationDatadogUserConfigRedisGetArgs>? Redis { get; set; }

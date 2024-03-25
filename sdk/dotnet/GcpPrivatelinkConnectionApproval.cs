@@ -13,39 +13,39 @@ namespace Pulumi.Aiven
     public partial class GcpPrivatelinkConnectionApproval : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Privatelink connection id
+        /// Aiven internal ID for the private link connection.
         /// </summary>
         [Output("privatelinkConnectionId")]
         public Output<string> PrivatelinkConnectionId { get; private set; } = null!;
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink connection PSC connection id
+        /// The Google Private Service Connect connection ID.
         /// </summary>
         [Output("pscConnectionId")]
         public Output<string> PscConnectionId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink connection state
+        /// The state of the connection.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink connection user IP address
+        /// The Private Service Connect connection user IP address.
         /// </summary>
         [Output("userIpAddress")]
         public Output<string> UserIpAddress { get; private set; } = null!;
@@ -98,20 +98,20 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Privatelink connection user IP address
+        /// The Private Service Connect connection user IP address.
         /// </summary>
         [Input("userIpAddress", required: true)]
         public Input<string> UserIpAddress { get; set; } = null!;
@@ -125,39 +125,39 @@ namespace Pulumi.Aiven
     public sealed class GcpPrivatelinkConnectionApprovalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Privatelink connection id
+        /// Aiven internal ID for the private link connection.
         /// </summary>
         [Input("privatelinkConnectionId")]
         public Input<string>? PrivatelinkConnectionId { get; set; }
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Privatelink connection PSC connection id
+        /// The Google Private Service Connect connection ID.
         /// </summary>
         [Input("pscConnectionId")]
         public Input<string>? PscConnectionId { get; set; }
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Privatelink connection state
+        /// The state of the connection.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Privatelink connection user IP address
+        /// The Private Service Connect connection user IP address.
         /// </summary>
         [Input("userIpAddress")]
         public Input<string>? UserIpAddress { get; set; }

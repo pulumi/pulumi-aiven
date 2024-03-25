@@ -63,7 +63,7 @@ export interface GetServiceIntegrationEndpointResult {
      */
     readonly endpointName: string;
     /**
-     * Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
+     * Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog`
      */
     readonly endpointType: string;
     /**

@@ -5,7 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ * Gets information about about an Azure VPC peering connection.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const azureToAivenPeering = aiven.getAzureVpcPeeringConnection({
+ *     vpcId: data.aiven_project_vpc.example_vpc.id,
+ *     azureSubscriptionId: "00000000-0000-0000-0000-000000000000",
+ *     peerResourceGroup: "example-resource-group",
+ *     vnetName: "example-vnet",
+ *     peerAzureAppId: "00000000-0000-0000-0000-000000000000",
+ *     peerAzureTenantId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAzureVpcPeeringConnection(args: GetAzureVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVpcPeeringConnectionResult> {
 
@@ -25,27 +43,27 @@ export function getAzureVpcPeeringConnection(args: GetAzureVpcPeeringConnectionA
  */
 export interface GetAzureVpcPeeringConnectionArgs {
     /**
-     * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      */
     azureSubscriptionId: string;
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      */
     peerAzureAppId: string;
     /**
-     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      */
     peerAzureTenantId: string;
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      */
     peerResourceGroup: string;
     /**
-     * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */
     vnetName: string;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
     vpcId: string;
 }
@@ -55,7 +73,7 @@ export interface GetAzureVpcPeeringConnectionArgs {
  */
 export interface GetAzureVpcPeeringConnectionResult {
     /**
-     * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      */
     readonly azureSubscriptionId: string;
     /**
@@ -63,19 +81,19 @@ export interface GetAzureVpcPeeringConnectionResult {
      */
     readonly id: string;
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      */
     readonly peerAzureAppId: string;
     /**
-     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      */
     readonly peerAzureTenantId: string;
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      */
     readonly peerResourceGroup: string;
     /**
-     * Cloud provider identifier for the peering connection if available
+     * The ID of the cloud provider for the peering connection.
      */
     readonly peeringConnectionId: string;
     /**
@@ -83,20 +101,38 @@ export interface GetAzureVpcPeeringConnectionResult {
      */
     readonly state: string;
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      */
     readonly stateInfo: {[key: string]: any};
     /**
-     * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */
     readonly vnetName: string;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
     readonly vpcId: string;
 }
 /**
- * The Azure VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ * Gets information about about an Azure VPC peering connection.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const azureToAivenPeering = aiven.getAzureVpcPeeringConnection({
+ *     vpcId: data.aiven_project_vpc.example_vpc.id,
+ *     azureSubscriptionId: "00000000-0000-0000-0000-000000000000",
+ *     peerResourceGroup: "example-resource-group",
+ *     vnetName: "example-vnet",
+ *     peerAzureAppId: "00000000-0000-0000-0000-000000000000",
+ *     peerAzureTenantId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVpcPeeringConnectionResult> {
     return pulumi.output(args).apply((a: any) => getAzureVpcPeeringConnection(a, opts))
@@ -107,27 +143,27 @@ export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConne
  */
 export interface GetAzureVpcPeeringConnectionOutputArgs {
     /**
-     * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      */
     azureSubscriptionId: pulumi.Input<string>;
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      */
     peerAzureAppId: pulumi.Input<string>;
     /**
-     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      */
     peerAzureTenantId: pulumi.Input<string>;
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      */
     peerResourceGroup: pulumi.Input<string>;
     /**
-     * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure VNet. Changing this property forces recreation of the resource.
      */
     vnetName: pulumi.Input<string>;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
     vpcId: pulumi.Input<string>;
 }

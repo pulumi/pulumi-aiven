@@ -10,31 +10,31 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Project VPC resource allows the creation and management of Aiven Project VPCs.
+    /// Creates and manages a VPC for an Aiven project.
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+    /// $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/projectVpc:ProjectVpc")]
     public partial class ProjectVpc : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("cloudName")]
         public Output<string> CloudName { get; private set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
         /// </summary>
         [Output("networkCidr")]
         public Output<string> NetworkCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -92,19 +92,19 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudName", required: true)]
         public Input<string> CloudName { get; set; } = null!;
 
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
         /// </summary>
         [Input("networkCidr", required: true)]
         public Input<string> NetworkCidr { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -118,19 +118,19 @@ namespace Pulumi.Aiven
     public sealed class ProjectVpcState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        /// The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Network address range used by the VPC like 192.168.0.0/24
+        /// Network address range used by the VPC. For example, `192.168.0.0/24`.
         /// </summary>
         [Input("networkCidr")]
         public Input<string>? NetworkCidr { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

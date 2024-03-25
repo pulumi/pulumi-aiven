@@ -36,14 +36,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      * 
      */
     @Import(name="datadogTags")
     private @Nullable Output<List<ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>> datadogTags;
 
     /**
-     * @return Custom tags provided by user.
+     * @return Custom tags provided by user
      * 
      */
     public Optional<Output<List<ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs>>> datadogTags() {
@@ -177,7 +177,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogTags Custom tags provided by user.
+         * @param datadogTags Custom tags provided by user
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogTags Custom tags provided by user.
+         * @param datadogTags Custom tags provided by user
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogTags Custom tags provided by user.
+         * @param datadogTags Custom tags provided by user
          * 
          * @return builder
          * 

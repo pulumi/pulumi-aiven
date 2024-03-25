@@ -16,14 +16,14 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetOrganizationArgs Empty = new GetOrganizationArgs();
 
     /**
-     * Identifier of the organization.
+     * ID of the organization.
      * 
      */
     @Import(name="id")
     private @Nullable Output<String> id;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of the organization.
      * 
      */
     public Optional<Output<String>> id() {
@@ -71,7 +71,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id Identifier of the organization.
+         * @param id ID of the organization.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetOrganizationArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param id Identifier of the organization.
+         * @param id ID of the organization.
          * 
          * @return builder
          * 

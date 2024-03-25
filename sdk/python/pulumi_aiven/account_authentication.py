@@ -543,7 +543,9 @@ class AccountAuthentication(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+        **This resource is deprecated**.
+
+        Creates and manages an authentication method.
 
         ## Import
 
@@ -574,7 +576,9 @@ class AccountAuthentication(pulumi.CustomResource):
                  args: AccountAuthenticationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+        **This resource is deprecated**.
+
+        Creates and manages an authentication method.
 
         ## Import
 

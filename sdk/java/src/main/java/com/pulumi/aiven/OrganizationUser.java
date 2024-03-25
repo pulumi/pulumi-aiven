@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * **This resource is deprecated**. Use the aiven.OrganizationUser data source instead.
+ * **This resource is deprecated**. Use the `aiven.OrganizationUser` data source instead.
  * 
  * The organization user resource allows the creation and management of an Aiven organization user.
  * 
@@ -79,28 +79,28 @@ public class OrganizationUser extends com.pulumi.resources.CustomResource {
         return this.invitedBy;
     }
     /**
-     * The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique organization ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="organizationId", refs={String.class}, tree="[0]")
     private Output<String> organizationId;
 
     /**
-     * @return The unique organization ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique organization ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> organizationId() {
         return this.organizationId;
     }
     /**
-     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="userEmail", refs={String.class}, tree="[0]")
     private Output<String> userEmail;
 
     /**
-     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return This is a user email address that first will be invited, and after accepting an invitation, they become a member of the organization. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> userEmail() {

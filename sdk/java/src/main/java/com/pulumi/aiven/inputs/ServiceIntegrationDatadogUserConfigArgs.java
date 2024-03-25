@@ -37,14 +37,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      * 
      */
     @Import(name="datadogTags")
     private @Nullable Output<List<ServiceIntegrationDatadogUserConfigDatadogTagArgs>> datadogTags;
 
     /**
-     * @return Custom tags provided by user.
+     * @return Custom tags provided by user
      * 
      */
     public Optional<Output<List<ServiceIntegrationDatadogUserConfigDatadogTagArgs>>> datadogTags() {
@@ -142,14 +142,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Datadog Opensearch Options.
+     * Datadog Opensearch Options
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<ServiceIntegrationDatadogUserConfigOpensearchArgs> opensearch;
 
     /**
-     * @return Datadog Opensearch Options.
+     * @return Datadog Opensearch Options
      * 
      */
     public Optional<Output<ServiceIntegrationDatadogUserConfigOpensearchArgs>> opensearch() {
@@ -157,14 +157,14 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Datadog Redis Options.
+     * Datadog Redis Options
      * 
      */
     @Import(name="redis")
     private @Nullable Output<ServiceIntegrationDatadogUserConfigRedisArgs> redis;
 
     /**
-     * @return Datadog Redis Options.
+     * @return Datadog Redis Options
      * 
      */
     public Optional<Output<ServiceIntegrationDatadogUserConfigRedisArgs>> redis() {
@@ -226,7 +226,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param datadogTags Custom tags provided by user.
+         * @param datadogTags Custom tags provided by user
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param datadogTags Custom tags provided by user.
+         * @param datadogTags Custom tags provided by user
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param datadogTags Custom tags provided by user.
+         * @param datadogTags Custom tags provided by user
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param opensearch Datadog Opensearch Options.
+         * @param opensearch Datadog Opensearch Options
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param opensearch Datadog Opensearch Options.
+         * @param opensearch Datadog Opensearch Options
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param redis Datadog Redis Options.
+         * @param redis Datadog Redis Options
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param redis Datadog Redis Options.
+         * @param redis Datadog Redis Options
          * 
          * @return builder
          * 

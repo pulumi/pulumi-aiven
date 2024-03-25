@@ -16,7 +16,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+ * Creates and manages a Google Cloud VPC peering connection.
  * 
  * ## Example Usage
  * 
@@ -63,84 +63,84 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection")
 public class GcpVpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="gcpProjectId", refs={String.class}, tree="[0]")
     private Output<String> gcpProjectId;
 
     /**
-     * @return GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud project ID. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> gcpProjectId() {
         return this.gcpProjectId;
     }
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerVpc", refs={String.class}, tree="[0]")
     private Output<String> peerVpc;
 
     /**
-     * @return GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Google Cloud VPC network name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerVpc() {
         return this.peerVpc;
     }
     /**
-     * Computed GCP network peering link
+     * Computed Google Cloud network peering link.
      * 
      */
     @Export(name="selfLink", refs={String.class}, tree="[0]")
     private Output<String> selfLink;
 
     /**
-     * @return Computed GCP network peering link
+     * @return Computed Google Cloud network peering link.
      * 
      */
     public Output<String> selfLink() {
         return this.selfLink;
     }
     /**
-     * State of the peering connection
+     * State of the peering connection.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return State of the peering connection
+     * @return State of the peering connection.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Output<Map<String,Object>> stateInfo() {
         return this.stateInfo;
     }
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {

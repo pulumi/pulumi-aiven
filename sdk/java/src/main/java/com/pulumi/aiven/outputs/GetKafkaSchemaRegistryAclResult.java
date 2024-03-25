@@ -21,27 +21,27 @@ public final class GetKafkaSchemaRegistryAclResult {
      */
     private String id;
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
      * 
      */
     private String permission;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     private String resource;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
@@ -62,35 +62,35 @@ public final class GetKafkaSchemaRegistryAclResult {
         return this.id;
     }
     /**
-     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka Schema Registry permission to grant. The possible values are `schema_registry_read` and `schema_registry_write`. Changing this property forces recreation of the resource.
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Resource name pattern for the Schema Registry ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Resource name pattern for the Schema Registry ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     public String resource() {
         return this.resource;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

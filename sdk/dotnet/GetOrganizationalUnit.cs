@@ -12,13 +12,13 @@ namespace Pulumi.Aiven
     public static class GetOrganizationalUnit
     {
         /// <summary>
-        /// The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+        /// Gets information about an organizational unit.
         /// </summary>
         public static Task<GetOrganizationalUnitResult> InvokeAsync(GetOrganizationalUnitArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOrganizationalUnitResult>("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args ?? new GetOrganizationalUnitArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Organizational Unit data source provides information about the existing Aiven Organizational Unit.
+        /// Gets information about an organizational unit.
         /// </summary>
         public static Output<GetOrganizationalUnitResult> Invoke(GetOrganizationalUnitInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationalUnitResult>("aiven:index/getOrganizationalUnit:getOrganizationalUnit", args ?? new GetOrganizationalUnitInvokeArgs(), options.WithDefaults());
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationalUnitArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Organizational Unit name
+        /// The name of the organizational unit.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationalUnitInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Organizational Unit name
+        /// The name of the organizational unit.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven
     public sealed class GetOrganizationalUnitResult
     {
         /// <summary>
-        /// Time of creation
+        /// Time of creation.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -66,19 +66,19 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Organizational Unit name
+        /// The name of the organizational unit.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Parent ID
+        /// The ID of the organization that the unit is created in.
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// Tenant ID
+        /// Tenant ID.
         /// </summary>
         public readonly string TenantId;
         /// <summary>
-        /// Time of last update
+        /// Time of last update.
         /// </summary>
         public readonly string UpdateTime;
 

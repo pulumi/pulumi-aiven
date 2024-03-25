@@ -16,14 +16,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval")
 public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.CustomResource {
     /**
-     * Privatelink connection id
+     * Aiven internal ID for the private link connection.
      * 
      */
     @Export(name="privatelinkConnectionId", refs={String.class}, tree="[0]")
     private Output<String> privatelinkConnectionId;
 
     /**
-     * @return Privatelink connection id
+     * @return Aiven internal ID for the private link connection.
      * 
      */
     public Output<String> privatelinkConnectionId() {
@@ -31,7 +31,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
     }
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
@@ -39,21 +39,21 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Privatelink connection PSC connection id
+     * The Google Private Service Connect connection ID.
      * 
      */
     @Export(name="pscConnectionId", refs={String.class}, tree="[0]")
     private Output<String> pscConnectionId;
 
     /**
-     * @return Privatelink connection PSC connection id
+     * @return The Google Private Service Connect connection ID.
      * 
      */
     public Output<String> pscConnectionId() {
@@ -61,7 +61,7 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
     }
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
@@ -69,35 +69,35 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Privatelink connection state
+     * The state of the connection.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Privatelink connection state
+     * @return The state of the connection.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * Privatelink connection user IP address
+     * The Private Service Connect connection user IP address.
      * 
      */
     @Export(name="userIpAddress", refs={String.class}, tree="[0]")
     private Output<String> userIpAddress;
 
     /**
-     * @return Privatelink connection user IP address
+     * @return The Private Service Connect connection user IP address.
      * 
      */
     public Output<String> userIpAddress() {

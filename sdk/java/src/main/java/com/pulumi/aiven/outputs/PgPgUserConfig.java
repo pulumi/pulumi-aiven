@@ -7,6 +7,7 @@ import com.pulumi.aiven.outputs.PgPgUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.PgPgUserConfigMigration;
 import com.pulumi.aiven.outputs.PgPgUserConfigPg;
 import com.pulumi.aiven.outputs.PgPgUserConfigPgQualstats;
+import com.pulumi.aiven.outputs.PgPgUserConfigPgaudit;
 import com.pulumi.aiven.outputs.PgPgUserConfigPgbouncer;
 import com.pulumi.aiven.outputs.PgPgUserConfigPglookout;
 import com.pulumi.aiven.outputs.PgPgUserConfigPrivateAccess;
@@ -113,6 +114,11 @@ public final class PgPgUserConfig {
      * 
      */
     private @Nullable String pgVersion;
+    /**
+     * @return System-wide settings for the pgaudit extension
+     * 
+     */
+    private @Nullable PgPgUserConfigPgaudit pgaudit;
     /**
      * @return PGBouncer connection pooling settings
      * 
@@ -311,6 +317,13 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgVersion);
     }
     /**
+     * @return System-wide settings for the pgaudit extension
+     * 
+     */
+    public Optional<PgPgUserConfigPgaudit> pgaudit() {
+        return Optional.ofNullable(this.pgaudit);
+    }
+    /**
      * @return PGBouncer connection pooling settings
      * 
      */
@@ -441,6 +454,7 @@ public final class PgPgUserConfig {
         private @Nullable String pgServiceToForkFrom;
         private @Nullable Boolean pgStatMonitorEnable;
         private @Nullable String pgVersion;
+        private @Nullable PgPgUserConfigPgaudit pgaudit;
         private @Nullable PgPgUserConfigPgbouncer pgbouncer;
         private @Nullable PgPgUserConfigPglookout pglookout;
         private @Nullable PgPgUserConfigPrivateAccess privateAccess;
@@ -475,6 +489,7 @@ public final class PgPgUserConfig {
     	      this.pgServiceToForkFrom = defaults.pgServiceToForkFrom;
     	      this.pgStatMonitorEnable = defaults.pgStatMonitorEnable;
     	      this.pgVersion = defaults.pgVersion;
+    	      this.pgaudit = defaults.pgaudit;
     	      this.pgbouncer = defaults.pgbouncer;
     	      this.pglookout = defaults.pglookout;
     	      this.privateAccess = defaults.privateAccess;
@@ -598,6 +613,12 @@ public final class PgPgUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder pgaudit(@Nullable PgPgUserConfigPgaudit pgaudit) {
+
+            this.pgaudit = pgaudit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder pgbouncer(@Nullable PgPgUserConfigPgbouncer pgbouncer) {
 
             this.pgbouncer = pgbouncer;
@@ -705,6 +726,7 @@ public final class PgPgUserConfig {
             _resultValue.pgServiceToForkFrom = pgServiceToForkFrom;
             _resultValue.pgStatMonitorEnable = pgStatMonitorEnable;
             _resultValue.pgVersion = pgVersion;
+            _resultValue.pgaudit = pgaudit;
             _resultValue.pgbouncer = pgbouncer;
             _resultValue.pglookout = pglookout;
             _resultValue.privateAccess = privateAccess;

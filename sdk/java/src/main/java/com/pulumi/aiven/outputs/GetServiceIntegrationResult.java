@@ -6,12 +6,16 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhouseKafkaUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationClickhousePostgresqlUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationDatadogUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationExternalOpensearchLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaConnectUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationLogsUserConfig;
 import com.pulumi.aiven.outputs.GetServiceIntegrationMetricsUserConfig;
+import com.pulumi.aiven.outputs.GetServiceIntegrationPrometheusUserConfig;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
@@ -46,10 +50,25 @@ public final class GetServiceIntegrationResult {
      */
     private String destinationServiceName;
     /**
+     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
+    /**
      * @return ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
     private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
+    /**
+     * @return ExternalElasticsearchLogs user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
+    /**
+     * @return ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -61,7 +80,7 @@ public final class GetServiceIntegrationResult {
      */
     private String integrationId;
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     private String integrationType;
@@ -95,6 +114,11 @@ public final class GetServiceIntegrationResult {
      * 
      */
     private String project;
+    /**
+     * @return Prometheus user configurable settings
+     * 
+     */
+    private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
     /**
      * @return Source endpoint for the integration (if any)
      * 
@@ -143,11 +167,32 @@ public final class GetServiceIntegrationResult {
         return this.destinationServiceName;
     }
     /**
+     * @return ExternalAwsCloudwatchLogs user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs() {
+        return this.externalAwsCloudwatchLogsUserConfigs;
+    }
+    /**
      * @return ExternalAwsCloudwatchMetrics user configurable settings
      * 
      */
     public List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs() {
         return this.externalAwsCloudwatchMetricsUserConfigs;
+    }
+    /**
+     * @return ExternalElasticsearchLogs user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs() {
+        return this.externalElasticsearchLogsUserConfigs;
+    }
+    /**
+     * @return ExternalOpensearchLogs user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs() {
+        return this.externalOpensearchLogsUserConfigs;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -164,7 +209,7 @@ public final class GetServiceIntegrationResult {
         return this.integrationId;
     }
     /**
-     * @return Type of the service integration. Possible values: `alertmanager`, `cassandra_cross_service_cluster`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`
+     * @return Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      * 
      */
     public String integrationType() {
@@ -213,6 +258,13 @@ public final class GetServiceIntegrationResult {
         return this.project;
     }
     /**
+     * @return Prometheus user configurable settings
+     * 
+     */
+    public List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs() {
+        return this.prometheusUserConfigs;
+    }
+    /**
      * @return Source endpoint for the integration (if any)
      * 
      */
@@ -241,7 +293,10 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
         private String destinationEndpointId;
         private String destinationServiceName;
+        private List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs;
         private List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs;
+        private List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs;
+        private List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs;
         private String id;
         private String integrationId;
         private String integrationType;
@@ -251,6 +306,7 @@ public final class GetServiceIntegrationResult {
         private List<GetServiceIntegrationLogsUserConfig> logsUserConfigs;
         private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
         private String project;
+        private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
         private String sourceEndpointId;
         private String sourceServiceName;
         public Builder() {}
@@ -261,7 +317,10 @@ public final class GetServiceIntegrationResult {
     	      this.datadogUserConfigs = defaults.datadogUserConfigs;
     	      this.destinationEndpointId = defaults.destinationEndpointId;
     	      this.destinationServiceName = defaults.destinationServiceName;
+    	      this.externalAwsCloudwatchLogsUserConfigs = defaults.externalAwsCloudwatchLogsUserConfigs;
     	      this.externalAwsCloudwatchMetricsUserConfigs = defaults.externalAwsCloudwatchMetricsUserConfigs;
+    	      this.externalElasticsearchLogsUserConfigs = defaults.externalElasticsearchLogsUserConfigs;
+    	      this.externalOpensearchLogsUserConfigs = defaults.externalOpensearchLogsUserConfigs;
     	      this.id = defaults.id;
     	      this.integrationId = defaults.integrationId;
     	      this.integrationType = defaults.integrationType;
@@ -271,6 +330,7 @@ public final class GetServiceIntegrationResult {
     	      this.logsUserConfigs = defaults.logsUserConfigs;
     	      this.metricsUserConfigs = defaults.metricsUserConfigs;
     	      this.project = defaults.project;
+    	      this.prometheusUserConfigs = defaults.prometheusUserConfigs;
     	      this.sourceEndpointId = defaults.sourceEndpointId;
     	      this.sourceServiceName = defaults.sourceServiceName;
         }
@@ -325,6 +385,17 @@ public final class GetServiceIntegrationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder externalAwsCloudwatchLogsUserConfigs(List<GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig> externalAwsCloudwatchLogsUserConfigs) {
+            if (externalAwsCloudwatchLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "externalAwsCloudwatchLogsUserConfigs");
+            }
+            this.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
+            return this;
+        }
+        public Builder externalAwsCloudwatchLogsUserConfigs(GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig... externalAwsCloudwatchLogsUserConfigs) {
+            return externalAwsCloudwatchLogsUserConfigs(List.of(externalAwsCloudwatchLogsUserConfigs));
+        }
+        @CustomType.Setter
         public Builder externalAwsCloudwatchMetricsUserConfigs(List<GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig> externalAwsCloudwatchMetricsUserConfigs) {
             if (externalAwsCloudwatchMetricsUserConfigs == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "externalAwsCloudwatchMetricsUserConfigs");
@@ -334,6 +405,28 @@ public final class GetServiceIntegrationResult {
         }
         public Builder externalAwsCloudwatchMetricsUserConfigs(GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig... externalAwsCloudwatchMetricsUserConfigs) {
             return externalAwsCloudwatchMetricsUserConfigs(List.of(externalAwsCloudwatchMetricsUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder externalElasticsearchLogsUserConfigs(List<GetServiceIntegrationExternalElasticsearchLogsUserConfig> externalElasticsearchLogsUserConfigs) {
+            if (externalElasticsearchLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "externalElasticsearchLogsUserConfigs");
+            }
+            this.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            return this;
+        }
+        public Builder externalElasticsearchLogsUserConfigs(GetServiceIntegrationExternalElasticsearchLogsUserConfig... externalElasticsearchLogsUserConfigs) {
+            return externalElasticsearchLogsUserConfigs(List.of(externalElasticsearchLogsUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder externalOpensearchLogsUserConfigs(List<GetServiceIntegrationExternalOpensearchLogsUserConfig> externalOpensearchLogsUserConfigs) {
+            if (externalOpensearchLogsUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "externalOpensearchLogsUserConfigs");
+            }
+            this.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
+            return this;
+        }
+        public Builder externalOpensearchLogsUserConfigs(GetServiceIntegrationExternalOpensearchLogsUserConfig... externalOpensearchLogsUserConfigs) {
+            return externalOpensearchLogsUserConfigs(List.of(externalOpensearchLogsUserConfigs));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -423,6 +516,17 @@ public final class GetServiceIntegrationResult {
             return this;
         }
         @CustomType.Setter
+        public Builder prometheusUserConfigs(List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs) {
+            if (prometheusUserConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "prometheusUserConfigs");
+            }
+            this.prometheusUserConfigs = prometheusUserConfigs;
+            return this;
+        }
+        public Builder prometheusUserConfigs(GetServiceIntegrationPrometheusUserConfig... prometheusUserConfigs) {
+            return prometheusUserConfigs(List.of(prometheusUserConfigs));
+        }
+        @CustomType.Setter
         public Builder sourceEndpointId(String sourceEndpointId) {
             if (sourceEndpointId == null) {
               throw new MissingRequiredPropertyException("GetServiceIntegrationResult", "sourceEndpointId");
@@ -445,7 +549,10 @@ public final class GetServiceIntegrationResult {
             _resultValue.datadogUserConfigs = datadogUserConfigs;
             _resultValue.destinationEndpointId = destinationEndpointId;
             _resultValue.destinationServiceName = destinationServiceName;
+            _resultValue.externalAwsCloudwatchLogsUserConfigs = externalAwsCloudwatchLogsUserConfigs;
             _resultValue.externalAwsCloudwatchMetricsUserConfigs = externalAwsCloudwatchMetricsUserConfigs;
+            _resultValue.externalElasticsearchLogsUserConfigs = externalElasticsearchLogsUserConfigs;
+            _resultValue.externalOpensearchLogsUserConfigs = externalOpensearchLogsUserConfigs;
             _resultValue.id = id;
             _resultValue.integrationId = integrationId;
             _resultValue.integrationType = integrationType;
@@ -455,6 +562,7 @@ public final class GetServiceIntegrationResult {
             _resultValue.logsUserConfigs = logsUserConfigs;
             _resultValue.metricsUserConfigs = metricsUserConfigs;
             _resultValue.project = project;
+            _resultValue.prometheusUserConfigs = prometheusUserConfigs;
             _resultValue.sourceEndpointId = sourceEndpointId;
             _resultValue.sourceServiceName = sourceServiceName;
             return _resultValue;

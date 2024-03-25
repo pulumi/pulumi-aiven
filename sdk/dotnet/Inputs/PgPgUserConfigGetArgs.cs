@@ -138,6 +138,12 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? PgVersion { get; set; }
 
         /// <summary>
+        /// System-wide settings for the pgaudit extension
+        /// </summary>
+        [Input("pgaudit")]
+        public Input<Inputs.PgPgUserConfigPgauditGetArgs>? Pgaudit { get; set; }
+
+        /// <summary>
         /// PGBouncer connection pooling settings
         /// </summary>
         [Input("pgbouncer")]

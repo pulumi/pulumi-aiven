@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+    /// Creates and manages a Google Cloud VPC peering connection.
     /// 
     /// ## Example Usage
     /// 
@@ -44,37 +44,37 @@ namespace Pulumi.Aiven
     public partial class GcpVpcPeeringConnection : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// Google Cloud project ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("gcpProjectId")]
         public Output<string> GcpProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        /// Google Cloud VPC network name. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("peerVpc")]
         public Output<string> PeerVpc { get; private set; } = null!;
 
         /// <summary>
-        /// Computed GCP network peering link
+        /// Computed Google Cloud network peering link.
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// State of the peering connection
+        /// State of the peering connection.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// State-specific help or error information
+        /// State-specific help or error information.
         /// </summary>
         [Output("stateInfo")]
         public Output<ImmutableDictionary<string, object>> StateInfo { get; private set; } = null!;
 
         /// <summary>
-        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("vpcId")]
         public Output<string> VpcId { get; private set; } = null!;
@@ -126,19 +126,19 @@ namespace Pulumi.Aiven
     public sealed class GcpVpcPeeringConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// Google Cloud project ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("gcpProjectId", required: true)]
         public Input<string> GcpProjectId { get; set; } = null!;
 
         /// <summary>
-        /// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        /// Google Cloud VPC network name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerVpc", required: true)]
         public Input<string> PeerVpc { get; set; } = null!;
 
         /// <summary>
-        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
@@ -152,25 +152,25 @@ namespace Pulumi.Aiven
     public sealed class GcpVpcPeeringConnectionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        /// Google Cloud project ID. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("gcpProjectId")]
         public Input<string>? GcpProjectId { get; set; }
 
         /// <summary>
-        /// GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        /// Google Cloud VPC network name. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("peerVpc")]
         public Input<string>? PeerVpc { get; set; }
 
         /// <summary>
-        /// Computed GCP network peering link
+        /// Computed Google Cloud network peering link.
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// State of the peering connection
+        /// State of the peering connection.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
@@ -179,7 +179,7 @@ namespace Pulumi.Aiven
         private InputMap<object>? _stateInfo;
 
         /// <summary>
-        /// State-specific help or error information
+        /// State-specific help or error information.
         /// </summary>
         public InputMap<object> StateInfo
         {
@@ -188,7 +188,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        /// The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

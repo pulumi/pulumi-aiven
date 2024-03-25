@@ -19,7 +19,7 @@ public final class GetKafkaConnectorResult {
      */
     private Map<String,String> config;
     /**
-     * @return The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     private String connectorName;
@@ -59,12 +59,12 @@ public final class GetKafkaConnectorResult {
      */
     private String pluginVersion;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
@@ -83,7 +83,7 @@ public final class GetKafkaConnectorResult {
         return this.config;
     }
     /**
-     * @return The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The kafka connector name. Changing this property forces recreation of the resource.
      * 
      */
     public String connectorName() {
@@ -139,14 +139,14 @@ public final class GetKafkaConnectorResult {
         return this.pluginVersion;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {

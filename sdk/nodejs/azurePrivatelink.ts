@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+ * Creates and manages an Azure Private Link for [selected Aiven services](https://aiven.io/docs/platform/howto/use-azure-privatelink) in a VPC.
  *
  * ## Example Usage
  *
@@ -14,10 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = new aiven.AzurePrivatelink("foo", {
- *     project: data.aiven_project.foo.project,
- *     serviceName: aiven_kafka.bar.service_name,
- *     userSubscriptionIds: ["xxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"],
+ * const main = new aiven.AzurePrivatelink("main", {
+ *     project: data.aiven_project.example_project.project,
+ *     serviceName: aiven_kafka.example_kafka.service_name,
+ *     userSubscriptionIds: ["00000000-0000-0000-0000-000000000000"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink foo project/service_name
+ * $ pulumi import aiven:index/azurePrivatelink:AzurePrivatelink main PROJECT/SERVICE_NAME
  * ```
  */
 export class AzurePrivatelink extends pulumi.CustomResource {
@@ -57,31 +57,31 @@ export class AzurePrivatelink extends pulumi.CustomResource {
     }
 
     /**
-     * Azure Privatelink service alias
+     * The Azure Private Link service alias.
      */
     public /*out*/ readonly azureServiceAlias!: pulumi.Output<string>;
     /**
-     * Azure Privatelink service ID
+     * The Azure Private Link service ID.
      */
     public /*out*/ readonly azureServiceId!: pulumi.Output<string>;
     /**
-     * Printable result of the Azure Privatelink request
+     * Printable result of the Azure Private Link request.
      */
     public /*out*/ readonly message!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Privatelink resource state
+     * The state of the Private Link resource.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * A List of allowed Subscription IDs. Maximum length: `16`.
+     * A list of allowed subscription IDs. Maximum length: `16`.
      */
     public readonly userSubscriptionIds!: pulumi.Output<string[]>;
 
@@ -134,31 +134,31 @@ export class AzurePrivatelink extends pulumi.CustomResource {
  */
 export interface AzurePrivatelinkState {
     /**
-     * Azure Privatelink service alias
+     * The Azure Private Link service alias.
      */
     azureServiceAlias?: pulumi.Input<string>;
     /**
-     * Azure Privatelink service ID
+     * The Azure Private Link service ID.
      */
     azureServiceId?: pulumi.Input<string>;
     /**
-     * Printable result of the Azure Privatelink request
+     * Printable result of the Azure Private Link request.
      */
     message?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Privatelink resource state
+     * The state of the Private Link resource.
      */
     state?: pulumi.Input<string>;
     /**
-     * A List of allowed Subscription IDs. Maximum length: `16`.
+     * A list of allowed subscription IDs. Maximum length: `16`.
      */
     userSubscriptionIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -168,15 +168,15 @@ export interface AzurePrivatelinkState {
  */
 export interface AzurePrivatelinkArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * A List of allowed Subscription IDs. Maximum length: `16`.
+     * A list of allowed subscription IDs. Maximum length: `16`.
      */
     userSubscriptionIds: pulumi.Input<pulumi.Input<string>[]>;
 }

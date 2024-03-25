@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves information about an organization from Aiven.
+// Gets information about an organization.
 //
 // ## Example Usage
 //
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupOrganization(ctx, &aiven.LookupOrganizationArgs{
-//				Name: pulumi.StringRef("<ORGANIZATION_NAME>"),
+//				Name: pulumi.StringRef("Example organization"),
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -52,7 +52,7 @@ func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts 
 
 // A collection of arguments for invoking getOrganization.
 type LookupOrganizationArgs struct {
-	// Identifier of the organization.
+	// ID of the organization.
 	Id *string `pulumi:"id"`
 	// Name of the organization.
 	Name *string `pulumi:"name"`
@@ -62,11 +62,11 @@ type LookupOrganizationArgs struct {
 type LookupOrganizationResult struct {
 	// Timestamp of the creation of the organization.
 	CreateTime string `pulumi:"createTime"`
-	// Identifier of the organization.
+	// ID of the organization.
 	Id *string `pulumi:"id"`
 	// Name of the organization.
 	Name *string `pulumi:"name"`
-	// Tenant identifier of the organization.
+	// Tenant ID of the organization.
 	TenantId string `pulumi:"tenantId"`
 	// Timestamp of the last update of the organization.
 	UpdateTime string `pulumi:"updateTime"`
@@ -87,7 +87,7 @@ func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutput
 
 // A collection of arguments for invoking getOrganization.
 type LookupOrganizationOutputArgs struct {
-	// Identifier of the organization.
+	// ID of the organization.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Name of the organization.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -117,7 +117,7 @@ func (o LookupOrganizationResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Identifier of the organization.
+// ID of the organization.
 func (o LookupOrganizationResultOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -127,7 +127,7 @@ func (o LookupOrganizationResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Tenant identifier of the organization.
+// Tenant ID of the organization.
 func (o LookupOrganizationResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.TenantId }).(pulumi.StringOutput)
 }

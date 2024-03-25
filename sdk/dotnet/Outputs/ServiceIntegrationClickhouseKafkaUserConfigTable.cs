@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AutoOffsetReset;
         /// <summary>
-        /// Table columns.
+        /// Table columns
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn> Columns;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? SkipBrokenMessages;
         /// <summary>
-        /// Kafka topics.
+        /// Kafka topics
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic> Topics;
 

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * @return Tables to create.
+     * @return Tables to create
      * 
      */
     private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTable> tables;
 
     private ServiceIntegrationClickhouseKafkaUserConfig() {}
     /**
-     * @return Tables to create.
+     * @return Tables to create
      * 
      */
     public List<ServiceIntegrationClickhouseKafkaUserConfigTable> tables() {

@@ -48,7 +48,7 @@ class GetPgDatabaseResult:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
         """
-        The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the service database. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -64,7 +64,7 @@ class GetPgDatabaseResult:
     @pulumi.getter(name="lcCollate")
     def lc_collate(self) -> str:
         """
-        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_collate")
 
@@ -72,7 +72,7 @@ class GetPgDatabaseResult:
     @pulumi.getter(name="lcCtype")
     def lc_ctype(self) -> str:
         """
-        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+        Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "lc_ctype")
 
@@ -80,7 +80,7 @@ class GetPgDatabaseResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -88,7 +88,7 @@ class GetPgDatabaseResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -134,9 +134,9 @@ def get_pg_database(database_name: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str database_name: The name of the service database. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['databaseName'] = database_name
@@ -177,8 +177,8 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str database_name: The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str database_name: The name of the service database. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

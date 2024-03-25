@@ -17,14 +17,14 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
     public static final InfluxdbDatabaseState Empty = new InfluxdbDatabaseState();
 
     /**
-     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the service database. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="databaseName")
     private @Nullable Output<String> databaseName;
 
     /**
-     * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the service database. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> databaseName() {
@@ -33,7 +33,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
@@ -41,7 +41,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -50,7 +50,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
@@ -58,7 +58,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -110,7 +110,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param databaseName The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param databaseName The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+         * @param databaseName The name of the service database. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class InfluxdbDatabaseState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

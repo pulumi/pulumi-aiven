@@ -15,14 +15,14 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetProjectUserArgs Empty = new GetProjectUserArgs();
 
     /**
-     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
-     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> email() {
@@ -30,14 +30,14 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -70,7 +70,7 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param email Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param email Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class GetProjectUserArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -108,7 +108,7 @@ type MySql struct {
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
 	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -235,7 +235,7 @@ type mySqlState struct {
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
 	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -319,7 +319,7 @@ type MySqlState struct {
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
 	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -393,7 +393,7 @@ type mySqlArgs struct {
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
 	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -450,7 +450,7 @@ type MySqlArgs struct {
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
 	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -645,7 +645,7 @@ func (o MySqlOutput) Plan() pulumi.StringOutput {
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// reference. Changing this property forces recreation of the resource.
 func (o MySqlOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

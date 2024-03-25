@@ -76,31 +76,31 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public string Permission { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topic", required: true)]
         public string Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public string Username { get; set; } = null!;
@@ -114,31 +114,31 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaAclInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
 
         /// <summary>
-        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -162,23 +162,23 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+        /// Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Permission;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Topic;
         /// <summary>
-        /// Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+        /// Username pattern for the ACL entry. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Username;
 

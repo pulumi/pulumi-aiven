@@ -62,7 +62,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> str:
         """
-        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "database_name")
 
@@ -86,7 +86,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="poolName")
     def pool_name(self) -> str:
         """
-        The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the created pool. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "pool_name")
 
@@ -102,7 +102,7 @@ class GetConnectionPoolResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -110,7 +110,7 @@ class GetConnectionPoolResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -161,9 +161,9 @@ def get_connection_pool(pool_name: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str pool_name: The name of the created pool. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['poolName'] = pool_name
@@ -206,8 +206,8 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str pool_name: The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str pool_name: The name of the created pool. Changing this property forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

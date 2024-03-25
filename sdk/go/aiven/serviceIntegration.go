@@ -70,11 +70,17 @@ type ServiceIntegration struct {
 	DestinationEndpointId pulumi.StringPtrOutput `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrOutput `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchLogs user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	// ExternalElasticsearchLogs user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput `pulumi:"externalElasticsearchLogsUserConfig"`
+	// ExternalOpensearchLogs user configurable settings
+	ExternalOpensearchLogsUserConfig ServiceIntegrationExternalOpensearchLogsUserConfigPtrOutput `pulumi:"externalOpensearchLogsUserConfig"`
 	// Service Integration Id at aiven
 	IntegrationId pulumi.StringOutput `pulumi:"integrationId"`
-	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType pulumi.StringOutput `pulumi:"integrationType"`
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrOutput `pulumi:"kafkaConnectUserConfig"`
@@ -88,6 +94,8 @@ type ServiceIntegration struct {
 	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrOutput `pulumi:"metricsUserConfig"`
 	// Project the integration belongs to
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Prometheus user configurable settings
+	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrOutput `pulumi:"prometheusUserConfig"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId pulumi.StringPtrOutput `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -140,11 +148,17 @@ type serviceIntegrationState struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchLogs user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
+	// ExternalElasticsearchLogs user configurable settings
+	ExternalElasticsearchLogsUserConfig *ServiceIntegrationExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// ExternalOpensearchLogs user configurable settings
+	ExternalOpensearchLogsUserConfig *ServiceIntegrationExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
 	// Service Integration Id at aiven
 	IntegrationId *string `pulumi:"integrationId"`
-	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType *string `pulumi:"integrationType"`
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -158,6 +172,8 @@ type serviceIntegrationState struct {
 	MetricsUserConfig *ServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfig"`
 	// Project the integration belongs to
 	Project *string `pulumi:"project"`
+	// Prometheus user configurable settings
+	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -175,11 +191,17 @@ type ServiceIntegrationState struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
+	// ExternalAwsCloudwatchLogs user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput
+	// ExternalElasticsearchLogs user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput
+	// ExternalOpensearchLogs user configurable settings
+	ExternalOpensearchLogsUserConfig ServiceIntegrationExternalOpensearchLogsUserConfigPtrInput
 	// Service Integration Id at aiven
 	IntegrationId pulumi.StringPtrInput
-	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType pulumi.StringPtrInput
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
@@ -193,6 +215,8 @@ type ServiceIntegrationState struct {
 	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringPtrInput
+	// Prometheus user configurable settings
+	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
 	// Source endpoint for the integration (if any)
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
@@ -214,9 +238,15 @@ type serviceIntegrationArgs struct {
 	DestinationEndpointId *string `pulumi:"destinationEndpointId"`
 	// Destination service for the integration (if any)
 	DestinationServiceName *string `pulumi:"destinationServiceName"`
+	// ExternalAwsCloudwatchLogs user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig *ServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfig"`
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig *ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig `pulumi:"externalAwsCloudwatchMetricsUserConfig"`
-	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+	// ExternalElasticsearchLogs user configurable settings
+	ExternalElasticsearchLogsUserConfig *ServiceIntegrationExternalElasticsearchLogsUserConfig `pulumi:"externalElasticsearchLogsUserConfig"`
+	// ExternalOpensearchLogs user configurable settings
+	ExternalOpensearchLogsUserConfig *ServiceIntegrationExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfig"`
+	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType string `pulumi:"integrationType"`
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig *ServiceIntegrationKafkaConnectUserConfig `pulumi:"kafkaConnectUserConfig"`
@@ -230,6 +260,8 @@ type serviceIntegrationArgs struct {
 	MetricsUserConfig *ServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfig"`
 	// Project the integration belongs to
 	Project string `pulumi:"project"`
+	// Prometheus user configurable settings
+	PrometheusUserConfig *ServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfig"`
 	// Source endpoint for the integration (if any)
 	SourceEndpointId *string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
@@ -248,9 +280,15 @@ type ServiceIntegrationArgs struct {
 	DestinationEndpointId pulumi.StringPtrInput
 	// Destination service for the integration (if any)
 	DestinationServiceName pulumi.StringPtrInput
+	// ExternalAwsCloudwatchLogs user configurable settings
+	ExternalAwsCloudwatchLogsUserConfig ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrInput
 	// ExternalAwsCloudwatchMetrics user configurable settings
 	ExternalAwsCloudwatchMetricsUserConfig ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrInput
-	// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+	// ExternalElasticsearchLogs user configurable settings
+	ExternalElasticsearchLogsUserConfig ServiceIntegrationExternalElasticsearchLogsUserConfigPtrInput
+	// ExternalOpensearchLogs user configurable settings
+	ExternalOpensearchLogsUserConfig ServiceIntegrationExternalOpensearchLogsUserConfigPtrInput
+	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType pulumi.StringInput
 	// KafkaConnect user configurable settings
 	KafkaConnectUserConfig ServiceIntegrationKafkaConnectUserConfigPtrInput
@@ -264,6 +302,8 @@ type ServiceIntegrationArgs struct {
 	MetricsUserConfig ServiceIntegrationMetricsUserConfigPtrInput
 	// Project the integration belongs to
 	Project pulumi.StringInput
+	// Prometheus user configurable settings
+	PrometheusUserConfig ServiceIntegrationPrometheusUserConfigPtrInput
 	// Source endpoint for the integration (if any)
 	SourceEndpointId pulumi.StringPtrInput
 	// Source service for the integration (if any)
@@ -386,6 +426,13 @@ func (o ServiceIntegrationOutput) DestinationServiceName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringPtrOutput { return v.DestinationServiceName }).(pulumi.StringPtrOutput)
 }
 
+// ExternalAwsCloudwatchLogs user configurable settings
+func (o ServiceIntegrationOutput) ExternalAwsCloudwatchLogsUserConfig() ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput {
+		return v.ExternalAwsCloudwatchLogsUserConfig
+	}).(ServiceIntegrationExternalAwsCloudwatchLogsUserConfigPtrOutput)
+}
+
 // ExternalAwsCloudwatchMetrics user configurable settings
 func (o ServiceIntegrationOutput) ExternalAwsCloudwatchMetricsUserConfig() ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
 	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput {
@@ -393,12 +440,26 @@ func (o ServiceIntegrationOutput) ExternalAwsCloudwatchMetricsUserConfig() Servi
 	}).(ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigPtrOutput)
 }
 
+// ExternalElasticsearchLogs user configurable settings
+func (o ServiceIntegrationOutput) ExternalElasticsearchLogsUserConfig() ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput {
+		return v.ExternalElasticsearchLogsUserConfig
+	}).(ServiceIntegrationExternalElasticsearchLogsUserConfigPtrOutput)
+}
+
+// ExternalOpensearchLogs user configurable settings
+func (o ServiceIntegrationOutput) ExternalOpensearchLogsUserConfig() ServiceIntegrationExternalOpensearchLogsUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationExternalOpensearchLogsUserConfigPtrOutput {
+		return v.ExternalOpensearchLogsUserConfig
+	}).(ServiceIntegrationExternalOpensearchLogsUserConfigPtrOutput)
+}
+
 // Service Integration Id at aiven
 func (o ServiceIntegrationOutput) IntegrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.IntegrationId }).(pulumi.StringOutput)
 }
 
-// Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 func (o ServiceIntegrationOutput) IntegrationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.IntegrationType }).(pulumi.StringOutput)
 }
@@ -437,6 +498,13 @@ func (o ServiceIntegrationOutput) MetricsUserConfig() ServiceIntegrationMetricsU
 // Project the integration belongs to
 func (o ServiceIntegrationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceIntegration) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Prometheus user configurable settings
+func (o ServiceIntegrationOutput) PrometheusUserConfig() ServiceIntegrationPrometheusUserConfigPtrOutput {
+	return o.ApplyT(func(v *ServiceIntegration) ServiceIntegrationPrometheusUserConfigPtrOutput {
+		return v.PrometheusUserConfig
+	}).(ServiceIntegrationPrometheusUserConfigPtrOutput)
 }
 
 // Source endpoint for the integration (if any)

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+ * Creates and manages a Google Cloud VPC peering connection.
  *
  * ## Example Usage
  *
@@ -57,27 +57,27 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
     }
 
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
     public readonly gcpProjectId!: pulumi.Output<string>;
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
     public readonly peerVpc!: pulumi.Output<string>;
     /**
-     * Computed GCP network peering link
+     * Computed Google Cloud network peering link.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * State of the peering connection
+     * State of the peering connection.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      */
     public /*out*/ readonly stateInfo!: pulumi.Output<{[key: string]: any}>;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
     public readonly vpcId!: pulumi.Output<string>;
 
@@ -128,27 +128,27 @@ export class GcpVpcPeeringConnection extends pulumi.CustomResource {
  */
 export interface GcpVpcPeeringConnectionState {
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
     gcpProjectId?: pulumi.Input<string>;
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
     peerVpc?: pulumi.Input<string>;
     /**
-     * Computed GCP network peering link
+     * Computed Google Cloud network peering link.
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * State of the peering connection
+     * State of the peering connection.
      */
     state?: pulumi.Input<string>;
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      */
     stateInfo?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -158,15 +158,15 @@ export interface GcpVpcPeeringConnectionState {
  */
 export interface GcpVpcPeeringConnectionArgs {
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
     gcpProjectId: pulumi.Input<string>;
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
     peerVpc: pulumi.Input<string>;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
     vpcId: pulumi.Input<string>;
 }

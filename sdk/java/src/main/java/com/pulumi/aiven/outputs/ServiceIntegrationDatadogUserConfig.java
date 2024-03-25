@@ -23,7 +23,7 @@ public final class ServiceIntegrationDatadogUserConfig {
      */
     private @Nullable Boolean datadogDbmEnabled;
     /**
-     * @return Custom tags provided by user.
+     * @return Custom tags provided by user
      * 
      */
     private @Nullable List<ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
@@ -58,12 +58,12 @@ public final class ServiceIntegrationDatadogUserConfig {
      */
     private @Nullable Integer maxJmxMetrics;
     /**
-     * @return Datadog Opensearch Options.
+     * @return Datadog Opensearch Options
      * 
      */
     private @Nullable ServiceIntegrationDatadogUserConfigOpensearch opensearch;
     /**
-     * @return Datadog Redis Options.
+     * @return Datadog Redis Options
      * 
      */
     private @Nullable ServiceIntegrationDatadogUserConfigRedis redis;
@@ -77,7 +77,7 @@ public final class ServiceIntegrationDatadogUserConfig {
         return Optional.ofNullable(this.datadogDbmEnabled);
     }
     /**
-     * @return Custom tags provided by user.
+     * @return Custom tags provided by user
      * 
      */
     public List<ServiceIntegrationDatadogUserConfigDatadogTag> datadogTags() {
@@ -126,14 +126,14 @@ public final class ServiceIntegrationDatadogUserConfig {
         return Optional.ofNullable(this.maxJmxMetrics);
     }
     /**
-     * @return Datadog Opensearch Options.
+     * @return Datadog Opensearch Options
      * 
      */
     public Optional<ServiceIntegrationDatadogUserConfigOpensearch> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return Datadog Redis Options.
+     * @return Datadog Redis Options
      * 
      */
     public Optional<ServiceIntegrationDatadogUserConfigRedis> redis() {

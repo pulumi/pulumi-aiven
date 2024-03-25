@@ -16,14 +16,14 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlArgs extends co
     public static final ServiceIntegrationMetricsUserConfigSourceMysqlArgs Empty = new ServiceIntegrationMetricsUserConfigSourceMysqlArgs();
 
     /**
-     * Configuration options for Telegraf MySQL input plugin.
+     * Configuration options for Telegraf MySQL input plugin
      * 
      */
     @Import(name="telegraf")
     private @Nullable Output<ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs> telegraf;
 
     /**
-     * @return Configuration options for Telegraf MySQL input plugin.
+     * @return Configuration options for Telegraf MySQL input plugin
      * 
      */
     public Optional<Output<ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs>> telegraf() {
@@ -55,7 +55,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlArgs extends co
         }
 
         /**
-         * @param telegraf Configuration options for Telegraf MySQL input plugin.
+         * @param telegraf Configuration options for Telegraf MySQL input plugin
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlArgs extends co
         }
 
         /**
-         * @param telegraf Configuration options for Telegraf MySQL input plugin.
+         * @param telegraf Configuration options for Telegraf MySQL input plugin
          * 
          * @return builder
          * 

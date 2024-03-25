@@ -12,7 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Account Authentication resource allows the creation and management of an Aiven Account Authentications.
+// **This resource is deprecated**.
+//
+// Creates and manages an authentication method.
 //
 // ## Import
 //

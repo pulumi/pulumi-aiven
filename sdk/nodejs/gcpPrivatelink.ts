@@ -33,25 +33,25 @@ export class GcpPrivatelink extends pulumi.CustomResource {
     }
 
     /**
-     * Privatelink resource Google Service Attachment
+     * Google Private Service Connect service attachment.
      */
     public /*out*/ readonly googleServiceAttachment!: pulumi.Output<string>;
     /**
-     * Printable result of the GCP Privatelink request
+     * Printable result of the Google Cloud Private Service Connect request.
      */
     public /*out*/ readonly message!: pulumi.Output<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
-     * Privatelink resource state
+     * The state of the Private Service Connect resource.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -97,25 +97,25 @@ export class GcpPrivatelink extends pulumi.CustomResource {
  */
 export interface GcpPrivatelinkState {
     /**
-     * Privatelink resource Google Service Attachment
+     * Google Private Service Connect service attachment.
      */
     googleServiceAttachment?: pulumi.Input<string>;
     /**
-     * Printable result of the GCP Privatelink request
+     * Printable result of the Google Cloud Private Service Connect request.
      */
     message?: pulumi.Input<string>;
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
-     * Privatelink resource state
+     * The state of the Private Service Connect resource.
      */
     state?: pulumi.Input<string>;
 }
@@ -126,12 +126,12 @@ export interface GcpPrivatelinkState {
 export interface GcpPrivatelinkArgs {
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

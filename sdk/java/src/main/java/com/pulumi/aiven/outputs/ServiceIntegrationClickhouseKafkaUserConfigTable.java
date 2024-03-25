@@ -22,10 +22,10 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable String autoOffsetReset;
     /**
-     * @return Table columns.
+     * @return Table columns
      * 
      */
-    private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
+    private List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
     /**
      * @return Message data format. The default value is `JSONEachRow`.
      * 
@@ -77,10 +77,10 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer skipBrokenMessages;
     /**
-     * @return Kafka topics.
+     * @return Kafka topics
      * 
      */
-    private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
+    private List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTable() {}
     /**
@@ -91,11 +91,11 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.autoOffsetReset);
     }
     /**
-     * @return Table columns.
+     * @return Table columns
      * 
      */
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns() {
-        return this.columns == null ? List.of() : this.columns;
+        return this.columns;
     }
     /**
      * @return Message data format. The default value is `JSONEachRow`.
@@ -168,11 +168,11 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.skipBrokenMessages);
     }
     /**
-     * @return Kafka topics.
+     * @return Kafka topics
      * 
      */
     public List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics() {
-        return this.topics == null ? List.of() : this.topics;
+        return this.topics;
     }
 
     public static Builder builder() {
@@ -185,7 +185,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoOffsetReset;
-        private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
+        private List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
         private String dataFormat;
         private @Nullable String dateTimeInputFormat;
         private String groupName;
@@ -196,7 +196,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         private @Nullable Integer numConsumers;
         private @Nullable Integer pollMaxBatchSize;
         private @Nullable Integer skipBrokenMessages;
-        private @Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
+        private List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics;
         public Builder() {}
         public Builder(ServiceIntegrationClickhouseKafkaUserConfigTable defaults) {
     	      Objects.requireNonNull(defaults);
@@ -222,8 +222,10 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
             return this;
         }
         @CustomType.Setter
-        public Builder columns(@Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns) {
-
+        public Builder columns(List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns) {
+            if (columns == null) {
+              throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTable", "columns");
+            }
             this.columns = columns;
             return this;
         }
@@ -297,8 +299,10 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
             return this;
         }
         @CustomType.Setter
-        public Builder topics(@Nullable List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics) {
-
+        public Builder topics(List<ServiceIntegrationClickhouseKafkaUserConfigTableTopic> topics) {
+            if (topics == null) {
+              throw new MissingRequiredPropertyException("ServiceIntegrationClickhouseKafkaUserConfigTable", "topics");
+            }
             this.topics = topics;
             return this;
         }

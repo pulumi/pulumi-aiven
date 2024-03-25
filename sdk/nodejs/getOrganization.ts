@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Retrieves information about an organization from Aiven.
+ * Gets information about an organization.
  *
  * ## Example Usage
  *
@@ -14,8 +14,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const organization1 = aiven.getOrganization({
- *     name: "<ORGANIZATION_NAME>",
+ * const main = aiven.getOrganization({
+ *     name: "Example organization",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -35,7 +35,7 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
  */
 export interface GetOrganizationArgs {
     /**
-     * Identifier of the organization.
+     * ID of the organization.
      */
     id?: string;
     /**
@@ -53,7 +53,7 @@ export interface GetOrganizationResult {
      */
     readonly createTime: string;
     /**
-     * Identifier of the organization.
+     * ID of the organization.
      */
     readonly id?: string;
     /**
@@ -61,7 +61,7 @@ export interface GetOrganizationResult {
      */
     readonly name?: string;
     /**
-     * Tenant identifier of the organization.
+     * Tenant ID of the organization.
      */
     readonly tenantId: string;
     /**
@@ -70,7 +70,7 @@ export interface GetOrganizationResult {
     readonly updateTime: string;
 }
 /**
- * Retrieves information about an organization from Aiven.
+ * Gets information about an organization.
  *
  * ## Example Usage
  *
@@ -79,8 +79,8 @@ export interface GetOrganizationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const organization1 = aiven.getOrganization({
- *     name: "<ORGANIZATION_NAME>",
+ * const main = aiven.getOrganization({
+ *     name: "Example organization",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -94,7 +94,7 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
  */
 export interface GetOrganizationOutputArgs {
     /**
-     * Identifier of the organization.
+     * ID of the organization.
      */
     id?: pulumi.Input<string>;
     /**

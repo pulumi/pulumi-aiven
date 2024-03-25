@@ -16,7 +16,7 @@ public final class GetOpenSearchAclRuleResult {
      */
     private String id;
     /**
-     * @return The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     private String index;
@@ -26,17 +26,17 @@ public final class GetOpenSearchAclRuleResult {
      */
     private String permission;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
@@ -50,7 +50,7 @@ public final class GetOpenSearchAclRuleResult {
         return this.id;
     }
     /**
-     * @return The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     public String index() {
@@ -64,21 +64,21 @@ public final class GetOpenSearchAclRuleResult {
         return this.permission;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

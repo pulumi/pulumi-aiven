@@ -19,9 +19,9 @@ class ProjectVpcArgs:
                  project: pulumi.Input[str]):
         """
         The set of arguments for constructing a ProjectVpc resource.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "cloud_name", cloud_name)
         pulumi.set(__self__, "network_cidr", network_cidr)
@@ -31,7 +31,7 @@ class ProjectVpcArgs:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Input[str]:
         """
-        Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -43,7 +43,7 @@ class ProjectVpcArgs:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Input[str]:
         """
-        Network address range used by the VPC like 192.168.0.0/24
+        Network address range used by the VPC. For example, `192.168.0.0/24`.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -55,7 +55,7 @@ class ProjectVpcArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -73,9 +73,9 @@ class _ProjectVpcState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ProjectVpc resources.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] state: State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
         """
         if cloud_name is not None:
@@ -91,7 +91,7 @@ class _ProjectVpcState:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -103,7 +103,7 @@ class _ProjectVpcState:
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> Optional[pulumi.Input[str]]:
         """
-        Network address range used by the VPC like 192.168.0.0/24
+        Network address range used by the VPC. For example, `192.168.0.0/24`.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -115,7 +115,7 @@ class _ProjectVpcState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -146,19 +146,19 @@ class ProjectVpc(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Project VPC resource allows the creation and management of Aiven Project VPCs.
+        Creates and manages a VPC for an Aiven project.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+        $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -167,12 +167,12 @@ class ProjectVpc(pulumi.CustomResource):
                  args: ProjectVpcArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Project VPC resource allows the creation and management of Aiven Project VPCs.
+        Creates and manages a VPC for an Aiven project.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+        $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -233,9 +233,9 @@ class ProjectVpc(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] network_cidr: Network address range used by the VPC like 192.168.0.0/24
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] cloud_name: The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] network_cidr: Network address range used by the VPC. For example, `192.168.0.0/24`.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] state: State of the VPC. The possible values are `APPROVED`, `ACTIVE`, `DELETING` and `DELETED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -252,7 +252,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[str]:
         """
-        Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+        The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "cloud_name")
 
@@ -260,7 +260,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter(name="networkCidr")
     def network_cidr(self) -> pulumi.Output[str]:
         """
-        Network address range used by the VPC like 192.168.0.0/24
+        Network address range used by the VPC. For example, `192.168.0.0/24`.
         """
         return pulumi.get(self, "network_cidr")
 
@@ -268,7 +268,7 @@ class ProjectVpc(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 

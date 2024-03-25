@@ -19,9 +19,9 @@ class AzurePrivatelinkConnectionApprovalArgs:
                  endpoint_ip_address: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AzurePrivatelinkConnectionApproval resource.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_name", service_name)
@@ -32,7 +32,7 @@ class AzurePrivatelinkConnectionApprovalArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -44,7 +44,7 @@ class AzurePrivatelinkConnectionApprovalArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -56,7 +56,7 @@ class AzurePrivatelinkConnectionApprovalArgs:
     @pulumi.getter(name="endpointIpAddress")
     def endpoint_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address of Azure private endpoint
+        IP address of Azure private endpoint.
         """
         return pulumi.get(self, "endpoint_ip_address")
 
@@ -75,11 +75,11 @@ class _AzurePrivatelinkConnectionApprovalState:
                  state: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AzurePrivatelinkConnectionApproval resources.
-        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint
-        :param pulumi.Input[str] privatelink_connection_id: Privatelink connection id
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] state: Privatelink connection state
+        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint.
+        :param pulumi.Input[str] privatelink_connection_id: The ID of the Private Link connection.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] state: The state of the Private Link connection.
         """
         if endpoint_ip_address is not None:
             pulumi.set(__self__, "endpoint_ip_address", endpoint_ip_address)
@@ -96,7 +96,7 @@ class _AzurePrivatelinkConnectionApprovalState:
     @pulumi.getter(name="endpointIpAddress")
     def endpoint_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
-        IP address of Azure private endpoint
+        IP address of Azure private endpoint.
         """
         return pulumi.get(self, "endpoint_ip_address")
 
@@ -108,7 +108,7 @@ class _AzurePrivatelinkConnectionApprovalState:
     @pulumi.getter(name="privatelinkConnectionId")
     def privatelink_connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Privatelink connection id
+        The ID of the Private Link connection.
         """
         return pulumi.get(self, "privatelink_connection_id")
 
@@ -120,7 +120,7 @@ class _AzurePrivatelinkConnectionApprovalState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -132,7 +132,7 @@ class _AzurePrivatelinkConnectionApprovalState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -144,7 +144,7 @@ class _AzurePrivatelinkConnectionApprovalState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        Privatelink connection state
+        The state of the Private Link connection.
         """
         return pulumi.get(self, "state")
 
@@ -163,19 +163,19 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                  service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+        Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+        $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -184,12 +184,12 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                  args: AzurePrivatelinkConnectionApprovalArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+        Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+        $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -250,11 +250,11 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint
-        :param pulumi.Input[str] privatelink_connection_id: Privatelink connection id
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] state: Privatelink connection state
+        :param pulumi.Input[str] endpoint_ip_address: IP address of Azure private endpoint.
+        :param pulumi.Input[str] privatelink_connection_id: The ID of the Private Link connection.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] state: The state of the Private Link connection.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -271,7 +271,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     @pulumi.getter(name="endpointIpAddress")
     def endpoint_ip_address(self) -> pulumi.Output[Optional[str]]:
         """
-        IP address of Azure private endpoint
+        IP address of Azure private endpoint.
         """
         return pulumi.get(self, "endpoint_ip_address")
 
@@ -279,7 +279,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     @pulumi.getter(name="privatelinkConnectionId")
     def privatelink_connection_id(self) -> pulumi.Output[str]:
         """
-        Privatelink connection id
+        The ID of the Private Link connection.
         """
         return pulumi.get(self, "privatelink_connection_id")
 
@@ -287,7 +287,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -295,7 +295,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -303,7 +303,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Privatelink connection state
+        The state of the Private Link connection.
         """
         return pulumi.get(self, "state")
 

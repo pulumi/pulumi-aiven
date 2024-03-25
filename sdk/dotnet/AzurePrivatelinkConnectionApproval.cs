@@ -10,43 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Azure privatelink approve resource waits for an aiven privatelink connection on a service and approves it with associated endpoint IP
+    /// Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
     /// 
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval project/service_name
+    /// $ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval")]
     public partial class AzurePrivatelinkConnectionApproval : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// IP address of Azure private endpoint
+        /// IP address of Azure private endpoint.
         /// </summary>
         [Output("endpointIpAddress")]
         public Output<string?> EndpointIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink connection id
+        /// The ID of the Private Link connection.
         /// </summary>
         [Output("privatelinkConnectionId")]
         public Output<string> PrivatelinkConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink connection state
+        /// The state of the Private Link connection.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -98,19 +98,19 @@ namespace Pulumi.Aiven
     public sealed class AzurePrivatelinkConnectionApprovalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP address of Azure private endpoint
+        /// IP address of Azure private endpoint.
         /// </summary>
         [Input("endpointIpAddress")]
         public Input<string>? EndpointIpAddress { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -124,31 +124,31 @@ namespace Pulumi.Aiven
     public sealed class AzurePrivatelinkConnectionApprovalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP address of Azure private endpoint
+        /// IP address of Azure private endpoint.
         /// </summary>
         [Input("endpointIpAddress")]
         public Input<string>? EndpointIpAddress { get; set; }
 
         /// <summary>
-        /// Privatelink connection id
+        /// The ID of the Private Link connection.
         /// </summary>
         [Input("privatelinkConnectionId")]
         public Input<string>? PrivatelinkConnectionId { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Privatelink connection state
+        /// The state of the Private Link connection.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

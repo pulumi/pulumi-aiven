@@ -14,14 +14,14 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
     public static final GetAccountTeamMemberPlainArgs Empty = new GetAccountTeamMemberPlainArgs();
 
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="accountId", required=true)
     private String accountId;
 
     /**
-     * @return The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The unique account id. Changing this property forces recreation of the resource.
      * 
      */
     public String accountId() {
@@ -29,14 +29,14 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="teamId", required=true)
     private String teamId;
 
     /**
-     * @return An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * @return An account team id. Changing this property forces recreation of the resource.
      * 
      */
     public String teamId() {
@@ -44,14 +44,14 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="userEmail", required=true)
     private String userEmail;
 
     /**
-     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public String userEmail() {
@@ -85,7 +85,7 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param accountId The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+         * @param accountId The unique account id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param teamId An account team id. This property cannot be changed, doing so forces recreation of the resource.
+         * @param teamId An account team id. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class GetAccountTeamMemberPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+         * @param userEmail Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

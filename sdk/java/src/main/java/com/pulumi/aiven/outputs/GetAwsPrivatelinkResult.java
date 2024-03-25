@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetAwsPrivatelinkResult {
     /**
-     * @return AWS service ID
+     * @return AWS service ID.
      * 
      */
     private String awsServiceId;
     /**
-     * @return AWS service name
+     * @return AWS service name.
      * 
      */
     private String awsServiceName;
@@ -27,31 +27,31 @@ public final class GetAwsPrivatelinkResult {
      */
     private String id;
     /**
-     * @return List of allowed principals
+     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      * 
      */
     private List<String> principals;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
 
     private GetAwsPrivatelinkResult() {}
     /**
-     * @return AWS service ID
+     * @return AWS service ID.
      * 
      */
     public String awsServiceId() {
         return this.awsServiceId;
     }
     /**
-     * @return AWS service name
+     * @return AWS service name.
      * 
      */
     public String awsServiceName() {
@@ -65,21 +65,21 @@ public final class GetAwsPrivatelinkResult {
         return this.id;
     }
     /**
-     * @return List of allowed principals
+     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      * 
      */
     public List<String> principals() {
         return this.principals;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {

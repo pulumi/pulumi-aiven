@@ -67,7 +67,7 @@ type LookupServiceIntegrationEndpointResult struct {
 	EndpointConfig map[string]string `pulumi:"endpointConfig"`
 	// Name of the service integration endpoint
 	EndpointName string `pulumi:"endpointName"`
-	// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
+	// Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog`
 	EndpointType string `pulumi:"endpointType"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
@@ -156,7 +156,7 @@ func (o LookupServiceIntegrationEndpointResultOutput) EndpointName() pulumi.Stri
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointName }).(pulumi.StringOutput)
 }
 
-// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `externalElasticsearchLogs`, `externalOpensearchLogs`, `externalAwsCloudwatchLogs`, `externalGoogleCloudLogging`, `externalKafka`, `jolokia`, `externalSchemaRegistry`, `externalAwsCloudwatchMetrics`, `externalGoogleCloudBigquery`, `externalPostgresql`
+// Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalAwsS3`, `externalClickhouse`, `externalElasticsearchLogs`, `externalGoogleCloudBigquery`, `externalGoogleCloudLogging`, `externalKafka`, `externalMysql`, `externalOpensearchLogs`, `externalPostgresql`, `externalRedis`, `externalSchemaRegistry`, `jolokia`, `prometheus`, `rsyslog`
 func (o LookupServiceIntegrationEndpointResultOutput) EndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationEndpointResult) string { return v.EndpointType }).(pulumi.StringOutput)
 }

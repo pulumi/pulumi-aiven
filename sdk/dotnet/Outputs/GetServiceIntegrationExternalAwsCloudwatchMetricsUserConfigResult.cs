@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigResult
     {
         /// <summary>
-        /// Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics).
+        /// Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetricResult> DroppedMetrics;
         /// <summary>
-        /// Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+        /// Metrics to allow through to AWS CloudWatch (in addition to default metrics)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricResult> ExtraMetrics;
 

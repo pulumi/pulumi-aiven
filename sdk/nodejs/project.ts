@@ -9,6 +9,20 @@ import * as utilities from "./utilities";
 /**
  * The Project resource allows the creation and management of Aiven Projects.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleProject = new aiven.Project("exampleProject", {
+ *     project: "Example project",
+ *     parentId: aiven_organization.main.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

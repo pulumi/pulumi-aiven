@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+    /// Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
     /// 
     /// ## Example Usage
     /// 
@@ -23,10 +23,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foo = new Aiven.AwsPrivatelink("foo", new()
+    ///     var main = new Aiven.AwsPrivatelink("main", new()
     ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
-    ///         ServiceName = aiven_kafka.Bar.Service_name,
+    ///         Project = data.Aiven_project.Example_project.Project,
+    ///         ServiceName = aiven_kafka.Example_kafka.Service_name,
     ///         Principals = new[]
     ///         {
     ///             "arn:aws:iam::012345678901:user/mwf",
@@ -40,38 +40,38 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+    /// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/awsPrivatelink:AwsPrivatelink")]
     public partial class AwsPrivatelink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// AWS service ID
+        /// AWS service ID.
         /// </summary>
         [Output("awsServiceId")]
         public Output<string> AwsServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// AWS service name
+        /// AWS service name.
         /// </summary>
         [Output("awsServiceName")]
         public Output<string> AwsServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// List of allowed principals
+        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
         /// </summary>
         [Output("principals")]
         public Output<ImmutableArray<string>> Principals { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _principals;
 
         /// <summary>
-        /// List of allowed principals
+        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
         /// </summary>
         public InputList<string> Principals
         {
@@ -135,13 +135,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -155,13 +155,13 @@ namespace Pulumi.Aiven
     public sealed class AwsPrivatelinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// AWS service ID
+        /// AWS service ID.
         /// </summary>
         [Input("awsServiceId")]
         public Input<string>? AwsServiceId { get; set; }
 
         /// <summary>
-        /// AWS service name
+        /// AWS service name.
         /// </summary>
         [Input("awsServiceName")]
         public Input<string>? AwsServiceName { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _principals;
 
         /// <summary>
-        /// List of allowed principals
+        /// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
         /// </summary>
         public InputList<string> Principals
         {
@@ -179,13 +179,13 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

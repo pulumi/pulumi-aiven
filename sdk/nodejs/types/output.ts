@@ -365,30 +365,30 @@ export interface ClickhouseComponent {
 
 export interface ClickhouseGrantPrivilegeGrant {
     /**
-     * The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * The column that the grant refers to. Changing this property forces recreation of the resource.
      */
     column?: string;
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     database: string;
     /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
+     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
      */
     privilege?: string;
     /**
-     * The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * The table that the grant refers to. Changing this property forces recreation of the resource.
      */
     table?: string;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
      */
     withGrant?: boolean;
 }
 
 export interface ClickhouseGrantRoleGrant {
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: string;
 }
@@ -416,6 +416,213 @@ export interface ClickhouseTag {
 }
 
 export interface ClickhouseTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
+export interface DragonflyComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface DragonflyDragonfly {
+}
+
+export interface DragonflyDragonflyUserConfig {
+    /**
+     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     */
+    cacheMode?: boolean;
+    /**
+     * Require SSL to access Dragonfly. The default value is `true`.
+     */
+    dragonflySsl?: boolean;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilterObjects?: outputs.DragonflyDragonflyUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
+    migration?: outputs.DragonflyDragonflyUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.DragonflyDragonflyUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.DragonflyDragonflyUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.DragonflyDragonflyUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: string;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+}
+
+export interface DragonflyDragonflyUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
+    description?: string;
+    /**
+     * CIDR address block.
+     */
+    network: string;
+}
+
+export interface DragonflyDragonflyUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection.
+     */
+    dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from.
+     */
+    host: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     */
+    ignoreDbs?: string;
+    /**
+     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     */
+    method?: string;
+    /**
+     * Password for authentication with the server where to migrate data from.
+     */
+    password?: string;
+    /**
+     * Port number of the server where to migrate data from.
+     */
+    port: number;
+    /**
+     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     */
+    ssl?: boolean;
+    /**
+     * User name for authentication with the server where to migrate data from.
+     */
+    username?: string;
+}
+
+export interface DragonflyDragonflyUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to dragonfly with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    dragonfly?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: boolean;
+}
+
+export interface DragonflyDragonflyUserConfigPrivatelinkAccess {
+    /**
+     * Enable dragonfly.
+     */
+    dragonfly?: boolean;
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: boolean;
+}
+
+export interface DragonflyDragonflyUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to dragonfly from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    dragonfly?: boolean;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: boolean;
+}
+
+export interface DragonflyServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface DragonflyTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface DragonflyTechEmail {
     /**
      * An email address to contact for technical issues
      */
@@ -1139,6 +1346,213 @@ export interface GetClickhouseTag {
 }
 
 export interface GetClickhouseTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: string;
+}
+
+export interface GetDragonflyComponent {
+    /**
+     * Service component name
+     */
+    component: string;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri: string;
+    /**
+     * Host name for connecting to the service component
+     */
+    host: string;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod: string;
+    /**
+     * Port number for connecting to the service component
+     */
+    port: number;
+    /**
+     * Network access route
+     */
+    route: string;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl: boolean;
+    /**
+     * DNS usage name
+     */
+    usage: string;
+}
+
+export interface GetDragonflyDragonfly {
+}
+
+export interface GetDragonflyDragonflyUserConfig {
+    /**
+     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     */
+    cacheMode?: boolean;
+    /**
+     * Require SSL to access Dragonfly. The default value is `true`.
+     */
+    dragonflySsl?: boolean;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilterObjects?: outputs.GetDragonflyDragonflyUserConfigIpFilterObject[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: string[];
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: string[];
+    /**
+     * Migrate data from existing server
+     */
+    migration?: outputs.GetDragonflyDragonflyUserConfigMigration;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: outputs.GetDragonflyDragonflyUserConfigPrivateAccess;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: outputs.GetDragonflyDragonflyUserConfigPrivatelinkAccess;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
+    projectToForkFrom?: string;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: outputs.GetDragonflyDragonflyUserConfigPublicAccess;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: string;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: boolean;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
+    serviceToForkFrom?: string;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: boolean;
+}
+
+export interface GetDragonflyDragonflyUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
+    description?: string;
+    /**
+     * CIDR address block.
+     */
+    network: string;
+}
+
+export interface GetDragonflyDragonflyUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection.
+     */
+    dbname?: string;
+    /**
+     * Hostname or IP address of the server where to migrate data from.
+     */
+    host: string;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     */
+    ignoreDbs?: string;
+    /**
+     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     */
+    method?: string;
+    /**
+     * Password for authentication with the server where to migrate data from.
+     */
+    password?: string;
+    /**
+     * Port number of the server where to migrate data from.
+     */
+    port: number;
+    /**
+     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     */
+    ssl?: boolean;
+    /**
+     * User name for authentication with the server where to migrate data from.
+     */
+    username?: string;
+}
+
+export interface GetDragonflyDragonflyUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to dragonfly with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    dragonfly?: boolean;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: boolean;
+}
+
+export interface GetDragonflyDragonflyUserConfigPrivatelinkAccess {
+    /**
+     * Enable dragonfly.
+     */
+    dragonfly?: boolean;
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: boolean;
+}
+
+export interface GetDragonflyDragonflyUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to dragonfly from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    dragonfly?: boolean;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: boolean;
+}
+
+export interface GetDragonflyServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: string;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: string;
+}
+
+export interface GetDragonflyTag {
+    /**
+     * Service tag key
+     */
+    key: string;
+    /**
+     * Service tag value
+     */
+    value: string;
+}
+
+export interface GetDragonflyTechEmail {
     /**
      * An email address to contact for technical issues
      */
@@ -4324,6 +4738,10 @@ export interface GetOpenSearchOpensearchUserConfigOpensearch {
      */
     overrideMainResponseVersion?: boolean;
     /**
+     * Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     */
+    pluginsAlertingFilterByBackendRoles?: boolean;
+    /**
      * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
     reindexRemoteWhitelists?: string[];
@@ -4711,6 +5129,10 @@ export interface GetPgPgUserConfig {
      */
     pgVersion?: string;
     /**
+     * System-wide settings for the pgaudit extension
+     */
+    pgaudit?: outputs.GetPgPgUserConfigPgaudit;
+    /**
      * PGBouncer connection pooling settings
      */
     pgbouncer?: outputs.GetPgPgUserConfigPgbouncer;
@@ -5048,6 +5470,65 @@ export interface GetPgPgUserConfigPgQualstats {
      * @deprecated This property is deprecated.
      */
     trackPgCatalog?: boolean;
+}
+
+export interface GetPgPgUserConfigPgaudit {
+    /**
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     */
+    featureEnabled?: boolean;
+    /**
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     */
+    logCatalog?: boolean;
+    /**
+     * Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     */
+    logClient?: boolean;
+    /**
+     * Specifies the log level that will be used for log entries. The default value is `log`.
+     */
+    logLevel?: string;
+    /**
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     */
+    logMaxStringLength?: number;
+    /**
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     */
+    logNestedStatements?: boolean;
+    /**
+     * Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     */
+    logParameter?: boolean;
+    /**
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with <long param suppressed>. The default value is `0`.
+     */
+    logParameterMaxSize?: number;
+    /**
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     */
+    logRelation?: boolean;
+    /**
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     */
+    logRows?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     */
+    logStatement?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     */
+    logStatementOnce?: boolean;
+    /**
+     * Specifies which classes of statements will be logged by session audit logging.
+     */
+    logs?: string[];
+    /**
+     * Specifies the master role to use for object audit logging.
+     */
+    role?: string;
 }
 
 export interface GetPgPgUserConfigPgbouncer {
@@ -5443,7 +5924,7 @@ export interface GetRedisTechEmail {
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * Tables to create.
+     * Tables to create
      */
     tables?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTable[];
 }
@@ -5454,9 +5935,9 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     autoOffsetReset?: string;
     /**
-     * Table columns.
+     * Table columns
      */
-    columns?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
+    columns: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     /**
      * Message data format. The default value is `JSONEachRow`.
      */
@@ -5498,9 +5979,9 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     skipBrokenMessages?: number;
     /**
-     * Kafka topics.
+     * Kafka topics
      */
-    topics?: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
+    topics: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTableColumn {
@@ -5523,7 +6004,7 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTableTopic {
 
 export interface GetServiceIntegrationClickhousePostgresqlUserConfig {
     /**
-     * Databases to expose.
+     * Databases to expose
      */
     databases?: outputs.GetServiceIntegrationClickhousePostgresqlUserConfigDatabase[];
 }
@@ -5545,7 +6026,7 @@ export interface GetServiceIntegrationDatadogUserConfig {
      */
     datadogDbmEnabled?: boolean;
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      */
     datadogTags?: outputs.GetServiceIntegrationDatadogUserConfigDatadogTag[];
     /**
@@ -5573,11 +6054,11 @@ export interface GetServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: number;
     /**
-     * Datadog Opensearch Options.
+     * Datadog Opensearch Options
      */
     opensearch?: outputs.GetServiceIntegrationDatadogUserConfigOpensearch;
     /**
-     * Datadog Redis Options.
+     * Datadog Redis Options
      */
     redis?: outputs.GetServiceIntegrationDatadogUserConfigRedis;
 }
@@ -5621,7 +6102,7 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
      */
     datadogApiKey: string;
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      */
     datadogTags?: outputs.GetServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     /**
@@ -5808,6 +6289,10 @@ export interface GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 
 export interface GetServiceIntegrationEndpointExternalPostgresql {
     /**
+     * Default database.
+     */
+    defaultDatabase?: string;
+    /**
      * Hostname or IP address of the server.
      */
     host: string;
@@ -5925,13 +6410,20 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
     tls: boolean;
 }
 
+export interface GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
+}
+
 export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics).
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra_metrics)
      */
     droppedMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
     /**
-     * Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      */
     extraMetrics?: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
 }
@@ -5958,9 +6450,23 @@ export interface GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtr
     metric: string;
 }
 
+export interface GetServiceIntegrationExternalElasticsearchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
+}
+
+export interface GetServiceIntegrationExternalOpensearchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
+}
+
 export interface GetServiceIntegrationKafkaConnectUserConfig {
     /**
-     * Kafka Connect service configuration values.
+     * Kafka Connect service configuration values
      */
     kafkaConnect?: outputs.GetServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
@@ -6001,7 +6507,7 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfig {
      */
     clusterAlias?: string;
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
@@ -6062,7 +6568,7 @@ export interface GetServiceIntegrationMetricsUserConfig {
      */
     roUsername?: string;
     /**
-     * Configuration options for metrics where source service is MySQL.
+     * Configuration options for metrics where source service is MySQL
      */
     sourceMysql?: outputs.GetServiceIntegrationMetricsUserConfigSourceMysql;
     /**
@@ -6073,12 +6579,85 @@ export interface GetServiceIntegrationMetricsUserConfig {
 
 export interface GetServiceIntegrationMetricsUserConfigSourceMysql {
     /**
-     * Configuration options for Telegraf MySQL input plugin.
+     * Configuration options for Telegraf MySQL input plugin
      */
     telegraf?: outputs.GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf;
 }
 
 export interface GetServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    /**
+     * Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
+     */
+    gatherEventWaits?: boolean;
+    /**
+     * gather metrics from PERFORMANCE_SCHEMA.FILE_SUMMARY_BY_EVENT_NAME.
+     */
+    gatherFileEventsStats?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_INDEX_USAGE.
+     */
+    gatherIndexIoWaits?: boolean;
+    /**
+     * Gather autoIncrement columns and max values from information schema.
+     */
+    gatherInfoSchemaAutoInc?: boolean;
+    /**
+     * Gather metrics from INFORMATION_SCHEMA.INNODB_METRICS.
+     */
+    gatherInnodbMetrics?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE_SCHEMA.EVENTS_STATEMENTS_SUMMARY_BY_DIGEST.
+     */
+    gatherPerfEventsStatements?: boolean;
+    /**
+     * Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+     */
+    gatherProcessList?: boolean;
+    /**
+     * Gather metrics from SHOW SLAVE STATUS command output.
+     */
+    gatherSlaveStatus?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE_SCHEMA.TABLE_IO_WAITS_SUMMARY_BY_TABLE.
+     */
+    gatherTableIoWaits?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE_SCHEMA.TABLE_LOCK_WAITS.
+     */
+    gatherTableLockWaits?: boolean;
+    /**
+     * Gather metrics from INFORMATION_SCHEMA.TABLES.
+     */
+    gatherTableSchema?: boolean;
+    /**
+     * Truncates digest text from perfEventsStatements into this many characters.
+     */
+    perfEventsStatementsDigestTextLimit?: number;
+    /**
+     * Limits metrics from perf_events_statements.
+     */
+    perfEventsStatementsLimit?: number;
+    /**
+     * Only include perfEventsStatements whose last seen is less than this many seconds.
+     */
+    perfEventsStatementsTimeLimit?: number;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfig {
+    /**
+     * Configuration options for metrics where source service is MySQL
+     */
+    sourceMysql?: outputs.GetServiceIntegrationPrometheusUserConfigSourceMysql;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfigSourceMysql {
+    /**
+     * Configuration options for Telegraf MySQL input plugin
+     */
+    telegraf?: outputs.GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf;
+}
+
+export interface GetServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     /**
      * Gather metrics from PERFORMANCE_SCHEMA.EVENT_WAITS.
      */
@@ -9158,6 +9737,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     overrideMainResponseVersion?: boolean;
     /**
+     * Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     */
+    pluginsAlertingFilterByBackendRoles?: boolean;
+    /**
      * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
     reindexRemoteWhitelists?: string[];
@@ -9401,7 +9984,45 @@ export interface OpenSearchTechEmail {
     email: string;
 }
 
+export interface OrganizationGroupProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface OrganizationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface OrganizationUserGroupMemberTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -9563,6 +10184,10 @@ export interface PgPgUserConfig {
      * PostgreSQL major version.
      */
     pgVersion?: string;
+    /**
+     * System-wide settings for the pgaudit extension
+     */
+    pgaudit?: outputs.PgPgUserConfigPgaudit;
     /**
      * PGBouncer connection pooling settings
      */
@@ -9901,6 +10526,65 @@ export interface PgPgUserConfigPgQualstats {
      * @deprecated This property is deprecated.
      */
     trackPgCatalog?: boolean;
+}
+
+export interface PgPgUserConfigPgaudit {
+    /**
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     */
+    featureEnabled?: boolean;
+    /**
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     */
+    logCatalog?: boolean;
+    /**
+     * Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     */
+    logClient?: boolean;
+    /**
+     * Specifies the log level that will be used for log entries. The default value is `log`.
+     */
+    logLevel?: string;
+    /**
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     */
+    logMaxStringLength?: number;
+    /**
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     */
+    logNestedStatements?: boolean;
+    /**
+     * Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     */
+    logParameter?: boolean;
+    /**
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. The default value is `0`.
+     */
+    logParameterMaxSize?: number;
+    /**
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     */
+    logRelation?: boolean;
+    /**
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     */
+    logRows?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     */
+    logStatement?: boolean;
+    /**
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     */
+    logStatementOnce?: boolean;
+    /**
+     * Specifies which classes of statements will be logged by session audit logging.
+     */
+    logs?: string[];
+    /**
+     * Specifies the master role to use for object audit logging.
+     */
+    role?: string;
 }
 
 export interface PgPgUserConfigPgbouncer {
@@ -10296,7 +10980,7 @@ export interface RedisTechEmail {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * Tables to create.
+     * Tables to create
      */
     tables?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTable[];
 }
@@ -10307,9 +10991,9 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     autoOffsetReset?: string;
     /**
-     * Table columns.
+     * Table columns
      */
-    columns?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
+    columns: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     /**
      * Message data format. The default value is `JSONEachRow`.
      */
@@ -10351,9 +11035,9 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     skipBrokenMessages?: number;
     /**
-     * Kafka topics.
+     * Kafka topics
      */
-    topics?: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
+    topics: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic[];
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
@@ -10376,7 +11060,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfig {
     /**
-     * Databases to expose.
+     * Databases to expose
      */
     databases?: outputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabase[];
 }
@@ -10398,7 +11082,7 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     datadogDbmEnabled?: boolean;
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      */
     datadogTags?: outputs.ServiceIntegrationDatadogUserConfigDatadogTag[];
     /**
@@ -10426,11 +11110,11 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: number;
     /**
-     * Datadog Opensearch Options.
+     * Datadog Opensearch Options
      */
     opensearch?: outputs.ServiceIntegrationDatadogUserConfigOpensearch;
     /**
-     * Datadog Redis Options.
+     * Datadog Redis Options
      */
     redis?: outputs.ServiceIntegrationDatadogUserConfigRedis;
 }
@@ -10474,7 +11158,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     datadogApiKey: string;
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      */
     datadogTags?: outputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag[];
     /**
@@ -10661,6 +11345,10 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 
 export interface ServiceIntegrationEndpointExternalPostgresql {
     /**
+     * Default database.
+     */
+    defaultDatabase?: string;
+    /**
      * Hostname or IP address of the server.
      */
     host: string;
@@ -10778,13 +11466,20 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     tls: boolean;
 }
 
+export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
+}
+
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
      */
     droppedMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric[];
     /**
-     * Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      */
     extraMetrics?: outputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric[];
 }
@@ -10811,9 +11506,23 @@ export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMe
     metric: string;
 }
 
+export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
+}
+
+export interface ServiceIntegrationExternalOpensearchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: string[];
+}
+
 export interface ServiceIntegrationKafkaConnectUserConfig {
     /**
-     * Kafka Connect service configuration values.
+     * Kafka Connect service configuration values
      */
     kafkaConnect?: outputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect;
 }
@@ -10854,7 +11563,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
      */
     clusterAlias?: string;
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: outputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker;
 }
@@ -10915,7 +11624,7 @@ export interface ServiceIntegrationMetricsUserConfig {
      */
     roUsername?: string;
     /**
-     * Configuration options for metrics where source service is MySQL.
+     * Configuration options for metrics where source service is MySQL
      */
     sourceMysql?: outputs.ServiceIntegrationMetricsUserConfigSourceMysql;
     /**
@@ -10926,12 +11635,85 @@ export interface ServiceIntegrationMetricsUserConfig {
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysql {
     /**
-     * Configuration options for Telegraf MySQL input plugin.
+     * Configuration options for Telegraf MySQL input plugin
      */
     telegraf?: outputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf;
 }
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+     */
+    gatherEventWaits?: boolean;
+    /**
+     * gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     */
+    gatherFileEventsStats?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+     */
+    gatherIndexIoWaits?: boolean;
+    /**
+     * Gather autoIncrement columns and max values from information schema.
+     */
+    gatherInfoSchemaAutoInc?: boolean;
+    /**
+     * Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+     */
+    gatherInnodbMetrics?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+     */
+    gatherPerfEventsStatements?: boolean;
+    /**
+     * Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+     */
+    gatherProcessList?: boolean;
+    /**
+     * Gather metrics from SHOW SLAVE STATUS command output.
+     */
+    gatherSlaveStatus?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+     */
+    gatherTableIoWaits?: boolean;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+     */
+    gatherTableLockWaits?: boolean;
+    /**
+     * Gather metrics from INFORMATION_SCHEMA.TABLES.
+     */
+    gatherTableSchema?: boolean;
+    /**
+     * Truncates digest text from perf*events*statements into this many characters.
+     */
+    perfEventsStatementsDigestTextLimit?: number;
+    /**
+     * Limits metrics from perf*events*statements.
+     */
+    perfEventsStatementsLimit?: number;
+    /**
+     * Only include perf*events*statements whose last seen is less than this many seconds.
+     */
+    perfEventsStatementsTimeLimit?: number;
+}
+
+export interface ServiceIntegrationPrometheusUserConfig {
+    /**
+     * Configuration options for metrics where source service is MySQL
+     */
+    sourceMysql?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysql;
+}
+
+export interface ServiceIntegrationPrometheusUserConfigSourceMysql {
+    /**
+     * Configuration options for Telegraf MySQL input plugin
+     */
+    telegraf?: outputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf;
+}
+
+export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     /**
      * Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
      */

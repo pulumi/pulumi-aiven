@@ -16,14 +16,14 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     public static final GcpPrivatelinkState Empty = new GcpPrivatelinkState();
 
     /**
-     * Privatelink resource Google Service Attachment
+     * Google Private Service Connect service attachment.
      * 
      */
     @Import(name="googleServiceAttachment")
     private @Nullable Output<String> googleServiceAttachment;
 
     /**
-     * @return Privatelink resource Google Service Attachment
+     * @return Google Private Service Connect service attachment.
      * 
      */
     public Optional<Output<String>> googleServiceAttachment() {
@@ -31,14 +31,14 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Printable result of the GCP Privatelink request
+     * Printable result of the Google Cloud Private Service Connect request.
      * 
      */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return Printable result of the GCP Privatelink request
+     * @return Printable result of the Google Cloud Private Service Connect request.
      * 
      */
     public Optional<Output<String>> message() {
@@ -47,7 +47,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
@@ -55,7 +55,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -64,7 +64,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
@@ -72,7 +72,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -80,14 +80,14 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Privatelink resource state
+     * The state of the Private Service Connect resource.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Privatelink resource state
+     * @return The state of the Private Service Connect resource.
      * 
      */
     public Optional<Output<String>> state() {
@@ -123,7 +123,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param googleServiceAttachment Privatelink resource Google Service Attachment
+         * @param googleServiceAttachment Google Private Service Connect service attachment.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param googleServiceAttachment Privatelink resource Google Service Attachment
+         * @param googleServiceAttachment Google Private Service Connect service attachment.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param message Printable result of the GCP Privatelink request
+         * @param message Printable result of the Google Cloud Private Service Connect request.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param message Printable result of the GCP Privatelink request
+         * @param message Printable result of the Google Cloud Private Service Connect request.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state Privatelink resource state
+         * @param state The state of the Private Service Connect resource.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class GcpPrivatelinkState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param state Privatelink resource state
+         * @param state The state of the Private Service Connect resource.
          * 
          * @return builder
          * 

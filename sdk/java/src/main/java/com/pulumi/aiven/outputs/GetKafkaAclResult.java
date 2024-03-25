@@ -21,27 +21,27 @@ public final class GetKafkaAclResult {
      */
     private String id;
     /**
-     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     private String permission;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     private String topic;
     /**
-     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     private String username;
@@ -62,35 +62,35 @@ public final class GetKafkaAclResult {
         return this.id;
     }
     /**
-     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Topic name pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Topic name pattern for the ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     public String topic() {
         return this.topic;
     }
     /**
-     * @return Username pattern for the ACL entry. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Username pattern for the ACL entry. Changing this property forces recreation of the resource.
      * 
      */
     public String username() {

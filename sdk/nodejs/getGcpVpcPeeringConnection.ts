@@ -14,10 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getGcpVpcPeeringConnection({
+ * const main = aiven.getGcpVpcPeeringConnection({
  *     vpcId: data.aiven_project_vpc.vpc.id,
- *     gcpProjectId: "xxxx",
- *     peerVpc: "xxxx",
+ *     gcpProjectId: "example-project",
+ *     peerVpc: "example-network",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -37,15 +37,15 @@ export function getGcpVpcPeeringConnection(args: GetGcpVpcPeeringConnectionArgs,
  */
 export interface GetGcpVpcPeeringConnectionArgs {
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
     gcpProjectId: string;
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
     peerVpc: string;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
     vpcId: string;
 }
@@ -55,7 +55,7 @@ export interface GetGcpVpcPeeringConnectionArgs {
  */
 export interface GetGcpVpcPeeringConnectionResult {
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
     readonly gcpProjectId: string;
     /**
@@ -63,23 +63,23 @@ export interface GetGcpVpcPeeringConnectionResult {
      */
     readonly id: string;
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
     readonly peerVpc: string;
     /**
-     * Computed GCP network peering link
+     * Computed Google Cloud network peering link.
      */
     readonly selfLink: string;
     /**
-     * State of the peering connection
+     * State of the peering connection.
      */
     readonly state: string;
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      */
     readonly stateInfo: {[key: string]: any};
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
     readonly vpcId: string;
 }
@@ -93,10 +93,10 @@ export interface GetGcpVpcPeeringConnectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getGcpVpcPeeringConnection({
+ * const main = aiven.getGcpVpcPeeringConnection({
  *     vpcId: data.aiven_project_vpc.vpc.id,
- *     gcpProjectId: "xxxx",
- *     peerVpc: "xxxx",
+ *     gcpProjectId: "example-project",
+ *     peerVpc: "example-network",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -110,15 +110,15 @@ export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectio
  */
 export interface GetGcpVpcPeeringConnectionOutputArgs {
     /**
-     * GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud project ID. Changing this property forces recreation of the resource.
      */
     gcpProjectId: pulumi.Input<string>;
     /**
-     * GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+     * Google Cloud VPC network name. Changing this property forces recreation of the resource.
      */
     peerVpc: pulumi.Input<string>;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
      */
     vpcId: pulumi.Input<string>;
 }

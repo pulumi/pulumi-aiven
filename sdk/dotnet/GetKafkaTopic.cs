@@ -72,19 +72,19 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the topic. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topicName", required: true)]
         public string TopicName { get; set; } = null!;
@@ -98,19 +98,19 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
         /// <summary>
-        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the topic. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("topicName", required: true)]
         public Input<string> TopicName { get; set; } = null!;
@@ -138,7 +138,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int Partitions;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int Replication;
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
@@ -155,7 +155,7 @@ namespace Pulumi.Aiven
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         public readonly bool TerminationProtection;
         /// <summary>
-        /// The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        /// The name of the topic. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string TopicName;
 

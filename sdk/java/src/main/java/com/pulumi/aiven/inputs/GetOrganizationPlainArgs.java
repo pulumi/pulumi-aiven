@@ -15,14 +15,14 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
     public static final GetOrganizationPlainArgs Empty = new GetOrganizationPlainArgs();
 
     /**
-     * Identifier of the organization.
+     * ID of the organization.
      * 
      */
     @Import(name="id")
     private @Nullable String id;
 
     /**
-     * @return Identifier of the organization.
+     * @return ID of the organization.
      * 
      */
     public Optional<String> id() {
@@ -70,7 +70,7 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param id Identifier of the organization.
+         * @param id ID of the organization.
          * 
          * @return builder
          * 

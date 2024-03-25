@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+// Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
 //
 // ## Example Usage
 //
@@ -29,9 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAwsPrivatelink(ctx, "foo", &aiven.AwsPrivatelinkArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Foo.Project),
-//				ServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),
+//			_, err := aiven.NewAwsPrivatelink(ctx, "main", &aiven.AwsPrivatelinkArgs{
+//				Project:     pulumi.Any(data.Aiven_project.Example_project.Project),
+//				ServiceName: pulumi.Any(aiven_kafka.Example_kafka.Service_name),
 //				Principals: pulumi.StringArray{
 //					pulumi.String("arn:aws:iam::012345678901:user/mwf"),
 //				},
@@ -49,20 +49,20 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+// $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
 // ```
 type AwsPrivatelink struct {
 	pulumi.CustomResourceState
 
-	// AWS service ID
+	// AWS service ID.
 	AwsServiceId pulumi.StringOutput `pulumi:"awsServiceId"`
-	// AWS service name
+	// AWS service name.
 	AwsServiceName pulumi.StringOutput `pulumi:"awsServiceName"`
-	// List of allowed principals
+	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
 	Principals pulumi.StringArrayOutput `pulumi:"principals"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -105,28 +105,28 @@ func GetAwsPrivatelink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AwsPrivatelink resources.
 type awsPrivatelinkState struct {
-	// AWS service ID
+	// AWS service ID.
 	AwsServiceId *string `pulumi:"awsServiceId"`
-	// AWS service name
+	// AWS service name.
 	AwsServiceName *string `pulumi:"awsServiceName"`
-	// List of allowed principals
+	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
 	Principals []string `pulumi:"principals"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
 type AwsPrivatelinkState struct {
-	// AWS service ID
+	// AWS service ID.
 	AwsServiceId pulumi.StringPtrInput
-	// AWS service name
+	// AWS service name.
 	AwsServiceName pulumi.StringPtrInput
-	// List of allowed principals
+	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
 	Principals pulumi.StringArrayInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -135,21 +135,21 @@ func (AwsPrivatelinkState) ElementType() reflect.Type {
 }
 
 type awsPrivatelinkArgs struct {
-	// List of allowed principals
+	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
 	Principals []string `pulumi:"principals"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // The set of arguments for constructing a AwsPrivatelink resource.
 type AwsPrivatelinkArgs struct {
-	// List of allowed principals
+	// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
 	Principals pulumi.StringArrayInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -240,27 +240,27 @@ func (o AwsPrivatelinkOutput) ToAwsPrivatelinkOutputWithContext(ctx context.Cont
 	return o
 }
 
-// AWS service ID
+// AWS service ID.
 func (o AwsPrivatelinkOutput) AwsServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.AwsServiceId }).(pulumi.StringOutput)
 }
 
-// AWS service name
+// AWS service name.
 func (o AwsPrivatelinkOutput) AwsServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.AwsServiceName }).(pulumi.StringOutput)
 }
 
-// List of allowed principals
+// List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
 func (o AwsPrivatelinkOutput) Principals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringArrayOutput { return v.Principals }).(pulumi.StringArrayOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o AwsPrivatelinkOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o AwsPrivatelinkOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsPrivatelink) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

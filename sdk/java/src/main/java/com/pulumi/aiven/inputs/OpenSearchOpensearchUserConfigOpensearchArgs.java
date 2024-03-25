@@ -425,6 +425,21 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
+     * Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     * 
+     */
+    @Import(name="pluginsAlertingFilterByBackendRoles")
+    private @Nullable Output<Boolean> pluginsAlertingFilterByBackendRoles;
+
+    /**
+     * @return Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     * 
+     */
+    public Optional<Output<Boolean>> pluginsAlertingFilterByBackendRoles() {
+        return Optional.ofNullable(this.pluginsAlertingFilterByBackendRoles);
+    }
+
+    /**
      * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      * 
      */
@@ -664,6 +679,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         this.ismHistoryRolloverCheckPeriod = $.ismHistoryRolloverCheckPeriod;
         this.ismHistoryRolloverRetentionPeriod = $.ismHistoryRolloverRetentionPeriod;
         this.overrideMainResponseVersion = $.overrideMainResponseVersion;
+        this.pluginsAlertingFilterByBackendRoles = $.pluginsAlertingFilterByBackendRoles;
         this.reindexRemoteWhitelists = $.reindexRemoteWhitelists;
         this.scriptMaxCompilationsRate = $.scriptMaxCompilationsRate;
         this.searchMaxBuckets = $.searchMaxBuckets;
@@ -1263,6 +1279,27 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
          */
         public Builder overrideMainResponseVersion(Boolean overrideMainResponseVersion) {
             return overrideMainResponseVersion(Output.of(overrideMainResponseVersion));
+        }
+
+        /**
+         * @param pluginsAlertingFilterByBackendRoles Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluginsAlertingFilterByBackendRoles(@Nullable Output<Boolean> pluginsAlertingFilterByBackendRoles) {
+            $.pluginsAlertingFilterByBackendRoles = pluginsAlertingFilterByBackendRoles;
+            return this;
+        }
+
+        /**
+         * @param pluginsAlertingFilterByBackendRoles Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pluginsAlertingFilterByBackendRoles(Boolean pluginsAlertingFilterByBackendRoles) {
+            return pluginsAlertingFilterByBackendRoles(Output.of(pluginsAlertingFilterByBackendRoles));
         }
 
         /**

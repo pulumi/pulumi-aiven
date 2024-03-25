@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPgDatabaseResult {
     /**
-     * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the service database. Changing this property forces recreation of the resource.
      * 
      */
     private String databaseName;
@@ -22,22 +22,22 @@ public final class GetPgDatabaseResult {
      */
     private String id;
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     private String lcCollate;
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     private String lcCtype;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
@@ -45,7 +45,7 @@ public final class GetPgDatabaseResult {
 
     private GetPgDatabaseResult() {}
     /**
-     * @return The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the service database. Changing this property forces recreation of the resource.
      * 
      */
     public String databaseName() {
@@ -59,28 +59,28 @@ public final class GetPgDatabaseResult {
         return this.id;
     }
     /**
-     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     public String lcCollate() {
         return this.lcCollate;
     }
     /**
-     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      * 
      */
     public String lcCtype() {
         return this.lcCtype;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {

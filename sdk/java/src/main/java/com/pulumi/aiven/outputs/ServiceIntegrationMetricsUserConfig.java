@@ -29,7 +29,7 @@ public final class ServiceIntegrationMetricsUserConfig {
      */
     private @Nullable String roUsername;
     /**
-     * @return Configuration options for metrics where source service is MySQL.
+     * @return Configuration options for metrics where source service is MySQL
      * 
      */
     private @Nullable ServiceIntegrationMetricsUserConfigSourceMysql sourceMysql;
@@ -62,7 +62,7 @@ public final class ServiceIntegrationMetricsUserConfig {
         return Optional.ofNullable(this.roUsername);
     }
     /**
-     * @return Configuration options for metrics where source service is MySQL.
+     * @return Configuration options for metrics where source service is MySQL
      * 
      */
     public Optional<ServiceIntegrationMetricsUserConfigSourceMysql> sourceMysql() {

@@ -49,17 +49,19 @@ import javax.annotation.Nullable;
  *             .compatibilityLevel(&#34;FORWARD&#34;)
  *             .schema(&#34;&#34;&#34;
  *     {
- *        &#34;doc&#34;: &#34;example&#34;,
- *        &#34;fields&#34;: [{
- *            &#34;default&#34;: 5,
- *            &#34;doc&#34;: &#34;my test number&#34;,
- *            &#34;name&#34;: &#34;test&#34;,
- *            &#34;namespace&#34;: &#34;test&#34;,
- *            &#34;type&#34;: &#34;int&#34;
- *        }],
- *        &#34;name&#34;: &#34;example&#34;,
- *        &#34;namespace&#34;: &#34;example&#34;,
- *        &#34;type&#34;: &#34;record&#34;
+ *       &#34;doc&#34;: &#34;example&#34;,
+ *       &#34;fields&#34;: [
+ *         {
+ *           &#34;default&#34;: 5,
+ *           &#34;doc&#34;: &#34;my test number&#34;,
+ *           &#34;name&#34;: &#34;test&#34;,
+ *           &#34;namespace&#34;: &#34;test&#34;,
+ *           &#34;type&#34;: &#34;int&#34;
+ *         }
+ *       ],
+ *       &#34;name&#34;: &#34;example&#34;,
+ *       &#34;namespace&#34;: &#34;example&#34;,
+ *       &#34;type&#34;: &#34;record&#34;
  *     }
  *             &#34;&#34;&#34;)
  *             .build());
@@ -93,14 +95,14 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.compatibilityLevel);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -135,28 +137,28 @@ public class KafkaSchema extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.schemaType);
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="subjectName", refs={String.class}, tree="[0]")
     private Output<String> subjectName;
 
     /**
-     * @return The Kafka Schema Subject name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The Kafka Schema Subject name. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> subjectName() {

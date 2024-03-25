@@ -13,22 +13,22 @@ import java.util.Objects;
 @CustomType
 public final class GetAwsVpcPeeringConnectionResult {
     /**
-     * @return AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS account ID. Changing this property forces recreation of the resource.
      * 
      */
     private String awsAccountId;
     /**
-     * @return AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     private String awsVpcId;
     /**
-     * @return AWS VPC peering connection ID
+     * @return The ID of the AWS VPC peering connection.
      * 
      */
     private String awsVpcPeeringConnectionId;
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * @return The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      * 
      */
     private String awsVpcRegion;
@@ -38,45 +38,45 @@ public final class GetAwsVpcPeeringConnectionResult {
      */
     private String id;
     /**
-     * @return State of the peering connection
+     * @return The state of the peering connection.
      * 
      */
     private String state;
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     private Map<String,Object> stateInfo;
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     private String vpcId;
 
     private GetAwsVpcPeeringConnectionResult() {}
     /**
-     * @return AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS account ID. Changing this property forces recreation of the resource.
      * 
      */
     public String awsAccountId() {
         return this.awsAccountId;
     }
     /**
-     * @return AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return AWS VPC ID. Changing this property forces recreation of the resource.
      * 
      */
     public String awsVpcId() {
         return this.awsVpcId;
     }
     /**
-     * @return AWS VPC peering connection ID
+     * @return The ID of the AWS VPC peering connection.
      * 
      */
     public String awsVpcPeeringConnectionId() {
         return this.awsVpcPeeringConnectionId;
     }
     /**
-     * @return AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * @return The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      * 
      */
     public String awsVpcRegion() {
@@ -90,21 +90,21 @@ public final class GetAwsVpcPeeringConnectionResult {
         return this.id;
     }
     /**
-     * @return State of the peering connection
+     * @return The state of the peering connection.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Map<String,Object> stateInfo() {
         return this.stateInfo;
     }
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     public String vpcId() {

@@ -40,7 +40,7 @@ export function getOpenSearchAclRule(args: GetOpenSearchAclRuleArgs, opts?: pulu
  */
 export interface GetOpenSearchAclRuleArgs {
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
     index: string;
     /**
@@ -48,15 +48,15 @@ export interface GetOpenSearchAclRuleArgs {
      */
     permission: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -70,7 +70,7 @@ export interface GetOpenSearchAclRuleResult {
      */
     readonly id: string;
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
     readonly index: string;
     /**
@@ -78,15 +78,15 @@ export interface GetOpenSearchAclRuleResult {
      */
     readonly permission: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly username: string;
 }
@@ -118,7 +118,7 @@ export function getOpenSearchAclRuleOutput(args: GetOpenSearchAclRuleOutputArgs,
  */
 export interface GetOpenSearchAclRuleOutputArgs {
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      */
     index: pulumi.Input<string>;
     /**
@@ -126,15 +126,15 @@ export interface GetOpenSearchAclRuleOutputArgs {
      */
     permission: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

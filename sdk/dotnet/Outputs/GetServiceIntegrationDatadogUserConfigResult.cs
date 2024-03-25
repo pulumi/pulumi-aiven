@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DatadogDbmEnabled;
         /// <summary>
-        /// Custom tags provided by user.
+        /// Custom tags provided by user
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> DatadogTags;
         /// <summary>
@@ -46,11 +46,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxJmxMetrics;
         /// <summary>
-        /// Datadog Opensearch Options.
+        /// Datadog Opensearch Options
         /// </summary>
         public readonly Outputs.GetServiceIntegrationDatadogUserConfigOpensearchResult? Opensearch;
         /// <summary>
-        /// Datadog Redis Options.
+        /// Datadog Redis Options
         /// </summary>
         public readonly Outputs.GetServiceIntegrationDatadogUserConfigRedisResult? Redis;
 

@@ -124,7 +124,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string EndpointName;
         /// <summary>
-        /// Type of the service integration endpoint. Possible values: `datadog`, `prometheus`, `rsyslog`, `external_elasticsearch_logs`, `external_opensearch_logs`, `external_aws_cloudwatch_logs`, `external_google_cloud_logging`, `external_kafka`, `jolokia`, `external_schema_registry`, `external_aws_cloudwatch_metrics`, `external_google_cloud_bigquery`, `external_postgresql`
+        /// Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog`
         /// </summary>
         public readonly string EndpointType;
         /// <summary>

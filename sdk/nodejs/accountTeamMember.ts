@@ -70,7 +70,7 @@ export class AccountTeamMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
@@ -82,11 +82,11 @@ export class AccountTeamMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly invitedByUserEmail!: pulumi.Output<string>;
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      */
     public readonly teamId!: pulumi.Output<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
     public readonly userEmail!: pulumi.Output<string>;
 
@@ -141,7 +141,7 @@ export interface AccountTeamMemberState {
      */
     accepted?: pulumi.Input<boolean>;
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -153,11 +153,11 @@ export interface AccountTeamMemberState {
      */
     invitedByUserEmail?: pulumi.Input<string>;
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      */
     teamId?: pulumi.Input<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
     userEmail?: pulumi.Input<string>;
 }
@@ -167,15 +167,15 @@ export interface AccountTeamMemberState {
  */
 export interface AccountTeamMemberArgs {
     /**
-     * The unique account id. This property cannot be changed, doing so forces recreation of the resource.
+     * The unique account id. Changing this property forces recreation of the resource.
      */
     accountId: pulumi.Input<string>;
     /**
-     * An account team id. This property cannot be changed, doing so forces recreation of the resource.
+     * An account team id. Changing this property forces recreation of the resource.
      */
     teamId: pulumi.Input<string>;
     /**
-     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Is a user email address that first will be invited, and after accepting an invitation, he or she becomes a member of a team. Should be lowercase. Changing this property forces recreation of the resource.
      */
     userEmail: pulumi.Input<string>;
 }

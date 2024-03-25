@@ -467,6 +467,19 @@ class Project(pulumi.CustomResource):
         """
         The Project resource allows the creation and management of Aiven Projects.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_project = aiven.Project("exampleProject",
+            project="Example project",
+            parent_id=aiven_organization["main"]["id"])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -494,6 +507,19 @@ class Project(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Project resource allows the creation and management of Aiven Projects.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_project = aiven.Project("exampleProject",
+            project="Example project",
+            parent_id=aiven_organization["main"]["id"])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

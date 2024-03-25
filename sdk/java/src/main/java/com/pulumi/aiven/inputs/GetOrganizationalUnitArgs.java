@@ -15,14 +15,14 @@ public final class GetOrganizationalUnitArgs extends com.pulumi.resources.Invoke
     public static final GetOrganizationalUnitArgs Empty = new GetOrganizationalUnitArgs();
 
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class GetOrganizationalUnitArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class GetOrganizationalUnitArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param name Organizational Unit name
+         * @param name The name of the organizational unit.
          * 
          * @return builder
          * 

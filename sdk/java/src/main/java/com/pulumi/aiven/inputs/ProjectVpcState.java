@@ -16,14 +16,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectVpcState Empty = new ProjectVpcState();
 
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="cloudName")
     private @Nullable Output<String> cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> cloudName() {
@@ -31,14 +31,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * Network address range used by the VPC. For example, `192.168.0.0/24`.
      * 
      */
     @Import(name="networkCidr")
     private @Nullable Output<String> networkCidr;
 
     /**
-     * @return Network address range used by the VPC like 192.168.0.0/24
+     * @return Network address range used by the VPC. For example, `192.168.0.0/24`.
      * 
      */
     public Optional<Output<String>> networkCidr() {
@@ -46,14 +46,14 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -103,7 +103,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cloudName Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+         * @param cloudName The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC like 192.168.0.0/24
+         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkCidr Network address range used by the VPC like 192.168.0.0/24
+         * @param networkCidr Network address range used by the VPC. For example, `192.168.0.0/24`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ProjectVpcState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

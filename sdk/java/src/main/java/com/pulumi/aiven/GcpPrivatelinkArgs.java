@@ -16,7 +16,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
@@ -24,7 +24,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -33,7 +33,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
@@ -41,7 +41,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -75,7 +75,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -87,7 +87,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class GcpPrivatelinkArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

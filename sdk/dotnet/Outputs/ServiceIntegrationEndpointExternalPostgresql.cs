@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalPostgresql
     {
         /// <summary>
+        /// Default database.
+        /// </summary>
+        public readonly string? DefaultDatabase;
+        /// <summary>
         /// Hostname or IP address of the server.
         /// </summary>
         public readonly string Host;
@@ -48,6 +52,8 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private ServiceIntegrationEndpointExternalPostgresql(
+            string? defaultDatabase,
+
             string host,
 
             string? password,
@@ -64,6 +70,7 @@ namespace Pulumi.Aiven.Outputs
 
             string username)
         {
+            DefaultDatabase = defaultDatabase;
             Host = host;
             Password = password;
             Port = port;

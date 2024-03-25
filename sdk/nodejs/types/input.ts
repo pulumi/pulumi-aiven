@@ -365,30 +365,30 @@ export interface ClickhouseComponent {
 
 export interface ClickhouseGrantPrivilegeGrant {
     /**
-     * The column that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * The column that the grant refers to. Changing this property forces recreation of the resource.
      */
     column?: pulumi.Input<string>;
     /**
-     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The database that the grant refers to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     database: pulumi.Input<string>;
     /**
-     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. This property cannot be changed, doing so forces recreation of the resource.
+     * The privilege to grant, i.e. 'INSERT', 'SELECT', etc. Changing this property forces recreation of the resource.
      */
     privilege?: pulumi.Input<string>;
     /**
-     * The table that the grant refers to. This property cannot be changed, doing so forces recreation of the resource.
+     * The table that the grant refers to. Changing this property forces recreation of the resource.
      */
     table?: pulumi.Input<string>;
     /**
-     * If true then the grantee gets the ability to grant the privileges he received too. This property cannot be changed, doing so forces recreation of the resource.
+     * If true then the grantee gets the ability to grant the privileges he received too. Changing this property forces recreation of the resource.
      */
     withGrant?: pulumi.Input<boolean>;
 }
 
 export interface ClickhouseGrantRoleGrant {
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
 }
@@ -416,6 +416,213 @@ export interface ClickhouseTag {
 }
 
 export interface ClickhouseTechEmail {
+    /**
+     * An email address to contact for technical issues
+     */
+    email: pulumi.Input<string>;
+}
+
+export interface DragonflyComponent {
+    /**
+     * Service component name
+     */
+    component?: pulumi.Input<string>;
+    /**
+     * Connection info for connecting to the service component. This is a combination of host and port.
+     */
+    connectionUri?: pulumi.Input<string>;
+    /**
+     * Host name for connecting to the service component
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * Kafka authentication method. This is a value specific to the 'kafka' service component
+     */
+    kafkaAuthenticationMethod?: pulumi.Input<string>;
+    /**
+     * Port number for connecting to the service component
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * Network access route
+     */
+    route?: pulumi.Input<string>;
+    /**
+     * Whether the endpoint is encrypted or accepts plaintext. By default endpoints are always encrypted and this property is only included for service components they may disable encryption
+     */
+    ssl?: pulumi.Input<boolean>;
+    /**
+     * DNS usage name
+     */
+    usage?: pulumi.Input<string>;
+}
+
+export interface DragonflyDragonfly {
+}
+
+export interface DragonflyDragonflyUserConfig {
+    /**
+     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     */
+    cacheMode?: pulumi.Input<boolean>;
+    /**
+     * Require SSL to access Dragonfly. The default value is `true`.
+     */
+    dragonflySsl?: pulumi.Input<boolean>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+     */
+    ipFilterObjects?: pulumi.Input<pulumi.Input<inputs.DragonflyDragonflyUserConfigIpFilterObject>[]>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     */
+    ipFilterStrings?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+     *
+     * @deprecated Deprecated. Use `ipFilterString` instead.
+     */
+    ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Migrate data from existing server
+     */
+    migration?: pulumi.Input<inputs.DragonflyDragonflyUserConfigMigration>;
+    /**
+     * Allow access to selected service ports from private networks
+     */
+    privateAccess?: pulumi.Input<inputs.DragonflyDragonflyUserConfigPrivateAccess>;
+    /**
+     * Allow access to selected service components through Privatelink
+     */
+    privatelinkAccess?: pulumi.Input<inputs.DragonflyDragonflyUserConfigPrivatelinkAccess>;
+    /**
+     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     */
+    projectToForkFrom?: pulumi.Input<string>;
+    /**
+     * Allow access to selected service ports from the public Internet
+     */
+    publicAccess?: pulumi.Input<inputs.DragonflyDragonflyUserConfigPublicAccess>;
+    /**
+     * Name of the basebackup to restore in forked service.
+     */
+    recoveryBasebackupName?: pulumi.Input<string>;
+    /**
+     * Store logs for the service so that they are available in the HTTP API and console.
+     */
+    serviceLog?: pulumi.Input<boolean>;
+    /**
+     * Name of another service to fork from. This has effect only when a new service is being created.
+     */
+    serviceToForkFrom?: pulumi.Input<string>;
+    /**
+     * Use static public IP addresses.
+     */
+    staticIps?: pulumi.Input<boolean>;
+}
+
+export interface DragonflyDragonflyUserConfigIpFilterObject {
+    /**
+     * Description for IP filter list entry.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * CIDR address block.
+     */
+    network: pulumi.Input<string>;
+}
+
+export interface DragonflyDragonflyUserConfigMigration {
+    /**
+     * Database name for bootstrapping the initial connection.
+     */
+    dbname?: pulumi.Input<string>;
+    /**
+     * Hostname or IP address of the server where to migrate data from.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+     */
+    ignoreDbs?: pulumi.Input<string>;
+    /**
+     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     */
+    method?: pulumi.Input<string>;
+    /**
+     * Password for authentication with the server where to migrate data from.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Port number of the server where to migrate data from.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The server where to migrate data from is secured with SSL. The default value is `true`.
+     */
+    ssl?: pulumi.Input<boolean>;
+    /**
+     * User name for authentication with the server where to migrate data from.
+     */
+    username?: pulumi.Input<string>;
+}
+
+export interface DragonflyDragonflyUserConfigPrivateAccess {
+    /**
+     * Allow clients to connect to dragonfly with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    dragonfly?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     */
+    prometheus?: pulumi.Input<boolean>;
+}
+
+export interface DragonflyDragonflyUserConfigPrivatelinkAccess {
+    /**
+     * Enable dragonfly.
+     */
+    dragonfly?: pulumi.Input<boolean>;
+    /**
+     * Enable prometheus.
+     */
+    prometheus?: pulumi.Input<boolean>;
+}
+
+export interface DragonflyDragonflyUserConfigPublicAccess {
+    /**
+     * Allow clients to connect to dragonfly from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    dragonfly?: pulumi.Input<boolean>;
+    /**
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+     */
+    prometheus?: pulumi.Input<boolean>;
+}
+
+export interface DragonflyServiceIntegration {
+    /**
+     * Type of the service integration. The only supported value at the moment is `readReplica`
+     */
+    integrationType: pulumi.Input<string>;
+    /**
+     * Name of the source service
+     */
+    sourceServiceName: pulumi.Input<string>;
+}
+
+export interface DragonflyTag {
+    /**
+     * Service tag key
+     */
+    key: pulumi.Input<string>;
+    /**
+     * Service tag value
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface DragonflyTechEmail {
     /**
      * An email address to contact for technical issues
      */
@@ -3601,6 +3808,10 @@ export interface OpenSearchOpensearchUserConfigOpensearch {
      */
     overrideMainResponseVersion?: pulumi.Input<boolean>;
     /**
+     * Enable or disable filtering of alerting by backend roles. Requires Security plugin. Defaults to false.
+     */
+    pluginsAlertingFilterByBackendRoles?: pulumi.Input<boolean>;
+    /**
      * Whitelisted addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
     reindexRemoteWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3844,7 +4055,45 @@ export interface OpenSearchTechEmail {
     email: pulumi.Input<string>;
 }
 
+export interface OrganizationGroupProjectTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface OrganizationTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface OrganizationUserGroupMemberTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -4006,6 +4255,10 @@ export interface PgPgUserConfig {
      * PostgreSQL major version.
      */
     pgVersion?: pulumi.Input<string>;
+    /**
+     * System-wide settings for the pgaudit extension
+     */
+    pgaudit?: pulumi.Input<inputs.PgPgUserConfigPgaudit>;
     /**
      * PGBouncer connection pooling settings
      */
@@ -4344,6 +4597,65 @@ export interface PgPgUserConfigPgQualstats {
      * @deprecated This property is deprecated.
      */
     trackPgCatalog?: pulumi.Input<boolean>;
+}
+
+export interface PgPgUserConfigPgaudit {
+    /**
+     * Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+     */
+    featureEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+     */
+    logCatalog?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+     */
+    logClient?: pulumi.Input<boolean>;
+    /**
+     * Specifies the log level that will be used for log entries. The default value is `log`.
+     */
+    logLevel?: pulumi.Input<string>;
+    /**
+     * Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+     */
+    logMaxStringLength?: pulumi.Input<number>;
+    /**
+     * This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+     */
+    logNestedStatements?: pulumi.Input<boolean>;
+    /**
+     * Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+     */
+    logParameter?: pulumi.Input<boolean>;
+    /**
+     * Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. The default value is `0`.
+     */
+    logParameterMaxSize?: pulumi.Input<number>;
+    /**
+     * Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+     */
+    logRelation?: pulumi.Input<boolean>;
+    /**
+     * Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+     */
+    logRows?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+     */
+    logStatement?: pulumi.Input<boolean>;
+    /**
+     * Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+     */
+    logStatementOnce?: pulumi.Input<boolean>;
+    /**
+     * Specifies which classes of statements will be logged by session audit logging.
+     */
+    logs?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies the master role to use for object audit logging.
+     */
+    role?: pulumi.Input<string>;
 }
 
 export interface PgPgUserConfigPgbouncer {
@@ -4739,7 +5051,7 @@ export interface RedisTechEmail {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfig {
     /**
-     * Tables to create.
+     * Tables to create
      */
     tables?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTable>[]>;
 }
@@ -4750,9 +5062,9 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     autoOffsetReset?: pulumi.Input<string>;
     /**
-     * Table columns.
+     * Table columns
      */
-    columns?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
+    columns: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
     /**
      * Message data format. The default value is `JSONEachRow`.
      */
@@ -4794,9 +5106,9 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     skipBrokenMessages?: pulumi.Input<number>;
     /**
-     * Kafka topics.
+     * Kafka topics
      */
-    topics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic>[]>;
+    topics: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableTopic>[]>;
 }
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
@@ -4819,7 +5131,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
 
 export interface ServiceIntegrationClickhousePostgresqlUserConfig {
     /**
-     * Databases to expose.
+     * Databases to expose
      */
     databases?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhousePostgresqlUserConfigDatabase>[]>;
 }
@@ -4841,7 +5153,7 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     datadogDbmEnabled?: pulumi.Input<boolean>;
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      */
     datadogTags?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigDatadogTag>[]>;
     /**
@@ -4869,11 +5181,11 @@ export interface ServiceIntegrationDatadogUserConfig {
      */
     maxJmxMetrics?: pulumi.Input<number>;
     /**
-     * Datadog Opensearch Options.
+     * Datadog Opensearch Options
      */
     opensearch?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigOpensearch>;
     /**
-     * Datadog Redis Options.
+     * Datadog Redis Options
      */
     redis?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfigRedis>;
 }
@@ -4917,7 +5229,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     datadogApiKey: pulumi.Input<string>;
     /**
-     * Custom tags provided by user.
+     * Custom tags provided by user
      */
     datadogTags?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationEndpointDatadogUserConfigDatadogTag>[]>;
     /**
@@ -5104,6 +5416,10 @@ export interface ServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
 
 export interface ServiceIntegrationEndpointExternalPostgresql {
     /**
+     * Default database.
+     */
+    defaultDatabase?: pulumi.Input<string>;
+    /**
      * Hostname or IP address of the server.
      */
     host: pulumi.Input<string>;
@@ -5221,13 +5537,20 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
     tls: pulumi.Input<boolean>;
 }
 
+export interface ServiceIntegrationExternalAwsCloudwatchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics).
+     * Metrics to not send to AWS CloudWatch (takes precedence over extra*metrics)
      */
     droppedMetrics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric>[]>;
     /**
-     * Metrics to allow through to AWS CloudWatch (in addition to default metrics).
+     * Metrics to allow through to AWS CloudWatch (in addition to default metrics)
      */
     extraMetrics?: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetric>[]>;
 }
@@ -5254,9 +5577,23 @@ export interface ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMe
     metric: pulumi.Input<string>;
 }
 
+export interface ServiceIntegrationExternalElasticsearchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ServiceIntegrationExternalOpensearchLogsUserConfig {
+    /**
+     * The list of logging fields that will be sent to the integration logging service. The MESSAGE and timestamp fields are always sent.
+     */
+    selectedLogFields?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ServiceIntegrationKafkaConnectUserConfig {
     /**
-     * Kafka Connect service configuration values.
+     * Kafka Connect service configuration values
      */
     kafkaConnect?: pulumi.Input<inputs.ServiceIntegrationKafkaConnectUserConfigKafkaConnect>;
 }
@@ -5297,7 +5634,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfig {
      */
     clusterAlias?: pulumi.Input<string>;
     /**
-     * Kafka MirrorMaker configuration values.
+     * Kafka MirrorMaker configuration values
      */
     kafkaMirrormaker?: pulumi.Input<inputs.ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker>;
 }
@@ -5358,7 +5695,7 @@ export interface ServiceIntegrationMetricsUserConfig {
      */
     roUsername?: pulumi.Input<string>;
     /**
-     * Configuration options for metrics where source service is MySQL.
+     * Configuration options for metrics where source service is MySQL
      */
     sourceMysql?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfigSourceMysql>;
     /**
@@ -5369,12 +5706,85 @@ export interface ServiceIntegrationMetricsUserConfig {
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysql {
     /**
-     * Configuration options for Telegraf MySQL input plugin.
+     * Configuration options for Telegraf MySQL input plugin
      */
     telegraf?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf>;
 }
 
 export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
+     */
+    gatherEventWaits?: pulumi.Input<boolean>;
+    /**
+     * gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     */
+    gatherFileEventsStats?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
+     */
+    gatherIndexIoWaits?: pulumi.Input<boolean>;
+    /**
+     * Gather autoIncrement columns and max values from information schema.
+     */
+    gatherInfoSchemaAutoInc?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
+     */
+    gatherInnodbMetrics?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.EVENTS*STATEMENTS*SUMMARY*BY_DIGEST.
+     */
+    gatherPerfEventsStatements?: pulumi.Input<boolean>;
+    /**
+     * Gather thread state counts from INFORMATION_SCHEMA.PROCESSLIST.
+     */
+    gatherProcessList?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from SHOW SLAVE STATUS command output.
+     */
+    gatherSlaveStatus?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*TABLE.
+     */
+    gatherTableIoWaits?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from PERFORMANCE*SCHEMA.TABLE*LOCK_WAITS.
+     */
+    gatherTableLockWaits?: pulumi.Input<boolean>;
+    /**
+     * Gather metrics from INFORMATION_SCHEMA.TABLES.
+     */
+    gatherTableSchema?: pulumi.Input<boolean>;
+    /**
+     * Truncates digest text from perf*events*statements into this many characters.
+     */
+    perfEventsStatementsDigestTextLimit?: pulumi.Input<number>;
+    /**
+     * Limits metrics from perf*events*statements.
+     */
+    perfEventsStatementsLimit?: pulumi.Input<number>;
+    /**
+     * Only include perf*events*statements whose last seen is less than this many seconds.
+     */
+    perfEventsStatementsTimeLimit?: pulumi.Input<number>;
+}
+
+export interface ServiceIntegrationPrometheusUserConfig {
+    /**
+     * Configuration options for metrics where source service is MySQL
+     */
+    sourceMysql?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfigSourceMysql>;
+}
+
+export interface ServiceIntegrationPrometheusUserConfigSourceMysql {
+    /**
+     * Configuration options for Telegraf MySQL input plugin
+     */
+    telegraf?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf>;
+}
+
+export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
     /**
      * Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
      */

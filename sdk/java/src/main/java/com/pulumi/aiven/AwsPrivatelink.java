@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+ * Creates and manages an [AWS PrivateLink for Aiven services](https://aiven.io/docs/platform/howto/use-aws-privatelinks) in a VPC.
  * 
  * ## Example Usage
  * 
@@ -41,9 +41,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AwsPrivatelink(&#34;foo&#34;, AwsPrivatelinkArgs.builder()        
- *             .project(data.aiven_project().foo().project())
- *             .serviceName(aiven_kafka.bar().service_name())
+ *         var main = new AwsPrivatelink(&#34;main&#34;, AwsPrivatelinkArgs.builder()        
+ *             .project(data.aiven_project().example_project().project())
+ *             .serviceName(aiven_kafka.example_kafka().service_name())
  *             .principals(&#34;arn:aws:iam::012345678901:user/mwf&#34;)
  *             .build());
  * 
@@ -55,77 +55,77 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink foo project/service_name
+ * $ pulumi import aiven:index/awsPrivatelink:AwsPrivatelink main PROJECT/SERVICE_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/awsPrivatelink:AwsPrivatelink")
 public class AwsPrivatelink extends com.pulumi.resources.CustomResource {
     /**
-     * AWS service ID
+     * AWS service ID.
      * 
      */
     @Export(name="awsServiceId", refs={String.class}, tree="[0]")
     private Output<String> awsServiceId;
 
     /**
-     * @return AWS service ID
+     * @return AWS service ID.
      * 
      */
     public Output<String> awsServiceId() {
         return this.awsServiceId;
     }
     /**
-     * AWS service name
+     * AWS service name.
      * 
      */
     @Export(name="awsServiceName", refs={String.class}, tree="[0]")
     private Output<String> awsServiceName;
 
     /**
-     * @return AWS service name
+     * @return AWS service name.
      * 
      */
     public Output<String> awsServiceName() {
         return this.awsServiceName;
     }
     /**
-     * List of allowed principals
+     * List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      * 
      */
     @Export(name="principals", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> principals;
 
     /**
-     * @return List of allowed principals
+     * @return List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
      * 
      */
     public Output<List<String>> principals() {
         return this.principals;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

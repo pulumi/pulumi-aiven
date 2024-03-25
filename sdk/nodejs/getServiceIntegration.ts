@@ -50,7 +50,7 @@ export interface GetServiceIntegrationArgs {
      */
     destinationServiceName: string;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      */
     integrationType: string;
     /**
@@ -88,9 +88,21 @@ export interface GetServiceIntegrationResult {
      */
     readonly destinationServiceName: string;
     /**
+     * ExternalAwsCloudwatchLogs user configurable settings
+     */
+    readonly externalAwsCloudwatchLogsUserConfigs: outputs.GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig[];
+    /**
      * ExternalAwsCloudwatchMetrics user configurable settings
      */
     readonly externalAwsCloudwatchMetricsUserConfigs: outputs.GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfig[];
+    /**
+     * ExternalElasticsearchLogs user configurable settings
+     */
+    readonly externalElasticsearchLogsUserConfigs: outputs.GetServiceIntegrationExternalElasticsearchLogsUserConfig[];
+    /**
+     * ExternalOpensearchLogs user configurable settings
+     */
+    readonly externalOpensearchLogsUserConfigs: outputs.GetServiceIntegrationExternalOpensearchLogsUserConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -100,7 +112,7 @@ export interface GetServiceIntegrationResult {
      */
     readonly integrationId: string;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      */
     readonly integrationType: string;
     /**
@@ -127,6 +139,10 @@ export interface GetServiceIntegrationResult {
      * Project the integration belongs to
      */
     readonly project: string;
+    /**
+     * Prometheus user configurable settings
+     */
+    readonly prometheusUserConfigs: outputs.GetServiceIntegrationPrometheusUserConfig[];
     /**
      * Source endpoint for the integration (if any)
      */
@@ -173,7 +189,7 @@ export interface GetServiceIntegrationOutputArgs {
      */
     destinationServiceName: pulumi.Input<string>;
     /**
-     * Type of the service integration. Possible values: `alertmanager`, `cassandraCrossServiceCluster`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`
+     * Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
      */
     integrationType: pulumi.Input<string>;
     /**

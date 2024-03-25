@@ -37,15 +37,15 @@ export function getPgDatabase(args: GetPgDatabaseArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetPgDatabaseArgs {
     /**
-     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the service database. Changing this property forces recreation of the resource.
      */
     databaseName: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
 }
@@ -55,7 +55,7 @@ export interface GetPgDatabaseArgs {
  */
 export interface GetPgDatabaseResult {
     /**
-     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the service database. Changing this property forces recreation of the resource.
      */
     readonly databaseName: string;
     /**
@@ -63,19 +63,19 @@ export interface GetPgDatabaseResult {
      */
     readonly id: string;
     /**
-     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * Default string sort order (`LC_COLLATE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     readonly lcCollate: string;
     /**
-     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. This property cannot be changed, doing so forces recreation of the resource.
+     * Default character classification (`LC_CTYPE`) of the database. The default value is `en_US.UTF-8`. Changing this property forces recreation of the resource.
      */
     readonly lcCtype: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     readonly terminationProtection: boolean;
@@ -107,15 +107,15 @@ export function getPgDatabaseOutput(args: GetPgDatabaseOutputArgs, opts?: pulumi
  */
 export interface GetPgDatabaseOutputArgs {
     /**
-     * The name of the service database. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the service database. Changing this property forces recreation of the resource.
      */
     databaseName: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

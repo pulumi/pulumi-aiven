@@ -15,14 +15,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     public static final GetOpenSearchAclRuleArgs Empty = new GetOpenSearchAclRuleArgs();
 
     /**
-     * The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="index", required=true)
     private Output<String> index;
 
     /**
-     * @return The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> index() {
@@ -45,14 +45,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -60,14 +60,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName", required=true)
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -75,14 +75,14 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> username() {
@@ -118,7 +118,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param index The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param index The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param index The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+         * @param index The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -171,7 +171,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param username The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GetOpenSearchAclRuleArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param username The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param username The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an organization in Aiven.
+// Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
 //
 // ## Example Usage
 //
@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganization(ctx, "organization1", nil)
+//			_, err := aiven.NewOrganization(ctx, "main", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -42,7 +42,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/organization:Organization organization1 organization_id
+// $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
 // ```
 type Organization struct {
 	pulumi.CustomResourceState
@@ -51,7 +51,7 @@ type Organization struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Name of the organization.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Tenant identifier of the organization.
+	// Tenant ID of the organization.
 	TenantId pulumi.StringOutput           `pulumi:"tenantId"`
 	Timeouts OrganizationTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Timestamp of the last update of the organization.
@@ -92,7 +92,7 @@ type organizationState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Name of the organization.
 	Name *string `pulumi:"name"`
-	// Tenant identifier of the organization.
+	// Tenant ID of the organization.
 	TenantId *string               `pulumi:"tenantId"`
 	Timeouts *OrganizationTimeouts `pulumi:"timeouts"`
 	// Timestamp of the last update of the organization.
@@ -104,7 +104,7 @@ type OrganizationState struct {
 	CreateTime pulumi.StringPtrInput
 	// Name of the organization.
 	Name pulumi.StringPtrInput
-	// Tenant identifier of the organization.
+	// Tenant ID of the organization.
 	TenantId pulumi.StringPtrInput
 	Timeouts OrganizationTimeoutsPtrInput
 	// Timestamp of the last update of the organization.
@@ -225,7 +225,7 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Tenant identifier of the organization.
+// Tenant ID of the organization.
 func (o OrganizationOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }

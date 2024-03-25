@@ -37,15 +37,15 @@ export function getTransitGatewayVpcAttachment(args: GetTransitGatewayVpcAttachm
  */
 export interface GetTransitGatewayVpcAttachmentArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      */
     peerCloudAccount: string;
     /**
-     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. Changing this property forces recreation of the resource.
      */
     peerVpc: string;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     vpcId: string;
 }
@@ -59,7 +59,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
      */
     readonly id: string;
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      */
     readonly peerCloudAccount: string;
     /**
@@ -67,7 +67,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
      */
     readonly peerRegion: string;
     /**
-     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. Changing this property forces recreation of the resource.
      */
     readonly peerVpc: string;
     /**
@@ -87,7 +87,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
      */
     readonly userPeerNetworkCidrs: string[];
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly vpcId: string;
 }
@@ -118,15 +118,15 @@ export function getTransitGatewayVpcAttachmentOutput(args: GetTransitGatewayVpcA
  */
 export interface GetTransitGatewayVpcAttachmentOutputArgs {
     /**
-     * AWS account ID or GCP project ID of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID or GCP project ID of the peered VPC. Changing this property forces recreation of the resource.
      */
     peerCloudAccount: pulumi.Input<string>;
     /**
-     * Transit gateway ID. This property cannot be changed, doing so forces recreation of the resource.
+     * Transit gateway ID. Changing this property forces recreation of the resource.
      */
     peerVpc: pulumi.Input<string>;
     /**
-     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The VPC the peering connection belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     vpcId: pulumi.Input<string>;
 }

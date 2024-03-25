@@ -53,7 +53,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def index(self) -> str:
         """
-        The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+        The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "index")
 
@@ -69,7 +69,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -77,7 +77,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -85,7 +85,7 @@ class GetOpenSearchAclRuleResult:
     @pulumi.getter
     def username(self) -> str:
         """
-        The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "username")
 
@@ -128,11 +128,11 @@ def get_open_search_acl_rule(index: Optional[str] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str index: The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
     :param str permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['index'] = index
@@ -177,10 +177,10 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
     <!--End PulumiCodeChooser -->
 
 
-    :param str index: The index pattern for this ACL entry. Maximum length: `249`. This property cannot be changed, doing so forces recreation of the resource.
+    :param str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
     :param str permission: The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str username: The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

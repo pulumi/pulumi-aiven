@@ -45,7 +45,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="awsServiceId")
     def aws_service_id(self) -> str:
         """
-        AWS service ID
+        AWS service ID.
         """
         return pulumi.get(self, "aws_service_id")
 
@@ -53,7 +53,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="awsServiceName")
     def aws_service_name(self) -> str:
         """
-        AWS service name
+        AWS service name.
         """
         return pulumi.get(self, "aws_service_name")
 
@@ -69,7 +69,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter
     def principals(self) -> Sequence[str]:
         """
-        List of allowed principals
+        List of the ARNs of the AWS accounts or IAM users allowed to connect to the VPC endpoint.
         """
         return pulumi.get(self, "principals")
 
@@ -77,7 +77,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -85,7 +85,7 @@ class GetAwsPrivatelinkResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -108,7 +108,7 @@ def get_aws_privatelink(project: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAwsPrivatelinkResult:
     """
-    The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+    Gets information about an AWS PrivateLink connection for an Aiven service.
 
     ## Example Usage
 
@@ -117,14 +117,14 @@ def get_aws_privatelink(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
-        service_name=aiven_kafka["bar"]["service_name"])
+    main = aiven.get_aws_privatelink(project=data["aiven_project"]["example_project"]["project"],
+        service_name=aiven_kafka["example_kafka"]["service_name"])
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -146,7 +146,7 @@ def get_aws_privatelink_output(project: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsPrivatelinkResult]:
     """
-    The AWS Privatelink resource allows the creation and management of Aiven AWS Privatelink for a services.
+    Gets information about an AWS PrivateLink connection for an Aiven service.
 
     ## Example Usage
 
@@ -155,13 +155,13 @@ def get_aws_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    foo = aiven.get_aws_privatelink(project=data["aiven_project"]["foo"]["project"],
-        service_name=aiven_kafka["bar"]["service_name"])
+    main = aiven.get_aws_privatelink(project=data["aiven_project"]["example_project"]["project"],
+        service_name=aiven_kafka["example_kafka"]["service_name"])
     ```
     <!--End PulumiCodeChooser -->
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

@@ -59,13 +59,13 @@ type CassandraUser struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// The password of the Cassandra User.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
@@ -123,13 +123,13 @@ type cassandraUserState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The password of the Cassandra User.
 	Password *string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type *string `pulumi:"type"`
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
 }
 
@@ -140,13 +140,13 @@ type CassandraUserState struct {
 	AccessKey pulumi.StringPtrInput
 	// The password of the Cassandra User.
 	Password pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringPtrInput
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
 }
 
@@ -157,11 +157,11 @@ func (CassandraUserState) ElementType() reflect.Type {
 type cassandraUserArgs struct {
 	// The password of the Cassandra User.
 	Password *string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
 }
 
@@ -169,11 +169,11 @@ type cassandraUserArgs struct {
 type CassandraUserArgs struct {
 	// The password of the Cassandra User.
 	Password pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
 }
 
@@ -279,12 +279,12 @@ func (o CassandraUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o CassandraUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o CassandraUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -294,7 +294,7 @@ func (o CassandraUserOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// The actual name of the Cassandra User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o CassandraUserOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v *CassandraUser) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }

@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Organizational Unit resource allows the creation and management of Aiven Organizational Units.
+ * Creates and manages an [organizational unit](https://aiven.io/docs/platform/concepts/projects_accounts_access) in an Aiven organization.
  * 
  * ## Example Usage
  * 
@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organizationalUnit1 = new OrganizationalUnit(&#34;organizationalUnit1&#34;, OrganizationalUnitArgs.builder()        
- *             .parentId(&#34;&lt;ORGANIZATION_ID&gt;&#34;)
+ *         var exampleUnit = new OrganizationalUnit(&#34;exampleUnit&#34;, OrganizationalUnitArgs.builder()        
+ *             .parentId(aiven_organization.main().id())
  *             .build());
  * 
  *     }
@@ -52,77 +52,77 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit organizational_unit1 organizational_unit_id
+ * $ pulumi import aiven:index/organizationalUnit:OrganizationalUnit example_unit ORGANIZATIONAL_UNIT_ID
  * ```
  * 
  */
 @ResourceType(type="aiven:index/organizationalUnit:OrganizationalUnit")
 public class OrganizationalUnit extends com.pulumi.resources.CustomResource {
     /**
-     * Time of creation
+     * Time of creation.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Time of creation
+     * @return Time of creation.
      * 
      */
     public Output<String> createTime() {
         return this.createTime;
     }
     /**
-     * Organizational Unit name
+     * The name of the organizational unit.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Organizational Unit name
+     * @return The name of the organizational unit.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Parent ID
+     * The ID of the organization that the unit is created in.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output<String> parentId;
 
     /**
-     * @return Parent ID
+     * @return The ID of the organization that the unit is created in.
      * 
      */
     public Output<String> parentId() {
         return this.parentId;
     }
     /**
-     * Tenant ID
+     * Tenant ID.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
-     * @return Tenant ID
+     * @return Tenant ID.
      * 
      */
     public Output<String> tenantId() {
         return this.tenantId;
     }
     /**
-     * Time of last update
+     * Time of last update.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Time of last update
+     * @return Time of last update.
      * 
      */
     public Output<String> updateTime() {

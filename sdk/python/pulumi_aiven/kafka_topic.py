@@ -27,10 +27,10 @@ class KafkaTopicArgs:
         """
         The set of arguments for constructing a KafkaTopic resource.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Kafka Topic tag.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
@@ -64,7 +64,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -88,7 +88,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -100,7 +100,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Input[str]:
         """
-        The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the topic. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic_name")
 
@@ -161,13 +161,13 @@ class _KafkaTopicState:
         Input properties used for looking up and filtering KafkaTopic resources.
         :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Kafka Topic tag.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
-        :param pulumi.Input[str] topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -214,7 +214,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -238,7 +238,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -275,7 +275,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="topicName")
     def topic_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the topic. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic_name")
 
@@ -311,13 +311,13 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Kafka Topic tag.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
-        :param pulumi.Input[str] topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -411,13 +411,13 @@ class KafkaTopic(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Kafka Topic tag.
         :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
                enable this for any production Kafka topic containing critical data.
-        :param pulumi.Input[str] topic_name: The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -453,7 +453,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -469,7 +469,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -494,7 +494,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="topicName")
     def topic_name(self) -> pulumi.Output[str]:
         """
-        The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+        The name of the topic. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "topic_name")
 

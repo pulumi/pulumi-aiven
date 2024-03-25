@@ -18,14 +18,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     public static final AzureVpcPeeringConnectionState Empty = new AzureVpcPeeringConnectionState();
 
     /**
-     * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="azureSubscriptionId")
     private @Nullable Output<String> azureSubscriptionId;
 
     /**
-     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> azureSubscriptionId() {
@@ -33,14 +33,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerAzureAppId")
     private @Nullable Output<String> peerAzureAppId;
 
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerAzureAppId() {
@@ -48,14 +48,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerAzureTenantId")
     private @Nullable Output<String> peerAzureTenantId;
 
     /**
-     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerAzureTenantId() {
@@ -63,14 +63,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="peerResourceGroup")
     private @Nullable Output<String> peerResourceGroup;
 
     /**
-     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> peerResourceGroup() {
@@ -78,14 +78,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * Cloud provider identifier for the peering connection if available
+     * The ID of the cloud provider for the peering connection.
      * 
      */
     @Import(name="peeringConnectionId")
     private @Nullable Output<String> peeringConnectionId;
 
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return The ID of the cloud provider for the peering connection.
      * 
      */
     public Optional<Output<String>> peeringConnectionId() {
@@ -108,14 +108,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Import(name="stateInfo")
     private @Nullable Output<Map<String,Object>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Optional<Output<Map<String,Object>>> stateInfo() {
@@ -123,14 +123,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure VNet. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vnetName")
     private @Nullable Output<String> vnetName;
 
     /**
-     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> vnetName() {
@@ -138,14 +138,14 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
     }
 
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -185,7 +185,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param azureSubscriptionId Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param azureSubscriptionId Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+         * @param azureSubscriptionId The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerAzureAppId The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerAzureAppId Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerAzureAppId The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerAzureTenantId Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerAzureTenantId The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerAzureTenantId Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerAzureTenantId The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peerResourceGroup Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+         * @param peerResourceGroup The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peeringConnectionId Cloud provider identifier for the peering connection if available
+         * @param peeringConnectionId The ID of the cloud provider for the peering connection.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param peeringConnectionId Cloud provider identifier for the peering connection if available
+         * @param peeringConnectionId The ID of the cloud provider for the peering connection.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param stateInfo State-specific help or error information
+         * @param stateInfo State-specific help or error information.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param stateInfo State-specific help or error information
+         * @param stateInfo State-specific help or error information.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vnetName Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vnetName The name of the Azure VNet. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vnetName Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vnetName The name of the Azure VNet. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -353,7 +353,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The ID of the Aiven VPC. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class AzureVpcPeeringConnectionState extends com.pulumi.resources.R
         }
 
         /**
-         * @param vpcId The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+         * @param vpcId The ID of the Aiven VPC. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -37,15 +37,15 @@ export function getClickhouseUser(args: GetClickhouseUserArgs, opts?: pulumi.Inv
  */
 export interface GetClickhouseUserArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
     /**
-     * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
      */
     username: string;
 }
@@ -63,7 +63,7 @@ export interface GetClickhouseUserResult {
      */
     readonly password: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -71,11 +71,11 @@ export interface GetClickhouseUserResult {
      */
     readonly required: boolean;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
-     * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
      */
     readonly username: string;
     /**
@@ -110,15 +110,15 @@ export function getClickhouseUserOutput(args: GetClickhouseUserOutputArgs, opts?
  */
 export interface GetClickhouseUserOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the Clickhouse user. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the Clickhouse user. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

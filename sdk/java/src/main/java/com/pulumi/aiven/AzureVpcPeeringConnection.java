@@ -16,7 +16,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 /**
- * The Azure VPC Peering Connection resource allows the creation and management of Aiven VPC Peering Connections.
+ * Creates and manages an Azure VPC peering connection with an Aiven VPC.
  * 
  * ## Example Usage
  * 
@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.ProjectVpc;
+ * import com.pulumi.aiven.ProjectVpcArgs;
  * import com.pulumi.aiven.AzureVpcPeeringConnection;
  * import com.pulumi.aiven.AzureVpcPeeringConnectionArgs;
  * import java.util.List;
@@ -42,13 +44,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new AzureVpcPeeringConnection(&#34;foo&#34;, AzureVpcPeeringConnectionArgs.builder()        
- *             .vpcId(data.aiven_project_vpc().vpc().id())
- *             .azureSubscriptionId(&#34;xxxxxx&#34;)
- *             .peerResourceGroup(&#34;my-pr1&#34;)
- *             .vnetName(&#34;my-vnet1&#34;)
- *             .peerAzureAppId(&#34;xxxxxx&#34;)
- *             .peerAzureTenantId(&#34;xxxxxx&#34;)
+ *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+ *             .project(data.aiven_project().example_project().project())
+ *             .cloudName(&#34;google-europe-west1&#34;)
+ *             .networkCidr(&#34;192.168.1.0/24&#34;)
+ *             .build());
+ * 
+ *         var azureToAivenPeering = new AzureVpcPeeringConnection(&#34;azureToAivenPeering&#34;, AzureVpcPeeringConnectionArgs.builder()        
+ *             .vpcId(exampleVpc.id())
+ *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .peerResourceGroup(&#34;example-resource-group&#34;)
+ *             .vnetName(&#34;example-vnet&#34;)
+ *             .peerAzureAppId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .peerAzureTenantId(&#34;00000000-0000-0000-0000-000000000000&#34;)
  *             .build());
  * 
  *     }
@@ -59,77 +67,77 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection foo project_name/vpc_id/azure_subscription_id/vnet_name
+ * $ pulumi import aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection azure_to_aiven_peering PROJECT/VPC_ID/AZURE_SUBSCRIPTION_ID/VNET_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/azureVpcPeeringConnection:AzureVpcPeeringConnection")
 public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResource {
     /**
-     * Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="azureSubscriptionId", refs={String.class}, tree="[0]")
     private Output<String> azureSubscriptionId;
 
     /**
-     * @return Azure Subscription ID. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> azureSubscriptionId() {
         return this.azureSubscriptionId;
     }
     /**
-     * Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerAzureAppId", refs={String.class}, tree="[0]")
     private Output<String> peerAzureAppId;
 
     /**
-     * @return Azure app registration id in UUID4 form that is allowed to create a peering to the peer vnet. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Azure app that is allowed to create a peering to the Azure Virtual Network (VNet) in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureAppId() {
         return this.peerAzureAppId;
     }
     /**
-     * Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerAzureTenantId", refs={String.class}, tree="[0]")
     private Output<String> peerAzureTenantId;
 
     /**
-     * @return Azure tenant id in UUID4 form. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The Azure tenant ID in UUID4 format. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerAzureTenantId() {
         return this.peerAzureTenantId;
     }
     /**
-     * Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="peerResourceGroup", refs={String.class}, tree="[0]")
     private Output<String> peerResourceGroup;
 
     /**
-     * @return Azure resource group name of the peered VPC. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure resource group associated with the VNet. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> peerResourceGroup() {
         return this.peerResourceGroup;
     }
     /**
-     * Cloud provider identifier for the peering connection if available
+     * The ID of the cloud provider for the peering connection.
      * 
      */
     @Export(name="peeringConnectionId", refs={String.class}, tree="[0]")
     private Output<String> peeringConnectionId;
 
     /**
-     * @return Cloud provider identifier for the peering connection if available
+     * @return The ID of the cloud provider for the peering connection.
      * 
      */
     public Output<String> peeringConnectionId() {
@@ -150,42 +158,42 @@ public class AzureVpcPeeringConnection extends com.pulumi.resources.CustomResour
         return this.state;
     }
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      * 
      */
     @Export(name="stateInfo", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> stateInfo;
 
     /**
-     * @return State-specific help or error information
+     * @return State-specific help or error information.
      * 
      */
     public Output<Map<String,Object>> stateInfo() {
         return this.stateInfo;
     }
     /**
-     * Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the Azure VNet. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vnetName", refs={String.class}, tree="[0]")
     private Output<String> vnetName;
 
     /**
-     * @return Azure Network name. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the Azure VNet. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vnetName() {
         return this.vnetName;
     }
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
-     * @return The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> vpcId() {

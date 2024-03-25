@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+ * Gets information about an Azure Private Link connection for an Aiven service.
  *
  * ## Example Usage
  *
@@ -14,9 +14,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getAzurePrivatelink({
- *     project: data.aiven_project.foo.project,
- *     serviceName: aiven_kafka.bar.service_name,
+ * const main = aiven.getAzurePrivatelink({
+ *     project: data.aiven_project.example_project.project,
+ *     serviceName: aiven_kafka.example_kafka.service_name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -35,11 +35,11 @@ export function getAzurePrivatelink(args: GetAzurePrivatelinkArgs, opts?: pulumi
  */
 export interface GetAzurePrivatelinkArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
 }
@@ -49,11 +49,11 @@ export interface GetAzurePrivatelinkArgs {
  */
 export interface GetAzurePrivatelinkResult {
     /**
-     * Azure Privatelink service alias
+     * The Azure Private Link service alias.
      */
     readonly azureServiceAlias: string;
     /**
-     * Azure Privatelink service ID
+     * The Azure Private Link service ID.
      */
     readonly azureServiceId: string;
     /**
@@ -61,28 +61,28 @@ export interface GetAzurePrivatelinkResult {
      */
     readonly id: string;
     /**
-     * Printable result of the Azure Privatelink request
+     * Printable result of the Azure Private Link request.
      */
     readonly message: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
-     * Privatelink resource state
+     * The state of the Private Link resource.
      */
     readonly state: string;
     /**
-     * A List of allowed Subscription IDs. Maximum length: `16`.
+     * A list of allowed subscription IDs. Maximum length: `16`.
      */
     readonly userSubscriptionIds: string[];
 }
 /**
- * The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+ * Gets information about an Azure Private Link connection for an Aiven service.
  *
  * ## Example Usage
  *
@@ -91,9 +91,9 @@ export interface GetAzurePrivatelinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getAzurePrivatelink({
- *     project: data.aiven_project.foo.project,
- *     serviceName: aiven_kafka.bar.service_name,
+ * const main = aiven.getAzurePrivatelink({
+ *     project: data.aiven_project.example_project.project,
+ *     serviceName: aiven_kafka.example_kafka.service_name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -107,11 +107,11 @@ export function getAzurePrivatelinkOutput(args: GetAzurePrivatelinkOutputArgs, o
  */
 export interface GetAzurePrivatelinkOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

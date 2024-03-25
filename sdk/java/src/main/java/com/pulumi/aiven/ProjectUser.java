@@ -76,14 +76,14 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
         return this.accepted;
     }
     /**
-     * Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
-     * @return Email address of the user. Should be lowercase. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> email() {
@@ -104,14 +104,14 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
         return this.memberType;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {

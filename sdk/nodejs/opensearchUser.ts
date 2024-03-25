@@ -62,11 +62,11 @@ export class OpensearchUser extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -74,7 +74,7 @@ export class OpensearchUser extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly username!: pulumi.Output<string>;
 
@@ -129,11 +129,11 @@ export interface OpensearchUserState {
      */
     password?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -141,7 +141,7 @@ export interface OpensearchUserState {
      */
     type?: pulumi.Input<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username?: pulumi.Input<string>;
 }
@@ -155,15 +155,15 @@ export interface OpensearchUserArgs {
      */
     password?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The actual name of the OpenSearch User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     username: pulumi.Input<string>;
 }

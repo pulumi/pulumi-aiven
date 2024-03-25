@@ -79,17 +79,17 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
     /**
      * Offset syncs topic location.
      */
-    public readonly offsetSyncsTopicLocation!: pulumi.Output<string | undefined>;
+    public readonly offsetSyncsTopicLocation!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
-    public readonly replicationPolicyClass!: pulumi.Output<string | undefined>;
+    public readonly replicationPolicyClass!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -148,8 +148,14 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             if ((!args || args.enable === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enable'");
             }
+            if ((!args || args.offsetSyncsTopicLocation === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'offsetSyncsTopicLocation'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.replicationPolicyClass === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'replicationPolicyClass'");
             }
             if ((!args || args.serviceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceName'");
@@ -200,7 +206,7 @@ export interface MirrorMakerReplicationFlowState {
      */
     offsetSyncsTopicLocation?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -208,7 +214,7 @@ export interface MirrorMakerReplicationFlowState {
      */
     replicationPolicyClass?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -256,17 +262,17 @@ export interface MirrorMakerReplicationFlowArgs {
     /**
      * Offset syncs topic location.
      */
-    offsetSyncsTopicLocation?: pulumi.Input<string>;
+    offsetSyncsTopicLocation: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
-    replicationPolicyClass?: pulumi.Input<string>;
+    replicationPolicyClass: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

@@ -19,9 +19,9 @@ class GcpVpcPeeringConnectionArgs:
                  vpc_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a GcpVpcPeeringConnection resource.
-        :param pulumi.Input[str] gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         pulumi.set(__self__, "gcp_project_id", gcp_project_id)
         pulumi.set(__self__, "peer_vpc", peer_vpc)
@@ -31,7 +31,7 @@ class GcpVpcPeeringConnectionArgs:
     @pulumi.getter(name="gcpProjectId")
     def gcp_project_id(self) -> pulumi.Input[str]:
         """
-        GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        Google Cloud project ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "gcp_project_id")
 
@@ -43,7 +43,7 @@ class GcpVpcPeeringConnectionArgs:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> pulumi.Input[str]:
         """
-        GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        Google Cloud VPC network name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -55,7 +55,7 @@ class GcpVpcPeeringConnectionArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -75,12 +75,12 @@ class _GcpVpcPeeringConnectionState:
                  vpc_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GcpVpcPeeringConnection resources.
-        :param pulumi.Input[str] gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] self_link: Computed GCP network peering link
-        :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] self_link: Computed Google Cloud network peering link.
+        :param pulumi.Input[str] state: State of the peering connection.
+        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         if gcp_project_id is not None:
             pulumi.set(__self__, "gcp_project_id", gcp_project_id)
@@ -99,7 +99,7 @@ class _GcpVpcPeeringConnectionState:
     @pulumi.getter(name="gcpProjectId")
     def gcp_project_id(self) -> Optional[pulumi.Input[str]]:
         """
-        GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        Google Cloud project ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "gcp_project_id")
 
@@ -111,7 +111,7 @@ class _GcpVpcPeeringConnectionState:
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> Optional[pulumi.Input[str]]:
         """
-        GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        Google Cloud VPC network name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -123,7 +123,7 @@ class _GcpVpcPeeringConnectionState:
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
-        Computed GCP network peering link
+        Computed Google Cloud network peering link.
         """
         return pulumi.get(self, "self_link")
 
@@ -135,7 +135,7 @@ class _GcpVpcPeeringConnectionState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of the peering connection
+        State of the peering connection.
         """
         return pulumi.get(self, "state")
 
@@ -147,7 +147,7 @@ class _GcpVpcPeeringConnectionState:
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
         """
-        State-specific help or error information
+        State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
@@ -159,7 +159,7 @@ class _GcpVpcPeeringConnectionState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -178,7 +178,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
                  vpc_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+        Creates and manages a Google Cloud VPC peering connection.
 
         ## Example Usage
 
@@ -202,9 +202,9 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         ...
     @overload
@@ -213,7 +213,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
                  args: GcpVpcPeeringConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The GCP VPC Peering Connection resource allows the creation and management of Aiven GCP VPC Peering Connections.
+        Creates and manages a Google Cloud VPC peering connection.
 
         ## Example Usage
 
@@ -297,12 +297,12 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] gcp_project_id: GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] peer_vpc: GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
-        :param pulumi.Input[str] self_link: Computed GCP network peering link
-        :param pulumi.Input[str] state: State of the peering connection
-        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information
-        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        :param pulumi.Input[str] gcp_project_id: Google Cloud project ID. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] peer_vpc: Google Cloud VPC network name. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] self_link: Computed Google Cloud network peering link.
+        :param pulumi.Input[str] state: State of the peering connection.
+        :param pulumi.Input[Mapping[str, Any]] state_info: State-specific help or error information.
+        :param pulumi.Input[str] vpc_id: The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -320,7 +320,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="gcpProjectId")
     def gcp_project_id(self) -> pulumi.Output[str]:
         """
-        GCP project ID. This property cannot be changed, doing so forces recreation of the resource.
+        Google Cloud project ID. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "gcp_project_id")
 
@@ -328,7 +328,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="peerVpc")
     def peer_vpc(self) -> pulumi.Output[str]:
         """
-        GCP VPC network name. This property cannot be changed, doing so forces recreation of the resource.
+        Google Cloud VPC network name. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "peer_vpc")
 
@@ -336,7 +336,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
-        Computed GCP network peering link
+        Computed Google Cloud network peering link.
         """
         return pulumi.get(self, "self_link")
 
@@ -344,7 +344,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        State of the peering connection
+        State of the peering connection.
         """
         return pulumi.get(self, "state")
 
@@ -352,7 +352,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="stateInfo")
     def state_info(self) -> pulumi.Output[Mapping[str, Any]]:
         """
-        State-specific help or error information
+        State-specific help or error information.
         """
         return pulumi.get(self, "state_info")
 
@@ -360,7 +360,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+        The VPC the peering connection belongs to. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "vpc_id")
 

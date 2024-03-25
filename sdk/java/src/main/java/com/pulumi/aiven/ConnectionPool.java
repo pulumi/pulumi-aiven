@@ -82,14 +82,14 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return this.connectionUri;
     }
     /**
-     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the database the pool connects to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> databaseName() {
@@ -110,14 +110,14 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolMode);
     }
     /**
-     * The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the created pool. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="poolName", refs={String.class}, tree="[0]")
     private Output<String> poolName;
 
     /**
-     * @return The name of the created pool. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the created pool. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> poolName() {
@@ -138,28 +138,28 @@ public class ConnectionPool extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolSize);
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

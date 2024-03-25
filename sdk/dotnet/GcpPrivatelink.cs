@@ -13,33 +13,33 @@ namespace Pulumi.Aiven
     public partial class GcpPrivatelink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Privatelink resource Google Service Attachment
+        /// Google Private Service Connect service attachment.
         /// </summary>
         [Output("googleServiceAttachment")]
         public Output<string> GoogleServiceAttachment { get; private set; } = null!;
 
         /// <summary>
-        /// Printable result of the GCP Privatelink request
+        /// Printable result of the Google Cloud Private Service Connect request.
         /// </summary>
         [Output("message")]
         public Output<string> Message { get; private set; } = null!;
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Privatelink resource state
+        /// The state of the Private Service Connect resource.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -92,14 +92,14 @@ namespace Pulumi.Aiven
     {
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -113,33 +113,33 @@ namespace Pulumi.Aiven
     public sealed class GcpPrivatelinkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Privatelink resource Google Service Attachment
+        /// Google Private Service Connect service attachment.
         /// </summary>
         [Input("googleServiceAttachment")]
         public Input<string>? GoogleServiceAttachment { get; set; }
 
         /// <summary>
-        /// Printable result of the GCP Privatelink request
+        /// Printable result of the Google Cloud Private Service Connect request.
         /// </summary>
         [Input("message")]
         public Input<string>? Message { get; set; }
 
         /// <summary>
         /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
 
         /// <summary>
-        /// Privatelink resource state
+        /// The state of the Private Service Connect resource.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

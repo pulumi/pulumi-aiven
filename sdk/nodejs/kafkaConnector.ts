@@ -72,7 +72,7 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * The kafka connector name. Changing this property forces recreation of the resource.
      */
     public readonly connectorName!: pulumi.Output<string>;
     /**
@@ -100,11 +100,11 @@ export class KafkaConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly pluginVersion!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -176,7 +176,7 @@ export interface KafkaConnectorState {
      */
     config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * The kafka connector name. Changing this property forces recreation of the resource.
      */
     connectorName?: pulumi.Input<string>;
     /**
@@ -204,11 +204,11 @@ export interface KafkaConnectorState {
      */
     pluginVersion?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -226,15 +226,15 @@ export interface KafkaConnectorArgs {
      */
     config: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The kafka connector name. This property cannot be changed, doing so forces recreation of the resource.
+     * The kafka connector name. Changing this property forces recreation of the resource.
      */
     connectorName: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ * Gets information about an AWS VPC peering connection.
  *
  * ## Example Usage
  *
@@ -14,11 +14,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getAwsVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.vpc.id,
- *     awsAccountId: "XXXXX",
- *     awsVpcId: "XXXXX",
+ * const exampleVpc = new aiven.ProjectVpc("exampleVpc", {
+ *     project: data.aiven_project.example_project.project,
+ *     cloudName: "google-europe-west1",
+ *     networkCidr: "192.168.1.0/24",
  * });
+ * const awsToAivenPeering = exampleVpc.id.apply(id => aiven.getAwsVpcPeeringConnectionOutput({
+ *     vpcId: id,
+ *     awsAccountId: _var.aws_id,
+ *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
+ *     awsVpcRegion: "aws-us-east-2",
+ * }));
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -38,19 +44,19 @@ export function getAwsVpcPeeringConnection(args: GetAwsVpcPeeringConnectionArgs,
  */
 export interface GetAwsVpcPeeringConnectionArgs {
     /**
-     * AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID. Changing this property forces recreation of the resource.
      */
     awsAccountId: string;
     /**
-     * AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID. Changing this property forces recreation of the resource.
      */
     awsVpcId: string;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      */
     awsVpcRegion: string;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
     vpcId: string;
 }
@@ -60,19 +66,19 @@ export interface GetAwsVpcPeeringConnectionArgs {
  */
 export interface GetAwsVpcPeeringConnectionResult {
     /**
-     * AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID. Changing this property forces recreation of the resource.
      */
     readonly awsAccountId: string;
     /**
-     * AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID. Changing this property forces recreation of the resource.
      */
     readonly awsVpcId: string;
     /**
-     * AWS VPC peering connection ID
+     * The ID of the AWS VPC peering connection.
      */
     readonly awsVpcPeeringConnectionId: string;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      */
     readonly awsVpcRegion: string;
     /**
@@ -80,20 +86,20 @@ export interface GetAwsVpcPeeringConnectionResult {
      */
     readonly id: string;
     /**
-     * State of the peering connection
+     * The state of the peering connection.
      */
     readonly state: string;
     /**
-     * State-specific help or error information
+     * State-specific help or error information.
      */
     readonly stateInfo: {[key: string]: any};
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
     readonly vpcId: string;
 }
 /**
- * The AWS VPC Peering Connection data source provides information about the existing Aiven VPC Peering Connection.
+ * Gets information about an AWS VPC peering connection.
  *
  * ## Example Usage
  *
@@ -102,11 +108,17 @@ export interface GetAwsVpcPeeringConnectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const foo = aiven.getAwsVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.vpc.id,
- *     awsAccountId: "XXXXX",
- *     awsVpcId: "XXXXX",
+ * const exampleVpc = new aiven.ProjectVpc("exampleVpc", {
+ *     project: data.aiven_project.example_project.project,
+ *     cloudName: "google-europe-west1",
+ *     networkCidr: "192.168.1.0/24",
  * });
+ * const awsToAivenPeering = exampleVpc.id.apply(id => aiven.getAwsVpcPeeringConnectionOutput({
+ *     vpcId: id,
+ *     awsAccountId: _var.aws_id,
+ *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
+ *     awsVpcRegion: "aws-us-east-2",
+ * }));
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -119,19 +131,19 @@ export function getAwsVpcPeeringConnectionOutput(args: GetAwsVpcPeeringConnectio
  */
 export interface GetAwsVpcPeeringConnectionOutputArgs {
     /**
-     * AWS account ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS account ID. Changing this property forces recreation of the resource.
      */
     awsAccountId: pulumi.Input<string>;
     /**
-     * AWS VPC ID. This property cannot be changed, doing so forces recreation of the resource.
+     * AWS VPC ID. Changing this property forces recreation of the resource.
      */
     awsVpcId: pulumi.Input<string>;
     /**
-     * AWS region of the peered VPC (if not in the same region as Aiven VPC). This property cannot be changed, doing so forces recreation of the resource.
+     * The AWS region of the peered VPC, if different from the Aiven VPC region. Changing this property forces recreation of the resource.
      */
     awsVpcRegion: pulumi.Input<string>;
     /**
-     * The VPC the peering connection belongs to. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the Aiven VPC. Changing this property forces recreation of the resource.
      */
     vpcId: pulumi.Input<string>;
 }

@@ -16,28 +16,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/gcpPrivatelink:GcpPrivatelink")
 public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
     /**
-     * Privatelink resource Google Service Attachment
+     * Google Private Service Connect service attachment.
      * 
      */
     @Export(name="googleServiceAttachment", refs={String.class}, tree="[0]")
     private Output<String> googleServiceAttachment;
 
     /**
-     * @return Privatelink resource Google Service Attachment
+     * @return Google Private Service Connect service attachment.
      * 
      */
     public Output<String> googleServiceAttachment() {
         return this.googleServiceAttachment;
     }
     /**
-     * Printable result of the GCP Privatelink request
+     * Printable result of the Google Cloud Private Service Connect request.
      * 
      */
     @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
-     * @return Printable result of the GCP Privatelink request
+     * @return Printable result of the Google Cloud Private Service Connect request.
      * 
      */
     public Output<String> message() {
@@ -45,7 +45,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
     }
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
@@ -53,7 +53,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -61,7 +61,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
@@ -69,21 +69,21 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Privatelink resource state
+     * The state of the Private Service Connect resource.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return Privatelink resource state
+     * @return The state of the Private Service Connect resource.
      * 
      */
     public Output<String> state() {

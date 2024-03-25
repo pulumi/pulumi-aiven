@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetAzurePrivatelinkResult {
     /**
-     * @return Azure Privatelink service alias
+     * @return The Azure Private Link service alias.
      * 
      */
     private String azureServiceAlias;
     /**
-     * @return Azure Privatelink service ID
+     * @return The Azure Private Link service ID.
      * 
      */
     private String azureServiceId;
@@ -27,41 +27,41 @@ public final class GetAzurePrivatelinkResult {
      */
     private String id;
     /**
-     * @return Printable result of the Azure Privatelink request
+     * @return Printable result of the Azure Private Link request.
      * 
      */
     private String message;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return Privatelink resource state
+     * @return The state of the Private Link resource.
      * 
      */
     private String state;
     /**
-     * @return A List of allowed Subscription IDs. Maximum length: `16`.
+     * @return A list of allowed subscription IDs. Maximum length: `16`.
      * 
      */
     private List<String> userSubscriptionIds;
 
     private GetAzurePrivatelinkResult() {}
     /**
-     * @return Azure Privatelink service alias
+     * @return The Azure Private Link service alias.
      * 
      */
     public String azureServiceAlias() {
         return this.azureServiceAlias;
     }
     /**
-     * @return Azure Privatelink service ID
+     * @return The Azure Private Link service ID.
      * 
      */
     public String azureServiceId() {
@@ -75,35 +75,35 @@ public final class GetAzurePrivatelinkResult {
         return this.id;
     }
     /**
-     * @return Printable result of the Azure Privatelink request
+     * @return Printable result of the Azure Private Link request.
      * 
      */
     public String message() {
         return this.message;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
         return this.project;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Privatelink resource state
+     * @return The state of the Private Link resource.
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return A List of allowed Subscription IDs. Maximum length: `16`.
+     * @return A list of allowed subscription IDs. Maximum length: `16`.
      * 
      */
     public List<String> userSubscriptionIds() {

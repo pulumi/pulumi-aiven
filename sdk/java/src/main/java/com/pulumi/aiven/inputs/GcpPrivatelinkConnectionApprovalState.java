@@ -16,14 +16,14 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
     public static final GcpPrivatelinkConnectionApprovalState Empty = new GcpPrivatelinkConnectionApprovalState();
 
     /**
-     * Privatelink connection id
+     * Aiven internal ID for the private link connection.
      * 
      */
     @Import(name="privatelinkConnectionId")
     private @Nullable Output<String> privatelinkConnectionId;
 
     /**
-     * @return Privatelink connection id
+     * @return Aiven internal ID for the private link connection.
      * 
      */
     public Optional<Output<String>> privatelinkConnectionId() {
@@ -32,7 +32,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
     /**
      * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
@@ -40,7 +40,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
     /**
      * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. This property cannot be changed, doing so forces recreation of the resource.
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -48,14 +48,14 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
     }
 
     /**
-     * Privatelink connection PSC connection id
+     * The Google Private Service Connect connection ID.
      * 
      */
     @Import(name="pscConnectionId")
     private @Nullable Output<String> pscConnectionId;
 
     /**
-     * @return Privatelink connection PSC connection id
+     * @return The Google Private Service Connect connection ID.
      * 
      */
     public Optional<Output<String>> pscConnectionId() {
@@ -64,7 +64,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
     /**
      * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
@@ -72,7 +72,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
     /**
      * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -80,14 +80,14 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
     }
 
     /**
-     * Privatelink connection state
+     * The state of the connection.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Privatelink connection state
+     * @return The state of the connection.
      * 
      */
     public Optional<Output<String>> state() {
@@ -95,14 +95,14 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
     }
 
     /**
-     * Privatelink connection user IP address
+     * The Private Service Connect connection user IP address.
      * 
      */
     @Import(name="userIpAddress")
     private @Nullable Output<String> userIpAddress;
 
     /**
-     * @return Privatelink connection user IP address
+     * @return The Private Service Connect connection user IP address.
      * 
      */
     public Optional<Output<String>> userIpAddress() {
@@ -139,7 +139,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param privatelinkConnectionId Privatelink connection id
+         * @param privatelinkConnectionId Aiven internal ID for the private link connection.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param privatelinkConnectionId Privatelink connection id
+         * @param privatelinkConnectionId Aiven internal ID for the private link connection.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
         /**
          * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-         * reference. This property cannot be changed, doing so forces recreation of the resource.
+         * reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param pscConnectionId Privatelink connection PSC connection id
+         * @param pscConnectionId The Google Private Service Connect connection ID.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param pscConnectionId Privatelink connection PSC connection id
+         * @param pscConnectionId The Google Private Service Connect connection ID.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
 
         /**
          * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-         * variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param state Privatelink connection state
+         * @param state The state of the connection.
          * 
          * @return builder
          * 
@@ -238,7 +238,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param state Privatelink connection state
+         * @param state The state of the connection.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param userIpAddress Privatelink connection user IP address
+         * @param userIpAddress The Private Service Connect connection user IP address.
          * 
          * @return builder
          * 
@@ -259,7 +259,7 @@ public final class GcpPrivatelinkConnectionApprovalState extends com.pulumi.reso
         }
 
         /**
-         * @param userIpAddress Privatelink connection user IP address
+         * @param userIpAddress The Private Service Connect connection user IP address.
          * 
          * @return builder
          * 

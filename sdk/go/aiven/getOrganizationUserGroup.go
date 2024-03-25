@@ -11,7 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides information about an existing user group in an organization.
+// Gets information about an existing user group in an organization.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupOrganizationUserGroup(ctx, &aiven.LookupOrganizationUserGroupArgs{
+//				Name:           "Example group",
+//				OrganizationId: aiven_organization.Main.Id,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func LookupOrganizationUserGroup(ctx *pulumi.Context, args *LookupOrganizationUserGroupArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationUserGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationUserGroupResult
@@ -24,9 +53,9 @@ func LookupOrganizationUserGroup(ctx *pulumi.Context, args *LookupOrganizationUs
 
 // A collection of arguments for invoking getOrganizationUserGroup.
 type LookupOrganizationUserGroupArgs struct {
-	// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the user group. Changing this property forces recreation of the resource.
 	Name string `pulumi:"name"`
-	// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// The ID of the organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
 }
 
@@ -34,15 +63,15 @@ type LookupOrganizationUserGroupArgs struct {
 type LookupOrganizationUserGroupResult struct {
 	// Time of creation.
 	CreateTime string `pulumi:"createTime"`
-	// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+	// The description of the user group. Changing this property forces recreation of the resource.
 	Description string `pulumi:"description"`
 	// The ID of the user group.
 	GroupId string `pulumi:"groupId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the user group. Changing this property forces recreation of the resource.
 	Name string `pulumi:"name"`
-	// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// The ID of the organization. Changing this property forces recreation of the resource.
 	OrganizationId string `pulumi:"organizationId"`
 	// Time of last update.
 	UpdateTime string `pulumi:"updateTime"`
@@ -63,9 +92,9 @@ func LookupOrganizationUserGroupOutput(ctx *pulumi.Context, args LookupOrganizat
 
 // A collection of arguments for invoking getOrganizationUserGroup.
 type LookupOrganizationUserGroupOutputArgs struct {
-	// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+	// The name of the user group. Changing this property forces recreation of the resource.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+	// The ID of the organization. Changing this property forces recreation of the resource.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
 }
 
@@ -93,7 +122,7 @@ func (o LookupOrganizationUserGroupResultOutput) CreateTime() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+// The description of the user group. Changing this property forces recreation of the resource.
 func (o LookupOrganizationUserGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -108,12 +137,12 @@ func (o LookupOrganizationUserGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+// The name of the user group. Changing this property forces recreation of the resource.
 func (o LookupOrganizationUserGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+// The ID of the organization. Changing this property forces recreation of the resource.
 func (o LookupOrganizationUserGroupResultOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationUserGroupResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }

@@ -15,19 +15,19 @@ import (
 type GcpPrivatelinkConnectionApproval struct {
 	pulumi.CustomResourceState
 
-	// Privatelink connection id
+	// Aiven internal ID for the private link connection.
 	PrivatelinkConnectionId pulumi.StringOutput `pulumi:"privatelinkConnectionId"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Privatelink connection PSC connection id
+	// The Google Private Service Connect connection ID.
 	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Privatelink connection state
+	// The state of the connection.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Privatelink connection user IP address
+	// The Private Service Connect connection user IP address.
 	UserIpAddress pulumi.StringOutput `pulumi:"userIpAddress"`
 }
 
@@ -70,36 +70,36 @@ func GetGcpPrivatelinkConnectionApproval(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GcpPrivatelinkConnectionApproval resources.
 type gcpPrivatelinkConnectionApprovalState struct {
-	// Privatelink connection id
+	// Aiven internal ID for the private link connection.
 	PrivatelinkConnectionId *string `pulumi:"privatelinkConnectionId"`
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Privatelink connection PSC connection id
+	// The Google Private Service Connect connection ID.
 	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Privatelink connection state
+	// The state of the connection.
 	State *string `pulumi:"state"`
-	// Privatelink connection user IP address
+	// The Private Service Connect connection user IP address.
 	UserIpAddress *string `pulumi:"userIpAddress"`
 }
 
 type GcpPrivatelinkConnectionApprovalState struct {
-	// Privatelink connection id
+	// Aiven internal ID for the private link connection.
 	PrivatelinkConnectionId pulumi.StringPtrInput
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Privatelink connection PSC connection id
+	// The Google Private Service Connect connection ID.
 	PscConnectionId pulumi.StringPtrInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Privatelink connection state
+	// The state of the connection.
 	State pulumi.StringPtrInput
-	// Privatelink connection user IP address
+	// The Private Service Connect connection user IP address.
 	UserIpAddress pulumi.StringPtrInput
 }
 
@@ -109,24 +109,24 @@ func (GcpPrivatelinkConnectionApprovalState) ElementType() reflect.Type {
 
 type gcpPrivatelinkConnectionApprovalArgs struct {
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Privatelink connection user IP address
+	// The Private Service Connect connection user IP address.
 	UserIpAddress string `pulumi:"userIpAddress"`
 }
 
 // The set of arguments for constructing a GcpPrivatelinkConnectionApproval resource.
 type GcpPrivatelinkConnectionApprovalArgs struct {
 	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. This property cannot be changed, doing so forces recreation of the resource.
+	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-	// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+	// variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Privatelink connection user IP address
+	// The Private Service Connect connection user IP address.
 	UserIpAddress pulumi.StringInput
 }
 
@@ -217,34 +217,34 @@ func (o GcpPrivatelinkConnectionApprovalOutput) ToGcpPrivatelinkConnectionApprov
 	return o
 }
 
-// Privatelink connection id
+// Aiven internal ID for the private link connection.
 func (o GcpPrivatelinkConnectionApprovalOutput) PrivatelinkConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelinkConnectionApproval) pulumi.StringOutput { return v.PrivatelinkConnectionId }).(pulumi.StringOutput)
 }
 
 // Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. This property cannot be changed, doing so forces recreation of the resource.
+// reference. Changing this property forces recreation of the resource.
 func (o GcpPrivatelinkConnectionApprovalOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelinkConnectionApproval) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Privatelink connection PSC connection id
+// The Google Private Service Connect connection ID.
 func (o GcpPrivatelinkConnectionApprovalOutput) PscConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelinkConnectionApproval) pulumi.StringOutput { return v.PscConnectionId }).(pulumi.StringOutput)
 }
 
 // Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-// variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+// variable as a reference. Changing this property forces recreation of the resource.
 func (o GcpPrivatelinkConnectionApprovalOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelinkConnectionApproval) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Privatelink connection state
+// The state of the connection.
 func (o GcpPrivatelinkConnectionApprovalOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelinkConnectionApproval) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Privatelink connection user IP address
+// The Private Service Connect connection user IP address.
 func (o GcpPrivatelinkConnectionApprovalOutput) UserIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *GcpPrivatelinkConnectionApproval) pulumi.StringOutput { return v.UserIpAddress }).(pulumi.StringOutput)
 }

@@ -17,14 +17,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     public static final AzurePrivatelinkState Empty = new AzurePrivatelinkState();
 
     /**
-     * Azure Privatelink service alias
+     * The Azure Private Link service alias.
      * 
      */
     @Import(name="azureServiceAlias")
     private @Nullable Output<String> azureServiceAlias;
 
     /**
-     * @return Azure Privatelink service alias
+     * @return The Azure Private Link service alias.
      * 
      */
     public Optional<Output<String>> azureServiceAlias() {
@@ -32,14 +32,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Azure Privatelink service ID
+     * The Azure Private Link service ID.
      * 
      */
     @Import(name="azureServiceId")
     private @Nullable Output<String> azureServiceId;
 
     /**
-     * @return Azure Privatelink service ID
+     * @return The Azure Private Link service ID.
      * 
      */
     public Optional<Output<String>> azureServiceId() {
@@ -47,14 +47,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Printable result of the Azure Privatelink request
+     * Printable result of the Azure Private Link request.
      * 
      */
     @Import(name="message")
     private @Nullable Output<String> message;
 
     /**
-     * @return Printable result of the Azure Privatelink request
+     * @return Printable result of the Azure Private Link request.
      * 
      */
     public Optional<Output<String>> message() {
@@ -62,14 +62,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -77,14 +77,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -92,14 +92,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Privatelink resource state
+     * The state of the Private Link resource.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return Privatelink resource state
+     * @return The state of the Private Link resource.
      * 
      */
     public Optional<Output<String>> state() {
@@ -107,14 +107,14 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A List of allowed Subscription IDs. Maximum length: `16`.
+     * A list of allowed subscription IDs. Maximum length: `16`.
      * 
      */
     @Import(name="userSubscriptionIds")
     private @Nullable Output<List<String>> userSubscriptionIds;
 
     /**
-     * @return A List of allowed Subscription IDs. Maximum length: `16`.
+     * @return A list of allowed subscription IDs. Maximum length: `16`.
      * 
      */
     public Optional<Output<List<String>>> userSubscriptionIds() {
@@ -152,7 +152,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param azureServiceAlias Azure Privatelink service alias
+         * @param azureServiceAlias The Azure Private Link service alias.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param azureServiceAlias Azure Privatelink service alias
+         * @param azureServiceAlias The Azure Private Link service alias.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param azureServiceId Azure Privatelink service ID
+         * @param azureServiceId The Azure Private Link service ID.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param azureServiceId Azure Privatelink service ID
+         * @param azureServiceId The Azure Private Link service ID.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param message Printable result of the Azure Privatelink request
+         * @param message Printable result of the Azure Private Link request.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param message Printable result of the Azure Privatelink request
+         * @param message Printable result of the Azure Private Link request.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state Privatelink resource state
+         * @param state The state of the Private Link resource.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state Privatelink resource state
+         * @param state The state of the Private Link resource.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userSubscriptionIds A List of allowed Subscription IDs. Maximum length: `16`.
+         * @param userSubscriptionIds A list of allowed subscription IDs. Maximum length: `16`.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userSubscriptionIds A List of allowed Subscription IDs. Maximum length: `16`.
+         * @param userSubscriptionIds A list of allowed subscription IDs. Maximum length: `16`.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class AzurePrivatelinkState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userSubscriptionIds A List of allowed Subscription IDs. Maximum length: `16`.
+         * @param userSubscriptionIds A list of allowed subscription IDs. Maximum length: `16`.
          * 
          * @return builder
          * 

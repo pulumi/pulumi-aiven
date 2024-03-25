@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetAzurePrivatelink
     {
         /// <summary>
-        /// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+        /// Gets information about an Azure Private Link connection for an Aiven service.
         /// 
         /// ## Example Usage
         /// 
@@ -25,10 +25,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Aiven.GetAzurePrivatelink.Invoke(new()
+        ///     var main = Aiven.GetAzurePrivatelink.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
-        ///         ServiceName = aiven_kafka.Bar.Service_name,
+        ///         Project = data.Aiven_project.Example_project.Project,
+        ///         ServiceName = aiven_kafka.Example_kafka.Service_name,
         ///     });
         /// 
         /// });
@@ -39,7 +39,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzurePrivatelinkResult>("aiven:index/getAzurePrivatelink:getAzurePrivatelink", args ?? new GetAzurePrivatelinkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Azure Privatelink resource allows the creation and management of Aiven Azure Privatelink for a services.
+        /// Gets information about an Azure Private Link connection for an Aiven service.
         /// 
         /// ## Example Usage
         /// 
@@ -52,10 +52,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = Aiven.GetAzurePrivatelink.Invoke(new()
+        ///     var main = Aiven.GetAzurePrivatelink.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
-        ///         ServiceName = aiven_kafka.Bar.Service_name,
+        ///         Project = data.Aiven_project.Example_project.Project,
+        ///         ServiceName = aiven_kafka.Example_kafka.Service_name,
         ///     });
         /// 
         /// });
@@ -70,13 +70,13 @@ namespace Pulumi.Aiven
     public sealed class GetAzurePrivatelinkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -90,13 +90,13 @@ namespace Pulumi.Aiven
     public sealed class GetAzurePrivatelinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -112,11 +112,11 @@ namespace Pulumi.Aiven
     public sealed class GetAzurePrivatelinkResult
     {
         /// <summary>
-        /// Azure Privatelink service alias
+        /// The Azure Private Link service alias.
         /// </summary>
         public readonly string AzureServiceAlias;
         /// <summary>
-        /// Azure Privatelink service ID
+        /// The Azure Private Link service ID.
         /// </summary>
         public readonly string AzureServiceId;
         /// <summary>
@@ -124,23 +124,23 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Printable result of the Azure Privatelink request
+        /// Printable result of the Azure Private Link request.
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Privatelink resource state
+        /// The state of the Private Link resource.
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// A List of allowed Subscription IDs. Maximum length: `16`.
+        /// A list of allowed subscription IDs. Maximum length: `16`.
         /// </summary>
         public readonly ImmutableArray<string> UserSubscriptionIds;
 

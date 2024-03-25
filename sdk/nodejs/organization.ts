@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an organization in Aiven.
+ * Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
  *
  * ## Example Usage
  *
@@ -16,14 +16,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const organization1 = new aiven.Organization("organization1", {});
+ * const main = new aiven.Organization("main", {});
  * ```
  * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/organization:Organization organization1 organization_id
+ * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
  * ```
  */
 export class Organization extends pulumi.CustomResource {
@@ -63,7 +63,7 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Tenant identifier of the organization.
+     * Tenant ID of the organization.
      */
     public /*out*/ readonly tenantId!: pulumi.Output<string>;
     public readonly timeouts!: pulumi.Output<outputs.OrganizationTimeouts | undefined>;
@@ -116,7 +116,7 @@ export interface OrganizationState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Tenant identifier of the organization.
+     * Tenant ID of the organization.
      */
     tenantId?: pulumi.Input<string>;
     timeouts?: pulumi.Input<inputs.OrganizationTimeouts>;

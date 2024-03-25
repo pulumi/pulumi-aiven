@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableArgs>? _tables;
 
         /// <summary>
-        /// Tables to create.
+        /// Tables to create
         /// </summary>
         public InputList<Inputs.ServiceIntegrationClickhouseKafkaUserConfigTableArgs> Tables
         {

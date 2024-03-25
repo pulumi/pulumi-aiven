@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an organization in Aiven.
+ * Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
  * 
  * ## Example Usage
  * 
@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var organization1 = new Organization(&#34;organization1&#34;);
+ *         var main = new Organization(&#34;main&#34;);
  * 
  *     }
  * }
@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/organization:Organization organization1 organization_id
+ * $ pulumi import aiven:index/organization:Organization main ORGANIZATION_ID
  * ```
  * 
  */
@@ -86,14 +86,14 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Tenant identifier of the organization.
+     * Tenant ID of the organization.
      * 
      */
     @Export(name="tenantId", refs={String.class}, tree="[0]")
     private Output<String> tenantId;
 
     /**
-     * @return Tenant identifier of the organization.
+     * @return Tenant ID of the organization.
      * 
      */
     public Output<String> tenantId() {

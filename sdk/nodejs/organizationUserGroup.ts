@@ -5,7 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages a user group in an organization.
+ * Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.OrganizationUserGroup("example", {
+ *     description: "Example group of users.",
+ *     organizationId: aiven_organization.main.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/organizationUserGroup:OrganizationUserGroup example ORGANIZATION_ID/USER_GROUP_ID
+ * ```
  */
 export class OrganizationUserGroup extends pulumi.CustomResource {
     /**
@@ -40,7 +60,7 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. Changing this property forces recreation of the resource.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -48,11 +68,11 @@ export class OrganizationUserGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly groupId!: pulumi.Output<string>;
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      */
     public readonly organizationId!: pulumi.Output<string>;
     /**
@@ -108,7 +128,7 @@ export interface OrganizationUserGroupState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. Changing this property forces recreation of the resource.
      */
     description?: pulumi.Input<string>;
     /**
@@ -116,11 +136,11 @@ export interface OrganizationUserGroupState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      */
     organizationId?: pulumi.Input<string>;
     /**
@@ -134,15 +154,15 @@ export interface OrganizationUserGroupState {
  */
 export interface OrganizationUserGroupArgs {
     /**
-     * The description of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The description of the user group. Changing this property forces recreation of the resource.
      */
     description: pulumi.Input<string>;
     /**
-     * The name of the user group. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the user group. Changing this property forces recreation of the resource.
      */
     name?: pulumi.Input<string>;
     /**
-     * The ID of the organization. This property cannot be changed, doing so forces recreation of the resource.
+     * The ID of the organization. Changing this property forces recreation of the resource.
      */
     organizationId: pulumi.Input<string>;
 }

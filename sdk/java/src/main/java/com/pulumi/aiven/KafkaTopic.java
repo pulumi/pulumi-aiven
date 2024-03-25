@@ -104,14 +104,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return this.partitions;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -132,14 +132,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return this.replication;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
@@ -176,14 +176,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.terminationProtection);
     }
     /**
-     * The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**
-     * @return The name of the topic. This property cannot be changed, doing so forces recreation of the resource.
+     * @return The name of the topic. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> topicName() {

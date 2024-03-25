@@ -5,12 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Project VPC resource allows the creation and management of Aiven Project VPCs.
+ * Creates and manages a VPC for an Aiven project.
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/projectVpc:ProjectVpc myvpc project/id
+ * $ pulumi import aiven:index/projectVpc:ProjectVpc example_vpc PROJECT/ID
  * ```
  */
 export class ProjectVpc extends pulumi.CustomResource {
@@ -42,15 +42,15 @@ export class ProjectVpc extends pulumi.CustomResource {
     }
 
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
     public readonly cloudName!: pulumi.Output<string>;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
     public readonly networkCidr!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -101,15 +101,15 @@ export class ProjectVpc extends pulumi.CustomResource {
  */
 export interface ProjectVpcState {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
     networkCidr?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -123,15 +123,15 @@ export interface ProjectVpcState {
  */
 export interface ProjectVpcArgs {
     /**
-     * Defines where the cloud provider and region where the service is hosted in. See the Service resource for additional information. This property cannot be changed, doing so forces recreation of the resource.
+     * The cloud provider and region where the service is hosted in the format `CLOUD_PROVIDER-REGION_NAME`. For example, `google-europe-west1` or `aws-us-east-2`. Changing this property forces recreation of the resource.
      */
     cloudName: pulumi.Input<string>;
     /**
-     * Network address range used by the VPC like 192.168.0.0/24
+     * Network address range used by the VPC. For example, `192.168.0.0/24`.
      */
     networkCidr: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. This property cannot be changed, doing so forces recreation of the resource.
+     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }
