@@ -24,8 +24,8 @@ class AccountArgs:
         if name is not None:
             pulumi.set(__self__, "name", name)
         if primary_billing_group_id is not None:
-            warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-            pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+            warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+            pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if primary_billing_group_id is not None:
             pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
 
@@ -47,8 +47,8 @@ class AccountArgs:
         """
         Billing group id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "primary_billing_group_id")
 
@@ -80,27 +80,27 @@ class _AccountState:
         :param pulumi.Input[str] update_time: Time of last update
         """
         if account_id is not None:
-            warnings.warn("""The new Organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
-            pulumi.log.warn("""account_id is deprecated: The new Organization resource won't have it, use the built-in ID field instead.""")
+            warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
+            pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if is_account_owner is not None:
-            warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-            pulumi.log.warn("""is_account_owner is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+            warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+            pulumi.log.warn("""is_account_owner is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if is_account_owner is not None:
             pulumi.set(__self__, "is_account_owner", is_account_owner)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owner_team_id is not None:
-            warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-            pulumi.log.warn("""owner_team_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+            warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+            pulumi.log.warn("""owner_team_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if owner_team_id is not None:
             pulumi.set(__self__, "owner_team_id", owner_team_id)
         if primary_billing_group_id is not None:
-            warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-            pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+            warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+            pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
         if primary_billing_group_id is not None:
             pulumi.set(__self__, "primary_billing_group_id", primary_billing_group_id)
         if tenant_id is not None:
@@ -114,8 +114,8 @@ class _AccountState:
         """
         Account id
         """
-        warnings.warn("""The new Organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: The new Organization resource won't have it, use the built-in ID field instead.""")
+        warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")
 
         return pulumi.get(self, "account_id")
 
@@ -141,8 +141,8 @@ class _AccountState:
         """
         If true, user is part of the owners team for this account
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""is_account_owner is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""is_account_owner is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "is_account_owner")
 
@@ -168,8 +168,8 @@ class _AccountState:
         """
         Owner team id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""owner_team_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""owner_team_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "owner_team_id")
 
@@ -183,8 +183,8 @@ class _AccountState:
         """
         Billing group id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "primary_billing_group_id")
 
@@ -368,8 +368,8 @@ class Account(pulumi.CustomResource):
         """
         Account id
         """
-        warnings.warn("""The new Organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: The new Organization resource won't have it, use the built-in ID field instead.""")
+        warnings.warn("""The new aiven_organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
+        pulumi.log.warn("""account_id is deprecated: The new aiven_organization resource won't have it, use the built-in ID field instead.""")
 
         return pulumi.get(self, "account_id")
 
@@ -387,8 +387,8 @@ class Account(pulumi.CustomResource):
         """
         If true, user is part of the owners team for this account
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""is_account_owner is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""is_account_owner is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "is_account_owner")
 
@@ -406,8 +406,8 @@ class Account(pulumi.CustomResource):
         """
         Owner team id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""owner_team_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""owner_team_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "owner_team_id")
 
@@ -417,8 +417,8 @@ class Account(pulumi.CustomResource):
         """
         Billing group id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
+        warnings.warn("""The new aiven_organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
+        pulumi.log.warn("""primary_billing_group_id is deprecated: The new aiven_organization resource won't have it, and will not have a replacement.""")
 
         return pulumi.get(self, "primary_billing_group_id")
 

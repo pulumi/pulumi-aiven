@@ -62,7 +62,7 @@ export class BillingGroup extends pulumi.CustomResource {
     /**
      * Account ID.
      *
-     * @deprecated Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     public readonly accountId!: pulumi.Output<string | undefined>;
     /**
@@ -180,7 +180,7 @@ export interface BillingGroupState {
     /**
      * Account ID.
      *
-     * @deprecated Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface BillingGroupArgs {
     /**
      * Account ID.
      *
-     * @deprecated Use parentId instead. This field will be removed in the next major release.
+     * @deprecated Use parent_id instead. This field will be removed in the next major release.
      */
     accountId?: pulumi.Input<string>;
     /**

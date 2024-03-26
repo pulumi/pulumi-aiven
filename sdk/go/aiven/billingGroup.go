@@ -59,7 +59,7 @@ type BillingGroup struct {
 
 	// Account ID.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayOutput `pulumi:"addressLines"`
@@ -123,7 +123,7 @@ func GetBillingGroup(ctx *pulumi.Context,
 type billingGroupState struct {
 	// Account ID.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
@@ -158,7 +158,7 @@ type billingGroupState struct {
 type BillingGroupState struct {
 	// Account ID.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayInput
@@ -197,7 +197,7 @@ func (BillingGroupState) ElementType() reflect.Type {
 type billingGroupArgs struct {
 	// Account ID.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines []string `pulumi:"addressLines"`
@@ -233,7 +233,7 @@ type billingGroupArgs struct {
 type BillingGroupArgs struct {
 	// Account ID.
 	//
-	// Deprecated: Use parentId instead. This field will be removed in the next major release.
+	// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
 	// Address lines 1 and 2. For example, street, PO box, or building.
 	AddressLines pulumi.StringArrayInput
@@ -354,7 +354,7 @@ func (o BillingGroupOutput) ToBillingGroupOutputWithContext(ctx context.Context)
 
 // Account ID.
 //
-// Deprecated: Use parentId instead. This field will be removed in the next major release.
+// Deprecated: Use parent_id instead. This field will be removed in the next major release.
 func (o BillingGroupOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BillingGroup) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }

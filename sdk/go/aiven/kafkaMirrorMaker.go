@@ -78,7 +78,7 @@ type KafkaMirrorMaker struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
@@ -205,7 +205,7 @@ type kafkaMirrorMakerState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
@@ -289,7 +289,7 @@ type KafkaMirrorMakerState struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
@@ -375,7 +375,7 @@ type kafkaMirrorMakerArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig *KafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfig"`
@@ -432,7 +432,7 @@ type KafkaMirrorMakerArgs struct {
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 	// will result in the service rebalancing.
 	//
-	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+	// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfig KafkaMirrorMakerKafkaMirrormakerUserConfigPtrInput
@@ -585,7 +585,7 @@ func (o KafkaMirrorMakerOutput) Components() KafkaMirrorMakerComponentArrayOutpu
 // Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
 // will result in the service rebalancing.
 //
-// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
+// Deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
 func (o KafkaMirrorMakerOutput) DiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaMirrorMaker) pulumi.StringPtrOutput { return v.DiskSpace }).(pulumi.StringPtrOutput)
 }
