@@ -15214,7 +15214,7 @@
                 "accountId": {
                     "type": "string",
                     "description": "Account id\n",
-                    "deprecationMessage": "The new aiven.Organization resource won't have it, use the built-in ID field instead."
+                    "deprecationMessage": "The new aiven_organization resource won't have it, use the built-in ID field instead."
                 },
                 "createTime": {
                     "type": "string",
@@ -15223,7 +15223,7 @@
                 "isAccountOwner": {
                     "type": "boolean",
                     "description": "If true, user is part of the owners team for this account\n",
-                    "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement."
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                 },
                 "name": {
                     "type": "string",
@@ -15232,12 +15232,12 @@
                 "ownerTeamId": {
                     "type": "string",
                     "description": "Owner team id\n",
-                    "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement."
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                 },
                 "primaryBillingGroupId": {
                     "type": "string",
                     "description": "Billing group id\n",
-                    "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement."
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                 },
                 "tenantId": {
                     "type": "string",
@@ -15265,7 +15265,7 @@
                 "primaryBillingGroupId": {
                     "type": "string",
                     "description": "Billing group id\n",
-                    "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement.",
+                    "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement.",
                     "willReplaceOnChanges": true
                 }
             },
@@ -15275,7 +15275,7 @@
                     "accountId": {
                         "type": "string",
                         "description": "Account id\n",
-                        "deprecationMessage": "The new aiven.Organization resource won't have it, use the built-in ID field instead."
+                        "deprecationMessage": "The new aiven_organization resource won't have it, use the built-in ID field instead."
                     },
                     "createTime": {
                         "type": "string",
@@ -15284,7 +15284,7 @@
                     "isAccountOwner": {
                         "type": "boolean",
                         "description": "If true, user is part of the owners team for this account\n",
-                        "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement."
+                        "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                     },
                     "name": {
                         "type": "string",
@@ -15293,12 +15293,12 @@
                     "ownerTeamId": {
                         "type": "string",
                         "description": "Owner team id\n",
-                        "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement."
+                        "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement."
                     },
                     "primaryBillingGroupId": {
                         "type": "string",
                         "description": "Billing group id\n",
-                        "deprecationMessage": "The new aiven.Organization resource won't have it, and will not have a replacement.",
+                        "deprecationMessage": "The new aiven_organization resource won't have it, and will not have a replacement.",
                         "willReplaceOnChanges": true
                     },
                     "tenantId": {
