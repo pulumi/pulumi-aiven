@@ -19,6 +19,91 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OpensearchUser;
+ * import com.pulumi.aiven.OpensearchUserArgs;
+ * import com.pulumi.aiven.OpenSearchAclConfig;
+ * import com.pulumi.aiven.OpenSearchAclConfigArgs;
+ * import com.pulumi.aiven.OpenSearchAclRule;
+ * import com.pulumi.aiven.OpenSearchAclRuleArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var osUser = new OpensearchUser(&#34;osUser&#34;, OpensearchUserArgs.builder()        
+ *             .project(var_.aiven_project_name())
+ *             .serviceName(aiven_opensearch.os_test().service_name())
+ *             .username(&#34;documentation-user-1&#34;)
+ *             .build());
+ * 
+ *         var osUser2 = new OpensearchUser(&#34;osUser2&#34;, OpensearchUserArgs.builder()        
+ *             .project(var_.aiven_project_name())
+ *             .serviceName(aiven_opensearch.os_test().service_name())
+ *             .username(&#34;documentation-user-2&#34;)
+ *             .build());
+ * 
+ *         var osAclsConfig = new OpenSearchAclConfig(&#34;osAclsConfig&#34;, OpenSearchAclConfigArgs.builder()        
+ *             .project(var_.aiven_project_name())
+ *             .serviceName(aiven_opensearch.os_test().service_name())
+ *             .enabled(true)
+ *             .extendedAcl(false)
+ *             .build());
+ * 
+ *         final var aclRules =         
+ *             Map.ofEntries(
+ *                 Map.entry(&#34;username&#34;, osUser.username()),
+ *                 Map.entry(&#34;index&#34;, &#34;index2&#34;),
+ *                 Map.entry(&#34;permission&#34;, &#34;readwrite&#34;)
+ *             ),
+ *             Map.ofEntries(
+ *                 Map.entry(&#34;username&#34;, osUser.username()),
+ *                 Map.entry(&#34;index&#34;, &#34;index3&#34;),
+ *                 Map.entry(&#34;permission&#34;, &#34;read&#34;)
+ *             ),
+ *             Map.ofEntries(
+ *                 Map.entry(&#34;username&#34;, osUser.username()),
+ *                 Map.entry(&#34;index&#34;, &#34;index5&#34;),
+ *                 Map.entry(&#34;permission&#34;, &#34;deny&#34;)
+ *             ),
+ *             Map.ofEntries(
+ *                 Map.entry(&#34;username&#34;, osUser2.username()),
+ *                 Map.entry(&#34;index&#34;, &#34;index3&#34;),
+ *                 Map.entry(&#34;permission&#34;, &#34;write&#34;)
+ *             ),
+ *             Map.ofEntries(
+ *                 Map.entry(&#34;username&#34;, osUser2.username()),
+ *                 Map.entry(&#34;index&#34;, &#34;index7&#34;),
+ *                 Map.entry(&#34;permission&#34;, &#34;readwrite&#34;)
+ *             );
+ * 
+ *         for (var range : KeyedValue.of(&#34;TODO: ForExpression&#34;)) {
+ *             new OpenSearchAclRule(&#34;osAclRule-&#34; + range.key(), OpenSearchAclRuleArgs.builder()            
+ *                 .project(osAclsConfig.project())
+ *                 .serviceName(osAclsConfig.serviceName())
+ *                 .username(range.value().username())
+ *                 .index(range.value().index())
+ *                 .permission(range.value().permission())
+ *                 .build());
+ *         }
+ * 
+ *     }
+ * }
+ * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
