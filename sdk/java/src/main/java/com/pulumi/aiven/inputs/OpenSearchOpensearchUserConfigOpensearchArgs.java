@@ -215,14 +215,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
      * 
      */
     @Import(name="indicesMemoryIndexBufferSize")
     private @Nullable Output<Integer> indicesMemoryIndexBufferSize;
 
     /**
-     * @return Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+     * @return Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
      * 
      */
     public Optional<Output<Integer>> indicesMemoryIndexBufferSize() {
@@ -260,14 +260,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      * 
      */
     @Import(name="indicesQueriesCacheSize")
     private @Nullable Output<Integer> indicesQueriesCacheSize;
 
     /**
-     * @return Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+     * @return Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
      * 
      */
     public Optional<Output<Integer>> indicesQueriesCacheSize() {
@@ -988,7 +988,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param indicesMemoryIndexBufferSize Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+         * @param indicesMemoryIndexBufferSize Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
          * 
          * @return builder
          * 
@@ -999,7 +999,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param indicesMemoryIndexBufferSize Percentage value. Default is 10%! (MISSING)Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
+         * @param indicesMemoryIndexBufferSize Percentage value. Default is 10%. Total amount of heap used for indexing buffer, before writing segments to disk. This is an expert setting. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance.
          * 
          * @return builder
          * 
@@ -1051,7 +1051,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param indicesQueriesCacheSize Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+         * @param indicesQueriesCacheSize Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
          * 
          * @return builder
          * 
@@ -1062,7 +1062,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param indicesQueriesCacheSize Percentage value. Default is 10%! (MISSING)Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
+         * @param indicesQueriesCacheSize Percentage value. Default is 10%. Maximum amount of heap used for query cache. This is an expert setting. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other OpenSearch functionality.
          * 
          * @return builder
          * 
