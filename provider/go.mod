@@ -12,8 +12,8 @@ replace (
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.33.1-0.20240412160859-7d378f74db75
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.80.1-0.20240412160859-7d378f74db75
 	github.com/pulumi/pulumi/pkg/v3 v3.112.0 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.112.0
 )
