@@ -27,8 +27,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Os_project.Project,
-        ///         ServiceName = aiven_opensearch.Os.Service_name,
+        ///         Project = os_project.Project,
+        ///         ServiceName = os.ServiceName,
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var os_acl_config = Aiven.GetOpenSearchAclConfig.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Os_project.Project,
-        ///         ServiceName = aiven_opensearch.Os.Service_name,
+        ///         Project = os_project.Project,
+        ///         ServiceName = os.ServiceName,
         ///     });
         /// 
         /// });

@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var foo = new Aiven.GcpVpcPeeringConnection("foo", new()
     ///     {
-    ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+    ///         VpcId = vpc.Id,
     ///         GcpProjectId = "xxxx",
     ///         PeerVpc = "xxxx",
     ///     });

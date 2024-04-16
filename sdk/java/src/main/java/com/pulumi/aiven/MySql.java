@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mysql1 = new MySql(&#34;mysql1&#34;, MySqlArgs.builder()        
- *             .project(data.aiven_project().foo().project())
+ *             .project(foo.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;business-4&#34;)
  *             .serviceName(&#34;my-mysql1&#34;)

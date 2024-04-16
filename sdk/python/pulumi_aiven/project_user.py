@@ -156,7 +156,7 @@ class ProjectUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestuser = aiven.ProjectUser("mytestuser",
-            project=aiven_project["myproject"]["project"],
+            project=myproject["project"],
             email="john.doe@example.com",
             member_type="admin")
         ```
@@ -191,7 +191,7 @@ class ProjectUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestuser = aiven.ProjectUser("mytestuser",
-            project=aiven_project["myproject"]["project"],
+            project=myproject["project"],
             email="john.doe@example.com",
             member_type="admin")
         ```

@@ -14,6 +14,36 @@ import (
 
 // Creates and manages a VPC for an Aiven project.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewProjectVpc(ctx, "example_vpc", &aiven.ProjectVpcArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				NetworkCidr: pulumi.String("192.168.1.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ```sh

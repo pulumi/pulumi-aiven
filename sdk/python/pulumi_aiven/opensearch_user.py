@@ -189,7 +189,7 @@ class OpensearchUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.OpensearchUser("foo",
-            service_name=aiven_opensearch["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")
@@ -226,7 +226,7 @@ class OpensearchUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.OpensearchUser("foo",
-            service_name=aiven_opensearch["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")

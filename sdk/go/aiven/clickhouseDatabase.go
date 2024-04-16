@@ -29,9 +29,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewClickhouseDatabase(ctx, "clickhouseDb", &aiven.ClickhouseDatabaseArgs{
-//				Project:     pulumi.Any(aiven_clickhouse.Ch.Project),
-//				ServiceName: pulumi.Any(aiven_clickhouse.Ch.Service_name),
+//			_, err := aiven.NewClickhouseDatabase(ctx, "clickhouse_db", &aiven.ClickhouseDatabaseArgs{
+//				Project:     pulumi.Any(ch.Project),
+//				ServiceName: pulumi.Any(ch.ServiceName),
+//				Name:        pulumi.String("my-ch-db"),
 //			})
 //			if err != nil {
 //				return err

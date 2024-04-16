@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
  *             .project(&#34;Example project&#34;)
- *             .parentId(aiven_organization.main().id())
+ *             .parentId(main.id())
  *             .build());
  * 
  *     }

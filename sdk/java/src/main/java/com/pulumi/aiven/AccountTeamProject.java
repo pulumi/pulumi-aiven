@@ -52,15 +52,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
  *             .project(&#34;project-1&#34;)
- *             .accountId(aiven_account_team.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
  *             .build());
  * 
  *         var exampleTeam = new AccountTeam(&#34;exampleTeam&#34;, AccountTeamArgs.builder()        
- *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .accountId(ACCOUNT_RESOURCE_NAMEAivenAccount.accountId())
+ *             .name(&#34;Example team&#34;)
  *             .build());
  * 
  *         var main = new AccountTeamProject(&#34;main&#34;, AccountTeamProjectArgs.builder()        
- *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .accountId(ACCOUNT_RESOURCE_NAMEAivenAccount.accountId())
  *             .teamId(exampleTeam.teamId())
  *             .projectName(exampleProject.project())
  *             .teamType(&#34;admin&#34;)

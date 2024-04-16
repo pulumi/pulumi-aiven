@@ -221,8 +221,9 @@ class FlinkApplication(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.FlinkApplication("foo",
-            project=aiven_project["foo"]["project"],
-            service_name="flink-service-1")
+            project=foo_aiven_project["project"],
+            service_name="flink-service-1",
+            name="my-flink-app")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -255,8 +256,9 @@ class FlinkApplication(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.FlinkApplication("foo",
-            project=aiven_project["foo"]["project"],
-            service_name="flink-service-1")
+            project=foo_aiven_project["project"],
+            service_name="flink-service-1",
+            name="my-flink-app")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -29,17 +29,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := aiven.NewProjectVpc(ctx, "exampleVpc", &aiven.ProjectVpcArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Example_project.Project),
+//			exampleVpc, err := aiven.NewProjectVpc(ctx, "example_vpc", &aiven.ProjectVpcArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
 //				CloudName:   pulumi.String("aws-us-east-2"),
 //				NetworkCidr: pulumi.String("192.168.1.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewAwsVpcPeeringConnection(ctx, "awsToAivenPeering", &aiven.AwsVpcPeeringConnectionArgs{
+//			_, err = aiven.NewAwsVpcPeeringConnection(ctx, "aws_to_aiven_peering", &aiven.AwsVpcPeeringConnectionArgs{
 //				VpcId:        exampleVpc.ID(),
-//				AwsAccountId: pulumi.Any(_var.Aws_id),
+//				AwsAccountId: pulumi.Any(awsId),
 //				AwsVpcId:     pulumi.String("vpc-1a2b3c4d5e6f7g8h9"),
 //				AwsVpcRegion: pulumi.String("aws-us-east-2"),
 //			})

@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var m3a = new Aiven.M3Aggregator("m3a", new()
     ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
+    ///         Project = foo.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-8",
     ///         ServiceName = "my-m3a",

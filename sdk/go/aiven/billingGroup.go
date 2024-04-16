@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			bybg1, err := aiven.NewBillingGroup(ctx, "bybg1", &aiven.BillingGroupArgs{
+//				Name:            pulumi.String("bybg1"),
 //				BillingCurrency: pulumi.String("USD"),
 //				VatId:           pulumi.String("123ABC"),
 //			})

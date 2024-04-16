@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var azureToAivenPeering = Aiven.GetAzureVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         VpcId = data.Aiven_project_vpc.Example_vpc.Id,
+        ///         VpcId = exampleVpc.Id,
         ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",
         ///         PeerResourceGroup = "example-resource-group",
         ///         VnetName = "example-vnet",
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var azureToAivenPeering = Aiven.GetAzureVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         VpcId = data.Aiven_project_vpc.Example_vpc.Id,
+        ///         VpcId = exampleVpc.Id,
         ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",
         ///         PeerResourceGroup = "example-resource-group",
         ///         VnetName = "example-vnet",

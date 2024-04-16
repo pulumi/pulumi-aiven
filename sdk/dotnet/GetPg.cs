@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var pg = Aiven.GetPg.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "my-pg1",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var pg = Aiven.GetPg.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "my-pg1",
         ///     });
         /// 

@@ -23,9 +23,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUnit = new Aiven.OrganizationalUnit("exampleUnit", new()
+    ///     var exampleUnit = new Aiven.OrganizationalUnit("example_unit", new()
     ///     {
-    ///         ParentId = aiven_organization.Main.Id,
+    ///         Name = "Example organizational unit",
+    ///         ParentId = main.Id,
     ///     });
     /// 
     /// });

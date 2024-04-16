@@ -29,15 +29,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleVpc, err := aiven.NewProjectVpc(ctx, "exampleVpc", &aiven.ProjectVpcArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Example_project.Project),
+//			exampleVpc, err := aiven.NewProjectVpc(ctx, "example_vpc", &aiven.ProjectVpcArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
 //				CloudName:   pulumi.String("google-europe-west1"),
 //				NetworkCidr: pulumi.String("192.168.1.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewAzureVpcPeeringConnection(ctx, "azureToAivenPeering", &aiven.AzureVpcPeeringConnectionArgs{
+//			_, err = aiven.NewAzureVpcPeeringConnection(ctx, "azure_to_aiven_peering", &aiven.AzureVpcPeeringConnectionArgs{
 //				VpcId:               exampleVpc.ID(),
 //				AzureSubscriptionId: pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				PeerResourceGroup:   pulumi.String("example-resource-group"),

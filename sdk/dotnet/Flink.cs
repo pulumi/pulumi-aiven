@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var flink = new Aiven.Flink("flink", new()
     ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         Project = pr1.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
     ///         ServiceName = "my-flink",

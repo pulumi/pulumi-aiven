@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const redis1 = new aiven.Redis("redis1", {
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
  *     serviceName: "my-redis1",

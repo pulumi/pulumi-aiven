@@ -29,9 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewProject(ctx, "exampleProject", &aiven.ProjectArgs{
+//			_, err := aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
 //				Project:  pulumi.String("Example project"),
-//				ParentId: pulumi.Any(aiven_organization.Main.Id),
+//				ParentId: pulumi.Any(main.Id),
 //			})
 //			if err != nil {
 //				return err

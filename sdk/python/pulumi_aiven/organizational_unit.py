@@ -156,7 +156,9 @@ class OrganizationalUnit(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_unit = aiven.OrganizationalUnit("exampleUnit", parent_id=aiven_organization["main"]["id"])
+        example_unit = aiven.OrganizationalUnit("example_unit",
+            name="Example organizational unit",
+            parent_id=main["id"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -187,7 +189,9 @@ class OrganizationalUnit(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_unit = aiven.OrganizationalUnit("exampleUnit", parent_id=aiven_organization["main"]["id"])
+        example_unit = aiven.OrganizationalUnit("example_unit",
+            name="Example organizational unit",
+            parent_id=main["id"])
         ```
         <!--End PulumiCodeChooser -->
 

@@ -19,13 +19,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleProject = new aiven.Project("exampleProject", {
+ * const exampleProject = new aiven.Project("example_project", {
  *     project: "project-1",
- *     accountId: aiven_account_team.ACCOUNT_RESOURCE_NAME.account_id,
+ *     accountId: ACCOUNT_RESOURCE_NAME.accountId,
  * });
- * const exampleTeam = new aiven.AccountTeam("exampleTeam", {accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id});
+ * const exampleTeam = new aiven.AccountTeam("example_team", {
+ *     accountId: ACCOUNT_RESOURCE_NAMEAivenAccount.accountId,
+ *     name: "Example team",
+ * });
  * const main = new aiven.AccountTeamProject("main", {
- *     accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id,
+ *     accountId: ACCOUNT_RESOURCE_NAMEAivenAccount.accountId,
  *     teamId: exampleTeam.teamId,
  *     projectName: exampleProject.project,
  *     teamType: "admin",

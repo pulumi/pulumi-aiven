@@ -27,10 +27,10 @@ namespace Pulumi.Aiven
         /// {
         ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Kafka_mm_project1.Project,
-        ///         ServiceName = aiven_kafka.Mm.Service_name,
-        ///         SourceCluster = aiven_kafka.Source.Service_name,
-        ///         TargetCluster = aiven_kafka.Target.Service_name,
+        ///         Project = kafka_mm_project1.Project,
+        ///         ServiceName = mm.ServiceName,
+        ///         SourceCluster = source.ServiceName,
+        ///         TargetCluster = target.ServiceName,
         ///     });
         /// 
         /// });
@@ -56,10 +56,10 @@ namespace Pulumi.Aiven
         /// {
         ///     var f1 = Aiven.GetMirrorMakerReplicationFlow.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Kafka_mm_project1.Project,
-        ///         ServiceName = aiven_kafka.Mm.Service_name,
-        ///         SourceCluster = aiven_kafka.Source.Service_name,
-        ///         TargetCluster = aiven_kafka.Target.Service_name,
+        ///         Project = kafka_mm_project1.Project,
+        ///         ServiceName = mm.ServiceName,
+        ///         SourceCluster = source.ServiceName,
+        ///         TargetCluster = target.ServiceName,
         ///     });
         /// 
         /// });

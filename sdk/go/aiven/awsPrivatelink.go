@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewAwsPrivatelink(ctx, "main", &aiven.AwsPrivatelinkArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Example_project.Project),
-//				ServiceName: pulumi.Any(aiven_kafka.Example_kafka.Service_name),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
 //				Principals: pulumi.StringArray{
 //					pulumi.String("arn:aws:iam::012345678901:user/mwf"),
 //				},

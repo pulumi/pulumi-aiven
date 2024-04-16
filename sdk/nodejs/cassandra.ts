@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const bar = new aiven.Cassandra("bar", {
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
  *     serviceName: "test-service-name",

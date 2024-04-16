@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const pg = aiven.getPg({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-pg1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetPgResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const pg = aiven.getPg({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-pg1",
  * });
  * ```

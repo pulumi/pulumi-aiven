@@ -23,10 +23,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleProject = new Aiven.Project("exampleProject", new()
+    ///     var exampleProject = new Aiven.Project("example_project", new()
     ///     {
     ///         ProjectName = "Example project",
-    ///         ParentId = aiven_organization.Main.Id,
+    ///         ParentId = main.Id,
     ///     });
     /// 
     /// });

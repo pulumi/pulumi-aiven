@@ -27,8 +27,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var mytesttopic = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_kafka.Myservice.Service_name,
+        ///         Project = myproject.Project,
+        ///         ServiceName = myservice.ServiceName,
         ///         TopicName = "&lt;TOPIC_NAME&gt;",
         ///     });
         /// 
@@ -55,8 +55,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var mytesttopic = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_kafka.Myservice.Service_name,
+        ///         Project = myproject.Project,
+        ///         ServiceName = myservice.ServiceName,
         ///         TopicName = "&lt;TOPIC_NAME&gt;",
         ///     });
         /// 

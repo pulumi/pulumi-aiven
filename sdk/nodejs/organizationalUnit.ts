@@ -14,7 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleUnit = new aiven.OrganizationalUnit("exampleUnit", {parentId: aiven_organization.main.id});
+ * const exampleUnit = new aiven.OrganizationalUnit("example_unit", {
+ *     name: "Example organizational unit",
+ *     parentId: main.id,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

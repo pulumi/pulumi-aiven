@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var fooProject = AivenFunctions.getProject(GetProjectArgs.builder()
+ *         final var foo = AivenFunctions.getProject(GetProjectArgs.builder()
  *             .project(&#34;example_project&#34;)
  *             .build());
  * 
  *         var bar = new OpenSearch(&#34;bar&#34;, OpenSearchArgs.builder()        
- *             .project(fooProject.applyValue(getProjectResult -&gt; getProjectResult.project()))
+ *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.project()))
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;startup-4&#34;)
  *             .serviceName(&#34;example_service_name&#34;)
@@ -63,12 +63,12 @@ import javax.annotation.Nullable;
  * 
  *         var fooOpensearchUser = new OpensearchUser(&#34;fooOpensearchUser&#34;, OpensearchUserArgs.builder()        
  *             .serviceName(bar.serviceName())
- *             .project(fooProject.applyValue(getProjectResult -&gt; getProjectResult.project()))
+ *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.project()))
  *             .username(&#34;user-example&#34;)
  *             .build());
  * 
  *         var fooOpensearchSecurityPluginConfig = new OpensearchSecurityPluginConfig(&#34;fooOpensearchSecurityPluginConfig&#34;, OpensearchSecurityPluginConfigArgs.builder()        
- *             .project(fooProject.applyValue(getProjectResult -&gt; getProjectResult.project()))
+ *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.project()))
  *             .serviceName(bar.serviceName())
  *             .adminPassword(&#34;ThisIsATest123^=^&#34;)
  *             .build());

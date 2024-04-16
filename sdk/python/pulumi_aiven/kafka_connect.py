@@ -846,7 +846,7 @@ class KafkaConnect(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         kc1 = aiven.KafkaConnect("kc1",
-            project=data["aiven_project"]["pr1"]["project"],
+            project=pr1["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
             service_name="my-kc1",
@@ -925,7 +925,7 @@ class KafkaConnect(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         kc1 = aiven.KafkaConnect("kc1",
-            project=data["aiven_project"]["pr1"]["project"],
+            project=pr1["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
             service_name="my-kc1",

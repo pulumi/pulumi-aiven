@@ -27,8 +27,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var kafka_es_con1 = Aiven.GetKafkaConnector.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Kafka_con_project1.Project,
-        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///         Project = kafka_con_project1.Project,
+        ///         ServiceName = kafka_service1.ServiceName,
         ///         ConnectorName = "kafka-es-con1",
         ///     });
         /// 
@@ -55,8 +55,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var kafka_es_con1 = Aiven.GetKafkaConnector.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Kafka_con_project1.Project,
-        ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+        ///         Project = kafka_con_project1.Project,
+        ///         ServiceName = kafka_service1.ServiceName,
         ///         ConnectorName = "kafka-es-con1",
         ///     });
         /// 

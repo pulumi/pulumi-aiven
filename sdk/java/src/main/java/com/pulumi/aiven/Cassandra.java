@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bar = new Cassandra(&#34;bar&#34;, CassandraArgs.builder()        
- *             .project(data.aiven_project().foo().project())
+ *             .project(foo.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;startup-4&#34;)
  *             .serviceName(&#34;test-service-name&#34;)

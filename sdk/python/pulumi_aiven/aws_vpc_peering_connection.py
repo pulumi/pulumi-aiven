@@ -219,13 +219,13 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.ProjectVpc("exampleVpc",
-            project=data["aiven_project"]["example_project"]["project"],
+        example_vpc = aiven.ProjectVpc("example_vpc",
+            project=example_project["project"],
             cloud_name="aws-us-east-2",
             network_cidr="192.168.1.0/24")
-        aws_to_aiven_peering = aiven.AwsVpcPeeringConnection("awsToAivenPeering",
+        aws_to_aiven_peering = aiven.AwsVpcPeeringConnection("aws_to_aiven_peering",
             vpc_id=example_vpc.id,
-            aws_account_id=var["aws_id"],
+            aws_account_id=aws_id,
             aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
             aws_vpc_region="aws-us-east-2")
         ```
@@ -260,13 +260,13 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.ProjectVpc("exampleVpc",
-            project=data["aiven_project"]["example_project"]["project"],
+        example_vpc = aiven.ProjectVpc("example_vpc",
+            project=example_project["project"],
             cloud_name="aws-us-east-2",
             network_cidr="192.168.1.0/24")
-        aws_to_aiven_peering = aiven.AwsVpcPeeringConnection("awsToAivenPeering",
+        aws_to_aiven_peering = aiven.AwsVpcPeeringConnection("aws_to_aiven_peering",
             vpc_id=example_vpc.id,
-            aws_account_id=var["aws_id"],
+            aws_account_id=aws_id,
             aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
             aws_vpc_region="aws-us-east-2")
         ```

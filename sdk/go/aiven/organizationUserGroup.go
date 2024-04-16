@@ -31,7 +31,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
 //				Description:    pulumi.String("Example group of users."),
-//				OrganizationId: pulumi.Any(aiven_organization.Main.Id),
+//				OrganizationId: pulumi.Any(main.Id),
+//				Name:           pulumi.String("Example group"),
 //			})
 //			if err != nil {
 //				return err

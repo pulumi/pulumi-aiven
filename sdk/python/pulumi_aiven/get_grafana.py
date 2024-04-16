@@ -394,7 +394,7 @@ def get_grafana(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    gr1 = aiven.get_grafana(project=data["aiven_project"]["ps1"]["project"],
+    gr1 = aiven.get_grafana(project=ps1["project"],
         service_name="my-gr1")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_grafana_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    gr1 = aiven.get_grafana(project=data["aiven_project"]["ps1"]["project"],
+    gr1 = aiven.get_grafana(project=ps1["project"],
         service_name="my-gr1")
     ```
     <!--End PulumiCodeChooser -->

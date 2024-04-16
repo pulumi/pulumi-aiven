@@ -262,7 +262,7 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
+    myendpoint = aiven.get_service_integration_endpoint(project=myproject["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
     <!--End PulumiCodeChooser -->
@@ -312,7 +312,7 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     import pulumi
     import pulumi_aiven as aiven
 
-    myendpoint = aiven.get_service_integration_endpoint(project=aiven_project["myproject"]["project"],
+    myendpoint = aiven.get_service_integration_endpoint(project=myproject["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
     <!--End PulumiCodeChooser -->

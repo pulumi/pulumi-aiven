@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const azureToAivenPeering = aiven.getAzureVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.example_vpc.id,
+ *     vpcId: exampleVpc.id,
  *     azureSubscriptionId: "00000000-0000-0000-0000-000000000000",
  *     peerResourceGroup: "example-resource-group",
  *     vnetName: "example-vnet",
@@ -124,7 +124,7 @@ export interface GetAzureVpcPeeringConnectionResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const azureToAivenPeering = aiven.getAzureVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.example_vpc.id,
+ *     vpcId: exampleVpc.id,
  *     azureSubscriptionId: "00000000-0000-0000-0000-000000000000",
  *     peerResourceGroup: "example-resource-group",
  *     vnetName: "example-vnet",

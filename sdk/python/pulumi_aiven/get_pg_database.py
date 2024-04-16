@@ -127,8 +127,8 @@ def get_pg_database(database_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_pg_database(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
+    mydatabase = aiven.get_pg_database(project=myproject["project"],
+        service_name=mypg["serviceName"],
         database_name="<DATABASE_NAME>")
     ```
     <!--End PulumiCodeChooser -->
@@ -170,8 +170,8 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_pg_database(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
+    mydatabase = aiven.get_pg_database(project=myproject["project"],
+        service_name=mypg["serviceName"],
         database_name="<DATABASE_NAME>")
     ```
     <!--End PulumiCodeChooser -->

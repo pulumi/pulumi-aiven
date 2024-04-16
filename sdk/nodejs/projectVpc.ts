@@ -7,6 +7,21 @@ import * as utilities from "./utilities";
 /**
  * Creates and manages a VPC for an Aiven project.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleVpc = new aiven.ProjectVpc("example_vpc", {
+ *     project: exampleProject.project,
+ *     cloudName: "google-europe-west1",
+ *     networkCidr: "192.168.1.0/24",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

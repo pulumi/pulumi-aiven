@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const main = new aiven.AzurePrivatelink("main", {
- *     project: data.aiven_project.example_project.project,
- *     serviceName: aiven_kafka.example_kafka.service_name,
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
  *     userSubscriptionIds: ["00000000-0000-0000-0000-000000000000"],
  * });
  * ```

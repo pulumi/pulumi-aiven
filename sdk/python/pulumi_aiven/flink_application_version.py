@@ -386,6 +386,49 @@ class FlinkApplicationVersion(pulumi.CustomResource):
         """
         The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.FlinkApplicationVersion("foo",
+            project=foo_aiven_project["project"],
+            service_name=foo_aiven_flink["serviceName"],
+            application_id=foo_aiven_flink_application["applicationId"],
+            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
+            sinks=[aiven.FlinkApplicationVersionSinkArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'sink_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )],
+            sources=[aiven.FlinkApplicationVersionSourceArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'source_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -411,6 +454,49 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        foo = aiven.FlinkApplicationVersion("foo",
+            project=foo_aiven_project["project"],
+            service_name=foo_aiven_flink["serviceName"],
+            application_id=foo_aiven_flink_application["applicationId"],
+            statement="    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\\n",
+            sinks=[aiven.FlinkApplicationVersionSinkArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_known_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'sink_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )],
+            sources=[aiven.FlinkApplicationVersionSourceArgs(
+                create_table=\"\"\"      CREATE TABLE kafka_pizza (
+                shop STRING,
+                name STRING
+              ) WITH (
+                'connector' = 'kafka',
+                'properties.bootstrap.servers' = '',
+                'scan.startup.mode' = 'earliest-offset',
+                'topic' = 'source_topic',
+                'value.format' = 'json'
+              )
+        \"\"\",
+                integration_id=flink_to_kafka["integrationId"],
+            )])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

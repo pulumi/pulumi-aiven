@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaAcl(ctx, "mytestacl", &aiven.KafkaAclArgs{
-//				Project:     pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName: pulumi.Any(aiven_kafka.Myservice.Service_name),
+//				Project:     pulumi.Any(myproject.Project),
+//				ServiceName: pulumi.Any(myservice.ServiceName),
 //				Topic:       pulumi.String("<TOPIC_NAME_PATTERN>"),
 //				Permission:  pulumi.String("admin"),
 //				Username:    pulumi.String("<USERNAME_PATTERN>"),

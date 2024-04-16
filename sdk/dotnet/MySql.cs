@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var mysql1 = new Aiven.MySql("mysql1", new()
     ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
+    ///         Project = foo.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
     ///         ServiceName = "my-mysql1",

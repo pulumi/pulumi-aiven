@@ -14,14 +14,14 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.ProjectVpc("exampleVpc", {
- *     project: data.aiven_project.example_project.project,
+ * const exampleVpc = new aiven.ProjectVpc("example_vpc", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.1.0/24",
  * });
  * const awsToAivenPeering = exampleVpc.id.apply(id => aiven.getAwsVpcPeeringConnectionOutput({
  *     vpcId: id,
- *     awsAccountId: _var.aws_id,
+ *     awsAccountId: awsId,
  *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
  *     awsVpcRegion: "aws-us-east-2",
  * }));
@@ -108,14 +108,14 @@ export interface GetAwsVpcPeeringConnectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.ProjectVpc("exampleVpc", {
- *     project: data.aiven_project.example_project.project,
+ * const exampleVpc = new aiven.ProjectVpc("example_vpc", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.1.0/24",
  * });
  * const awsToAivenPeering = exampleVpc.id.apply(id => aiven.getAwsVpcPeeringConnectionOutput({
  *     vpcId: id,
- *     awsAccountId: _var.aws_id,
+ *     awsAccountId: awsId,
  *     awsVpcId: "vpc-1a2b3c4d5e6f7g8h9",
  *     awsVpcRegion: "aws-us-east-2",
  * }));

@@ -30,12 +30,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myIntegrationMetrics = new Aiven.ServiceIntegration("myIntegrationMetrics", new()
+    ///     var myIntegrationMetrics = new Aiven.ServiceIntegration("my_integration_metrics", new()
     ///     {
-    ///         Project = aiven_project.Myproject.Project,
+    ///         Project = myproject.Project,
     ///         IntegrationType = "metrics",
-    ///         SourceServiceName = aiven_kafka.Kfk1.Service_name,
-    ///         DestinationServiceName = aiven_m3db.M3db.Service_name,
+    ///         SourceServiceName = kfk1.ServiceName,
+    ///         DestinationServiceName = m3db.ServiceName,
     ///     });
     /// 
     /// });

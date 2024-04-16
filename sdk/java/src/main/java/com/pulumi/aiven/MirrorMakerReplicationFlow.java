@@ -45,10 +45,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var f1 = new MirrorMakerReplicationFlow(&#34;f1&#34;, MirrorMakerReplicationFlowArgs.builder()        
- *             .project(aiven_project.kafka-mm-project1().project())
- *             .serviceName(aiven_kafka.mm().service_name())
- *             .sourceCluster(aiven_kafka.source().service_name())
- *             .targetCluster(aiven_kafka.target().service_name())
+ *             .project(kafka_mm_project1.project())
+ *             .serviceName(mm.serviceName())
+ *             .sourceCluster(source.serviceName())
+ *             .targetCluster(target.serviceName())
  *             .enable(true)
  *             .topics(&#34;.*&#34;)
  *             .topicsBlacklists(            

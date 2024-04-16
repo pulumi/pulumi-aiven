@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupProjectUser(ctx, &aiven.LookupProjectUserArgs{
-//				Project: aiven_project.Myproject.Project,
+//				Project: myproject.Project,
 //				Email:   "john.doe@example.com",
 //			}, nil)
 //			if err != nil {

@@ -34,8 +34,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAccountTeam(ctx, "exampleTeam", &aiven.AccountTeamArgs{
-//				AccountId: pulumi.Any(aiven_account.ACCOUNT_RESOURCE_NAME.Account_id),
+//			_, err := aiven.NewAccountTeam(ctx, "example_team", &aiven.AccountTeamArgs{
+//				AccountId: pulumi.Any(ACCOUNT_RESOURCE_NAME.AccountId),
+//				Name:      pulumi.String("Example team"),
 //			})
 //			if err != nil {
 //				return err

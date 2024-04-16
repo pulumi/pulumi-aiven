@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const m3a = aiven.getM3Aggregator({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "my-m3a",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetM3AggregatorResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const m3a = aiven.getM3Aggregator({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "my-m3a",
  * });
  * ```

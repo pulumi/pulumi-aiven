@@ -34,8 +34,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var main = new Aiven.AccountTeamMember("main", new()
     ///     {
-    ///         AccountId = aiven_account.ACCOUNT_RESOURCE_NAME.Account_id,
-    ///         TeamId = aiven_account_team.TEAM_RESOURCE_NAME.Team_id,
+    ///         AccountId = ACCOUNT_RESOURCE_NAME.AccountId,
+    ///         TeamId = TEAM_RESOURCE_NAME.TeamId,
     ///         UserEmail = "user+1@example.com",
     ///     });
     /// 

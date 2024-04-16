@@ -46,7 +46,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleTeam = new AccountTeam(&#34;exampleTeam&#34;, AccountTeamArgs.builder()        
- *             .accountId(aiven_account.ACCOUNT_RESOURCE_NAME().account_id())
+ *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
+ *             .name(&#34;Example team&#34;)
  *             .build());
  * 
  *     }

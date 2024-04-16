@@ -25,8 +25,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var mytestacl = new Aiven.KafkaAcl("mytestacl", new()
     ///     {
-    ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_kafka.Myservice.Service_name,
+    ///         Project = myproject.Project,
+    ///         ServiceName = myservice.ServiceName,
     ///         Topic = "&lt;TOPIC_NAME_PATTERN&gt;",
     ///         Permission = "admin",
     ///         Username = "&lt;USERNAME_PATTERN&gt;",

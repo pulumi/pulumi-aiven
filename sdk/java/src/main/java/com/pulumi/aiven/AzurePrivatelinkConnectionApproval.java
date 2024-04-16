@@ -17,6 +17,11 @@ import javax.annotation.Nullable;
 /**
  * Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh

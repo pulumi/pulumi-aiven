@@ -23,14 +23,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooProject = Aiven.GetProject.Invoke(new()
+    ///     var foo = Aiven.GetProject.Invoke(new()
     ///     {
     ///         Project = "example_project",
     ///     });
     /// 
     ///     var bar = new Aiven.OpenSearch("bar", new()
     ///     {
-    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
     ///         ServiceName = "example_service_name",
@@ -38,16 +38,16 @@ namespace Pulumi.Aiven
     ///         MaintenanceWindowTime = "10:00:00",
     ///     });
     /// 
-    ///     var fooOpensearchUser = new Aiven.OpensearchUser("fooOpensearchUser", new()
+    ///     var fooOpensearchUser = new Aiven.OpensearchUser("foo", new()
     ///     {
     ///         ServiceName = bar.ServiceName,
-    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
     ///         Username = "user-example",
     ///     });
     /// 
-    ///     var fooOpensearchSecurityPluginConfig = new Aiven.OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig", new()
+    ///     var fooOpensearchSecurityPluginConfig = new Aiven.OpensearchSecurityPluginConfig("foo", new()
     ///     {
-    ///         Project = fooProject.Apply(getProjectResult =&gt; getProjectResult.Project),
+    ///         Project = foo.Apply(getProjectResult =&gt; getProjectResult.Project),
     ///         ServiceName = bar.ServiceName,
     ///         AdminPassword = "ThisIsATest123^=^",
     ///     });

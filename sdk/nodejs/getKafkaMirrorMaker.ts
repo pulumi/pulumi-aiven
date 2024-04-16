@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mm1 = aiven.getKafkaMirrorMaker({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-mm1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetKafkaMirrorMakerResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mm1 = aiven.getKafkaMirrorMaker({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-mm1",
  * });
  * ```

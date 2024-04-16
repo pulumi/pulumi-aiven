@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaUser(ctx, "foo", &aiven.KafkaUserArgs{
-//				ServiceName: pulumi.Any(aiven_kafka.Bar.Service_name),
+//				ServiceName: pulumi.Any(bar.ServiceName),
 //				Project:     pulumi.String("my-project"),
 //				Username:    pulumi.String("user-1"),
 //				Password:    pulumi.String("Test$1234"),

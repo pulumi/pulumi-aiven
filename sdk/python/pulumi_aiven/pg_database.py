@@ -243,8 +243,8 @@ class PgDatabase(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mydatabase = aiven.PgDatabase("mydatabase",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_pg["mypg"]["service_name"],
+            project=myproject["project"],
+            service_name=mypg["serviceName"],
             database_name="<DATABASE_NAME>")
         ```
         <!--End PulumiCodeChooser -->
@@ -282,8 +282,8 @@ class PgDatabase(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mydatabase = aiven.PgDatabase("mydatabase",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_pg["mypg"]["service_name"],
+            project=myproject["project"],
+            service_name=mypg["serviceName"],
             database_name="<DATABASE_NAME>")
         ```
         <!--End PulumiCodeChooser -->

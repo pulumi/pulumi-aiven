@@ -117,8 +117,8 @@ def get_aws_privatelink(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_aws_privatelink(project=data["aiven_project"]["example_project"]["project"],
-        service_name=aiven_kafka["example_kafka"]["service_name"])
+    main = aiven.get_aws_privatelink(project=example_project["project"],
+        service_name=example_kafka["serviceName"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -155,8 +155,8 @@ def get_aws_privatelink_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_aws_privatelink(project=data["aiven_project"]["example_project"]["project"],
-        service_name=aiven_kafka["example_kafka"]["service_name"])
+    main = aiven.get_aws_privatelink(project=example_project["project"],
+        service_name=example_kafka["serviceName"])
     ```
     <!--End PulumiCodeChooser -->
 

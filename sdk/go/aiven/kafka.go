@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafka(ctx, "kafka1", &aiven.KafkaArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Pr1.Project),
+//				Project:               pulumi.Any(pr1.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
 //				ServiceName:           pulumi.String("my-kafka1"),

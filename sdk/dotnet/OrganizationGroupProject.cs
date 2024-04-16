@@ -12,6 +12,35 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Aiven.OrganizationUserGroup("example", new()
+    ///     {
+    ///         Description = "Example group of users.",
+    ///         OrganizationId = main.Id,
+    ///         Name = "Example group",
+    ///     });
+    /// 
+    ///     var exampleOrganizationUserGroupProject = new Aiven.Index.OrganizationUserGroupProject("example", new()
+    ///     {
+    ///         GroupId = example.GroupId,
+    ///         Project = exampleAivenProject.Project,
+    ///         Role = "admin",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

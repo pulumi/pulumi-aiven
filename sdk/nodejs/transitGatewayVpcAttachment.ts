@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const attachment = new aiven.TransitGatewayVpcAttachment("attachment", {
- *     vpcId: aiven_project_vpc.bar.id,
+ *     vpcId: bar.id,
  *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
  *     peerVpc: "google-project1",
  *     peerRegion: "aws-eu-west-1",

@@ -265,7 +265,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         attachment = aiven.TransitGatewayVpcAttachment("attachment",
-            vpc_id=aiven_project_vpc["bar"]["id"],
+            vpc_id=bar["id"],
             peer_cloud_account="<PEER_ACCOUNT_ID>",
             peer_vpc="google-project1",
             peer_region="aws-eu-west-1",
@@ -304,7 +304,7 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         attachment = aiven.TransitGatewayVpcAttachment("attachment",
-            vpc_id=aiven_project_vpc["bar"]["id"],
+            vpc_id=bar["id"],
             peer_cloud_account="<PEER_ACCOUNT_ID>",
             peer_vpc="google-project1",
             peer_region="aws-eu-west-1",

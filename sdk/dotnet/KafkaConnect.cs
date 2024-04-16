@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var kc1 = new Aiven.KafkaConnect("kc1", new()
     ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         Project = pr1.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
     ///         ServiceName = "my-kc1",

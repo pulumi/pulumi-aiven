@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var mytestuser = new Aiven.ProjectUser("mytestuser", new()
     ///     {
-    ///         Project = aiven_project.Myproject.Project,
+    ///         Project = myproject.Project,
     ///         Email = "john.doe@example.com",
     ///         MemberType = "admin",
     ///     });

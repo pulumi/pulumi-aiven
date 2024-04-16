@@ -188,7 +188,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.GcpVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+            vpc_id=vpc["id"],
             gcp_project_id="xxxx",
             peer_vpc="xxxx")
         ```
@@ -223,7 +223,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.GcpVpcPeeringConnection("foo",
-            vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+            vpc_id=vpc["id"],
             gcp_project_id="xxxx",
             peer_vpc="xxxx")
         ```

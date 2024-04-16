@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mytestacl = new KafkaAcl(&#34;mytestacl&#34;, KafkaAclArgs.builder()        
- *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_kafka.myservice().service_name())
+ *             .project(myproject.project())
+ *             .serviceName(myservice.serviceName())
  *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
  *             .permission(&#34;admin&#34;)
  *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)

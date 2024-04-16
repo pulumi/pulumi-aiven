@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewM3Db(ctx, "m3", &aiven.M3DbArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Foo.Project),
+//				Project:               pulumi.Any(foo.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-8"),
 //				ServiceName:           pulumi.String("my-m3db"),

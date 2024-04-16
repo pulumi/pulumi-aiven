@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var main = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+        ///         VpcId = vpc.Id,
         ///         GcpProjectId = "example-project",
         ///         PeerVpc = "example-network",
         ///     });
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var main = Aiven.GetGcpVpcPeeringConnection.Invoke(new()
         ///     {
-        ///         VpcId = data.Aiven_project_vpc.Vpc.Id,
+        ///         VpcId = vpc.Id,
         ///         GcpProjectId = "example-project",
         ///         PeerVpc = "example-network",
         ///     });

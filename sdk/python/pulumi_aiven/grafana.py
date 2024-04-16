@@ -847,9 +847,10 @@ class Grafana(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         gr1 = aiven.Grafana("gr1",
-            project=data["aiven_project"]["ps1"]["project"],
+            project=ps1["project"],
             cloud_name="google-europe-west1",
             plan="startup-1",
+            service_name="my-gr1",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             grafana_user_config=aiven.GrafanaGrafanaUserConfigArgs(
@@ -923,9 +924,10 @@ class Grafana(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         gr1 = aiven.Grafana("gr1",
-            project=data["aiven_project"]["ps1"]["project"],
+            project=ps1["project"],
             cloud_name="google-europe-west1",
             plan="startup-1",
+            service_name="my-gr1",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00",
             grafana_user_config=aiven.GrafanaGrafanaUserConfigArgs(

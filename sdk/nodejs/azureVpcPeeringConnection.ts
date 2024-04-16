@@ -14,12 +14,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleVpc = new aiven.ProjectVpc("exampleVpc", {
- *     project: data.aiven_project.example_project.project,
+ * const exampleVpc = new aiven.ProjectVpc("example_vpc", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     networkCidr: "192.168.1.0/24",
  * });
- * const azureToAivenPeering = new aiven.AzureVpcPeeringConnection("azureToAivenPeering", {
+ * const azureToAivenPeering = new aiven.AzureVpcPeeringConnection("azure_to_aiven_peering", {
  *     vpcId: exampleVpc.id,
  *     azureSubscriptionId: "00000000-0000-0000-0000-000000000000",
  *     peerResourceGroup: "example-resource-group",

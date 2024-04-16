@@ -159,6 +159,24 @@ class OrganizationGroupProject(pulumi.CustomResource):
         """
         Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationUserGroup("example",
+            description="Example group of users.",
+            organization_id=main["id"],
+            name="Example group")
+        example_organization_user_group_project = aiven.index.OrganizationUserGroupProject("example",
+            group_id=example.group_id,
+            project=example_aiven_project.project,
+            role=admin)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -179,6 +197,24 @@ class OrganizationGroupProject(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example = aiven.OrganizationUserGroup("example",
+            description="Example group of users.",
+            organization_id=main["id"],
+            name="Example group")
+        example_organization_user_group_project = aiven.index.OrganizationUserGroupProject("example",
+            group_id=example.group_id,
+            project=example_aiven_project.project,
+            role=admin)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

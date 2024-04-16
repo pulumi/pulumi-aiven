@@ -18,11 +18,12 @@ import * as utilities from "./utilities";
  *
  * const example = new aiven.OrganizationUserGroup("example", {
  *     description: "Example group of users.",
- *     organizationId: aiven_organization.main.id,
+ *     organizationId: main.id,
+ *     name: "Example group",
  * });
- * const projectAdmin = new aiven.OrganizationUserGroupMember("projectAdmin", {
+ * const projectAdmin = new aiven.OrganizationUserGroupMember("project_admin", {
  *     groupId: example.groupId,
- *     organizationId: aiven_organization.main.id,
+ *     organizationId: main.id,
  *     userId: "u123a456b7890c",
  * });
  * ```

@@ -30,17 +30,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaConnector(ctx, "kafka-os-con1", &aiven.KafkaConnectorArgs{
-//				Project:       pulumi.Any(aiven_project.KafkaConProject1.Project),
-//				ServiceName:   pulumi.Any(aiven_kafka.KafkaService1.Service_name),
+//				Project:       pulumi.Any(kafka_con_project1.Project),
+//				ServiceName:   pulumi.Any(kafka_service1.ServiceName),
 //				ConnectorName: pulumi.String("kafka-os-con1"),
 //				Config: pulumi.StringMap{
-//					"topics":              pulumi.Any(aiven_kafka_topic.KafkaTopic1.Topic_name),
+//					"topics":              pulumi.Any(kafka_topic1.TopicName),
 //					"connector.class":     pulumi.String("io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
 //					"type.name":           pulumi.String("os-connector"),
 //					"name":                pulumi.String("kafka-os-con1"),
-//					"connection.url":      pulumi.Any(aiven_opensearch.OsService1.Service_uri),
-//					"connection.username": pulumi.Any(aiven_opensearch.OsService1.Service_username),
-//					"connection.password": pulumi.Any(aiven_opensearch.OsService1.Service_password),
+//					"connection.url":      pulumi.Any(os_service1.ServiceUri),
+//					"connection.username": pulumi.Any(os_service1.ServiceUsername),
+//					"connection.password": pulumi.Any(os_service1.ServicePassword),
 //				},
 //			})
 //			if err != nil {

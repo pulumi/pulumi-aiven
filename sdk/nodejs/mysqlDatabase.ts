@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mydatabase = new aiven.MysqlDatabase("mydatabase", {
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_mysql.mymysql.service_name,
+ *     project: myproject.project,
+ *     serviceName: mymysql.serviceName,
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```

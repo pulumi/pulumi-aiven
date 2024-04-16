@@ -173,20 +173,20 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo_project = aiven.get_project(project="example_project")
+        foo = aiven.get_project(project="example_project")
         bar = aiven.OpenSearch("bar",
-            project=foo_project.project,
+            project=foo.project,
             cloud_name="google-europe-west1",
             plan="startup-4",
             service_name="example_service_name",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
+        foo_opensearch_user = aiven.OpensearchUser("foo",
             service_name=bar.service_name,
-            project=foo_project.project,
+            project=foo.project,
             username="user-example")
-        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
-            project=foo_project.project,
+        foo_open_search_acl_config = aiven.OpenSearchAclConfig("foo",
+            project=foo.project,
             service_name=bar.service_name,
             enabled=True,
             extended_acl=False)
@@ -222,20 +222,20 @@ class OpenSearchAclConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        foo_project = aiven.get_project(project="example_project")
+        foo = aiven.get_project(project="example_project")
         bar = aiven.OpenSearch("bar",
-            project=foo_project.project,
+            project=foo.project,
             cloud_name="google-europe-west1",
             plan="startup-4",
             service_name="example_service_name",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
-        foo_opensearch_user = aiven.OpensearchUser("fooOpensearchUser",
+        foo_opensearch_user = aiven.OpensearchUser("foo",
             service_name=bar.service_name,
-            project=foo_project.project,
+            project=foo.project,
             username="user-example")
-        foo_open_search_acl_config = aiven.OpenSearchAclConfig("fooOpenSearchAclConfig",
-            project=foo_project.project,
+        foo_open_search_acl_config = aiven.OpenSearchAclConfig("foo",
+            project=foo.project,
             service_name=bar.service_name,
             enabled=True,
             extended_acl=False)

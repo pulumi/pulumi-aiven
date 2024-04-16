@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const f1 = aiven.getMirrorMakerReplicationFlow({
- *     project: aiven_project["kafka-mm-project1"].project,
- *     serviceName: aiven_kafka.mm.service_name,
- *     sourceCluster: aiven_kafka.source.service_name,
- *     targetCluster: aiven_kafka.target.service_name,
+ *     project: kafka_mm_project1.project,
+ *     serviceName: mm.serviceName,
+ *     sourceCluster: source.serviceName,
+ *     targetCluster: target.serviceName,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -128,10 +128,10 @@ export interface GetMirrorMakerReplicationFlowResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const f1 = aiven.getMirrorMakerReplicationFlow({
- *     project: aiven_project["kafka-mm-project1"].project,
- *     serviceName: aiven_kafka.mm.service_name,
- *     sourceCluster: aiven_kafka.source.service_name,
- *     targetCluster: aiven_kafka.target.service_name,
+ *     project: kafka_mm_project1.project,
+ *     serviceName: mm.serviceName,
+ *     sourceCluster: source.serviceName,
+ *     targetCluster: target.serviceName,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

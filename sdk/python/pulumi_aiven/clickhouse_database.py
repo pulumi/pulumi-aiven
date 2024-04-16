@@ -181,9 +181,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
-            project=aiven_clickhouse["ch"]["project"],
-            service_name=aiven_clickhouse["ch"]["service_name"])
+        clickhouse_db = aiven.ClickhouseDatabase("clickhouse_db",
+            project=ch["project"],
+            service_name=ch["serviceName"],
+            name="my-ch-db")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -218,9 +219,10 @@ class ClickhouseDatabase(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        clickhouse_db = aiven.ClickhouseDatabase("clickhouseDb",
-            project=aiven_clickhouse["ch"]["project"],
-            service_name=aiven_clickhouse["ch"]["service_name"])
+        clickhouse_db = aiven.ClickhouseDatabase("clickhouse_db",
+            project=ch["project"],
+            service_name=ch["serviceName"],
+            name="my-ch-db")
         ```
         <!--End PulumiCodeChooser -->
 

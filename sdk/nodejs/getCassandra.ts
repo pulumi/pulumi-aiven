@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const bar = aiven.getCassandra({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetCassandraResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const bar = aiven.getCassandra({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```

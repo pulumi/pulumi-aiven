@@ -394,7 +394,7 @@ def get_open_search(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os1 = aiven.get_open_search(project=data["aiven_project"]["pr1"]["project"],
+    os1 = aiven.get_open_search(project=pr1["project"],
         service_name="my-os1")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_open_search_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    os1 = aiven.get_open_search(project=data["aiven_project"]["pr1"]["project"],
+    os1 = aiven.get_open_search(project=pr1["project"],
         service_name="my-os1")
     ```
     <!--End PulumiCodeChooser -->

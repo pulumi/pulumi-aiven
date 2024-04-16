@@ -118,7 +118,7 @@ def get_project_vpc(cloud_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    example_vpc = aiven.get_project_vpc(project=data["aiven_project"]["example_project"]["project"],
+    example_vpc = aiven.get_project_vpc(project=example_project["project"],
         cloud_name="google-europe-west1")
     ```
     <!--End PulumiCodeChooser -->
@@ -159,7 +159,7 @@ def get_project_vpc_output(cloud_name: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi
     import pulumi_aiven as aiven
 
-    example_vpc = aiven.get_project_vpc(project=data["aiven_project"]["example_project"]["project"],
+    example_vpc = aiven.get_project_vpc(project=example_project["project"],
         cloud_name="google-europe-west1")
     ```
     <!--End PulumiCodeChooser -->

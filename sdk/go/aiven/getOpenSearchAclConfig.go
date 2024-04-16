@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupOpenSearchAclConfig(ctx, &aiven.LookupOpenSearchAclConfigArgs{
-//				Project:     aiven_project.OsProject.Project,
-//				ServiceName: aiven_opensearch.Os.Service_name,
+//				Project:     os_project.Project,
+//				ServiceName: os.ServiceName,
 //			}, nil)
 //			if err != nil {
 //				return err

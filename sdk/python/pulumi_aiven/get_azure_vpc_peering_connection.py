@@ -169,7 +169,7 @@ def get_azure_vpc_peering_connection(azure_subscription_id: Optional[str] = None
     import pulumi
     import pulumi_aiven as aiven
 
-    azure_to_aiven_peering = aiven.get_azure_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["example_vpc"]["id"],
+    azure_to_aiven_peering = aiven.get_azure_vpc_peering_connection(vpc_id=example_vpc["id"],
         azure_subscription_id="00000000-0000-0000-0000-000000000000",
         peer_resource_group="example-resource-group",
         vnet_name="example-vnet",
@@ -227,7 +227,7 @@ def get_azure_vpc_peering_connection_output(azure_subscription_id: Optional[pulu
     import pulumi
     import pulumi_aiven as aiven
 
-    azure_to_aiven_peering = aiven.get_azure_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["example_vpc"]["id"],
+    azure_to_aiven_peering = aiven.get_azure_vpc_peering_connection(vpc_id=example_vpc["id"],
         azure_subscription_id="00000000-0000-0000-0000-000000000000",
         peer_resource_group="example-resource-group",
         vnet_name="example-vnet",

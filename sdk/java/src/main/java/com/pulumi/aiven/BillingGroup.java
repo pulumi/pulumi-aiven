@@ -45,6 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var bybg1 = new BillingGroup(&#34;bybg1&#34;, BillingGroupArgs.builder()        
+ *             .name(&#34;bybg1&#34;)
  *             .billingCurrency(&#34;USD&#34;)
  *             .vatId(&#34;123ABC&#34;)
  *             .build());

@@ -27,8 +27,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_pg.Mypg.Service_name,
+        ///         Project = myproject.Project,
+        ///         ServiceName = mypg.ServiceName,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 
@@ -55,8 +55,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var mydatabase = Aiven.GetPgDatabase.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_pg.Mypg.Service_name,
+        ///         Project = myproject.Project,
+        ///         ServiceName = mypg.ServiceName,
         ///         DatabaseName = "&lt;DATABASE_NAME&gt;",
         ///     });
         /// 

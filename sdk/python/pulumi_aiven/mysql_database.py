@@ -177,8 +177,8 @@ class MysqlDatabase(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mydatabase = aiven.MysqlDatabase("mydatabase",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_mysql["mymysql"]["service_name"],
+            project=myproject["project"],
+            service_name=mymysql["serviceName"],
             database_name="<DATABASE_NAME>")
         ```
         <!--End PulumiCodeChooser -->
@@ -214,8 +214,8 @@ class MysqlDatabase(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mydatabase = aiven.MysqlDatabase("mydatabase",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_mysql["mymysql"]["service_name"],
+            project=myproject["project"],
+            service_name=mymysql["serviceName"],
             database_name="<DATABASE_NAME>")
         ```
         <!--End PulumiCodeChooser -->

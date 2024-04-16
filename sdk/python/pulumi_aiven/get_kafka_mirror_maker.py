@@ -394,7 +394,7 @@ def get_kafka_mirror_maker(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mm1 = aiven.get_kafka_mirror_maker(project=data["aiven_project"]["pr1"]["project"],
+    mm1 = aiven.get_kafka_mirror_maker(project=pr1["project"],
         service_name="my-mm1")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mm1 = aiven.get_kafka_mirror_maker(project=data["aiven_project"]["pr1"]["project"],
+    mm1 = aiven.get_kafka_mirror_maker(project=pr1["project"],
         service_name="my-mm1")
     ```
     <!--End PulumiCodeChooser -->

@@ -9,6 +9,26 @@ import * as utilities from "./utilities";
 /**
  * Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const example = new aiven.OrganizationUserGroup("example", {
+ *     description: "Example group of users.",
+ *     organizationId: main.id,
+ *     name: "Example group",
+ * });
+ * const exampleOrganizationUserGroupProject = new aiven.index.OrganizationUserGroupProject("example", {
+ *     groupId: example.groupId,
+ *     project: exampleAivenProject.project,
+ *     role: "admin",
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const m3 = aiven.getM3Db({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "my-m3db",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetM3DbResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const m3 = aiven.getM3Db({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "my-m3db",
  * });
  * ```

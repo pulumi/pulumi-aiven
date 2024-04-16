@@ -103,8 +103,8 @@ def get_mysql_database(database_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_mysql_database(project=aiven_project["myproject"]["project"],
-        service_name=aiven_mysql["mymysql"]["service_name"],
+    mydatabase = aiven.get_mysql_database(project=myproject["project"],
+        service_name=mymysql["serviceName"],
         database_name="<DATABASE_NAME>")
     ```
     <!--End PulumiCodeChooser -->
@@ -144,8 +144,8 @@ def get_mysql_database_output(database_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mydatabase = aiven.get_mysql_database(project=aiven_project["myproject"]["project"],
-        service_name=aiven_mysql["mymysql"]["service_name"],
+    mydatabase = aiven.get_mysql_database(project=myproject["project"],
+        service_name=mymysql["serviceName"],
         database_name="<DATABASE_NAME>")
     ```
     <!--End PulumiCodeChooser -->

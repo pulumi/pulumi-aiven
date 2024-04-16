@@ -394,7 +394,7 @@ def get_redis(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    redis1 = aiven.get_redis(project=data["aiven_project"]["pr1"]["project"],
+    redis1 = aiven.get_redis(project=pr1["project"],
         service_name="my-redis1")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_redis_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    redis1 = aiven.get_redis(project=data["aiven_project"]["pr1"]["project"],
+    redis1 = aiven.get_redis(project=pr1["project"],
         service_name="my-redis1")
     ```
     <!--End PulumiCodeChooser -->

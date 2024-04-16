@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const main = new aiven.Organization("main", {});
+ * const main = new aiven.Organization("main", {name: "Example organization"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

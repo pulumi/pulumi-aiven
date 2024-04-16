@@ -30,9 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewGrafana(ctx, "gr1", &aiven.GrafanaArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Ps1.Project),
+//				Project:               pulumi.Any(ps1.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("startup-1"),
+//				ServiceName:           pulumi.String("my-gr1"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				GrafanaUserConfig: &aiven.GrafanaGrafanaUserConfigArgs{

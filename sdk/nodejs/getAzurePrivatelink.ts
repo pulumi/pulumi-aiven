@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const main = aiven.getAzurePrivatelink({
- *     project: data.aiven_project.example_project.project,
- *     serviceName: aiven_kafka.example_kafka.service_name,
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -92,8 +92,8 @@ export interface GetAzurePrivatelinkResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const main = aiven.getAzurePrivatelink({
- *     project: data.aiven_project.example_project.project,
- *     serviceName: aiven_kafka.example_kafka.service_name,
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

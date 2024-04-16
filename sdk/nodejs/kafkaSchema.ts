@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const kafka_schema1 = new aiven.KafkaSchema("kafka-schema1", {
- *     project: aiven_project["kafka-schemas-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     project: kafka_schemas_project1.project,
+ *     serviceName: kafka_service1.serviceName,
  *     subjectName: "kafka-schema1",
  *     compatibilityLevel: "FORWARD",
  *     schema: `    {

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const foo = new aiven.CassandraUser("foo", {
- *     serviceName: aiven_cassandra.bar.service_name,
+ *     serviceName: bar.serviceName,
  *     project: "my-project",
  *     username: "user-1",
  *     password: "Test$1234",

@@ -178,12 +178,14 @@ class AccountTeamProject(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_project = aiven.Project("exampleProject",
+        example_project = aiven.Project("example_project",
             project="project-1",
-            account_id=aiven_account_team["ACCOUNT_RESOURCE_NAME"]["account_id"])
-        example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
+            account_id=accoun_t__resourc_e__name["accountId"])
+        example_team = aiven.AccountTeam("example_team",
+            account_id=accoun_t__resourc_e__name_aiven_account["accountId"],
+            name="Example team")
         main = aiven.AccountTeamProject("main",
-            account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"],
+            account_id=accoun_t__resourc_e__name_aiven_account["accountId"],
             team_id=example_team.team_id,
             project_name=example_project.project,
             team_type="admin")
@@ -224,12 +226,14 @@ class AccountTeamProject(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_project = aiven.Project("exampleProject",
+        example_project = aiven.Project("example_project",
             project="project-1",
-            account_id=aiven_account_team["ACCOUNT_RESOURCE_NAME"]["account_id"])
-        example_team = aiven.AccountTeam("exampleTeam", account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"])
+            account_id=accoun_t__resourc_e__name["accountId"])
+        example_team = aiven.AccountTeam("example_team",
+            account_id=accoun_t__resourc_e__name_aiven_account["accountId"],
+            name="Example team")
         main = aiven.AccountTeamProject("main",
-            account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"],
+            account_id=accoun_t__resourc_e__name_aiven_account["accountId"],
             team_id=example_team.team_id,
             project_name=example_project.project,
             team_type="admin")

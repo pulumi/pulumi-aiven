@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupM3dbUser(ctx, &aiven.LookupM3dbUserArgs{
-//				Project:     "my-project",
 //				ServiceName: "my-service",
+//				Project:     "my-project",
 //				Username:    "user1",
 //			}, nil)
 //			if err != nil {

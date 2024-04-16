@@ -41,8 +41,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new FlinkApplication(&#34;foo&#34;, FlinkApplicationArgs.builder()        
- *             .project(aiven_project.foo().project())
+ *             .project(fooAivenProject.project())
  *             .serviceName(&#34;flink-service-1&#34;)
+ *             .name(&#34;my-flink-app&#34;)
  *             .build());
  * 
  *     }

@@ -9,6 +9,28 @@ import * as utilities from "./utilities";
 /**
  * The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const mytesttopic = new aiven.KafkaTopic("mytesttopic", {
+ *     project: myproject.project,
+ *     serviceName: myservice.serviceName,
+ *     topicName: "<TOPIC_NAME>",
+ *     partitions: 5,
+ *     replication: 3,
+ *     terminationProtection: true,
+ *     config: {
+ *         flushMs: "10",
+ *         cleanupPolicy: "compact,delete",
+ *     },
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

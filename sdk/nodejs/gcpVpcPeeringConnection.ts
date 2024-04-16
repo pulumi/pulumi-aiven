@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const foo = new aiven.GcpVpcPeeringConnection("foo", {
- *     vpcId: data.aiven_project_vpc.vpc.id,
+ *     vpcId: vpc.id,
  *     gcpProjectId: "xxxx",
  *     peerVpc: "xxxx",
  * });

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mysql1 = aiven.getMySql({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "my-mysql1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetMySqlResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mysql1 = aiven.getMySql({
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     serviceName: "my-mysql1",
  * });
  * ```

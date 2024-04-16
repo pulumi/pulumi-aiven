@@ -846,7 +846,7 @@ class MySql(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mysql1 = aiven.MySql("mysql1",
-            project=data["aiven_project"]["foo"]["project"],
+            project=foo["project"],
             cloud_name="google-europe-west1",
             plan="business-4",
             service_name="my-mysql1",
@@ -927,7 +927,7 @@ class MySql(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mysql1 = aiven.MySql("mysql1",
-            project=data["aiven_project"]["foo"]["project"],
+            project=foo["project"],
             cloud_name="google-europe-west1",
             plan="business-4",
             service_name="my-mysql1",

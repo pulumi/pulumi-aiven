@@ -23,10 +23,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var clickhouseDb = new Aiven.ClickhouseDatabase("clickhouseDb", new()
+    ///     var clickhouseDb = new Aiven.ClickhouseDatabase("clickhouse_db", new()
     ///     {
-    ///         Project = aiven_clickhouse.Ch.Project,
-    ///         ServiceName = aiven_clickhouse.Ch.Service_name,
+    ///         Project = ch.Project,
+    ///         ServiceName = ch.ServiceName,
+    ///         Name = "my-ch-db",
     ///     });
     /// 
     /// });

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const account1 = new aiven.Account("account1", {});
+ * const account1 = new aiven.Account("account1", {name: "<ACCOUNT_NAME>"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

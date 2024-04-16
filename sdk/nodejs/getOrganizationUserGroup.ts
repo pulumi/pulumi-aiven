@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  *
  * const example = aiven.getOrganizationUserGroup({
  *     name: "Example group",
- *     organizationId: aiven_organization.main.id,
+ *     organizationId: main.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -89,7 +89,7 @@ export interface GetOrganizationUserGroupResult {
  *
  * const example = aiven.getOrganizationUserGroup({
  *     name: "Example group",
- *     organizationId: aiven_organization.main.id,
+ *     organizationId: main.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytesttopic = aiven.getKafkaTopic({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_kafka.myservice.service_name,
+ *     project: myproject.project,
+ *     serviceName: myservice.serviceName,
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```
@@ -101,8 +101,8 @@ export interface GetKafkaTopicResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytesttopic = aiven.getKafkaTopic({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_kafka.myservice.service_name,
+ *     project: myproject.project,
+ *     serviceName: myservice.serviceName,
  *     topicName: "<TOPIC_NAME>",
  * });
  * ```

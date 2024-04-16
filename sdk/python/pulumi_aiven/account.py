@@ -237,7 +237,7 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        account1 = aiven.Account("account1")
+        account1 = aiven.Account("account1", name="<ACCOUNT_NAME>")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -270,7 +270,7 @@ class Account(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        account1 = aiven.Account("account1")
+        account1 = aiven.Account("account1", name="<ACCOUNT_NAME>")
         ```
         <!--End PulumiCodeChooser -->
 

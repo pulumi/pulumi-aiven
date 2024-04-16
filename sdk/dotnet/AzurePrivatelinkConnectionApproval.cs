@@ -12,6 +12,96 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// using Azurerm = Pulumi.Azurerm;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var staticIps = new List&lt;Aiven.StaticIp&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; 2; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         staticIps.Add(new Aiven.StaticIp($"static_ips-{range.Value}", new()
+    ///         {
+    ///             Project = projectId,
+    ///             CloudName = region,
+    ///         }));
+    ///     }
+    ///     var @default = new Aiven.Pg("default", new()
+    ///     {
+    ///         ServiceName = "postgres",
+    ///         Project = aivenProjectId,
+    ///         ProjectVpcId = aivenProjectVpcId,
+    ///         CloudName = region,
+    ///         Plan = plan,
+    ///         StaticIps = staticIps.Select(sip =&gt; 
+    ///         {
+    ///             return sip.StaticIpAddressId;
+    ///         }).ToList(),
+    ///         PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs
+    ///         {
+    ///             PgVersion = "13",
+    ///             StaticIps = true,
+    ///             PrivatelinkAccess = new Aiven.Inputs.PgPgUserConfigPrivatelinkAccessArgs
+    ///             {
+    ///                 Pg = true,
+    ///                 Pgbouncer = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var privatelink = new Aiven.AzurePrivatelink("privatelink", new()
+    ///     {
+    ///         Project = aivenProjectId,
+    ///         ServiceName = @default.Name,
+    ///         UserSubscriptionIds = new[]
+    ///         {
+    ///             azureSubscriptionId,
+    ///         },
+    ///     });
+    /// 
+    ///     var endpoint = new Azurerm.Index.PrivateEndpoint("endpoint", new()
+    ///     {
+    ///         Name = "postgres-endpoint",
+    ///         Location = region,
+    ///         ResourceGroupName = azureResourceGroup.Name,
+    ///         SubnetId = azureSubnetId,
+    ///         PrivateServiceConnection = new[]
+    ///         {
+    ///             
+    ///             {
+    ///                 { "name", @default.Name },
+    ///                 { "privateConnectionResourceId", privatelink.AzureServiceId },
+    ///                 { "isManualConnection", true },
+    ///                 { "requestMessage", @default.Name },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             privatelink, 
+    ///         },
+    ///     });
+    /// 
+    ///     var approval = new Aiven.AzurePrivatelinkConnectionApproval("approval", new()
+    ///     {
+    ///         Project = aivenProjectId,
+    ///         ServiceName = @default.ServiceName,
+    ///         EndpointIpAddress = endpoint.PrivateServiceConnection[0].PrivateIpAddress,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestacl = aiven.getKafkaAcl({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_kafka.mykafka.service_name,
+ *     project: myproject.project,
+ *     serviceName: mykafka.serviceName,
  *     topic: "<TOPIC_NAME_PATTERN>",
  *     permission: "<PERMISSON>",
  *     username: "<USERNAME_PATTERN>",
@@ -106,8 +106,8 @@ export interface GetKafkaAclResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestacl = aiven.getKafkaAcl({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_kafka.mykafka.service_name,
+ *     project: myproject.project,
+ *     serviceName: mykafka.serviceName,
  *     topic: "<TOPIC_NAME_PATTERN>",
  *     permission: "<PERMISSON>",
  *     username: "<USERNAME_PATTERN>",

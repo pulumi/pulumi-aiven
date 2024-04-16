@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var redis1 = new Aiven.Redis("redis1", new()
     ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         Project = pr1.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
     ///         ServiceName = "my-redis1",

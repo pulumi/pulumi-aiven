@@ -394,7 +394,7 @@ def get_m3_db(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3 = aiven.get_m3_db(project=data["aiven_project"]["foo"]["project"],
+    m3 = aiven.get_m3_db(project=foo["project"],
         service_name="my-m3db")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_m3_db_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3 = aiven.get_m3_db(project=data["aiven_project"]["foo"]["project"],
+    m3 = aiven.get_m3_db(project=foo["project"],
         service_name="my-m3db")
     ```
     <!--End PulumiCodeChooser -->

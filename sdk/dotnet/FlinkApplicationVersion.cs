@@ -12,6 +12,66 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new Aiven.FlinkApplicationVersion("foo", new()
+    ///     {
+    ///         Project = fooAivenProject.Project,
+    ///         ServiceName = fooAivenFlink.ServiceName,
+    ///         ApplicationId = fooAivenFlinkApplication.ApplicationId,
+    ///         Statement = @"    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
+    /// ",
+    ///         Sinks = new[]
+    ///         {
+    ///             new Aiven.Inputs.FlinkApplicationVersionSinkArgs
+    ///             {
+    ///                 CreateTable = @"      CREATE TABLE kafka_known_pizza (
+    ///         shop STRING,
+    ///         name STRING
+    ///       ) WITH (
+    ///         'connector' = 'kafka',
+    ///         'properties.bootstrap.servers' = '',
+    ///         'scan.startup.mode' = 'earliest-offset',
+    ///         'topic' = 'sink_topic',
+    ///         'value.format' = 'json'
+    ///       )
+    /// ",
+    ///                 IntegrationId = flinkToKafka.IntegrationId,
+    ///             },
+    ///         },
+    ///         Sources = new[]
+    ///         {
+    ///             new Aiven.Inputs.FlinkApplicationVersionSourceArgs
+    ///             {
+    ///                 CreateTable = @"      CREATE TABLE kafka_pizza (
+    ///         shop STRING,
+    ///         name STRING
+    ///       ) WITH (
+    ///         'connector' = 'kafka',
+    ///         'properties.bootstrap.servers' = '',
+    ///         'scan.startup.mode' = 'earliest-offset',
+    ///         'topic' = 'source_topic',
+    ///         'value.format' = 'json'
+    ///       )
+    /// ",
+    ///                 IntegrationId = flinkToKafka.IntegrationId,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

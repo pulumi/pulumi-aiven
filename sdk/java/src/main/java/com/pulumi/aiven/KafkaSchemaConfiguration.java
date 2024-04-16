@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
- *             .project(aiven_project.kafka-schemas-project1().project())
- *             .serviceName(aiven_kafka.kafka-service1().service_name())
+ *             .project(kafka_schemas_project1.project())
+ *             .serviceName(kafka_service1.serviceName())
  *             .compatibilityLevel(&#34;BACKWARD&#34;)
  *             .build());
  * 

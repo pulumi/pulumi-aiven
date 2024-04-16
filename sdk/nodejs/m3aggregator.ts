@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const m3a = new aiven.M3Aggregator("m3a", {
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-8",
  *     serviceName: "my-m3a",

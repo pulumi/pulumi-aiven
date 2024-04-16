@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const app1 = aiven.getFlinkApplication({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "<SERVICE_NAME>",
  *     name: "<APPLICATION_NAME>",
  * });
@@ -102,7 +102,7 @@ export interface GetFlinkApplicationResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const app1 = aiven.getFlinkApplication({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "<SERVICE_NAME>",
  *     name: "<APPLICATION_NAME>",
  * });

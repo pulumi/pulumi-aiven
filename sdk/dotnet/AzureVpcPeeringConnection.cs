@@ -23,14 +23,14 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleVpc = new Aiven.ProjectVpc("exampleVpc", new()
+    ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
     ///     {
-    ///         Project = data.Aiven_project.Example_project.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         NetworkCidr = "192.168.1.0/24",
     ///     });
     /// 
-    ///     var azureToAivenPeering = new Aiven.AzureVpcPeeringConnection("azureToAivenPeering", new()
+    ///     var azureToAivenPeering = new Aiven.AzureVpcPeeringConnection("azure_to_aiven_peering", new()
     ///     {
     ///         VpcId = exampleVpc.Id,
     ///         AzureSubscriptionId = "00000000-0000-0000-0000-000000000000",

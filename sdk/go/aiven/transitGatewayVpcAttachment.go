@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewTransitGatewayVpcAttachment(ctx, "attachment", &aiven.TransitGatewayVpcAttachmentArgs{
-//				VpcId:            pulumi.Any(aiven_project_vpc.Bar.Id),
+//				VpcId:            pulumi.Any(bar.Id),
 //				PeerCloudAccount: pulumi.String("<PEER_ACCOUNT_ID>"),
 //				PeerVpc:          pulumi.String("google-project1"),
 //				PeerRegion:       pulumi.String("aws-eu-west-1"),

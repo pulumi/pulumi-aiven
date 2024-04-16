@@ -30,13 +30,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewConnectionPool(ctx, "mytestpool", &aiven.ConnectionPoolArgs{
-//				Project:      pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName:  pulumi.Any(aiven_pg.Mypg.Service_name),
-//				DatabaseName: pulumi.Any(aiven_pg_database.Mypgdatabase.Database_name),
+//				Project:      pulumi.Any(myproject.Project),
+//				ServiceName:  pulumi.Any(mypg.ServiceName),
+//				DatabaseName: pulumi.Any(mypgdatabase.DatabaseName),
 //				PoolMode:     pulumi.String("transaction"),
 //				PoolName:     pulumi.String("mypool"),
 //				PoolSize:     pulumi.Int(10),
-//				Username:     pulumi.Any(aiven_pg_user.Mypguser.Username),
+//				Username:     pulumi.Any(mypguser.Username),
 //			})
 //			if err != nil {
 //				return err

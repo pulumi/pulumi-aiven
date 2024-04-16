@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const foo = new aiven.FlinkApplication("foo", {
- *     project: aiven_project.foo.project,
+ *     project: fooAivenProject.project,
  *     serviceName: "flink-service-1",
+ *     name: "my-flink-app",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var m3 = new Aiven.M3Db("m3", new()
     ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
+    ///         Project = foo.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-8",
     ///         ServiceName = "my-m3db",

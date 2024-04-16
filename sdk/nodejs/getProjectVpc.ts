@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleVpc = aiven.getProjectVpc({
- *     project: data.aiven_project.example_project.project,
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  * });
  * ```
@@ -90,7 +90,7 @@ export interface GetProjectVpcResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleVpc = aiven.getProjectVpc({
- *     project: data.aiven_project.example_project.project,
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  * });
  * ```

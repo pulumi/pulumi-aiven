@@ -29,10 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupMirrorMakerReplicationFlow(ctx, &aiven.LookupMirrorMakerReplicationFlowArgs{
-//				Project:       aiven_project.KafkaMmProject1.Project,
-//				ServiceName:   aiven_kafka.Mm.Service_name,
-//				SourceCluster: aiven_kafka.Source.Service_name,
-//				TargetCluster: aiven_kafka.Target.Service_name,
+//				Project:       kafka_mm_project1.Project,
+//				ServiceName:   mm.ServiceName,
+//				SourceCluster: source.ServiceName,
+//				TargetCluster: target.ServiceName,
 //			}, nil)
 //			if err != nil {
 //				return err

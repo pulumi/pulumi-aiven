@@ -53,9 +53,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var gr1 = new Grafana(&#34;gr1&#34;, GrafanaArgs.builder()        
- *             .project(data.aiven_project().ps1().project())
+ *             .project(ps1.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;startup-1&#34;)
+ *             .serviceName(&#34;my-gr1&#34;)
  *             .maintenanceWindowDow(&#34;monday&#34;)
  *             .maintenanceWindowTime(&#34;10:00:00&#34;)
  *             .grafanaUserConfig(GrafanaGrafanaUserConfigArgs.builder()

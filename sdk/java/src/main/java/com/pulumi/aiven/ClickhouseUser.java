@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var ch_user = new ClickhouseUser(&#34;ch-user&#34;, ClickhouseUserArgs.builder()        
- *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_clickhouse.myservice().service_name())
+ *             .project(myproject.project())
+ *             .serviceName(myservice.serviceName())
  *             .username(&#34;&lt;USERNAME&gt;&#34;)
  *             .build());
  * 

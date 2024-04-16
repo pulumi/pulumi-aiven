@@ -24,8 +24,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const main = new aiven.AccountTeamMember("main", {
- *     accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id,
- *     teamId: aiven_account_team.TEAM_RESOURCE_NAME.team_id,
+ *     accountId: ACCOUNT_RESOURCE_NAME.accountId,
+ *     teamId: TEAM_RESOURCE_NAME.teamId,
  *     userEmail: "user+1@example.com",
  * });
  * ```

@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewClickhouseUser(ctx, "ch-user", &aiven.ClickhouseUserArgs{
-//				Project:     pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName: pulumi.Any(aiven_clickhouse.Myservice.Service_name),
+//				Project:     pulumi.Any(myproject.Project),
+//				ServiceName: pulumi.Any(myservice.ServiceName),
 //				Username:    pulumi.String("<USERNAME>"),
 //			})
 //			if err != nil {

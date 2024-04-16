@@ -321,7 +321,7 @@ class RedisUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.RedisUser("foo",
-            service_name=aiven_redis["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")
@@ -362,7 +362,7 @@ class RedisUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.RedisUser("foo",
-            service_name=aiven_redis["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")

@@ -142,8 +142,8 @@ def get_kafka_user(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_kafka_user(project="my-project",
-        service_name="my-service",
+    user = aiven.get_kafka_user(service_name="my-service",
+        project="my-project",
         username="user1")
     ```
     <!--End PulumiCodeChooser -->
@@ -186,8 +186,8 @@ def get_kafka_user_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    user = aiven.get_kafka_user(project="my-project",
-        service_name="my-service",
+    user = aiven.get_kafka_user(service_name="my-service",
+        project="my-project",
         username="user1")
     ```
     <!--End PulumiCodeChooser -->

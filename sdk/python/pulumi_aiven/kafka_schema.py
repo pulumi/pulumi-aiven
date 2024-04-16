@@ -254,8 +254,8 @@ class KafkaSchema(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            project=kafka_schemas_project1["project"],
+            service_name=kafka_service1["serviceName"],
             subject_name="kafka-schema1",
             compatibility_level="FORWARD",
             schema=\"\"\"    {
@@ -309,8 +309,8 @@ class KafkaSchema(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         kafka_schema1 = aiven.KafkaSchema("kafka-schema1",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            project=kafka_schemas_project1["project"],
+            service_name=kafka_service1["serviceName"],
             subject_name="kafka-schema1",
             compatibility_level="FORWARD",
             schema=\"\"\"    {

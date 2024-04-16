@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const os1 = aiven.getOpenSearch({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-os1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetOpenSearchResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const os1 = aiven.getOpenSearch({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-os1",
  * });
  * ```

@@ -19,7 +19,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleTeam = new aiven.AccountTeam("exampleTeam", {accountId: aiven_account.ACCOUNT_RESOURCE_NAME.account_id});
+ * const exampleTeam = new aiven.AccountTeam("example_team", {
+ *     accountId: ACCOUNT_RESOURCE_NAME.accountId,
+ *     name: "Example team",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

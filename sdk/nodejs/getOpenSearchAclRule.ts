@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const osAclRule = aiven.getOpenSearchAclRule({
- *     project: aiven_opensearch_acl_config.os_acls_config.project,
- *     serviceName: aiven_opensearch_acl_config.os_acls_config.service_name,
+ *     project: osAclsConfig.project,
+ *     serviceName: osAclsConfig.serviceName,
  *     username: "<USERNAME>",
  *     index: "<INDEX>",
  * });
@@ -101,8 +101,8 @@ export interface GetOpenSearchAclRuleResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const osAclRule = aiven.getOpenSearchAclRule({
- *     project: aiven_opensearch_acl_config.os_acls_config.project,
- *     serviceName: aiven_opensearch_acl_config.os_acls_config.service_name,
+ *     project: osAclsConfig.project,
+ *     serviceName: osAclsConfig.serviceName,
  *     username: "<USERNAME>",
  *     index: "<INDEX>",
  * });

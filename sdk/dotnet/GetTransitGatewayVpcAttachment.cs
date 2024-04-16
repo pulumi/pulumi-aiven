@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
         ///     {
-        ///         VpcId = aiven_project_vpc.Bar.Id,
+        ///         VpcId = bar.Id,
         ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
         ///         PeerVpc = "google-project1",
         ///     });
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var attachment = Aiven.GetTransitGatewayVpcAttachment.Invoke(new()
         ///     {
-        ///         VpcId = aiven_project_vpc.Bar.Id,
+        ///         VpcId = bar.Id,
         ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
         ///         PeerVpc = "google-project1",
         ///     });

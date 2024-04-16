@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupServiceIntegrationEndpoint(ctx, &aiven.LookupServiceIntegrationEndpointArgs{
-//				Project:      aiven_project.Myproject.Project,
+//				Project:      myproject.Project,
 //				EndpointName: "<ENDPOINT_NAME>",
 //			}, nil)
 //			if err != nil {

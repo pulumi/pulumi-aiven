@@ -142,8 +142,8 @@ def get_kafka_schema(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    config = aiven.get_kafka_schema_configuration(project=aiven_project["kafka-schemas-project1"]["project"],
-        service_name=aiven_kafka["kafka-service1"]["service_name"])
+    config = aiven.get_kafka_schema_configuration(project=kafka_schemas_project1["project"],
+        service_name=kafka_service1["serviceName"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -185,8 +185,8 @@ def get_kafka_schema_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    config = aiven.get_kafka_schema_configuration(project=aiven_project["kafka-schemas-project1"]["project"],
-        service_name=aiven_kafka["kafka-service1"]["service_name"])
+    config = aiven.get_kafka_schema_configuration(project=kafka_schemas_project1["project"],
+        service_name=kafka_service1["serviceName"])
     ```
     <!--End PulumiCodeChooser -->
 

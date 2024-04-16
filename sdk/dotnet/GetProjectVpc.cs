@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Example_project.Project,
+        ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var exampleVpc = Aiven.GetProjectVpc.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Example_project.Project,
+        ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///     });
         /// 

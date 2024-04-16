@@ -130,7 +130,7 @@ def get_gcp_vpc_peering_connection(gcp_project_id: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_gcp_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+    main = aiven.get_gcp_vpc_peering_connection(vpc_id=vpc["id"],
         gcp_project_id="example-project",
         peer_vpc="example-network")
     ```
@@ -173,7 +173,7 @@ def get_gcp_vpc_peering_connection_output(gcp_project_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_aiven as aiven
 
-    main = aiven.get_gcp_vpc_peering_connection(vpc_id=data["aiven_project_vpc"]["vpc"]["id"],
+    main = aiven.get_gcp_vpc_peering_connection(vpc_id=vpc["id"],
         gcp_project_id="example-project",
         peer_vpc="example-network")
     ```
