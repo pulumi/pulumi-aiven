@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var attachment = new TransitGatewayVpcAttachment(&#34;attachment&#34;, TransitGatewayVpcAttachmentArgs.builder()        
- *             .vpcId(aiven_project_vpc.bar().id())
+ *             .vpcId(bar.id())
  *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
  *             .peerVpc(&#34;google-project1&#34;)
  *             .peerRegion(&#34;aws-eu-west-1&#34;)

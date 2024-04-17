@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var bar = new Aiven.Cassandra("bar", new()
     ///     {
-    ///         Project = data.Aiven_project.Foo.Project,
+    ///         Project = foo.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
     ///         ServiceName = "test-service-name",

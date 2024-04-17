@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var os1 = new OpenSearch(&#34;os1&#34;, OpenSearchArgs.builder()        
- *             .project(data.aiven_project().pr1().project())
+ *             .project(pr1.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;startup-4&#34;)
  *             .serviceName(&#34;my-os1&#34;)

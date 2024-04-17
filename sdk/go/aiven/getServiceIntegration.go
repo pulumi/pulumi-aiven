@@ -34,7 +34,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
-//				Project:                aiven_project.Myproject.Project,
+//				Project:                myproject.Project,
 //				DestinationServiceName: "<DESTINATION_SERVICE_NAME>",
 //				IntegrationType:        "datadog",
 //				SourceServiceName:      "<SOURCE_SERVICE_NAME>",

@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.GetServiceComponent(ctx, &aiven.GetServiceComponentArgs{
-//				Project:                   aiven_kafka.Project1.Project,
-//				ServiceName:               pulumi.StringRef(aiven_kafka.Service1.Service_name),
+//				Project:                   project1.Project,
+//				ServiceName:               pulumi.StringRef(service1.ServiceName),
 //				Component:                 "kafka",
 //				Route:                     pulumi.StringRef("dynamic"),
 //				KafkaAuthenticationMethod: pulumi.StringRef("certificate"),

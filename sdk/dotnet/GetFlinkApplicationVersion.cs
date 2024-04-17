@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "&lt;SERVICE_NAME&gt;",
         ///         ApplicationId = "&lt;APPLICATION_ID&gt;",
         ///         ApplicationVersionId = "&lt;APPLICATION_VERSION_ID&gt;",
@@ -56,7 +56,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var app1 = Aiven.GetFlinkApplicationVersion.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "&lt;SERVICE_NAME&gt;",
         ///         ApplicationId = "&lt;APPLICATION_ID&gt;",
         ///         ApplicationVersionId = "&lt;APPLICATION_VERSION_ID&gt;",

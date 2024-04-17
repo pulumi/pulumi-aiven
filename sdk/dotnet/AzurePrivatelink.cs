@@ -25,8 +25,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var main = new Aiven.AzurePrivatelink("main", new()
     ///     {
-    ///         Project = data.Aiven_project.Example_project.Project,
-    ///         ServiceName = aiven_kafka.Example_kafka.Service_name,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
     ///         UserSubscriptionIds = new[]
     ///         {
     ///             "00000000-0000-0000-0000-000000000000",

@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestuser = aiven.getProjectUser({
- *     project: aiven_project.myproject.project,
+ *     project: myproject.project,
  *     email: "john.doe@example.com",
  * });
  * ```
@@ -80,7 +80,7 @@ export interface GetProjectUserResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestuser = aiven.getProjectUser({
- *     project: aiven_project.myproject.project,
+ *     project: myproject.project,
  *     email: "john.doe@example.com",
  * });
  * ```

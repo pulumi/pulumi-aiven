@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const app1 = aiven.getFlinkApplicationVersion({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "<SERVICE_NAME>",
  *     applicationId: "<APPLICATION_ID>",
  *     applicationVersionId: "<APPLICATION_VERSION_ID>",
@@ -126,7 +126,7 @@ export interface GetFlinkApplicationVersionResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const app1 = aiven.getFlinkApplicationVersion({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "<SERVICE_NAME>",
  *     applicationId: "<APPLICATION_ID>",
  *     applicationVersionId: "<APPLICATION_VERSION_ID>",

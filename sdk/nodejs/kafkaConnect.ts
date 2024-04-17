@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const kc1 = new aiven.KafkaConnect("kc1", {
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
  *     serviceName: "my-kc1",

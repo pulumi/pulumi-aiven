@@ -17,9 +17,10 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const gr1 = new aiven.Grafana("gr1", {
- *     project: data.aiven_project.ps1.project,
+ *     project: ps1.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-1",
+ *     serviceName: "my-gr1",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     grafanaUserConfig: {

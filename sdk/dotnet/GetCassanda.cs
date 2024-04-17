@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var bar = Aiven.GetCassandra.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "&lt;SERVICE_NAME&gt;",
         ///     });
         /// 
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var bar = Aiven.GetCassandra.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "&lt;SERVICE_NAME&gt;",
         ///     });
         /// 

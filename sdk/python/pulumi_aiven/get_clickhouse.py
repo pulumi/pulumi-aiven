@@ -394,7 +394,7 @@ def get_clickhouse(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse = aiven.get_clickhouse(project=data["aiven_project"]["pr1"]["project"],
+    clickhouse = aiven.get_clickhouse(project=pr1["project"],
         service_name="<SERVICE_NAME>")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_clickhouse_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse = aiven.get_clickhouse(project=data["aiven_project"]["pr1"]["project"],
+    clickhouse = aiven.get_clickhouse(project=pr1["project"],
         service_name="<SERVICE_NAME>")
     ```
     <!--End PulumiCodeChooser -->

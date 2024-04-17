@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const gr1 = aiven.getGrafana({
- *     project: data.aiven_project.ps1.project,
+ *     project: ps1.project,
  *     serviceName: "my-gr1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetGrafanaResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const gr1 = aiven.getGrafana({
- *     project: data.aiven_project.ps1.project,
+ *     project: ps1.project,
  *     serviceName: "my-gr1",
  * });
  * ```

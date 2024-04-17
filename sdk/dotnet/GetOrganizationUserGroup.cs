@@ -28,7 +28,7 @@ namespace Pulumi.Aiven
         ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
         ///     {
         ///         Name = "Example group",
-        ///         OrganizationId = aiven_organization.Main.Id,
+        ///         OrganizationId = main.Id,
         ///     });
         /// 
         /// });
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
         ///     var example = Aiven.GetOrganizationUserGroup.Invoke(new()
         ///     {
         ///         Name = "Example group",
-        ///         OrganizationId = aiven_organization.Main.Id,
+        ///         OrganizationId = main.Id,
         ///     });
         /// 
         /// });

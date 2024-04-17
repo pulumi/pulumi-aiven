@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: aiven_project.myproject.project,
+ *     project: myproject.project,
  *     endpointName: "<ENDPOINT_NAME>",
  * });
  * ```
@@ -134,7 +134,7 @@ export interface GetServiceIntegrationEndpointResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const myendpoint = aiven.getServiceIntegrationEndpoint({
- *     project: aiven_project.myproject.project,
+ *     project: myproject.project,
  *     endpointName: "<ENDPOINT_NAME>",
  * });
  * ```

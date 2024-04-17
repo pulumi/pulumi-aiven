@@ -43,8 +43,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var clickhouseDb = new ClickhouseDatabase(&#34;clickhouseDb&#34;, ClickhouseDatabaseArgs.builder()        
- *             .project(aiven_clickhouse.ch().project())
- *             .serviceName(aiven_clickhouse.ch().service_name())
+ *             .project(ch.project())
+ *             .serviceName(ch.serviceName())
+ *             .name(&#34;my-ch-db&#34;)
  *             .build());
  * 
  *     }

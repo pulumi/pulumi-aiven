@@ -148,6 +148,20 @@ class ProjectVpc(pulumi.CustomResource):
         """
         Creates and manages a VPC for an Aiven project.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_vpc = aiven.ProjectVpc("example_vpc",
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            network_cidr="192.168.1.0/24")
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -168,6 +182,20 @@ class ProjectVpc(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates and manages a VPC for an Aiven project.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        example_vpc = aiven.ProjectVpc("example_vpc",
+            project=example_project["project"],
+            cloud_name="google-europe-west1",
+            network_cidr="192.168.1.0/24")
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

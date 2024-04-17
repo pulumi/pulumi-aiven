@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = myproject.Project,
         ///         Email = "john.doe@example.com",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var mytestuser = Aiven.GetProjectUser.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = myproject.Project,
         ///         Email = "john.doe@example.com",
         ///     });
         /// 

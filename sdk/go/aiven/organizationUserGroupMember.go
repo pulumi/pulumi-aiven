@@ -31,14 +31,15 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			example, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
 //				Description:    pulumi.String("Example group of users."),
-//				OrganizationId: pulumi.Any(aiven_organization.Main.Id),
+//				OrganizationId: pulumi.Any(main.Id),
+//				Name:           pulumi.String("Example group"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewOrganizationUserGroupMember(ctx, "projectAdmin", &aiven.OrganizationUserGroupMemberArgs{
+//			_, err = aiven.NewOrganizationUserGroupMember(ctx, "project_admin", &aiven.OrganizationUserGroupMemberArgs{
 //				GroupId:        example.GroupId,
-//				OrganizationId: pulumi.Any(aiven_organization.Main.Id),
+//				OrganizationId: pulumi.Any(main.Id),
 //				UserId:         pulumi.String("u123a456b7890c"),
 //			})
 //			if err != nil {

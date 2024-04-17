@@ -418,7 +418,7 @@ def get_kafka(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
+    kafka1 = aiven.get_kafka(project=pr1["project"],
         service_name="my-kafka1")
     ```
     <!--End PulumiCodeChooser -->
@@ -481,7 +481,7 @@ def get_kafka_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka1 = aiven.get_kafka(project=data["aiven_project"]["pr1"]["project"],
+    kafka1 = aiven.get_kafka(project=pr1["project"],
         service_name="my-kafka1")
     ```
     <!--End PulumiCodeChooser -->

@@ -27,8 +27,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var user = Aiven.GetCassandraUser.Invoke(new()
         ///     {
-        ///         Project = "my-project",
         ///         ServiceName = "my-service",
+        ///         Project = "my-project",
         ///         Username = "user1",
         ///     });
         /// 
@@ -55,8 +55,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var user = Aiven.GetCassandraUser.Invoke(new()
         ///     {
-        ///         Project = "my-project",
         ///         ServiceName = "my-service",
+        ///         Project = "my-project",
         ///         Username = "user1",
         ///     });
         /// 

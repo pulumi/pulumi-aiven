@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var foo = new Aiven.KafkaUser("foo", new()
     ///     {
-    ///         ServiceName = aiven_kafka.Bar.Service_name,
+    ///         ServiceName = bar.ServiceName,
     ///         Project = "my-project",
     ///         Username = "user-1",
     ///         Password = "Test$1234",

@@ -203,17 +203,17 @@ class OpenSearchAclRule(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        os_user = aiven.OpensearchUser("osUser",
-            project=var["aiven_project_name"],
-            service_name=aiven_opensearch["os_test"]["service_name"],
+        os_user = aiven.OpensearchUser("os_user",
+            project=aiven_project_name,
+            service_name=os_test["serviceName"],
             username="documentation-user-1")
-        os_user2 = aiven.OpensearchUser("osUser2",
-            project=var["aiven_project_name"],
-            service_name=aiven_opensearch["os_test"]["service_name"],
+        os_user2 = aiven.OpensearchUser("os_user_2",
+            project=aiven_project_name,
+            service_name=os_test["serviceName"],
             username="documentation-user-2")
-        os_acls_config = aiven.OpenSearchAclConfig("osAclsConfig",
-            project=var["aiven_project_name"],
-            service_name=aiven_opensearch["os_test"]["service_name"],
+        os_acls_config = aiven.OpenSearchAclConfig("os_acls_config",
+            project=aiven_project_name,
+            service_name=os_test["serviceName"],
             enabled=True,
             extended_acl=False)
         acl_rules = [
@@ -246,7 +246,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         os_acl_rule = []
         def create_os_acl_rule(range_body):
             for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
-                os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=os_acls_config.project,
                     service_name=os_acls_config.service_name,
                     username=range["value"]["username"],
@@ -287,17 +287,17 @@ class OpenSearchAclRule(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        os_user = aiven.OpensearchUser("osUser",
-            project=var["aiven_project_name"],
-            service_name=aiven_opensearch["os_test"]["service_name"],
+        os_user = aiven.OpensearchUser("os_user",
+            project=aiven_project_name,
+            service_name=os_test["serviceName"],
             username="documentation-user-1")
-        os_user2 = aiven.OpensearchUser("osUser2",
-            project=var["aiven_project_name"],
-            service_name=aiven_opensearch["os_test"]["service_name"],
+        os_user2 = aiven.OpensearchUser("os_user_2",
+            project=aiven_project_name,
+            service_name=os_test["serviceName"],
             username="documentation-user-2")
-        os_acls_config = aiven.OpenSearchAclConfig("osAclsConfig",
-            project=var["aiven_project_name"],
-            service_name=aiven_opensearch["os_test"]["service_name"],
+        os_acls_config = aiven.OpenSearchAclConfig("os_acls_config",
+            project=aiven_project_name,
+            service_name=os_test["serviceName"],
             enabled=True,
             extended_acl=False)
         acl_rules = [
@@ -330,7 +330,7 @@ class OpenSearchAclRule(pulumi.CustomResource):
         os_acl_rule = []
         def create_os_acl_rule(range_body):
             for range in [{"key": k, "value": v} for [k, v] in enumerate(range_body)]:
-                os_acl_rule.append(aiven.OpenSearchAclRule(f"osAclRule-{range['key']}",
+                os_acl_rule.append(aiven.OpenSearchAclRule(f"os_acl_rule-{range['key']}",
                     project=os_acls_config.project,
                     service_name=os_acls_config.service_name,
                     username=range["value"]["username"],

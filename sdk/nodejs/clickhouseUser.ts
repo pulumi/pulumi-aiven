@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const ch_user = new aiven.ClickhouseUser("ch-user", {
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_clickhouse.myservice.service_name,
+ *     project: myproject.project,
+ *     serviceName: myservice.serviceName,
  *     username: "<USERNAME>",
  * });
  * ```

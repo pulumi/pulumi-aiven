@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mydatabase = new PgDatabase(&#34;mydatabase&#34;, PgDatabaseArgs.builder()        
- *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_pg.mypg().service_name())
+ *             .project(myproject.project())
+ *             .serviceName(mypg.serviceName())
  *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
  *             .build());
  * 

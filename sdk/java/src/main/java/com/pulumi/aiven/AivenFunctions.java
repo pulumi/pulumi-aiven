@@ -506,8 +506,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -547,8 +547,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -588,8 +588,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -629,8 +629,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAwsPrivatelink(GetAwsPrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -672,14 +672,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .networkCidr(&#34;192.168.1.0/24&#34;)
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .awsAccountId(var_.aws_id())
+     *             .awsAccountId(awsId)
      *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
      *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
      *             .build());
@@ -723,14 +723,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .networkCidr(&#34;192.168.1.0/24&#34;)
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .awsAccountId(var_.aws_id())
+     *             .awsAccountId(awsId)
      *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
      *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
      *             .build());
@@ -774,14 +774,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .networkCidr(&#34;192.168.1.0/24&#34;)
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .awsAccountId(var_.aws_id())
+     *             .awsAccountId(awsId)
      *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
      *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
      *             .build());
@@ -825,14 +825,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .networkCidr(&#34;192.168.1.0/24&#34;)
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .awsAccountId(var_.aws_id())
+     *             .awsAccountId(awsId)
      *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
      *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
      *             .build());
@@ -874,8 +874,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -915,8 +915,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -956,8 +956,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -997,8 +997,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getAzurePrivatelink(GetAzurePrivatelinkArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
-     *             .serviceName(aiven_kafka.example_kafka().service_name())
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -1038,7 +1038,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().example_vpc().id())
+     *             .vpcId(exampleVpc.id())
      *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .peerResourceGroup(&#34;example-resource-group&#34;)
      *             .vnetName(&#34;example-vnet&#34;)
@@ -1083,7 +1083,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().example_vpc().id())
+     *             .vpcId(exampleVpc.id())
      *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .peerResourceGroup(&#34;example-resource-group&#34;)
      *             .vnetName(&#34;example-vnet&#34;)
@@ -1128,7 +1128,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().example_vpc().id())
+     *             .vpcId(exampleVpc.id())
      *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .peerResourceGroup(&#34;example-resource-group&#34;)
      *             .vnetName(&#34;example-vnet&#34;)
@@ -1173,7 +1173,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().example_vpc().id())
+     *             .vpcId(exampleVpc.id())
      *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
      *             .peerResourceGroup(&#34;example-resource-group&#34;)
      *             .vnetName(&#34;example-vnet&#34;)
@@ -1378,7 +1378,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1423,7 +1423,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1468,7 +1468,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1513,7 +1513,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1558,7 +1558,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1599,7 +1599,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1640,7 +1640,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1681,7 +1681,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1722,8 +1722,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -1764,8 +1764,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -1806,8 +1806,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -1848,8 +1848,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -1890,7 +1890,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1931,7 +1931,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -1972,7 +1972,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2013,7 +2013,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2054,8 +2054,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(aiven_clickhouse.ch().project())
-     *             .serviceName(aiven_clickhouse.ch().service_name())
+     *             .project(ch.project())
+     *             .serviceName(ch.serviceName())
      *             .name(&#34;my-ch-db&#34;)
      *             .build());
      * 
@@ -2096,8 +2096,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(aiven_clickhouse.ch().project())
-     *             .serviceName(aiven_clickhouse.ch().service_name())
+     *             .project(ch.project())
+     *             .serviceName(ch.serviceName())
      *             .name(&#34;my-ch-db&#34;)
      *             .build());
      * 
@@ -2138,8 +2138,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(aiven_clickhouse.ch().project())
-     *             .serviceName(aiven_clickhouse.ch().service_name())
+     *             .project(ch.project())
+     *             .serviceName(ch.serviceName())
      *             .name(&#34;my-ch-db&#34;)
      *             .build());
      * 
@@ -2180,8 +2180,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
-     *             .project(aiven_clickhouse.ch().project())
-     *             .serviceName(aiven_clickhouse.ch().service_name())
+     *             .project(ch.project())
+     *             .serviceName(ch.serviceName())
      *             .name(&#34;my-ch-db&#34;)
      *             .build());
      * 
@@ -2222,8 +2222,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_clickhouse.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -2264,8 +2264,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_clickhouse.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -2306,8 +2306,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_clickhouse.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -2348,8 +2348,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_clickhouse.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .build());
      * 
@@ -2390,8 +2390,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2432,8 +2432,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2474,8 +2474,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2516,8 +2516,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .poolName(&#34;mypool&#34;)
      *             .build());
      * 
@@ -2586,7 +2586,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2627,7 +2627,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2668,7 +2668,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2709,7 +2709,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -2750,7 +2750,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
      *             .build());
@@ -2792,7 +2792,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
      *             .build());
@@ -2834,7 +2834,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
      *             .build());
@@ -2876,7 +2876,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
      *             .build());
@@ -2918,7 +2918,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
      *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
@@ -2961,7 +2961,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
      *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
@@ -3004,7 +3004,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
      *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
@@ -3047,7 +3047,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
      *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
      *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
@@ -3102,7 +3102,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().vpc().id())
+     *             .vpcId(vpc.id())
      *             .gcpProjectId(&#34;example-project&#34;)
      *             .peerVpc(&#34;example-network&#34;)
      *             .build());
@@ -3144,7 +3144,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().vpc().id())
+     *             .vpcId(vpc.id())
      *             .gcpProjectId(&#34;example-project&#34;)
      *             .peerVpc(&#34;example-network&#34;)
      *             .build());
@@ -3186,7 +3186,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().vpc().id())
+     *             .vpcId(vpc.id())
      *             .gcpProjectId(&#34;example-project&#34;)
      *             .peerVpc(&#34;example-network&#34;)
      *             .build());
@@ -3228,7 +3228,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
-     *             .vpcId(data.aiven_project_vpc().vpc().id())
+     *             .vpcId(vpc.id())
      *             .gcpProjectId(&#34;example-project&#34;)
      *             .peerVpc(&#34;example-network&#34;)
      *             .build());
@@ -3270,7 +3270,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(data.aiven_project().ps1().project())
+     *             .project(ps1.project())
      *             .serviceName(&#34;my-gr1&#34;)
      *             .build());
      * 
@@ -3311,7 +3311,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(data.aiven_project().ps1().project())
+     *             .project(ps1.project())
      *             .serviceName(&#34;my-gr1&#34;)
      *             .build());
      * 
@@ -3352,7 +3352,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(data.aiven_project().ps1().project())
+     *             .project(ps1.project())
      *             .serviceName(&#34;my-gr1&#34;)
      *             .build());
      * 
@@ -3393,7 +3393,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
-     *             .project(data.aiven_project().ps1().project())
+     *             .project(ps1.project())
      *             .serviceName(&#34;my-gr1&#34;)
      *             .build());
      * 
@@ -3470,7 +3470,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kafka1&#34;)
      *             .build());
      * 
@@ -3511,7 +3511,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kafka1&#34;)
      *             .build());
      * 
@@ -3552,7 +3552,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kafka1&#34;)
      *             .build());
      * 
@@ -3593,7 +3593,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kafka1&#34;)
      *             .build());
      * 
@@ -3634,8 +3634,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.mykafka().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mykafka.serviceName())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3678,8 +3678,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.mykafka().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mykafka.serviceName())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3722,8 +3722,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.mykafka().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mykafka.serviceName())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3766,8 +3766,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.mykafka().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mykafka.serviceName())
      *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
      *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
      *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
@@ -3810,7 +3810,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kc1&#34;)
      *             .build());
      * 
@@ -3851,7 +3851,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kc1&#34;)
      *             .build());
      * 
@@ -3892,7 +3892,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kc1&#34;)
      *             .build());
      * 
@@ -3933,7 +3933,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-kc1&#34;)
      *             .build());
      * 
@@ -3974,8 +3974,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_con_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -4016,8 +4016,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_con_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -4058,8 +4058,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_con_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -4100,8 +4100,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
-     *             .project(aiven_project.kafka-con-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_con_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .connectorName(&#34;kafka-es-con1&#34;)
      *             .build());
      * 
@@ -4142,7 +4142,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-mm1&#34;)
      *             .build());
      * 
@@ -4183,7 +4183,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-mm1&#34;)
      *             .build());
      * 
@@ -4224,7 +4224,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-mm1&#34;)
      *             .build());
      * 
@@ -4265,7 +4265,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-mm1&#34;)
      *             .build());
      * 
@@ -4306,8 +4306,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .build());
      * 
      *     }
@@ -4347,8 +4347,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .build());
      * 
      *     }
@@ -4388,8 +4388,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .build());
      * 
      *     }
@@ -4429,8 +4429,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = AivenFunctions.getKafkaSchemaConfiguration(GetKafkaSchemaConfigurationArgs.builder()
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .build());
      * 
      *     }
@@ -4470,8 +4470,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel(&#34;BACKWARD&#34;)
      *             .build());
      * 
@@ -4512,8 +4512,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel(&#34;BACKWARD&#34;)
      *             .build());
      * 
@@ -4554,8 +4554,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel(&#34;BACKWARD&#34;)
      *             .build());
      * 
@@ -4596,8 +4596,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
-     *             .project(aiven_project.kafka-schemas-project1().project())
-     *             .serviceName(aiven_kafka.kafka-service1().service_name())
+     *             .project(kafka_schemas_project1.project())
+     *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel(&#34;BACKWARD&#34;)
      *             .build());
      * 
@@ -4666,8 +4666,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4708,8 +4708,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4750,8 +4750,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4792,8 +4792,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_kafka.myservice().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(myservice.serviceName())
      *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
      *             .build());
      * 
@@ -4834,8 +4834,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -4876,8 +4876,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -4918,8 +4918,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -4960,8 +4960,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -5002,7 +5002,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3a&#34;)
      *             .build());
      * 
@@ -5043,7 +5043,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3a&#34;)
      *             .build());
      * 
@@ -5084,7 +5084,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3a&#34;)
      *             .build());
      * 
@@ -5125,7 +5125,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3a&#34;)
      *             .build());
      * 
@@ -5166,7 +5166,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3db&#34;)
      *             .build());
      * 
@@ -5207,7 +5207,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3db&#34;)
      *             .build());
      * 
@@ -5248,7 +5248,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3db&#34;)
      *             .build());
      * 
@@ -5289,7 +5289,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-m3db&#34;)
      *             .build());
      * 
@@ -5330,8 +5330,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -5372,8 +5372,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -5414,8 +5414,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -5456,8 +5456,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -5498,10 +5498,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_kafka.mm().service_name())
-     *             .sourceCluster(aiven_kafka.source().service_name())
-     *             .targetCluster(aiven_kafka.target().service_name())
+     *             .project(kafka_mm_project1.project())
+     *             .serviceName(mm.serviceName())
+     *             .sourceCluster(source.serviceName())
+     *             .targetCluster(target.serviceName())
      *             .build());
      * 
      *     }
@@ -5541,10 +5541,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_kafka.mm().service_name())
-     *             .sourceCluster(aiven_kafka.source().service_name())
-     *             .targetCluster(aiven_kafka.target().service_name())
+     *             .project(kafka_mm_project1.project())
+     *             .serviceName(mm.serviceName())
+     *             .sourceCluster(source.serviceName())
+     *             .targetCluster(target.serviceName())
      *             .build());
      * 
      *     }
@@ -5584,10 +5584,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_kafka.mm().service_name())
-     *             .sourceCluster(aiven_kafka.source().service_name())
-     *             .targetCluster(aiven_kafka.target().service_name())
+     *             .project(kafka_mm_project1.project())
+     *             .serviceName(mm.serviceName())
+     *             .sourceCluster(source.serviceName())
+     *             .targetCluster(target.serviceName())
      *             .build());
      * 
      *     }
@@ -5627,10 +5627,10 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var f1 = AivenFunctions.getMirrorMakerReplicationFlow(GetMirrorMakerReplicationFlowArgs.builder()
-     *             .project(aiven_project.kafka-mm-project1().project())
-     *             .serviceName(aiven_kafka.mm().service_name())
-     *             .sourceCluster(aiven_kafka.source().service_name())
-     *             .targetCluster(aiven_kafka.target().service_name())
+     *             .project(kafka_mm_project1.project())
+     *             .serviceName(mm.serviceName())
+     *             .sourceCluster(source.serviceName())
+     *             .targetCluster(target.serviceName())
      *             .build());
      * 
      *     }
@@ -5670,7 +5670,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-mysql1&#34;)
      *             .build());
      * 
@@ -5711,7 +5711,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-mysql1&#34;)
      *             .build());
      * 
@@ -5752,7 +5752,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-mysql1&#34;)
      *             .build());
      * 
@@ -5793,7 +5793,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
-     *             .project(data.aiven_project().foo().project())
+     *             .project(foo.project())
      *             .serviceName(&#34;my-mysql1&#34;)
      *             .build());
      * 
@@ -5834,8 +5834,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_mysql.mymysql().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mymysql.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5876,8 +5876,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_mysql.mymysql().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mymysql.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5918,8 +5918,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_mysql.mymysql().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mymysql.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -5960,8 +5960,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_mysql.mymysql().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mymysql.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -6002,8 +6002,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6044,8 +6044,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6086,8 +6086,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6128,8 +6128,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6170,7 +6170,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-os1&#34;)
      *             .build());
      * 
@@ -6211,7 +6211,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-os1&#34;)
      *             .build());
      * 
@@ -6252,7 +6252,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-os1&#34;)
      *             .build());
      * 
@@ -6293,7 +6293,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-os1&#34;)
      *             .build());
      * 
@@ -6334,8 +6334,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6375,8 +6375,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6416,8 +6416,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6457,8 +6457,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-acl-config = AivenFunctions.getOpenSearchAclConfig(GetOpenSearchAclConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6498,8 +6498,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(aiven_opensearch_acl_config.os_acls_config().project())
-     *             .serviceName(aiven_opensearch_acl_config.os_acls_config().service_name())
+     *             .project(osAclsConfig.project())
+     *             .serviceName(osAclsConfig.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .index(&#34;&lt;INDEX&gt;&#34;)
      *             .build());
@@ -6541,8 +6541,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(aiven_opensearch_acl_config.os_acls_config().project())
-     *             .serviceName(aiven_opensearch_acl_config.os_acls_config().service_name())
+     *             .project(osAclsConfig.project())
+     *             .serviceName(osAclsConfig.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .index(&#34;&lt;INDEX&gt;&#34;)
      *             .build());
@@ -6584,8 +6584,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(aiven_opensearch_acl_config.os_acls_config().project())
-     *             .serviceName(aiven_opensearch_acl_config.os_acls_config().service_name())
+     *             .project(osAclsConfig.project())
+     *             .serviceName(osAclsConfig.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .index(&#34;&lt;INDEX&gt;&#34;)
      *             .build());
@@ -6627,8 +6627,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
-     *             .project(aiven_opensearch_acl_config.os_acls_config().project())
-     *             .serviceName(aiven_opensearch_acl_config.os_acls_config().service_name())
+     *             .project(osAclsConfig.project())
+     *             .serviceName(osAclsConfig.serviceName())
      *             .username(&#34;&lt;USERNAME&gt;&#34;)
      *             .index(&#34;&lt;INDEX&gt;&#34;)
      *             .build());
@@ -6670,8 +6670,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6711,8 +6711,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6752,8 +6752,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6793,8 +6793,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var os-sec-config = AivenFunctions.getOpensearchSecurityPluginConfig(GetOpensearchSecurityPluginConfigArgs.builder()
-     *             .project(aiven_project.os-project().project())
-     *             .serviceName(aiven_opensearch.os().service_name())
+     *             .project(os_project.project())
+     *             .serviceName(os.serviceName())
      *             .build());
      * 
      *     }
@@ -6834,8 +6834,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6876,8 +6876,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6918,8 +6918,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -6960,8 +6960,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -7271,7 +7271,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
      *             .name(&#34;Example group&#34;)
-     *             .organizationId(aiven_organization.main().id())
+     *             .organizationId(main.id())
      *             .build());
      * 
      *     }
@@ -7312,7 +7312,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
      *             .name(&#34;Example group&#34;)
-     *             .organizationId(aiven_organization.main().id())
+     *             .organizationId(main.id())
      *             .build());
      * 
      *     }
@@ -7353,7 +7353,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
      *             .name(&#34;Example group&#34;)
-     *             .organizationId(aiven_organization.main().id())
+     *             .organizationId(main.id())
      *             .build());
      * 
      *     }
@@ -7394,7 +7394,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
      *             .name(&#34;Example group&#34;)
-     *             .organizationId(aiven_organization.main().id())
+     *             .organizationId(main.id())
      *             .build());
      * 
      *     }
@@ -7435,7 +7435,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
      *             .name(&#34;Example organizational unit&#34;)
-     *             .parentId(aiven_organization.main().id())
+     *             .parentId(main.id())
      *             .build());
      * 
      *     }
@@ -7476,7 +7476,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
      *             .name(&#34;Example organizational unit&#34;)
-     *             .parentId(aiven_organization.main().id())
+     *             .parentId(main.id())
      *             .build());
      * 
      *     }
@@ -7517,7 +7517,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
      *             .name(&#34;Example organizational unit&#34;)
-     *             .parentId(aiven_organization.main().id())
+     *             .parentId(main.id())
      *             .build());
      * 
      *     }
@@ -7558,7 +7558,7 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
      *             .name(&#34;Example organizational unit&#34;)
-     *             .parentId(aiven_organization.main().id())
+     *             .parentId(main.id())
      *             .build());
      * 
      *     }
@@ -7598,7 +7598,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-pg1&#34;)
      *             .build());
      * 
@@ -7639,7 +7639,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-pg1&#34;)
      *             .build());
      * 
@@ -7680,7 +7680,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-pg1&#34;)
      *             .build());
      * 
@@ -7721,7 +7721,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-pg1&#34;)
      *             .build());
      * 
@@ -7762,8 +7762,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -7804,8 +7804,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -7846,8 +7846,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -7888,8 +7888,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
-     *             .project(aiven_project.myproject().project())
-     *             .serviceName(aiven_pg.mypg().service_name())
+     *             .project(myproject.project())
+     *             .serviceName(mypg.serviceName())
      *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
      *             .build());
      * 
@@ -7930,8 +7930,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -7972,8 +7972,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -8014,8 +8014,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -8056,8 +8056,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -8258,7 +8258,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .email(&#34;john.doe@example.com&#34;)
      *             .build());
      * 
@@ -8299,7 +8299,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .email(&#34;john.doe@example.com&#34;)
      *             .build());
      * 
@@ -8340,7 +8340,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .email(&#34;john.doe@example.com&#34;)
      *             .build());
      * 
@@ -8381,7 +8381,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .email(&#34;john.doe@example.com&#34;)
      *             .build());
      * 
@@ -8422,7 +8422,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .build());
      * 
@@ -8463,7 +8463,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .build());
      * 
@@ -8504,7 +8504,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .build());
      * 
@@ -8545,7 +8545,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .build());
      * 
@@ -8586,7 +8586,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .build());
      * 
@@ -8627,7 +8627,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
-     *             .project(data.aiven_project().example_project().project())
+     *             .project(exampleProject.project())
      *             .cloudName(&#34;google-europe-west1&#34;)
      *             .build());
      * 
@@ -8668,7 +8668,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-redis1&#34;)
      *             .build());
      * 
@@ -8709,7 +8709,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-redis1&#34;)
      *             .build());
      * 
@@ -8750,7 +8750,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-redis1&#34;)
      *             .build());
      * 
@@ -8791,7 +8791,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
-     *             .project(data.aiven_project().pr1().project())
+     *             .project(pr1.project())
      *             .serviceName(&#34;my-redis1&#34;)
      *             .build());
      * 
@@ -8832,8 +8832,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -8874,8 +8874,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -8916,8 +8916,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -8958,8 +8958,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .project(&#34;my-project&#34;)
      *             .serviceName(&#34;my-service&#34;)
+     *             .project(&#34;my-project&#34;)
      *             .username(&#34;user1&#34;)
      *             .build());
      * 
@@ -9002,8 +9002,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
-     *             .project(aiven_kafka.project1().project())
-     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .project(project1.project())
+     *             .serviceName(service1.serviceName())
      *             .component(&#34;kafka&#34;)
      *             .route(&#34;dynamic&#34;)
      *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
@@ -9048,8 +9048,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
-     *             .project(aiven_kafka.project1().project())
-     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .project(project1.project())
+     *             .serviceName(service1.serviceName())
      *             .component(&#34;kafka&#34;)
      *             .route(&#34;dynamic&#34;)
      *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
@@ -9094,8 +9094,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
-     *             .project(aiven_kafka.project1().project())
-     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .project(project1.project())
+     *             .serviceName(service1.serviceName())
      *             .component(&#34;kafka&#34;)
      *             .route(&#34;dynamic&#34;)
      *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
@@ -9140,8 +9140,8 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
-     *             .project(aiven_kafka.project1().project())
-     *             .serviceName(aiven_kafka.service1().service_name())
+     *             .project(project1.project())
+     *             .serviceName(service1.serviceName())
      *             .component(&#34;kafka&#34;)
      *             .route(&#34;dynamic&#34;)
      *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
@@ -9189,7 +9189,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
      *             .integrationType(&#34;datadog&#34;)
      *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
@@ -9237,7 +9237,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
      *             .integrationType(&#34;datadog&#34;)
      *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
@@ -9285,7 +9285,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
      *             .integrationType(&#34;datadog&#34;)
      *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
@@ -9333,7 +9333,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
      *             .integrationType(&#34;datadog&#34;)
      *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
@@ -9376,7 +9376,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
      *             .build());
      * 
@@ -9417,7 +9417,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
      *             .build());
      * 
@@ -9458,7 +9458,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
      *             .build());
      * 
@@ -9499,7 +9499,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
-     *             .project(aiven_project.myproject().project())
+     *             .project(myproject.project())
      *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
      *             .build());
      * 
@@ -9540,7 +9540,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(aiven_project_vpc.bar().id())
+     *             .vpcId(bar.id())
      *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
      *             .peerVpc(&#34;google-project1&#34;)
      *             .build());
@@ -9582,7 +9582,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(aiven_project_vpc.bar().id())
+     *             .vpcId(bar.id())
      *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
      *             .peerVpc(&#34;google-project1&#34;)
      *             .build());
@@ -9624,7 +9624,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(aiven_project_vpc.bar().id())
+     *             .vpcId(bar.id())
      *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
      *             .peerVpc(&#34;google-project1&#34;)
      *             .build());
@@ -9666,7 +9666,7 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
-     *             .vpcId(aiven_project_vpc.bar().id())
+     *             .vpcId(bar.id())
      *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
      *             .peerVpc(&#34;google-project1&#34;)
      *             .build());

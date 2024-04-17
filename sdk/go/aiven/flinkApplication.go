@@ -30,8 +30,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewFlinkApplication(ctx, "foo", &aiven.FlinkApplicationArgs{
-//				Project:     pulumi.Any(aiven_project.Foo.Project),
+//				Project:     pulumi.Any(fooAivenProject.Project),
 //				ServiceName: pulumi.String("flink-service-1"),
+//				Name:        pulumi.String("my-flink-app"),
 //			})
 //			if err != nil {
 //				return err

@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var gr1 = Aiven.GetGrafana.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Ps1.Project,
+        ///         Project = ps1.Project,
         ///         ServiceName = "my-gr1",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var gr1 = Aiven.GetGrafana.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Ps1.Project,
+        ///         Project = ps1.Project,
         ///         ServiceName = "my-gr1",
         ///     });
         /// 

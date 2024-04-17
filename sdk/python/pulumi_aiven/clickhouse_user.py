@@ -188,8 +188,8 @@ class ClickhouseUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         ch_user = aiven.ClickhouseUser("ch-user",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_clickhouse["myservice"]["service_name"],
+            project=myproject["project"],
+            service_name=myservice["serviceName"],
             username="<USERNAME>")
         ```
         <!--End PulumiCodeChooser -->
@@ -223,8 +223,8 @@ class ClickhouseUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         ch_user = aiven.ClickhouseUser("ch-user",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_clickhouse["myservice"]["service_name"],
+            project=myproject["project"],
+            service_name=myservice["serviceName"],
             username="<USERNAME>")
         ```
         <!--End PulumiCodeChooser -->

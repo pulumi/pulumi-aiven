@@ -12,6 +12,36 @@ namespace Pulumi.Aiven
     /// <summary>
     /// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var mytesttopic = new Aiven.KafkaTopic("mytesttopic", new()
+    ///     {
+    ///         Project = myproject.Project,
+    ///         ServiceName = myservice.ServiceName,
+    ///         TopicName = "&lt;TOPIC_NAME&gt;",
+    ///         Partitions = 5,
+    ///         Replication = 3,
+    ///         TerminationProtection = true,
+    ///         Config = new Aiven.Inputs.KafkaTopicConfigArgs
+    ///         {
+    ///             FlushMs = "10",
+    ///             CleanupPolicy = "compact,delete",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

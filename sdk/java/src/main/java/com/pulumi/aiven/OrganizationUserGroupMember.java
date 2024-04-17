@@ -46,12 +46,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new OrganizationUserGroup(&#34;example&#34;, OrganizationUserGroupArgs.builder()        
  *             .description(&#34;Example group of users.&#34;)
- *             .organizationId(aiven_organization.main().id())
+ *             .organizationId(main.id())
+ *             .name(&#34;Example group&#34;)
  *             .build());
  * 
  *         var projectAdmin = new OrganizationUserGroupMember(&#34;projectAdmin&#34;, OrganizationUserGroupMemberArgs.builder()        
  *             .groupId(example.groupId())
- *             .organizationId(aiven_organization.main().id())
+ *             .organizationId(main.id())
  *             .userId(&#34;u123a456b7890c&#34;)
  *             .build());
  * 

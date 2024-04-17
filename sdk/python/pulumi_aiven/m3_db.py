@@ -846,7 +846,7 @@ class M3Db(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         m3 = aiven.M3Db("m3",
-            project=data["aiven_project"]["foo"]["project"],
+            project=foo["project"],
             cloud_name="google-europe-west1",
             plan="business-8",
             service_name="my-m3db",
@@ -924,7 +924,7 @@ class M3Db(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         m3 = aiven.M3Db("m3",
-            project=data["aiven_project"]["foo"]["project"],
+            project=foo["project"],
             cloud_name="google-europe-west1",
             plan="business-8",
             service_name="my-m3db",

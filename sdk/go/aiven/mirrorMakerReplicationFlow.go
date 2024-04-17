@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewMirrorMakerReplicationFlow(ctx, "f1", &aiven.MirrorMakerReplicationFlowArgs{
-//				Project:       pulumi.Any(aiven_project.KafkaMmProject1.Project),
-//				ServiceName:   pulumi.Any(aiven_kafka.Mm.Service_name),
-//				SourceCluster: pulumi.Any(aiven_kafka.Source.Service_name),
-//				TargetCluster: pulumi.Any(aiven_kafka.Target.Service_name),
+//				Project:       pulumi.Any(kafka_mm_project1.Project),
+//				ServiceName:   pulumi.Any(mm.ServiceName),
+//				SourceCluster: pulumi.Any(source.ServiceName),
+//				TargetCluster: pulumi.Any(target.ServiceName),
 //				Enable:        pulumi.Bool(true),
 //				Topics: pulumi.StringArray{
 //					pulumi.String(".*"),

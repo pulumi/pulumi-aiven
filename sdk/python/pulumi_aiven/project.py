@@ -474,9 +474,9 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_project = aiven.Project("exampleProject",
+        example_project = aiven.Project("example_project",
             project="Example project",
-            parent_id=aiven_organization["main"]["id"])
+            parent_id=main["id"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -515,9 +515,9 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_project = aiven.Project("exampleProject",
+        example_project = aiven.Project("example_project",
             project="Example project",
-            parent_id=aiven_organization["main"]["id"])
+            parent_id=main["id"])
         ```
         <!--End PulumiCodeChooser -->
 

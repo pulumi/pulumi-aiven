@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mydatabase = aiven.getPgDatabase({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
+ *     project: myproject.project,
+ *     serviceName: mypg.serviceName,
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
@@ -91,8 +91,8 @@ export interface GetPgDatabaseResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mydatabase = aiven.getPgDatabase({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
+ *     project: myproject.project,
+ *     serviceName: mypg.serviceName,
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```

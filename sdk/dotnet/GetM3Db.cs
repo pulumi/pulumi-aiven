@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var m3 = Aiven.GetM3Db.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "my-m3db",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var m3 = Aiven.GetM3Db.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "my-m3db",
         ///     });
         /// 

@@ -44,13 +44,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mytestpool = new ConnectionPool(&#34;mytestpool&#34;, ConnectionPoolArgs.builder()        
- *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_pg.mypg().service_name())
- *             .databaseName(aiven_pg_database.mypgdatabase().database_name())
+ *             .project(myproject.project())
+ *             .serviceName(mypg.serviceName())
+ *             .databaseName(mypgdatabase.databaseName())
  *             .poolMode(&#34;transaction&#34;)
  *             .poolName(&#34;mypool&#34;)
  *             .poolSize(10)
- *             .username(aiven_pg_user.mypguser().username())
+ *             .username(mypguser.username())
  *             .build());
  * 
  *     }

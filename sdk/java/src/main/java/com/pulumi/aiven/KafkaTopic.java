@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var mytesttopic = new KafkaTopic(&#34;mytesttopic&#34;, KafkaTopicArgs.builder()        
- *             .project(aiven_project.myproject().project())
- *             .serviceName(aiven_kafka.myservice().service_name())
+ *             .project(myproject.project())
+ *             .serviceName(myservice.serviceName())
  *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
  *             .partitions(5)
  *             .replication(3)
@@ -58,7 +58,6 @@ import javax.annotation.Nullable;
  *                 .flushMs(10)
  *                 .cleanupPolicy(&#34;compact,delete&#34;)
  *                 .build())
- *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

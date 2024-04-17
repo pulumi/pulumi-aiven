@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mm1 = new aiven.KafkaMirrorMaker("mm1", {
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
  *     serviceName: "my-mm1",

@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const user = aiven.getM3dbUser({
- *     project: "my-project",
  *     serviceName: "my-service",
+ *     project: "my-project",
  *     username: "user1",
  * });
  * ```
@@ -90,8 +90,8 @@ export interface GetM3dbUserResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const user = aiven.getM3dbUser({
- *     project: "my-project",
  *     serviceName: "my-service",
+ *     project: "my-project",
  *     username: "user1",
  * });
  * ```

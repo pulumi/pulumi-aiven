@@ -7,6 +7,64 @@ import * as utilities from "./utilities";
 /**
  * Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ * import * as azurerm from "@pulumi/azurerm";
+ *
+ * const staticIps: aiven.StaticIp[] = [];
+ * for (const range = {value: 0}; range.value < 2; range.value++) {
+ *     staticIps.push(new aiven.StaticIp(`static_ips-${range.value}`, {
+ *         project: projectId,
+ *         cloudName: region,
+ *     }));
+ * }
+ * const _default = new aiven.Pg("default", {
+ *     serviceName: "postgres",
+ *     project: aivenProjectId,
+ *     projectVpcId: aivenProjectVpcId,
+ *     cloudName: region,
+ *     plan: plan,
+ *     staticIps: staticIps.map(sip => (sip.staticIpAddressId)),
+ *     pgUserConfig: {
+ *         pgVersion: "13",
+ *         staticIps: true,
+ *         privatelinkAccess: {
+ *             pg: true,
+ *             pgbouncer: true,
+ *         },
+ *     },
+ * });
+ * const privatelink = new aiven.AzurePrivatelink("privatelink", {
+ *     project: aivenProjectId,
+ *     serviceName: _default.name,
+ *     userSubscriptionIds: [azureSubscriptionId],
+ * });
+ * const endpoint = new azurerm.index.PrivateEndpoint("endpoint", {
+ *     name: "postgres-endpoint",
+ *     location: region,
+ *     resourceGroupName: azureResourceGroup.name,
+ *     subnetId: azureSubnetId,
+ *     privateServiceConnection: [{
+ *         name: _default.name,
+ *         privateConnectionResourceId: privatelink.azureServiceId,
+ *         isManualConnection: true,
+ *         requestMessage: _default.name,
+ *     }],
+ * }, {
+ *     dependsOn: [privatelink],
+ * });
+ * const approval = new aiven.AzurePrivatelinkConnectionApproval("approval", {
+ *     project: aivenProjectId,
+ *     serviceName: _default.serviceName,
+ *     endpointIpAddress: endpoint.privateServiceConnection[0].privateIpAddress,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

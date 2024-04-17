@@ -14,19 +14,19 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const osUser = new aiven.OpensearchUser("osUser", {
- *     project: _var.aiven_project_name,
- *     serviceName: aiven_opensearch.os_test.service_name,
+ * const osUser = new aiven.OpensearchUser("os_user", {
+ *     project: aivenProjectName,
+ *     serviceName: osTest.serviceName,
  *     username: "documentation-user-1",
  * });
- * const osUser2 = new aiven.OpensearchUser("osUser2", {
- *     project: _var.aiven_project_name,
- *     serviceName: aiven_opensearch.os_test.service_name,
+ * const osUser2 = new aiven.OpensearchUser("os_user_2", {
+ *     project: aivenProjectName,
+ *     serviceName: osTest.serviceName,
  *     username: "documentation-user-2",
  * });
- * const osAclsConfig = new aiven.OpenSearchAclConfig("osAclsConfig", {
- *     project: _var.aiven_project_name,
- *     serviceName: aiven_opensearch.os_test.service_name,
+ * const osAclsConfig = new aiven.OpenSearchAclConfig("os_acls_config", {
+ *     project: aivenProjectName,
+ *     serviceName: osTest.serviceName,
  *     enabled: true,
  *     extendedAcl: false,
  * });
@@ -60,7 +60,7 @@ import * as utilities from "./utilities";
  * const osAclRule: aiven.OpenSearchAclRule[] = [];
  * pulumi.all(aclRules.map((v, k) => [k, v]).reduce((__obj, [, ]) => ({ ...__obj, [i]: v }))).apply(rangeBody => {
  *     for (const range of Object.entries(rangeBody).map(([k, v]) => ({key: k, value: v}))) {
- *         osAclRule.push(new aiven.OpenSearchAclRule(`osAclRule-${range.key}`, {
+ *         osAclRule.push(new aiven.OpenSearchAclRule(`os_acl_rule-${range.key}`, {
  *             project: osAclsConfig.project,
  *             serviceName: osAclsConfig.serviceName,
  *             username: range.value.username,

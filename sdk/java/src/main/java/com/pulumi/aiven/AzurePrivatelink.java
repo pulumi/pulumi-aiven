@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new AzurePrivatelink(&#34;main&#34;, AzurePrivatelinkArgs.builder()        
- *             .project(data.aiven_project().example_project().project())
- *             .serviceName(aiven_kafka.example_kafka().service_name())
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
  *             .userSubscriptionIds(&#34;00000000-0000-0000-0000-000000000000&#34;)
  *             .build());
  * 

@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupProjectVpc(ctx, &aiven.LookupProjectVpcArgs{
-//				Project:   pulumi.StringRef(data.Aiven_project.Example_project.Project),
+//				Project:   pulumi.StringRef(exampleProject.Project),
 //				CloudName: pulumi.StringRef("google-europe-west1"),
 //			}, nil)
 //			if err != nil {

@@ -25,8 +25,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var ch_user = new Aiven.ClickhouseUser("ch-user", new()
     ///     {
-    ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_clickhouse.Myservice.Service_name,
+    ///         Project = myproject.Project,
+    ///         ServiceName = myservice.ServiceName,
     ///         Username = "&lt;USERNAME&gt;",
     ///     });
     /// 

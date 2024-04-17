@@ -41,7 +41,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleUnit = new OrganizationalUnit(&#34;exampleUnit&#34;, OrganizationalUnitArgs.builder()        
- *             .parentId(aiven_organization.main().id())
+ *             .name(&#34;Example organizational unit&#34;)
+ *             .parentId(main.id())
  *             .build());
  * 
  *     }

@@ -26,13 +26,14 @@ namespace Pulumi.Aiven
     ///     var example = new Aiven.OrganizationUserGroup("example", new()
     ///     {
     ///         Description = "Example group of users.",
-    ///         OrganizationId = aiven_organization.Main.Id,
+    ///         OrganizationId = main.Id,
+    ///         Name = "Example group",
     ///     });
     /// 
-    ///     var projectAdmin = new Aiven.OrganizationUserGroupMember("projectAdmin", new()
+    ///     var projectAdmin = new Aiven.OrganizationUserGroupMember("project_admin", new()
     ///     {
     ///         GroupId = example.GroupId,
-    ///         OrganizationId = aiven_organization.Main.Id,
+    ///         OrganizationId = main.Id,
     ///         UserId = "u123a456b7890c",
     ///     });
     /// 

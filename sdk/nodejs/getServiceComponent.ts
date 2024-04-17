@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const sc1 = aiven.getServiceComponent({
- *     project: aiven_kafka.project1.project,
- *     serviceName: aiven_kafka.service1.service_name,
+ *     project: project1.project,
+ *     serviceName: service1.serviceName,
  *     component: "kafka",
  *     route: "dynamic",
  *     kafkaAuthenticationMethod: "certificate",
@@ -132,8 +132,8 @@ export interface GetServiceComponentResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const sc1 = aiven.getServiceComponent({
- *     project: aiven_kafka.project1.project,
- *     serviceName: aiven_kafka.service1.service_name,
+ *     project: project1.project,
+ *     serviceName: service1.serviceName,
  *     component: "kafka",
  *     route: "dynamic",
  *     kafkaAuthenticationMethod: "certificate",

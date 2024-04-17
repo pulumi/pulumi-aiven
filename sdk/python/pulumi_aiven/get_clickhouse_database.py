@@ -103,8 +103,8 @@ def get_clickhouse_database(name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse_db = aiven.get_clickhouse_database(project=aiven_clickhouse["ch"]["project"],
-        service_name=aiven_clickhouse["ch"]["service_name"],
+    clickhouse_db = aiven.get_clickhouse_database(project=ch["project"],
+        service_name=ch["serviceName"],
         name="my-ch-db")
     ```
     <!--End PulumiCodeChooser -->
@@ -144,8 +144,8 @@ def get_clickhouse_database_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    clickhouse_db = aiven.get_clickhouse_database(project=aiven_clickhouse["ch"]["project"],
-        service_name=aiven_clickhouse["ch"]["service_name"],
+    clickhouse_db = aiven.get_clickhouse_database(project=ch["project"],
+        service_name=ch["serviceName"],
         name="my-ch-db")
     ```
     <!--End PulumiCodeChooser -->

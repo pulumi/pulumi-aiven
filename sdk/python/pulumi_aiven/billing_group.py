@@ -551,6 +551,7 @@ class BillingGroup(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         bybg1 = aiven.BillingGroup("bybg1",
+            name="bybg1",
             billing_currency="USD",
             vat_id="123ABC")
         pr1 = aiven.Project("pr1",
@@ -600,6 +601,7 @@ class BillingGroup(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         bybg1 = aiven.BillingGroup("bybg1",
+            name="bybg1",
             billing_currency="USD",
             vat_id="123ABC")
         pr1 = aiven.Project("pr1",

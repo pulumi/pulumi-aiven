@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const ch-user = aiven.getClickhouseUser({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_clickhouse.myservice.service_name,
+ *     project: myproject.project,
+ *     serviceName: myservice.serviceName,
  *     username: "<USERNAME>",
  * });
  * ```
@@ -94,8 +94,8 @@ export interface GetClickhouseUserResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const ch-user = aiven.getClickhouseUser({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_clickhouse.myservice.service_name,
+ *     project: myproject.project,
+ *     serviceName: myservice.serviceName,
  *     username: "<USERNAME>",
  * });
  * ```

@@ -34,21 +34,22 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleProject, err := aiven.NewProject(ctx, "exampleProject", &aiven.ProjectArgs{
+//			exampleProject, err := aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
 //				Project:   pulumi.String("project-1"),
-//				AccountId: pulumi.Any(aiven_account_team.ACCOUNT_RESOURCE_NAME.Account_id),
+//				AccountId: pulumi.Any(ACCOUNT_RESOURCE_NAME.AccountId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTeam, err := aiven.NewAccountTeam(ctx, "exampleTeam", &aiven.AccountTeamArgs{
-//				AccountId: pulumi.Any(aiven_account.ACCOUNT_RESOURCE_NAME.Account_id),
+//			exampleTeam, err := aiven.NewAccountTeam(ctx, "example_team", &aiven.AccountTeamArgs{
+//				AccountId: pulumi.Any(ACCOUNT_RESOURCE_NAMEAivenAccount.AccountId),
+//				Name:      pulumi.String("Example team"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = aiven.NewAccountTeamProject(ctx, "main", &aiven.AccountTeamProjectArgs{
-//				AccountId:   pulumi.Any(aiven_account.ACCOUNT_RESOURCE_NAME.Account_id),
+//				AccountId:   pulumi.Any(ACCOUNT_RESOURCE_NAMEAivenAccount.AccountId),
 //				TeamId:      exampleTeam.TeamId,
 //				ProjectName: exampleProject.Project,
 //				TeamType:    pulumi.String("admin"),

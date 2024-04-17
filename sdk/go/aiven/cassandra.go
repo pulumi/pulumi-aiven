@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewCassandra(ctx, "bar", &aiven.CassandraArgs{
-//				Project:               pulumi.Any(data.Aiven_project.Foo.Project),
+//				Project:               pulumi.Any(foo.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("startup-4"),
 //				ServiceName:           pulumi.String("test-service-name"),

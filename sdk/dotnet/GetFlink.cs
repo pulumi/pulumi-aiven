@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var flink = Aiven.GetFlink.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "&lt;SERVICE_NAME&gt;",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var flink = Aiven.GetFlink.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "&lt;SERVICE_NAME&gt;",
         ///     });
         /// 

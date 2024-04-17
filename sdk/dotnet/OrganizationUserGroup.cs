@@ -26,7 +26,8 @@ namespace Pulumi.Aiven
     ///     var example = new Aiven.OrganizationUserGroup("example", new()
     ///     {
     ///         Description = "Example group of users.",
-    ///         OrganizationId = aiven_organization.Main.Id,
+    ///         OrganizationId = main.Id,
+    ///         Name = "Example group",
     ///     });
     /// 
     /// });

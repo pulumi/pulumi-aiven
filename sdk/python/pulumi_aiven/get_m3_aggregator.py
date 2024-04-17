@@ -394,7 +394,7 @@ def get_m3_aggregator(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3a = aiven.get_m3_aggregator(project=data["aiven_project"]["foo"]["project"],
+    m3a = aiven.get_m3_aggregator(project=foo["project"],
         service_name="my-m3a")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_m3_aggregator_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    m3a = aiven.get_m3_aggregator(project=data["aiven_project"]["foo"]["project"],
+    m3a = aiven.get_m3_aggregator(project=foo["project"],
         service_name="my-m3a")
     ```
     <!--End PulumiCodeChooser -->

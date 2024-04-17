@@ -25,13 +25,13 @@ namespace Pulumi.Aiven
     /// {
     ///     var mytestpool = new Aiven.ConnectionPool("mytestpool", new()
     ///     {
-    ///         Project = aiven_project.Myproject.Project,
-    ///         ServiceName = aiven_pg.Mypg.Service_name,
-    ///         DatabaseName = aiven_pg_database.Mypgdatabase.Database_name,
+    ///         Project = myproject.Project,
+    ///         ServiceName = mypg.ServiceName,
+    ///         DatabaseName = mypgdatabase.DatabaseName,
     ///         PoolMode = "transaction",
     ///         PoolName = "mypool",
     ///         PoolSize = 10,
-    ///         Username = aiven_pg_user.Mypguser.Username,
+    ///         Username = mypguser.Username,
     ///     });
     /// 
     /// });

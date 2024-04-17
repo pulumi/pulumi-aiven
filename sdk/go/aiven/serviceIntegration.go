@@ -36,11 +36,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewServiceIntegration(ctx, "myIntegrationMetrics", &aiven.ServiceIntegrationArgs{
-//				Project:                pulumi.Any(aiven_project.Myproject.Project),
+//			_, err := aiven.NewServiceIntegration(ctx, "my_integration_metrics", &aiven.ServiceIntegrationArgs{
+//				Project:                pulumi.Any(myproject.Project),
 //				IntegrationType:        pulumi.String("metrics"),
-//				SourceServiceName:      pulumi.Any(aiven_kafka.Kfk1.Service_name),
-//				DestinationServiceName: pulumi.Any(aiven_m3db.M3db.Service_name),
+//				SourceServiceName:      pulumi.Any(kfk1.ServiceName),
+//				DestinationServiceName: pulumi.Any(m3db.ServiceName),
 //			})
 //			if err != nil {
 //				return err

@@ -154,8 +154,8 @@ def get_connection_pool(pool_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
+    mytestpool = aiven.get_connection_pool(project=myproject["project"],
+        service_name=mypg["serviceName"],
         pool_name="mypool")
     ```
     <!--End PulumiCodeChooser -->
@@ -199,8 +199,8 @@ def get_connection_pool_output(pool_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytestpool = aiven.get_connection_pool(project=aiven_project["myproject"]["project"],
-        service_name=aiven_pg["mypg"]["service_name"],
+    mytestpool = aiven.get_connection_pool(project=myproject["project"],
+        service_name=mypg["serviceName"],
         pool_name="mypool")
     ```
     <!--End PulumiCodeChooser -->

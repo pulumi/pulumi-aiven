@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const exampleProject = new aiven.Project("exampleProject", {
+ * const exampleProject = new aiven.Project("example_project", {
  *     project: "Example project",
- *     parentId: aiven_organization.main.id,
+ *     parentId: main.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewPgDatabase(ctx, "mydatabase", &aiven.PgDatabaseArgs{
-//				Project:      pulumi.Any(aiven_project.Myproject.Project),
-//				ServiceName:  pulumi.Any(aiven_pg.Mypg.Service_name),
+//				Project:      pulumi.Any(myproject.Project),
+//				ServiceName:  pulumi.Any(mypg.ServiceName),
 //				DatabaseName: pulumi.String("<DATABASE_NAME>"),
 //			})
 //			if err != nil {

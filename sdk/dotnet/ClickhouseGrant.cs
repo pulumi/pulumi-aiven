@@ -30,7 +30,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var clickhouse = new Aiven.Clickhouse("clickhouse", new()
     ///     {
-    ///         Project = @var.Aiven_project_name,
+    ///         Project = aivenProjectName,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-8",
     ///         ServiceName = "exapmle-clickhouse",
@@ -40,9 +40,10 @@ namespace Pulumi.Aiven
     ///     {
     ///         Project = clickhouse.Project,
     ///         ServiceName = clickhouse.ServiceName,
+    ///         Name = "demo",
     ///     });
     /// 
-    ///     var demoClickhouseRole = new Aiven.ClickhouseRole("demoClickhouseRole", new()
+    ///     var demo = new Aiven.ClickhouseRole("demo", new()
     ///     {
     ///         Project = clickhouse.Project,
     ///         ServiceName = clickhouse.ServiceName,
@@ -53,7 +54,7 @@ namespace Pulumi.Aiven
     ///     {
     ///         Project = clickhouse.Project,
     ///         ServiceName = clickhouse.ServiceName,
-    ///         Role = demoClickhouseRole.Role,
+    ///         Role = demo.Role,
     ///         PrivilegeGrants = new[]
     ///         {
     ///             new Aiven.Inputs.ClickhouseGrantPrivilegeGrantArgs
@@ -70,7 +71,7 @@ namespace Pulumi.Aiven
     ///         },
     ///     });
     /// 
-    ///     var demoClickhouseUser = new Aiven.ClickhouseUser("demoClickhouseUser", new()
+    ///     var demoClickhouseUser = new Aiven.ClickhouseUser("demo", new()
     ///     {
     ///         Project = clickhouse.Project,
     ///         ServiceName = clickhouse.ServiceName,
@@ -86,7 +87,7 @@ namespace Pulumi.Aiven
     ///         {
     ///             new Aiven.Inputs.ClickhouseGrantRoleGrantArgs
     ///             {
-    ///                 Role = demoClickhouseRole.Role,
+    ///                 Role = demo.Role,
     ///             },
     ///         },
     ///     });

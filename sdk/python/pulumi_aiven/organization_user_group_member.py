@@ -184,10 +184,11 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
 
         example = aiven.OrganizationUserGroup("example",
             description="Example group of users.",
-            organization_id=aiven_organization["main"]["id"])
-        project_admin = aiven.OrganizationUserGroupMember("projectAdmin",
+            organization_id=main["id"],
+            name="Example group")
+        project_admin = aiven.OrganizationUserGroupMember("project_admin",
             group_id=example.group_id,
-            organization_id=aiven_organization["main"]["id"],
+            organization_id=main["id"],
             user_id="u123a456b7890c")
         ```
         <!--End PulumiCodeChooser -->
@@ -222,10 +223,11 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
 
         example = aiven.OrganizationUserGroup("example",
             description="Example group of users.",
-            organization_id=aiven_organization["main"]["id"])
-        project_admin = aiven.OrganizationUserGroupMember("projectAdmin",
+            organization_id=main["id"],
+            name="Example group")
+        project_admin = aiven.OrganizationUserGroupMember("project_admin",
             group_id=example.group_id,
-            organization_id=aiven_organization["main"]["id"],
+            organization_id=main["id"],
             user_id="u123a456b7890c")
         ```
         <!--End PulumiCodeChooser -->

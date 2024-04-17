@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const main = aiven.getGcpVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.vpc.id,
+ *     vpcId: vpc.id,
  *     gcpProjectId: "example-project",
  *     peerVpc: "example-network",
  * });
@@ -94,7 +94,7 @@ export interface GetGcpVpcPeeringConnectionResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const main = aiven.getGcpVpcPeeringConnection({
- *     vpcId: data.aiven_project_vpc.vpc.id,
+ *     vpcId: vpc.id,
  *     gcpProjectId: "example-project",
  *     peerVpc: "example-network",
  * });

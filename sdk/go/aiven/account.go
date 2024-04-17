@@ -30,7 +30,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewAccount(ctx, "account1", nil)
+//			_, err := aiven.NewAccount(ctx, "account1", &aiven.AccountArgs{
+//				Name: pulumi.String("<ACCOUNT_NAME>"),
+//			})
 //			if err != nil {
 //				return err
 //			}

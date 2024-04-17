@@ -394,7 +394,7 @@ def get_flink(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    flink = aiven.get_flink(project=data["aiven_project"]["pr1"]["project"],
+    flink = aiven.get_flink(project=pr1["project"],
         service_name="<SERVICE_NAME>")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_flink_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    flink = aiven.get_flink(project=data["aiven_project"]["pr1"]["project"],
+    flink = aiven.get_flink(project=pr1["project"],
         service_name="<SERVICE_NAME>")
     ```
     <!--End PulumiCodeChooser -->

@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var attachment = new Aiven.TransitGatewayVpcAttachment("attachment", new()
     ///     {
-    ///         VpcId = aiven_project_vpc.Bar.Id,
+    ///         VpcId = bar.Id,
     ///         PeerCloudAccount = "&lt;PEER_ACCOUNT_ID&gt;",
     ///         PeerVpc = "google-project1",
     ///         PeerRegion = "aws-eu-west-1",

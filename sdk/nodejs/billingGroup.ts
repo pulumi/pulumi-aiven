@@ -15,6 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const bybg1 = new aiven.BillingGroup("bybg1", {
+ *     name: "bybg1",
  *     billingCurrency: "USD",
  *     vatId: "123ABC",
  * });

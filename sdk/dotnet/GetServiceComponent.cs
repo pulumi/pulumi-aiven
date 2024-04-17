@@ -29,8 +29,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
         ///     {
-        ///         Project = aiven_kafka.Project1.Project,
-        ///         ServiceName = aiven_kafka.Service1.Service_name,
+        ///         Project = project1.Project,
+        ///         ServiceName = service1.ServiceName,
         ///         Component = "kafka",
         ///         Route = "dynamic",
         ///         KafkaAuthenticationMethod = "certificate",
@@ -61,8 +61,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var sc1 = Aiven.GetServiceComponent.Invoke(new()
         ///     {
-        ///         Project = aiven_kafka.Project1.Project,
-        ///         ServiceName = aiven_kafka.Service1.Service_name,
+        ///         Project = project1.Project,
+        ///         ServiceName = service1.ServiceName,
         ///         Component = "kafka",
         ///         Route = "dynamic",
         ///         KafkaAuthenticationMethod = "certificate",

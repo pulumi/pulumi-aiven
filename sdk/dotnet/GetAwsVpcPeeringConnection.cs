@@ -25,9 +25,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = new Aiven.ProjectVpc("exampleVpc", new()
+        ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
         ///     {
-        ///         Project = data.Aiven_project.Example_project.Project,
+        ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///         NetworkCidr = "192.168.1.0/24",
         ///     });
@@ -35,7 +35,7 @@ namespace Pulumi.Aiven
         ///     var awsToAivenPeering = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
-        ///         AwsAccountId = @var.Aws_id,
+        ///         AwsAccountId = awsId,
         ///         AwsVpcId = "vpc-1a2b3c4d5e6f7g8h9",
         ///         AwsVpcRegion = "aws-us-east-2",
         ///     });
@@ -61,9 +61,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var exampleVpc = new Aiven.ProjectVpc("exampleVpc", new()
+        ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
         ///     {
-        ///         Project = data.Aiven_project.Example_project.Project,
+        ///         Project = exampleProject.Project,
         ///         CloudName = "google-europe-west1",
         ///         NetworkCidr = "192.168.1.0/24",
         ///     });
@@ -71,7 +71,7 @@ namespace Pulumi.Aiven
         ///     var awsToAivenPeering = Aiven.GetAwsVpcPeeringConnection.Invoke(new()
         ///     {
         ///         VpcId = exampleVpc.Id,
-        ///         AwsAccountId = @var.Aws_id,
+        ///         AwsAccountId = awsId,
         ///         AwsVpcId = "vpc-1a2b3c4d5e6f7g8h9",
         ///         AwsVpcRegion = "aws-us-east-2",
         ///     });

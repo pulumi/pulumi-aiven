@@ -41,10 +41,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
- *             .project(data.aiven_project().example_project().project())
+ *             .project(exampleProject.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .networkCidr(&#34;192.168.1.0/24&#34;)
- *             .timeouts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
  *             .build());
  * 
  *     }

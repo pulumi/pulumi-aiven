@@ -172,8 +172,8 @@ def get_service_component(component: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
-        service_name=aiven_kafka["service1"]["service_name"],
+    sc1 = aiven.get_service_component(project=project1["project"],
+        service_name=service1["serviceName"],
         component="kafka",
         route="dynamic",
         kafka_authentication_method="certificate")
@@ -234,8 +234,8 @@ def get_service_component_output(component: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    sc1 = aiven.get_service_component(project=aiven_kafka["project1"]["project"],
-        service_name=aiven_kafka["service1"]["service_name"],
+    sc1 = aiven.get_service_component(project=project1["project"],
+        service_name=service1["serviceName"],
         component="kafka",
         route="dynamic",
         kafka_authentication_method="certificate")

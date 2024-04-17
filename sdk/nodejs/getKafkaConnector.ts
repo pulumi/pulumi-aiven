@@ -17,8 +17,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const kafka-es-con1 = aiven.getKafkaConnector({
- *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     project: kafka_con_project1.project,
+ *     serviceName: kafka_service1.serviceName,
  *     connectorName: "kafka-es-con1",
  * });
  * ```
@@ -116,8 +116,8 @@ export interface GetKafkaConnectorResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const kafka-es-con1 = aiven.getKafkaConnector({
- *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     project: kafka_con_project1.project,
+ *     serviceName: kafka_service1.serviceName,
  *     connectorName: "kafka-es-con1",
  * });
  * ```

@@ -25,8 +25,8 @@ namespace Pulumi.Aiven
     /// {
     ///     var main = new Aiven.AwsPrivatelink("main", new()
     ///     {
-    ///         Project = data.Aiven_project.Example_project.Project,
-    ///         ServiceName = aiven_kafka.Example_kafka.Service_name,
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
     ///         Principals = new[]
     ///         {
     ///             "arn:aws:iam::012345678901:user/mwf",

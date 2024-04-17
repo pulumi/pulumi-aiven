@@ -394,7 +394,7 @@ def get_pg(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    pg = aiven.get_pg(project=data["aiven_project"]["pr1"]["project"],
+    pg = aiven.get_pg(project=pr1["project"],
         service_name="my-pg1")
     ```
     <!--End PulumiCodeChooser -->
@@ -455,7 +455,7 @@ def get_pg_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    pg = aiven.get_pg(project=data["aiven_project"]["pr1"]["project"],
+    pg = aiven.get_pg(project=pr1["project"],
         service_name="my-pg1")
     ```
     <!--End PulumiCodeChooser -->

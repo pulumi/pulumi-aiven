@@ -12,6 +12,28 @@ namespace Pulumi.Aiven
     /// <summary>
     /// Creates and manages a VPC for an Aiven project.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleVpc = new Aiven.ProjectVpc("example_vpc", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         CloudName = "google-europe-west1",
+    ///         NetworkCidr = "192.168.1.0/24",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// ```sh

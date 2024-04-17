@@ -286,17 +286,17 @@ class KafkaConnector(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
-            project=aiven_project["kafka-con-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            project=kafka_con_project1["project"],
+            service_name=kafka_service1["serviceName"],
             connector_name="kafka-os-con1",
             config={
-                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
+                "topics": kafka_topic1["topicName"],
                 "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
                 "type.name": "os-connector",
                 "name": "kafka-os-con1",
-                "connection.url": aiven_opensearch["os-service1"]["service_uri"],
-                "connection.username": aiven_opensearch["os-service1"]["service_username"],
-                "connection.password": aiven_opensearch["os-service1"]["service_password"],
+                "connection.url": os_service1["serviceUri"],
+                "connection.username": os_service1["serviceUsername"],
+                "connection.password": os_service1["servicePassword"],
             })
         ```
         <!--End PulumiCodeChooser -->
@@ -331,17 +331,17 @@ class KafkaConnector(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         kafka_os_con1 = aiven.KafkaConnector("kafka-os-con1",
-            project=aiven_project["kafka-con-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            project=kafka_con_project1["project"],
+            service_name=kafka_service1["serviceName"],
             connector_name="kafka-os-con1",
             config={
-                "topics": aiven_kafka_topic["kafka-topic1"]["topic_name"],
+                "topics": kafka_topic1["topicName"],
                 "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
                 "type.name": "os-connector",
                 "name": "kafka-os-con1",
-                "connection.url": aiven_opensearch["os-service1"]["service_uri"],
-                "connection.username": aiven_opensearch["os-service1"]["service_username"],
-                "connection.password": aiven_opensearch["os-service1"]["service_password"],
+                "connection.url": os_service1["serviceUri"],
+                "connection.username": os_service1["serviceUsername"],
+                "connection.password": os_service1["servicePassword"],
             })
         ```
         <!--End PulumiCodeChooser -->

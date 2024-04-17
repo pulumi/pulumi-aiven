@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const clickhouse = new aiven.Clickhouse("clickhouse", {
- *     project: _var.aiven_project_name,
+ *     project: aivenProjectName,
  *     cloudName: "google-europe-west1",
  *     plan: "startup-8",
  *     serviceName: "exapmle-clickhouse",
@@ -30,8 +30,9 @@ import * as utilities from "./utilities";
  * const demodb = new aiven.ClickhouseDatabase("demodb", {
  *     project: clickhouse.project,
  *     serviceName: clickhouse.serviceName,
+ *     name: "demo",
  * });
- * const demoClickhouseRole = new aiven.ClickhouseRole("demoClickhouseRole", {
+ * const demo = new aiven.ClickhouseRole("demo", {
  *     project: clickhouse.project,
  *     serviceName: clickhouse.serviceName,
  *     role: "demo-role",
@@ -39,7 +40,7 @@ import * as utilities from "./utilities";
  * const demo_role_grant = new aiven.ClickhouseGrant("demo-role-grant", {
  *     project: clickhouse.project,
  *     serviceName: clickhouse.serviceName,
- *     role: demoClickhouseRole.role,
+ *     role: demo.role,
  *     privilegeGrants: [
  *         {
  *             privilege: "INSERT",
@@ -52,7 +53,7 @@ import * as utilities from "./utilities";
  *         },
  *     ],
  * });
- * const demoClickhouseUser = new aiven.ClickhouseUser("demoClickhouseUser", {
+ * const demoClickhouseUser = new aiven.ClickhouseUser("demo", {
  *     project: clickhouse.project,
  *     serviceName: clickhouse.serviceName,
  *     username: "demo-user",
@@ -62,7 +63,7 @@ import * as utilities from "./utilities";
  *     serviceName: clickhouse.serviceName,
  *     user: demoClickhouseUser.username,
  *     roleGrants: [{
- *         role: demoClickhouseRole.role,
+ *         role: demo.role,
  *     }],
  * });
  * ```

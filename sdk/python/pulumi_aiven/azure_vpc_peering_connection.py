@@ -283,11 +283,11 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.ProjectVpc("exampleVpc",
-            project=data["aiven_project"]["example_project"]["project"],
+        example_vpc = aiven.ProjectVpc("example_vpc",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             network_cidr="192.168.1.0/24")
-        azure_to_aiven_peering = aiven.AzureVpcPeeringConnection("azureToAivenPeering",
+        azure_to_aiven_peering = aiven.AzureVpcPeeringConnection("azure_to_aiven_peering",
             vpc_id=example_vpc.id,
             azure_subscription_id="00000000-0000-0000-0000-000000000000",
             peer_resource_group="example-resource-group",
@@ -328,11 +328,11 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        example_vpc = aiven.ProjectVpc("exampleVpc",
-            project=data["aiven_project"]["example_project"]["project"],
+        example_vpc = aiven.ProjectVpc("example_vpc",
+            project=example_project["project"],
             cloud_name="google-europe-west1",
             network_cidr="192.168.1.0/24")
-        azure_to_aiven_peering = aiven.AzureVpcPeeringConnection("azureToAivenPeering",
+        azure_to_aiven_peering = aiven.AzureVpcPeeringConnection("azure_to_aiven_peering",
             vpc_id=example_vpc.id,
             azure_subscription_id="00000000-0000-0000-0000-000000000000",
             peer_resource_group="example-resource-group",

@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var mm1 = Aiven.GetKafkaMirrorMaker.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "my-mm1",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var mm1 = Aiven.GetKafkaMirrorMaker.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Pr1.Project,
+        ///         Project = pr1.Project,
         ///         ServiceName = "my-mm1",
         ///     });
         /// 

@@ -45,14 +45,14 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
- *             .project(data.aiven_project().example_project().project())
+ *             .project(exampleProject.project())
  *             .cloudName(&#34;aws-us-east-2&#34;)
  *             .networkCidr(&#34;192.168.1.0/24&#34;)
  *             .build());
  * 
  *         var awsToAivenPeering = new AwsVpcPeeringConnection(&#34;awsToAivenPeering&#34;, AwsVpcPeeringConnectionArgs.builder()        
  *             .vpcId(exampleVpc.id())
- *             .awsAccountId(var_.aws_id())
+ *             .awsAccountId(awsId)
  *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
  *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
  *             .build());

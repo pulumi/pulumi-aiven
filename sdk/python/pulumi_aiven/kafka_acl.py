@@ -220,8 +220,8 @@ class KafkaAcl(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestacl = aiven.KafkaAcl("mytestacl",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_kafka["myservice"]["service_name"],
+            project=myproject["project"],
+            service_name=myservice["serviceName"],
             topic="<TOPIC_NAME_PATTERN>",
             permission="admin",
             username="<USERNAME_PATTERN>")
@@ -259,8 +259,8 @@ class KafkaAcl(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestacl = aiven.KafkaAcl("mytestacl",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_kafka["myservice"]["service_name"],
+            project=myproject["project"],
+            service_name=myservice["serviceName"],
             topic="<TOPIC_NAME_PATTERN>",
             permission="admin",
             username="<USERNAME_PATTERN>")

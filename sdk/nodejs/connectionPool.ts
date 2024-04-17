@@ -15,13 +15,13 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestpool = new aiven.ConnectionPool("mytestpool", {
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
- *     databaseName: aiven_pg_database.mypgdatabase.database_name,
+ *     project: myproject.project,
+ *     serviceName: mypg.serviceName,
+ *     databaseName: mypgdatabase.databaseName,
  *     poolMode: "transaction",
  *     poolName: "mypool",
  *     poolSize: 10,
- *     username: aiven_pg_user.mypguser.username,
+ *     username: mypguser.username,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

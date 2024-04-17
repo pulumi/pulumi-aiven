@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var kafka_schema1 = new KafkaSchema(&#34;kafka-schema1&#34;, KafkaSchemaArgs.builder()        
- *             .project(aiven_project.kafka-schemas-project1().project())
- *             .serviceName(aiven_kafka.kafka-service1().service_name())
+ *             .project(kafka_schemas_project1.project())
+ *             .serviceName(kafka_service1.serviceName())
  *             .subjectName(&#34;kafka-schema1&#34;)
  *             .compatibilityLevel(&#34;FORWARD&#34;)
  *             .schema(&#34;&#34;&#34;

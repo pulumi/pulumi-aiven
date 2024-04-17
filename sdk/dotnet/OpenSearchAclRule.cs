@@ -23,24 +23,24 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var osUser = new Aiven.OpensearchUser("osUser", new()
+    ///     var osUser = new Aiven.OpensearchUser("os_user", new()
     ///     {
-    ///         Project = @var.Aiven_project_name,
-    ///         ServiceName = aiven_opensearch.Os_test.Service_name,
+    ///         Project = aivenProjectName,
+    ///         ServiceName = osTest.ServiceName,
     ///         Username = "documentation-user-1",
     ///     });
     /// 
-    ///     var osUser2 = new Aiven.OpensearchUser("osUser2", new()
+    ///     var osUser2 = new Aiven.OpensearchUser("os_user_2", new()
     ///     {
-    ///         Project = @var.Aiven_project_name,
-    ///         ServiceName = aiven_opensearch.Os_test.Service_name,
+    ///         Project = aivenProjectName,
+    ///         ServiceName = osTest.ServiceName,
     ///         Username = "documentation-user-2",
     ///     });
     /// 
-    ///     var osAclsConfig = new Aiven.OpenSearchAclConfig("osAclsConfig", new()
+    ///     var osAclsConfig = new Aiven.OpenSearchAclConfig("os_acls_config", new()
     ///     {
-    ///         Project = @var.Aiven_project_name,
-    ///         ServiceName = aiven_opensearch.Os_test.Service_name,
+    ///         Project = aivenProjectName,
+    ///         ServiceName = osTest.ServiceName,
     ///         Enabled = true,
     ///         ExtendedAcl = false,
     ///     });
@@ -82,7 +82,7 @@ namespace Pulumi.Aiven
     ///     var osAclRule = new List&lt;Aiven.OpenSearchAclRule&gt;();
     ///     foreach (var range in aclRules.Select((value, i) =&gt; new { Key = i.ToString(), Value = pair.Value }).Select(pair =&gt; new { pair.Key, pair.Value }))
     ///     {
-    ///         osAclRule.Add(new Aiven.OpenSearchAclRule($"osAclRule-{range.Key}", new()
+    ///         osAclRule.Add(new Aiven.OpenSearchAclRule($"os_acl_rule-{range.Key}", new()
     ///         {
     ///             Project = osAclsConfig.Project,
     ///             ServiceName = osAclsConfig.ServiceName,

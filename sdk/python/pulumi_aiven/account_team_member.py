@@ -197,8 +197,8 @@ class AccountTeamMember(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         main = aiven.AccountTeamMember("main",
-            account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"],
-            team_id=aiven_account_team["TEAM_RESOURCE_NAME"]["team_id"],
+            account_id=accoun_t__resourc_e__name["accountId"],
+            team_id=tea_m__resourc_e__name["teamId"],
             user_email="user+1@example.com")
         ```
         <!--End PulumiCodeChooser -->
@@ -241,8 +241,8 @@ class AccountTeamMember(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         main = aiven.AccountTeamMember("main",
-            account_id=aiven_account["ACCOUNT_RESOURCE_NAME"]["account_id"],
-            team_id=aiven_account_team["TEAM_RESOURCE_NAME"]["team_id"],
+            account_id=accoun_t__resourc_e__name["accountId"],
+            team_id=tea_m__resourc_e__name["teamId"],
             user_email="user+1@example.com")
         ```
         <!--End PulumiCodeChooser -->

@@ -9,6 +9,50 @@ import * as utilities from "./utilities";
 /**
  * The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = new aiven.FlinkApplicationVersion("foo", {
+ *     project: fooAivenProject.project,
+ *     serviceName: fooAivenFlink.serviceName,
+ *     applicationId: fooAivenFlinkApplication.applicationId,
+ *     statement: "    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n",
+ *     sinks: [{
+ *         createTable: `      CREATE TABLE kafka_known_pizza (
+ *         shop STRING,
+ *         name STRING
+ *       ) WITH (
+ *         'connector' = 'kafka',
+ *         'properties.bootstrap.servers' = '',
+ *         'scan.startup.mode' = 'earliest-offset',
+ *         'topic' = 'sink_topic',
+ *         'value.format' = 'json'
+ *       )
+ * `,
+ *         integrationId: flinkToKafka.integrationId,
+ *     }],
+ *     sources: [{
+ *         createTable: `      CREATE TABLE kafka_pizza (
+ *         shop STRING,
+ *         name STRING
+ *       ) WITH (
+ *         'connector' = 'kafka',
+ *         'properties.bootstrap.servers' = '',
+ *         'scan.startup.mode' = 'earliest-offset',
+ *         'topic' = 'source_topic',
+ *         'value.format' = 'json'
+ *       )
+ * `,
+ *         integrationId: flinkToKafka.integrationId,
+ *     }],
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * ```sh

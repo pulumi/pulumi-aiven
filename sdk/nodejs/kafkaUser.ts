@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const foo = new aiven.KafkaUser("foo", {
- *     serviceName: aiven_kafka.bar.service_name,
+ *     serviceName: bar.serviceName,
  *     project: "my-project",
  *     username: "user-1",
  *     password: "Test$1234",

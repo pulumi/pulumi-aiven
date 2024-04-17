@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var clickhouse = new Clickhouse(&#34;clickhouse&#34;, ClickhouseArgs.builder()        
- *             .project(var_.aiven_project_name())
+ *             .project(aivenProjectName)
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;startup-8&#34;)
  *             .serviceName(&#34;exapmle-clickhouse&#34;)
@@ -69,9 +69,10 @@ import javax.annotation.Nullable;
  *         var demodb = new ClickhouseDatabase(&#34;demodb&#34;, ClickhouseDatabaseArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
+ *             .name(&#34;demo&#34;)
  *             .build());
  * 
- *         var demoClickhouseRole = new ClickhouseRole(&#34;demoClickhouseRole&#34;, ClickhouseRoleArgs.builder()        
+ *         var demo = new ClickhouseRole(&#34;demo&#34;, ClickhouseRoleArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .role(&#34;demo-role&#34;)
@@ -80,7 +81,7 @@ import javax.annotation.Nullable;
  *         var demo_role_grant = new ClickhouseGrant(&#34;demo-role-grant&#34;, ClickhouseGrantArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
- *             .role(demoClickhouseRole.role())
+ *             .role(demo.role())
  *             .privilegeGrants(            
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
  *                     .privilege(&#34;INSERT&#34;)
@@ -104,7 +105,7 @@ import javax.annotation.Nullable;
  *             .serviceName(clickhouse.serviceName())
  *             .user(demoClickhouseUser.username())
  *             .roleGrants(ClickhouseGrantRoleGrantArgs.builder()
- *                 .role(demoClickhouseRole.role())
+ *                 .role(demo.role())
  *                 .build())
  *             .build());
  * 

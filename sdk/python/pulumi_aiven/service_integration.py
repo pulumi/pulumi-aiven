@@ -693,11 +693,11 @@ class ServiceIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        my_integration_metrics = aiven.ServiceIntegration("myIntegrationMetrics",
-            project=aiven_project["myproject"]["project"],
+        my_integration_metrics = aiven.ServiceIntegration("my_integration_metrics",
+            project=myproject["project"],
             integration_type="metrics",
-            source_service_name=aiven_kafka["kfk1"]["service_name"],
-            destination_service_name=aiven_m3db["m3db"]["service_name"])
+            source_service_name=kfk1["serviceName"],
+            destination_service_name=m3db["serviceName"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -752,11 +752,11 @@ class ServiceIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        my_integration_metrics = aiven.ServiceIntegration("myIntegrationMetrics",
-            project=aiven_project["myproject"]["project"],
+        my_integration_metrics = aiven.ServiceIntegration("my_integration_metrics",
+            project=myproject["project"],
             integration_type="metrics",
-            source_service_name=aiven_kafka["kfk1"]["service_name"],
-            destination_service_name=aiven_m3db["m3db"]["service_name"])
+            source_service_name=kfk1["serviceName"],
+            destination_service_name=m3db["serviceName"])
         ```
         <!--End PulumiCodeChooser -->
 

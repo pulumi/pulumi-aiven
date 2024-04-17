@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const redis1 = aiven.getRedis({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-redis1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetRedisResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const redis1 = aiven.getRedis({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-redis1",
  * });
  * ```

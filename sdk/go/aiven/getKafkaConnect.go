@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupKafkaConnect(ctx, &aiven.LookupKafkaConnectArgs{
-//				Project:     data.Aiven_project.Pr1.Project,
+//				Project:     pr1.Project,
 //				ServiceName: "my-kc1",
 //			}, nil)
 //			if err != nil {

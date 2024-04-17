@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestpool = aiven.getConnectionPool({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
+ *     project: myproject.project,
+ *     serviceName: mypg.serviceName,
  *     poolName: "mypool",
  * });
  * ```
@@ -102,8 +102,8 @@ export interface GetConnectionPoolResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const mytestpool = aiven.getConnectionPool({
- *     project: aiven_project.myproject.project,
- *     serviceName: aiven_pg.mypg.service_name,
+ *     project: myproject.project,
+ *     serviceName: mypg.serviceName,
  *     poolName: "mypool",
  * });
  * ```

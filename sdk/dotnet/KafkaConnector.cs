@@ -25,18 +25,18 @@ namespace Pulumi.Aiven
     /// {
     ///     var kafka_os_con1 = new Aiven.KafkaConnector("kafka-os-con1", new()
     ///     {
-    ///         Project = aiven_project.Kafka_con_project1.Project,
-    ///         ServiceName = aiven_kafka.Kafka_service1.Service_name,
+    ///         Project = kafka_con_project1.Project,
+    ///         ServiceName = kafka_service1.ServiceName,
     ///         ConnectorName = "kafka-os-con1",
     ///         Config = 
     ///         {
-    ///             { "topics", aiven_kafka_topic.Kafka_topic1.Topic_name },
+    ///             { "topics", kafka_topic1.TopicName },
     ///             { "connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector" },
     ///             { "type.name", "os-connector" },
     ///             { "name", "kafka-os-con1" },
-    ///             { "connection.url", aiven_opensearch.Os_service1.Service_uri },
-    ///             { "connection.username", aiven_opensearch.Os_service1.Service_username },
-    ///             { "connection.password", aiven_opensearch.Os_service1.Service_password },
+    ///             { "connection.url", os_service1.ServiceUri },
+    ///             { "connection.username", os_service1.ServiceUsername },
+    ///             { "connection.password", os_service1.ServicePassword },
     ///         },
     ///     });
     /// 

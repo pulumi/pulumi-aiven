@@ -466,10 +466,10 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         f1 = aiven.MirrorMakerReplicationFlow("f1",
-            project=aiven_project["kafka-mm-project1"]["project"],
-            service_name=aiven_kafka["mm"]["service_name"],
-            source_cluster=aiven_kafka["source"]["service_name"],
-            target_cluster=aiven_kafka["target"]["service_name"],
+            project=kafka_mm_project1["project"],
+            service_name=mm["serviceName"],
+            source_cluster=source["serviceName"],
+            target_cluster=target["serviceName"],
             enable=True,
             topics=[".*"],
             topics_blacklists=[
@@ -519,10 +519,10 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         f1 = aiven.MirrorMakerReplicationFlow("f1",
-            project=aiven_project["kafka-mm-project1"]["project"],
-            service_name=aiven_kafka["mm"]["service_name"],
-            source_cluster=aiven_kafka["source"]["service_name"],
-            target_cluster=aiven_kafka["target"]["service_name"],
+            project=kafka_mm_project1["project"],
+            service_name=mm["serviceName"],
+            source_cluster=source["serviceName"],
+            target_cluster=target["serviceName"],
             enable=True,
             topics=[".*"],
             topics_blacklists=[

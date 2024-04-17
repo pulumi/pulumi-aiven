@@ -247,21 +247,22 @@ class ClickhouseGrant(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         clickhouse = aiven.Clickhouse("clickhouse",
-            project=var["aiven_project_name"],
+            project=aiven_project_name,
             cloud_name="google-europe-west1",
             plan="startup-8",
             service_name="exapmle-clickhouse")
         demodb = aiven.ClickhouseDatabase("demodb",
             project=clickhouse.project,
-            service_name=clickhouse.service_name)
-        demo_clickhouse_role = aiven.ClickhouseRole("demoClickhouseRole",
+            service_name=clickhouse.service_name,
+            name="demo")
+        demo = aiven.ClickhouseRole("demo",
             project=clickhouse.project,
             service_name=clickhouse.service_name,
             role="demo-role")
         demo_role_grant = aiven.ClickhouseGrant("demo-role-grant",
             project=clickhouse.project,
             service_name=clickhouse.service_name,
-            role=demo_clickhouse_role.role,
+            role=demo.role,
             privilege_grants=[
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="INSERT",
@@ -273,7 +274,7 @@ class ClickhouseGrant(pulumi.CustomResource):
                     database=demodb.name,
                 ),
             ])
-        demo_clickhouse_user = aiven.ClickhouseUser("demoClickhouseUser",
+        demo_clickhouse_user = aiven.ClickhouseUser("demo",
             project=clickhouse.project,
             service_name=clickhouse.service_name,
             username="demo-user")
@@ -282,7 +283,7 @@ class ClickhouseGrant(pulumi.CustomResource):
             service_name=clickhouse.service_name,
             user=demo_clickhouse_user.username,
             role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=demo_clickhouse_role.role,
+                role=demo.role,
             )])
         ```
         <!--End PulumiCodeChooser -->
@@ -318,21 +319,22 @@ class ClickhouseGrant(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         clickhouse = aiven.Clickhouse("clickhouse",
-            project=var["aiven_project_name"],
+            project=aiven_project_name,
             cloud_name="google-europe-west1",
             plan="startup-8",
             service_name="exapmle-clickhouse")
         demodb = aiven.ClickhouseDatabase("demodb",
             project=clickhouse.project,
-            service_name=clickhouse.service_name)
-        demo_clickhouse_role = aiven.ClickhouseRole("demoClickhouseRole",
+            service_name=clickhouse.service_name,
+            name="demo")
+        demo = aiven.ClickhouseRole("demo",
             project=clickhouse.project,
             service_name=clickhouse.service_name,
             role="demo-role")
         demo_role_grant = aiven.ClickhouseGrant("demo-role-grant",
             project=clickhouse.project,
             service_name=clickhouse.service_name,
-            role=demo_clickhouse_role.role,
+            role=demo.role,
             privilege_grants=[
                 aiven.ClickhouseGrantPrivilegeGrantArgs(
                     privilege="INSERT",
@@ -344,7 +346,7 @@ class ClickhouseGrant(pulumi.CustomResource):
                     database=demodb.name,
                 ),
             ])
-        demo_clickhouse_user = aiven.ClickhouseUser("demoClickhouseUser",
+        demo_clickhouse_user = aiven.ClickhouseUser("demo",
             project=clickhouse.project,
             service_name=clickhouse.service_name,
             username="demo-user")
@@ -353,7 +355,7 @@ class ClickhouseGrant(pulumi.CustomResource):
             service_name=clickhouse.service_name,
             user=demo_clickhouse_user.username,
             role_grants=[aiven.ClickhouseGrantRoleGrantArgs(
-                role=demo_clickhouse_role.role,
+                role=demo.role,
             )])
         ```
         <!--End PulumiCodeChooser -->

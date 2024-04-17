@@ -758,7 +758,7 @@ class OpenSearch(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         os1 = aiven.OpenSearch("os1",
-            project=data["aiven_project"]["pr1"]["project"],
+            project=pr1["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
             service_name="my-os1",
@@ -819,7 +819,7 @@ class OpenSearch(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         os1 = aiven.OpenSearch("os1",
-            project=data["aiven_project"]["pr1"]["project"],
+            project=pr1["project"],
             cloud_name="google-europe-west1",
             plan="startup-4",
             service_name="my-os1",

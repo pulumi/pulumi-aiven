@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupAzureVpcPeeringConnection(ctx, &aiven.LookupAzureVpcPeeringConnectionArgs{
-//				VpcId:               data.Aiven_project_vpc.Example_vpc.Id,
+//				VpcId:               exampleVpc.Id,
 //				AzureSubscriptionId: "00000000-0000-0000-0000-000000000000",
 //				PeerResourceGroup:   "example-resource-group",
 //				VnetName:            "example-vnet",

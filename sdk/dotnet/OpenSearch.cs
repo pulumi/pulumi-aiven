@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var os1 = new Aiven.OpenSearch("os1", new()
     ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         Project = pr1.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
     ///         ServiceName = "my-os1",

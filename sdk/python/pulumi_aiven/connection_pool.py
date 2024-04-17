@@ -287,13 +287,13 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestpool = aiven.ConnectionPool("mytestpool",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_pg["mypg"]["service_name"],
-            database_name=aiven_pg_database["mypgdatabase"]["database_name"],
+            project=myproject["project"],
+            service_name=mypg["serviceName"],
+            database_name=mypgdatabase["databaseName"],
             pool_mode="transaction",
             pool_name="mypool",
             pool_size=10,
-            username=aiven_pg_user["mypguser"]["username"])
+            username=mypguser["username"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -330,13 +330,13 @@ class ConnectionPool(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         mytestpool = aiven.ConnectionPool("mytestpool",
-            project=aiven_project["myproject"]["project"],
-            service_name=aiven_pg["mypg"]["service_name"],
-            database_name=aiven_pg_database["mypgdatabase"]["database_name"],
+            project=myproject["project"],
+            service_name=mypg["serviceName"],
+            database_name=mypgdatabase["databaseName"],
             pool_mode="transaction",
             pool_name="mypool",
             pool_size=10,
-            username=aiven_pg_user["mypguser"]["username"])
+            username=mypguser["username"])
         ```
         <!--End PulumiCodeChooser -->
 

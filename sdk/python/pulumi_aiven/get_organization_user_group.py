@@ -130,7 +130,7 @@ def get_organization_user_group(name: Optional[str] = None,
     import pulumi_aiven as aiven
 
     example = aiven.get_organization_user_group(name="Example group",
-        organization_id=aiven_organization["main"]["id"])
+        organization_id=main["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -169,7 +169,7 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi_aiven as aiven
 
     example = aiven.get_organization_user_group(name="Example group",
-        organization_id=aiven_organization["main"]["id"])
+        organization_id=main["id"])
     ```
     <!--End PulumiCodeChooser -->
 

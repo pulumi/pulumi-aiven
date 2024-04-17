@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var mysql1 = Aiven.GetMySql.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "my-mysql1",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var mysql1 = Aiven.GetMySql.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "my-mysql1",
         ///     });
         /// 

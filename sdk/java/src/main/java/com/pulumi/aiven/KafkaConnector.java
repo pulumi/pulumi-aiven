@@ -44,17 +44,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var kafka_os_con1 = new KafkaConnector(&#34;kafka-os-con1&#34;, KafkaConnectorArgs.builder()        
- *             .project(aiven_project.kafka-con-project1().project())
- *             .serviceName(aiven_kafka.kafka-service1().service_name())
+ *             .project(kafka_con_project1.project())
+ *             .serviceName(kafka_service1.serviceName())
  *             .connectorName(&#34;kafka-os-con1&#34;)
  *             .config(Map.ofEntries(
- *                 Map.entry(&#34;topics&#34;, aiven_kafka_topic.kafka-topic1().topic_name()),
+ *                 Map.entry(&#34;topics&#34;, kafka_topic1.topicName()),
  *                 Map.entry(&#34;connector.class&#34;, &#34;io.aiven.kafka.connect.opensearch.OpensearchSinkConnector&#34;),
  *                 Map.entry(&#34;type.name&#34;, &#34;os-connector&#34;),
  *                 Map.entry(&#34;name&#34;, &#34;kafka-os-con1&#34;),
- *                 Map.entry(&#34;connection.url&#34;, aiven_opensearch.os-service1().service_uri()),
- *                 Map.entry(&#34;connection.username&#34;, aiven_opensearch.os-service1().service_username()),
- *                 Map.entry(&#34;connection.password&#34;, aiven_opensearch.os-service1().service_password())
+ *                 Map.entry(&#34;connection.url&#34;, os_service1.serviceUri()),
+ *                 Map.entry(&#34;connection.username&#34;, os_service1.serviceUsername()),
+ *                 Map.entry(&#34;connection.password&#34;, os_service1.servicePassword())
  *             ))
  *             .build());
  * 

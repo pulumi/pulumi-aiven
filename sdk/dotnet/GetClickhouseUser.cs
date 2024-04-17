@@ -27,8 +27,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var ch_user = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_clickhouse.Myservice.Service_name,
+        ///         Project = myproject.Project,
+        ///         ServiceName = myservice.ServiceName,
         ///         Username = "&lt;USERNAME&gt;",
         ///     });
         /// 
@@ -55,8 +55,8 @@ namespace Pulumi.Aiven
         /// {
         ///     var ch_user = Aiven.GetClickhouseUser.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
-        ///         ServiceName = aiven_clickhouse.Myservice.Service_name,
+        ///         Project = myproject.Project,
+        ///         ServiceName = myservice.ServiceName,
         ///         Username = "&lt;USERNAME&gt;",
         ///     });
         /// 

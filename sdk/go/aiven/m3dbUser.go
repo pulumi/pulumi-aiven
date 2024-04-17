@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewM3dbUser(ctx, "foo", &aiven.M3dbUserArgs{
-//				ServiceName: pulumi.Any(aiven_m3db.Bar.Service_name),
+//				ServiceName: pulumi.Any(bar.ServiceName),
 //				Project:     pulumi.String("my-project"),
 //				Username:    pulumi.String("user-1"),
 //				Password:    pulumi.String("Test$1234"),

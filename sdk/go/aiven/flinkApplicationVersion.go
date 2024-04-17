@@ -14,6 +14,73 @@ import (
 
 // The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewFlinkApplicationVersion(ctx, "foo", &aiven.FlinkApplicationVersionArgs{
+//				Project:       pulumi.Any(fooAivenProject.Project),
+//				ServiceName:   pulumi.Any(fooAivenFlink.ServiceName),
+//				ApplicationId: pulumi.Any(fooAivenFlinkApplication.ApplicationId),
+//				Statement:     pulumi.String("    INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'\n"),
+//				Sinks: aiven.FlinkApplicationVersionSinkArray{
+//					&aiven.FlinkApplicationVersionSinkArgs{
+//						CreateTable: pulumi.String(`      CREATE TABLE kafka_known_pizza (
+//	        shop STRING,
+//	        name STRING
+//	      ) WITH (
+//	        'connector' = 'kafka',
+//	        'properties.bootstrap.servers' = '',
+//	        'scan.startup.mode' = 'earliest-offset',
+//	        'topic' = 'sink_topic',
+//	        'value.format' = 'json'
+//	      )
+//
+// `),
+//
+//						IntegrationId: pulumi.Any(flinkToKafka.IntegrationId),
+//					},
+//				},
+//				Sources: aiven.FlinkApplicationVersionSourceArray{
+//					&aiven.FlinkApplicationVersionSourceArgs{
+//						CreateTable: pulumi.String(`      CREATE TABLE kafka_pizza (
+//	        shop STRING,
+//	        name STRING
+//	      ) WITH (
+//	        'connector' = 'kafka',
+//	        'properties.bootstrap.servers' = '',
+//	        'scan.startup.mode' = 'earliest-offset',
+//	        'topic' = 'source_topic',
+//	        'value.format' = 'json'
+//	      )
+//
+// `),
+//
+//						IntegrationId: pulumi.Any(flinkToKafka.IntegrationId),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ```sh

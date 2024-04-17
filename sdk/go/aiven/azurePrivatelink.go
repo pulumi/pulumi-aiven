@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewAzurePrivatelink(ctx, "main", &aiven.AzurePrivatelinkArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Example_project.Project),
-//				ServiceName: pulumi.Any(aiven_kafka.Example_kafka.Service_name),
+//				Project:     pulumi.Any(exampleProject.Project),
+//				ServiceName: pulumi.Any(exampleKafka.ServiceName),
 //				UserSubscriptionIds: pulumi.StringArray{
 //					pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				},

@@ -29,8 +29,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewOrganizationalUnit(ctx, "exampleUnit", &aiven.OrganizationalUnitArgs{
-//				ParentId: pulumi.Any(aiven_organization.Main.Id),
+//			_, err := aiven.NewOrganizationalUnit(ctx, "example_unit", &aiven.OrganizationalUnitArgs{
+//				Name:     pulumi.String("Example organizational unit"),
+//				ParentId: pulumi.Any(main.Id),
 //			})
 //			if err != nil {
 //				return err

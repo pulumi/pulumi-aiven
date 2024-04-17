@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const kc1 = aiven.getKafkaConnect({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-kc1",
  * });
  * ```
@@ -178,7 +178,7 @@ export interface GetKafkaConnectResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const kc1 = aiven.getKafkaConnect({
- *     project: data.aiven_project.pr1.project,
+ *     project: pr1.project,
  *     serviceName: "my-kc1",
  * });
  * ```

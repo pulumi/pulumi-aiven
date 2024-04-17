@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const attachment = aiven.getTransitGatewayVpcAttachment({
- *     vpcId: aiven_project_vpc.bar.id,
+ *     vpcId: bar.id,
  *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
  *     peerVpc: "google-project1",
  * });
@@ -102,7 +102,7 @@ export interface GetTransitGatewayVpcAttachmentResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const attachment = aiven.getTransitGatewayVpcAttachment({
- *     vpcId: aiven_project_vpc.bar.id,
+ *     vpcId: bar.id,
  *     peerCloudAccount: "<PEER_ACCOUNT_ID>",
  *     peerVpc: "google-project1",
  * });

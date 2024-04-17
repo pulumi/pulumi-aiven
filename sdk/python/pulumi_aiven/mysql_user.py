@@ -254,7 +254,7 @@ class MysqlUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.MysqlUser("foo",
-            service_name=aiven_mysql["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")
@@ -292,7 +292,7 @@ class MysqlUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.MysqlUser("foo",
-            service_name=aiven_mysql["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")

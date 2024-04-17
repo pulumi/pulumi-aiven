@@ -17,17 +17,17 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const kafka_os_con1 = new aiven.KafkaConnector("kafka-os-con1", {
- *     project: aiven_project["kafka-con-project1"].project,
- *     serviceName: aiven_kafka["kafka-service1"].service_name,
+ *     project: kafka_con_project1.project,
+ *     serviceName: kafka_service1.serviceName,
  *     connectorName: "kafka-os-con1",
  *     config: {
- *         topics: aiven_kafka_topic["kafka-topic1"].topic_name,
+ *         topics: kafka_topic1.topicName,
  *         "connector.class": "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector",
  *         "type.name": "os-connector",
  *         name: "kafka-os-con1",
- *         "connection.url": aiven_opensearch["os-service1"].service_uri,
- *         "connection.username": aiven_opensearch["os-service1"].service_username,
- *         "connection.password": aiven_opensearch["os-service1"].service_password,
+ *         "connection.url": os_service1.serviceUri,
+ *         "connection.username": os_service1.serviceUsername,
+ *         "connection.password": os_service1.servicePassword,
  *     },
  * });
  * ```

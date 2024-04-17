@@ -165,6 +165,57 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
         """
         Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+        import pulumi_azurerm as azurerm
+
+        static_ips = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            static_ips.append(aiven.StaticIp(f"static_ips-{range['value']}",
+                project=project_id,
+                cloud_name=region))
+        default = aiven.Pg("default",
+            service_name="postgres",
+            project=aiven_project_id,
+            project_vpc_id=aiven_project_vpc_id,
+            cloud_name=region,
+            plan=plan,
+            static_ips=[sip.static_ip_address_id for sip in static_ips],
+            pg_user_config=aiven.PgPgUserConfigArgs(
+                pg_version="13",
+                static_ips=True,
+                privatelink_access=aiven.PgPgUserConfigPrivatelinkAccessArgs(
+                    pg=True,
+                    pgbouncer=True,
+                ),
+            ))
+        privatelink = aiven.AzurePrivatelink("privatelink",
+            project=aiven_project_id,
+            service_name=default.name,
+            user_subscription_ids=[azure_subscription_id])
+        endpoint = azurerm.index.PrivateEndpoint("endpoint",
+            name=postgres-endpoint,
+            location=region,
+            resource_group_name=azure_resource_group.name,
+            subnet_id=azure_subnet_id,
+            private_service_connection=[{
+                name: default.name,
+                privateConnectionResourceId: privatelink.azure_service_id,
+                isManualConnection: True,
+                requestMessage: default.name,
+            }],
+            opts=pulumi.ResourceOptions(depends_on=[privatelink]))
+        approval = aiven.AzurePrivatelinkConnectionApproval("approval",
+            project=aiven_project_id,
+            service_name=default.service_name,
+            endpoint_ip_address=endpoint["privateServiceConnection"][0]["privateIpAddress"])
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -185,6 +236,57 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+        import pulumi_azurerm as azurerm
+
+        static_ips = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            static_ips.append(aiven.StaticIp(f"static_ips-{range['value']}",
+                project=project_id,
+                cloud_name=region))
+        default = aiven.Pg("default",
+            service_name="postgres",
+            project=aiven_project_id,
+            project_vpc_id=aiven_project_vpc_id,
+            cloud_name=region,
+            plan=plan,
+            static_ips=[sip.static_ip_address_id for sip in static_ips],
+            pg_user_config=aiven.PgPgUserConfigArgs(
+                pg_version="13",
+                static_ips=True,
+                privatelink_access=aiven.PgPgUserConfigPrivatelinkAccessArgs(
+                    pg=True,
+                    pgbouncer=True,
+                ),
+            ))
+        privatelink = aiven.AzurePrivatelink("privatelink",
+            project=aiven_project_id,
+            service_name=default.name,
+            user_subscription_ids=[azure_subscription_id])
+        endpoint = azurerm.index.PrivateEndpoint("endpoint",
+            name=postgres-endpoint,
+            location=region,
+            resource_group_name=azure_resource_group.name,
+            subnet_id=azure_subnet_id,
+            private_service_connection=[{
+                name: default.name,
+                privateConnectionResourceId: privatelink.azure_service_id,
+                isManualConnection: True,
+                requestMessage: default.name,
+            }],
+            opts=pulumi.ResourceOptions(depends_on=[privatelink]))
+        approval = aiven.AzurePrivatelinkConnectionApproval("approval",
+            project=aiven_project_id,
+            service_name=default.service_name,
+            endpoint_ip_address=endpoint["privateServiceConnection"][0]["privateIpAddress"])
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

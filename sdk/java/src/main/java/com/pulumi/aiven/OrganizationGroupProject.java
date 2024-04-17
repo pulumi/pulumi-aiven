@@ -18,6 +18,49 @@ import javax.annotation.Nullable;
 /**
  * Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.OrganizationUserGroup;
+ * import com.pulumi.aiven.OrganizationUserGroupArgs;
+ * import com.pulumi.aiven.organizationUserGroupProject;
+ * import com.pulumi.aiven.OrganizationUserGroupProjectArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new OrganizationUserGroup(&#34;example&#34;, OrganizationUserGroupArgs.builder()        
+ *             .description(&#34;Example group of users.&#34;)
+ *             .organizationId(main.id())
+ *             .name(&#34;Example group&#34;)
+ *             .build());
+ * 
+ *         var exampleOrganizationUserGroupProject = new OrganizationUserGroupProject(&#34;exampleOrganizationUserGroupProject&#34;, OrganizationUserGroupProjectArgs.builder()        
+ *             .groupId(example.groupId())
+ *             .project(exampleAivenProject.project())
+ *             .role(&#34;admin&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh

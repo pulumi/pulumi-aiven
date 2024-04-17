@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var clickhouse = new Clickhouse(&#34;clickhouse&#34;, ClickhouseArgs.builder()        
- *             .project(data.aiven_project().pr1().project())
+ *             .project(pr1.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;business-4&#34;)
  *             .serviceName(&#34;my-clickhouse&#34;)

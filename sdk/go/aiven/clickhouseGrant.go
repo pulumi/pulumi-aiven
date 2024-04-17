@@ -35,7 +35,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			clickhouse, err := aiven.NewClickhouse(ctx, "clickhouse", &aiven.ClickhouseArgs{
-//				Project:     pulumi.Any(_var.Aiven_project_name),
+//				Project:     pulumi.Any(aivenProjectName),
 //				CloudName:   pulumi.String("google-europe-west1"),
 //				Plan:        pulumi.String("startup-8"),
 //				ServiceName: pulumi.String("exapmle-clickhouse"),
@@ -46,11 +46,12 @@ import (
 //			demodb, err := aiven.NewClickhouseDatabase(ctx, "demodb", &aiven.ClickhouseDatabaseArgs{
 //				Project:     clickhouse.Project,
 //				ServiceName: clickhouse.ServiceName,
+//				Name:        pulumi.String("demo"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			demoClickhouseRole, err := aiven.NewClickhouseRole(ctx, "demoClickhouseRole", &aiven.ClickhouseRoleArgs{
+//			demo, err := aiven.NewClickhouseRole(ctx, "demo", &aiven.ClickhouseRoleArgs{
 //				Project:     clickhouse.Project,
 //				ServiceName: clickhouse.ServiceName,
 //				Role:        pulumi.String("demo-role"),
@@ -61,7 +62,7 @@ import (
 //			_, err = aiven.NewClickhouseGrant(ctx, "demo-role-grant", &aiven.ClickhouseGrantArgs{
 //				Project:     clickhouse.Project,
 //				ServiceName: clickhouse.ServiceName,
-//				Role:        demoClickhouseRole.Role,
+//				Role:        demo.Role,
 //				PrivilegeGrants: aiven.ClickhouseGrantPrivilegeGrantArray{
 //					&aiven.ClickhouseGrantPrivilegeGrantArgs{
 //						Privilege: pulumi.String("INSERT"),
@@ -77,7 +78,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			demoClickhouseUser, err := aiven.NewClickhouseUser(ctx, "demoClickhouseUser", &aiven.ClickhouseUserArgs{
+//			demoClickhouseUser, err := aiven.NewClickhouseUser(ctx, "demo", &aiven.ClickhouseUserArgs{
 //				Project:     clickhouse.Project,
 //				ServiceName: clickhouse.ServiceName,
 //				Username:    pulumi.String("demo-user"),
@@ -91,7 +92,7 @@ import (
 //				User:        demoClickhouseUser.Username,
 //				RoleGrants: aiven.ClickhouseGrantRoleGrantArray{
 //					&aiven.ClickhouseGrantRoleGrantArgs{
-//						Role: demoClickhouseRole.Role,
+//						Role: demo.Role,
 //					},
 //				},
 //			})

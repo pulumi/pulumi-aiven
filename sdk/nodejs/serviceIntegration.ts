@@ -23,11 +23,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myIntegrationMetrics = new aiven.ServiceIntegration("myIntegrationMetrics", {
- *     project: aiven_project.myproject.project,
+ * const myIntegrationMetrics = new aiven.ServiceIntegration("my_integration_metrics", {
+ *     project: myproject.project,
  *     integrationType: "metrics",
- *     sourceServiceName: aiven_kafka.kfk1.service_name,
- *     destinationServiceName: aiven_m3db.m3db.service_name,
+ *     sourceServiceName: kfk1.serviceName,
+ *     destinationServiceName: m3db.serviceName,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

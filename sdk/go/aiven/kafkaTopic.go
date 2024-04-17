@@ -14,6 +14,43 @@ import (
 
 // The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
 //
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewKafkaTopic(ctx, "mytesttopic", &aiven.KafkaTopicArgs{
+//				Project:               pulumi.Any(myproject.Project),
+//				ServiceName:           pulumi.Any(myservice.ServiceName),
+//				TopicName:             pulumi.String("<TOPIC_NAME>"),
+//				Partitions:            pulumi.Int(5),
+//				Replication:           pulumi.Int(3),
+//				TerminationProtection: pulumi.Bool(true),
+//				Config: &aiven.KafkaTopicConfigArgs{
+//					FlushMs:       pulumi.String("10"),
+//					CleanupPolicy: pulumi.String("compact,delete"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // ```sh

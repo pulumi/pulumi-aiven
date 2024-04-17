@@ -172,8 +172,8 @@ class AwsPrivatelink(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         main = aiven.AwsPrivatelink("main",
-            project=data["aiven_project"]["example_project"]["project"],
-            service_name=aiven_kafka["example_kafka"]["service_name"],
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
             principals=["arn:aws:iam::012345678901:user/mwf"])
         ```
         <!--End PulumiCodeChooser -->
@@ -207,8 +207,8 @@ class AwsPrivatelink(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         main = aiven.AwsPrivatelink("main",
-            project=data["aiven_project"]["example_project"]["project"],
-            service_name=aiven_kafka["example_kafka"]["service_name"],
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
             principals=["arn:aws:iam::012345678901:user/mwf"])
         ```
         <!--End PulumiCodeChooser -->

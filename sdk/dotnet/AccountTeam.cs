@@ -28,9 +28,10 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleTeam = new Aiven.AccountTeam("exampleTeam", new()
+    ///     var exampleTeam = new Aiven.AccountTeam("example_team", new()
     ///     {
-    ///         AccountId = aiven_account.ACCOUNT_RESOURCE_NAME.Account_id,
+    ///         AccountId = ACCOUNT_RESOURCE_NAME.AccountId,
+    ///         Name = "Example team",
     ///     });
     /// 
     /// });

@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const mysql1 = new aiven.MySql("mysql1", {
- *     project: data.aiven_project.foo.project,
+ *     project: foo.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
  *     serviceName: "my-mysql1",

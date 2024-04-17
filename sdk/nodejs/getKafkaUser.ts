@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const user = aiven.getKafkaUser({
- *     project: "my-project",
  *     serviceName: "my-service",
+ *     project: "my-project",
  *     username: "user1",
  * });
  * ```
@@ -98,8 +98,8 @@ export interface GetKafkaUserResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const user = aiven.getKafkaUser({
- *     project: "my-project",
  *     serviceName: "my-service",
+ *     project: "my-project",
  *     username: "user1",
  * });
  * ```

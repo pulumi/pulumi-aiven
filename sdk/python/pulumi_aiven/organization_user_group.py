@@ -190,7 +190,8 @@ class OrganizationUserGroup(pulumi.CustomResource):
 
         example = aiven.OrganizationUserGroup("example",
             description="Example group of users.",
-            organization_id=aiven_organization["main"]["id"])
+            organization_id=main["id"],
+            name="Example group")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -224,7 +225,8 @@ class OrganizationUserGroup(pulumi.CustomResource):
 
         example = aiven.OrganizationUserGroup("example",
             description="Example group of users.",
-            organization_id=aiven_organization["main"]["id"])
+            organization_id=main["id"],
+            name="Example group")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var main = new AwsPrivatelink(&#34;main&#34;, AwsPrivatelinkArgs.builder()        
- *             .project(data.aiven_project().example_project().project())
- *             .serviceName(aiven_kafka.example_kafka().service_name())
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
  *             .principals(&#34;arn:aws:iam::012345678901:user/mwf&#34;)
  *             .build());
  * 

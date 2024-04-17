@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupFlinkApplicationVersion(ctx, &aiven.LookupFlinkApplicationVersionArgs{
-//				Project:              data.Aiven_project.Pr1.Project,
+//				Project:              pr1.Project,
 //				ServiceName:          "<SERVICE_NAME>",
 //				ApplicationId:        "<APPLICATION_ID>",
 //				ApplicationVersionId: "<APPLICATION_VERSION_ID>",

@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewGcpVpcPeeringConnection(ctx, "foo", &aiven.GcpVpcPeeringConnectionArgs{
-//				VpcId:        pulumi.Any(data.Aiven_project_vpc.Vpc.Id),
+//				VpcId:        pulumi.Any(vpc.Id),
 //				GcpProjectId: pulumi.String("xxxx"),
 //				PeerVpc:      pulumi.String("xxxx"),
 //			})

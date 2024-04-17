@@ -16,7 +16,8 @@ import * as utilities from "./utilities";
  *
  * const example = new aiven.OrganizationUserGroup("example", {
  *     description: "Example group of users.",
- *     organizationId: aiven_organization.main.id,
+ *     organizationId: main.id,
+ *     name: "Example group",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

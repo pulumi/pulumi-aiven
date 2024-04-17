@@ -30,6 +30,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.aiven.Account;
+ * import com.pulumi.aiven.AccountArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,7 +44,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var account1 = new Account(&#34;account1&#34;);
+ *         var account1 = new Account(&#34;account1&#34;, AccountArgs.builder()        
+ *             .name(&#34;&lt;ACCOUNT_NAME&gt;&#34;)
+ *             .build());
  * 
  *     }
  * }

@@ -141,8 +141,8 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         config = aiven.KafkaSchemaConfiguration("config",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            project=kafka_schemas_project1["project"],
+            service_name=kafka_service1["serviceName"],
             compatibility_level="BACKWARD")
         ```
         <!--End PulumiCodeChooser -->
@@ -176,8 +176,8 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         config = aiven.KafkaSchemaConfiguration("config",
-            project=aiven_project["kafka-schemas-project1"]["project"],
-            service_name=aiven_kafka["kafka-service1"]["service_name"],
+            project=kafka_schemas_project1["project"],
+            service_name=kafka_service1["serviceName"],
             compatibility_level="BACKWARD")
         ```
         <!--End PulumiCodeChooser -->

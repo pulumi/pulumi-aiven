@@ -25,9 +25,10 @@ namespace Pulumi.Aiven
     /// {
     ///     var gr1 = new Aiven.Grafana("gr1", new()
     ///     {
-    ///         Project = data.Aiven_project.Ps1.Project,
+    ///         Project = ps1.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-1",
+    ///         ServiceName = "my-gr1",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///         GrafanaUserConfig = new Aiven.Inputs.GrafanaGrafanaUserConfigArgs

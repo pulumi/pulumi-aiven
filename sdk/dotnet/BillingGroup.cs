@@ -25,6 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var bybg1 = new Aiven.BillingGroup("bybg1", new()
     ///     {
+    ///         Name = "bybg1",
     ///         BillingCurrency = "USD",
     ///         VatId = "123ABC",
     ///     });

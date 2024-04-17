@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const clickhouseDb = aiven.getClickhouseDatabase({
- *     project: aiven_clickhouse.ch.project,
- *     serviceName: aiven_clickhouse.ch.service_name,
+ *     project: ch.project,
+ *     serviceName: ch.serviceName,
  *     name: "my-ch-db",
  * });
  * ```
@@ -83,8 +83,8 @@ export interface GetClickhouseDatabaseResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const clickhouseDb = aiven.getClickhouseDatabase({
- *     project: aiven_clickhouse.ch.project,
- *     serviceName: aiven_clickhouse.ch.service_name,
+ *     project: ch.project,
+ *     serviceName: ch.serviceName,
  *     name: "my-ch-db",
  * });
  * ```

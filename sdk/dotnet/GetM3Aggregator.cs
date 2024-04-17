@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var m3a = Aiven.GetM3Aggregator.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "my-m3a",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var m3a = Aiven.GetM3Aggregator.Invoke(new()
         ///     {
-        ///         Project = data.Aiven_project.Foo.Project,
+        ///         Project = foo.Project,
         ///         ServiceName = "my-m3a",
         ///     });
         /// 

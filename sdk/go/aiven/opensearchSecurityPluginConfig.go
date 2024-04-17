@@ -29,14 +29,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooProject, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
+//			foo, err := aiven.LookupProject(ctx, &aiven.LookupProjectArgs{
 //				Project: "example_project",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			bar, err := aiven.NewOpenSearch(ctx, "bar", &aiven.OpenSearchArgs{
-//				Project:               pulumi.String(fooProject.Project),
+//				Project:               pulumi.String(foo.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("startup-4"),
 //				ServiceName:           pulumi.String("example_service_name"),
@@ -46,16 +46,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewOpensearchUser(ctx, "fooOpensearchUser", &aiven.OpensearchUserArgs{
+//			_, err = aiven.NewOpensearchUser(ctx, "foo", &aiven.OpensearchUserArgs{
 //				ServiceName: bar.ServiceName,
-//				Project:     pulumi.String(fooProject.Project),
+//				Project:     pulumi.String(foo.Project),
 //				Username:    pulumi.String("user-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewOpensearchSecurityPluginConfig(ctx, "fooOpensearchSecurityPluginConfig", &aiven.OpensearchSecurityPluginConfigArgs{
-//				Project:       pulumi.String(fooProject.Project),
+//			_, err = aiven.NewOpensearchSecurityPluginConfig(ctx, "foo", &aiven.OpensearchSecurityPluginConfigArgs{
+//				Project:       pulumi.String(foo.Project),
 //				ServiceName:   bar.ServiceName,
 //				AdminPassword: pulumi.String("ThisIsATest123^=^"),
 //			})

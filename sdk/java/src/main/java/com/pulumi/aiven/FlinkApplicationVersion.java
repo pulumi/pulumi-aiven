@@ -21,6 +21,76 @@ import javax.annotation.Nullable;
 /**
  * The Flink Application Version resource allows the creation and management of Aiven Flink Application Versions.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.FlinkApplicationVersion;
+ * import com.pulumi.aiven.FlinkApplicationVersionArgs;
+ * import com.pulumi.aiven.inputs.FlinkApplicationVersionSinkArgs;
+ * import com.pulumi.aiven.inputs.FlinkApplicationVersionSourceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new FlinkApplicationVersion(&#34;foo&#34;, FlinkApplicationVersionArgs.builder()        
+ *             .project(fooAivenProject.project())
+ *             .serviceName(fooAivenFlink.serviceName())
+ *             .applicationId(fooAivenFlinkApplication.applicationId())
+ *             .statement(&#34;&#34;&#34;
+ *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE &#39;%Luigis Pizza%&#39;
+ *             &#34;&#34;&#34;)
+ *             .sinks(FlinkApplicationVersionSinkArgs.builder()
+ *                 .createTable(&#34;&#34;&#34;
+ *       CREATE TABLE kafka_known_pizza (
+ *         shop STRING,
+ *         name STRING
+ *       ) WITH (
+ *         &#39;connector&#39; = &#39;kafka&#39;,
+ *         &#39;properties.bootstrap.servers&#39; = &#39;&#39;,
+ *         &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+ *         &#39;topic&#39; = &#39;sink_topic&#39;,
+ *         &#39;value.format&#39; = &#39;json&#39;
+ *       )
+ *                 &#34;&#34;&#34;)
+ *                 .integrationId(flinkToKafka.integrationId())
+ *                 .build())
+ *             .sources(FlinkApplicationVersionSourceArgs.builder()
+ *                 .createTable(&#34;&#34;&#34;
+ *       CREATE TABLE kafka_pizza (
+ *         shop STRING,
+ *         name STRING
+ *       ) WITH (
+ *         &#39;connector&#39; = &#39;kafka&#39;,
+ *         &#39;properties.bootstrap.servers&#39; = &#39;&#39;,
+ *         &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
+ *         &#39;topic&#39; = &#39;source_topic&#39;,
+ *         &#39;value.format&#39; = &#39;json&#39;
+ *       )
+ *                 &#34;&#34;&#34;)
+ *                 .integrationId(flinkToKafka.integrationId())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * ```sh

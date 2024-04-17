@@ -846,7 +846,7 @@ class M3Aggregator(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         m3a = aiven.M3Aggregator("m3a",
-            project=data["aiven_project"]["foo"]["project"],
+            project=foo["project"],
             cloud_name="google-europe-west1",
             plan="business-8",
             service_name="my-m3a",
@@ -920,7 +920,7 @@ class M3Aggregator(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         m3a = aiven.M3Aggregator("m3a",
-            project=data["aiven_project"]["foo"]["project"],
+            project=foo["project"],
             cloud_name="google-europe-west1",
             plan="business-8",
             service_name="my-m3a",

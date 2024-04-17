@@ -25,7 +25,7 @@ namespace Pulumi.Aiven
     /// {
     ///     var mm1 = new Aiven.KafkaMirrorMaker("mm1", new()
     ///     {
-    ///         Project = data.Aiven_project.Pr1.Project,
+    ///         Project = pr1.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "startup-4",
     ///         ServiceName = "my-mm1",

@@ -25,8 +25,9 @@ namespace Pulumi.Aiven
     /// {
     ///     var foo = new Aiven.FlinkApplication("foo", new()
     ///     {
-    ///         Project = aiven_project.Foo.Project,
+    ///         Project = fooAivenProject.Project,
     ///         ServiceName = "flink-service-1",
+    ///         Name = "my-flink-app",
     ///     });
     /// 
     /// });

@@ -14,24 +14,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const fooProject = aiven.getProject({
+ * const foo = aiven.getProject({
  *     project: "example_project",
  * });
  * const bar = new aiven.OpenSearch("bar", {
- *     project: fooProject.then(fooProject => fooProject.project),
+ *     project: foo.then(foo => foo.project),
  *     cloudName: "google-europe-west1",
  *     plan: "startup-4",
  *     serviceName: "example_service_name",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  * });
- * const fooOpensearchUser = new aiven.OpensearchUser("fooOpensearchUser", {
+ * const fooOpensearchUser = new aiven.OpensearchUser("foo", {
  *     serviceName: bar.serviceName,
- *     project: fooProject.then(fooProject => fooProject.project),
+ *     project: foo.then(foo => foo.project),
  *     username: "user-example",
  * });
- * const fooOpensearchSecurityPluginConfig = new aiven.OpensearchSecurityPluginConfig("fooOpensearchSecurityPluginConfig", {
- *     project: fooProject.then(fooProject => fooProject.project),
+ * const fooOpensearchSecurityPluginConfig = new aiven.OpensearchSecurityPluginConfig("foo", {
+ *     project: foo.then(foo => foo.project),
  *     serviceName: bar.serviceName,
  *     adminPassword: "ThisIsATest123^=^",
  * });

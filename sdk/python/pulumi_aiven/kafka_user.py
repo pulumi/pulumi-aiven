@@ -221,7 +221,7 @@ class KafkaUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.KafkaUser("foo",
-            service_name=aiven_kafka["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")
@@ -258,7 +258,7 @@ class KafkaUser(pulumi.CustomResource):
         import pulumi_aiven as aiven
 
         foo = aiven.KafkaUser("foo",
-            service_name=aiven_kafka["bar"]["service_name"],
+            service_name=bar["serviceName"],
             project="my-project",
             username="user-1",
             password="Test$1234")

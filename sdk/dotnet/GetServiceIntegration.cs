@@ -32,7 +32,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = myproject.Project,
         ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
         ///         IntegrationType = "datadog",
         ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = myproject.Project,
         ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
         ///         IntegrationType = "datadog",
         ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",

@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new OpensearchUser(&#34;foo&#34;, OpensearchUserArgs.builder()        
- *             .serviceName(aiven_opensearch.bar().service_name())
+ *             .serviceName(bar.serviceName())
  *             .project(&#34;my-project&#34;)
  *             .username(&#34;user-1&#34;)
  *             .password(&#34;Test$1234&#34;)

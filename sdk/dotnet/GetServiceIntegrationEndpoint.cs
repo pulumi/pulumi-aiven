@@ -27,7 +27,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var myendpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = myproject.Project,
         ///         EndpointName = "&lt;ENDPOINT_NAME&gt;",
         ///     });
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Aiven
         /// {
         ///     var myendpoint = Aiven.GetServiceIntegrationEndpoint.Invoke(new()
         ///     {
-        ///         Project = aiven_project.Myproject.Project,
+        ///         Project = myproject.Project,
         ///         EndpointName = "&lt;ENDPOINT_NAME&gt;",
         ///     });
         /// 

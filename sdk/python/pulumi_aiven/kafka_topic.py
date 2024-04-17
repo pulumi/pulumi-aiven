@@ -301,6 +301,27 @@ class KafkaTopic(pulumi.CustomResource):
         """
         The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytesttopic = aiven.KafkaTopic("mytesttopic",
+            project=myproject["project"],
+            service_name=myservice["serviceName"],
+            topic_name="<TOPIC_NAME>",
+            partitions=5,
+            replication=3,
+            termination_protection=True,
+            config=aiven.KafkaTopicConfigArgs(
+                flush_ms="10",
+                cleanup_policy="compact,delete",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         ```sh
@@ -327,6 +348,27 @@ class KafkaTopic(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        mytesttopic = aiven.KafkaTopic("mytesttopic",
+            project=myproject["project"],
+            service_name=myservice["serviceName"],
+            topic_name="<TOPIC_NAME>",
+            partitions=5,
+            replication=3,
+            termination_protection=True,
+            config=aiven.KafkaTopicConfigArgs(
+                flush_ms="10",
+                cleanup_policy="compact,delete",
+            ))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

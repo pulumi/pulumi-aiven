@@ -14,9 +14,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const clickhouseDb = new aiven.ClickhouseDatabase("clickhouseDb", {
- *     project: aiven_clickhouse.ch.project,
- *     serviceName: aiven_clickhouse.ch.service_name,
+ * const clickhouseDb = new aiven.ClickhouseDatabase("clickhouse_db", {
+ *     project: ch.project,
+ *     serviceName: ch.serviceName,
+ *     name: "my-ch-db",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

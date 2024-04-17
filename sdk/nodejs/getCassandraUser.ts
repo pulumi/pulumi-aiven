@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const user = aiven.getCassandraUser({
- *     project: "my-project",
  *     serviceName: "my-service",
+ *     project: "my-project",
  *     username: "user1",
  * });
  * ```
@@ -98,8 +98,8 @@ export interface GetCassandraUserResult {
  * import * as aiven from "@pulumi/aiven";
  *
  * const user = aiven.getCassandraUser({
- *     project: "my-project",
  *     serviceName: "my-service",
+ *     project: "my-project",
  *     username: "user1",
  * });
  * ```

@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewKafkaMirrorMaker(ctx, "mm1", &aiven.KafkaMirrorMakerArgs{
-//				Project:     pulumi.Any(data.Aiven_project.Pr1.Project),
+//				Project:     pulumi.Any(pr1.Project),
 //				CloudName:   pulumi.String("google-europe-west1"),
 //				Plan:        pulumi.String("startup-4"),
 //				ServiceName: pulumi.String("my-mm1"),

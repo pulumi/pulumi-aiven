@@ -62,10 +62,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var myIntegrationMetrics = new ServiceIntegration(&#34;myIntegrationMetrics&#34;, ServiceIntegrationArgs.builder()        
- *             .project(aiven_project.myproject().project())
+ *             .project(myproject.project())
  *             .integrationType(&#34;metrics&#34;)
- *             .sourceServiceName(aiven_kafka.kfk1().service_name())
- *             .destinationServiceName(aiven_m3db.m3db().service_name())
+ *             .sourceServiceName(kfk1.serviceName())
+ *             .destinationServiceName(m3db.serviceName())
  *             .build());
  * 
  *     }
