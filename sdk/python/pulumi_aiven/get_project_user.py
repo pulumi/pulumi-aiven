@@ -100,7 +100,6 @@ def get_project_user(email: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -108,7 +107,6 @@ def get_project_user(email: Optional[str] = None,
     mytestuser = aiven.get_project_user(project=myproject["project"],
         email="john.doe@example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str email: Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
@@ -137,7 +135,6 @@ def get_project_user_output(email: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -145,7 +142,6 @@ def get_project_user_output(email: Optional[pulumi.Input[str]] = None,
     mytestuser = aiven.get_project_user(project=myproject["project"],
         email="john.doe@example.com")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str email: Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.

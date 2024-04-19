@@ -210,7 +210,6 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -220,7 +219,6 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
         source_cluster=source["serviceName"],
         target_cluster=target["serviceName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -264,7 +262,6 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -274,7 +271,6 @@ def get_mirror_maker_replication_flow_output(project: Optional[pulumi.Input[str]
         source_cluster=source["serviceName"],
         target_cluster=target["serviceName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

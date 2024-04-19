@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     email: "john.doe@example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectUser(args: GetProjectUserArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectUserResult> {
 
@@ -74,7 +72,6 @@ export interface GetProjectUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -84,7 +81,6 @@ export interface GetProjectUserResult {
  *     email: "john.doe@example.com",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectUserOutput(args: GetProjectUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectUserResult> {
     return pulumi.output(args).apply((a: any) => getProjectUser(a, opts))

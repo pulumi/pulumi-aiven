@@ -151,7 +151,6 @@ class OrganizationalUnit(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -160,7 +159,6 @@ class OrganizationalUnit(pulumi.CustomResource):
             name="Example organizational unit",
             parent_id=main["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -184,7 +182,6 @@ class OrganizationalUnit(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -193,7 +190,6 @@ class OrganizationalUnit(pulumi.CustomResource):
             name="Example organizational unit",
             parent_id=main["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

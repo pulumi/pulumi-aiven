@@ -161,7 +161,6 @@ def get_redis_user(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -170,7 +169,6 @@ def get_redis_user(project: Optional[str] = None,
         project="my-project",
         username="user1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -207,7 +205,6 @@ def get_redis_user_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -216,7 +213,6 @@ def get_redis_user_output(project: Optional[pulumi.Input[str]] = None,
         project="my-project",
         username="user1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

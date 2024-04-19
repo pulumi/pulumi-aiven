@@ -134,7 +134,6 @@ class ClickhouseRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -151,7 +150,6 @@ class ClickhouseRole(pulumi.CustomResource):
             project=bar.project,
             role="writer")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,7 +174,6 @@ class ClickhouseRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -193,7 +190,6 @@ class ClickhouseRole(pulumi.CustomResource):
             project=bar.project,
             role="writer")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

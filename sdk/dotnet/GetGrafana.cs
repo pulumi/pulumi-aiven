@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGrafanaResult> InvokeAsync(GetGrafanaArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGrafanaResult> Invoke(GetGrafanaInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGrafanaResult>("aiven:index/getGrafana:getGrafana", args ?? new GetGrafanaInvokeArgs(), options.WithDefaults());

@@ -215,7 +215,6 @@ class FlinkApplication(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -225,7 +224,6 @@ class FlinkApplication(pulumi.CustomResource):
             service_name="flink-service-1",
             name="my-flink-app")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -250,7 +248,6 @@ class FlinkApplication(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -260,7 +257,6 @@ class FlinkApplication(pulumi.CustomResource):
             service_name="flink-service-1",
             name="my-flink-app")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "my-gr1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): Promise<GetGrafanaResult> {
 
@@ -172,7 +170,6 @@ export interface GetGrafanaResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -182,7 +179,6 @@ export interface GetGrafanaResult {
  *     serviceName: "my-gr1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGrafanaResult> {
     return pulumi.output(args).apply((a: any) => getGrafana(a, opts))

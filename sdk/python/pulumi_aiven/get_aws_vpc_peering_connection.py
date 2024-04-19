@@ -138,7 +138,6 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -152,7 +151,6 @@ def get_aws_vpc_peering_connection(aws_account_id: Optional[str] = None,
         aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
         aws_vpc_region="aws-us-east-2"))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: AWS account ID. Changing this property forces recreation of the resource.
@@ -190,7 +188,6 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -204,7 +201,6 @@ def get_aws_vpc_peering_connection_output(aws_account_id: Optional[pulumi.Input[
         aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
         aws_vpc_region="aws-us-east-2"))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aws_account_id: AWS account ID. Changing this property forces recreation of the resource.

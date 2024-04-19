@@ -100,14 +100,12 @@ def get_organization(id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
 
     main = aiven.get_organization(name="Example organization")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: ID of the organization.
@@ -136,14 +134,12 @@ def get_organization_output(id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
 
     main = aiven.get_organization(name="Example organization")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str id: ID of the organization.

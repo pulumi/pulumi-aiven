@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFlinkResult> InvokeAsync(GetFlinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFlinkResult> Invoke(GetFlinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlinkResult>("aiven:index/getFlink:getFlink", args ?? new GetFlinkInvokeArgs(), options.WithDefaults());

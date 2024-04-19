@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMirrorMakerReplicationFlowResult> InvokeAsync(GetMirrorMakerReplicationFlowArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowArgs(), options.WithDefaults());
@@ -45,7 +43,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -64,7 +61,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMirrorMakerReplicationFlowResult> Invoke(GetMirrorMakerReplicationFlowInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMirrorMakerReplicationFlowResult>("aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow", args ?? new GetMirrorMakerReplicationFlowInvokeArgs(), options.WithDefaults());

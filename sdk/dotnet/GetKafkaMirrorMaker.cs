@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKafkaMirrorMakerResult> InvokeAsync(GetKafkaMirrorMakerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKafkaMirrorMakerResult> Invoke(GetKafkaMirrorMakerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaMirrorMakerResult>("aiven:index/getKafkaMirrorMaker:getKafkaMirrorMaker", args ?? new GetKafkaMirrorMakerInvokeArgs(), options.WithDefaults());

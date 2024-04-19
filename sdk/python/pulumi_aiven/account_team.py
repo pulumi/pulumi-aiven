@@ -156,7 +156,6 @@ class AccountTeam(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -165,7 +164,6 @@ class AccountTeam(pulumi.CustomResource):
             account_id=accoun_t__resourc_e__name["accountId"],
             name="Example team")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -194,7 +192,6 @@ class AccountTeam(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -203,7 +200,6 @@ class AccountTeam(pulumi.CustomResource):
             account_id=accoun_t__resourc_e__name["accountId"],
             name="Example team")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

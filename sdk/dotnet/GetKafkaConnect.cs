@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKafkaConnectResult> InvokeAsync(GetKafkaConnectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKafkaConnectResult> Invoke(GetKafkaConnectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKafkaConnectResult>("aiven:index/getKafkaConnect:getKafkaConnect", args ?? new GetKafkaConnectInvokeArgs(), options.WithDefaults());

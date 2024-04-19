@@ -752,7 +752,6 @@ class Clickhouse(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -765,7 +764,6 @@ class Clickhouse(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -802,7 +800,6 @@ class Clickhouse(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -815,7 +812,6 @@ class Clickhouse(pulumi.CustomResource):
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

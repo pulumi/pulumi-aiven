@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     principals: ["arn:aws:iam::012345678901:user/mwf"],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

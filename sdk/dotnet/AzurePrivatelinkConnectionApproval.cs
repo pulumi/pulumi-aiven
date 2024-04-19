@@ -14,7 +14,6 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -87,7 +86,7 @@ namespace Pulumi.Aiven
     ///     {
     ///         DependsOn =
     ///         {
-    ///             privatelink, 
+    ///             privatelink,
     ///         },
     ///     });
     /// 
@@ -100,7 +99,6 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

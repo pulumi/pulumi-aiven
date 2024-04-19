@@ -124,7 +124,6 @@ def get_opensearch_security_plugin_config(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -132,7 +131,6 @@ def get_opensearch_security_plugin_config(project: Optional[str] = None,
     os_sec_config = aiven.get_opensearch_security_plugin_config(project=os_project["project"],
         service_name=os["serviceName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -163,7 +161,6 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -171,7 +168,6 @@ def get_opensearch_security_plugin_config_output(project: Optional[pulumi.Input[
     os_sec_config = aiven.get_opensearch_security_plugin_config(project=os_project["project"],
         service_name=os["serviceName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

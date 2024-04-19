@@ -769,7 +769,6 @@ class Flink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -785,7 +784,6 @@ class Flink(pulumi.CustomResource):
                 flink_version="1.16",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -823,7 +821,6 @@ class Flink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -839,7 +836,6 @@ class Flink(pulumi.CustomResource):
                 flink_version="1.16",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
