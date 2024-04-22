@@ -87,7 +87,7 @@ namespace Pulumi.Aiven
     ///     {
     ///         DependsOn =
     ///         {
-    ///             privatelink, 
+    ///             privatelink,
     ///         },
     ///     });
     /// 
