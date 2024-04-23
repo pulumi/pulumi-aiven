@@ -19,14 +19,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     public static final PgPgUserConfigMigrationArgs Empty = new PgPgUserConfigMigrationArgs();
 
     /**
-     * Primary PostgreSQL database name
+     * Database name for bootstrapping the initial connection.
      * 
      */
     @Import(name="dbname")
     private @Nullable Output<String> dbname;
 
     /**
-     * @return Primary PostgreSQL database name
+     * @return Database name for bootstrapping the initial connection.
      * 
      */
     public Optional<Output<String>> dbname() {
@@ -79,14 +79,14 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * PostgreSQL admin user password
+     * Password for authentication with the server where to migrate data from.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return PostgreSQL admin user password
+     * @return Password for authentication with the server where to migrate data from.
      * 
      */
     public Optional<Output<String>> password() {
@@ -170,7 +170,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dbname Primary PostgreSQL database name
+         * @param dbname Database name for bootstrapping the initial connection.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param dbname Primary PostgreSQL database name
+         * @param dbname Database name for bootstrapping the initial connection.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param password PostgreSQL admin user password
+         * @param password Password for authentication with the server where to migrate data from.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class PgPgUserConfigMigrationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param password PostgreSQL admin user password
+         * @param password Password for authentication with the server where to migrate data from.
          * 
          * @return builder
          * 

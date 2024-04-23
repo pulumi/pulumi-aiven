@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * @return OpenSearch settings
+     * @return Enable opensearch.
      * 
      */
     private @Nullable Boolean opensearch;
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Enable opensearch_dashboards.
      * 
      */
     private @Nullable Boolean opensearchDashboards;
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     private @Nullable Boolean prometheus;
 
     private OpenSearchOpensearchUserConfigPrivatelinkAccess() {}
     /**
-     * @return OpenSearch settings
+     * @return Enable opensearch.
      * 
      */
     public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Enable opensearch_dashboards.
      * 
      */
     public Optional<Boolean> opensearchDashboards() {
         return Optional.ofNullable(this.opensearchDashboards);
     }
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Boolean> prometheus() {

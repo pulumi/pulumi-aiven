@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigPrivateAccess
     {
         /// <summary>
-        /// postgresql.conf configuration values
+        /// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? Pg;
         /// <summary>
-        /// PGBouncer connection pooling settings
+        /// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? Pgbouncer;
         /// <summary>

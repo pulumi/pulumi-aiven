@@ -168,7 +168,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -191,7 +190,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
             enabled=True,
             extended_acl=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,7 +215,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -240,7 +237,6 @@ class OpenSearchAclConfig(pulumi.CustomResource):
             enabled=True,
             extended_acl=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

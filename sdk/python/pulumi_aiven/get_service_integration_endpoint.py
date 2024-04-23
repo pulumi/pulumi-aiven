@@ -257,7 +257,6 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -265,7 +264,6 @@ def get_service_integration_endpoint(endpoint_name: Optional[str] = None,
     myendpoint = aiven.get_service_integration_endpoint(project=myproject["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_name: Name of the service integration endpoint
@@ -307,7 +305,6 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -315,7 +312,6 @@ def get_service_integration_endpoint_output(endpoint_name: Optional[pulumi.Input
     myendpoint = aiven.get_service_integration_endpoint(project=myproject["project"],
         endpoint_name="<ENDPOINT_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_name: Name of the service integration endpoint

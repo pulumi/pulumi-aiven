@@ -149,7 +149,6 @@ def get_flink_application(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -158,7 +157,6 @@ def get_flink_application(name: Optional[str] = None,
         service_name="<SERVICE_NAME>",
         name="<APPLICATION_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Application name
@@ -194,7 +192,6 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -203,7 +200,6 @@ def get_flink_application_output(name: Optional[pulumi.Input[str]] = None,
         service_name="<SERVICE_NAME>",
         name="<APPLICATION_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Application name

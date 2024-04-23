@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -39,7 +38,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -118,7 +116,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly kafkaUserConfig!: pulumi.Output<outputs.KafkaKafkaUserConfig | undefined>;
     /**
-     * Kafka broker configuration values
+     * Kafka server provided values
      */
     public /*out*/ readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
     /**
@@ -184,7 +182,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -339,7 +337,7 @@ export interface KafkaState {
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
     /**
-     * Kafka broker configuration values
+     * Kafka server provided values
      */
     kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
     /**
@@ -405,7 +403,7 @@ export interface KafkaState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -483,7 +481,7 @@ export interface KafkaArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

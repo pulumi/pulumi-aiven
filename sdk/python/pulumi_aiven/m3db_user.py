@@ -183,7 +183,6 @@ class M3dbUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -194,7 +193,6 @@ class M3dbUser(pulumi.CustomResource):
             username="user-1",
             password="Test$1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,7 +218,6 @@ class M3dbUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -231,7 +228,6 @@ class M3dbUser(pulumi.CustomResource):
             username="user-1",
             password="Test$1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

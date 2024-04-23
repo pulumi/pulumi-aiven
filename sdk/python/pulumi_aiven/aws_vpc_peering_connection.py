@@ -214,7 +214,6 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -229,7 +228,6 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
             aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
             aws_vpc_region="aws-us-east-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -255,7 +253,6 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -270,7 +267,6 @@ class AwsVpcPeeringConnection(pulumi.CustomResource):
             aws_vpc_id="vpc-1a2b3c4d5e6f7g8h9",
             aws_vpc_region="aws-us-east-2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

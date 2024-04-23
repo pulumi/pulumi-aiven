@@ -123,14 +123,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * Wait for up to the given delay to allow batching records together. The default value is `0`.
      * 
      */
     @Import(name="producerLingerMs")
     private @Nullable Output<Integer> producerLingerMs;
 
     /**
-     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * @return Wait for up to the given delay to allow batching records together. The default value is `0`.
      * 
      */
     public Optional<Output<Integer>> producerLingerMs() {
@@ -138,14 +138,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
      * 
      */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
      * 
      */
     public Optional<Output<Integer>> producerMaxRequestSize() {
@@ -348,7 +348,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerLingerMs This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+         * @param producerLingerMs Wait for up to the given delay to allow batching records together. The default value is `0`.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerLingerMs This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+         * @param producerLingerMs Wait for up to the given delay to allow batching records together. The default value is `0`.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerMaxRequestSize This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerMaxRequestSize This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+         * @param producerMaxRequestSize The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
          * 
          * @return builder
          * 

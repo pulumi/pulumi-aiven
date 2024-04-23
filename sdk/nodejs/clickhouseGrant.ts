@@ -16,7 +16,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -67,7 +66,6 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class ClickhouseGrant extends pulumi.CustomResource {
     /**
@@ -106,7 +104,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly role!: pulumi.Output<string | undefined>;
     /**
@@ -174,7 +172,7 @@ export interface ClickhouseGrantState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**
@@ -204,7 +202,7 @@ export interface ClickhouseGrantArgs {
      */
     project: pulumi.Input<string>;
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     role?: pulumi.Input<string>;
     /**

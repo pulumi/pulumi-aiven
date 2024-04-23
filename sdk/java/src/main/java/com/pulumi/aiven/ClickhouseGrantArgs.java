@@ -50,14 +50,14 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> role() {
@@ -191,7 +191,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param role The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class ClickhouseGrantArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param role The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param role The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

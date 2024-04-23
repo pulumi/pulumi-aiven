@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigMigration
     {
         /// <summary>
-        /// Primary PostgreSQL database name
+        /// Database name for bootstrapping the initial connection.
         /// </summary>
         public readonly string? Dbname;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Method;
         /// <summary>
-        /// PostgreSQL admin user password
+        /// Password for authentication with the server where to migrate data from.
         /// </summary>
         public readonly string? Password;
         /// <summary>

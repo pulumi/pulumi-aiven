@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -24,7 +23,6 @@ import * as utilities from "./utilities";
  *     kafkaAuthenticationMethod: "certificate",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceComponent(args: GetServiceComponentArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceComponentResult> {
 
@@ -126,7 +124,6 @@ export interface GetServiceComponentResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -139,7 +136,6 @@ export interface GetServiceComponentResult {
  *     kafkaAuthenticationMethod: "certificate",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceComponentOutput(args: GetServiceComponentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceComponentResult> {
     return pulumi.output(args).apply((a: any) => getServiceComponent(a, opts))

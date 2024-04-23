@@ -127,7 +127,6 @@ def get_kafka_acl(permission: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -138,7 +137,6 @@ def get_kafka_acl(permission: Optional[str] = None,
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.
@@ -178,7 +176,6 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -189,7 +186,6 @@ def get_kafka_acl_output(permission: Optional[pulumi.Input[str]] = None,
         permission="<PERMISSON>",
         username="<USERNAME_PATTERN>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str permission: Kafka permission to grant. The possible values are `admin`, `read`, `readwrite` and `write`. Changing this property forces recreation of the resource.

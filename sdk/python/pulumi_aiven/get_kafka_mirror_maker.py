@@ -389,7 +389,6 @@ def get_kafka_mirror_maker(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -397,7 +396,6 @@ def get_kafka_mirror_maker(project: Optional[str] = None,
     mm1 = aiven.get_kafka_mirror_maker(project=pr1["project"],
         service_name="my-mm1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -450,7 +448,6 @@ def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -458,7 +455,6 @@ def get_kafka_mirror_maker_output(project: Optional[pulumi.Input[str]] = None,
     mm1 = aiven.get_kafka_mirror_maker(project=pr1["project"],
         service_name="my-mm1")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

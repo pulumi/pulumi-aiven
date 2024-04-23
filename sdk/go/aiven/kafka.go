@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,7 +58,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -91,7 +89,7 @@ type Kafka struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
-	// Kafka broker configuration values
+	// Kafka server provided values
 	Kafkas KafkaKafkaArrayOutput `pulumi:"kafkas"`
 	// Switch the service to use Karapace for schema registry and REST proxy
 	//
@@ -125,7 +123,7 @@ type Kafka struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaTagArrayOutput `pulumi:"tags"`
@@ -201,7 +199,7 @@ type kafkaState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
-	// Kafka broker configuration values
+	// Kafka server provided values
 	Kafkas []KafkaKafka `pulumi:"kafkas"`
 	// Switch the service to use Karapace for schema registry and REST proxy
 	//
@@ -235,7 +233,7 @@ type kafkaState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []KafkaTag `pulumi:"tags"`
@@ -268,7 +266,7 @@ type KafkaState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
-	// Kafka broker configuration values
+	// Kafka server provided values
 	Kafkas KafkaKafkaArrayInput
 	// Switch the service to use Karapace for schema registry and REST proxy
 	//
@@ -302,7 +300,7 @@ type KafkaState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaTagArrayInput
@@ -347,7 +345,7 @@ type kafkaArgs struct {
 	ServiceIntegrations []KafkaServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []KafkaTag `pulumi:"tags"`
@@ -389,7 +387,7 @@ type KafkaArgs struct {
 	ServiceIntegrations KafkaServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaTagArrayInput
@@ -538,7 +536,7 @@ func (o KafkaOutput) KafkaUserConfig() KafkaKafkaUserConfigPtrOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaUserConfigPtrOutput { return v.KafkaUserConfig }).(KafkaKafkaUserConfigPtrOutput)
 }
 
-// Kafka broker configuration values
+// Kafka server provided values
 func (o KafkaOutput) Kafkas() KafkaKafkaArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaArrayOutput { return v.Kafkas }).(KafkaKafkaArrayOutput)
 }
@@ -620,7 +618,7 @@ func (o KafkaOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Use static public IP addresses.
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o KafkaOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

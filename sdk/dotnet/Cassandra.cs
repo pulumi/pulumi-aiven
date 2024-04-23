@@ -14,7 +14,6 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -67,7 +65,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.CassandraCassandraUserConfig?> CassandraUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// cassandra configuration values
+        /// Cassandra server provided values
         /// </summary>
         [Output("cassandras")]
         public Output<ImmutableArray<Outputs.CassandraCassandra>> CassandraServer { get; private set; } = null!;
@@ -199,7 +197,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -349,7 +347,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -411,7 +409,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.CassandraCassandraGetArgs>? _cassandras;
 
         /// <summary>
-        /// cassandra configuration values
+        /// Cassandra server provided values
         /// </summary>
         public InputList<Inputs.CassandraCassandraGetArgs> CassandraServer
         {
@@ -581,7 +579,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {

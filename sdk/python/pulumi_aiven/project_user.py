@@ -150,7 +150,6 @@ class ProjectUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -160,7 +159,6 @@ class ProjectUser(pulumi.CustomResource):
             email="john.doe@example.com",
             member_type="admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -185,7 +183,6 @@ class ProjectUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -195,7 +192,6 @@ class ProjectUser(pulumi.CustomResource):
             email="john.doe@example.com",
             member_type="admin")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

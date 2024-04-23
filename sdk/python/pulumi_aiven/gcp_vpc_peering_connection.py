@@ -182,7 +182,6 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -192,7 +191,6 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
             gcp_project_id="xxxx",
             peer_vpc="xxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -217,7 +215,6 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -227,7 +224,6 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
             gcp_project_id="xxxx",
             peer_vpc="xxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

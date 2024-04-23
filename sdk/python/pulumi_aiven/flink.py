@@ -40,13 +40,13 @@ class FlinkArgs:
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input['FlinkFlinkArgs'] flink: Enable flink.
+        :param pulumi.Input['FlinkFlinkArgs'] flink: Flink server provided values
         :param pulumi.Input['FlinkFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -163,7 +163,7 @@ class FlinkArgs:
     @pulumi.getter
     def flink(self) -> Optional[pulumi.Input['FlinkFlinkArgs']]:
         """
-        Enable flink.
+        Flink server provided values
         """
         return pulumi.get(self, "flink")
 
@@ -235,7 +235,7 @@ class FlinkArgs:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -321,7 +321,7 @@ class _FlinkState:
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input['FlinkFlinkArgs'] flink: Enable flink.
+        :param pulumi.Input['FlinkFlinkArgs'] flink: Flink server provided values
         :param pulumi.Input['FlinkFlinkUserConfigArgs'] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -337,7 +337,7 @@ class _FlinkState:
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -505,7 +505,7 @@ class _FlinkState:
     @pulumi.getter
     def flink(self) -> Optional[pulumi.Input['FlinkFlinkArgs']]:
         """
-        Enable flink.
+        Flink server provided values
         """
         return pulumi.get(self, "flink")
 
@@ -697,7 +697,7 @@ class _FlinkState:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -769,7 +769,6 @@ class Flink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -785,7 +784,6 @@ class Flink(pulumi.CustomResource):
                 flink_version="1.16",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -798,7 +796,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
-        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Enable flink.
+        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Flink server provided values
         :param pulumi.Input[pulumi.InputType['FlinkFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -807,7 +805,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -823,7 +821,6 @@ class Flink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -839,7 +836,6 @@ class Flink(pulumi.CustomResource):
                 flink_version="1.16",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -976,7 +972,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
-        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Enable flink.
+        :param pulumi.Input[pulumi.InputType['FlinkFlinkArgs']] flink: Flink server provided values
         :param pulumi.Input[pulumi.InputType['FlinkFlinkUserConfigArgs']] flink_user_config: Flink user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -992,7 +988,7 @@ class Flink(pulumi.CustomResource):
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FlinkTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1102,7 +1098,7 @@ class Flink(pulumi.CustomResource):
     @pulumi.getter
     def flink(self) -> pulumi.Output['outputs.FlinkFlink']:
         """
-        Enable flink.
+        Flink server provided values
         """
         return pulumi.get(self, "flink")
 
@@ -1230,7 +1226,7 @@ class Flink(pulumi.CustomResource):
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 

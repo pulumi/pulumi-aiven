@@ -12,17 +12,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafkaUserConfigPrivateAccess {
     /**
-     * @return Kafka broker configuration values
+     * @return Allow clients to connect to kafka with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean kafka;
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean kafkaConnect;
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean kafkaRest;
@@ -39,21 +39,21 @@ public final class KafkaKafkaUserConfigPrivateAccess {
 
     private KafkaKafkaUserConfigPrivateAccess() {}
     /**
-     * @return Kafka broker configuration values
+     * @return Allow clients to connect to kafka with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> kafka() {
         return Optional.ofNullable(this.kafka);
     }
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> kafkaRest() {

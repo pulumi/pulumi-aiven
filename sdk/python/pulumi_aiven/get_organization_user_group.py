@@ -124,7 +124,6 @@ def get_organization_user_group(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -132,7 +131,6 @@ def get_organization_user_group(name: Optional[str] = None,
     example = aiven.get_organization_user_group(name="Example group",
         organization_id=main["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the user group. Changing this property forces recreation of the resource.
@@ -163,7 +161,6 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -171,7 +168,6 @@ def get_organization_user_group_output(name: Optional[pulumi.Input[str]] = None,
     example = aiven.get_organization_user_group(name="Example group",
         organization_id=main["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: The name of the user group. Changing this property forces recreation of the resource.

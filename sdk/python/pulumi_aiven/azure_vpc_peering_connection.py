@@ -278,7 +278,6 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -295,7 +294,6 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
             peer_azure_app_id="00000000-0000-0000-0000-000000000000",
             peer_azure_tenant_id="00000000-0000-0000-0000-000000000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -323,7 +321,6 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -340,7 +337,6 @@ class AzureVpcPeeringConnection(pulumi.CustomResource):
             peer_azure_app_id="00000000-0000-0000-0000-000000000000",
             peer_azure_tenant_id="00000000-0000-0000-0000-000000000000")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

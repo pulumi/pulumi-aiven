@@ -55,14 +55,14 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * cassandra configuration values
+     * Cassandra server provided values
      * 
      */
     @Import(name="cassandras")
     private @Nullable Output<List<CassandraCassandraArgs>> cassandras;
 
     /**
-     * @return cassandra configuration values
+     * @return Cassandra server provided values
      * 
      */
     public Optional<Output<List<CassandraCassandraArgs>>> cassandras() {
@@ -393,14 +393,14 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<List<String>> staticIps;
 
     /**
-     * @return Use static public IP addresses.
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Optional<Output<List<String>>> staticIps() {
@@ -546,7 +546,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandras cassandra configuration values
+         * @param cassandras Cassandra server provided values
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandras cassandra configuration values
+         * @param cassandras Cassandra server provided values
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cassandras cassandra configuration values
+         * @param cassandras Cassandra server provided values
          * 
          * @return builder
          * 
@@ -1046,7 +1046,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Use static public IP addresses.
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -1057,7 +1057,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Use static public IP addresses.
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -1067,7 +1067,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Use static public IP addresses.
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 

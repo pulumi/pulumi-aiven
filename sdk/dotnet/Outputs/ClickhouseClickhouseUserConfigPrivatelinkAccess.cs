@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ClickhouseClickhouseUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable clickhouse.
         /// </summary>
         public readonly bool? Clickhouse;
         /// <summary>
-        /// Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable clickhouse_https.
         /// </summary>
         public readonly bool? ClickhouseHttps;
         /// <summary>
-        /// Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable clickhouse_mysql.
         /// </summary>
         public readonly bool? ClickhouseMysql;
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         public readonly bool? Prometheus;
 

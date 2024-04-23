@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
     public static final OpenSearchOpensearchUserConfigPublicAccessArgs Empty = new OpenSearchOpensearchUserConfigPublicAccessArgs();
 
     /**
-     * OpenSearch settings
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return OpenSearch settings
+     * @return Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * OpenSearch Dashboards settings
+     * Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> opensearchDashboards() {
@@ -46,14 +46,14 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> prometheus() {
@@ -87,7 +87,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearch OpenSearch settings
+         * @param opensearch Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearch OpenSearch settings
+         * @param opensearch Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings
+         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings
+         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OpenSearchOpensearchUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

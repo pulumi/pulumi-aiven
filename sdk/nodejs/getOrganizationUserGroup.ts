@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     organizationId: main.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationUserGroup(args: GetOrganizationUserGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationUserGroupResult> {
 
@@ -82,7 +80,6 @@ export interface GetOrganizationUserGroupResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -92,7 +89,6 @@ export interface GetOrganizationUserGroupResult {
  *     organizationId: main.id,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationUserGroupOutput(args: GetOrganizationUserGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationUserGroupResult> {
     return pulumi.output(args).apply((a: any) => getOrganizationUserGroup(a, opts))

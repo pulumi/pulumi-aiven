@@ -135,7 +135,6 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -145,7 +144,6 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
             service_name=kafka_service1["serviceName"],
             compatibility_level="BACKWARD")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -170,7 +168,6 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -180,7 +177,6 @@ class KafkaSchemaConfiguration(pulumi.CustomResource):
             service_name=kafka_service1["serviceName"],
             compatibility_level="BACKWARD")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

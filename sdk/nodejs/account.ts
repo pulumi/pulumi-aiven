@@ -11,14 +11,12 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
  * const account1 = new aiven.Account("account1", {name: "<ACCOUNT_NAME>"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

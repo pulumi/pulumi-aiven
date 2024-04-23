@@ -303,7 +303,6 @@ class KafkaTopic(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -320,7 +319,6 @@ class KafkaTopic(pulumi.CustomResource):
                 cleanup_policy="compact,delete",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -351,7 +349,6 @@ class KafkaTopic(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -368,7 +365,6 @@ class KafkaTopic(pulumi.CustomResource):
                 cleanup_policy="compact,delete",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

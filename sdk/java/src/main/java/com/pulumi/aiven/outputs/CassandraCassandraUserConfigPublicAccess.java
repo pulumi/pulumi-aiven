@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CassandraCassandraUserConfigPublicAccess {
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean prometheus;
 
     private CassandraCassandraUserConfigPublicAccess() {}
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> prometheus() {

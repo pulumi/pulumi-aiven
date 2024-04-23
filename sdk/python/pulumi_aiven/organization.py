@@ -146,14 +146,12 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         main = aiven.Organization("main", name="Example organization")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,14 +174,12 @@ class Organization(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         main = aiven.Organization("main", name="Example organization")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

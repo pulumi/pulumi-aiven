@@ -964,7 +964,7 @@ class CassandraCassandraUserConfigPublicAccess(dict):
     def __init__(__self__, *,
                  prometheus: Optional[bool] = None):
         """
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if prometheus is not None:
             pulumi.set(__self__, "prometheus", prometheus)
@@ -973,7 +973,7 @@ class CassandraCassandraUserConfigPublicAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "prometheus")
 
@@ -1514,10 +1514,10 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccess(dict):
                  clickhouse_mysql: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool clickhouse: Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool clickhouse_https: Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool clickhouse_mysql: Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool clickhouse: Enable clickhouse.
+        :param bool clickhouse_https: Enable clickhouse_https.
+        :param bool clickhouse_mysql: Enable clickhouse_mysql.
+        :param bool prometheus: Enable prometheus.
         """
         if clickhouse is not None:
             pulumi.set(__self__, "clickhouse", clickhouse)
@@ -1532,7 +1532,7 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def clickhouse(self) -> Optional[bool]:
         """
-        Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable clickhouse.
         """
         return pulumi.get(self, "clickhouse")
 
@@ -1540,7 +1540,7 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="clickhouseHttps")
     def clickhouse_https(self) -> Optional[bool]:
         """
-        Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable clickhouse_https.
         """
         return pulumi.get(self, "clickhouse_https")
 
@@ -1548,7 +1548,7 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="clickhouseMysql")
     def clickhouse_mysql(self) -> Optional[bool]:
         """
-        Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable clickhouse_mysql.
         """
         return pulumi.get(self, "clickhouse_mysql")
 
@@ -1556,7 +1556,7 @@ class ClickhouseClickhouseUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable prometheus.
         """
         return pulumi.get(self, "prometheus")
 
@@ -1588,10 +1588,10 @@ class ClickhouseClickhouseUserConfigPublicAccess(dict):
                  clickhouse_mysql: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool clickhouse: Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool clickhouse_https: Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool clickhouse_mysql: Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool clickhouse: Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool clickhouse_https: Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool clickhouse_mysql: Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if clickhouse is not None:
             pulumi.set(__self__, "clickhouse", clickhouse)
@@ -1606,7 +1606,7 @@ class ClickhouseClickhouseUserConfigPublicAccess(dict):
     @pulumi.getter
     def clickhouse(self) -> Optional[bool]:
         """
-        Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "clickhouse")
 
@@ -1614,7 +1614,7 @@ class ClickhouseClickhouseUserConfigPublicAccess(dict):
     @pulumi.getter(name="clickhouseHttps")
     def clickhouse_https(self) -> Optional[bool]:
         """
-        Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "clickhouse_https")
 
@@ -1622,7 +1622,7 @@ class ClickhouseClickhouseUserConfigPublicAccess(dict):
     @pulumi.getter(name="clickhouseMysql")
     def clickhouse_mysql(self) -> Optional[bool]:
         """
-        Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "clickhouse_mysql")
 
@@ -1630,7 +1630,7 @@ class ClickhouseClickhouseUserConfigPublicAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "prometheus")
 
@@ -8164,8 +8164,8 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         :param bool name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
         :param str producer_acks: The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
-        :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
-        :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+        :param int producer_linger_ms: Wait for up to the given delay to allow batching records together. The default value is `0`.
+        :param int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
         :param int simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
         """
         if consumer_enable_auto_commit is not None:
@@ -8249,7 +8249,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="producerLingerMs")
     def producer_linger_ms(self) -> Optional[int]:
         """
-        This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+        Wait for up to the given delay to allow batching records together. The default value is `0`.
         """
         return pulumi.get(self, "producer_linger_ms")
 
@@ -8257,7 +8257,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="producerMaxRequestSize")
     def producer_max_request_size(self) -> Optional[int]:
         """
-        This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+        The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
         """
         return pulumi.get(self, "producer_max_request_size")
 
@@ -8300,9 +8300,9 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
                  prometheus: Optional[bool] = None,
                  schema_registry: Optional[bool] = None):
         """
-        :param bool kafka: Kafka broker configuration values
-        :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
-        :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
+        :param bool kafka: Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool kafka_connect: Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool kafka_rest: Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         :param bool schema_registry: Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
@@ -8321,7 +8321,7 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[bool]:
         """
-        Kafka broker configuration values
+        Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "kafka")
 
@@ -8329,7 +8329,7 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[bool]:
         """
-        Enable Kafka Connect service. The default value is `false`.
+        Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -8337,7 +8337,7 @@ class KafkaKafkaUserConfigPrivateAccess(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[bool]:
         """
-        Enable Kafka-REST service. The default value is `false`.
+        Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -8390,11 +8390,11 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
                  schema_registry: Optional[bool] = None):
         """
         :param bool jolokia: Enable jolokia.
-        :param bool kafka: Kafka broker configuration values
-        :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
-        :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool schema_registry: Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool kafka: Enable kafka.
+        :param bool kafka_connect: Enable kafka_connect.
+        :param bool kafka_rest: Enable kafka_rest.
+        :param bool prometheus: Enable prometheus.
+        :param bool schema_registry: Enable schema_registry.
         """
         if jolokia is not None:
             pulumi.set(__self__, "jolokia", jolokia)
@@ -8421,7 +8421,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[bool]:
         """
-        Kafka broker configuration values
+        Enable kafka.
         """
         return pulumi.get(self, "kafka")
 
@@ -8429,7 +8429,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[bool]:
         """
-        Enable Kafka Connect service. The default value is `false`.
+        Enable kafka_connect.
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -8437,7 +8437,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[bool]:
         """
-        Enable Kafka-REST service. The default value is `false`.
+        Enable kafka_rest.
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -8445,7 +8445,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable prometheus.
         """
         return pulumi.get(self, "prometheus")
 
@@ -8453,7 +8453,7 @@ class KafkaKafkaUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[bool]:
         """
-        Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable schema_registry.
         """
         return pulumi.get(self, "schema_registry")
 
@@ -8488,11 +8488,11 @@ class KafkaKafkaUserConfigPublicAccess(dict):
                  prometheus: Optional[bool] = None,
                  schema_registry: Optional[bool] = None):
         """
-        :param bool kafka: Kafka broker configuration values
-        :param bool kafka_connect: Enable Kafka Connect service. The default value is `false`.
-        :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
-        :param bool schema_registry: Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool kafka: Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool kafka_connect: Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool kafka_rest: Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool schema_registry: Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if kafka is not None:
             pulumi.set(__self__, "kafka", kafka)
@@ -8509,7 +8509,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter
     def kafka(self) -> Optional[bool]:
         """
-        Kafka broker configuration values
+        Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "kafka")
 
@@ -8517,7 +8517,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter(name="kafkaConnect")
     def kafka_connect(self) -> Optional[bool]:
         """
-        Enable Kafka Connect service. The default value is `false`.
+        Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "kafka_connect")
 
@@ -8525,7 +8525,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter(name="kafkaRest")
     def kafka_rest(self) -> Optional[bool]:
         """
-        Enable Kafka-REST service. The default value is `false`.
+        Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "kafka_rest")
 
@@ -8533,7 +8533,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "prometheus")
 
@@ -8541,7 +8541,7 @@ class KafkaKafkaUserConfigPublicAccess(dict):
     @pulumi.getter(name="schemaRegistry")
     def schema_registry(self) -> Optional[bool]:
         """
-        Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "schema_registry")
 
@@ -14221,10 +14221,10 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
         """
         :param int allowed_tries: The number of login attempts allowed before login is blocked.
         :param int block_expiry_seconds: The duration of time that login remains blocked after a failed login.
-        :param int max_blocked_clients: internal*authentication*backend*limiting.max*blocked_clients.
+        :param int max_blocked_clients: The maximum number of blocked IP addresses.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: internal*authentication*backend_limiting.type.
+        :param str type: The type of rate limiting.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -14259,7 +14259,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
     @pulumi.getter(name="maxBlockedClients")
     def max_blocked_clients(self) -> Optional[int]:
         """
-        internal*authentication*backend*limiting.max*blocked_clients.
+        The maximum number of blocked IP addresses.
         """
         return pulumi.get(self, "max_blocked_clients")
 
@@ -14283,7 +14283,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        internal*authentication*backend_limiting.type.
+        The type of rate limiting.
         """
         return pulumi.get(self, "type")
 
@@ -14314,7 +14314,7 @@ class OpenSearchOpensearchUserConfigOpensearchDashboards(dict):
                  max_old_space_size: Optional[int] = None,
                  opensearch_request_timeout: Optional[int] = None):
         """
-        :param bool enabled: Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        :param bool enabled: Enable or disable OpenSearch Dashboards. The default value is `true`.
         :param int max_old_space_size: Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
         :param int opensearch_request_timeout: Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
         """
@@ -14329,7 +14329,7 @@ class OpenSearchOpensearchUserConfigOpensearchDashboards(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        Enable or disable OpenSearch Dashboards. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -14374,8 +14374,8 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: OpenSearch settings
-        :param bool opensearch_dashboards: OpenSearch Dashboards settings
+        :param bool opensearch: Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool opensearch_dashboards: Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if opensearch is not None:
@@ -14389,7 +14389,7 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        OpenSearch settings
+        Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "opensearch")
 
@@ -14397,7 +14397,7 @@ class OpenSearchOpensearchUserConfigPrivateAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[bool]:
         """
-        OpenSearch Dashboards settings
+        Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -14434,9 +14434,9 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: OpenSearch settings
-        :param bool opensearch_dashboards: OpenSearch Dashboards settings
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool opensearch: Enable opensearch.
+        :param bool opensearch_dashboards: Enable opensearch_dashboards.
+        :param bool prometheus: Enable prometheus.
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -14449,7 +14449,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        OpenSearch settings
+        Enable opensearch.
         """
         return pulumi.get(self, "opensearch")
 
@@ -14457,7 +14457,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[bool]:
         """
-        OpenSearch Dashboards settings
+        Enable opensearch_dashboards.
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -14465,7 +14465,7 @@ class OpenSearchOpensearchUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable prometheus.
         """
         return pulumi.get(self, "prometheus")
 
@@ -14494,9 +14494,9 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
                  opensearch_dashboards: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool opensearch: OpenSearch settings
-        :param bool opensearch_dashboards: OpenSearch Dashboards settings
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool opensearch: Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool opensearch_dashboards: Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if opensearch is not None:
             pulumi.set(__self__, "opensearch", opensearch)
@@ -14509,7 +14509,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter
     def opensearch(self) -> Optional[bool]:
         """
-        OpenSearch settings
+        Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "opensearch")
 
@@ -14517,7 +14517,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter(name="opensearchDashboards")
     def opensearch_dashboards(self) -> Optional[bool]:
         """
-        OpenSearch Dashboards settings
+        Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "opensearch_dashboards")
 
@@ -14525,7 +14525,7 @@ class OpenSearchOpensearchUserConfigPublicAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "prometheus")
 
@@ -14568,13 +14568,13 @@ class OpenSearchOpensearchUserConfigSaml(dict):
                  roles_key: Optional[str] = None,
                  subject_key: Optional[str] = None):
         """
-        :param bool enabled: Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        :param bool enabled: Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
         :param str idp_entity_id: The unique identifier for the Identity Provider (IdP) entity that is used for SAML authentication. This value is typically provided by the IdP.
         :param str idp_metadata_url: The URL of the SAML metadata for the Identity Provider (IdP). This is used to configure SAML-based authentication with the IdP.
         :param str sp_entity_id: The unique identifier for the Service Provider (SP) entity that is used for SAML authentication. This value is typically provided by the SP.
         :param str idp_pemtrustedcas_content: This parameter specifies the PEM-encoded root certificate authority (CA) content for the SAML identity provider (IdP) server verification. The root CA content is used to verify the SSL/TLS certificate presented by the server.
-        :param str roles_key: The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
-        :param str subject_key: The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+        :param str roles_key: Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
+        :param str subject_key: Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "idp_entity_id", idp_entity_id)
@@ -14591,7 +14591,7 @@ class OpenSearchOpensearchUserConfigSaml(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -14631,7 +14631,7 @@ class OpenSearchOpensearchUserConfigSaml(dict):
     @pulumi.getter(name="rolesKey")
     def roles_key(self) -> Optional[str]:
         """
-        The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+        Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
         """
         return pulumi.get(self, "roles_key")
 
@@ -14639,7 +14639,7 @@ class OpenSearchOpensearchUserConfigSaml(dict):
     @pulumi.getter(name="subjectKey")
     def subject_key(self) -> Optional[str]:
         """
-        The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+        Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
         """
         return pulumi.get(self, "subject_key")
 
@@ -15683,10 +15683,10 @@ class PgPgUserConfigMigration(dict):
         """
         :param str host: Hostname or IP address of the server where to migrate data from.
         :param int port: Port number of the server where to migrate data from.
-        :param str dbname: Primary PostgreSQL database name
+        :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
         :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
-        :param str password: PostgreSQL admin user password
+        :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
         """
@@ -15725,7 +15725,7 @@ class PgPgUserConfigMigration(dict):
     @pulumi.getter
     def dbname(self) -> Optional[str]:
         """
-        Primary PostgreSQL database name
+        Database name for bootstrapping the initial connection.
         """
         return pulumi.get(self, "dbname")
 
@@ -15749,7 +15749,7 @@ class PgPgUserConfigMigration(dict):
     @pulumi.getter
     def password(self) -> Optional[str]:
         """
-        PostgreSQL admin user password
+        Password for authentication with the server where to migrate data from.
         """
         return pulumi.get(self, "password")
 
@@ -16984,8 +16984,8 @@ class PgPgUserConfigPrivateAccess(dict):
                  pgbouncer: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool pg: postgresql.conf configuration values
-        :param bool pgbouncer: PGBouncer connection pooling settings
+        :param bool pg: Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool pgbouncer: Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         if pg is not None:
@@ -16999,7 +16999,7 @@ class PgPgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[bool]:
         """
-        postgresql.conf configuration values
+        Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "pg")
 
@@ -17007,7 +17007,7 @@ class PgPgUserConfigPrivateAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[bool]:
         """
-        PGBouncer connection pooling settings
+        Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -17027,9 +17027,9 @@ class PgPgUserConfigPrivatelinkAccess(dict):
                  pgbouncer: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool pg: postgresql.conf configuration values
-        :param bool pgbouncer: PGBouncer connection pooling settings
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool pg: Enable pg.
+        :param bool pgbouncer: Enable pgbouncer.
+        :param bool prometheus: Enable prometheus.
         """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
@@ -17042,7 +17042,7 @@ class PgPgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[bool]:
         """
-        postgresql.conf configuration values
+        Enable pg.
         """
         return pulumi.get(self, "pg")
 
@@ -17050,7 +17050,7 @@ class PgPgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[bool]:
         """
-        PGBouncer connection pooling settings
+        Enable pgbouncer.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -17058,7 +17058,7 @@ class PgPgUserConfigPrivatelinkAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Enable prometheus.
         """
         return pulumi.get(self, "prometheus")
 
@@ -17070,9 +17070,9 @@ class PgPgUserConfigPublicAccess(dict):
                  pgbouncer: Optional[bool] = None,
                  prometheus: Optional[bool] = None):
         """
-        :param bool pg: postgresql.conf configuration values
-        :param bool pgbouncer: PGBouncer connection pooling settings
-        :param bool prometheus: Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        :param bool pg: Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool pgbouncer: Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
+        :param bool prometheus: Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         if pg is not None:
             pulumi.set(__self__, "pg", pg)
@@ -17085,7 +17085,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def pg(self) -> Optional[bool]:
         """
-        postgresql.conf configuration values
+        Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "pg")
 
@@ -17093,7 +17093,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def pgbouncer(self) -> Optional[bool]:
         """
-        PGBouncer connection pooling settings
+        Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "pgbouncer")
 
@@ -17101,7 +17101,7 @@ class PgPgUserConfigPublicAccess(dict):
     @pulumi.getter
     def prometheus(self) -> Optional[bool]:
         """
-        Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         """
         return pulumi.get(self, "prometheus")
 
@@ -18180,7 +18180,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
         :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Table columns
         :param str data_format: Message data format. The default value is `JSONEachRow`.
         :param str group_name: Kafka consumers group. The default value is `clickhouse`.
-        :param str name: Column name.
+        :param str name: Name of the table.
         :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Kafka topics
         :param str auto_offset_reset: Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
         :param str date_time_input_format: Method to read DateTime from text input formats. The default value is `basic`.
@@ -18241,7 +18241,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Column name.
+        Name of the table.
         """
         return pulumi.get(self, "name")
 
@@ -18352,7 +18352,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopic(dict):
     def __init__(__self__, *,
                  name: str):
         """
-        :param str name: Column name.
+        :param str name: Name of the topic.
         """
         pulumi.set(__self__, "name", name)
 
@@ -18360,7 +18360,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTableTopic(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Column name.
+        Name of the topic.
         """
         return pulumi.get(self, "name")
 

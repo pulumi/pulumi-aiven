@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "my-mysql1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMySql(args: GetMySqlArgs, opts?: pulumi.InvokeOptions): Promise<GetMySqlResult> {
 
@@ -172,7 +170,6 @@ export interface GetMySqlResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -182,7 +179,6 @@ export interface GetMySqlResult {
  *     serviceName: "my-mysql1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMySqlResult> {
     return pulumi.output(args).apply((a: any) => getMySql(a, opts))

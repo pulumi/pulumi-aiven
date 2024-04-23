@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     username: "user1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMysqlUser(args: GetMysqlUserArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlUserResult> {
 
@@ -96,7 +94,6 @@ export interface GetMysqlUserResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -107,7 +104,6 @@ export interface GetMysqlUserResult {
  *     username: "user1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMysqlUserOutput(args: GetMysqlUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlUserResult> {
     return pulumi.output(args).apply((a: any) => getMysqlUser(a, opts))

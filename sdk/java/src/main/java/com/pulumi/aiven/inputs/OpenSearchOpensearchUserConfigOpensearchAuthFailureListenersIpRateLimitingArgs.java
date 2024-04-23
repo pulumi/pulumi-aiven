@@ -47,14 +47,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * internal*authentication*backend*limiting.max*blocked_clients.
+     * The maximum number of blocked IP addresses.
      * 
      */
     @Import(name="maxBlockedClients")
     private @Nullable Output<Integer> maxBlockedClients;
 
     /**
-     * @return internal*authentication*backend*limiting.max*blocked_clients.
+     * @return The maximum number of blocked IP addresses.
      * 
      */
     public Optional<Output<Integer>> maxBlockedClients() {
@@ -92,14 +92,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * internal*authentication*backend_limiting.type.
+     * The type of rate limiting.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return internal*authentication*backend_limiting.type.
+     * @return The type of rate limiting.
      * 
      */
     public Optional<Output<String>> type() {
@@ -178,7 +178,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param maxBlockedClients internal*authentication*backend*limiting.max*blocked_clients.
+         * @param maxBlockedClients The maximum number of blocked IP addresses.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param maxBlockedClients internal*authentication*backend*limiting.max*blocked_clients.
+         * @param maxBlockedClients The maximum number of blocked IP addresses.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param type internal*authentication*backend_limiting.type.
+         * @param type The type of rate limiting.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param type internal*authentication*backend_limiting.type.
+         * @param type The type of rate limiting.
          * 
          * @return builder
          * 

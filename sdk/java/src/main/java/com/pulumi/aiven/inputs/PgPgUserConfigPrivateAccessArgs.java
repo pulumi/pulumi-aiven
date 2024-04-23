@@ -16,14 +16,14 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
     public static final PgPgUserConfigPrivateAccessArgs Empty = new PgPgUserConfigPrivateAccessArgs();
 
     /**
-     * postgresql.conf configuration values
+     * Allow clients to connect to pg with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="pg")
     private @Nullable Output<Boolean> pg;
 
     /**
-     * @return postgresql.conf configuration values
+     * @return Allow clients to connect to pg with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> pg() {
@@ -31,14 +31,14 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
     }
 
     /**
-     * PGBouncer connection pooling settings
+     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="pgbouncer")
     private @Nullable Output<Boolean> pgbouncer;
 
     /**
-     * @return PGBouncer connection pooling settings
+     * @return Allow clients to connect to pgbouncer with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> pgbouncer() {
@@ -87,7 +87,7 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pg postgresql.conf configuration values
+         * @param pg Allow clients to connect to pg with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pg postgresql.conf configuration values
+         * @param pg Allow clients to connect to pg with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings
+         * @param pgbouncer Allow clients to connect to pgbouncer with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class PgPgUserConfigPrivateAccessArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings
+         * @param pgbouncer Allow clients to connect to pgbouncer with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

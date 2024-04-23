@@ -220,14 +220,12 @@ def get_project(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
 
     myproject = aiven.get_project(project="<PROJECT_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
@@ -263,14 +261,12 @@ def get_project_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
 
     myproject = aiven.get_project(project="<PROJECT_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.

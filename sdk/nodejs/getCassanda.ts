@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassanda(args: GetCassandaArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandaResult> {
@@ -174,7 +172,6 @@ export interface GetCassandaResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -184,7 +181,6 @@ export interface GetCassandaResult {
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated aiven.getCassanda has been deprecated in favor of aiven.getCassandra */
 export function getCassandaOutput(args: GetCassandaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandaResult> {

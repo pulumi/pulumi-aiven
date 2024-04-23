@@ -42,11 +42,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? ProducerCompressionType;
         /// <summary>
-        /// This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+        /// Wait for up to the given delay to allow batching records together. The default value is `0`.
         /// </summary>
         public readonly int? ProducerLingerMs;
         /// <summary>
-        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+        /// The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
         /// </summary>
         public readonly int? ProducerMaxRequestSize;
         /// <summary>

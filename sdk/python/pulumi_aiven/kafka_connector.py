@@ -280,7 +280,6 @@ class KafkaConnector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -299,7 +298,6 @@ class KafkaConnector(pulumi.CustomResource):
                 "connection.password": os_service1["servicePassword"],
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,7 +323,6 @@ class KafkaConnector(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -344,7 +341,6 @@ class KafkaConnector(pulumi.CustomResource):
                 "connection.password": os_service1["servicePassword"],
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

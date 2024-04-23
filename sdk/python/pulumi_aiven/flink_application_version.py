@@ -388,7 +388,6 @@ class FlinkApplicationVersion(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -427,7 +426,6 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 integration_id=flink_to_kafka["integrationId"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -457,7 +455,6 @@ class FlinkApplicationVersion(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -496,7 +493,6 @@ class FlinkApplicationVersion(pulumi.CustomResource):
                 integration_id=flink_to_kafka["integrationId"],
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -23,7 +22,6 @@ import * as utilities from "./utilities";
  *     peerAzureTenantId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAzureVpcPeeringConnection(args: GetAzureVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureVpcPeeringConnectionResult> {
 
@@ -118,7 +116,6 @@ export interface GetAzureVpcPeeringConnectionResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -132,7 +129,6 @@ export interface GetAzureVpcPeeringConnectionResult {
  *     peerAzureTenantId: "00000000-0000-0000-0000-000000000000",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAzureVpcPeeringConnectionOutput(args: GetAzureVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVpcPeeringConnectionResult> {
     return pulumi.output(args).apply((a: any) => getAzureVpcPeeringConnection(a, opts))

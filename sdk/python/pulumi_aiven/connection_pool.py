@@ -281,7 +281,6 @@ class ConnectionPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -295,7 +294,6 @@ class ConnectionPool(pulumi.CustomResource):
             pool_size=10,
             username=mypguser["username"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -324,7 +322,6 @@ class ConnectionPool(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -338,7 +335,6 @@ class ConnectionPool(pulumi.CustomResource):
             pool_size=10,
             username=mypguser["username"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

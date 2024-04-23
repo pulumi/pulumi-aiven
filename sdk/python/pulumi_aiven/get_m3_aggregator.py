@@ -389,7 +389,6 @@ def get_m3_aggregator(project: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -397,7 +396,6 @@ def get_m3_aggregator(project: Optional[str] = None,
     m3a = aiven.get_m3_aggregator(project=foo["project"],
         service_name="my-m3a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -450,7 +448,6 @@ def get_m3_aggregator_output(project: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -458,7 +455,6 @@ def get_m3_aggregator_output(project: Optional[pulumi.Input[str]] = None,
     m3a = aiven.get_m3_aggregator(project=foo["project"],
         service_name="my-m3a")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

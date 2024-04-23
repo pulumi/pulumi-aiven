@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     peerVpc: "example-network",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGcpVpcPeeringConnection(args: GetGcpVpcPeeringConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetGcpVpcPeeringConnectionResult> {
 
@@ -88,7 +86,6 @@ export interface GetGcpVpcPeeringConnectionResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -99,7 +96,6 @@ export interface GetGcpVpcPeeringConnectionResult {
  *     peerVpc: "example-network",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGcpVpcPeeringConnectionOutput(args: GetGcpVpcPeeringConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGcpVpcPeeringConnectionResult> {
     return pulumi.output(args).apply((a: any) => getGcpVpcPeeringConnection(a, opts))

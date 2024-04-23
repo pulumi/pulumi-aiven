@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -36,7 +35,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -119,7 +117,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly opensearchUserConfig!: pulumi.Output<outputs.OpenSearchOpensearchUserConfig | undefined>;
     /**
-     * OpenSearch settings
+     * OpenSearch server provided values
      */
     public /*out*/ readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
     /**
@@ -171,7 +169,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -326,7 +324,7 @@ export interface OpenSearchState {
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
     /**
-     * OpenSearch settings
+     * OpenSearch server provided values
      */
     opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**
@@ -378,7 +376,7 @@ export interface OpenSearchState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -446,7 +444,7 @@ export interface OpenSearchArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
