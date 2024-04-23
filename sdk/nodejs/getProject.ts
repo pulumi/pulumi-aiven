@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     project: "<PROJECT_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectResult> {
 
@@ -110,7 +108,6 @@ export interface GetProjectResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -119,7 +116,6 @@ export interface GetProjectResult {
  *     project: "<PROJECT_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectResult> {
     return pulumi.output(args).apply((a: any) => getProject(a, opts))

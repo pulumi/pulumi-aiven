@@ -198,7 +198,6 @@ class AzurePrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -208,7 +207,6 @@ class AzurePrivatelink(pulumi.CustomResource):
             service_name=example_kafka["serviceName"],
             user_subscription_ids=["00000000-0000-0000-0000-000000000000"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -233,7 +231,6 @@ class AzurePrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -243,7 +240,6 @@ class AzurePrivatelink(pulumi.CustomResource):
             service_name=example_kafka["serviceName"],
             user_subscription_ids=["00000000-0000-0000-0000-000000000000"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

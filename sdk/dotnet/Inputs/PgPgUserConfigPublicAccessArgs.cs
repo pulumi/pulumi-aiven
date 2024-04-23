@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// postgresql.conf configuration values
+        /// Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("pg")]
         public Input<bool>? Pg { get; set; }
 
         /// <summary>
-        /// PGBouncer connection pooling settings
+        /// Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("pgbouncer")]
         public Input<bool>? Pgbouncer { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }

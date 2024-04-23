@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupFlinkApplicationVersion(ctx *pulumi.Context, args *LookupFlinkApplicationVersionArgs, opts ...pulumi.InvokeOption) (*LookupFlinkApplicationVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlinkApplicationVersionResult

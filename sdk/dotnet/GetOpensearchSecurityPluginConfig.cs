@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOpensearchSecurityPluginConfigResult> InvokeAsync(GetOpensearchSecurityPluginConfigArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchSecurityPluginConfigResult>("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args ?? new GetOpensearchSecurityPluginConfigArgs(), options.WithDefaults());
@@ -43,7 +41,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOpensearchSecurityPluginConfigResult> Invoke(GetOpensearchSecurityPluginConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchSecurityPluginConfigResult>("aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig", args ?? new GetOpensearchSecurityPluginConfigInvokeArgs(), options.WithDefaults());

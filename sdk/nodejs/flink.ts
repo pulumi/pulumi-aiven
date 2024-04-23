@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -28,7 +27,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -99,7 +97,7 @@ export class Flink extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
-     * Enable flink.
+     * Flink server provided values
      */
     public readonly flink!: pulumi.Output<outputs.FlinkFlink>;
     /**
@@ -163,7 +161,7 @@ export class Flink extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -306,7 +304,7 @@ export interface FlinkState {
      */
     diskSpaceUsed?: pulumi.Input<string>;
     /**
-     * Enable flink.
+     * Flink server provided values
      */
     flink?: pulumi.Input<inputs.FlinkFlink>;
     /**
@@ -370,7 +368,7 @@ export interface FlinkState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -406,7 +404,7 @@ export interface FlinkArgs {
      */
     diskSpace?: pulumi.Input<string>;
     /**
-     * Enable flink.
+     * Flink server provided values
      */
     flink?: pulumi.Input<inputs.FlinkFlink>;
     /**
@@ -442,7 +440,7 @@ export interface FlinkArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

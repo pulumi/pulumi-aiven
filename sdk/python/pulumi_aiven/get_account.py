@@ -147,14 +147,12 @@ def get_account(name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
 
     account1 = aiven.get_account(name="<ACCOUNT_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Account name
@@ -184,14 +182,12 @@ def get_account_output(name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
 
     account1 = aiven.get_account(name="<ACCOUNT_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name: Account name

@@ -137,7 +137,7 @@ export interface CassandraCassandraUserConfigPrivateAccess {
 
 export interface CassandraCassandraUserConfigPublicAccess {
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
 }
@@ -292,38 +292,38 @@ export interface ClickhouseClickhouseUserConfigPrivateAccess {
 
 export interface ClickhouseClickhouseUserConfigPrivatelinkAccess {
     /**
-     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable clickhouse.
      */
     clickhouse?: boolean;
     /**
-     * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable clickhouse_https.
      */
     clickhouseHttps?: boolean;
     /**
-     * Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable clickhouse_mysql.
      */
     clickhouseMysql?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      */
     prometheus?: boolean;
 }
 
 export interface ClickhouseClickhouseUserConfigPublicAccess {
     /**
-     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     clickhouse?: boolean;
     /**
-     * Allow clients to connect to clickhouseHttps with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouseHttps from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     clickhouseHttps?: boolean;
     /**
-     * Allow clients to connect to clickhouseMysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouseMysql from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     clickhouseMysql?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
 }
@@ -8134,11 +8134,11 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     producerCompressionType?: string;
     /**
-     * This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+     * Wait for up to the given delay to allow batching records together. The default value is `0`.
      */
     producerLingerMs?: number;
     /**
-     * This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
      */
     producerMaxRequestSize?: number;
     /**
@@ -8149,15 +8149,15 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
 
 export interface KafkaKafkaUserConfigPrivateAccess {
     /**
-     * Kafka broker configuration values
+     * Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     kafka?: boolean;
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Allow clients to connect to kafkaConnect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     kafkaConnect?: boolean;
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Allow clients to connect to kafkaRest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     kafkaRest?: boolean;
     /**
@@ -8176,46 +8176,46 @@ export interface KafkaKafkaUserConfigPrivatelinkAccess {
      */
     jolokia?: boolean;
     /**
-     * Kafka broker configuration values
+     * Enable kafka.
      */
     kafka?: boolean;
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Enable kafka_connect.
      */
     kafkaConnect?: boolean;
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Enable kafka_rest.
      */
     kafkaRest?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      */
     prometheus?: boolean;
     /**
-     * Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable schema_registry.
      */
     schemaRegistry?: boolean;
 }
 
 export interface KafkaKafkaUserConfigPublicAccess {
     /**
-     * Kafka broker configuration values
+     * Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     kafka?: boolean;
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Allow clients to connect to kafkaConnect from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     kafkaConnect?: boolean;
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Allow clients to connect to kafkaRest from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     kafkaRest?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
     /**
-     * Allow clients to connect to schemaRegistry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to schemaRegistry from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     schemaRegistry?: boolean;
 }
@@ -9847,7 +9847,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     blockExpirySeconds?: number;
     /**
-     * internal*authentication*backend*limiting.max*blocked_clients.
+     * The maximum number of blocked IP addresses.
      */
     maxBlockedClients?: number;
     /**
@@ -9859,14 +9859,14 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     timeWindowSeconds?: number;
     /**
-     * internal*authentication*backend_limiting.type.
+     * The type of rate limiting.
      */
     type?: string;
 }
 
 export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enable or disable OpenSearch Dashboards. The default value is `true`.
      */
     enabled?: boolean;
     /**
@@ -9881,11 +9881,11 @@ export interface OpenSearchOpensearchUserConfigOpensearchDashboards {
 
 export interface OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * OpenSearch settings
+     * Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     opensearch?: boolean;
     /**
-     * OpenSearch Dashboards settings
+     * Allow clients to connect to opensearchDashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     opensearchDashboards?: boolean;
     /**
@@ -9896,37 +9896,37 @@ export interface OpenSearchOpensearchUserConfigPrivateAccess {
 
 export interface OpenSearchOpensearchUserConfigPrivatelinkAccess {
     /**
-     * OpenSearch settings
+     * Enable opensearch.
      */
     opensearch?: boolean;
     /**
-     * OpenSearch Dashboards settings
+     * Enable opensearch_dashboards.
      */
     opensearchDashboards?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      */
     prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigPublicAccess {
     /**
-     * OpenSearch settings
+     * Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     opensearch?: boolean;
     /**
-     * OpenSearch Dashboards settings
+     * Allow clients to connect to opensearchDashboards from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     opensearchDashboards?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
 }
 
 export interface OpenSearchOpensearchUserConfigSaml {
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
      */
     enabled: boolean;
     /**
@@ -9942,7 +9942,7 @@ export interface OpenSearchOpensearchUserConfigSaml {
      */
     idpPemtrustedcasContent?: string;
     /**
-     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
      */
     rolesKey?: string;
     /**
@@ -9950,7 +9950,7 @@ export interface OpenSearchOpensearchUserConfigSaml {
      */
     spEntityId: string;
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferredUsername claim. Optional.
+     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
      */
     subjectKey?: string;
 }
@@ -10263,7 +10263,7 @@ export interface PgPgUserConfigIpFilterObject {
 
 export interface PgPgUserConfigMigration {
     /**
-     * Primary PostgreSQL database name
+     * Database name for bootstrapping the initial connection.
      */
     dbname?: string;
     /**
@@ -10279,7 +10279,7 @@ export interface PgPgUserConfigMigration {
      */
     method?: string;
     /**
-     * PostgreSQL admin user password
+     * Password for authentication with the server where to migrate data from.
      */
     password?: string;
     /**
@@ -10635,11 +10635,11 @@ export interface PgPgUserConfigPglookout {
 
 export interface PgPgUserConfigPrivateAccess {
     /**
-     * postgresql.conf configuration values
+     * Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     pg?: boolean;
     /**
-     * PGBouncer connection pooling settings
+     * Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
      */
     pgbouncer?: boolean;
     /**
@@ -10650,30 +10650,30 @@ export interface PgPgUserConfigPrivateAccess {
 
 export interface PgPgUserConfigPrivatelinkAccess {
     /**
-     * postgresql.conf configuration values
+     * Enable pg.
      */
     pg?: boolean;
     /**
-     * PGBouncer connection pooling settings
+     * Enable pgbouncer.
      */
     pgbouncer?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      */
     prometheus?: boolean;
 }
 
 export interface PgPgUserConfigPublicAccess {
     /**
-     * postgresql.conf configuration values
+     * Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     pg?: boolean;
     /**
-     * PGBouncer connection pooling settings
+     * Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     pgbouncer?: boolean;
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      */
     prometheus?: boolean;
 }
@@ -11019,7 +11019,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     maxRowsPerMessage?: number;
     /**
-     * Column name.
+     * Name of the table.
      */
     name: string;
     /**
@@ -11053,7 +11053,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * Column name.
+     * Name of the topic.
      */
     name: string;
 }

@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -18,7 +17,6 @@ import * as utilities from "./utilities";
  *     name: "<ACCOUNT_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccount(args: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
 
@@ -84,7 +82,6 @@ export interface GetAccountResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -93,7 +90,6 @@ export interface GetAccountResult {
  *     name: "<ACCOUNT_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccountOutput(args: GetAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountResult> {
     return pulumi.output(args).apply((a: any) => getAccount(a, opts))

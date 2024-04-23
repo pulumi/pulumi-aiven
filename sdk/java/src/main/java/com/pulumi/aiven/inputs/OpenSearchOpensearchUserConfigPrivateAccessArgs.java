@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
     public static final OpenSearchOpensearchUserConfigPrivateAccessArgs Empty = new OpenSearchOpensearchUserConfigPrivateAccessArgs();
 
     /**
-     * OpenSearch settings
+     * Allow clients to connect to opensearch with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return OpenSearch settings
+     * @return Allow clients to connect to opensearch with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
     }
 
     /**
-     * OpenSearch Dashboards settings
+     * Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> opensearchDashboards() {
@@ -87,7 +87,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearch OpenSearch settings
+         * @param opensearch Allow clients to connect to opensearch with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearch OpenSearch settings
+         * @param opensearch Allow clients to connect to opensearch with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings
+         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigPrivateAccessArgs extends com.p
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings
+         * @param opensearchDashboards Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 

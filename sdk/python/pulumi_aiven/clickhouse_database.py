@@ -176,7 +176,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -186,7 +185,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
             service_name=ch["serviceName"],
             name="my-ch-db")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -214,7 +212,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -224,7 +221,6 @@ class ClickhouseDatabase(pulumi.CustomResource):
             service_name=ch["serviceName"],
             name="my-ch-db")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

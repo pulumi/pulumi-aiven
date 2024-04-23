@@ -840,7 +840,6 @@ class M3Aggregator(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -856,7 +855,6 @@ class M3Aggregator(pulumi.CustomResource):
                 m3aggregator_version="0.15",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -914,7 +912,6 @@ class M3Aggregator(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -930,7 +927,6 @@ class M3Aggregator(pulumi.CustomResource):
                 m3aggregator_version="0.15",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopic {
     /**
-     * @return Column name.
+     * @return Name of the topic.
      * 
      */
     private String name;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableTopic() {}
     /**
-     * @return Column name.
+     * @return Name of the topic.
      * 
      */
     public String name() {

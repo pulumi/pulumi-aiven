@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enable or disable OpenSearch Dashboards. The default value is `true`.
      * 
      */
     private @Nullable Boolean enabled;
@@ -30,7 +30,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboards {
 
     private OpenSearchOpensearchUserConfigOpensearchDashboards() {}
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enable or disable OpenSearch Dashboards. The default value is `true`.
      * 
      */
     public Optional<Boolean> enabled() {

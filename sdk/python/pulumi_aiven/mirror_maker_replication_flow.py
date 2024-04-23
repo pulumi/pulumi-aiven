@@ -460,7 +460,6 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -478,7 +477,6 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 "__.*",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -513,7 +511,6 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -531,7 +528,6 @@ class MirrorMakerReplicationFlow(pulumi.CustomResource):
                 "__.*",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

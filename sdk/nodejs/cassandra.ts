@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -31,7 +30,6 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -76,7 +74,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
     /**
-     * cassandra configuration values
+     * Cassandra server provided values
      */
     public /*out*/ readonly cassandras!: pulumi.Output<outputs.CassandraCassandra[]>;
     /**
@@ -166,7 +164,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -283,7 +281,7 @@ export interface CassandraState {
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
     /**
-     * cassandra configuration values
+     * Cassandra server provided values
      */
     cassandras?: pulumi.Input<pulumi.Input<inputs.CassandraCassandra>[]>;
     /**
@@ -373,7 +371,7 @@ export interface CassandraState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -441,7 +439,7 @@ export interface CassandraArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

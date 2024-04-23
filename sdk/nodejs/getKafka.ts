@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "my-kafka1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKafka(args: GetKafkaArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaResult> {
 
@@ -180,7 +178,6 @@ export interface GetKafkaResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -190,7 +187,6 @@ export interface GetKafkaResult {
  *     serviceName: "my-kafka1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaResult> {
     return pulumi.output(args).apply((a: any) => getKafka(a, opts))

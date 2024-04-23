@@ -14,7 +14,6 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -127,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.OpenSearchOpensearchUserConfig?> OpensearchUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// OpenSearch settings
+        /// OpenSearch server provided values
         /// </summary>
         [Output("opensearches")]
         public Output<ImmutableArray<Outputs.OpenSearchOpensearch>> Opensearches { get; private set; } = null!;
@@ -205,7 +203,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -355,7 +353,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -477,7 +475,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.OpenSearchOpensearchGetArgs>? _opensearches;
 
         /// <summary>
-        /// OpenSearch settings
+        /// OpenSearch server provided values
         /// </summary>
         public InputList<Inputs.OpenSearchOpensearchGetArgs> Opensearches
         {
@@ -587,7 +585,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {

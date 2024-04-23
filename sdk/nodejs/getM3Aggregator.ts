@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "my-m3a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getM3Aggregator(args: GetM3AggregatorArgs, opts?: pulumi.InvokeOptions): Promise<GetM3AggregatorResult> {
 
@@ -172,7 +170,6 @@ export interface GetM3AggregatorResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -182,7 +179,6 @@ export interface GetM3AggregatorResult {
  *     serviceName: "my-m3a",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetM3AggregatorResult> {
     return pulumi.output(args).apply((a: any) => getM3Aggregator(a, opts))

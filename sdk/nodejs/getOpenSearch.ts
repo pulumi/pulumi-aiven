@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "my-os1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearch(args: GetOpenSearchArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenSearchResult> {
 
@@ -172,7 +170,6 @@ export interface GetOpenSearchResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -182,7 +179,6 @@ export interface GetOpenSearchResult {
  *     serviceName: "my-os1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOpenSearchResult> {
     return pulumi.output(args).apply((a: any) => getOpenSearch(a, opts))

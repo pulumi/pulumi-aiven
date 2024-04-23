@@ -27,7 +27,7 @@ class ClickhouseGrantArgs:
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
@@ -82,7 +82,7 @@ class ClickhouseGrantArgs:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
@@ -128,7 +128,7 @@ class _ClickhouseGrantState:
         Input properties used for looking up and filtering ClickhouseGrant resources.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantPrivilegeGrantArgs']]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseGrantRoleGrantArgs']]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -174,7 +174,7 @@ class _ClickhouseGrantState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
-        The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 
@@ -241,7 +241,6 @@ class ClickhouseGrant(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -286,13 +285,12 @@ class ClickhouseGrant(pulumi.CustomResource):
                 role=demo.role,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -313,7 +311,6 @@ class ClickhouseGrant(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -358,7 +355,6 @@ class ClickhouseGrant(pulumi.CustomResource):
                 role=demo.role,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ClickhouseGrantArgs args: The arguments to use to populate this resource's properties.
@@ -425,7 +421,7 @@ class ClickhouseGrant(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantPrivilegeGrantArgs']]]] privilege_grants: Configuration to grant a privilege. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] role: The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] role: The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseGrantRoleGrantArgs']]]] role_grants: Configuration to grant a role. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] user: The user to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -462,7 +458,7 @@ class ClickhouseGrant(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[Optional[str]]:
         """
-        The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "role")
 

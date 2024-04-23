@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigPublicAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OpenSearch settings
+        /// Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("opensearch")]
         public Input<bool>? Opensearch { get; set; }
 
         /// <summary>
-        /// OpenSearch Dashboards settings
+        /// Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<bool>? OpensearchDashboards { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }

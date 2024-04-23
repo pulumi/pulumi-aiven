@@ -167,7 +167,6 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -214,7 +213,6 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
             service_name=default.service_name,
             endpoint_ip_address=endpoint["privateServiceConnection"][0]["privateIpAddress"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -239,7 +237,6 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -286,7 +283,6 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
             service_name=default.service_name,
             endpoint_ip_address=endpoint["privateServiceConnection"][0]["privateIpAddress"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

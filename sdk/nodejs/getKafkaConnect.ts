@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "my-kc1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKafkaConnect(args: GetKafkaConnectArgs, opts?: pulumi.InvokeOptions): Promise<GetKafkaConnectResult> {
 
@@ -172,7 +170,6 @@ export interface GetKafkaConnectResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -182,7 +179,6 @@ export interface GetKafkaConnectResult {
  *     serviceName: "my-kc1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKafkaConnectOutput(args: GetKafkaConnectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKafkaConnectResult> {
     return pulumi.output(args).apply((a: any) => getKafkaConnect(a, opts))

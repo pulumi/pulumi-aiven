@@ -196,14 +196,14 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Import(name="staticIps")
     private @Nullable Output<List<String>> staticIps;
 
     /**
-     * @return Use static public IP addresses.
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Optional<Output<List<String>>> staticIps() {
@@ -543,7 +543,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Use static public IP addresses.
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Use static public IP addresses.
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param staticIps Use static public IP addresses.
+         * @param staticIps Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
          * 
          * @return builder
          * 

@@ -469,7 +469,6 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -478,7 +477,6 @@ class Project(pulumi.CustomResource):
             project="Example project",
             parent_id=main["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -510,7 +508,6 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -519,7 +516,6 @@ class Project(pulumi.CustomResource):
             project="Example project",
             parent_id=main["id"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

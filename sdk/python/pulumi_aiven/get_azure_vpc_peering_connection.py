@@ -164,7 +164,6 @@ def get_azure_vpc_peering_connection(azure_subscription_id: Optional[str] = None
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -176,7 +175,6 @@ def get_azure_vpc_peering_connection(azure_subscription_id: Optional[str] = None
         peer_azure_app_id="00000000-0000-0000-0000-000000000000",
         peer_azure_tenant_id="00000000-0000-0000-0000-000000000000")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.
@@ -222,7 +220,6 @@ def get_azure_vpc_peering_connection_output(azure_subscription_id: Optional[pulu
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -234,7 +231,6 @@ def get_azure_vpc_peering_connection_output(azure_subscription_id: Optional[pulu
         peer_azure_app_id="00000000-0000-0000-0000-000000000000",
         peer_azure_tenant_id="00000000-0000-0000-0000-000000000000")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str azure_subscription_id: The ID of the Azure subscription in UUID4 format. Changing this property forces recreation of the resource.

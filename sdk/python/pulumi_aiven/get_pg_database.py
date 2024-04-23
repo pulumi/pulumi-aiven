@@ -122,7 +122,6 @@ def get_pg_database(database_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -131,7 +130,6 @@ def get_pg_database(database_name: Optional[str] = None,
         service_name=mypg["serviceName"],
         database_name="<DATABASE_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database_name: The name of the service database. Changing this property forces recreation of the resource.
@@ -165,7 +163,6 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -174,7 +171,6 @@ def get_pg_database_output(database_name: Optional[pulumi.Input[str]] = None,
         service_name=mypg["serviceName"],
         database_name="<DATABASE_NAME>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str database_name: The name of the service database. Changing this property forces recreation of the resource.

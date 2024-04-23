@@ -14,23 +14,23 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigPublicAccess
     {
         /// <summary>
-        /// Kafka broker configuration values
+        /// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? Kafka;
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? Prometheus;
         /// <summary>
-        /// Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         public readonly bool? SchemaRegistry;
 

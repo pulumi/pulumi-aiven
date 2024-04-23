@@ -182,7 +182,6 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -204,7 +203,6 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
             service_name=bar.service_name,
             admin_password="ThisIsATest123^=^")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -229,7 +227,6 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -251,7 +248,6 @@ class OpensearchSecurityPluginConfig(pulumi.CustomResource):
             service_name=bar.service_name,
             admin_password="ThisIsATest123^=^")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

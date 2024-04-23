@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxRowsPerMessage;
         /// <summary>
-        /// Column name.
+        /// Name of the table.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -141,14 +141,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Column name.
+     * Name of the table.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Column name.
+     * @return Name of the table.
      * 
      */
     public Output<String> name() {
@@ -430,7 +430,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param name Column name.
+         * @param name Name of the table.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param name Column name.
+         * @param name Name of the table.
          * 
          * @return builder
          * 

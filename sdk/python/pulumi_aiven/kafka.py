@@ -48,7 +48,7 @@ class KafkaArgs:
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -257,7 +257,7 @@ class KafkaArgs:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -347,7 +347,7 @@ class _KafkaState:
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka broker configuration values
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server provided values
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -363,7 +363,7 @@ class _KafkaState:
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['KafkaTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -562,7 +562,7 @@ class _KafkaState:
     @pulumi.getter
     def kafkas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]]:
         """
-        Kafka broker configuration values
+        Kafka server provided values
         """
         return pulumi.get(self, "kafkas")
 
@@ -757,7 +757,7 @@ class _KafkaState:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -830,7 +830,6 @@ class Kafka(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -857,7 +856,6 @@ class Kafka(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -880,7 +878,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -896,7 +894,6 @@ class Kafka(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -923,7 +920,6 @@ class Kafka(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1067,7 +1063,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]] kafkas: Kafka broker configuration values
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]] kafkas: Kafka server provided values
         :param pulumi.Input[bool] karapace: Switch the service to use Karapace for schema registry and REST proxy
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -1083,7 +1079,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1211,7 +1207,7 @@ class Kafka(pulumi.CustomResource):
     @pulumi.getter
     def kafkas(self) -> pulumi.Output[Sequence['outputs.KafkaKafka']]:
         """
-        Kafka broker configuration values
+        Kafka server provided values
         """
         return pulumi.get(self, "kafkas")
 
@@ -1342,7 +1338,7 @@ class Kafka(pulumi.CustomResource):
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 

@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafkaUserConfigPublicAccess {
     /**
-     * @return Kafka broker configuration values
+     * @return Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean kafka;
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean kafkaConnect;
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean kafkaRest;
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean prometheus;
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean schemaRegistry;
 
     private KafkaKafkaUserConfigPublicAccess() {}
     /**
-     * @return Kafka broker configuration values
+     * @return Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> kafka() {
         return Optional.ofNullable(this.kafka);
     }
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> schemaRegistry() {

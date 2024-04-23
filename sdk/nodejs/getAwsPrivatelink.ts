@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -19,7 +18,6 @@ import * as utilities from "./utilities";
  *     serviceName: exampleKafka.serviceName,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAwsPrivatelink(args: GetAwsPrivatelinkArgs, opts?: pulumi.InvokeOptions): Promise<GetAwsPrivatelinkResult> {
 
@@ -78,7 +76,6 @@ export interface GetAwsPrivatelinkResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -88,7 +85,6 @@ export interface GetAwsPrivatelinkResult {
  *     serviceName: exampleKafka.serviceName,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAwsPrivatelinkOutput(args: GetAwsPrivatelinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsPrivatelinkResult> {
     return pulumi.output(args).apply((a: any) => getAwsPrivatelink(a, opts))

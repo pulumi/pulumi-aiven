@@ -19,31 +19,31 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? Jolokia { get; set; }
 
         /// <summary>
-        /// Kafka broker configuration values
+        /// Enable kafka.
         /// </summary>
         [Input("kafka")]
         public Input<bool>? Kafka { get; set; }
 
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Enable kafka_connect.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Enable kafka_rest.
         /// </summary>
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable schema_registry.
         /// </summary>
         [Input("schemaRegistry")]
         public Input<bool>? SchemaRegistry { get; set; }

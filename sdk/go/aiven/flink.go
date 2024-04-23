@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -76,7 +74,7 @@ type Flink struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
-	// Enable flink.
+	// Flink server provided values
 	Flink FlinkFlinkOutput `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrOutput `pulumi:"flinkUserConfig"`
@@ -108,7 +106,7 @@ type Flink struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags FlinkTagArrayOutput `pulumi:"tags"`
@@ -180,7 +178,7 @@ type flinkState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
-	// Enable flink.
+	// Flink server provided values
 	Flink *FlinkFlink `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig *FlinkFlinkUserConfig `pulumi:"flinkUserConfig"`
@@ -212,7 +210,7 @@ type flinkState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []FlinkTag `pulumi:"tags"`
@@ -241,7 +239,7 @@ type FlinkState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
-	// Enable flink.
+	// Flink server provided values
 	Flink FlinkFlinkPtrInput
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrInput
@@ -273,7 +271,7 @@ type FlinkState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags FlinkTagArrayInput
@@ -296,7 +294,7 @@ type flinkArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
-	// Enable flink.
+	// Flink server provided values
 	Flink *FlinkFlink `pulumi:"flink"`
 	// Flink user configurable settings
 	FlinkUserConfig *FlinkFlinkUserConfig `pulumi:"flinkUserConfig"`
@@ -314,7 +312,7 @@ type flinkArgs struct {
 	ServiceIntegrations []FlinkServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []FlinkTag `pulumi:"tags"`
@@ -334,7 +332,7 @@ type FlinkArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
-	// Enable flink.
+	// Flink server provided values
 	Flink FlinkFlinkPtrInput
 	// Flink user configurable settings
 	FlinkUserConfig FlinkFlinkUserConfigPtrInput
@@ -352,7 +350,7 @@ type FlinkArgs struct {
 	ServiceIntegrations FlinkServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags FlinkTagArrayInput
@@ -491,7 +489,7 @@ func (o FlinkOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
 }
 
-// Enable flink.
+// Flink server provided values
 func (o FlinkOutput) Flink() FlinkFlinkOutput {
 	return o.ApplyT(func(v *Flink) FlinkFlinkOutput { return v.Flink }).(FlinkFlinkOutput)
 }
@@ -571,7 +569,7 @@ func (o FlinkOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Use static public IP addresses.
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o FlinkOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Flink) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

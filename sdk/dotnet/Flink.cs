@@ -14,7 +14,6 @@ namespace Pulumi.Aiven
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.Aiven
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -99,7 +97,7 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
-        /// Enable flink.
+        /// Flink server provided values
         /// </summary>
         [Output("flink")]
         public Output<Outputs.FlinkFlink> FlinkDetails { get; private set; } = null!;
@@ -195,7 +193,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -288,7 +286,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpace { get; set; }
 
         /// <summary>
-        /// Enable flink.
+        /// Flink server provided values
         /// </summary>
         [Input("flink")]
         public Input<Inputs.FlinkFlinkArgs>? FlinkDetails { get; set; }
@@ -351,7 +349,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -452,7 +450,7 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceUsed { get; set; }
 
         /// <summary>
-        /// Enable flink.
+        /// Flink server provided values
         /// </summary>
         [Input("flink")]
         public Input<Inputs.FlinkFlinkGetArgs>? FlinkDetails { get; set; }
@@ -577,7 +575,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Use static public IP addresses.
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {

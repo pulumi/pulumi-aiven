@@ -44,7 +44,7 @@ class OpenSearchArgs:
         :param pulumi.Input['OpenSearchOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -219,7 +219,7 @@ class OpenSearchArgs:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -308,7 +308,7 @@ class _OpenSearchState:
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['OpenSearchOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: OpenSearch settings
+        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: OpenSearch server provided values
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -321,7 +321,7 @@ class _OpenSearchState:
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -525,7 +525,7 @@ class _OpenSearchState:
     @pulumi.getter
     def opensearches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]]]:
         """
-        OpenSearch settings
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearches")
 
@@ -681,7 +681,7 @@ class _OpenSearchState:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -752,7 +752,6 @@ class OpenSearch(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -776,7 +775,6 @@ class OpenSearch(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -797,7 +795,7 @@ class OpenSearch(pulumi.CustomResource):
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -813,7 +811,6 @@ class OpenSearch(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -837,7 +834,6 @@ class OpenSearch(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -976,7 +972,7 @@ class OpenSearch(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[pulumi.InputType['OpenSearchOpensearchUserConfigArgs']] opensearch_user_config: Opensearch user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchOpensearchArgs']]]] opensearches: OpenSearch settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchOpensearchArgs']]]] opensearches: OpenSearch server provided values
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -989,7 +985,7 @@ class OpenSearch(pulumi.CustomResource):
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Use static public IP addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1123,7 +1119,7 @@ class OpenSearch(pulumi.CustomResource):
     @pulumi.getter
     def opensearches(self) -> pulumi.Output[Sequence['outputs.OpenSearchOpensearch']]:
         """
-        OpenSearch settings
+        OpenSearch server provided values
         """
         return pulumi.get(self, "opensearches")
 
@@ -1227,7 +1223,7 @@ class OpenSearch(pulumi.CustomResource):
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Use static public IP addresses.
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 

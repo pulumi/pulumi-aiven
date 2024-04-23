@@ -166,7 +166,6 @@ class AwsPrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -176,7 +175,6 @@ class AwsPrivatelink(pulumi.CustomResource):
             service_name=example_kafka["serviceName"],
             principals=["arn:aws:iam::012345678901:user/mwf"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -201,7 +199,6 @@ class AwsPrivatelink(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -211,7 +208,6 @@ class AwsPrivatelink(pulumi.CustomResource):
             service_name=example_kafka["serviceName"],
             principals=["arn:aws:iam::012345678901:user/mwf"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

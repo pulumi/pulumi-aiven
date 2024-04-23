@@ -31,14 +31,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     }
 
     /**
-     * Kafka broker configuration values
+     * Enable kafka.
      * 
      */
     @Import(name="kafka")
     private @Nullable Output<Boolean> kafka;
 
     /**
-     * @return Kafka broker configuration values
+     * @return Enable kafka.
      * 
      */
     public Optional<Output<Boolean>> kafka() {
@@ -46,14 +46,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     }
 
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Enable kafka_connect.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Enable kafka_connect.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -61,14 +61,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     }
 
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Enable kafka_rest.
      * 
      */
     @Import(name="kafkaRest")
     private @Nullable Output<Boolean> kafkaRest;
 
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Enable kafka_rest.
      * 
      */
     public Optional<Output<Boolean>> kafkaRest() {
@@ -76,14 +76,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     }
 
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      * 
      */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Output<Boolean>> prometheus() {
@@ -91,14 +91,14 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
     }
 
     /**
-     * Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable schema_registry.
      * 
      */
     @Import(name="schemaRegistry")
     private @Nullable Output<Boolean> schemaRegistry;
 
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable schema_registry.
      * 
      */
     public Optional<Output<Boolean>> schemaRegistry() {
@@ -156,7 +156,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafka Kafka broker configuration values
+         * @param kafka Enable kafka.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafka Kafka broker configuration values
+         * @param kafka Enable kafka.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * @param kafkaConnect Enable kafka_connect.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * @param kafkaConnect Enable kafka_connect.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * @param kafkaRest Enable kafka_rest.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * @param kafkaRest Enable kafka_rest.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param schemaRegistry Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param schemaRegistry Enable schema_registry.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class KafkaKafkaUserConfigPrivatelinkAccessArgs extends com.pulumi.
         }
 
         /**
-         * @param schemaRegistry Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param schemaRegistry Enable schema_registry.
          * 
          * @return builder
          * 

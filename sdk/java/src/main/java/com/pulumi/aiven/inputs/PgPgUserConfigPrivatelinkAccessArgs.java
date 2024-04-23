@@ -16,14 +16,14 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
     public static final PgPgUserConfigPrivatelinkAccessArgs Empty = new PgPgUserConfigPrivatelinkAccessArgs();
 
     /**
-     * postgresql.conf configuration values
+     * Enable pg.
      * 
      */
     @Import(name="pg")
     private @Nullable Output<Boolean> pg;
 
     /**
-     * @return postgresql.conf configuration values
+     * @return Enable pg.
      * 
      */
     public Optional<Output<Boolean>> pg() {
@@ -31,14 +31,14 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
     }
 
     /**
-     * PGBouncer connection pooling settings
+     * Enable pgbouncer.
      * 
      */
     @Import(name="pgbouncer")
     private @Nullable Output<Boolean> pgbouncer;
 
     /**
-     * @return PGBouncer connection pooling settings
+     * @return Enable pgbouncer.
      * 
      */
     public Optional<Output<Boolean>> pgbouncer() {
@@ -46,14 +46,14 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
     }
 
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      * 
      */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Output<Boolean>> prometheus() {
@@ -87,7 +87,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pg postgresql.conf configuration values
+         * @param pg Enable pg.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pg postgresql.conf configuration values
+         * @param pg Enable pg.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings
+         * @param pgbouncer Enable pgbouncer.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pgbouncer PGBouncer connection pooling settings
+         * @param pgbouncer Enable pgbouncer.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class PgPgUserConfigPrivatelinkAccessArgs extends com.pulumi.resour
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 

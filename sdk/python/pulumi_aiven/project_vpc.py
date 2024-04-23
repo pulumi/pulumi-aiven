@@ -150,7 +150,6 @@ class ProjectVpc(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -160,7 +159,6 @@ class ProjectVpc(pulumi.CustomResource):
             cloud_name="google-europe-west1",
             network_cidr="192.168.1.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -185,7 +183,6 @@ class ProjectVpc(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -195,7 +192,6 @@ class ProjectVpc(pulumi.CustomResource):
             cloud_name="google-europe-west1",
             network_cidr="192.168.1.0/24")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

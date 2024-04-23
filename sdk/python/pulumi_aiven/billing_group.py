@@ -545,7 +545,6 @@ class BillingGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -558,7 +557,6 @@ class BillingGroup(pulumi.CustomResource):
             project="pr1",
             billing_group=bybg1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -595,7 +593,6 @@ class BillingGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -608,7 +605,6 @@ class BillingGroup(pulumi.CustomResource):
             project="pr1",
             billing_group=bybg1.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

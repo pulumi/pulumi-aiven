@@ -18,14 +18,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     public static final OpenSearchOpensearchUserConfigSamlArgs Empty = new OpenSearchOpensearchUserConfigSamlArgs();
 
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
      * 
      */
     public Output<Boolean> enabled() {
@@ -78,14 +78,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
      * 
      */
     @Import(name="rolesKey")
     private @Nullable Output<String> rolesKey;
 
     /**
-     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * @return Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
      * 
      */
     public Optional<Output<String>> rolesKey() {
@@ -108,14 +108,14 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
     }
 
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
      * 
      */
     @Import(name="subjectKey")
     private @Nullable Output<String> subjectKey;
 
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * @return Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
      * 
      */
     public Optional<Output<String>> subjectKey() {
@@ -153,7 +153,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * @param enabled Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * @param enabled Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
          * 
          * @return builder
          * 
@@ -237,7 +237,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * @param rolesKey Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * @param rolesKey Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * @param subjectKey Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class OpenSearchOpensearchUserConfigSamlArgs extends com.pulumi.res
         }
 
         /**
-         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * @param subjectKey Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
          * 
          * @return builder
          * 

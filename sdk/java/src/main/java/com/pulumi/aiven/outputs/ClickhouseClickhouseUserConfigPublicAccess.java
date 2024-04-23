@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseClickhouseUserConfigPublicAccess {
     /**
-     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean clickhouse;
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean clickhouseHttps;
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean clickhouseMysql;
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean prometheus;
 
     private ClickhouseClickhouseUserConfigPublicAccess() {}
     /**
-     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> clickhouseMysql() {
         return Optional.ofNullable(this.clickhouseMysql);
     }
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> prometheus() {

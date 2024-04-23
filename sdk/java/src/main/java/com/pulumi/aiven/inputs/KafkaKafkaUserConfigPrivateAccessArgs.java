@@ -16,14 +16,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     public static final KafkaKafkaUserConfigPrivateAccessArgs Empty = new KafkaKafkaUserConfigPrivateAccessArgs();
 
     /**
-     * Kafka broker configuration values
+     * Allow clients to connect to kafka with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="kafka")
     private @Nullable Output<Boolean> kafka;
 
     /**
-     * @return Kafka broker configuration values
+     * @return Allow clients to connect to kafka with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> kafka() {
@@ -31,14 +31,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable Kafka Connect service. The default value is `false`.
+     * Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="kafkaConnect")
     private @Nullable Output<Boolean> kafkaConnect;
 
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> kafkaConnect() {
@@ -46,14 +46,14 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
     }
 
     /**
-     * Enable Kafka-REST service. The default value is `false`.
+     * Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     @Import(name="kafkaRest")
     private @Nullable Output<Boolean> kafkaRest;
 
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Output<Boolean>> kafkaRest() {
@@ -119,7 +119,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafka Kafka broker configuration values
+         * @param kafka Allow clients to connect to kafka with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafka Kafka broker configuration values
+         * @param kafka Allow clients to connect to kafka with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaConnect Enable Kafka Connect service. The default value is `false`.
+         * @param kafkaConnect Allow clients to connect to kafka_connect with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * @param kafkaRest Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class KafkaKafkaUserConfigPrivateAccessArgs extends com.pulumi.reso
         }
 
         /**
-         * @param kafkaRest Enable Kafka-REST service. The default value is `false`.
+         * @param kafkaRest Allow clients to connect to kafka_rest with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
          * 
          * @return builder
          * 
