@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPgUserConfigPublicAccess {
     /**
-     * @return postgresql.conf configuration values
+     * @return Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean pg;
     /**
-     * @return PGBouncer connection pooling settings
+     * @return Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean pgbouncer;
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     private @Nullable Boolean prometheus;
 
     private PgPgUserConfigPublicAccess() {}
     /**
-     * @return postgresql.conf configuration values
+     * @return Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> pg() {
         return Optional.ofNullable(this.pg);
     }
     /**
-     * @return PGBouncer connection pooling settings
+     * @return Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> pgbouncer() {
         return Optional.ofNullable(this.pgbouncer);
     }
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Boolean> prometheus() {

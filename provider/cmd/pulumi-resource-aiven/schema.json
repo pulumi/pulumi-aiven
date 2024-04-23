@@ -217,7 +217,7 @@
             "properties": {
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -425,19 +425,19 @@
             "properties": {
                 "clickhouse": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable clickhouse.\n"
                 },
                 "clickhouseHttps": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable clickhouse_https.\n"
                 },
                 "clickhouseMysql": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable clickhouse_mysql.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable prometheus.\n"
                 }
             },
             "type": "object"
@@ -446,19 +446,19 @@
             "properties": {
                 "clickhouse": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "clickhouseHttps": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "clickhouseMysql": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -2848,11 +2848,11 @@
                 },
                 "producerLingerMs": {
                     "type": "integer",
-                    "description": "This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.\n"
+                    "description": "Wait for up to the given delay to allow batching records together. The default value is `0`.\n"
                 },
                 "producerMaxRequestSize": {
                     "type": "integer",
-                    "description": "This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.\n"
+                    "description": "The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.\n"
                 },
                 "simpleconsumerPoolSizeMax": {
                     "type": "integer",
@@ -2865,15 +2865,15 @@
             "properties": {
                 "kafka": {
                     "type": "boolean",
-                    "description": "Kafka broker configuration values\n"
+                    "description": "Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "kafkaConnect": {
                     "type": "boolean",
-                    "description": "Enable Kafka Connect service. The default value is `false`.\n"
+                    "description": "Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "kafkaRest": {
                     "type": "boolean",
-                    "description": "Enable Kafka-REST service. The default value is `false`.\n"
+                    "description": "Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
@@ -2894,23 +2894,23 @@
                 },
                 "kafka": {
                     "type": "boolean",
-                    "description": "Kafka broker configuration values\n"
+                    "description": "Enable kafka.\n"
                 },
                 "kafkaConnect": {
                     "type": "boolean",
-                    "description": "Enable Kafka Connect service. The default value is `false`.\n"
+                    "description": "Enable kafka_connect.\n"
                 },
                 "kafkaRest": {
                     "type": "boolean",
-                    "description": "Enable Kafka-REST service. The default value is `false`.\n"
+                    "description": "Enable kafka_rest.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable prometheus.\n"
                 },
                 "schemaRegistry": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable schema_registry.\n"
                 }
             },
             "type": "object"
@@ -2919,23 +2919,23 @@
             "properties": {
                 "kafka": {
                     "type": "boolean",
-                    "description": "Kafka broker configuration values\n"
+                    "description": "Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "kafkaConnect": {
                     "type": "boolean",
-                    "description": "Enable Kafka Connect service. The default value is `false`.\n"
+                    "description": "Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "kafkaRest": {
                     "type": "boolean",
-                    "description": "Enable Kafka-REST service. The default value is `false`.\n"
+                    "description": "Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "schemaRegistry": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -4945,7 +4945,7 @@
                 },
                 "maxBlockedClients": {
                     "type": "integer",
-                    "description": "internal*authentication*backend*limiting.max*blocked_clients.\n"
+                    "description": "The maximum number of blocked IP addresses.\n"
                 },
                 "maxTrackedClients": {
                     "type": "integer",
@@ -4957,7 +4957,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "internal*authentication*backend_limiting.type.\n"
+                    "description": "The type of rate limiting.\n"
                 }
             },
             "type": "object"
@@ -4966,7 +4966,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.\n"
+                    "description": "Enable or disable OpenSearch Dashboards. The default value is `true`.\n"
                 },
                 "maxOldSpaceSize": {
                     "type": "integer",
@@ -4983,11 +4983,11 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "OpenSearch settings\n"
+                    "description": "Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean",
-                    "description": "OpenSearch Dashboards settings\n"
+                    "description": "Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
@@ -5000,15 +5000,15 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "OpenSearch settings\n"
+                    "description": "Enable opensearch.\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean",
-                    "description": "OpenSearch Dashboards settings\n"
+                    "description": "Enable opensearch_dashboards.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable prometheus.\n"
                 }
             },
             "type": "object"
@@ -5017,15 +5017,15 @@
             "properties": {
                 "opensearch": {
                     "type": "boolean",
-                    "description": "OpenSearch settings\n"
+                    "description": "Allow clients to connect to opensearch from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "opensearchDashboards": {
                     "type": "boolean",
-                    "description": "OpenSearch Dashboards settings\n"
+                    "description": "Allow clients to connect to opensearch_dashboards from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -5034,7 +5034,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.\n"
+                    "description": "Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.\n"
                 },
                 "idpEntityId": {
                     "type": "string",
@@ -5050,7 +5050,7 @@
                 },
                 "rolesKey": {
                     "type": "string",
-                    "description": "The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.\n"
+                    "description": "Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.\n"
                 },
                 "spEntityId": {
                     "type": "string",
@@ -5058,7 +5058,7 @@
                 },
                 "subjectKey": {
                     "type": "string",
-                    "description": "The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.\n"
+                    "description": "Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.\n"
                 }
             },
             "type": "object",
@@ -5459,7 +5459,7 @@
             "properties": {
                 "dbname": {
                     "type": "string",
-                    "description": "Primary PostgreSQL database name\n"
+                    "description": "Database name for bootstrapping the initial connection.\n"
                 },
                 "host": {
                     "type": "string",
@@ -5475,7 +5475,7 @@
                 },
                 "password": {
                     "type": "string",
-                    "description": "PostgreSQL admin user password\n",
+                    "description": "Password for authentication with the server where to migrate data from.\n",
                     "secret": true
                 },
                 "port": {
@@ -5849,11 +5849,11 @@
             "properties": {
                 "pg": {
                     "type": "boolean",
-                    "description": "postgresql.conf configuration values\n"
+                    "description": "Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "pgbouncer": {
                     "type": "boolean",
-                    "description": "PGBouncer connection pooling settings\n"
+                    "description": "Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
@@ -5866,15 +5866,15 @@
             "properties": {
                 "pg": {
                     "type": "boolean",
-                    "description": "postgresql.conf configuration values\n"
+                    "description": "Enable pg.\n"
                 },
                 "pgbouncer": {
                     "type": "boolean",
-                    "description": "PGBouncer connection pooling settings\n"
+                    "description": "Enable pgbouncer.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Enable prometheus.\n"
                 }
             },
             "type": "object"
@@ -5883,15 +5883,15 @@
             "properties": {
                 "pg": {
                     "type": "boolean",
-                    "description": "postgresql.conf configuration values\n"
+                    "description": "Allow clients to connect to pg from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "pgbouncer": {
                     "type": "boolean",
-                    "description": "PGBouncer connection pooling settings\n"
+                    "description": "Allow clients to connect to pgbouncer from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 },
                 "prometheus": {
                     "type": "boolean",
-                    "description": "Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.\n"
                 }
             },
             "type": "object"
@@ -6334,7 +6334,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Column name.\n"
+                    "description": "Name of the table.\n"
                 },
                 "numConsumers": {
                     "type": "integer",
@@ -6386,7 +6386,7 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "description": "Column name.\n"
+                    "description": "Name of the topic.\n"
                 }
             },
             "type": "object",
@@ -16081,7 +16081,7 @@
             }
         },
         "aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval": {
-            "description": "Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\nimport * as azurerm from \"@pulumi/azurerm\";\n\nconst staticIps: aiven.StaticIp[] = [];\nfor (const range = {value: 0}; range.value \u003c 2; range.value++) {\n    staticIps.push(new aiven.StaticIp(`static_ips-${range.value}`, {\n        project: projectId,\n        cloudName: region,\n    }));\n}\nconst _default = new aiven.Pg(\"default\", {\n    serviceName: \"postgres\",\n    project: aivenProjectId,\n    projectVpcId: aivenProjectVpcId,\n    cloudName: region,\n    plan: plan,\n    staticIps: staticIps.map(sip =\u003e (sip.staticIpAddressId)),\n    pgUserConfig: {\n        pgVersion: \"13\",\n        staticIps: true,\n        privatelinkAccess: {\n            pg: true,\n            pgbouncer: true,\n        },\n    },\n});\nconst privatelink = new aiven.AzurePrivatelink(\"privatelink\", {\n    project: aivenProjectId,\n    serviceName: _default.name,\n    userSubscriptionIds: [azureSubscriptionId],\n});\nconst endpoint = new azurerm.index.PrivateEndpoint(\"endpoint\", {\n    name: \"postgres-endpoint\",\n    location: region,\n    resourceGroupName: azureResourceGroup.name,\n    subnetId: azureSubnetId,\n    privateServiceConnection: [{\n        name: _default.name,\n        privateConnectionResourceId: privatelink.azureServiceId,\n        isManualConnection: true,\n        requestMessage: _default.name,\n    }],\n}, {\n    dependsOn: [privatelink],\n});\nconst approval = new aiven.AzurePrivatelinkConnectionApproval(\"approval\", {\n    project: aivenProjectId,\n    serviceName: _default.serviceName,\n    endpointIpAddress: endpoint.privateServiceConnection[0].privateIpAddress,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\nimport pulumi_azurerm as azurerm\n\nstatic_ips = []\nfor range in [{\"value\": i} for i in range(0, 2)]:\n    static_ips.append(aiven.StaticIp(f\"static_ips-{range['value']}\",\n        project=project_id,\n        cloud_name=region))\ndefault = aiven.Pg(\"default\",\n    service_name=\"postgres\",\n    project=aiven_project_id,\n    project_vpc_id=aiven_project_vpc_id,\n    cloud_name=region,\n    plan=plan,\n    static_ips=[sip.static_ip_address_id for sip in static_ips],\n    pg_user_config=aiven.PgPgUserConfigArgs(\n        pg_version=\"13\",\n        static_ips=True,\n        privatelink_access=aiven.PgPgUserConfigPrivatelinkAccessArgs(\n            pg=True,\n            pgbouncer=True,\n        ),\n    ))\nprivatelink = aiven.AzurePrivatelink(\"privatelink\",\n    project=aiven_project_id,\n    service_name=default.name,\n    user_subscription_ids=[azure_subscription_id])\nendpoint = azurerm.index.PrivateEndpoint(\"endpoint\",\n    name=postgres-endpoint,\n    location=region,\n    resource_group_name=azure_resource_group.name,\n    subnet_id=azure_subnet_id,\n    private_service_connection=[{\n        name: default.name,\n        privateConnectionResourceId: privatelink.azure_service_id,\n        isManualConnection: True,\n        requestMessage: default.name,\n    }],\n    opts=pulumi.ResourceOptions(depends_on=[privatelink]))\napproval = aiven.AzurePrivatelinkConnectionApproval(\"approval\",\n    project=aiven_project_id,\n    service_name=default.service_name,\n    endpoint_ip_address=endpoint[\"privateServiceConnection\"][0][\"privateIpAddress\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\nusing Azurerm = Pulumi.Azurerm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var staticIps = new List\u003cAiven.StaticIp\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c 2; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        staticIps.Add(new Aiven.StaticIp($\"static_ips-{range.Value}\", new()\n        {\n            Project = projectId,\n            CloudName = region,\n        }));\n    }\n    var @default = new Aiven.Pg(\"default\", new()\n    {\n        ServiceName = \"postgres\",\n        Project = aivenProjectId,\n        ProjectVpcId = aivenProjectVpcId,\n        CloudName = region,\n        Plan = plan,\n        StaticIps = staticIps.Select(sip =\u003e \n        {\n            return sip.StaticIpAddressId;\n        }).ToList(),\n        PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs\n        {\n            PgVersion = \"13\",\n            StaticIps = true,\n            PrivatelinkAccess = new Aiven.Inputs.PgPgUserConfigPrivatelinkAccessArgs\n            {\n                Pg = true,\n                Pgbouncer = true,\n            },\n        },\n    });\n\n    var privatelink = new Aiven.AzurePrivatelink(\"privatelink\", new()\n    {\n        Project = aivenProjectId,\n        ServiceName = @default.Name,\n        UserSubscriptionIds = new[]\n        {\n            azureSubscriptionId,\n        },\n    });\n\n    var endpoint = new Azurerm.Index.PrivateEndpoint(\"endpoint\", new()\n    {\n        Name = \"postgres-endpoint\",\n        Location = region,\n        ResourceGroupName = azureResourceGroup.Name,\n        SubnetId = azureSubnetId,\n        PrivateServiceConnection = new[]\n        {\n            \n            {\n                { \"name\", @default.Name },\n                { \"privateConnectionResourceId\", privatelink.AzureServiceId },\n                { \"isManualConnection\", true },\n                { \"requestMessage\", @default.Name },\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            privatelink, \n        },\n    });\n\n    var approval = new Aiven.AzurePrivatelinkConnectionApproval(\"approval\", new()\n    {\n        Project = aivenProjectId,\n        ServiceName = @default.ServiceName,\n        EndpointIpAddress = endpoint.PrivateServiceConnection[0].PrivateIpAddress,\n    });\n\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME\n```\n\n",
+            "description": "Approves an Azure Private Link connection to an Aiven service with an associated endpoint IP.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\nimport * as azurerm from \"@pulumi/azurerm\";\n\nconst staticIps: aiven.StaticIp[] = [];\nfor (const range = {value: 0}; range.value \u003c 2; range.value++) {\n    staticIps.push(new aiven.StaticIp(`static_ips-${range.value}`, {\n        project: projectId,\n        cloudName: region,\n    }));\n}\nconst _default = new aiven.Pg(\"default\", {\n    serviceName: \"postgres\",\n    project: aivenProjectId,\n    projectVpcId: aivenProjectVpcId,\n    cloudName: region,\n    plan: plan,\n    staticIps: staticIps.map(sip =\u003e (sip.staticIpAddressId)),\n    pgUserConfig: {\n        pgVersion: \"13\",\n        staticIps: true,\n        privatelinkAccess: {\n            pg: true,\n            pgbouncer: true,\n        },\n    },\n});\nconst privatelink = new aiven.AzurePrivatelink(\"privatelink\", {\n    project: aivenProjectId,\n    serviceName: _default.name,\n    userSubscriptionIds: [azureSubscriptionId],\n});\nconst endpoint = new azurerm.index.PrivateEndpoint(\"endpoint\", {\n    name: \"postgres-endpoint\",\n    location: region,\n    resourceGroupName: azureResourceGroup.name,\n    subnetId: azureSubnetId,\n    privateServiceConnection: [{\n        name: _default.name,\n        privateConnectionResourceId: privatelink.azureServiceId,\n        isManualConnection: true,\n        requestMessage: _default.name,\n    }],\n}, {\n    dependsOn: [privatelink],\n});\nconst approval = new aiven.AzurePrivatelinkConnectionApproval(\"approval\", {\n    project: aivenProjectId,\n    serviceName: _default.serviceName,\n    endpointIpAddress: endpoint.privateServiceConnection[0].privateIpAddress,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\nimport pulumi_azurerm as azurerm\n\nstatic_ips = []\nfor range in [{\"value\": i} for i in range(0, 2)]:\n    static_ips.append(aiven.StaticIp(f\"static_ips-{range['value']}\",\n        project=project_id,\n        cloud_name=region))\ndefault = aiven.Pg(\"default\",\n    service_name=\"postgres\",\n    project=aiven_project_id,\n    project_vpc_id=aiven_project_vpc_id,\n    cloud_name=region,\n    plan=plan,\n    static_ips=[sip.static_ip_address_id for sip in static_ips],\n    pg_user_config=aiven.PgPgUserConfigArgs(\n        pg_version=\"13\",\n        static_ips=True,\n        privatelink_access=aiven.PgPgUserConfigPrivatelinkAccessArgs(\n            pg=True,\n            pgbouncer=True,\n        ),\n    ))\nprivatelink = aiven.AzurePrivatelink(\"privatelink\",\n    project=aiven_project_id,\n    service_name=default.name,\n    user_subscription_ids=[azure_subscription_id])\nendpoint = azurerm.index.PrivateEndpoint(\"endpoint\",\n    name=postgres-endpoint,\n    location=region,\n    resource_group_name=azure_resource_group.name,\n    subnet_id=azure_subnet_id,\n    private_service_connection=[{\n        name: default.name,\n        privateConnectionResourceId: privatelink.azure_service_id,\n        isManualConnection: True,\n        requestMessage: default.name,\n    }],\n    opts=pulumi.ResourceOptions(depends_on=[privatelink]))\napproval = aiven.AzurePrivatelinkConnectionApproval(\"approval\",\n    project=aiven_project_id,\n    service_name=default.service_name,\n    endpoint_ip_address=endpoint[\"privateServiceConnection\"][0][\"privateIpAddress\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\nusing Azurerm = Pulumi.Azurerm;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var staticIps = new List\u003cAiven.StaticIp\u003e();\n    for (var rangeIndex = 0; rangeIndex \u003c 2; rangeIndex++)\n    {\n        var range = new { Value = rangeIndex };\n        staticIps.Add(new Aiven.StaticIp($\"static_ips-{range.Value}\", new()\n        {\n            Project = projectId,\n            CloudName = region,\n        }));\n    }\n    var @default = new Aiven.Pg(\"default\", new()\n    {\n        ServiceName = \"postgres\",\n        Project = aivenProjectId,\n        ProjectVpcId = aivenProjectVpcId,\n        CloudName = region,\n        Plan = plan,\n        StaticIps = staticIps.Select(sip =\u003e \n        {\n            return sip.StaticIpAddressId;\n        }).ToList(),\n        PgUserConfig = new Aiven.Inputs.PgPgUserConfigArgs\n        {\n            PgVersion = \"13\",\n            StaticIps = true,\n            PrivatelinkAccess = new Aiven.Inputs.PgPgUserConfigPrivatelinkAccessArgs\n            {\n                Pg = true,\n                Pgbouncer = true,\n            },\n        },\n    });\n\n    var privatelink = new Aiven.AzurePrivatelink(\"privatelink\", new()\n    {\n        Project = aivenProjectId,\n        ServiceName = @default.Name,\n        UserSubscriptionIds = new[]\n        {\n            azureSubscriptionId,\n        },\n    });\n\n    var endpoint = new Azurerm.Index.PrivateEndpoint(\"endpoint\", new()\n    {\n        Name = \"postgres-endpoint\",\n        Location = region,\n        ResourceGroupName = azureResourceGroup.Name,\n        SubnetId = azureSubnetId,\n        PrivateServiceConnection = new[]\n        {\n            \n            {\n                { \"name\", @default.Name },\n                { \"privateConnectionResourceId\", privatelink.AzureServiceId },\n                { \"isManualConnection\", true },\n                { \"requestMessage\", @default.Name },\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            privatelink,\n        },\n    });\n\n    var approval = new Aiven.AzurePrivatelinkConnectionApproval(\"approval\", new()\n    {\n        Project = aivenProjectId,\n        ServiceName = @default.ServiceName,\n        EndpointIpAddress = endpoint.PrivateServiceConnection[0].PrivateIpAddress,\n    });\n\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/azurePrivatelinkConnectionApproval:AzurePrivatelinkConnectionApproval approval PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "endpointIpAddress": {
                     "type": "string",
@@ -16538,7 +16538,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra"
                     },
-                    "description": "cassandra configuration values\n",
+                    "description": "Cassandra server provided values\n",
                     "language": {
                         "csharp": {
                             "name": "CassandraServer"
@@ -16643,7 +16643,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -16738,7 +16738,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -16780,7 +16780,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra"
                         },
-                        "description": "cassandra configuration values\n",
+                        "description": "Cassandra server provided values\n",
                         "language": {
                             "csharp": {
                                 "name": "CassandraServer"
@@ -16887,7 +16887,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Use static public IP addresses.\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "tags": {
                         "type": "array",
@@ -17039,7 +17039,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse"
                     },
-                    "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                    "description": "Clickhouse server provided values\n"
                 },
                 "cloudName": {
                     "type": "string",
@@ -17139,7 +17139,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -17234,7 +17234,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -17276,7 +17276,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse"
                         },
-                        "description": "Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.\n"
+                        "description": "Clickhouse server provided values\n"
                     },
                     "cloudName": {
                         "type": "string",
@@ -17378,7 +17378,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Use static public IP addresses.\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "tags": {
                         "type": "array",
@@ -17494,7 +17494,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
+                    "description": "The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "roleGrants": {
                     "type": "array",
@@ -17532,7 +17532,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                    "description": "The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "roleGrants": {
@@ -17576,7 +17576,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "The role that is to be granted. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
+                        "description": "The role to grant privileges or roles to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "roleGrants": {
@@ -18308,7 +18308,7 @@
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
-                    "description": "Enable flink.\n",
+                    "description": "Flink server provided values\n",
                     "language": {
                         "csharp": {
                             "name": "FlinkDetails"
@@ -18385,7 +18385,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -18440,7 +18440,7 @@
                 },
                 "flink": {
                     "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
-                    "description": "Enable flink.\n",
+                    "description": "Flink server provided values\n",
                     "language": {
                         "csharp": {
                             "name": "FlinkDetails"
@@ -18489,7 +18489,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -18556,7 +18556,7 @@
                     },
                     "flink": {
                         "$ref": "#/types/aiven:index/FlinkFlink:FlinkFlink",
-                        "description": "Enable flink.\n",
+                        "description": "Flink server provided values\n",
                         "language": {
                             "csharp": {
                                 "name": "FlinkDetails"
@@ -18635,7 +18635,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Use static public IP addresses.\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "tags": {
                         "type": "array",
@@ -20388,7 +20388,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
                     },
-                    "description": "Kafka broker configuration values\n",
+                    "description": "Kafka server provided values\n",
                     "language": {
                         "csharp": {
                             "name": "KafkaServer"
@@ -20466,7 +20466,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -20571,7 +20571,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -20650,7 +20650,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
                         },
-                        "description": "Kafka broker configuration values\n",
+                        "description": "Kafka server provided values\n",
                         "language": {
                             "csharp": {
                                 "name": "KafkaServer"
@@ -20730,7 +20730,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Use static public IP addresses.\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "tags": {
                         "type": "array",
@@ -24009,7 +24009,7 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                     },
-                    "description": "OpenSearch settings\n"
+                    "description": "OpenSearch server provided values\n"
                 },
                 "plan": {
                     "type": "string",
@@ -24069,7 +24069,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -24164,7 +24164,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -24246,7 +24246,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                         },
-                        "description": "OpenSearch settings\n"
+                        "description": "OpenSearch server provided values\n"
                     },
                     "plan": {
                         "type": "string",
@@ -24308,7 +24308,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Use static public IP addresses.\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "tags": {
                         "type": "array",
@@ -25190,7 +25190,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "postgresql.conf configuration values\n",
+                    "description": "PostgreSQL specific server provided values\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -25259,7 +25259,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -25322,7 +25322,7 @@
                 },
                 "pg": {
                     "$ref": "#/types/aiven:index/PgPg:PgPg",
-                    "description": "postgresql.conf configuration values\n",
+                    "description": "PostgreSQL specific server provided values\n",
                     "language": {
                         "csharp": {
                             "name": "PgServer"
@@ -25363,7 +25363,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Use static public IP addresses.\n"
+                    "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                 },
                 "tags": {
                     "type": "array",
@@ -25437,7 +25437,7 @@
                     },
                     "pg": {
                         "$ref": "#/types/aiven:index/PgPg:PgPg",
-                        "description": "postgresql.conf configuration values\n",
+                        "description": "PostgreSQL specific server provided values\n",
                         "language": {
                             "csharp": {
                                 "name": "PgServer"
@@ -25508,7 +25508,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Use static public IP addresses.\n"
+                        "description": "Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again\n"
                     },
                     "tags": {
                         "type": "array",

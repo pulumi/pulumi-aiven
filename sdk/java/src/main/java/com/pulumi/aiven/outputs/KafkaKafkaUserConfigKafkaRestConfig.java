@@ -49,12 +49,12 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable String producerCompressionType;
     /**
-     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * @return Wait for up to the given delay to allow batching records together. The default value is `0`.
      * 
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
@@ -115,14 +115,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.producerCompressionType);
     }
     /**
-     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * @return Wait for up to the given delay to allow batching records together. The default value is `0`.
      * 
      */
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * @return The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
      * 
      */
     public Optional<Integer> producerMaxRequestSize() {

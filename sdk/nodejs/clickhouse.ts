@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -25,7 +24,6 @@ import * as utilities from "./utilities";
  *     maintenanceWindowTime: "10:00:00",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -70,7 +68,7 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public readonly clickhouseUserConfig!: pulumi.Output<outputs.ClickhouseClickhouseUserConfig | undefined>;
     /**
-     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Clickhouse server provided values
      */
     public /*out*/ readonly clickhouses!: pulumi.Output<outputs.ClickhouseClickhouse[]>;
     /**
@@ -160,7 +158,7 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -277,7 +275,7 @@ export interface ClickhouseState {
      */
     clickhouseUserConfig?: pulumi.Input<inputs.ClickhouseClickhouseUserConfig>;
     /**
-     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+     * Clickhouse server provided values
      */
     clickhouses?: pulumi.Input<pulumi.Input<inputs.ClickhouseClickhouse>[]>;
     /**
@@ -367,7 +365,7 @@ export interface ClickhouseState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -435,7 +433,7 @@ export interface ClickhouseArgs {
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**

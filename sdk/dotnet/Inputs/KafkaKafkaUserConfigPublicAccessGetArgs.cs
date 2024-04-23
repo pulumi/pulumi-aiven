@@ -13,31 +13,31 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigPublicAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka broker configuration values
+        /// Allow clients to connect to kafka from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kafka")]
         public Input<bool>? Kafka { get; set; }
 
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Allow clients to connect to kafka_connect from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Allow clients to connect to kafka_rest from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Allow clients to connect to schema_registry from the public internet for service nodes that are in a project VPC or another type of private network.
         /// </summary>
         [Input("schemaRegistry")]
         public Input<bool>? SchemaRegistry { get; set; }

@@ -57,7 +57,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private @Nullable Integer maxRowsPerMessage;
     /**
-     * @return Column name.
+     * @return Name of the table.
      * 
      */
     private String name;
@@ -140,7 +140,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         return Optional.ofNullable(this.maxRowsPerMessage);
     }
     /**
-     * @return Column name.
+     * @return Name of the table.
      * 
      */
     public String name() {

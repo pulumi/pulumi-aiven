@@ -23,7 +23,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
      */
     private @Nullable Integer blockExpirySeconds;
     /**
-     * @return internal*authentication*backend*limiting.max*blocked_clients.
+     * @return The maximum number of blocked IP addresses.
      * 
      */
     private @Nullable Integer maxBlockedClients;
@@ -38,7 +38,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
      */
     private @Nullable Integer timeWindowSeconds;
     /**
-     * @return internal*authentication*backend_limiting.type.
+     * @return The type of rate limiting.
      * 
      */
     private @Nullable String type;
@@ -59,7 +59,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         return Optional.ofNullable(this.blockExpirySeconds);
     }
     /**
-     * @return internal*authentication*backend*limiting.max*blocked_clients.
+     * @return The maximum number of blocked IP addresses.
      * 
      */
     public Optional<Integer> maxBlockedClients() {
@@ -80,7 +80,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         return Optional.ofNullable(this.timeWindowSeconds);
     }
     /**
-     * @return internal*authentication*backend_limiting.type.
+     * @return The type of rate limiting.
      * 
      */
     public Optional<String> type() {

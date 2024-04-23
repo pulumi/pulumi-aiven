@@ -17,27 +17,27 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
      */
     private @Nullable Boolean jolokia;
     /**
-     * @return Kafka broker configuration values
+     * @return Enable kafka.
      * 
      */
     private @Nullable Boolean kafka;
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Enable kafka_connect.
      * 
      */
     private @Nullable Boolean kafkaConnect;
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Enable kafka_rest.
      * 
      */
     private @Nullable Boolean kafkaRest;
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     private @Nullable Boolean prometheus;
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable schema_registry.
      * 
      */
     private @Nullable Boolean schemaRegistry;
@@ -51,35 +51,35 @@ public final class KafkaKafkaUserConfigPrivatelinkAccess {
         return Optional.ofNullable(this.jolokia);
     }
     /**
-     * @return Kafka broker configuration values
+     * @return Enable kafka.
      * 
      */
     public Optional<Boolean> kafka() {
         return Optional.ofNullable(this.kafka);
     }
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Enable kafka_connect.
      * 
      */
     public Optional<Boolean> kafkaConnect() {
         return Optional.ofNullable(this.kafkaConnect);
     }
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Enable kafka_rest.
      * 
      */
     public Optional<Boolean> kafkaRest() {
         return Optional.ofNullable(this.kafkaRest);
     }
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Boolean> prometheus() {
         return Optional.ofNullable(this.prometheus);
     }
     /**
-     * @return Allow clients to connect to schema_registry with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable schema_registry.
      * 
      */
     public Optional<Boolean> schemaRegistry() {

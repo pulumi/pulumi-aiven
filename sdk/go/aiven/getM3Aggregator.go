@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupM3Aggregator(ctx *pulumi.Context, args *LookupM3AggregatorArgs, opts ...pulumi.InvokeOption) (*LookupM3AggregatorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupM3AggregatorResult

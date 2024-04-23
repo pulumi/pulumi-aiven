@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigPrivateAccess {
     /**
-     * @return OpenSearch settings
+     * @return Allow clients to connect to opensearch with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean opensearch;
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     private @Nullable Boolean opensearchDashboards;
@@ -29,14 +29,14 @@ public final class OpenSearchOpensearchUserConfigPrivateAccess {
 
     private OpenSearchOpensearchUserConfigPrivateAccess() {}
     /**
-     * @return OpenSearch settings
+     * @return Allow clients to connect to opensearch with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> opensearch() {
         return Optional.ofNullable(this.opensearch);
     }
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
      * 
      */
     public Optional<Boolean> opensearchDashboards() {

@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -59,7 +57,7 @@ type Clickhouse struct {
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrOutput `pulumi:"clickhouseUserConfig"`
-	// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	// Clickhouse server provided values
 	Clickhouses ClickhouseClickhouseArrayOutput `pulumi:"clickhouses"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
@@ -105,7 +103,7 @@ type Clickhouse struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags ClickhouseTagArrayOutput `pulumi:"tags"`
@@ -163,7 +161,7 @@ type clickhouseState struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
-	// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	// Clickhouse server provided values
 	Clickhouses []ClickhouseClickhouse `pulumi:"clickhouses"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
@@ -209,7 +207,7 @@ type clickhouseState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []ClickhouseTag `pulumi:"tags"`
@@ -224,7 +222,7 @@ type ClickhouseState struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
-	// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+	// Clickhouse server provided values
 	Clickhouses ClickhouseClickhouseArrayInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
@@ -270,7 +268,7 @@ type ClickhouseState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags ClickhouseTagArrayInput
@@ -309,7 +307,7 @@ type clickhouseArgs struct {
 	ServiceIntegrations []ClickhouseServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []ClickhouseTag `pulumi:"tags"`
@@ -345,7 +343,7 @@ type ClickhouseArgs struct {
 	ServiceIntegrations ClickhouseServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags ClickhouseTagArrayInput
@@ -452,7 +450,7 @@ func (o ClickhouseOutput) ClickhouseUserConfig() ClickhouseClickhouseUserConfigP
 	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseUserConfigPtrOutput { return v.ClickhouseUserConfig }).(ClickhouseClickhouseUserConfigPtrOutput)
 }
 
-// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+// Clickhouse server provided values
 func (o ClickhouseOutput) Clickhouses() ClickhouseClickhouseArrayOutput {
 	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseArrayOutput { return v.Clickhouses }).(ClickhouseClickhouseArrayOutput)
 }
@@ -564,7 +562,7 @@ func (o ClickhouseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Use static public IP addresses.
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o ClickhouseOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PgPgUserConfigMigration {
     /**
-     * @return Primary PostgreSQL database name
+     * @return Database name for bootstrapping the initial connection.
      * 
      */
     private @Nullable String dbname;
@@ -35,7 +35,7 @@ public final class PgPgUserConfigMigration {
      */
     private @Nullable String method;
     /**
-     * @return PostgreSQL admin user password
+     * @return Password for authentication with the server where to migrate data from.
      * 
      */
     private @Nullable String password;
@@ -57,7 +57,7 @@ public final class PgPgUserConfigMigration {
 
     private PgPgUserConfigMigration() {}
     /**
-     * @return Primary PostgreSQL database name
+     * @return Database name for bootstrapping the initial connection.
      * 
      */
     public Optional<String> dbname() {
@@ -85,7 +85,7 @@ public final class PgPgUserConfigMigration {
         return Optional.ofNullable(this.method);
     }
     /**
-     * @return PostgreSQL admin user password
+     * @return Password for authentication with the server where to migrate data from.
      * 
      */
     public Optional<String> password() {

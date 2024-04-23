@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigPrivateAccess
     {
         /// <summary>
-        /// Kafka broker configuration values
+        /// Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? Kafka;
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>

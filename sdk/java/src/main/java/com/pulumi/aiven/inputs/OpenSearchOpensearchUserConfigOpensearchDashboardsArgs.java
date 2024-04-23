@@ -17,14 +17,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     public static final OpenSearchOpensearchUserConfigOpensearchDashboardsArgs Empty = new OpenSearchOpensearchUserConfigOpensearchDashboardsArgs();
 
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enable or disable OpenSearch Dashboards. The default value is `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enable or disable OpenSearch Dashboards. The default value is `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -88,7 +88,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * @param enabled Enable or disable OpenSearch Dashboards. The default value is `true`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * @param enabled Enable or disable OpenSearch Dashboards. The default value is `true`.
          * 
          * @return builder
          * 

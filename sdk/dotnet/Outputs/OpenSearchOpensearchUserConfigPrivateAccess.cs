@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigPrivateAccess
     {
         /// <summary>
-        /// OpenSearch settings
+        /// Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? Opensearch;
         /// <summary>
-        /// OpenSearch Dashboards settings
+        /// Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         public readonly bool? OpensearchDashboards;
         /// <summary>

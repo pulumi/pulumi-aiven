@@ -161,7 +161,6 @@ class OrganizationGroupProject(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -175,7 +174,6 @@ class OrganizationGroupProject(pulumi.CustomResource):
             project=example_aiven_project.project,
             role=admin)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -200,7 +198,6 @@ class OrganizationGroupProject(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -214,7 +211,6 @@ class OrganizationGroupProject(pulumi.CustomResource):
             project=example_aiven_project.project,
             role=admin)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

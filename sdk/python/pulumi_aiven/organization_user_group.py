@@ -183,7 +183,6 @@ class OrganizationUserGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -193,7 +192,6 @@ class OrganizationUserGroup(pulumi.CustomResource):
             organization_id=main["id"],
             name="Example group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -218,7 +216,6 @@ class OrganizationUserGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -228,7 +225,6 @@ class OrganizationUserGroup(pulumi.CustomResource):
             organization_id=main["id"],
             name="Example group")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

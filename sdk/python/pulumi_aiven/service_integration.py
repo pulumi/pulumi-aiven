@@ -688,7 +688,6 @@ class ServiceIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -699,7 +698,6 @@ class ServiceIntegration(pulumi.CustomResource):
             source_service_name=kfk1["serviceName"],
             destination_service_name=m3db["serviceName"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -747,7 +745,6 @@ class ServiceIntegration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -758,7 +755,6 @@ class ServiceIntegration(pulumi.CustomResource):
             source_service_name=kfk1["serviceName"],
             destination_service_name=m3db["serviceName"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

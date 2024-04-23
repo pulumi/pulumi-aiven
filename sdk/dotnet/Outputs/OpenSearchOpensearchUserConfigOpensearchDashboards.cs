@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchDashboards
     {
         /// <summary>
-        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        /// Enable or disable OpenSearch Dashboards. The default value is `true`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>

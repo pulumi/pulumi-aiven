@@ -194,14 +194,14 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.diskSpaceUsed;
     }
     /**
-     * Enable flink.
+     * Flink server provided values
      * 
      */
     @Export(name="flink", refs={FlinkFlink.class}, tree="[0]")
     private Output<FlinkFlink> flink;
 
     /**
-     * @return Enable flink.
+     * @return Flink server provided values
      * 
      */
     public Output<FlinkFlink> flink() {
@@ -418,14 +418,14 @@ public class Flink extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Use static public IP addresses.
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Output<Optional<List<String>>> staticIps() {

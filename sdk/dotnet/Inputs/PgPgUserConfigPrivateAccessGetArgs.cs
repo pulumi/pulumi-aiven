@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPrivateAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// postgresql.conf configuration values
+        /// Allow clients to connect to pg with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("pg")]
         public Input<bool>? Pg { get; set; }
 
         /// <summary>
-        /// PGBouncer connection pooling settings
+        /// Allow clients to connect to pgbouncer with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("pgbouncer")]
         public Input<bool>? Pgbouncer { get; set; }

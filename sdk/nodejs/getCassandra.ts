@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -21,7 +20,6 @@ import * as utilities from "./utilities";
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCassandra(args: GetCassandraArgs, opts?: pulumi.InvokeOptions): Promise<GetCassandraResult> {
 
@@ -172,7 +170,6 @@ export interface GetCassandraResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -182,7 +179,6 @@ export interface GetCassandraResult {
  *     serviceName: "<SERVICE_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCassandraOutput(args: GetCassandraOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCassandraResult> {
     return pulumi.output(args).apply((a: any) => getCassandra(a, opts))

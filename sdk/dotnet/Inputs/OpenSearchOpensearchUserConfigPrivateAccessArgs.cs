@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigPrivateAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OpenSearch settings
+        /// Allow clients to connect to opensearch with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("opensearch")]
         public Input<bool>? Opensearch { get; set; }
 
         /// <summary>
-        /// OpenSearch Dashboards settings
+        /// Allow clients to connect to opensearch_dashboards with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<bool>? OpensearchDashboards { get; set; }

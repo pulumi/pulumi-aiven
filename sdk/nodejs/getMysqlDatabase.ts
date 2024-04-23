@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMysqlDatabase(args: GetMysqlDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetMysqlDatabaseResult> {
 
@@ -77,7 +75,6 @@ export interface GetMysqlDatabaseResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -88,7 +85,6 @@ export interface GetMysqlDatabaseResult {
  *     databaseName: "<DATABASE_NAME>",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMysqlDatabaseOutput(args: GetMysqlDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMysqlDatabaseResult> {
     return pulumi.output(args).apply((a: any) => getMysqlDatabase(a, opts))

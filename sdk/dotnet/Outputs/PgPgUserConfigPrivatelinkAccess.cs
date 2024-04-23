@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPgUserConfigPrivatelinkAccess
     {
         /// <summary>
-        /// postgresql.conf configuration values
+        /// Enable pg.
         /// </summary>
         public readonly bool? Pg;
         /// <summary>
-        /// PGBouncer connection pooling settings
+        /// Enable pgbouncer.
         /// </summary>
         public readonly bool? Pgbouncer;
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         public readonly bool? Prometheus;
 

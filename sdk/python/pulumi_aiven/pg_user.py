@@ -248,7 +248,6 @@ class PgUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -259,7 +258,6 @@ class PgUser(pulumi.CustomResource):
             username="user-1",
             password="Test$1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +284,6 @@ class PgUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
@@ -297,7 +294,6 @@ class PgUser(pulumi.CustomResource):
             username="user-1",
             password="Test$1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

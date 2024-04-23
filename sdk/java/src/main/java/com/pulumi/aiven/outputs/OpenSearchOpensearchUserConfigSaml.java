@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigSaml {
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
      * 
      */
     private Boolean enabled;
@@ -34,7 +34,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
      */
     private @Nullable String idpPemtrustedcasContent;
     /**
-     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * @return Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
      * 
      */
     private @Nullable String rolesKey;
@@ -44,14 +44,14 @@ public final class OpenSearchOpensearchUserConfigSaml {
      */
     private String spEntityId;
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * @return Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
      * 
      */
     private @Nullable String subjectKey;
 
     private OpenSearchOpensearchUserConfigSaml() {}
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
      * 
      */
     public Boolean enabled() {
@@ -79,7 +79,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
         return Optional.ofNullable(this.idpPemtrustedcasContent);
     }
     /**
-     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * @return Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
      * 
      */
     public Optional<String> rolesKey() {
@@ -93,7 +93,7 @@ public final class OpenSearchOpensearchUserConfigSaml {
         return this.spEntityId;
     }
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * @return Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
      * 
      */
     public Optional<String> subjectKey() {

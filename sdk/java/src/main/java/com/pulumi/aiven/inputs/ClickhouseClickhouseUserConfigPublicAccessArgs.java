@@ -16,14 +16,14 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     public static final ClickhouseClickhouseUserConfigPublicAccessArgs Empty = new ClickhouseClickhouseUserConfigPublicAccessArgs();
 
     /**
-     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="clickhouse")
     private @Nullable Output<Boolean> clickhouse;
 
     /**
-     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> clickhouse() {
@@ -31,14 +31,14 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="clickhouseHttps")
     private @Nullable Output<Boolean> clickhouseHttps;
 
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> clickhouseHttps() {
@@ -46,14 +46,14 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="clickhouseMysql")
     private @Nullable Output<Boolean> clickhouseMysql;
 
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> clickhouseMysql() {
@@ -61,14 +61,14 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
     }
 
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
      * 
      */
     public Optional<Output<Boolean>> prometheus() {
@@ -103,7 +103,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouse Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouse Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouse Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouse Allow clients to connect to clickhouse from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseHttps Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseHttps Allow clients to connect to clickhouse_https from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClickhouseClickhouseUserConfigPublicAccessArgs extends com.pu
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Allow clients to connect to prometheus from the public internet for service nodes that are in a project VPC or another type of private network.
          * 
          * @return builder
          * 

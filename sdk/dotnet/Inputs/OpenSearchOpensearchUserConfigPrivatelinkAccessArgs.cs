@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// OpenSearch settings
+        /// Enable opensearch.
         /// </summary>
         [Input("opensearch")]
         public Input<bool>? Opensearch { get; set; }
 
         /// <summary>
-        /// OpenSearch Dashboards settings
+        /// Enable opensearch_dashboards.
         /// </summary>
         [Input("opensearchDashboards")]
         public Input<bool>? OpensearchDashboards { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }

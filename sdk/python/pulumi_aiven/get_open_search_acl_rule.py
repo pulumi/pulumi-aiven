@@ -115,7 +115,6 @@ def get_open_search_acl_rule(index: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -125,7 +124,6 @@ def get_open_search_acl_rule(index: Optional[str] = None,
         username="<USERNAME>",
         index="<INDEX>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.
@@ -164,7 +162,6 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_aiven as aiven
@@ -174,7 +171,6 @@ def get_open_search_acl_rule_output(index: Optional[pulumi.Input[str]] = None,
         username="<USERNAME>",
         index="<INDEX>")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str index: The index pattern for this ACL entry. Maximum length: `249`. Changing this property forces recreation of the resource.

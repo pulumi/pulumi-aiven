@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPrivatelinkAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// postgresql.conf configuration values
+        /// Enable pg.
         /// </summary>
         [Input("pg")]
         public Input<bool>? Pg { get; set; }
 
         /// <summary>
-        /// PGBouncer connection pooling settings
+        /// Enable pgbouncer.
         /// </summary>
         [Input("pgbouncer")]
         public Input<bool>? Pgbouncer { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }

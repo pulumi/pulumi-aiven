@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
     public static final OpenSearchOpensearchUserConfigPrivatelinkAccessArgs Empty = new OpenSearchOpensearchUserConfigPrivatelinkAccessArgs();
 
     /**
-     * OpenSearch settings
+     * Enable opensearch.
      * 
      */
     @Import(name="opensearch")
     private @Nullable Output<Boolean> opensearch;
 
     /**
-     * @return OpenSearch settings
+     * @return Enable opensearch.
      * 
      */
     public Optional<Output<Boolean>> opensearch() {
@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
-     * OpenSearch Dashboards settings
+     * Enable opensearch_dashboards.
      * 
      */
     @Import(name="opensearchDashboards")
     private @Nullable Output<Boolean> opensearchDashboards;
 
     /**
-     * @return OpenSearch Dashboards settings
+     * @return Enable opensearch_dashboards.
      * 
      */
     public Optional<Output<Boolean>> opensearchDashboards() {
@@ -46,14 +46,14 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      * 
      */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Output<Boolean>> prometheus() {
@@ -87,7 +87,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearch OpenSearch settings
+         * @param opensearch Enable opensearch.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearch OpenSearch settings
+         * @param opensearch Enable opensearch.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings
+         * @param opensearchDashboards Enable opensearch_dashboards.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param opensearchDashboards OpenSearch Dashboards settings
+         * @param opensearchDashboards Enable opensearch_dashboards.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OpenSearchOpensearchUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 

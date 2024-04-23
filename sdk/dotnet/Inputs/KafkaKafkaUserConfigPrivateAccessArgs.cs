@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigPrivateAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka broker configuration values
+        /// Allow clients to connect to kafka with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("kafka")]
         public Input<bool>? Kafka { get; set; }
 
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Allow clients to connect to kafka_connect with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("kafkaConnect")]
         public Input<bool>? KafkaConnect { get; set; }
 
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Allow clients to connect to kafka_rest with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
         /// </summary>
         [Input("kafkaRest")]
         public Input<bool>? KafkaRest { get; set; }

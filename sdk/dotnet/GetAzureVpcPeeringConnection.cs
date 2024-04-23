@@ -16,7 +16,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAzureVpcPeeringConnectionResult> InvokeAsync(GetAzureVpcPeeringConnectionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.Aiven
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.Aiven
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAzureVpcPeeringConnectionResult> Invoke(GetAzureVpcPeeringConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureVpcPeeringConnectionResult>("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", args ?? new GetAzureVpcPeeringConnectionInvokeArgs(), options.WithDefaults());

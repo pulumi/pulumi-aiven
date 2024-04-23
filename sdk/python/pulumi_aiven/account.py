@@ -232,14 +232,12 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         account1 = aiven.Account("account1", name="<ACCOUNT_NAME>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,14 +263,12 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_aiven as aiven
 
         account1 = aiven.Account("account1", name="<ACCOUNT_NAME>")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

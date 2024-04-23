@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -20,7 +19,6 @@ import * as utilities from "./utilities";
  *     poolName: "mypool",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectionPool(args: GetConnectionPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionPoolResult> {
 
@@ -96,7 +94,6 @@ export interface GetConnectionPoolResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
@@ -107,7 +104,6 @@ export interface GetConnectionPoolResult {
  *     poolName: "mypool",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConnectionPoolOutput(args: GetConnectionPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionPoolResult> {
     return pulumi.output(args).apply((a: any) => getConnectionPool(a, opts))

@@ -67,7 +67,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxRowsPerMessage { get; set; }
 
         /// <summary>
-        /// Column name.
+        /// Name of the table.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

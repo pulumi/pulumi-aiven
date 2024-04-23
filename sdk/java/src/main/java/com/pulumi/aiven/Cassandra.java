@@ -110,14 +110,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cassandraUserConfig);
     }
     /**
-     * cassandra configuration values
+     * Cassandra server provided values
      * 
      */
     @Export(name="cassandras", refs={List.class,CassandraCassandra.class}, tree="[0,1]")
     private Output<List<CassandraCassandra>> cassandras;
 
     /**
-     * @return cassandra configuration values
+     * @return Cassandra server provided values
      * 
      */
     public Output<List<CassandraCassandra>> cassandras() {
@@ -422,14 +422,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Use static public IP addresses.
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Use static public IP addresses.
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Output<Optional<List<String>>> staticIps() {

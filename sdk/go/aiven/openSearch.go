@@ -16,7 +16,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -90,7 +88,7 @@ type OpenSearch struct {
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings
 	OpensearchUserConfig OpenSearchOpensearchUserConfigPtrOutput `pulumi:"opensearchUserConfig"`
-	// OpenSearch settings
+	// OpenSearch server provided values
 	Opensearches OpenSearchOpensearchArrayOutput `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
@@ -116,7 +114,7 @@ type OpenSearch struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags OpenSearchTagArrayOutput `pulumi:"tags"`
@@ -194,7 +192,7 @@ type openSearchState struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings
 	OpensearchUserConfig *OpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfig"`
-	// OpenSearch settings
+	// OpenSearch server provided values
 	Opensearches []OpenSearchOpensearch `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
@@ -220,7 +218,7 @@ type openSearchState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []OpenSearchTag `pulumi:"tags"`
@@ -255,7 +253,7 @@ type OpenSearchState struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Opensearch user configurable settings
 	OpensearchUserConfig OpenSearchOpensearchUserConfigPtrInput
-	// OpenSearch settings
+	// OpenSearch server provided values
 	Opensearches OpenSearchOpensearchArrayInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
@@ -281,7 +279,7 @@ type OpenSearchState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags OpenSearchTagArrayInput
@@ -320,7 +318,7 @@ type openSearchArgs struct {
 	ServiceIntegrations []OpenSearchServiceIntegration `pulumi:"serviceIntegrations"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []OpenSearchTag `pulumi:"tags"`
@@ -356,7 +354,7 @@ type OpenSearchArgs struct {
 	ServiceIntegrations OpenSearchServiceIntegrationArrayInput
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Use static public IP addresses.
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags OpenSearchTagArrayInput
@@ -510,7 +508,7 @@ func (o OpenSearchOutput) OpensearchUserConfig() OpenSearchOpensearchUserConfigP
 	return o.ApplyT(func(v *OpenSearch) OpenSearchOpensearchUserConfigPtrOutput { return v.OpensearchUserConfig }).(OpenSearchOpensearchUserConfigPtrOutput)
 }
 
-// OpenSearch settings
+// OpenSearch server provided values
 func (o OpenSearchOutput) Opensearches() OpenSearchOpensearchArrayOutput {
 	return o.ApplyT(func(v *OpenSearch) OpenSearchOpensearchArrayOutput { return v.Opensearches }).(OpenSearchOpensearchArrayOutput)
 }
@@ -575,7 +573,7 @@ func (o OpenSearchOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenSearch) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Use static public IP addresses.
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o OpenSearchOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OpenSearch) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }

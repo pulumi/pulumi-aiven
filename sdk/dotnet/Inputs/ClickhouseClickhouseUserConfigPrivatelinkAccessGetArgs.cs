@@ -13,25 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ClickhouseClickhouseUserConfigPrivatelinkAccessGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Allow clients to connect to clickhouse with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable clickhouse.
         /// </summary>
         [Input("clickhouse")]
         public Input<bool>? Clickhouse { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable clickhouse_https.
         /// </summary>
         [Input("clickhouseHttps")]
         public Input<bool>? ClickhouseHttps { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable clickhouse_mysql.
         /// </summary>
         [Input("clickhouseMysql")]
         public Input<bool>? ClickhouseMysql { get; set; }
 
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         [Input("prometheus")]
         public Input<bool>? Prometheus { get; set; }

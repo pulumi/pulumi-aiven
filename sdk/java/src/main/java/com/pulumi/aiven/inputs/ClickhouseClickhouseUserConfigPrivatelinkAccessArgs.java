@@ -16,14 +16,14 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     public static final ClickhouseClickhouseUserConfigPrivatelinkAccessArgs Empty = new ClickhouseClickhouseUserConfigPrivatelinkAccessArgs();
 
     /**
-     * Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable clickhouse.
      * 
      */
     @Import(name="clickhouse")
     private @Nullable Output<Boolean> clickhouse;
 
     /**
-     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse.
      * 
      */
     public Optional<Output<Boolean>> clickhouse() {
@@ -31,14 +31,14 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
-     * Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable clickhouse_https.
      * 
      */
     @Import(name="clickhouseHttps")
     private @Nullable Output<Boolean> clickhouseHttps;
 
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse_https.
      * 
      */
     public Optional<Output<Boolean>> clickhouseHttps() {
@@ -46,14 +46,14 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
-     * Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable clickhouse_mysql.
      * 
      */
     @Import(name="clickhouseMysql")
     private @Nullable Output<Boolean> clickhouseMysql;
 
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse_mysql.
      * 
      */
     public Optional<Output<Boolean>> clickhouseMysql() {
@@ -61,14 +61,14 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
     }
 
     /**
-     * Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * Enable prometheus.
      * 
      */
     @Import(name="prometheus")
     private @Nullable Output<Boolean> prometheus;
 
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Output<Boolean>> prometheus() {
@@ -103,7 +103,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param clickhouse Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouse Enable clickhouse.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param clickhouse Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouse Enable clickhouse.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseHttps Enable clickhouse_https.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param clickhouseHttps Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseHttps Enable clickhouse_https.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseMysql Enable clickhouse_mysql.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param clickhouseMysql Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param clickhouseMysql Enable clickhouse_mysql.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ClickhouseClickhouseUserConfigPrivatelinkAccessArgs extends c
         }
 
         /**
-         * @param prometheus Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+         * @param prometheus Enable prometheus.
          * 
          * @return builder
          * 

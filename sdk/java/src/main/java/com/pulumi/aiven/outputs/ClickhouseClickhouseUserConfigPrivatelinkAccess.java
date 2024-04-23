@@ -12,50 +12,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClickhouseClickhouseUserConfigPrivatelinkAccess {
     /**
-     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse.
      * 
      */
     private @Nullable Boolean clickhouse;
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse_https.
      * 
      */
     private @Nullable Boolean clickhouseHttps;
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse_mysql.
      * 
      */
     private @Nullable Boolean clickhouseMysql;
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     private @Nullable Boolean prometheus;
 
     private ClickhouseClickhouseUserConfigPrivatelinkAccess() {}
     /**
-     * @return Allow clients to connect to clickhouse with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse.
      * 
      */
     public Optional<Boolean> clickhouse() {
         return Optional.ofNullable(this.clickhouse);
     }
     /**
-     * @return Allow clients to connect to clickhouse_https with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse_https.
      * 
      */
     public Optional<Boolean> clickhouseHttps() {
         return Optional.ofNullable(this.clickhouseHttps);
     }
     /**
-     * @return Allow clients to connect to clickhouse_mysql with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable clickhouse_mysql.
      * 
      */
     public Optional<Boolean> clickhouseMysql() {
         return Optional.ofNullable(this.clickhouseMysql);
     }
     /**
-     * @return Allow clients to connect to prometheus with a DNS name that always resolves to the service&#39;s private IP addresses. Only available in certain network locations.
+     * @return Enable prometheus.
      * 
      */
     public Optional<Boolean> prometheus() {

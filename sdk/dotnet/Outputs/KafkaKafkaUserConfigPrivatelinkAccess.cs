@@ -18,23 +18,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Jolokia;
         /// <summary>
-        /// Kafka broker configuration values
+        /// Enable kafka.
         /// </summary>
         public readonly bool? Kafka;
         /// <summary>
-        /// Enable Kafka Connect service. The default value is `false`.
+        /// Enable kafka_connect.
         /// </summary>
         public readonly bool? KafkaConnect;
         /// <summary>
-        /// Enable Kafka-REST service. The default value is `false`.
+        /// Enable kafka_rest.
         /// </summary>
         public readonly bool? KafkaRest;
         /// <summary>
-        /// Allow clients to connect to prometheus with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable prometheus.
         /// </summary>
         public readonly bool? Prometheus;
         /// <summary>
-        /// Allow clients to connect to schema_registry with a DNS name that always resolves to the service's private IP addresses. Only available in certain network locations.
+        /// Enable schema_registry.
         /// </summary>
         public readonly bool? SchemaRegistry;
 

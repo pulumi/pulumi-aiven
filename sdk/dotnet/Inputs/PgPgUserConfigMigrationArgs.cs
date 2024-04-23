@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigMigrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Primary PostgreSQL database name
+        /// Database name for bootstrapping the initial connection.
         /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// PostgreSQL admin user password
+        /// Password for authentication with the server where to migrate data from.
         /// </summary>
         public Input<string>? Password
         {

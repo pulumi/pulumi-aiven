@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigSamlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+        /// Enables or disables SAML-based authentication for OpenSearch. When enabled, users can authenticate using SAML with an Identity Provider. The default value is `true`.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? IdpPemtrustedcasContent { get; set; }
 
         /// <summary>
-        /// The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+        /// Optional. Specifies the attribute in the SAML response where role information is stored, if available. Role attributes are not required for SAML authentication, but can be included in SAML assertions by most Identity Providers (IdPs) to determine user access levels or permissions.
         /// </summary>
         [Input("rolesKey")]
         public Input<string>? RolesKey { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> SpEntityId { get; set; } = null!;
 
         /// <summary>
-        /// The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+        /// Optional. Specifies the attribute in the SAML response where the subject identifier is stored. If not configured, the NameID attribute is used by default.
         /// </summary>
         [Input("subjectKey")]
         public Input<string>? SubjectKey { get; set; }

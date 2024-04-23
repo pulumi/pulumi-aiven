@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? BlockExpirySeconds { get; set; }
 
         /// <summary>
-        /// internal*authentication*backend*limiting.max*blocked_clients.
+        /// The maximum number of blocked IP addresses.
         /// </summary>
         [Input("maxBlockedClients")]
         public Input<int>? MaxBlockedClients { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? TimeWindowSeconds { get; set; }
 
         /// <summary>
-        /// internal*authentication*backend_limiting.type.
+        /// The type of rate limiting.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
