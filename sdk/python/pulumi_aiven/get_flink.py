@@ -227,7 +227,7 @@ class GetFlinkResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -331,7 +331,7 @@ class GetFlinkResult:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetFlinkTechEmailResult']:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -398,7 +398,7 @@ def get_flink(project: Optional[str] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     __args__ = dict()
@@ -457,7 +457,7 @@ def get_flink_output(project: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     ...

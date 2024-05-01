@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? GatherEventWaits;
         /// <summary>
-        /// gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+        /// Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
         /// </summary>
         public readonly bool? GatherFileEventsStats;
         /// <summary>

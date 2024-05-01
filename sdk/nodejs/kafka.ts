@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka resource allows the creation and management of Aiven Kafka services.
+ * Creates and manages an [Aiven for Apache Kafka®](https://aiven.io/docs/products/kafka) service.
  *
  * ## Example Usage
  *
@@ -15,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka1 = new aiven.Kafka("kafka1", {
- *     project: pr1.project,
+ * const exampleKafka = new aiven.Kafka("example_kafka", {
+ *     project: exampleProject.project,
  *     cloudName: "google-europe-west1",
  *     plan: "business-4",
- *     serviceName: "my-kafka1",
+ *     serviceName: "example-kafka",
  *     maintenanceWindowDow: "monday",
  *     maintenanceWindowTime: "10:00:00",
  *     kafkaUserConfig: {
@@ -42,7 +42,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/kafka:Kafka kafka1 project/service_name
+ * $ pulumi import aiven:index/kafka:Kafka example_kafka PROJECT/SERVICE_NAME
  * ```
  */
 export class Kafka extends pulumi.CustomResource {
@@ -86,7 +86,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.KafkaComponent[]>;
     /**
-     * Create default wildcard Kafka ACL
+     * Create a default wildcard Kafka ACL.
      */
     public readonly defaultAcl!: pulumi.Output<boolean | undefined>;
     /**
@@ -116,11 +116,11 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly kafkaUserConfig!: pulumi.Output<outputs.KafkaKafkaUserConfig | undefined>;
     /**
-     * Kafka server provided values
+     * Kafka server connection details.
      */
     public /*out*/ readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      *
      * @deprecated Usage of this field is discouraged.
      */
@@ -138,7 +138,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -190,7 +190,7 @@ export class Kafka extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.KafkaTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     public readonly techEmails!: pulumi.Output<outputs.KafkaTechEmail[] | undefined>;
     /**
@@ -284,7 +284,7 @@ export class Kafka extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["kafkas", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Kafka.__pulumiType, name, resourceInputs, opts);
     }
@@ -307,7 +307,7 @@ export interface KafkaState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.KafkaComponent>[]>;
     /**
-     * Create default wildcard Kafka ACL
+     * Create a default wildcard Kafka ACL.
      */
     defaultAcl?: pulumi.Input<boolean>;
     /**
@@ -337,11 +337,11 @@ export interface KafkaState {
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
     /**
-     * Kafka server provided values
+     * Kafka server connection details.
      */
     kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      *
      * @deprecated Usage of this field is discouraged.
      */
@@ -359,7 +359,7 @@ export interface KafkaState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -411,7 +411,7 @@ export interface KafkaState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaTechEmail>[]>;
     /**
@@ -433,7 +433,7 @@ export interface KafkaArgs {
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Create default wildcard Kafka ACL
+     * Create a default wildcard Kafka ACL.
      */
     defaultAcl?: pulumi.Input<boolean>;
     /**
@@ -447,7 +447,7 @@ export interface KafkaArgs {
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      *
      * @deprecated Usage of this field is discouraged.
      */
@@ -465,7 +465,7 @@ export interface KafkaArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -489,7 +489,7 @@ export interface KafkaArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaTechEmail>[]>;
     /**

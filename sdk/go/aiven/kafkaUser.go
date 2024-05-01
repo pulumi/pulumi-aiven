@@ -46,7 +46,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaUser:KafkaUser foo project/service_name/username
+// $ pulumi import aiven:index/kafkaUser:KafkaUser foo PROJECT/SERVICE_NAME/USERNAME
 // ```
 type KafkaUser struct {
 	pulumi.CustomResourceState
@@ -57,9 +57,9 @@ type KafkaUser struct {
 	AccessKey pulumi.StringOutput `pulumi:"accessKey"`
 	// The password of the Kafka User.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -121,9 +121,9 @@ type kafkaUserState struct {
 	AccessKey *string `pulumi:"accessKey"`
 	// The password of the Kafka User.
 	Password *string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type *string `pulumi:"type"`
@@ -138,9 +138,9 @@ type KafkaUserState struct {
 	AccessKey pulumi.StringPtrInput
 	// The password of the Kafka User.
 	Password pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type pulumi.StringPtrInput
@@ -155,9 +155,9 @@ func (KafkaUserState) ElementType() reflect.Type {
 type kafkaUserArgs struct {
 	// The password of the Kafka User.
 	Password *string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
@@ -167,9 +167,9 @@ type kafkaUserArgs struct {
 type KafkaUserArgs struct {
 	// The password of the Kafka User.
 	Password pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// The actual name of the Kafka User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
@@ -277,12 +277,12 @@ func (o KafkaUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaUserOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaUserOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaUser) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -4,7 +4,6 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetGrafanaComponent;
-import com.pulumi.aiven.outputs.GetGrafanaGrafana;
 import com.pulumi.aiven.outputs.GetGrafanaGrafanaUserConfig;
 import com.pulumi.aiven.outputs.GetGrafanaServiceIntegration;
 import com.pulumi.aiven.outputs.GetGrafanaTag;
@@ -65,11 +64,6 @@ public final class GetGrafanaResult {
      */
     private List<GetGrafanaGrafanaUserConfig> grafanaUserConfigs;
     /**
-     * @return Grafana server provided values
-     * 
-     */
-    private List<GetGrafanaGrafana> grafanas;
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -90,7 +84,7 @@ public final class GetGrafanaResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -155,7 +149,7 @@ public final class GetGrafanaResult {
      */
     private List<GetGrafanaTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetGrafanaTechEmail> techEmails;
@@ -230,13 +224,6 @@ public final class GetGrafanaResult {
         return this.grafanaUserConfigs;
     }
     /**
-     * @return Grafana server provided values
-     * 
-     */
-    public List<GetGrafanaGrafana> grafanas() {
-        return this.grafanas;
-    }
-    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -265,7 +252,7 @@ public final class GetGrafanaResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -356,7 +343,7 @@ public final class GetGrafanaResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetGrafanaTechEmail> techEmails() {
@@ -388,7 +375,6 @@ public final class GetGrafanaResult {
         private String diskSpaceStep;
         private String diskSpaceUsed;
         private List<GetGrafanaGrafanaUserConfig> grafanaUserConfigs;
-        private List<GetGrafanaGrafana> grafanas;
         private String id;
         private String maintenanceWindowDow;
         private String maintenanceWindowTime;
@@ -420,7 +406,6 @@ public final class GetGrafanaResult {
     	      this.diskSpaceStep = defaults.diskSpaceStep;
     	      this.diskSpaceUsed = defaults.diskSpaceUsed;
     	      this.grafanaUserConfigs = defaults.grafanaUserConfigs;
-    	      this.grafanas = defaults.grafanas;
     	      this.id = defaults.id;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
@@ -519,17 +504,6 @@ public final class GetGrafanaResult {
         }
         public Builder grafanaUserConfigs(GetGrafanaGrafanaUserConfig... grafanaUserConfigs) {
             return grafanaUserConfigs(List.of(grafanaUserConfigs));
-        }
-        @CustomType.Setter
-        public Builder grafanas(List<GetGrafanaGrafana> grafanas) {
-            if (grafanas == null) {
-              throw new MissingRequiredPropertyException("GetGrafanaResult", "grafanas");
-            }
-            this.grafanas = grafanas;
-            return this;
-        }
-        public Builder grafanas(GetGrafanaGrafana... grafanas) {
-            return grafanas(List.of(grafanas));
         }
         @CustomType.Setter
         public Builder id(String id) {
@@ -706,7 +680,6 @@ public final class GetGrafanaResult {
             _resultValue.diskSpaceStep = diskSpaceStep;
             _resultValue.diskSpaceUsed = diskSpaceUsed;
             _resultValue.grafanaUserConfigs = grafanaUserConfigs;
-            _resultValue.grafanas = grafanas;
             _resultValue.id = id;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;

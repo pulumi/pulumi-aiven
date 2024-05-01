@@ -52,9 +52,9 @@ func LookupRedisUser(ctx *pulumi.Context, args *LookupRedisUserArgs, opts ...pul
 
 // A collection of arguments for invoking getRedisUser.
 type LookupRedisUserArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
@@ -66,7 +66,7 @@ type LookupRedisUserResult struct {
 	Id string `pulumi:"id"`
 	// The password of the Redis User.
 	Password string `pulumi:"password"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Defines command category rules. The field is required with`redisAclCommands` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclCategories []string `pulumi:"redisAclCategories"`
@@ -76,7 +76,7 @@ type LookupRedisUserResult struct {
 	RedisAclCommands []string `pulumi:"redisAclCommands"`
 	// Defines key access rules. The field is required with`redisAclCategories` and `redisAclKeys`. Changing this property forces recreation of the resource.
 	RedisAclKeys []string `pulumi:"redisAclKeys"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Type of the user account. Tells whether the user is the primary account or a regular account.
 	Type string `pulumi:"type"`
@@ -99,9 +99,9 @@ func LookupRedisUserOutput(ctx *pulumi.Context, args LookupRedisUserOutputArgs, 
 
 // A collection of arguments for invoking getRedisUser.
 type LookupRedisUserOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 	// The actual name of the Redis User. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -136,7 +136,7 @@ func (o LookupRedisUserResultOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisUserResult) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupRedisUserResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisUserResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -161,7 +161,7 @@ func (o LookupRedisUserResultOutput) RedisAclKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRedisUserResult) []string { return v.RedisAclKeys }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupRedisUserResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisUserResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

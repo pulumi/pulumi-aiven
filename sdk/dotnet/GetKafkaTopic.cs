@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafkaTopic
     {
         /// <summary>
-        /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+        /// Gets information about an Aiven for Apache Kafka® topic.
         /// 
         /// ## Example Usage
         /// 
@@ -24,11 +24,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytesttopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = myservice.ServiceName,
-        ///         TopicName = "&lt;TOPIC_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         TopicName = "example-topic",
         ///     });
         /// 
         /// });
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaTopicResult>("aiven:index/getKafkaTopic:getKafkaTopic", args ?? new GetKafkaTopicArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+        /// Gets information about an Aiven for Apache Kafka® topic.
         /// 
         /// ## Example Usage
         /// 
@@ -50,11 +50,11 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var mytesttopic = Aiven.GetKafkaTopic.Invoke(new()
+        ///     var exampleTopic = Aiven.GetKafkaTopic.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         ServiceName = myservice.ServiceName,
-        ///         TopicName = "&lt;TOPIC_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///         TopicName = "example-topic",
         ///     });
         /// 
         /// });
@@ -68,13 +68,13 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -94,13 +94,13 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaTopicResult
     {
         /// <summary>
-        /// Kafka topic configuration
+        /// Kafka topic configuration.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicConfigResult> Configs;
         /// <summary>
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int Partitions;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -142,11 +142,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly int Replication;
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string ServiceName;
         /// <summary>
-        /// Kafka Topic tag.
+        /// Tags for the Kafka topic.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTopicTagResult> Tags;
         public readonly bool TerminationProtection;

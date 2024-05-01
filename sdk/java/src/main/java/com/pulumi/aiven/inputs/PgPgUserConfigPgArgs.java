@@ -604,14 +604,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the maximum number of buckets .
+     * Sets the maximum number of buckets.
      * 
      */
     @Import(name="pgStatMonitorDotPgsmMaxBuckets")
     private @Nullable Output<Integer> pgStatMonitorDotPgsmMaxBuckets;
 
     /**
-     * @return Sets the maximum number of buckets .
+     * @return Sets the maximum number of buckets.
      * 
      */
     public Optional<Output<Integer>> pgStatMonitorDotPgsmMaxBuckets() {
@@ -1645,7 +1645,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets .
+         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets.
          * 
          * @return builder
          * 
@@ -1656,7 +1656,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets .
+         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets.
          * 
          * @return builder
          * 

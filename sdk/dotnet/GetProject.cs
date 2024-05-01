@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetProject
     {
         /// <summary>
-        /// The Project data source provides information about the existing Aiven Project.
+        /// Gets information about an Aiven project.
         /// 
         /// ## Example Usage
         /// 
@@ -24,9 +24,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myproject = Aiven.GetProject.Invoke(new()
+        ///     var exampleProject = Aiven.GetProject.Invoke(new()
         ///     {
-        ///         Project = "&lt;PROJECT_NAME&gt;",
+        ///         Project = "example-project",
         ///     });
         /// 
         /// });
@@ -36,7 +36,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("aiven:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Project data source provides information about the existing Aiven Project.
+        /// Gets information about an Aiven project.
         /// 
         /// ## Example Usage
         /// 
@@ -48,9 +48,9 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myproject = Aiven.GetProject.Invoke(new()
+        ///     var exampleProject = Aiven.GetProject.Invoke(new()
         ///     {
-        ///         Project = "&lt;PROJECT_NAME&gt;",
+        ///         Project = "example-project",
         ///     });
         /// 
         /// });
@@ -64,7 +64,7 @@ namespace Pulumi.Aiven
     public sealed class GetProjectArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        /// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -78,7 +78,7 @@ namespace Pulumi.Aiven
     public sealed class GetProjectInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        /// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven
     public sealed class GetProjectResult
     {
         /// <summary>
-        /// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string AccountId;
         /// <summary>
@@ -102,27 +102,27 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly bool AddAccountOwnersAdminAccess;
         /// <summary>
-        /// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+        /// The number of trial or promotional credits remaining for this project.
         /// </summary>
         public readonly string AvailableCredits;
         /// <summary>
-        /// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+        /// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string BillingGroup;
         /// <summary>
-        /// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+        /// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
         /// </summary>
         public readonly string CaCert;
         /// <summary>
-        /// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+        /// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string CopyFromProject;
         /// <summary>
-        /// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+        /// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         /// </summary>
         public readonly string DefaultCloud;
         /// <summary>
-        /// The current accumulated bill for this project in the current billing period.
+        /// The monthly running estimate for this project for the current billing period.
         /// </summary>
         public readonly string EstimatedBalance;
         /// <summary>
@@ -130,15 +130,15 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         public readonly string ParentId;
         /// <summary>
-        /// The method of invoicing used for payments for this project, e.g. `card`.
+        /// The payment type used for this project. For example,`card`.
         /// </summary>
         public readonly string PaymentMethod;
         /// <summary>
-        /// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        /// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectTagResult> Tags;
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+        /// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         /// </summary>
         public readonly ImmutableArray<string> TechnicalEmails;
         /// <summary>

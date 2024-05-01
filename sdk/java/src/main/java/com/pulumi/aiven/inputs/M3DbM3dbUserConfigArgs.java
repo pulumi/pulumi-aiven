@@ -27,22 +27,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -356,11 +348,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -371,11 +359,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }

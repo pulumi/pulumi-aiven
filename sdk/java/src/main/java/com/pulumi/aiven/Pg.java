@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/pg:Pg pg project/service_name
+ * $ pulumi import aiven:index/pg:Pg pg PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -222,14 +222,14 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return this.plan;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -404,14 +404,14 @@ public class Pg extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Export(name="techEmails", refs={List.class,PgTechEmail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PgTechEmail>> techEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Output<Optional<List<PgTechEmail>>> techEmails() {

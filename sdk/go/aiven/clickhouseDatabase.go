@@ -45,16 +45,16 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db project/service_name/name
+// $ pulumi import aiven:index/clickhouseDatabase:ClickhouseDatabase clickhouse_db PROJECT/SERVICE_NAME/NAME
 // ```
 type ClickhouseDatabase struct {
 	pulumi.CustomResourceState
 
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
 	// Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
@@ -100,9 +100,9 @@ func GetClickhouseDatabase(ctx *pulumi.Context,
 type clickhouseDatabaseState struct {
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name *string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
 	// Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
@@ -113,9 +113,9 @@ type clickhouseDatabaseState struct {
 type ClickhouseDatabaseState struct {
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
 	// Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
@@ -130,9 +130,9 @@ func (ClickhouseDatabaseState) ElementType() reflect.Type {
 type clickhouseDatabaseArgs struct {
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name *string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
 	// Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
@@ -144,9 +144,9 @@ type clickhouseDatabaseArgs struct {
 type ClickhouseDatabaseArgs struct {
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
 	// Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
@@ -246,12 +246,12 @@ func (o ClickhouseDatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o ClickhouseDatabaseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o ClickhouseDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClickhouseDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -22,11 +22,7 @@ public final class RedisRedisUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
@@ -157,11 +153,7 @@ public final class RedisRedisUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }

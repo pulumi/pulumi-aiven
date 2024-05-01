@@ -35,7 +35,7 @@ public final class GetKafkaResult {
      */
     private List<GetKafkaComponent> components;
     /**
-     * @return Create default wildcard Kafka ACL
+     * @return Create a default wildcard Kafka ACL.
      * 
      */
     private Boolean defaultAcl;
@@ -75,12 +75,12 @@ public final class GetKafkaResult {
      */
     private List<GetKafkaKafkaUserConfig> kafkaUserConfigs;
     /**
-     * @return Kafka server provided values
+     * @return Kafka server connection details.
      * 
      */
     private List<GetKafkaKafka> kafkas;
     /**
-     * @return Switch the service to use Karapace for schema registry and REST proxy
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      * 
      */
     private Boolean karapace;
@@ -100,7 +100,7 @@ public final class GetKafkaResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -165,7 +165,7 @@ public final class GetKafkaResult {
      */
     private List<GetKafkaTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetKafkaTechEmail> techEmails;
@@ -198,7 +198,7 @@ public final class GetKafkaResult {
         return this.components;
     }
     /**
-     * @return Create default wildcard Kafka ACL
+     * @return Create a default wildcard Kafka ACL.
      * 
      */
     public Boolean defaultAcl() {
@@ -254,14 +254,14 @@ public final class GetKafkaResult {
         return this.kafkaUserConfigs;
     }
     /**
-     * @return Kafka server provided values
+     * @return Kafka server connection details.
      * 
      */
     public List<GetKafkaKafka> kafkas() {
         return this.kafkas;
     }
     /**
-     * @return Switch the service to use Karapace for schema registry and REST proxy
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      * 
      */
     public Boolean karapace() {
@@ -289,7 +289,7 @@ public final class GetKafkaResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -380,7 +380,7 @@ public final class GetKafkaResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetKafkaTechEmail> techEmails() {

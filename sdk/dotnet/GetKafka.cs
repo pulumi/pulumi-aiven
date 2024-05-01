@@ -12,7 +12,7 @@ namespace Pulumi.Aiven
     public static class GetKafka
     {
         /// <summary>
-        /// The Kafka data source provides information about the existing Aiven Kafka services.
+        /// Gets information about an Aiven for Apache Kafka® service.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var kafka1 = Aiven.GetKafka.Invoke(new()
+        ///     var exampleKafka = Aiven.GetKafka.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-kafka1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-kafka",
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKafkaResult>("aiven:index/getKafka:getKafka", args ?? new GetKafkaArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Kafka data source provides information about the existing Aiven Kafka services.
+        /// Gets information about an Aiven for Apache Kafka® service.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var kafka1 = Aiven.GetKafka.Invoke(new()
+        ///     var exampleKafka = Aiven.GetKafka.Invoke(new()
         ///     {
-        ///         Project = pr1.Project,
-        ///         ServiceName = "my-kafka1",
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-kafka",
         ///     });
         /// 
         /// });
@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven
     public sealed class GetKafkaInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaComponentResult> Components;
         /// <summary>
-        /// Create default wildcard Kafka ACL
+        /// Create a default wildcard Kafka ACL.
         /// </summary>
         public readonly bool DefaultAcl;
         /// <summary>
@@ -152,11 +152,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaKafkaUserConfigResult> KafkaUserConfigs;
         /// <summary>
-        /// Kafka server provided values
+        /// Kafka server connection details.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaKafkaResult> Kafkas;
         /// <summary>
-        /// Switch the service to use Karapace for schema registry and REST proxy
+        /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         /// </summary>
         public readonly bool Karapace;
         /// <summary>
@@ -172,7 +172,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -224,7 +224,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTagResult> Tags;
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKafkaTechEmailResult> TechEmails;
         /// <summary>

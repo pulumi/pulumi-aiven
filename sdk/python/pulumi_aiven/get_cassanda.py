@@ -24,16 +24,13 @@ class GetCassandaResult:
     """
     A collection of values returned by getCassanda.
     """
-    def __init__(__self__, additional_disk_space=None, cassandra_user_configs=None, cassandras=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cassandra_user_configs=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if cassandra_user_configs and not isinstance(cassandra_user_configs, list):
             raise TypeError("Expected argument 'cassandra_user_configs' to be a list")
         pulumi.set(__self__, "cassandra_user_configs", cassandra_user_configs)
-        if cassandras and not isinstance(cassandras, list):
-            raise TypeError("Expected argument 'cassandras' to be a list")
-        pulumi.set(__self__, "cassandras", cassandras)
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
@@ -130,14 +127,6 @@ class GetCassandaResult:
         return pulumi.get(self, "cassandra_user_configs")
 
     @property
-    @pulumi.getter
-    def cassandras(self) -> Sequence['outputs.GetCassandaCassandraResult']:
-        """
-        Cassandra server provided values
-        """
-        return pulumi.get(self, "cassandras")
-
-    @property
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> str:
         """
@@ -229,7 +218,7 @@ class GetCassandaResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -333,7 +322,7 @@ class GetCassandaResult:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetCassandaTechEmailResult']:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -354,7 +343,6 @@ class AwaitableGetCassandaResult(GetCassandaResult):
         return GetCassandaResult(
             additional_disk_space=self.additional_disk_space,
             cassandra_user_configs=self.cassandra_user_configs,
-            cassandras=self.cassandras,
             cloud_name=self.cloud_name,
             components=self.components,
             disk_space=self.disk_space,
@@ -400,7 +388,7 @@ def get_cassanda(project: Optional[str] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     pulumi.log.warn("""get_cassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra""")
@@ -413,7 +401,6 @@ def get_cassanda(project: Optional[str] = None,
     return AwaitableGetCassandaResult(
         additional_disk_space=pulumi.get(__ret__, 'additional_disk_space'),
         cassandra_user_configs=pulumi.get(__ret__, 'cassandra_user_configs'),
-        cassandras=pulumi.get(__ret__, 'cassandras'),
         cloud_name=pulumi.get(__ret__, 'cloud_name'),
         components=pulumi.get(__ret__, 'components'),
         disk_space=pulumi.get(__ret__, 'disk_space'),
@@ -460,7 +447,7 @@ def get_cassanda_output(project: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     pulumi.log.warn("""get_cassanda is deprecated: aiven.getCassanda has been deprecated in favor of aiven.getCassandra""")

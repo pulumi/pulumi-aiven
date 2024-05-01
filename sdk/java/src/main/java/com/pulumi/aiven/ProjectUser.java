@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * The Project User resource allows the creation and management of Aiven Project Users.
+ * Creates and manages an Aiven project member.
  * 
  * ## Example Usage
  * 
@@ -55,35 +55,35 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+ * $ pulumi import aiven:index/projectUser:ProjectUser mytestuser PROJECT/EMAIL
  * ```
  * 
  */
 @ResourceType(type="aiven:index/projectUser:ProjectUser")
 public class ProjectUser extends com.pulumi.resources.CustomResource {
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      * 
      */
     @Export(name="accepted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accepted;
 
     /**
-     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * @return Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      * 
      */
     public Output<Boolean> accepted() {
         return this.accepted;
     }
     /**
-     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
-     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * @return Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> email() {
@@ -104,14 +104,14 @@ public class ProjectUser extends com.pulumi.resources.CustomResource {
         return this.memberType;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {

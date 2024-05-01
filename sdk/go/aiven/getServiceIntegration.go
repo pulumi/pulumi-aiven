@@ -11,12 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Service Integration data source provides information about the existing Aiven Service Integration.
-//
-// Service Integration defines an integration between two Aiven services or between Aiven service and an external
-// integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-// getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-// OpenSearch, etc.
+// Gets information about an Aiven service integration.
 //
 // ## Example Usage
 //
@@ -33,10 +28,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupServiceIntegration(ctx, &aiven.LookupServiceIntegrationArgs{
-//				Project:                myproject.Project,
-//				DestinationServiceName: "<DESTINATION_SERVICE_NAME>",
-//				IntegrationType:        "datadog",
-//				SourceServiceName:      "<SOURCE_SERVICE_NAME>",
+//				Project:                exampleProject.Project,
+//				DestinationServiceName: exampleM3db.ServiceName,
+//				IntegrationType:        "metrics",
+//				SourceServiceName:      exampleKafka.ServiceName,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,11 +53,11 @@ func LookupServiceIntegration(ctx *pulumi.Context, args *LookupServiceIntegratio
 
 // A collection of arguments for invoking getServiceIntegration.
 type LookupServiceIntegrationArgs struct {
-	// Destination service for the integration (if any)
+	// Destination service for the integration.
 	DestinationServiceName string `pulumi:"destinationServiceName"`
 	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType string `pulumi:"integrationType"`
-	// Project the integration belongs to
+	// Project the integration belongs to.
 	Project string `pulumi:"project"`
 	// Source service for the integration (if any)
 	SourceServiceName string `pulumi:"sourceServiceName"`
@@ -76,9 +71,9 @@ type LookupServiceIntegrationResult struct {
 	ClickhousePostgresqlUserConfigs []GetServiceIntegrationClickhousePostgresqlUserConfig `pulumi:"clickhousePostgresqlUserConfigs"`
 	// Datadog user configurable settings
 	DatadogUserConfigs []GetServiceIntegrationDatadogUserConfig `pulumi:"datadogUserConfigs"`
-	// Destination endpoint for the integration (if any)
+	// Destination endpoint for the integration.
 	DestinationEndpointId string `pulumi:"destinationEndpointId"`
-	// Destination service for the integration (if any)
+	// Destination service for the integration.
 	DestinationServiceName string `pulumi:"destinationServiceName"`
 	// ExternalAwsCloudwatchLogs user configurable settings
 	ExternalAwsCloudwatchLogsUserConfigs []GetServiceIntegrationExternalAwsCloudwatchLogsUserConfig `pulumi:"externalAwsCloudwatchLogsUserConfigs"`
@@ -90,7 +85,7 @@ type LookupServiceIntegrationResult struct {
 	ExternalOpensearchLogsUserConfigs []GetServiceIntegrationExternalOpensearchLogsUserConfig `pulumi:"externalOpensearchLogsUserConfigs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Service Integration Id at aiven
+	// The ID of the Aiven service integration.
 	IntegrationId string `pulumi:"integrationId"`
 	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType string `pulumi:"integrationType"`
@@ -104,11 +99,11 @@ type LookupServiceIntegrationResult struct {
 	LogsUserConfigs []GetServiceIntegrationLogsUserConfig `pulumi:"logsUserConfigs"`
 	// Metrics user configurable settings
 	MetricsUserConfigs []GetServiceIntegrationMetricsUserConfig `pulumi:"metricsUserConfigs"`
-	// Project the integration belongs to
+	// Project the integration belongs to.
 	Project string `pulumi:"project"`
 	// Prometheus user configurable settings
 	PrometheusUserConfigs []GetServiceIntegrationPrometheusUserConfig `pulumi:"prometheusUserConfigs"`
-	// Source endpoint for the integration (if any)
+	// Source endpoint for the integration.
 	SourceEndpointId string `pulumi:"sourceEndpointId"`
 	// Source service for the integration (if any)
 	SourceServiceName string `pulumi:"sourceServiceName"`
@@ -129,11 +124,11 @@ func LookupServiceIntegrationOutput(ctx *pulumi.Context, args LookupServiceInteg
 
 // A collection of arguments for invoking getServiceIntegration.
 type LookupServiceIntegrationOutputArgs struct {
-	// Destination service for the integration (if any)
+	// Destination service for the integration.
 	DestinationServiceName pulumi.StringInput `pulumi:"destinationServiceName"`
 	// Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandraCrossServiceCluster`, `clickhouseCredentials`, `clickhouseKafka`, `clickhousePostgresql`, `dashboard`, `datadog`, `datasource`, `externalAwsCloudwatchLogs`, `externalAwsCloudwatchMetrics`, `externalElasticsearchLogs`, `externalGoogleCloudLogging`, `externalOpensearchLogs`, `flink`, `flinkExternalBigquery`, `flinkExternalKafka`, `internalConnectivity`, `jolokia`, `kafkaConnect`, `kafkaConnectPostgresql`, `kafkaLogs`, `kafkaMirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearchCrossClusterReplication`, `opensearchCrossClusterSearch`, `prometheus`, `readReplica`, `rsyslog`, `schemaRegistryProxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
 	IntegrationType pulumi.StringInput `pulumi:"integrationType"`
-	// Project the integration belongs to
+	// Project the integration belongs to.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Source service for the integration (if any)
 	SourceServiceName pulumi.StringInput `pulumi:"sourceServiceName"`
@@ -179,12 +174,12 @@ func (o LookupServiceIntegrationResultOutput) DatadogUserConfigs() GetServiceInt
 	}).(GetServiceIntegrationDatadogUserConfigArrayOutput)
 }
 
-// Destination endpoint for the integration (if any)
+// Destination endpoint for the integration.
 func (o LookupServiceIntegrationResultOutput) DestinationEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationEndpointId }).(pulumi.StringOutput)
 }
 
-// Destination service for the integration (if any)
+// Destination service for the integration.
 func (o LookupServiceIntegrationResultOutput) DestinationServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.DestinationServiceName }).(pulumi.StringOutput)
 }
@@ -222,7 +217,7 @@ func (o LookupServiceIntegrationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Service Integration Id at aiven
+// The ID of the Aiven service integration.
 func (o LookupServiceIntegrationResultOutput) IntegrationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.IntegrationId }).(pulumi.StringOutput)
 }
@@ -265,7 +260,7 @@ func (o LookupServiceIntegrationResultOutput) MetricsUserConfigs() GetServiceInt
 	}).(GetServiceIntegrationMetricsUserConfigArrayOutput)
 }
 
-// Project the integration belongs to
+// Project the integration belongs to.
 func (o LookupServiceIntegrationResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -277,7 +272,7 @@ func (o LookupServiceIntegrationResultOutput) PrometheusUserConfigs() GetService
 	}).(GetServiceIntegrationPrometheusUserConfigArrayOutput)
 }
 
-// Source endpoint for the integration (if any)
+// Source endpoint for the integration.
 func (o LookupServiceIntegrationResultOutput) SourceEndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceIntegrationResult) string { return v.SourceEndpointId }).(pulumi.StringOutput)
 }

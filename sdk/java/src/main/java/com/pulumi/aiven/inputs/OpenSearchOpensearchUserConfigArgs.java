@@ -31,22 +31,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     /**
      * Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     @Import(name="additionalBackupRegions")
     private @Nullable Output<String> additionalBackupRegions;
 
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<Output<String>> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
@@ -180,14 +172,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * use index_patterns instead. The default value is `0`.
+     * Use index_patterns instead. The default value is `0`.
      * 
      */
     @Import(name="maxIndexCount")
     private @Nullable Output<Integer> maxIndexCount;
 
     /**
-     * @return use index_patterns instead. The default value is `0`.
+     * @return Use index_patterns instead. The default value is `0`.
      * 
      */
     public Optional<Output<Integer>> maxIndexCount() {
@@ -440,11 +432,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(@Nullable Output<String> additionalBackupRegions) {
             $.additionalBackupRegions = additionalBackupRegions;
             return this;
@@ -455,11 +443,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
          * 
          * @return builder
          * 
-         * @deprecated
-         * This property is deprecated.
-         * 
          */
-        @Deprecated /* This property is deprecated. */
         public Builder additionalBackupRegions(String additionalBackupRegions) {
             return additionalBackupRegions(Output.of(additionalBackupRegions));
         }
@@ -685,7 +669,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxIndexCount use index_patterns instead. The default value is `0`.
+         * @param maxIndexCount Use index_patterns instead. The default value is `0`.
          * 
          * @return builder
          * 
@@ -696,7 +680,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxIndexCount use index_patterns instead. The default value is `0`.
+         * @param maxIndexCount Use index_patterns instead. The default value is `0`.
          * 
          * @return builder
          * 

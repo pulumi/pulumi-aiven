@@ -73,7 +73,7 @@ class GetProjectResult:
     @pulumi.getter(name="accountId")
     def account_id(self) -> str:
         """
-        An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "account_id")
 
@@ -89,7 +89,7 @@ class GetProjectResult:
     @pulumi.getter(name="availableCredits")
     def available_credits(self) -> str:
         """
-        The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+        The number of trial or promotional credits remaining for this project.
         """
         return pulumi.get(self, "available_credits")
 
@@ -97,7 +97,7 @@ class GetProjectResult:
     @pulumi.getter(name="billingGroup")
     def billing_group(self) -> str:
         """
-        The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+        The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "billing_group")
 
@@ -105,7 +105,7 @@ class GetProjectResult:
     @pulumi.getter(name="caCert")
     def ca_cert(self) -> str:
         """
-        The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+        The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
         """
         return pulumi.get(self, "ca_cert")
 
@@ -113,7 +113,7 @@ class GetProjectResult:
     @pulumi.getter(name="copyFromProject")
     def copy_from_project(self) -> str:
         """
-        is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+        The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "copy_from_project")
 
@@ -121,7 +121,7 @@ class GetProjectResult:
     @pulumi.getter(name="defaultCloud")
     def default_cloud(self) -> str:
         """
-        Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+        Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
         """
         return pulumi.get(self, "default_cloud")
 
@@ -129,7 +129,7 @@ class GetProjectResult:
     @pulumi.getter(name="estimatedBalance")
     def estimated_balance(self) -> str:
         """
-        The current accumulated bill for this project in the current billing period.
+        The monthly running estimate for this project for the current billing period.
         """
         return pulumi.get(self, "estimated_balance")
 
@@ -145,7 +145,7 @@ class GetProjectResult:
     @pulumi.getter(name="parentId")
     def parent_id(self) -> str:
         """
-        An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         """
         return pulumi.get(self, "parent_id")
 
@@ -153,7 +153,7 @@ class GetProjectResult:
     @pulumi.getter(name="paymentMethod")
     def payment_method(self) -> str:
         """
-        The method of invoicing used for payments for this project, e.g. `card`.
+        The payment type used for this project. For example,`card`.
         """
         return pulumi.get(self, "payment_method")
 
@@ -161,7 +161,7 @@ class GetProjectResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+        The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
         """
         return pulumi.get(self, "project")
 
@@ -177,7 +177,7 @@ class GetProjectResult:
     @pulumi.getter(name="technicalEmails")
     def technical_emails(self) -> Sequence[str]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+        The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
         """
         return pulumi.get(self, "technical_emails")
 
@@ -216,7 +216,7 @@ class AwaitableGetProjectResult(GetProjectResult):
 def get_project(project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProjectResult:
     """
-    The Project data source provides information about the existing Aiven Project.
+    Gets information about an Aiven project.
 
     ## Example Usage
 
@@ -224,11 +224,11 @@ def get_project(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myproject = aiven.get_project(project="<PROJECT_NAME>")
+    example_project = aiven.get_project(project="example-project")
     ```
 
 
-    :param str project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+    :param str project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -257,7 +257,7 @@ def get_project(project: Optional[str] = None,
 def get_project_output(project: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
     """
-    The Project data source provides information about the existing Aiven Project.
+    Gets information about an Aiven project.
 
     ## Example Usage
 
@@ -265,10 +265,10 @@ def get_project_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myproject = aiven.get_project(project="<PROJECT_NAME>")
+    example_project = aiven.get_project(project="example-project")
     ```
 
 
-    :param str project: Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+    :param str project: The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
     """
     ...

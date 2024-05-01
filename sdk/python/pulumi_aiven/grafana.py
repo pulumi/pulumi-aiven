@@ -33,42 +33,21 @@ class GrafanaArgs:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Grafana resource.
-        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-               are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-               store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-               `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-               other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-               will result in the service rebalancing.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['GrafanaGrafanaUserConfigArgs'] grafana_user_config: Grafana user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-               service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-               static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
-        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-               unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-               much of the content can at least be restored from backup in case accidental deletion is done.
+        :param pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "plan", plan)
         pulumi.set(__self__, "project", project)
@@ -106,12 +85,7 @@ class GrafanaArgs:
     @pulumi.getter
     def plan(self) -> pulumi.Input[str]:
         """
-        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -123,8 +97,7 @@ class GrafanaArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -136,8 +109,7 @@ class GrafanaArgs:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        reducing will result in the service rebalancing.
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -149,12 +121,7 @@ class GrafanaArgs:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        are documented on each Cloud provider's own support articles, like [here for
-        Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -166,8 +133,7 @@ class GrafanaArgs:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-        will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
         pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
@@ -218,10 +184,7 @@ class GrafanaArgs:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -245,8 +208,7 @@ class GrafanaArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        service so name should be picked based on intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -258,8 +220,7 @@ class GrafanaArgs:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-        static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -283,8 +244,7 @@ class GrafanaArgs:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -296,9 +256,7 @@ class GrafanaArgs:
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-        unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-        much of the content can at least be restored from backup in case accidental deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -319,7 +277,6 @@ class _GrafanaState:
                  disk_space_step: Optional[pulumi.Input[str]] = None,
                  disk_space_used: Optional[pulumi.Input[str]] = None,
                  grafana_user_config: Optional[pulumi.Input['GrafanaGrafanaUserConfigArgs']] = None,
-                 grafanas: Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaArgs']]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -340,57 +297,33 @@ class _GrafanaState:
                  termination_protection: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Grafana resources.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaComponentArgs']]] components: Service component information objects
-        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-               will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-               Its also the minimum value for `disk_space`
-        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-               project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input['GrafanaGrafanaUserConfigArgs'] grafana_user_config: Grafana user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaArgs']]] grafanas: Grafana server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-               are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-               store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-               `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-               other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-               service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[int] service_port: The port of the service
         :param pulumi.Input[str] service_type: Aiven internal service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-               static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['GrafanaTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
-        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-               unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-               much of the content can at least be restored from backup in case accidental deletion is done.
+        :param pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -413,8 +346,6 @@ class _GrafanaState:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
         if grafana_user_config is not None:
             pulumi.set(__self__, "grafana_user_config", grafana_user_config)
-        if grafanas is not None:
-            pulumi.set(__self__, "grafanas", grafanas)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
@@ -456,8 +387,7 @@ class _GrafanaState:
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        reducing will result in the service rebalancing.
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -469,12 +399,7 @@ class _GrafanaState:
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        are documented on each Cloud provider's own support articles, like [here for
-        Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -498,8 +423,7 @@ class _GrafanaState:
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-        will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
         pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
@@ -526,8 +450,7 @@ class _GrafanaState:
     @pulumi.getter(name="diskSpaceDefault")
     def disk_space_default(self) -> Optional[pulumi.Input[str]]:
         """
-        The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        Its also the minimum value for `disk_space`
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         """
         return pulumi.get(self, "disk_space_default")
 
@@ -539,8 +462,7 @@ class _GrafanaState:
     @pulumi.getter(name="diskSpaceStep")
     def disk_space_step(self) -> Optional[pulumi.Input[str]]:
         """
-        The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-        project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         """
         return pulumi.get(self, "disk_space_step")
 
@@ -573,18 +495,6 @@ class _GrafanaState:
         pulumi.set(self, "grafana_user_config", value)
 
     @property
-    @pulumi.getter
-    def grafanas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaArgs']]]]:
-        """
-        Grafana server provided values
-        """
-        return pulumi.get(self, "grafanas")
-
-    @grafanas.setter
-    def grafanas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaGrafanaArgs']]]]):
-        pulumi.set(self, "grafanas", value)
-
-    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> Optional[pulumi.Input[str]]:
         """
@@ -612,12 +522,7 @@ class _GrafanaState:
     @pulumi.getter
     def plan(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -629,8 +534,7 @@ class _GrafanaState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -642,10 +546,7 @@ class _GrafanaState:
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -681,8 +582,7 @@ class _GrafanaState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        service so name should be picked based on intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -766,8 +666,7 @@ class _GrafanaState:
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-        static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -791,8 +690,7 @@ class _GrafanaState:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GrafanaTechEmailArgs']]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -804,9 +702,7 @@ class _GrafanaState:
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-        unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-        much of the content can at least be restored from backup in case accidental deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 
@@ -868,42 +764,21 @@ class Grafana(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
-        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-               will result in the service rebalancing.
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[pulumi.InputType['GrafanaGrafanaUserConfigArgs']] grafana_user_config: Grafana user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-               are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-               store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-               `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-               other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-               service so name should be picked based on intended service usage rather than current attributes.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-               static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
-        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-               unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-               much of the content can at least be restored from backup in case accidental deletion is done.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
     @overload
@@ -1004,7 +879,6 @@ class Grafana(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
-            __props__.__dict__["grafanas"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -1033,7 +907,6 @@ class Grafana(pulumi.CustomResource):
             disk_space_step: Optional[pulumi.Input[str]] = None,
             disk_space_used: Optional[pulumi.Input[str]] = None,
             grafana_user_config: Optional[pulumi.Input[pulumi.InputType['GrafanaGrafanaUserConfigArgs']]] = None,
-            grafanas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaGrafanaArgs']]]]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
             plan: Optional[pulumi.Input[str]] = None,
@@ -1059,57 +932,33 @@ class Grafana(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-               reducing will result in the service rebalancing.
-        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-               created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-               provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-               are documented on each Cloud provider's own support articles, like [here for
-               Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-               AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaComponentArgs']]]] components: Service component information objects
-        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-               will result in the service rebalancing.
+        :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] disk_space_cap: The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-               Its also the minimum value for `disk_space`
-        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-               project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
+        :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[pulumi.InputType['GrafanaGrafanaUserConfigArgs']] grafana_user_config: Grafana user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaGrafanaArgs']]]] grafanas: Grafana server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
-        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-               are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-               store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-               `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-               other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-               options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-               value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-               as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-               servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
-        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-               service so name should be picked based on intended service usage rather than current attributes.
+        :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] service_password: Password used for connecting to the service, if applicable
         :param pulumi.Input[int] service_port: The port of the service
         :param pulumi.Input[str] service_type: Aiven internal service type code
         :param pulumi.Input[str] service_uri: URI for connecting to the service. Service specific info is under "kafka", "pg", etc.
         :param pulumi.Input[str] service_username: Username used for connecting to the service, if applicable
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-               static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
-        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-               unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-               much of the content can at least be restored from backup in case accidental deletion is done.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GrafanaTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
+        :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1124,7 +973,6 @@ class Grafana(pulumi.CustomResource):
         __props__.__dict__["disk_space_step"] = disk_space_step
         __props__.__dict__["disk_space_used"] = disk_space_used
         __props__.__dict__["grafana_user_config"] = grafana_user_config
-        __props__.__dict__["grafanas"] = grafanas
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
         __props__.__dict__["plan"] = plan
@@ -1149,8 +997,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="additionalDiskSpace")
     def additional_disk_space(self) -> pulumi.Output[Optional[str]]:
         """
-        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        reducing will result in the service rebalancing.
+        Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "additional_disk_space")
 
@@ -1158,12 +1005,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="cloudName")
     def cloud_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        are documented on each Cloud provider's own support articles, like [here for
-        Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         """
         return pulumi.get(self, "cloud_name")
 
@@ -1179,8 +1021,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="diskSpace")
     def disk_space(self) -> pulumi.Output[Optional[str]]:
         """
-        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-        will result in the service rebalancing.
+        Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
         pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
@@ -1199,8 +1040,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="diskSpaceDefault")
     def disk_space_default(self) -> pulumi.Output[str]:
         """
-        The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        Its also the minimum value for `disk_space`
+        The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         """
         return pulumi.get(self, "disk_space_default")
 
@@ -1208,8 +1048,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="diskSpaceStep")
     def disk_space_step(self) -> pulumi.Output[str]:
         """
-        The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-        project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         """
         return pulumi.get(self, "disk_space_step")
 
@@ -1228,14 +1067,6 @@ class Grafana(pulumi.CustomResource):
         Grafana user configurable settings
         """
         return pulumi.get(self, "grafana_user_config")
-
-    @property
-    @pulumi.getter
-    def grafanas(self) -> pulumi.Output[Sequence['outputs.GrafanaGrafana']]:
-        """
-        Grafana server provided values
-        """
-        return pulumi.get(self, "grafanas")
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
@@ -1257,12 +1088,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter
     def plan(self) -> pulumi.Output[str]:
         """
-        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         """
         return pulumi.get(self, "plan")
 
@@ -1270,8 +1096,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -1279,10 +1104,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="projectVpcId")
     def project_vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
 
@@ -1306,8 +1128,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        service so name should be picked based on intended service usage rather than current attributes.
+        Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         """
         return pulumi.get(self, "service_name")
 
@@ -1363,8 +1184,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="staticIps")
     def static_ips(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-        static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         """
         return pulumi.get(self, "static_ips")
 
@@ -1380,8 +1200,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.GrafanaTechEmail']]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -1389,9 +1208,7 @@ class Grafana(pulumi.CustomResource):
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-        unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-        much of the content can at least be restored from backup in case accidental deletion is done.
+        Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         return pulumi.get(self, "termination_protection")
 

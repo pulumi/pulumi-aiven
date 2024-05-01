@@ -28,9 +28,6 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: pulumi.Input<string>;
 }
 
-export interface CassandraCassandra {
-}
-
 export interface CassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -47,7 +44,7 @@ export interface CassandraCassandraUserConfig {
      */
     backupMinute?: pulumi.Input<number>;
     /**
-     * cassandra configuration values
+     * Cassandra configuration values
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
     /**
@@ -204,9 +201,6 @@ export interface CassandraTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
-}
-
-export interface ClickhouseClickhouse {
 }
 
 export interface ClickhouseClickhouseUserConfig {
@@ -457,14 +451,15 @@ export interface DragonflyComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface DragonflyDragonfly {
-}
-
 export interface DragonflyDragonflyUserConfig {
     /**
      * Evict entries when getting close to maxmemory limit. The default value is `false`.
      */
     cacheMode?: pulumi.Input<boolean>;
+    /**
+     * When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     */
+    dragonflyPersistence?: pulumi.Input<string>;
     /**
      * Require SSL to access Dragonfly. The default value is `true`.
      */
@@ -822,18 +817,13 @@ export interface GrafanaComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface GrafanaGrafana {
-}
-
 export interface GrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+     * Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
      */
     alertingEnabled?: pulumi.Input<boolean>;
     /**
@@ -983,7 +973,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     staticIps?: pulumi.Input<boolean>;
     /**
-     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unifiedAlertingEnabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alertingEnabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
      */
     unifiedAlertingEnabled?: pulumi.Input<boolean>;
     /**
@@ -1576,9 +1566,6 @@ export interface KafkaConnectComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface KafkaConnectKafkaConnect {
-}
-
 export interface KafkaConnectKafkaConnectUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -1651,11 +1638,11 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
-     * Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
     /**
@@ -1783,23 +1770,23 @@ export interface KafkaConnectorTask {
 
 export interface KafkaKafka {
     /**
-     * The Kafka client certificate
+     * The Kafka client certificate.
      */
     accessCert?: pulumi.Input<string>;
     /**
-     * The Kafka client certificate key
+     * The Kafka client certificate key.
      */
     accessKey?: pulumi.Input<string>;
     /**
-     * The Kafka Connect URI, if any
+     * The Kafka Connect URI.
      */
     connectUri?: pulumi.Input<string>;
     /**
-     * The Kafka REST URI, if any
+     * The Kafka REST URI.
      */
     restUri?: pulumi.Input<string>;
     /**
-     * The Schema Registry URI, if any
+     * The Schema Registry URI.
      */
     schemaRegistryUri?: pulumi.Input<string>;
 }
@@ -1984,7 +1971,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logLocalRetentionMs?: pulumi.Input<number>;
     /**
-     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      */
     logMessageDownconversionEnable?: pulumi.Input<boolean>;
     /**
@@ -2072,7 +2059,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     saslOauthbearerExpectedIssuer?: pulumi.Input<string>;
     /**
-     * OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
      */
     saslOauthbearerJwksEndpointUrl?: pulumi.Input<string>;
     /**
@@ -2126,7 +2113,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      */
     consumerMaxPartitionFetchBytes?: pulumi.Input<number>;
     /**
@@ -2359,9 +2346,6 @@ export interface KafkaMirrorMakerComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface KafkaMirrorMakerKafkaMirrormaker {
-}
-
 export interface KafkaMirrorMakerKafkaMirrormakerUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -2446,7 +2430,7 @@ export interface KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     refreshTopicsIntervalSeconds?: pulumi.Input<number>;
     /**
-     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
      */
     syncGroupOffsetsEnabled?: pulumi.Input<boolean>;
     /**
@@ -2680,9 +2664,6 @@ export interface M3AggregatorComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface M3AggregatorM3aggregator {
-}
-
 export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -2795,14 +2776,9 @@ export interface M3DbComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface M3DbM3db {
-}
-
 export interface M3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -2898,7 +2874,7 @@ export interface M3DbM3dbUserConfigLimits {
      */
     maxRecentlyQueriedSeriesDiskBytesRead?: pulumi.Input<number>;
     /**
-     * The lookback period for 'max_recently_queried_series_blocks' and 'max_recently_queried_series_disk_bytes_read'.
+     * The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
      */
     maxRecentlyQueriedSeriesLookback?: pulumi.Input<string>;
     /**
@@ -3021,7 +2997,7 @@ export interface M3DbM3dbUserConfigRulesMapping {
      */
     drop?: pulumi.Input<boolean>;
     /**
-     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
      */
     filter: pulumi.Input<string>;
     /**
@@ -3132,9 +3108,6 @@ export interface MySqlComponent {
      * DNS usage name
      */
     usage?: pulumi.Input<string>;
-}
-
-export interface MySqlMysql {
 }
 
 export interface MySqlMysqlUserConfig {
@@ -3342,7 +3315,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     internalTmpMemStorageEngine?: pulumi.Input<string>;
     /**
-     * The slowQueryLogs work as SQL statements that take more than longQueryTime seconds to execute. Default is 10s.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
      */
     longQueryTime?: pulumi.Input<number>;
     /**
@@ -3350,7 +3323,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     maxAllowedPacket?: pulumi.Input<number>;
     /**
-     * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      */
     maxHeapTableSize?: pulumi.Input<number>;
     /**
@@ -3366,7 +3339,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     netWriteTimeout?: pulumi.Input<number>;
     /**
-     * Slow query log enables capturing of slow queries. Setting slowQueryLog to false also truncates the mysql.slow_log table. Default is off.
+     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
      */
     slowQueryLog?: pulumi.Input<boolean>;
     /**
@@ -3382,7 +3355,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     sqlRequirePrimaryKey?: pulumi.Input<boolean>;
     /**
-     * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      */
     tmpTableSize?: pulumi.Input<number>;
     /**
@@ -3510,8 +3483,6 @@ export interface OpenSearchOpensearch {
 export interface OpenSearchOpensearchUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -3549,7 +3520,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     keepIndexRefreshInterval?: pulumi.Input<boolean>;
     /**
-     * use indexPatterns instead. The default value is `0`.
+     * Use indexPatterns instead. The default value is `0`.
      */
     maxIndexCount?: pulumi.Input<number>;
     /**
@@ -4525,7 +4496,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmEnableQueryPlan?: pulumi.Input<boolean>;
     /**
-     * Sets the maximum number of buckets .
+     * Sets the maximum number of buckets.
      */
     pgStatMonitorDotPgsmMaxBuckets?: pulumi.Input<number>;
     /**
@@ -4787,11 +4758,11 @@ export interface PgTechEmail {
 
 export interface ProjectTag {
     /**
-     * Project tag key
+     * Project tag key.
      */
     key: pulumi.Input<string>;
     /**
-     * Project tag value
+     * Project tag value.
      */
     value: pulumi.Input<string>;
 }
@@ -4831,14 +4802,9 @@ export interface RedisComponent {
     usage?: pulumi.Input<string>;
 }
 
-export interface RedisRedi {
-}
-
 export interface RedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
-     *
-     * @deprecated This property is deprecated.
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
@@ -5203,6 +5169,10 @@ export interface ServiceIntegrationDatadogUserConfigDatadogTag {
 
 export interface ServiceIntegrationDatadogUserConfigOpensearch {
     /**
+     * Enable Datadog Opensearch Cluster Monitoring.
+     */
+    clusterStatsEnabled?: pulumi.Input<boolean>;
+    /**
      * Enable Datadog Opensearch Index Monitoring.
      */
     indexStatsEnabled?: pulumi.Input<boolean>;
@@ -5332,7 +5302,7 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudBigquery {
      */
     projectId: pulumi.Input<string>;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
      */
     serviceAccountCredentials: pulumi.Input<string>;
 }
@@ -5347,7 +5317,7 @@ export interface ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfig 
      */
     projectId: pulumi.Input<string>;
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
      */
     serviceAccountCredentials: pulumi.Input<string>;
 }
@@ -5717,7 +5687,7 @@ export interface ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     gatherEventWaits?: pulumi.Input<boolean>;
     /**
-     * gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
      */
     gatherFileEventsStats?: pulumi.Input<boolean>;
     /**
@@ -5790,7 +5760,7 @@ export interface ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf {
      */
     gatherEventWaits?: pulumi.Input<boolean>;
     /**
-     * gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
      */
     gatherFileEventsStats?: pulumi.Input<boolean>;
     /**

@@ -12,13 +12,13 @@ namespace Pulumi.Aiven
     public static class GetBillingGroup
     {
         /// <summary>
-        /// Provides information about an existing billing group.
+        /// Gets information about a billing group.
         /// </summary>
         public static Task<GetBillingGroupResult> InvokeAsync(GetBillingGroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides information about an existing billing group.
+        /// Gets information about a billing group.
         /// </summary>
         public static Output<GetBillingGroupResult> Invoke(GetBillingGroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBillingGroupResult>("aiven:index/getBillingGroup:getBillingGroup", args ?? new GetBillingGroupInvokeArgs(), options.WithDefaults());

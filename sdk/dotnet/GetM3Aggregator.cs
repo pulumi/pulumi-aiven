@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
     public sealed class GetM3AggregatorArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven
     public sealed class GetM3AggregatorInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -148,10 +148,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigResult> M3aggregatorUserConfigs;
         /// <summary>
-        /// M3 aggregator specific server provided values
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorResult> M3aggregators;
-        /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         public readonly string MaintenanceWindowDow;
@@ -164,7 +160,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -216,7 +212,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3AggregatorTagResult> Tags;
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3AggregatorTechEmailResult> TechEmails;
         /// <summary>
@@ -245,8 +241,6 @@ namespace Pulumi.Aiven
             string id,
 
             ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigResult> m3aggregatorUserConfigs,
-
-            ImmutableArray<Outputs.GetM3AggregatorM3aggregatorResult> m3aggregators,
 
             string maintenanceWindowDow,
 
@@ -294,7 +288,6 @@ namespace Pulumi.Aiven
             DiskSpaceUsed = diskSpaceUsed;
             Id = id;
             M3aggregatorUserConfigs = m3aggregatorUserConfigs;
-            M3aggregators = m3aggregators;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;

@@ -12,7 +12,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/pg:Pg pg project/service_name
+ * $ pulumi import aiven:index/pg:Pg pg PROJECT/SERVICE_NAME
  * ```
  */
 export class Pg extends pulumi.CustomResource {
@@ -98,7 +98,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -150,7 +150,7 @@ export class Pg extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.PgTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     public readonly techEmails!: pulumi.Output<outputs.PgTechEmail[] | undefined>;
     /**
@@ -302,7 +302,7 @@ export interface PgState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -354,7 +354,7 @@ export interface PgState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.PgTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.PgTechEmail>[]>;
     /**
@@ -402,7 +402,7 @@ export interface PgArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -426,7 +426,7 @@ export interface PgArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.PgTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.PgTechEmail>[]>;
     /**

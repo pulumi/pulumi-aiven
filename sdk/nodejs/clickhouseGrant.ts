@@ -100,7 +100,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly privilegeGrants!: pulumi.Output<outputs.ClickhouseGrantPrivilegeGrant[] | undefined>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -112,7 +112,7 @@ export class ClickhouseGrant extends pulumi.CustomResource {
      */
     public readonly roleGrants!: pulumi.Output<outputs.ClickhouseGrantRoleGrant[] | undefined>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -168,7 +168,7 @@ export interface ClickhouseGrantState {
      */
     privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -180,7 +180,7 @@ export interface ClickhouseGrantState {
      */
     roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -198,7 +198,7 @@ export interface ClickhouseGrantArgs {
      */
     privilegeGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantPrivilegeGrant>[]>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface ClickhouseGrantArgs {
      */
     roleGrants?: pulumi.Input<pulumi.Input<inputs.ClickhouseGrantRoleGrant>[]>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

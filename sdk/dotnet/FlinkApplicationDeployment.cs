@@ -37,7 +37,7 @@ namespace Pulumi.Aiven
         public Output<int?> Parallelism { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
@@ -50,8 +50,8 @@ namespace Pulumi.Aiven
         public Output<bool?> RestartEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.Aiven
         public Input<int>? Parallelism { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
@@ -140,8 +140,8 @@ namespace Pulumi.Aiven
         public Input<bool>? RestartEnabled { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.Aiven
         public Input<int>? Parallelism { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
@@ -204,8 +204,8 @@ namespace Pulumi.Aiven
         public Input<bool>? RestartEnabled { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-        /// variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

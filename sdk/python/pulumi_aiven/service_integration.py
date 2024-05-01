@@ -38,12 +38,12 @@ class ServiceIntegrationArgs:
         """
         The set of arguments for constructing a ServiceIntegration resource.
         :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
-        :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[str] project: Project the integration belongs to.
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
         :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
-        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
-        :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
+        :param pulumi.Input[str] destination_service_name: Destination service for the integration.
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
@@ -54,7 +54,7 @@ class ServiceIntegrationArgs:
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
         :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
-        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         pulumi.set(__self__, "integration_type", integration_type)
@@ -110,7 +110,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Project the integration belongs to
+        Project the integration belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -158,7 +158,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Destination endpoint for the integration (if any)
+        Destination endpoint for the integration.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
@@ -170,7 +170,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="destinationServiceName")
     def destination_service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Destination service for the integration (if any)
+        Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
 
@@ -302,7 +302,7 @@ class ServiceIntegrationArgs:
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Source endpoint for the integration (if any)
+        Source endpoint for the integration.
         """
         return pulumi.get(self, "source_endpoint_id")
 
@@ -351,22 +351,22 @@ class _ServiceIntegrationState:
         :param pulumi.Input['ServiceIntegrationClickhouseKafkaUserConfigArgs'] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
         :param pulumi.Input['ServiceIntegrationClickhousePostgresqlUserConfigArgs'] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
         :param pulumi.Input['ServiceIntegrationDatadogUserConfigArgs'] datadog_user_config: Datadog user configurable settings
-        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
-        :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
+        :param pulumi.Input[str] destination_service_name: Destination service for the integration.
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs'] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs'] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs'] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationExternalOpensearchLogsUserConfigArgs'] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input[str] integration_id: Service Integration Id at aiven
+        :param pulumi.Input[str] integration_id: The ID of the Aiven service integration.
         :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         :param pulumi.Input['ServiceIntegrationKafkaConnectUserConfigArgs'] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaLogsUserConfigArgs'] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input['ServiceIntegrationKafkaMirrormakerUserConfigArgs'] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input['ServiceIntegrationLogsUserConfigArgs'] logs_user_config: Logs user configurable settings
         :param pulumi.Input['ServiceIntegrationMetricsUserConfigArgs'] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[str] project: Project the integration belongs to.
         :param pulumi.Input['ServiceIntegrationPrometheusUserConfigArgs'] prometheus_user_config: Prometheus user configurable settings
-        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         if clickhouse_kafka_user_config is not None:
@@ -450,7 +450,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Destination endpoint for the integration (if any)
+        Destination endpoint for the integration.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
@@ -462,7 +462,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="destinationServiceName")
     def destination_service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Destination service for the integration (if any)
+        Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
 
@@ -522,7 +522,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Service Integration Id at aiven
+        The ID of the Aiven service integration.
         """
         return pulumi.get(self, "integration_id")
 
@@ -606,7 +606,7 @@ class _ServiceIntegrationState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Project the integration belongs to
+        Project the integration belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -630,7 +630,7 @@ class _ServiceIntegrationState:
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Source endpoint for the integration (if any)
+        Source endpoint for the integration.
         """
         return pulumi.get(self, "source_endpoint_id")
 
@@ -677,14 +677,14 @@ class ServiceIntegration(pulumi.CustomResource):
                  source_service_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Service Integration resource allows the creation and management of Aiven Service Integrations.
+        Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
 
-        **Note** For services running on `hobbyist` plan service integrations are not supported.
+        You can set up an integration between two Aiven services or an Aiven service and an external
+        service. For example, you can send metrics from a Kafka service to an M3DB service,
+        send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
+        any service to OpenSearch.
 
-        Service Integration defines an integration between two Aiven services or between Aiven service and an external
-        integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-        getting metrics from an M3DB service to a Grafana service to show dashboards, sending logs from any service to
-        OpenSearch, etc.
+        **Services integrations are not supported for services running on hobbyist plans.**
 
         ## Example Usage
 
@@ -692,17 +692,17 @@ class ServiceIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        my_integration_metrics = aiven.ServiceIntegration("my_integration_metrics",
-            project=myproject["project"],
+        example_integration = aiven.ServiceIntegration("example_integration",
+            project=example_project["project"],
             integration_type="metrics",
-            source_service_name=kfk1["serviceName"],
-            destination_service_name=m3db["serviceName"])
+            source_service_name=example_kafka["serviceName"],
+            destination_service_name=example_m3db["serviceName"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+        $ pulumi import aiven:index/serviceIntegration:ServiceIntegration example_integration PROJECT/INTEGRATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -710,8 +710,8 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
-        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
-        :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
+        :param pulumi.Input[str] destination_service_name: Destination service for the integration.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
@@ -722,9 +722,9 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[str] project: Project the integration belongs to.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus user configurable settings
-        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         ...
@@ -734,14 +734,14 @@ class ServiceIntegration(pulumi.CustomResource):
                  args: ServiceIntegrationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Service Integration resource allows the creation and management of Aiven Service Integrations.
+        Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
 
-        **Note** For services running on `hobbyist` plan service integrations are not supported.
+        You can set up an integration between two Aiven services or an Aiven service and an external
+        service. For example, you can send metrics from a Kafka service to an M3DB service,
+        send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
+        any service to OpenSearch.
 
-        Service Integration defines an integration between two Aiven services or between Aiven service and an external
-        integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-        getting metrics from an M3DB service to a Grafana service to show dashboards, sending logs from any service to
-        OpenSearch, etc.
+        **Services integrations are not supported for services running on hobbyist plans.**
 
         ## Example Usage
 
@@ -749,17 +749,17 @@ class ServiceIntegration(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        my_integration_metrics = aiven.ServiceIntegration("my_integration_metrics",
-            project=myproject["project"],
+        example_integration = aiven.ServiceIntegration("example_integration",
+            project=example_project["project"],
             integration_type="metrics",
-            source_service_name=kfk1["serviceName"],
-            destination_service_name=m3db["serviceName"])
+            source_service_name=example_kafka["serviceName"],
+            destination_service_name=example_m3db["serviceName"])
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+        $ pulumi import aiven:index/serviceIntegration:ServiceIntegration example_integration PROJECT/INTEGRATION_ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -869,22 +869,22 @@ class ServiceIntegration(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhouseKafkaUserConfigArgs']] clickhouse_kafka_user_config: ClickhouseKafka user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationClickhousePostgresqlUserConfigArgs']] clickhouse_postgresql_user_config: ClickhousePostgresql user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationDatadogUserConfigArgs']] datadog_user_config: Datadog user configurable settings
-        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration (if any)
-        :param pulumi.Input[str] destination_service_name: Destination service for the integration (if any)
+        :param pulumi.Input[str] destination_endpoint_id: Destination endpoint for the integration.
+        :param pulumi.Input[str] destination_service_name: Destination service for the integration.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchLogsUserConfigArgs']] external_aws_cloudwatch_logs_user_config: ExternalAwsCloudwatchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigArgs']] external_aws_cloudwatch_metrics_user_config: ExternalAwsCloudwatchMetrics user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalElasticsearchLogsUserConfigArgs']] external_elasticsearch_logs_user_config: ExternalElasticsearchLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationExternalOpensearchLogsUserConfigArgs']] external_opensearch_logs_user_config: ExternalOpensearchLogs user configurable settings
-        :param pulumi.Input[str] integration_id: Service Integration Id at aiven
+        :param pulumi.Input[str] integration_id: The ID of the Aiven service integration.
         :param pulumi.Input[str] integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaConnectUserConfigArgs']] kafka_connect_user_config: KafkaConnect user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaLogsUserConfigArgs']] kafka_logs_user_config: KafkaLogs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationKafkaMirrormakerUserConfigArgs']] kafka_mirrormaker_user_config: KafkaMirrormaker user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationLogsUserConfigArgs']] logs_user_config: Logs user configurable settings
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationMetricsUserConfigArgs']] metrics_user_config: Metrics user configurable settings
-        :param pulumi.Input[str] project: Project the integration belongs to
+        :param pulumi.Input[str] project: Project the integration belongs to.
         :param pulumi.Input[pulumi.InputType['ServiceIntegrationPrometheusUserConfigArgs']] prometheus_user_config: Prometheus user configurable settings
-        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration (if any)
+        :param pulumi.Input[str] source_endpoint_id: Source endpoint for the integration.
         :param pulumi.Input[str] source_service_name: Source service for the integration (if any)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -941,7 +941,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Destination endpoint for the integration (if any)
+        Destination endpoint for the integration.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
@@ -949,7 +949,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="destinationServiceName")
     def destination_service_name(self) -> pulumi.Output[Optional[str]]:
         """
-        Destination service for the integration (if any)
+        Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
 
@@ -989,7 +989,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> pulumi.Output[str]:
         """
-        Service Integration Id at aiven
+        The ID of the Aiven service integration.
         """
         return pulumi.get(self, "integration_id")
 
@@ -1045,7 +1045,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Project the integration belongs to
+        Project the integration belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -1061,7 +1061,7 @@ class ServiceIntegration(pulumi.CustomResource):
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Source endpoint for the integration (if any)
+        Source endpoint for the integration.
         """
         return pulumi.get(self, "source_endpoint_id")
 

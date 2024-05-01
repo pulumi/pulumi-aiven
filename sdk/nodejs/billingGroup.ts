@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages billing groups and assigns them to projects.
+ * Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
  *
  * ## Example Usage
  *
@@ -13,21 +13,22 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const bybg1 = new aiven.BillingGroup("bybg1", {
- *     name: "bybg1",
+ * const exampleBillingGroup = new aiven.BillingGroup("example_billing_group", {
+ *     name: "example-billing-group",
  *     billingCurrency: "USD",
  *     vatId: "123ABC",
+ *     parentId: main.id,
  * });
- * const pr1 = new aiven.Project("pr1", {
- *     project: "pr1",
- *     billingGroup: bybg1.id,
+ * const exampleProject = new aiven.Project("example_project", {
+ *     project: "example-project",
+ *     billingGroup: exampleBillingGroup.id,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+ * $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
  * ```
  */
 export class BillingGroup extends pulumi.CustomResource {

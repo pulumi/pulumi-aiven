@@ -105,7 +105,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logLocalRetentionMs;
     /**
-     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      * 
      */
     private @Nullable Boolean logMessageDownconversionEnable;
@@ -215,7 +215,7 @@ public final class KafkaKafkaUserConfigKafka {
      */
     private @Nullable String saslOauthbearerExpectedIssuer;
     /**
-     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
      * 
      */
     private @Nullable String saslOauthbearerJwksEndpointUrl;
@@ -373,7 +373,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logLocalRetentionMs);
     }
     /**
-     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      * 
      */
     public Optional<Boolean> logMessageDownconversionEnable() {
@@ -527,7 +527,7 @@ public final class KafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.saslOauthbearerExpectedIssuer);
     }
     /**
-     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
      * 
      */
     public Optional<String> saslOauthbearerJwksEndpointUrl() {

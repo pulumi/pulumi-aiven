@@ -35,7 +35,7 @@ export function getGrafana(args: GetGrafanaArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetGrafanaArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -85,10 +85,6 @@ export interface GetGrafanaResult {
      */
     readonly grafanaUserConfigs: outputs.GetGrafanaGrafanaUserConfig[];
     /**
-     * Grafana server provided values
-     */
-    readonly grafanas: outputs.GetGrafanaGrafana[];
-    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -105,7 +101,7 @@ export interface GetGrafanaResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +153,7 @@ export interface GetGrafanaResult {
      */
     readonly tags: outputs.GetGrafanaTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetGrafanaTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getGrafanaOutput(args: GetGrafanaOutputArgs, opts?: pulumi.Invok
  */
 export interface GetGrafanaOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

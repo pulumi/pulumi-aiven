@@ -51,14 +51,14 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
     }
 
     /**
-     * Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
      * 
      */
     @Import(name="filter", required=true)
     private Output<String> filter;
 
     /**
-     * @return Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+     * @return Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
      * 
      */
     public Output<String> filter() {
@@ -232,7 +232,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param filter Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+         * @param filter Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class M3DbM3dbUserConfigRulesMappingArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param filter Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+         * @param filter Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
          * 
          * @return builder
          * 

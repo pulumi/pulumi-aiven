@@ -23,11 +23,7 @@ public final class M3DbM3dbUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -123,11 +119,7 @@ public final class M3DbM3dbUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka data source provides information about the existing Aiven Kafka services.
+// Gets information about an Aiven for Apache Kafka® service.
 //
 // ## Example Usage
 //
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.LookupKafka(ctx, &aiven.LookupKafkaArgs{
-//				Project:     pr1.Project,
-//				ServiceName: "my-kafka1",
+//				Project:     exampleProject.Project,
+//				ServiceName: "example-kafka",
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,7 +51,7 @@ func LookupKafka(ctx *pulumi.Context, args *LookupKafkaArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getKafka.
 type LookupKafkaArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -65,7 +65,7 @@ type LookupKafkaResult struct {
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []GetKafkaComponent `pulumi:"components"`
-	// Create default wildcard Kafka ACL
+	// Create a default wildcard Kafka ACL.
 	DefaultAcl bool `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	DiskSpace string `pulumi:"diskSpace"`
@@ -81,9 +81,9 @@ type LookupKafkaResult struct {
 	Id string `pulumi:"id"`
 	// Kafka user configurable settings
 	KafkaUserConfigs []GetKafkaKafkaUserConfig `pulumi:"kafkaUserConfigs"`
-	// Kafka server provided values
+	// Kafka server connection details.
 	Kafkas []GetKafkaKafka `pulumi:"kafkas"`
-	// Switch the service to use Karapace for schema registry and REST proxy
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	Karapace bool `pulumi:"karapace"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
@@ -91,7 +91,7 @@ type LookupKafkaResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
@@ -117,7 +117,7 @@ type LookupKafkaResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetKafkaTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetKafkaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -138,7 +138,7 @@ func LookupKafkaOutput(ctx *pulumi.Context, args LookupKafkaOutputArgs, opts ...
 
 // A collection of arguments for invoking getKafka.
 type LookupKafkaOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -178,7 +178,7 @@ func (o LookupKafkaResultOutput) Components() GetKafkaComponentArrayOutput {
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaComponent { return v.Components }).(GetKafkaComponentArrayOutput)
 }
 
-// Create default wildcard Kafka ACL
+// Create a default wildcard Kafka ACL.
 func (o LookupKafkaResultOutput) DefaultAcl() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKafkaResult) bool { return v.DefaultAcl }).(pulumi.BoolOutput)
 }
@@ -218,12 +218,12 @@ func (o LookupKafkaResultOutput) KafkaUserConfigs() GetKafkaKafkaUserConfigArray
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaKafkaUserConfig { return v.KafkaUserConfigs }).(GetKafkaKafkaUserConfigArrayOutput)
 }
 
-// Kafka server provided values
+// Kafka server connection details.
 func (o LookupKafkaResultOutput) Kafkas() GetKafkaKafkaArrayOutput {
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaKafka { return v.Kafkas }).(GetKafkaKafkaArrayOutput)
 }
 
-// Switch the service to use Karapace for schema registry and REST proxy
+// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 func (o LookupKafkaResultOutput) Karapace() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKafkaResult) bool { return v.Karapace }).(pulumi.BoolOutput)
 }
@@ -243,7 +243,7 @@ func (o LookupKafkaResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupKafkaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -308,7 +308,7 @@ func (o LookupKafkaResultOutput) Tags() GetKafkaTagArrayOutput {
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaTag { return v.Tags }).(GetKafkaTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o LookupKafkaResultOutput) TechEmails() GetKafkaTechEmailArrayOutput {
 	return o.ApplyT(func(v LookupKafkaResult) []GetKafkaTechEmail { return v.TechEmails }).(GetKafkaTechEmailArrayOutput)
 }

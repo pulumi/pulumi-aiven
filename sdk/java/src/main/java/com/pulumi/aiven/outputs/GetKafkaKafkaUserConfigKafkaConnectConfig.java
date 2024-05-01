@@ -33,7 +33,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable String consumerIsolationLevel;
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     private @Nullable Integer consumerMaxPartitionFetchBytes;
@@ -123,7 +123,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.consumerIsolationLevel);
     }
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     public Optional<Integer> consumerMaxPartitionFetchBytes() {

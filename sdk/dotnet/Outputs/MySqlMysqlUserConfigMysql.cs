@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? InternalTmpMemStorageEngine;
         /// <summary>
-        /// The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
         /// </summary>
         public readonly double? LongQueryTime;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? MaxAllowedPacket;
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        /// Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         /// </summary>
         public readonly int? MaxHeapTableSize;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? NetWriteTimeout;
         /// <summary>
-        /// Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+        /// Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
         /// </summary>
         public readonly bool? SlowQueryLog;
         /// <summary>
@@ -126,7 +126,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? SqlRequirePrimaryKey;
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        /// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         /// </summary>
         public readonly int? TmpTableSize;
         /// <summary>

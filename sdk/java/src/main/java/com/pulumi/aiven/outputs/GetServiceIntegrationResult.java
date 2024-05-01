@@ -40,12 +40,12 @@ public final class GetServiceIntegrationResult {
      */
     private List<GetServiceIntegrationDatadogUserConfig> datadogUserConfigs;
     /**
-     * @return Destination endpoint for the integration (if any)
+     * @return Destination endpoint for the integration.
      * 
      */
     private String destinationEndpointId;
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     private String destinationServiceName;
@@ -75,7 +75,7 @@ public final class GetServiceIntegrationResult {
      */
     private String id;
     /**
-     * @return Service Integration Id at aiven
+     * @return The ID of the Aiven service integration.
      * 
      */
     private String integrationId;
@@ -110,7 +110,7 @@ public final class GetServiceIntegrationResult {
      */
     private List<GetServiceIntegrationMetricsUserConfig> metricsUserConfigs;
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     private String project;
@@ -120,7 +120,7 @@ public final class GetServiceIntegrationResult {
      */
     private List<GetServiceIntegrationPrometheusUserConfig> prometheusUserConfigs;
     /**
-     * @return Source endpoint for the integration (if any)
+     * @return Source endpoint for the integration.
      * 
      */
     private String sourceEndpointId;
@@ -153,14 +153,14 @@ public final class GetServiceIntegrationResult {
         return this.datadogUserConfigs;
     }
     /**
-     * @return Destination endpoint for the integration (if any)
+     * @return Destination endpoint for the integration.
      * 
      */
     public String destinationEndpointId() {
         return this.destinationEndpointId;
     }
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     public String destinationServiceName() {
@@ -202,7 +202,7 @@ public final class GetServiceIntegrationResult {
         return this.id;
     }
     /**
-     * @return Service Integration Id at aiven
+     * @return The ID of the Aiven service integration.
      * 
      */
     public String integrationId() {
@@ -251,7 +251,7 @@ public final class GetServiceIntegrationResult {
         return this.metricsUserConfigs;
     }
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     public String project() {
@@ -265,7 +265,7 @@ public final class GetServiceIntegrationResult {
         return this.prometheusUserConfigs;
     }
     /**
-     * @return Source endpoint for the integration (if any)
+     * @return Source endpoint for the integration.
      * 
      */
     public String sourceEndpointId() {

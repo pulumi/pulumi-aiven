@@ -51,9 +51,9 @@ func LookupOpensearchSecurityPluginConfig(ctx *pulumi.Context, args *LookupOpens
 
 // A collection of arguments for invoking getOpensearchSecurityPluginConfig.
 type LookupOpensearchSecurityPluginConfigArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -69,9 +69,9 @@ type LookupOpensearchSecurityPluginConfigResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -90,9 +90,9 @@ func LookupOpensearchSecurityPluginConfigOutput(ctx *pulumi.Context, args Lookup
 
 // A collection of arguments for invoking getOpensearchSecurityPluginConfig.
 type LookupOpensearchSecurityPluginConfigOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -140,12 +140,12 @@ func (o LookupOpensearchSecurityPluginConfigResultOutput) Id() pulumi.StringOutp
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupOpensearchSecurityPluginConfigResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchSecurityPluginConfigResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

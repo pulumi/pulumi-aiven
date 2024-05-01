@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides information about an existing billing group.
+// Gets information about a billing group.
 func LookupBillingGroup(ctx *pulumi.Context, args *LookupBillingGroupArgs, opts ...pulumi.InvokeOption) (*LookupBillingGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBillingGroupResult

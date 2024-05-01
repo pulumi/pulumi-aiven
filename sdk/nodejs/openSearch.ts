@@ -125,7 +125,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -177,7 +177,7 @@ export class OpenSearch extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.OpenSearchTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     public readonly techEmails!: pulumi.Output<outputs.OpenSearchTechEmail[] | undefined>;
     /**
@@ -332,7 +332,7 @@ export interface OpenSearchState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -384,7 +384,7 @@ export interface OpenSearchState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.OpenSearchTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.OpenSearchTechEmail>[]>;
     /**
@@ -428,7 +428,7 @@ export interface OpenSearchArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -452,7 +452,7 @@ export interface OpenSearchArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.OpenSearchTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.OpenSearchTechEmail>[]>;
     /**

@@ -18,7 +18,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     private @Nullable Boolean gatherEventWaits;
     /**
-     * @return gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * @return Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
      * 
      */
     private @Nullable Boolean gatherFileEventsStats;
@@ -92,7 +92,7 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
         return Optional.ofNullable(this.gatherEventWaits);
     }
     /**
-     * @return gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * @return Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
      * 
      */
     public Optional<Boolean> gatherFileEventsStats() {

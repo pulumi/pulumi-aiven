@@ -21,14 +21,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     public static final KafkaTopicState Empty = new KafkaTopicState();
 
     /**
-     * Kafka topic configuration
+     * Kafka topic configuration.
      * 
      */
     @Import(name="config")
     private @Nullable Output<KafkaTopicConfigArgs> config;
 
     /**
-     * @return Kafka topic configuration
+     * @return Kafka topic configuration.
      * 
      */
     public Optional<Output<KafkaTopicConfigArgs>> config() {
@@ -51,14 +51,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -81,14 +81,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -96,14 +96,14 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka Topic tag.
+     * Tags for the Kafka topic.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<KafkaTopicTagArgs>> tags;
 
     /**
-     * @return Kafka Topic tag.
+     * @return Tags for the Kafka topic.
      * 
      */
     public Optional<Output<List<KafkaTopicTagArgs>>> tags() {
@@ -111,16 +111,16 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-     * enable this for any production Kafka topic containing critical data.
+     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
+     * still be deleted in the Aiven Console.**
      * 
      */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
     /**
-     * @return It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-     * enable this for any production Kafka topic containing critical data.
+     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
+     * still be deleted in the Aiven Console.**
      * 
      */
     public Optional<Output<Boolean>> terminationProtection() {
@@ -174,7 +174,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config Kafka topic configuration
+         * @param config Kafka topic configuration.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param config Kafka topic configuration
+         * @param config Kafka topic configuration.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Kafka Topic tag.
+         * @param tags Tags for the Kafka topic.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Kafka Topic tag.
+         * @param tags Tags for the Kafka topic.
          * 
          * @return builder
          * 
@@ -300,7 +300,7 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Kafka Topic tag.
+         * @param tags Tags for the Kafka topic.
          * 
          * @return builder
          * 
@@ -310,8 +310,8 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationProtection It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-         * enable this for any production Kafka topic containing critical data.
+         * @param terminationProtection Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
+         * still be deleted in the Aiven Console.**
          * 
          * @return builder
          * 
@@ -322,8 +322,8 @@ public final class KafkaTopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param terminationProtection It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-         * enable this for any production Kafka topic containing critical data.
+         * @param terminationProtection Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
+         * still be deleted in the Aiven Console.**
          * 
          * @return builder
          * 

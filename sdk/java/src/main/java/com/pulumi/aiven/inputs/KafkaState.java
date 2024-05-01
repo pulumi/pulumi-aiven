@@ -70,14 +70,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Create default wildcard Kafka ACL
+     * Create a default wildcard Kafka ACL.
      * 
      */
     @Import(name="defaultAcl")
     private @Nullable Output<Boolean> defaultAcl;
 
     /**
-     * @return Create default wildcard Kafka ACL
+     * @return Create a default wildcard Kafka ACL.
      * 
      */
     public Optional<Output<Boolean>> defaultAcl() {
@@ -183,14 +183,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Kafka server provided values
+     * Kafka server connection details.
      * 
      */
     @Import(name="kafkas")
     private @Nullable Output<List<KafkaKafkaArgs>> kafkas;
 
     /**
-     * @return Kafka server provided values
+     * @return Kafka server connection details.
      * 
      */
     public Optional<Output<List<KafkaKafkaArgs>>> kafkas() {
@@ -198,7 +198,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -209,7 +209,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> karapace;
 
     /**
-     * @return Switch the service to use Karapace for schema registry and REST proxy
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -266,14 +266,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -461,14 +461,14 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Import(name="techEmails")
     private @Nullable Output<List<KafkaTechEmailArgs>> techEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Optional<Output<List<KafkaTechEmailArgs>>> techEmails() {
@@ -617,7 +617,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultAcl Create default wildcard Kafka ACL
+         * @param defaultAcl Create a default wildcard Kafka ACL.
          * 
          * @return builder
          * 
@@ -628,7 +628,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultAcl Create default wildcard Kafka ACL
+         * @param defaultAcl Create a default wildcard Kafka ACL.
          * 
          * @return builder
          * 
@@ -772,7 +772,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkas Kafka server provided values
+         * @param kafkas Kafka server connection details.
          * 
          * @return builder
          * 
@@ -783,7 +783,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkas Kafka server provided values
+         * @param kafkas Kafka server connection details.
          * 
          * @return builder
          * 
@@ -793,7 +793,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kafkas Kafka server provided values
+         * @param kafkas Kafka server connection details.
          * 
          * @return builder
          * 
@@ -803,7 +803,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use Karapace for schema registry and REST proxy
+         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
          * 
          * @return builder
          * 
@@ -818,7 +818,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param karapace Switch the service to use Karapace for schema registry and REST proxy
+         * @param karapace Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
          * 
          * @return builder
          * 
@@ -895,7 +895,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -906,7 +906,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -1198,7 +1198,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
          * 
          * @return builder
          * 
@@ -1209,7 +1209,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
          * 
          * @return builder
          * 
@@ -1219,7 +1219,7 @@ public final class KafkaState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param techEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+         * @param techEmails The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
          * 
          * @return builder
          * 

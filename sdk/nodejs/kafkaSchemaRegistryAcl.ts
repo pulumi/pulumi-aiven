@@ -6,6 +6,27 @@ import * as utilities from "./utilities";
 
 /**
  * The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const foo = new aiven.KafkaSchemaRegistryAcl("foo", {
+ *     project: kafka_schemas_project1.project,
+ *     serviceName: kafka_service1.serviceName,
+ *     resource: "Subject:topic-1",
+ *     username: "group-user-*",
+ *     permission: "schema_registry_read",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME
+ * ```
  */
 export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
     /**
@@ -44,7 +65,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
      */
     public readonly permission!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -52,7 +73,7 @@ export class KafkaSchemaRegistryAcl extends pulumi.CustomResource {
      */
     public readonly resource!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -121,7 +142,7 @@ export interface KafkaSchemaRegistryAclState {
      */
     permission?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -129,7 +150,7 @@ export interface KafkaSchemaRegistryAclState {
      */
     resource?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -147,7 +168,7 @@ export interface KafkaSchemaRegistryAclArgs {
      */
     permission: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -155,7 +176,7 @@ export interface KafkaSchemaRegistryAclArgs {
      */
     resource: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

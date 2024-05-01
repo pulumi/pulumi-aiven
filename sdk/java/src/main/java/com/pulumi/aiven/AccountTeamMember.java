@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo account_id/team_id/user_email
+ * $ pulumi import aiven:index/accountTeamMember:AccountTeamMember foo ACCOUNT_ID/TEAM_ID/USER_EMAIL
  * ```
  * 
  */

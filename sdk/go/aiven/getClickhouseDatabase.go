@@ -54,9 +54,9 @@ func LookupClickhouseDatabase(ctx *pulumi.Context, args *LookupClickhouseDatabas
 type LookupClickhouseDatabaseArgs struct {
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -66,9 +66,9 @@ type LookupClickhouseDatabaseResult struct {
 	Id string `pulumi:"id"`
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName           string `pulumi:"serviceName"`
 	TerminationProtection bool   `pulumi:"terminationProtection"`
 }
@@ -90,9 +90,9 @@ func LookupClickhouseDatabaseOutput(ctx *pulumi.Context, args LookupClickhouseDa
 type LookupClickhouseDatabaseOutputArgs struct {
 	// The name of the Clickhouse database. Changing this property forces recreation of the resource.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -125,12 +125,12 @@ func (o LookupClickhouseDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupClickhouseDatabaseResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupClickhouseDatabaseResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClickhouseDatabaseResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka data source provides information about the existing Aiven Kafka services.
+ * Gets information about an Aiven for Apache Kafka® service.
  *
  * ## Example Usage
  *
@@ -15,9 +15,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka1 = aiven.getKafka({
- *     project: pr1.project,
- *     serviceName: "my-kafka1",
+ * const exampleKafka = aiven.getKafka({
+ *     project: exampleProject.project,
+ *     serviceName: "example-kafka",
  * });
  * ```
  */
@@ -35,7 +35,7 @@ export function getKafka(args: GetKafkaArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetKafkaArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -61,7 +61,7 @@ export interface GetKafkaResult {
      */
     readonly components: outputs.GetKafkaComponent[];
     /**
-     * Create default wildcard Kafka ACL
+     * Create a default wildcard Kafka ACL.
      */
     readonly defaultAcl: boolean;
     /**
@@ -93,11 +93,11 @@ export interface GetKafkaResult {
      */
     readonly kafkaUserConfigs: outputs.GetKafkaKafkaUserConfig[];
     /**
-     * Kafka server provided values
+     * Kafka server connection details.
      */
     readonly kafkas: outputs.GetKafkaKafka[];
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      */
     readonly karapace: boolean;
     /**
@@ -113,7 +113,7 @@ export interface GetKafkaResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -165,7 +165,7 @@ export interface GetKafkaResult {
      */
     readonly tags: outputs.GetKafkaTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetKafkaTechEmail[];
     /**
@@ -174,7 +174,7 @@ export interface GetKafkaResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Kafka data source provides information about the existing Aiven Kafka services.
+ * Gets information about an Aiven for Apache Kafka® service.
  *
  * ## Example Usage
  *
@@ -182,9 +182,9 @@ export interface GetKafkaResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const kafka1 = aiven.getKafka({
- *     project: pr1.project,
- *     serviceName: "my-kafka1",
+ * const exampleKafka = aiven.getKafka({
+ *     project: exampleProject.project,
+ *     serviceName: "example-kafka",
  * });
  * ```
  */
@@ -197,7 +197,7 @@ export function getKafkaOutput(args: GetKafkaOutputArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetKafkaOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

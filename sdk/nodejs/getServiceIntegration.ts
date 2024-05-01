@@ -7,12 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Service Integration data source provides information about the existing Aiven Service Integration.
- *
- * Service Integration defines an integration between two Aiven services or between Aiven service and an external
- * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
- * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
- * OpenSearch, etc.
+ * Gets information about an Aiven service integration.
  *
  * ## Example Usage
  *
@@ -20,11 +15,11 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myintegration = aiven.getServiceIntegration({
- *     project: myproject.project,
- *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
- *     integrationType: "datadog",
- *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * const exampleIntegration = aiven.getServiceIntegration({
+ *     project: exampleProject.project,
+ *     destinationServiceName: exampleM3db.serviceName,
+ *     integrationType: "metrics",
+ *     sourceServiceName: exampleKafka.serviceName,
  * });
  * ```
  */
@@ -44,7 +39,7 @@ export function getServiceIntegration(args: GetServiceIntegrationArgs, opts?: pu
  */
 export interface GetServiceIntegrationArgs {
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      */
     destinationServiceName: string;
     /**
@@ -52,7 +47,7 @@ export interface GetServiceIntegrationArgs {
      */
     integrationType: string;
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      */
     project: string;
     /**
@@ -78,11 +73,11 @@ export interface GetServiceIntegrationResult {
      */
     readonly datadogUserConfigs: outputs.GetServiceIntegrationDatadogUserConfig[];
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      */
     readonly destinationEndpointId: string;
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      */
     readonly destinationServiceName: string;
     /**
@@ -106,7 +101,7 @@ export interface GetServiceIntegrationResult {
      */
     readonly id: string;
     /**
-     * Service Integration Id at aiven
+     * The ID of the Aiven service integration.
      */
     readonly integrationId: string;
     /**
@@ -134,7 +129,7 @@ export interface GetServiceIntegrationResult {
      */
     readonly metricsUserConfigs: outputs.GetServiceIntegrationMetricsUserConfig[];
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      */
     readonly project: string;
     /**
@@ -142,7 +137,7 @@ export interface GetServiceIntegrationResult {
      */
     readonly prometheusUserConfigs: outputs.GetServiceIntegrationPrometheusUserConfig[];
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      */
     readonly sourceEndpointId: string;
     /**
@@ -151,12 +146,7 @@ export interface GetServiceIntegrationResult {
     readonly sourceServiceName: string;
 }
 /**
- * The Service Integration data source provides information about the existing Aiven Service Integration.
- *
- * Service Integration defines an integration between two Aiven services or between Aiven service and an external
- * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
- * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
- * OpenSearch, etc.
+ * Gets information about an Aiven service integration.
  *
  * ## Example Usage
  *
@@ -164,11 +154,11 @@ export interface GetServiceIntegrationResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myintegration = aiven.getServiceIntegration({
- *     project: myproject.project,
- *     destinationServiceName: "<DESTINATION_SERVICE_NAME>",
- *     integrationType: "datadog",
- *     sourceServiceName: "<SOURCE_SERVICE_NAME>",
+ * const exampleIntegration = aiven.getServiceIntegration({
+ *     project: exampleProject.project,
+ *     destinationServiceName: exampleM3db.serviceName,
+ *     integrationType: "metrics",
+ *     sourceServiceName: exampleKafka.serviceName,
  * });
  * ```
  */
@@ -181,7 +171,7 @@ export function getServiceIntegrationOutput(args: GetServiceIntegrationOutputArg
  */
 export interface GetServiceIntegrationOutputArgs {
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      */
     destinationServiceName: pulumi.Input<string>;
     /**
@@ -189,7 +179,7 @@ export interface GetServiceIntegrationOutputArgs {
      */
     integrationType: pulumi.Input<string>;
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      */
     project: pulumi.Input<string>;
     /**

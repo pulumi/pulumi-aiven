@@ -7,14 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Service Integration resource allows the creation and management of Aiven Service Integrations.
+ * Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
  *
- * **Note** For services running on `hobbyist` plan service integrations are not supported.
+ * You can set up an integration between two Aiven services or an Aiven service and an external
+ * service. For example, you can send metrics from a Kafka service to an M3DB service,
+ * send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
+ * any service to OpenSearch.
  *
- * Service Integration defines an integration between two Aiven services or between Aiven service and an external
- * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
- * getting metrics from an M3DB service to a Grafana service to show dashboards, sending logs from any service to
- * OpenSearch, etc.
+ * **Services integrations are not supported for services running on hobbyist plans.**
  *
  * ## Example Usage
  *
@@ -22,18 +22,18 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myIntegrationMetrics = new aiven.ServiceIntegration("my_integration_metrics", {
- *     project: myproject.project,
+ * const exampleIntegration = new aiven.ServiceIntegration("example_integration", {
+ *     project: exampleProject.project,
  *     integrationType: "metrics",
- *     sourceServiceName: kfk1.serviceName,
- *     destinationServiceName: m3db.serviceName,
+ *     sourceServiceName: exampleKafka.serviceName,
+ *     destinationServiceName: exampleM3db.serviceName,
  * });
  * ```
  *
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+ * $ pulumi import aiven:index/serviceIntegration:ServiceIntegration example_integration PROJECT/INTEGRATION_ID
  * ```
  */
 export class ServiceIntegration extends pulumi.CustomResource {
@@ -77,11 +77,11 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly datadogUserConfig!: pulumi.Output<outputs.ServiceIntegrationDatadogUserConfig | undefined>;
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      */
     public readonly destinationEndpointId!: pulumi.Output<string | undefined>;
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      */
     public readonly destinationServiceName!: pulumi.Output<string | undefined>;
     /**
@@ -101,7 +101,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly externalOpensearchLogsUserConfig!: pulumi.Output<outputs.ServiceIntegrationExternalOpensearchLogsUserConfig | undefined>;
     /**
-     * Service Integration Id at aiven
+     * The ID of the Aiven service integration.
      */
     public /*out*/ readonly integrationId!: pulumi.Output<string>;
     /**
@@ -129,7 +129,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly metricsUserConfig!: pulumi.Output<outputs.ServiceIntegrationMetricsUserConfig | undefined>;
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -137,7 +137,7 @@ export class ServiceIntegration extends pulumi.CustomResource {
      */
     public readonly prometheusUserConfig!: pulumi.Output<outputs.ServiceIntegrationPrometheusUserConfig | undefined>;
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      */
     public readonly sourceEndpointId!: pulumi.Output<string | undefined>;
     /**
@@ -229,11 +229,11 @@ export interface ServiceIntegrationState {
      */
     datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      */
     destinationEndpointId?: pulumi.Input<string>;
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      */
     destinationServiceName?: pulumi.Input<string>;
     /**
@@ -253,7 +253,7 @@ export interface ServiceIntegrationState {
      */
     externalOpensearchLogsUserConfig?: pulumi.Input<inputs.ServiceIntegrationExternalOpensearchLogsUserConfig>;
     /**
-     * Service Integration Id at aiven
+     * The ID of the Aiven service integration.
      */
     integrationId?: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface ServiceIntegrationState {
      */
     metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      */
     project?: pulumi.Input<string>;
     /**
@@ -289,7 +289,7 @@ export interface ServiceIntegrationState {
      */
     prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      */
     sourceEndpointId?: pulumi.Input<string>;
     /**
@@ -315,11 +315,11 @@ export interface ServiceIntegrationArgs {
      */
     datadogUserConfig?: pulumi.Input<inputs.ServiceIntegrationDatadogUserConfig>;
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      */
     destinationEndpointId?: pulumi.Input<string>;
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      */
     destinationServiceName?: pulumi.Input<string>;
     /**
@@ -363,7 +363,7 @@ export interface ServiceIntegrationArgs {
      */
     metricsUserConfig?: pulumi.Input<inputs.ServiceIntegrationMetricsUserConfig>;
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      */
     project: pulumi.Input<string>;
     /**
@@ -371,7 +371,7 @@ export interface ServiceIntegrationArgs {
      */
     prometheusUserConfig?: pulumi.Input<inputs.ServiceIntegrationPrometheusUserConfig>;
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      */
     sourceEndpointId?: pulumi.Input<string>;
     /**

@@ -15,14 +15,23 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
+ * const exampleProject = new aiven.Project("example_project", {
+ *     project: "example-project",
+ *     parentId: main.id,
+ * });
  * const example = new aiven.OrganizationUserGroup("example", {
  *     description: "Example group of users.",
  *     organizationId: main.id,
  *     name: "Example group",
  * });
- * const exampleOrganizationUserGroupProject = new aiven.index.OrganizationUserGroupProject("example", {
+ * const projectAdmin = new aiven.OrganizationUserGroupMember("project_admin", {
  *     groupId: example.groupId,
- *     project: exampleAivenProject.project,
+ *     organizationId: main.id,
+ *     userId: "u123a456b7890c",
+ * });
+ * const exampleOrganizationGroupProject = new aiven.OrganizationGroupProject("example", {
+ *     groupId: example.groupId,
+ *     project: exampleProjectAivenProject.project,
  *     role: "admin",
  * });
  * ```

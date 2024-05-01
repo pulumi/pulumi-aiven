@@ -17,7 +17,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule project/service_name/username/index
+// $ pulumi import aiven:index/openSearchAclRule:OpenSearchAclRule os_acl_rule PROJECT/SERVICE_NAME/USERNAME/INDEX
 // ```
 type OpenSearchAclRule struct {
 	pulumi.CustomResourceState
@@ -26,9 +26,9 @@ type OpenSearchAclRule struct {
 	Index pulumi.StringOutput `pulumi:"index"`
 	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringOutput `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -83,9 +83,9 @@ type openSearchAclRuleState struct {
 	Index *string `pulumi:"index"`
 	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission *string `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username *string `pulumi:"username"`
@@ -96,9 +96,9 @@ type OpenSearchAclRuleState struct {
 	Index pulumi.StringPtrInput
 	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringPtrInput
@@ -113,9 +113,9 @@ type openSearchAclRuleArgs struct {
 	Index string `pulumi:"index"`
 	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission string `pulumi:"permission"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username string `pulumi:"username"`
@@ -127,9 +127,9 @@ type OpenSearchAclRuleArgs struct {
 	Index pulumi.StringInput
 	// The permissions for this ACL entry. The possible values are `deny`, `admin`, `read`, `readwrite` and `write`.
 	Permission pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// The username for the ACL entry. Maximum length: `40`. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Username pulumi.StringInput
@@ -232,12 +232,12 @@ func (o OpenSearchAclRuleOutput) Permission() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.Permission }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o OpenSearchAclRuleOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o OpenSearchAclRuleOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpenSearchAclRule) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

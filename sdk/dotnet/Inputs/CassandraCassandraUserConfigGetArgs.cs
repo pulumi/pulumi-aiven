@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? BackupMinute { get; set; }
 
         /// <summary>
-        /// cassandra configuration values
+        /// Cassandra configuration values
         /// </summary>
         [Input("cassandra")]
         public Input<Inputs.CassandraCassandraUserConfigCassandraGetArgs>? Cassandra { get; set; }

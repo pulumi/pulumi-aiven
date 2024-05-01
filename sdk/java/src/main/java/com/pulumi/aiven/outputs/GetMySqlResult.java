@@ -4,7 +4,6 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetMySqlComponent;
-import com.pulumi.aiven.outputs.GetMySqlMysql;
 import com.pulumi.aiven.outputs.GetMySqlMysqlUserConfig;
 import com.pulumi.aiven.outputs.GetMySqlServiceIntegration;
 import com.pulumi.aiven.outputs.GetMySqlTag;
@@ -80,17 +79,12 @@ public final class GetMySqlResult {
      */
     private List<GetMySqlMysqlUserConfig> mysqlUserConfigs;
     /**
-     * @return MySQL specific server provided values
-     * 
-     */
-    private List<GetMySqlMysql> mysqls;
-    /**
      * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -155,7 +149,7 @@ public final class GetMySqlResult {
      */
     private List<GetMySqlTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetMySqlTechEmail> techEmails;
@@ -251,13 +245,6 @@ public final class GetMySqlResult {
         return this.mysqlUserConfigs;
     }
     /**
-     * @return MySQL specific server provided values
-     * 
-     */
-    public List<GetMySqlMysql> mysqls() {
-        return this.mysqls;
-    }
-    /**
      * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
@@ -265,7 +252,7 @@ public final class GetMySqlResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -356,7 +343,7 @@ public final class GetMySqlResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetMySqlTechEmail> techEmails() {
@@ -391,7 +378,6 @@ public final class GetMySqlResult {
         private String maintenanceWindowDow;
         private String maintenanceWindowTime;
         private List<GetMySqlMysqlUserConfig> mysqlUserConfigs;
-        private List<GetMySqlMysql> mysqls;
         private String plan;
         private String project;
         private String projectVpcId;
@@ -423,7 +409,6 @@ public final class GetMySqlResult {
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.mysqlUserConfigs = defaults.mysqlUserConfigs;
-    	      this.mysqls = defaults.mysqls;
     	      this.plan = defaults.plan;
     	      this.project = defaults.project;
     	      this.projectVpcId = defaults.projectVpcId;
@@ -543,17 +528,6 @@ public final class GetMySqlResult {
         }
         public Builder mysqlUserConfigs(GetMySqlMysqlUserConfig... mysqlUserConfigs) {
             return mysqlUserConfigs(List.of(mysqlUserConfigs));
-        }
-        @CustomType.Setter
-        public Builder mysqls(List<GetMySqlMysql> mysqls) {
-            if (mysqls == null) {
-              throw new MissingRequiredPropertyException("GetMySqlResult", "mysqls");
-            }
-            this.mysqls = mysqls;
-            return this;
-        }
-        public Builder mysqls(GetMySqlMysql... mysqls) {
-            return mysqls(List.of(mysqls));
         }
         @CustomType.Setter
         public Builder plan(String plan) {
@@ -709,7 +683,6 @@ public final class GetMySqlResult {
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.mysqlUserConfigs = mysqlUserConfigs;
-            _resultValue.mysqls = mysqls;
             _resultValue.plan = plan;
             _resultValue.project = project;
             _resultValue.projectVpcId = projectVpcId;

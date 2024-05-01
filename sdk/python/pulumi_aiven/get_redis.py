@@ -22,7 +22,7 @@ class GetRedisResult:
     """
     A collection of values returned by getRedis.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_configs=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, redis_user_configs=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -65,9 +65,6 @@ class GetRedisResult:
         if project_vpc_id and not isinstance(project_vpc_id, str):
             raise TypeError("Expected argument 'project_vpc_id' to be a str")
         pulumi.set(__self__, "project_vpc_id", project_vpc_id)
-        if redis and not isinstance(redis, list):
-            raise TypeError("Expected argument 'redis' to be a list")
-        pulumi.set(__self__, "redis", redis)
         if redis_user_configs and not isinstance(redis_user_configs, list):
             raise TypeError("Expected argument 'redis_user_configs' to be a list")
         pulumi.set(__self__, "redis_user_configs", redis_user_configs)
@@ -211,7 +208,7 @@ class GetRedisResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -222,14 +219,6 @@ class GetRedisResult:
         Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         """
         return pulumi.get(self, "project_vpc_id")
-
-    @property
-    @pulumi.getter
-    def redis(self) -> Sequence['outputs.GetRedisRediResult']:
-        """
-        Redis server provided values
-        """
-        return pulumi.get(self, "redis")
 
     @property
     @pulumi.getter(name="redisUserConfigs")
@@ -331,7 +320,7 @@ class GetRedisResult:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetRedisTechEmailResult']:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -364,7 +353,6 @@ class AwaitableGetRedisResult(GetRedisResult):
             plan=self.plan,
             project=self.project,
             project_vpc_id=self.project_vpc_id,
-            redis=self.redis,
             redis_user_configs=self.redis_user_configs,
             service_host=self.service_host,
             service_integrations=self.service_integrations,
@@ -398,7 +386,7 @@ def get_redis(project: Optional[str] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     __args__ = dict()
@@ -422,7 +410,6 @@ def get_redis(project: Optional[str] = None,
         plan=pulumi.get(__ret__, 'plan'),
         project=pulumi.get(__ret__, 'project'),
         project_vpc_id=pulumi.get(__ret__, 'project_vpc_id'),
-        redis=pulumi.get(__ret__, 'redis'),
         redis_user_configs=pulumi.get(__ret__, 'redis_user_configs'),
         service_host=pulumi.get(__ret__, 'service_host'),
         service_integrations=pulumi.get(__ret__, 'service_integrations'),
@@ -457,7 +444,7 @@ def get_redis_output(project: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     ...

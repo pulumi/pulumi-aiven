@@ -35,7 +35,7 @@ export function getMySql(args: GetMySqlArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetMySqlArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -97,15 +97,11 @@ export interface GetMySqlResult {
      */
     readonly mysqlUserConfigs: outputs.GetMySqlMysqlUserConfig[];
     /**
-     * MySQL specific server provided values
-     */
-    readonly mysqls: outputs.GetMySqlMysql[];
-    /**
      * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +153,7 @@ export interface GetMySqlResult {
      */
     readonly tags: outputs.GetMySqlTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetMySqlTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getMySqlOutput(args: GetMySqlOutputArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetMySqlOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

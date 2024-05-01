@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogLocalRetentionMs;
         /// <summary>
-        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         /// </summary>
         public readonly bool? LogMessageDownconversionEnable;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SaslOauthbearerExpectedIssuer;
         /// <summary>
-        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
         /// </summary>
         public readonly string? SaslOauthbearerJwksEndpointUrl;
         /// <summary>

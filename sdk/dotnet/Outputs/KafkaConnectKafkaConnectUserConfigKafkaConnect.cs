@@ -26,11 +26,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ConsumerFetchMaxBytes;
         /// <summary>
-        /// Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        /// Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         public readonly string? ConsumerIsolationLevel;
         /// <summary>
-        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         /// </summary>
         public readonly int? ConsumerMaxPartitionFetchBytes;
         /// <summary>

@@ -35,7 +35,7 @@ export function getOpenSearch(args: GetOpenSearchArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetOpenSearchArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -105,7 +105,7 @@ export interface GetOpenSearchResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +157,7 @@ export interface GetOpenSearchResult {
      */
     readonly tags: outputs.GetOpenSearchTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetOpenSearchTechEmail[];
     /**
@@ -189,7 +189,7 @@ export function getOpenSearchOutput(args: GetOpenSearchOutputArgs, opts?: pulumi
  */
 export interface GetOpenSearchOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

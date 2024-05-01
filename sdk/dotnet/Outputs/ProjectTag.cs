@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ProjectTag
     {
         /// <summary>
-        /// Project tag key
+        /// Project tag key.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Project tag value
+        /// Project tag value.
         /// </summary>
         public readonly string Value;
 

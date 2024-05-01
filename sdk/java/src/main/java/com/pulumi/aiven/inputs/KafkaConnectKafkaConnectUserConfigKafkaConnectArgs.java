@@ -62,14 +62,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     @Import(name="consumerIsolationLevel")
     private @Nullable Output<String> consumerIsolationLevel;
 
     /**
-     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<Output<String>> consumerIsolationLevel() {
@@ -77,14 +77,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     @Import(name="consumerMaxPartitionFetchBytes")
     private @Nullable Output<Integer> consumerMaxPartitionFetchBytes;
 
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     public Optional<Output<Integer>> consumerMaxPartitionFetchBytes() {
@@ -359,7 +359,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerIsolationLevel Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerIsolationLevel Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
          * 
          * @return builder
          * 

@@ -4,7 +4,6 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetM3DbComponent;
-import com.pulumi.aiven.outputs.GetM3DbM3db;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfig;
 import com.pulumi.aiven.outputs.GetM3DbServiceIntegration;
 import com.pulumi.aiven.outputs.GetM3DbTag;
@@ -70,11 +69,6 @@ public final class GetM3DbResult {
      */
     private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
     /**
-     * @return M3 specific server provided values
-     * 
-     */
-    private List<GetM3DbM3db> m3dbs;
-    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -90,7 +84,7 @@ public final class GetM3DbResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -155,7 +149,7 @@ public final class GetM3DbResult {
      */
     private List<GetM3DbTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetM3DbTechEmail> techEmails;
@@ -237,13 +231,6 @@ public final class GetM3DbResult {
         return this.m3dbUserConfigs;
     }
     /**
-     * @return M3 specific server provided values
-     * 
-     */
-    public List<GetM3DbM3db> m3dbs() {
-        return this.m3dbs;
-    }
-    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -265,7 +252,7 @@ public final class GetM3DbResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -356,7 +343,7 @@ public final class GetM3DbResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetM3DbTechEmail> techEmails() {
@@ -389,7 +376,6 @@ public final class GetM3DbResult {
         private String diskSpaceUsed;
         private String id;
         private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
-        private List<GetM3DbM3db> m3dbs;
         private String maintenanceWindowDow;
         private String maintenanceWindowTime;
         private String plan;
@@ -421,7 +407,6 @@ public final class GetM3DbResult {
     	      this.diskSpaceUsed = defaults.diskSpaceUsed;
     	      this.id = defaults.id;
     	      this.m3dbUserConfigs = defaults.m3dbUserConfigs;
-    	      this.m3dbs = defaults.m3dbs;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
@@ -527,17 +512,6 @@ public final class GetM3DbResult {
         }
         public Builder m3dbUserConfigs(GetM3DbM3dbUserConfig... m3dbUserConfigs) {
             return m3dbUserConfigs(List.of(m3dbUserConfigs));
-        }
-        @CustomType.Setter
-        public Builder m3dbs(List<GetM3DbM3db> m3dbs) {
-            if (m3dbs == null) {
-              throw new MissingRequiredPropertyException("GetM3DbResult", "m3dbs");
-            }
-            this.m3dbs = m3dbs;
-            return this;
-        }
-        public Builder m3dbs(GetM3DbM3db... m3dbs) {
-            return m3dbs(List.of(m3dbs));
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
@@ -707,7 +681,6 @@ public final class GetM3DbResult {
             _resultValue.diskSpaceUsed = diskSpaceUsed;
             _resultValue.id = id;
             _resultValue.m3dbUserConfigs = m3dbUserConfigs;
-            _resultValue.m3dbs = m3dbs;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;

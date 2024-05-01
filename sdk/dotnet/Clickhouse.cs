@@ -38,7 +38,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
+    /// $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/clickhouse:Clickhouse")]
@@ -55,12 +55,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("clickhouseUserConfig")]
         public Output<Outputs.ClickhouseClickhouseUserConfig?> ClickhouseUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Clickhouse server provided values
-        /// </summary>
-        [Output("clickhouses")]
-        public Output<ImmutableArray<Outputs.ClickhouseClickhouse>> Clickhouses { get; private set; } = null!;
 
         /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -123,7 +117,7 @@ namespace Pulumi.Aiven
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -201,7 +195,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.ClickhouseTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         [Output("techEmails")]
         public Output<ImmutableArray<Outputs.ClickhouseTechEmail>> TechEmails { get; private set; } = null!;
@@ -306,7 +300,7 @@ namespace Pulumi.Aiven
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -363,7 +357,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseTechEmailArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.ClickhouseTechEmailArgs> TechEmails
         {
@@ -396,18 +390,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("clickhouseUserConfig")]
         public Input<Inputs.ClickhouseClickhouseUserConfigGetArgs>? ClickhouseUserConfig { get; set; }
-
-        [Input("clickhouses")]
-        private InputList<Inputs.ClickhouseClickhouseGetArgs>? _clickhouses;
-
-        /// <summary>
-        /// Clickhouse server provided values
-        /// </summary>
-        public InputList<Inputs.ClickhouseClickhouseGetArgs> Clickhouses
-        {
-            get => _clickhouses ?? (_clickhouses = new InputList<Inputs.ClickhouseClickhouseGetArgs>());
-            set => _clickhouses = value;
-        }
 
         /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -476,7 +458,7 @@ namespace Pulumi.Aiven
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -595,7 +577,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.ClickhouseTechEmailGetArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.ClickhouseTechEmailGetArgs> TechEmails
         {

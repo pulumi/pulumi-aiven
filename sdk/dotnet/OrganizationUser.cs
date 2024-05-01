@@ -9,17 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
-    /// <summary>
-    /// **This resource is deprecated**. Use the `aiven.OrganizationUser` data source instead.
-    /// 
-    /// The organization user resource allows the creation and management of an Aiven organization user.
-    /// 
-    /// During the creation of `aiven.OrganizationUser`resource, an email invitation will be sent
-    /// to a user using `user_email` address. If the user accepts an invitation, they will become
-    /// a member of the organization. The deletion of `aiven.OrganizationUser` will not only
-    /// delete the invitation if one was sent but not yet accepted by the user, it will also
-    /// eliminate the member from the organization if one has accepted an invitation previously.
-    /// </summary>
     [AivenResourceType("aiven:index/organizationUser:OrganizationUser")]
     public partial class OrganizationUser : global::Pulumi.CustomResource
     {

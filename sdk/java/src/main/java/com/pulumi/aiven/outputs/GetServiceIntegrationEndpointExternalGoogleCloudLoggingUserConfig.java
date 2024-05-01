@@ -21,7 +21,7 @@ public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserCo
      */
     private String projectId;
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
      * 
      */
     private String serviceAccountCredentials;
@@ -42,7 +42,7 @@ public final class GetServiceIntegrationEndpointExternalGoogleCloudLoggingUserCo
         return this.projectId;
     }
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
      * 
      */
     public String serviceAccountCredentials() {

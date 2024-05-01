@@ -4,7 +4,6 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetM3AggregatorComponent;
-import com.pulumi.aiven.outputs.GetM3AggregatorM3aggregator;
 import com.pulumi.aiven.outputs.GetM3AggregatorM3aggregatorUserConfig;
 import com.pulumi.aiven.outputs.GetM3AggregatorServiceIntegration;
 import com.pulumi.aiven.outputs.GetM3AggregatorTag;
@@ -70,11 +69,6 @@ public final class GetM3AggregatorResult {
      */
     private List<GetM3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfigs;
     /**
-     * @return M3 aggregator specific server provided values
-     * 
-     */
-    private List<GetM3AggregatorM3aggregator> m3aggregators;
-    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -90,7 +84,7 @@ public final class GetM3AggregatorResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -155,7 +149,7 @@ public final class GetM3AggregatorResult {
      */
     private List<GetM3AggregatorTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetM3AggregatorTechEmail> techEmails;
@@ -237,13 +231,6 @@ public final class GetM3AggregatorResult {
         return this.m3aggregatorUserConfigs;
     }
     /**
-     * @return M3 aggregator specific server provided values
-     * 
-     */
-    public List<GetM3AggregatorM3aggregator> m3aggregators() {
-        return this.m3aggregators;
-    }
-    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -265,7 +252,7 @@ public final class GetM3AggregatorResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -356,7 +343,7 @@ public final class GetM3AggregatorResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetM3AggregatorTechEmail> techEmails() {
@@ -389,7 +376,6 @@ public final class GetM3AggregatorResult {
         private String diskSpaceUsed;
         private String id;
         private List<GetM3AggregatorM3aggregatorUserConfig> m3aggregatorUserConfigs;
-        private List<GetM3AggregatorM3aggregator> m3aggregators;
         private String maintenanceWindowDow;
         private String maintenanceWindowTime;
         private String plan;
@@ -421,7 +407,6 @@ public final class GetM3AggregatorResult {
     	      this.diskSpaceUsed = defaults.diskSpaceUsed;
     	      this.id = defaults.id;
     	      this.m3aggregatorUserConfigs = defaults.m3aggregatorUserConfigs;
-    	      this.m3aggregators = defaults.m3aggregators;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
@@ -527,17 +512,6 @@ public final class GetM3AggregatorResult {
         }
         public Builder m3aggregatorUserConfigs(GetM3AggregatorM3aggregatorUserConfig... m3aggregatorUserConfigs) {
             return m3aggregatorUserConfigs(List.of(m3aggregatorUserConfigs));
-        }
-        @CustomType.Setter
-        public Builder m3aggregators(List<GetM3AggregatorM3aggregator> m3aggregators) {
-            if (m3aggregators == null) {
-              throw new MissingRequiredPropertyException("GetM3AggregatorResult", "m3aggregators");
-            }
-            this.m3aggregators = m3aggregators;
-            return this;
-        }
-        public Builder m3aggregators(GetM3AggregatorM3aggregator... m3aggregators) {
-            return m3aggregators(List.of(m3aggregators));
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
@@ -707,7 +681,6 @@ public final class GetM3AggregatorResult {
             _resultValue.diskSpaceUsed = diskSpaceUsed;
             _resultValue.id = id;
             _resultValue.m3aggregatorUserConfigs = m3aggregatorUserConfigs;
-            _resultValue.m3aggregators = m3aggregators;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;

@@ -28,12 +28,12 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable Integer consumerFetchMaxBytes;
     /**
-     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     private @Nullable String consumerIsolationLevel;
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     private @Nullable Integer consumerMaxPartitionFetchBytes;
@@ -116,14 +116,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.consumerFetchMaxBytes);
     }
     /**
-     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<String> consumerIsolationLevel() {
         return Optional.ofNullable(this.consumerIsolationLevel);
     }
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     public Optional<Integer> consumerMaxPartitionFetchBytes() {

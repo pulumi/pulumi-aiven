@@ -57,7 +57,7 @@ type InfluxDb struct {
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -89,8 +89,8 @@ type InfluxDb struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayOutput `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+	// important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails InfluxDbTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
@@ -184,7 +184,7 @@ type influxDbState struct {
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -216,8 +216,8 @@ type influxDbState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+	// important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []InfluxDbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
@@ -268,7 +268,7 @@ type InfluxDbState struct {
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -300,8 +300,8 @@ type InfluxDbState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+	// important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails InfluxDbTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
@@ -342,7 +342,7 @@ type influxDbArgs struct {
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -360,8 +360,8 @@ type influxDbArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []InfluxDbTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+	// important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []InfluxDbTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
@@ -399,7 +399,7 @@ type InfluxDbArgs struct {
 	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
 	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 	// reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -417,8 +417,8 @@ type InfluxDbArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags InfluxDbTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+	// important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails InfluxDbTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
 	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
@@ -594,7 +594,7 @@ func (o InfluxDbOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
 // reference. Changing this property forces recreation of the resource.
 func (o InfluxDbOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
@@ -665,8 +665,8 @@ func (o InfluxDbOutput) Tags() InfluxDbTagArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbTagArrayOutput { return v.Tags }).(InfluxDbTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-// instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+// important alerts and updates about this service. You can also set email contacts at the project level.
 func (o InfluxDbOutput) TechEmails() InfluxDbTechEmailArrayOutput {
 	return o.ApplyT(func(v *InfluxDb) InfluxDbTechEmailArrayOutput { return v.TechEmails }).(InfluxDbTechEmailArrayOutput)
 }

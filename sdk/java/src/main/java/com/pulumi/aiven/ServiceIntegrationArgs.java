@@ -75,14 +75,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      * 
      */
     @Import(name="destinationEndpointId")
     private @Nullable Output<String> destinationEndpointId;
 
     /**
-     * @return Destination endpoint for the integration (if any)
+     * @return Destination endpoint for the integration.
      * 
      */
     public Optional<Output<String>> destinationEndpointId() {
@@ -90,14 +90,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      * 
      */
     @Import(name="destinationServiceName")
     private @Nullable Output<String> destinationServiceName;
 
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     public Optional<Output<String>> destinationServiceName() {
@@ -255,14 +255,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     public Output<String> project() {
@@ -285,14 +285,14 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      * 
      */
     @Import(name="sourceEndpointId")
     private @Nullable Output<String> sourceEndpointId;
 
     /**
-     * @return Source endpoint for the integration (if any)
+     * @return Source endpoint for the integration.
      * 
      */
     public Optional<Output<String>> sourceEndpointId() {
@@ -420,7 +420,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param destinationEndpointId Destination endpoint for the integration (if any)
+         * @param destinationEndpointId Destination endpoint for the integration.
          * 
          * @return builder
          * 
@@ -431,7 +431,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param destinationEndpointId Destination endpoint for the integration (if any)
+         * @param destinationEndpointId Destination endpoint for the integration.
          * 
          * @return builder
          * 
@@ -441,7 +441,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -452,7 +452,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -672,7 +672,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 
@@ -714,7 +714,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceEndpointId Source endpoint for the integration (if any)
+         * @param sourceEndpointId Source endpoint for the integration.
          * 
          * @return builder
          * 
@@ -725,7 +725,7 @@ public final class ServiceIntegrationArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sourceEndpointId Source endpoint for the integration (if any)
+         * @param sourceEndpointId Source endpoint for the integration.
          * 
          * @return builder
          * 

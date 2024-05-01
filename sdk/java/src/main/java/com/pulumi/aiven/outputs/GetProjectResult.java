@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectResult {
     /**
-     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String accountId;
@@ -24,32 +24,32 @@ public final class GetProjectResult {
      */
     private Boolean addAccountOwnersAdminAccess;
     /**
-     * @return The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * @return The number of trial or promotional credits remaining for this project.
      * 
      */
     private String availableCredits;
     /**
-     * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String billingGroup;
     /**
-     * @return The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      * 
      */
     private String caCert;
     /**
-     * @return is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * @return The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String copyFromProject;
     /**
-     * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * @return Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      * 
      */
     private String defaultCloud;
     /**
-     * @return The current accumulated bill for this project in the current billing period.
+     * @return The monthly running estimate for this project for the current billing period.
      * 
      */
     private String estimatedBalance;
@@ -59,17 +59,17 @@ public final class GetProjectResult {
      */
     private String id;
     /**
-     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String parentId;
     /**
-     * @return The method of invoicing used for payments for this project, e.g. `card`.
+     * @return The payment type used for this project. For example,`card`.
      * 
      */
     private String paymentMethod;
     /**
-     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * @return The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     private String project;
@@ -79,7 +79,7 @@ public final class GetProjectResult {
      */
     private List<GetProjectTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     private List<String> technicalEmails;
@@ -91,7 +91,7 @@ public final class GetProjectResult {
 
     private GetProjectResult() {}
     /**
-     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String accountId() {
@@ -105,42 +105,42 @@ public final class GetProjectResult {
         return this.addAccountOwnersAdminAccess;
     }
     /**
-     * @return The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * @return The number of trial or promotional credits remaining for this project.
      * 
      */
     public String availableCredits() {
         return this.availableCredits;
     }
     /**
-     * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String billingGroup() {
         return this.billingGroup;
     }
     /**
-     * @return The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      * 
      */
     public String caCert() {
         return this.caCert;
     }
     /**
-     * @return is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * @return The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String copyFromProject() {
         return this.copyFromProject;
     }
     /**
-     * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * @return Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      * 
      */
     public String defaultCloud() {
         return this.defaultCloud;
     }
     /**
-     * @return The current accumulated bill for this project in the current billing period.
+     * @return The monthly running estimate for this project for the current billing period.
      * 
      */
     public String estimatedBalance() {
@@ -154,21 +154,21 @@ public final class GetProjectResult {
         return this.id;
     }
     /**
-     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String parentId() {
         return this.parentId;
     }
     /**
-     * @return The method of invoicing used for payments for this project, e.g. `card`.
+     * @return The payment type used for this project. For example,`card`.
      * 
      */
     public String paymentMethod() {
         return this.paymentMethod;
     }
     /**
-     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * @return The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     public String project() {
@@ -182,7 +182,7 @@ public final class GetProjectResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     public List<String> technicalEmails() {

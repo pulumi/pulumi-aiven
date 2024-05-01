@@ -153,14 +153,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
      * 
      */
     @Import(name="syncGroupOffsetsEnabled")
     private @Nullable Output<Boolean> syncGroupOffsetsEnabled;
 
     /**
-     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
      * 
      */
     public Optional<Output<Boolean>> syncGroupOffsetsEnabled() {
@@ -438,7 +438,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param syncGroupOffsetsEnabled Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+         * @param syncGroupOffsetsEnabled Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param syncGroupOffsetsEnabled Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+         * @param syncGroupOffsetsEnabled Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
          * 
          * @return builder
          * 

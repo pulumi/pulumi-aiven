@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxRecentlyQueriedSeriesDiskBytesRead { get; set; }
 
         /// <summary>
-        /// The lookback period for 'max_recently_queried_series_blocks' and 'max_recently_queried_series_disk_bytes_read'.
+        /// The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
         /// </summary>
         [Input("maxRecentlyQueriedSeriesLookback")]
         public Input<string>? MaxRecentlyQueriedSeriesLookback { get; set; }

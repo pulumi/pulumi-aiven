@@ -35,7 +35,7 @@ export function getKafkaConnect(args: GetKafkaConnectArgs, opts?: pulumi.InvokeO
  */
 export interface GetKafkaConnectArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -89,10 +89,6 @@ export interface GetKafkaConnectResult {
      */
     readonly kafkaConnectUserConfigs: outputs.GetKafkaConnectKafkaConnectUserConfig[];
     /**
-     * Kafka Connect server provided values
-     */
-    readonly kafkaConnects: outputs.GetKafkaConnectKafkaConnect[];
-    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow: string;
@@ -105,7 +101,7 @@ export interface GetKafkaConnectResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +153,7 @@ export interface GetKafkaConnectResult {
      */
     readonly tags: outputs.GetKafkaConnectTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetKafkaConnectTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getKafkaConnectOutput(args: GetKafkaConnectOutputArgs, opts?: pu
  */
 export interface GetKafkaConnectOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

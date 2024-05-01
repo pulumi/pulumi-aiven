@@ -289,14 +289,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
      * 
      */
     @Import(name="longQueryTime")
     private @Nullable Output<Double> longQueryTime;
 
     /**
-     * @return The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
      * 
      */
     public Optional<Output<Double>> longQueryTime() {
@@ -319,14 +319,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     @Import(name="maxHeapTableSize")
     private @Nullable Output<Integer> maxHeapTableSize;
 
     /**
-     * @return Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
      * 
      */
     public Optional<Output<Integer>> maxHeapTableSize() {
@@ -379,14 +379,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+     * Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
      * 
      */
     @Import(name="slowQueryLog")
     private @Nullable Output<Boolean> slowQueryLog;
 
     /**
-     * @return Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+     * @return Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
      * 
      */
     public Optional<Output<Boolean>> slowQueryLog() {
@@ -439,14 +439,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      * 
      */
     @Import(name="tmpTableSize")
     private @Nullable Output<Integer> tmpTableSize;
 
     /**
-     * @return Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
      * 
      */
     public Optional<Output<Integer>> tmpTableSize() {
@@ -900,7 +900,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
          * 
          * @return builder
          * 
@@ -911,7 +911,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
          * 
          * @return builder
          * 
@@ -953,7 +953,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
          * 
          * @return builder
          * 
@@ -1026,7 +1026,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
          * 
          * @return builder
          * 
@@ -1037,7 +1037,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+         * @param slowQueryLog Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
          * 
          * @return builder
          * 
@@ -1110,7 +1110,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
          * 
          * @return builder
          * 
@@ -1121,7 +1121,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
          * 
          * @return builder
          * 

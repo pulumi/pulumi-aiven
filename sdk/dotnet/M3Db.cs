@@ -57,19 +57,13 @@ namespace Pulumi.Aiven
     public partial class M3Db : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        /// reducing will result in the service rebalancing.
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Output("additionalDiskSpace")]
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        /// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        /// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        /// are documented on each Cloud provider's own support articles, like [here for
-        /// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        /// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Output("cloudName")]
         public Output<string?> CloudName { get; private set; } = null!;
@@ -81,8 +75,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.M3DbComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-        /// will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Output("diskSpace")]
         public Output<string?> DiskSpace { get; private set; } = null!;
@@ -94,15 +87,13 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceCap { get; private set; } = null!;
 
         /// <summary>
-        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        /// Its also the minimum value for `disk_space`
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         /// </summary>
         [Output("diskSpaceDefault")]
         public Output<string> DiskSpaceDefault { get; private set; } = null!;
 
         /// <summary>
-        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-        /// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         /// </summary>
         [Output("diskSpaceStep")]
         public Output<string> DiskSpaceStep { get; private set; } = null!;
@@ -120,12 +111,6 @@ namespace Pulumi.Aiven
         public Output<Outputs.M3DbM3dbUserConfig?> M3dbUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// M3 specific server provided values
-        /// </summary>
-        [Output("m3dbs")]
-        public Output<ImmutableArray<Outputs.M3DbM3db>> M3dbs { get; private set; } = null!;
-
-        /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         [Output("maintenanceWindowDow")]
@@ -138,28 +123,19 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        /// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        /// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        /// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        /// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        /// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Output("plan")]
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        /// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        /// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        /// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Output("projectVpcId")]
         public Output<string?> ProjectVpcId { get; private set; } = null!;
@@ -177,8 +153,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.M3DbServiceIntegration>> ServiceIntegrations { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        /// service so name should be picked based on intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -220,8 +195,7 @@ namespace Pulumi.Aiven
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-        /// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         [Output("staticIps")]
         public Output<ImmutableArray<string>> StaticIps { get; private set; } = null!;
@@ -233,16 +207,13 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.M3DbTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         [Output("techEmails")]
         public Output<ImmutableArray<Outputs.M3DbTechEmail>> TechEmails { get; private set; } = null!;
 
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-        /// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-        /// much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
@@ -299,26 +270,19 @@ namespace Pulumi.Aiven
     public sealed class M3DbArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        /// reducing will result in the service rebalancing.
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
 
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        /// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        /// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        /// are documented on each Cloud provider's own support articles, like [here for
-        /// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        /// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-        /// will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -342,28 +306,19 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        /// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        /// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        /// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        /// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        /// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan", required: true)]
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        /// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        /// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        /// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
@@ -381,8 +336,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        /// service so name should be picked based on intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -391,8 +345,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-        /// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -416,8 +369,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.M3DbTechEmailArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.M3DbTechEmailArgs> TechEmails
         {
@@ -426,9 +378,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-        /// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-        /// much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
@@ -442,19 +392,13 @@ namespace Pulumi.Aiven
     public sealed class M3DbState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-        /// reducing will result in the service rebalancing.
+        /// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
 
         /// <summary>
-        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-        /// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-        /// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-        /// are documented on each Cloud provider's own support articles, like [here for
-        /// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-        /// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+        /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         /// </summary>
         [Input("cloudName")]
         public Input<string>? CloudName { get; set; }
@@ -472,8 +416,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-        /// will result in the service rebalancing.
+        /// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
@@ -485,15 +428,13 @@ namespace Pulumi.Aiven
         public Input<string>? DiskSpaceCap { get; set; }
 
         /// <summary>
-        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-        /// Its also the minimum value for `disk_space`
+        /// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         /// </summary>
         [Input("diskSpaceDefault")]
         public Input<string>? DiskSpaceDefault { get; set; }
 
         /// <summary>
-        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-        /// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+        /// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         /// </summary>
         [Input("diskSpaceStep")]
         public Input<string>? DiskSpaceStep { get; set; }
@@ -510,18 +451,6 @@ namespace Pulumi.Aiven
         [Input("m3dbUserConfig")]
         public Input<Inputs.M3DbM3dbUserConfigGetArgs>? M3dbUserConfig { get; set; }
 
-        [Input("m3dbs")]
-        private InputList<Inputs.M3DbM3dbGetArgs>? _m3dbs;
-
-        /// <summary>
-        /// M3 specific server provided values
-        /// </summary>
-        public InputList<Inputs.M3DbM3dbGetArgs> M3dbs
-        {
-            get => _m3dbs ?? (_m3dbs = new InputList<Inputs.M3DbM3dbGetArgs>());
-            set => _m3dbs = value;
-        }
-
         /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
@@ -535,28 +464,19 @@ namespace Pulumi.Aiven
         public Input<string>? MaintenanceWindowTime { get; set; }
 
         /// <summary>
-        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-        /// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-        /// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-        /// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-        /// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-        /// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+        /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-        /// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-        /// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-        /// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+        /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
@@ -580,8 +500,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-        /// service so name should be picked based on intended service usage rather than current attributes.
+        /// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -646,8 +565,7 @@ namespace Pulumi.Aiven
         private InputList<string>? _staticIps;
 
         /// <summary>
-        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-        /// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+        /// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         /// </summary>
         public InputList<string> StaticIps
         {
@@ -671,8 +589,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.M3DbTechEmailGetArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.M3DbTechEmailGetArgs> TechEmails
         {
@@ -681,9 +598,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-        /// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-        /// much of the content can at least be restored from backup in case accidental deletion is done.
+        /// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }

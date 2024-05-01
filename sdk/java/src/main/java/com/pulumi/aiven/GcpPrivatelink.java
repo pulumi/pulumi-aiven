@@ -44,7 +44,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
         return this.message;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. Changing this property forces recreation of the resource.
      * 
      */
@@ -52,7 +52,7 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. Changing this property forces recreation of the resource.
      * 
      */
@@ -60,16 +60,16 @@ public class GcpPrivatelink extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this
-     * variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

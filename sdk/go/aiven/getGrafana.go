@@ -51,7 +51,7 @@ func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getGrafana.
 type LookupGrafanaArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -77,8 +77,6 @@ type LookupGrafanaResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// Grafana user configurable settings
 	GrafanaUserConfigs []GetGrafanaGrafanaUserConfig `pulumi:"grafanaUserConfigs"`
-	// Grafana server provided values
-	Grafanas []GetGrafanaGrafana `pulumi:"grafanas"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -87,7 +85,7 @@ type LookupGrafanaResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
@@ -113,7 +111,7 @@ type LookupGrafanaResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetGrafanaTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetGrafanaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -134,7 +132,7 @@ func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts
 
 // A collection of arguments for invoking getGrafana.
 type LookupGrafanaOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -204,11 +202,6 @@ func (o LookupGrafanaResultOutput) GrafanaUserConfigs() GetGrafanaGrafanaUserCon
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafanaUserConfig { return v.GrafanaUserConfigs }).(GetGrafanaGrafanaUserConfigArrayOutput)
 }
 
-// Grafana server provided values
-func (o LookupGrafanaResultOutput) Grafanas() GetGrafanaGrafanaArrayOutput {
-	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafana { return v.Grafanas }).(GetGrafanaGrafanaArrayOutput)
-}
-
 // The provider-assigned unique ID for this managed resource.
 func (o LookupGrafanaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Id }).(pulumi.StringOutput)
@@ -229,7 +222,7 @@ func (o LookupGrafanaResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupGrafanaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -294,7 +287,7 @@ func (o LookupGrafanaResultOutput) Tags() GetGrafanaTagArrayOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaTag { return v.Tags }).(GetGrafanaTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o LookupGrafanaResultOutput) TechEmails() GetGrafanaTechEmailArrayOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaTechEmail { return v.TechEmails }).(GetGrafanaTechEmailArrayOutput)
 }

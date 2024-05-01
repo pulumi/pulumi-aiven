@@ -11,7 +11,6 @@ from . import _utilities
 
 __all__ = [
     'AccountAuthenticationSamlFieldMappingArgs',
-    'CassandraCassandraArgs',
     'CassandraCassandraUserConfigArgs',
     'CassandraCassandraUserConfigCassandraArgs',
     'CassandraCassandraUserConfigIpFilterObjectArgs',
@@ -21,7 +20,6 @@ __all__ = [
     'CassandraServiceIntegrationArgs',
     'CassandraTagArgs',
     'CassandraTechEmailArgs',
-    'ClickhouseClickhouseArgs',
     'ClickhouseClickhouseUserConfigArgs',
     'ClickhouseClickhouseUserConfigIpFilterObjectArgs',
     'ClickhouseClickhouseUserConfigPrivateAccessArgs',
@@ -34,7 +32,6 @@ __all__ = [
     'ClickhouseTagArgs',
     'ClickhouseTechEmailArgs',
     'DragonflyComponentArgs',
-    'DragonflyDragonflyArgs',
     'DragonflyDragonflyUserConfigArgs',
     'DragonflyDragonflyUserConfigIpFilterObjectArgs',
     'DragonflyDragonflyUserConfigMigrationArgs',
@@ -55,7 +52,6 @@ __all__ = [
     'FlinkTagArgs',
     'FlinkTechEmailArgs',
     'GrafanaComponentArgs',
-    'GrafanaGrafanaArgs',
     'GrafanaGrafanaUserConfigArgs',
     'GrafanaGrafanaUserConfigAuthAzureadArgs',
     'GrafanaGrafanaUserConfigAuthGenericOauthArgs',
@@ -85,7 +81,6 @@ __all__ = [
     'InfluxDbTechEmailArgs',
     'KafkaComponentArgs',
     'KafkaConnectComponentArgs',
-    'KafkaConnectKafkaConnectArgs',
     'KafkaConnectKafkaConnectUserConfigArgs',
     'KafkaConnectKafkaConnectUserConfigIpFilterObjectArgs',
     'KafkaConnectKafkaConnectUserConfigKafkaConnectArgs',
@@ -110,7 +105,6 @@ __all__ = [
     'KafkaKafkaUserConfigTieredStorageArgs',
     'KafkaKafkaUserConfigTieredStorageLocalCacheArgs',
     'KafkaMirrorMakerComponentArgs',
-    'KafkaMirrorMakerKafkaMirrormakerArgs',
     'KafkaMirrorMakerKafkaMirrormakerUserConfigArgs',
     'KafkaMirrorMakerKafkaMirrormakerUserConfigIpFilterObjectArgs',
     'KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs',
@@ -123,14 +117,12 @@ __all__ = [
     'KafkaTopicConfigArgs',
     'KafkaTopicTagArgs',
     'M3AggregatorComponentArgs',
-    'M3AggregatorM3aggregatorArgs',
     'M3AggregatorM3aggregatorUserConfigArgs',
     'M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs',
     'M3AggregatorServiceIntegrationArgs',
     'M3AggregatorTagArgs',
     'M3AggregatorTechEmailArgs',
     'M3DbComponentArgs',
-    'M3DbM3dbArgs',
     'M3DbM3dbUserConfigArgs',
     'M3DbM3dbUserConfigIpFilterObjectArgs',
     'M3DbM3dbUserConfigLimitsArgs',
@@ -149,7 +141,6 @@ __all__ = [
     'M3DbTagArgs',
     'M3DbTechEmailArgs',
     'MySqlComponentArgs',
-    'MySqlMysqlArgs',
     'MySqlMysqlUserConfigArgs',
     'MySqlMysqlUserConfigIpFilterObjectArgs',
     'MySqlMysqlUserConfigMigrationArgs',
@@ -201,7 +192,6 @@ __all__ = [
     'PgTechEmailArgs',
     'ProjectTagArgs',
     'RedisComponentArgs',
-    'RedisRediArgs',
     'RedisRedisUserConfigArgs',
     'RedisRedisUserConfigIpFilterObjectArgs',
     'RedisRedisUserConfigMigrationArgs',
@@ -343,12 +333,6 @@ class AccountAuthenticationSamlFieldMappingArgs:
 
 
 @pulumi.input_type
-class CassandraCassandraArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class CassandraCassandraUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
@@ -371,7 +355,7 @@ class CassandraCassandraUserConfigArgs:
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param pulumi.Input[int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
-        :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: cassandra configuration values
+        :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: Cassandra configuration values
         :param pulumi.Input[str] cassandra_version: Cassandra version.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -467,7 +451,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter
     def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraUserConfigCassandraArgs']]:
         """
-        cassandra configuration values
+        Cassandra configuration values
         """
         return pulumi.get(self, "cassandra")
 
@@ -991,12 +975,6 @@ class CassandraTechEmailArgs:
     @email.setter
     def email(self, value: pulumi.Input[str]):
         pulumi.set(self, "email", value)
-
-
-@pulumi.input_type
-class ClickhouseClickhouseArgs:
-    def __init__(__self__):
-        pass
 
 
 @pulumi.input_type
@@ -1921,15 +1899,10 @@ class DragonflyComponentArgs:
 
 
 @pulumi.input_type
-class DragonflyDragonflyArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class DragonflyDragonflyUserConfigArgs:
     def __init__(__self__, *,
                  cache_mode: Optional[pulumi.Input[bool]] = None,
+                 dragonfly_persistence: Optional[pulumi.Input[str]] = None,
                  dragonfly_ssl: Optional[pulumi.Input[bool]] = None,
                  ip_filter_objects: Optional[pulumi.Input[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgs']]]] = None,
                  ip_filter_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1945,6 +1918,7 @@ class DragonflyDragonflyUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] cache_mode: Evict entries when getting close to maxmemory limit. The default value is `false`.
+        :param pulumi.Input[str] dragonfly_persistence: When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param pulumi.Input[bool] dragonfly_ssl: Require SSL to access Dragonfly. The default value is `true`.
         :param pulumi.Input[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -1961,6 +1935,8 @@ class DragonflyDragonflyUserConfigArgs:
         """
         if cache_mode is not None:
             pulumi.set(__self__, "cache_mode", cache_mode)
+        if dragonfly_persistence is not None:
+            pulumi.set(__self__, "dragonfly_persistence", dragonfly_persistence)
         if dragonfly_ssl is not None:
             pulumi.set(__self__, "dragonfly_ssl", dragonfly_ssl)
         if ip_filter_objects is not None:
@@ -2002,6 +1978,18 @@ class DragonflyDragonflyUserConfigArgs:
     @cache_mode.setter
     def cache_mode(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cache_mode", value)
+
+    @property
+    @pulumi.getter(name="dragonflyPersistence")
+    def dragonfly_persistence(self) -> Optional[pulumi.Input[str]]:
+        """
+        When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        """
+        return pulumi.get(self, "dragonfly_persistence")
+
+    @dragonfly_persistence.setter
+    def dragonfly_persistence(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dragonfly_persistence", value)
 
     @property
     @pulumi.getter(name="dragonflySsl")
@@ -3253,12 +3241,6 @@ class GrafanaComponentArgs:
 
 
 @pulumi.input_type
-class GrafanaGrafanaArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class GrafanaGrafanaUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
@@ -3305,7 +3287,7 @@ class GrafanaGrafanaUserConfigArgs:
                  viewers_can_edit: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[bool] alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+        :param pulumi.Input[bool] alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         :param pulumi.Input[str] alerting_error_or_timeout: Default error or timeout setting for new alerting rules.
         :param pulumi.Input[int] alerting_max_annotations_to_keep: Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
         :param pulumi.Input[str] alerting_nodata_or_nullvalues: Default value for 'no data or null values' for new alerting rules.
@@ -3342,14 +3324,11 @@ class GrafanaGrafanaUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input['GrafanaGrafanaUserConfigSmtpServerArgs'] smtp_server: SMTP server settings
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
-        :param pulumi.Input[bool] unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        :param pulumi.Input[bool] unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         :param pulumi.Input[bool] user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
         :param pulumi.Input[str] user_auto_assign_org_role: Set role for new signups. Defaults to Viewer.
         :param pulumi.Input[bool] viewers_can_edit: Users with view-only permission can edit but not save dashboards.
         """
-        if additional_backup_regions is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if alerting_enabled is not None:
@@ -3444,9 +3423,6 @@ class GrafanaGrafanaUserConfigArgs:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @additional_backup_regions.setter
@@ -3457,7 +3433,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="alertingEnabled")
     def alerting_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+        Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         """
         return pulumi.get(self, "alerting_enabled")
 
@@ -3904,7 +3880,7 @@ class GrafanaGrafanaUserConfigArgs:
     @pulumi.getter(name="unifiedAlertingEnabled")
     def unified_alerting_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         """
         return pulumi.get(self, "unified_alerting_enabled")
 
@@ -6074,12 +6050,6 @@ class KafkaConnectComponentArgs:
 
 
 @pulumi.input_type
-class KafkaConnectKafkaConnectArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class KafkaConnectKafkaConnectUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
@@ -6319,8 +6289,8 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
         :param pulumi.Input[str] connector_client_config_override_policy: Defines what client configurations can be overridden by the connector. Default is None.
         :param pulumi.Input[str] consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param pulumi.Input[int] consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        :param pulumi.Input[str] consumer_isolation_level: Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
-        :param pulumi.Input[int] consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+        :param pulumi.Input[str] consumer_isolation_level: Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        :param pulumi.Input[int] consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param pulumi.Input[int] consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param pulumi.Input[int] consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
         :param pulumi.Input[int] offset_flush_interval_ms: The interval at which to try committing offsets for tasks (defaults to 60000).
@@ -6406,7 +6376,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -6418,7 +6388,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs:
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -6836,11 +6806,11 @@ class KafkaKafkaArgs:
                  rest_uri: Optional[pulumi.Input[str]] = None,
                  schema_registry_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] access_cert: The Kafka client certificate
-        :param pulumi.Input[str] access_key: The Kafka client certificate key
-        :param pulumi.Input[str] connect_uri: The Kafka Connect URI, if any
-        :param pulumi.Input[str] rest_uri: The Kafka REST URI, if any
-        :param pulumi.Input[str] schema_registry_uri: The Schema Registry URI, if any
+        :param pulumi.Input[str] access_cert: The Kafka client certificate.
+        :param pulumi.Input[str] access_key: The Kafka client certificate key.
+        :param pulumi.Input[str] connect_uri: The Kafka Connect URI.
+        :param pulumi.Input[str] rest_uri: The Kafka REST URI.
+        :param pulumi.Input[str] schema_registry_uri: The Schema Registry URI.
         """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
@@ -6857,7 +6827,7 @@ class KafkaKafkaArgs:
     @pulumi.getter(name="accessCert")
     def access_cert(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kafka client certificate
+        The Kafka client certificate.
         """
         return pulumi.get(self, "access_cert")
 
@@ -6869,7 +6839,7 @@ class KafkaKafkaArgs:
     @pulumi.getter(name="accessKey")
     def access_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kafka client certificate key
+        The Kafka client certificate key.
         """
         return pulumi.get(self, "access_key")
 
@@ -6881,7 +6851,7 @@ class KafkaKafkaArgs:
     @pulumi.getter(name="connectUri")
     def connect_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kafka Connect URI, if any
+        The Kafka Connect URI.
         """
         return pulumi.get(self, "connect_uri")
 
@@ -6893,7 +6863,7 @@ class KafkaKafkaArgs:
     @pulumi.getter(name="restUri")
     def rest_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The Kafka REST URI, if any
+        The Kafka REST URI.
         """
         return pulumi.get(self, "rest_uri")
 
@@ -6905,7 +6875,7 @@ class KafkaKafkaArgs:
     @pulumi.getter(name="schemaRegistryUri")
     def schema_registry_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The Schema Registry URI, if any
+        The Schema Registry URI.
         """
         return pulumi.get(self, "schema_registry_uri")
 
@@ -7391,7 +7361,7 @@ class KafkaKafkaUserConfigKafkaArgs:
         :param pulumi.Input[int] log_index_size_max_bytes: The maximum size in bytes of the offset index.
         :param pulumi.Input[int] log_local_retention_bytes: The maximum size of local log segments that can grow for a partition before it gets eligible for deletion. If set to -2, the value of log.retention.bytes is used. The effective value should always be less than or equal to log.retention.bytes value.
         :param pulumi.Input[int] log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
-        :param pulumi.Input[bool] log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+        :param pulumi.Input[bool] log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         :param pulumi.Input[int] log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
         :param pulumi.Input[str] log_message_timestamp_type: Define whether the timestamp in the message is message create time or log append time.
         :param pulumi.Input[bool] log_preallocate: Should pre allocate file when create new segment?
@@ -7413,7 +7383,7 @@ class KafkaKafkaUserConfigKafkaArgs:
         :param pulumi.Input[int] replica_fetch_response_max_bytes: Maximum bytes expected for the entire fetch response (defaults to 10485760). Records are fetched in batches, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that progress can be made. As such, this is not an absolute maximum.
         :param pulumi.Input[str] sasl_oauthbearer_expected_audience: The (optional) comma-delimited setting for the broker to use to verify that the JWT was issued for one of the expected audiences.
         :param pulumi.Input[str] sasl_oauthbearer_expected_issuer: Optional setting for the broker to use to verify that the JWT was created by the expected issuer.
-        :param pulumi.Input[str] sasl_oauthbearer_jwks_endpoint_url: OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+        :param pulumi.Input[str] sasl_oauthbearer_jwks_endpoint_url: OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
         :param pulumi.Input[str] sasl_oauthbearer_sub_claim_name: Name of the scope from which to extract the subject claim from the JWT. Defaults to sub.
         :param pulumi.Input[int] socket_request_max_bytes: The maximum number of bytes in a socket request (defaults to 104857600).
         :param pulumi.Input[bool] transaction_partition_verification_enable: Enable verification that checks that the partition has been added to the transaction before writing transactional records to the partition.
@@ -7733,7 +7703,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="logMessageDownconversionEnable")
     def log_message_downconversion_enable(self) -> Optional[pulumi.Input[bool]]:
         """
-        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+        This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         """
         return pulumi.get(self, "log_message_downconversion_enable")
 
@@ -7997,7 +7967,7 @@ class KafkaKafkaUserConfigKafkaArgs:
     @pulumi.getter(name="saslOauthbearerJwksEndpointUrl")
     def sasl_oauthbearer_jwks_endpoint_url(self) -> Optional[pulumi.Input[str]]:
         """
-        OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+        OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
         """
         return pulumi.get(self, "sasl_oauthbearer_jwks_endpoint_url")
 
@@ -8129,7 +8099,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
         :param pulumi.Input[str] consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param pulumi.Input[int] consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
         :param pulumi.Input[str] consumer_isolation_level: Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
-        :param pulumi.Input[int] consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+        :param pulumi.Input[int] consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param pulumi.Input[int] consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param pulumi.Input[int] consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
         :param pulumi.Input[int] offset_flush_interval_ms: The interval at which to try committing offsets for tasks (defaults to 60000).
@@ -8227,7 +8197,7 @@ class KafkaKafkaUserConfigKafkaConnectConfigArgs:
     @pulumi.getter(name="consumerMaxPartitionFetchBytes")
     def consumer_max_partition_fetch_bytes(self) -> Optional[pulumi.Input[int]]:
         """
-        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+        Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         """
         return pulumi.get(self, "consumer_max_partition_fetch_bytes")
 
@@ -9061,12 +9031,6 @@ class KafkaMirrorMakerComponentArgs:
 
 
 @pulumi.input_type
-class KafkaMirrorMakerKafkaMirrormakerArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class KafkaMirrorMakerKafkaMirrormakerUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
@@ -9261,7 +9225,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
         :param pulumi.Input[int] refresh_groups_interval_seconds: Frequency of consumer group refresh in seconds. Defaults to 600 seconds (10 minutes).
         :param pulumi.Input[bool] refresh_topics_enabled: Whether to periodically check for new topics and partitions. Defaults to 'true'.
         :param pulumi.Input[int] refresh_topics_interval_seconds: Frequency of topic and partitions refresh in seconds. Defaults to 600 seconds (10 minutes).
-        :param pulumi.Input[bool] sync_group_offsets_enabled: Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+        :param pulumi.Input[bool] sync_group_offsets_enabled: Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
         :param pulumi.Input[int] sync_group_offsets_interval_seconds: Frequency at which consumer group offsets are synced (default: 60, every minute).
         :param pulumi.Input[bool] sync_topic_configs_enabled: Whether to periodically configure remote topics to match their corresponding upstream topics.
         :param pulumi.Input[int] tasks_max_per_cpu: 'tasks.max' is set to this multiplied by the number of CPUs in the service. The default value is `1`.
@@ -9405,7 +9369,7 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs:
     @pulumi.getter(name="syncGroupOffsetsEnabled")
     def sync_group_offsets_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+        Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
         """
         return pulumi.get(self, "sync_group_offsets_enabled")
 
@@ -10261,12 +10225,6 @@ class M3AggregatorComponentArgs:
 
 
 @pulumi.input_type
-class M3AggregatorM3aggregatorArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class M3AggregatorM3aggregatorUserConfigArgs:
     def __init__(__self__, *,
                  custom_domain: Optional[pulumi.Input[str]] = None,
@@ -10677,12 +10635,6 @@ class M3DbComponentArgs:
 
 
 @pulumi.input_type
-class M3DbM3dbArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class M3DbM3dbUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
@@ -10723,9 +10675,6 @@ class M3DbM3dbUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
-        if additional_backup_regions is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -10772,9 +10721,6 @@ class M3DbM3dbUserConfigArgs:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @additional_backup_regions.setter
@@ -11039,7 +10985,7 @@ class M3DbM3dbUserConfigLimitsArgs:
         """
         :param pulumi.Input[int] max_recently_queried_series_blocks: The maximum number of blocks that can be read in a given lookback period.
         :param pulumi.Input[int] max_recently_queried_series_disk_bytes_read: The maximum number of disk bytes that can be read in a given lookback period.
-        :param pulumi.Input[str] max_recently_queried_series_lookback: The lookback period for 'max_recently_queried_series_blocks' and 'max_recently_queried_series_disk_bytes_read'.
+        :param pulumi.Input[str] max_recently_queried_series_lookback: The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
         :param pulumi.Input[int] query_docs: The maximum number of docs fetched in single query.
         :param pulumi.Input[bool] query_require_exhaustive: When query limits are exceeded, whether to return error or return partial results.
         :param pulumi.Input[int] query_series: The maximum number of series fetched in single query.
@@ -11085,7 +11031,7 @@ class M3DbM3dbUserConfigLimitsArgs:
     @pulumi.getter(name="maxRecentlyQueriedSeriesLookback")
     def max_recently_queried_series_lookback(self) -> Optional[pulumi.Input[str]]:
         """
-        The lookback period for 'max_recently_queried_series_blocks' and 'max_recently_queried_series_disk_bytes_read'.
+        The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
         """
         return pulumi.get(self, "max_recently_queried_series_lookback")
 
@@ -11483,7 +11429,7 @@ class M3DbM3dbUserConfigRulesMappingArgs:
                  namespaces_strings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigRulesMappingTagArgs']]]] = None):
         """
-        :param pulumi.Input[str] filter: Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        :param pulumi.Input[str] filter: Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aggregations: List of aggregations to be applied.
         :param pulumi.Input[bool] drop: Only store the derived metric (as specified in the roll-up rules), if any.
         :param pulumi.Input[str] name: The (optional) name of the rule.
@@ -11515,7 +11461,7 @@ class M3DbM3dbUserConfigRulesMappingArgs:
     @pulumi.getter
     def filter(self) -> pulumi.Input[str]:
         """
-        Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        Matching metric names with wildcards (using **name**:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
         """
         return pulumi.get(self, "filter")
 
@@ -11915,12 +11861,6 @@ class MySqlComponentArgs:
     @usage.setter
     def usage(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "usage", value)
-
-
-@pulumi.input_type
-class MySqlMysqlArgs:
-    def __init__(__self__):
-        pass
 
 
 @pulumi.input_type
@@ -12479,17 +12419,17 @@ class MySqlMysqlUserConfigMysqlArgs:
         :param pulumi.Input[int] innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         :param pulumi.Input[int] interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
         :param pulumi.Input[str] internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
-        :param pulumi.Input[float] long_query_time: The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+        :param pulumi.Input[float] long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
         :param pulumi.Input[int] max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
-        :param pulumi.Input[int] max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[int] max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         :param pulumi.Input[int] net_buffer_length: Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
         :param pulumi.Input[int] net_read_timeout: The number of seconds to wait for more data from a connection before aborting the read.
         :param pulumi.Input[int] net_write_timeout: The number of seconds to wait for a block to be written to a connection before aborting the write.
-        :param pulumi.Input[bool] slow_query_log: Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+        :param pulumi.Input[bool] slow_query_log: Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
         :param pulumi.Input[int] sort_buffer_size: Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
         :param pulumi.Input[str] sql_mode: Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
         :param pulumi.Input[bool] sql_require_primary_key: Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
-        :param pulumi.Input[int] tmp_table_size: Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        :param pulumi.Input[int] tmp_table_size: Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         :param pulumi.Input[int] wait_timeout: The number of seconds the server waits for activity on a noninteractive connection before closing it.
         """
         if connect_timeout is not None:
@@ -12773,7 +12713,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="longQueryTime")
     def long_query_time(self) -> Optional[pulumi.Input[float]]:
         """
-        The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
+        The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
         """
         return pulumi.get(self, "long_query_time")
 
@@ -12797,7 +12737,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="maxHeapTableSize")
     def max_heap_table_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
+        Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "max_heap_table_size")
 
@@ -12845,7 +12785,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="slowQueryLog")
     def slow_query_log(self) -> Optional[pulumi.Input[bool]]:
         """
-        Slow query log enables capturing of slow queries. Setting slow_query_log to false also truncates the mysql.slow_log table. Default is off.
+        Slow query log enables capturing of slow queries. Setting slow*query*log to false also truncates the mysql.slow_log table. Default is off.
         """
         return pulumi.get(self, "slow_query_log")
 
@@ -12893,7 +12833,7 @@ class MySqlMysqlUserConfigMysqlArgs:
     @pulumi.getter(name="tmpTableSize")
     def tmp_table_size(self) -> Optional[pulumi.Input[int]]:
         """
-        Limits the size of internal in-memory tables. Also set max_heap_table_size. Default is 16777216 (16M).
+        Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
         """
         return pulumi.get(self, "tmp_table_size")
 
@@ -13369,7 +13309,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[bool] keep_index_refresh_interval: Aiven automation resets index.refresh_interval to default value for every index to be sure that indices are always visible to search. If it doesn't fit your case, you can disable this by setting up this flag to true.
-        :param pulumi.Input[int] max_index_count: use index_patterns instead. The default value is `0`.
+        :param pulumi.Input[int] max_index_count: Use index_patterns instead. The default value is `0`.
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs'] openid: OpenSearch OpenID Connect Configuration
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings
@@ -13384,9 +13324,6 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
-        if additional_backup_regions is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if custom_domain is not None:
@@ -13443,9 +13380,6 @@ class OpenSearchOpensearchUserConfigArgs:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @additional_backup_regions.setter
@@ -13555,7 +13489,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="maxIndexCount")
     def max_index_count(self) -> Optional[pulumi.Input[int]]:
         """
-        use index_patterns instead. The default value is `0`.
+        Use index_patterns instead. The default value is `0`.
         """
         return pulumi.get(self, "max_index_count")
 
@@ -16721,7 +16655,7 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[int] pg_partman_bgw_dot_interval: Sets the time interval to run pg_partman's scheduled tasks.
         :param pulumi.Input[str] pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks.
         :param pulumi.Input[bool] pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring.
-        :param pulumi.Input[int] pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets .
+        :param pulumi.Input[int] pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets.
         :param pulumi.Input[str] pg_stat_statements_dot_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         :param pulumi.Input[int] temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param pulumi.Input[str] timezone: PostgreSQL service timezone.
@@ -17303,7 +17237,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="pgStatMonitorDotPgsmMaxBuckets")
     def pg_stat_monitor_dot_pgsm_max_buckets(self) -> Optional[pulumi.Input[int]]:
         """
-        Sets the maximum number of buckets .
+        Sets the maximum number of buckets.
         """
         return pulumi.get(self, "pg_stat_monitor_dot_pgsm_max_buckets")
 
@@ -18232,8 +18166,8 @@ class ProjectTagArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] key: Project tag key
-        :param pulumi.Input[str] value: Project tag value
+        :param pulumi.Input[str] key: Project tag key.
+        :param pulumi.Input[str] value: Project tag value.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -18242,7 +18176,7 @@ class ProjectTagArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Project tag key
+        Project tag key.
         """
         return pulumi.get(self, "key")
 
@@ -18254,7 +18188,7 @@ class ProjectTagArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Project tag value
+        Project tag value.
         """
         return pulumi.get(self, "value")
 
@@ -18399,12 +18333,6 @@ class RedisComponentArgs:
 
 
 @pulumi.input_type
-class RedisRediArgs:
-    def __init__(__self__):
-        pass
-
-
-@pulumi.input_type
 class RedisRedisUserConfigArgs:
     def __init__(__self__, *,
                  additional_backup_regions: Optional[pulumi.Input[str]] = None,
@@ -18459,9 +18387,6 @@ class RedisRedisUserConfigArgs:
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
-        if additional_backup_regions is not None:
-            warnings.warn("""This property is deprecated.""", DeprecationWarning)
-            pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
         if additional_backup_regions is not None:
             pulumi.set(__self__, "additional_backup_regions", additional_backup_regions)
         if ip_filter_objects is not None:
@@ -18522,9 +18447,6 @@ class RedisRedisUserConfigArgs:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @additional_backup_regions.setter
@@ -19769,20 +19691,36 @@ class ServiceIntegrationDatadogUserConfigDatadogTagArgs:
 @pulumi.input_type
 class ServiceIntegrationDatadogUserConfigOpensearchArgs:
     def __init__(__self__, *,
+                 cluster_stats_enabled: Optional[pulumi.Input[bool]] = None,
                  index_stats_enabled: Optional[pulumi.Input[bool]] = None,
                  pending_task_stats_enabled: Optional[pulumi.Input[bool]] = None,
                  pshard_stats_enabled: Optional[pulumi.Input[bool]] = None):
         """
+        :param pulumi.Input[bool] cluster_stats_enabled: Enable Datadog Opensearch Cluster Monitoring.
         :param pulumi.Input[bool] index_stats_enabled: Enable Datadog Opensearch Index Monitoring.
         :param pulumi.Input[bool] pending_task_stats_enabled: Enable Datadog Opensearch Pending Task Monitoring.
         :param pulumi.Input[bool] pshard_stats_enabled: Enable Datadog Opensearch Primary Shard Monitoring.
         """
+        if cluster_stats_enabled is not None:
+            pulumi.set(__self__, "cluster_stats_enabled", cluster_stats_enabled)
         if index_stats_enabled is not None:
             pulumi.set(__self__, "index_stats_enabled", index_stats_enabled)
         if pending_task_stats_enabled is not None:
             pulumi.set(__self__, "pending_task_stats_enabled", pending_task_stats_enabled)
         if pshard_stats_enabled is not None:
             pulumi.set(__self__, "pshard_stats_enabled", pshard_stats_enabled)
+
+    @property
+    @pulumi.getter(name="clusterStatsEnabled")
+    def cluster_stats_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable Datadog Opensearch Cluster Monitoring.
+        """
+        return pulumi.get(self, "cluster_stats_enabled")
+
+    @cluster_stats_enabled.setter
+    def cluster_stats_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cluster_stats_enabled", value)
 
     @property
     @pulumi.getter(name="indexStatsEnabled")
@@ -20227,7 +20165,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs:
                  service_account_credentials: pulumi.Input[str]):
         """
         :param pulumi.Input[str] project_id: GCP project id.
-        :param pulumi.Input[str] service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+        :param pulumi.Input[str] service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "service_account_credentials", service_account_credentials)
@@ -20248,7 +20186,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs:
     @pulumi.getter(name="serviceAccountCredentials")
     def service_account_credentials(self) -> pulumi.Input[str]:
         """
-        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
         """
         return pulumi.get(self, "service_account_credentials")
 
@@ -20266,7 +20204,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
         """
         :param pulumi.Input[str] log_id: Google Cloud Logging log id.
         :param pulumi.Input[str] project_id: GCP project id.
-        :param pulumi.Input[str] service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+        :param pulumi.Input[str] service_account_credentials: This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
         """
         pulumi.set(__self__, "log_id", log_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -20300,7 +20238,7 @@ class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs:
     @pulumi.getter(name="serviceAccountCredentials")
     def service_account_credentials(self) -> pulumi.Input[str]:
         """
-        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+        This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
         """
         return pulumi.get(self, "service_account_credentials")
 
@@ -21641,7 +21579,7 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
                  perf_events_statements_time_limit: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] gather_event_waits: Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
-        :param pulumi.Input[bool] gather_file_events_stats: gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+        :param pulumi.Input[bool] gather_file_events_stats: Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
         :param pulumi.Input[bool] gather_index_io_waits: Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
         :param pulumi.Input[bool] gather_info_schema_auto_inc: Gather auto_increment columns and max values from information schema.
         :param pulumi.Input[bool] gather_innodb_metrics: Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
@@ -21700,7 +21638,7 @@ class ServiceIntegrationMetricsUserConfigSourceMysqlTelegrafArgs:
     @pulumi.getter(name="gatherFileEventsStats")
     def gather_file_events_stats(self) -> Optional[pulumi.Input[bool]]:
         """
-        gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+        Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
         """
         return pulumi.get(self, "gather_file_events_stats")
 
@@ -21918,7 +21856,7 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs:
                  perf_events_statements_time_limit: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] gather_event_waits: Gather metrics from PERFORMANCE*SCHEMA.EVENT*WAITS.
-        :param pulumi.Input[bool] gather_file_events_stats: gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+        :param pulumi.Input[bool] gather_file_events_stats: Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
         :param pulumi.Input[bool] gather_index_io_waits: Gather metrics from PERFORMANCE*SCHEMA.TABLE*IO*WAITS*SUMMARY*BY*INDEX_USAGE.
         :param pulumi.Input[bool] gather_info_schema_auto_inc: Gather auto_increment columns and max values from information schema.
         :param pulumi.Input[bool] gather_innodb_metrics: Gather metrics from INFORMATION*SCHEMA.INNODB*METRICS.
@@ -21977,7 +21915,7 @@ class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs:
     @pulumi.getter(name="gatherFileEventsStats")
     def gather_file_events_stats(self) -> Optional[pulumi.Input[bool]]:
         """
-        gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+        Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
         """
         return pulumi.get(self, "gather_file_events_stats")
 

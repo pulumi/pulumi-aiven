@@ -115,7 +115,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="destinationEndpointId")
     def destination_endpoint_id(self) -> str:
         """
-        Destination endpoint for the integration (if any)
+        Destination endpoint for the integration.
         """
         return pulumi.get(self, "destination_endpoint_id")
 
@@ -123,7 +123,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="destinationServiceName")
     def destination_service_name(self) -> str:
         """
-        Destination service for the integration (if any)
+        Destination service for the integration.
         """
         return pulumi.get(self, "destination_service_name")
 
@@ -171,7 +171,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="integrationId")
     def integration_id(self) -> str:
         """
-        Service Integration Id at aiven
+        The ID of the Aiven service integration.
         """
         return pulumi.get(self, "integration_id")
 
@@ -227,7 +227,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Project the integration belongs to
+        Project the integration belongs to.
         """
         return pulumi.get(self, "project")
 
@@ -243,7 +243,7 @@ class GetServiceIntegrationResult:
     @pulumi.getter(name="sourceEndpointId")
     def source_endpoint_id(self) -> str:
         """
-        Source endpoint for the integration (if any)
+        Source endpoint for the integration.
         """
         return pulumi.get(self, "source_endpoint_id")
 
@@ -291,12 +291,7 @@ def get_service_integration(destination_service_name: Optional[str] = None,
                             source_service_name: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIntegrationResult:
     """
-    The Service Integration data source provides information about the existing Aiven Service Integration.
-
-    Service Integration defines an integration between two Aiven services or between Aiven service and an external
-    integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-    getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-    OpenSearch, etc.
+    Gets information about an Aiven service integration.
 
     ## Example Usage
 
@@ -304,16 +299,16 @@ def get_service_integration(destination_service_name: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    myintegration = aiven.get_service_integration(project=myproject["project"],
-        destination_service_name="<DESTINATION_SERVICE_NAME>",
-        integration_type="datadog",
-        source_service_name="<SOURCE_SERVICE_NAME>")
+    example_integration = aiven.get_service_integration(project=example_project["project"],
+        destination_service_name=example_m3db["serviceName"],
+        integration_type="metrics",
+        source_service_name=example_kafka["serviceName"])
     ```
 
 
-    :param str destination_service_name: Destination service for the integration (if any)
+    :param str destination_service_name: Destination service for the integration.
     :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
-    :param str project: Project the integration belongs to
+    :param str project: Project the integration belongs to.
     :param str source_service_name: Source service for the integration (if any)
     """
     __args__ = dict()
@@ -355,12 +350,7 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
                                    source_service_name: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIntegrationResult]:
     """
-    The Service Integration data source provides information about the existing Aiven Service Integration.
-
-    Service Integration defines an integration between two Aiven services or between Aiven service and an external
-    integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-    getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-    OpenSearch, etc.
+    Gets information about an Aiven service integration.
 
     ## Example Usage
 
@@ -368,16 +358,16 @@ def get_service_integration_output(destination_service_name: Optional[pulumi.Inp
     import pulumi
     import pulumi_aiven as aiven
 
-    myintegration = aiven.get_service_integration(project=myproject["project"],
-        destination_service_name="<DESTINATION_SERVICE_NAME>",
-        integration_type="datadog",
-        source_service_name="<SOURCE_SERVICE_NAME>")
+    example_integration = aiven.get_service_integration(project=example_project["project"],
+        destination_service_name=example_m3db["serviceName"],
+        integration_type="metrics",
+        source_service_name=example_kafka["serviceName"])
     ```
 
 
-    :param str destination_service_name: Destination service for the integration (if any)
+    :param str destination_service_name: Destination service for the integration.
     :param str integration_type: Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`
-    :param str project: Project the integration belongs to
+    :param str project: Project the integration belongs to.
     :param str source_service_name: Source service for the integration (if any)
     """
     ...

@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+// Creates and manages an Aiven for Apache Kafka® topic.
 //
 // ## Example Usage
 //
@@ -28,10 +28,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafkaTopic(ctx, "mytesttopic", &aiven.KafkaTopicArgs{
-//				Project:               pulumi.Any(myproject.Project),
-//				ServiceName:           pulumi.Any(myservice.ServiceName),
-//				TopicName:             pulumi.String("<TOPIC_NAME>"),
+//			_, err := aiven.NewKafkaTopic(ctx, "example_topic", &aiven.KafkaTopicArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
+//				ServiceName:           pulumi.Any(exampleKafka.ServiceName),
+//				TopicName:             pulumi.String("example-topic"),
 //				Partitions:            pulumi.Int(5),
 //				Replication:           pulumi.Int(3),
 //				TerminationProtection: pulumi.Bool(true),
@@ -52,25 +52,25 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+// $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
 // ```
 type KafkaTopic struct {
 	pulumi.CustomResourceState
 
-	// Kafka topic configuration
+	// Kafka topic configuration.
 	Config KafkaTopicConfigPtrOutput `pulumi:"config"`
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntOutput `pulumi:"partitions"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The replication factor for the topic.
 	Replication pulumi.IntOutput `pulumi:"replication"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// Kafka Topic tag.
+	// Tags for the Kafka topic.
 	Tags KafkaTopicTagArrayOutput `pulumi:"tags"`
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-	// enable this for any production Kafka topic containing critical data.
+	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+	// still be deleted in the Aiven Console.**
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
@@ -121,40 +121,40 @@ func GetKafkaTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KafkaTopic resources.
 type kafkaTopicState struct {
-	// Kafka topic configuration
+	// Kafka topic configuration.
 	Config *KafkaTopicConfig `pulumi:"config"`
 	// The number of partitions to create in the topic.
 	Partitions *int `pulumi:"partitions"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The replication factor for the topic.
 	Replication *int `pulumi:"replication"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
-	// Kafka Topic tag.
+	// Tags for the Kafka topic.
 	Tags []KafkaTopicTag `pulumi:"tags"`
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-	// enable this for any production Kafka topic containing critical data.
+	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+	// still be deleted in the Aiven Console.**
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName *string `pulumi:"topicName"`
 }
 
 type KafkaTopicState struct {
-	// Kafka topic configuration
+	// Kafka topic configuration.
 	Config KafkaTopicConfigPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The replication factor for the topic.
 	Replication pulumi.IntPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
-	// Kafka Topic tag.
+	// Tags for the Kafka topic.
 	Tags KafkaTopicTagArrayInput
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-	// enable this for any production Kafka topic containing critical data.
+	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+	// still be deleted in the Aiven Console.**
 	TerminationProtection pulumi.BoolPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringPtrInput
@@ -165,20 +165,20 @@ func (KafkaTopicState) ElementType() reflect.Type {
 }
 
 type kafkaTopicArgs struct {
-	// Kafka topic configuration
+	// Kafka topic configuration.
 	Config *KafkaTopicConfig `pulumi:"config"`
 	// The number of partitions to create in the topic.
 	Partitions int `pulumi:"partitions"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The replication factor for the topic.
 	Replication int `pulumi:"replication"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	// Kafka Topic tag.
+	// Tags for the Kafka topic.
 	Tags []KafkaTopicTag `pulumi:"tags"`
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-	// enable this for any production Kafka topic containing critical data.
+	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+	// still be deleted in the Aiven Console.**
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName string `pulumi:"topicName"`
@@ -186,20 +186,20 @@ type kafkaTopicArgs struct {
 
 // The set of arguments for constructing a KafkaTopic resource.
 type KafkaTopicArgs struct {
-	// Kafka topic configuration
+	// Kafka topic configuration.
 	Config KafkaTopicConfigPtrInput
 	// The number of partitions to create in the topic.
 	Partitions pulumi.IntInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The replication factor for the topic.
 	Replication pulumi.IntInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
-	// Kafka Topic tag.
+	// Tags for the Kafka topic.
 	Tags KafkaTopicTagArrayInput
-	// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-	// enable this for any production Kafka topic containing critical data.
+	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+	// still be deleted in the Aiven Console.**
 	TerminationProtection pulumi.BoolPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringInput
@@ -292,7 +292,7 @@ func (o KafkaTopicOutput) ToKafkaTopicOutputWithContext(ctx context.Context) Kaf
 	return o
 }
 
-// Kafka topic configuration
+// Kafka topic configuration.
 func (o KafkaTopicOutput) Config() KafkaTopicConfigPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicConfigPtrOutput { return v.Config }).(KafkaTopicConfigPtrOutput)
 }
@@ -302,7 +302,7 @@ func (o KafkaTopicOutput) Partitions() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Partitions }).(pulumi.IntOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaTopicOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -312,18 +312,18 @@ func (o KafkaTopicOutput) Replication() pulumi.IntOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.IntOutput { return v.Replication }).(pulumi.IntOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaTopicOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// Kafka Topic tag.
+// Tags for the Kafka topic.
 func (o KafkaTopicOutput) Tags() KafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicTagArrayOutput { return v.Tags }).(KafkaTopicTagArrayOutput)
 }
 
-// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-// enable this for any production Kafka topic containing critical data.
+// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+// still be deleted in the Aiven Console.**
 func (o KafkaTopicOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

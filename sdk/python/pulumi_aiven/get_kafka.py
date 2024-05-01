@@ -145,7 +145,7 @@ class GetKafkaResult:
     @pulumi.getter(name="defaultAcl")
     def default_acl(self) -> bool:
         """
-        Create default wildcard Kafka ACL
+        Create a default wildcard Kafka ACL.
         """
         return pulumi.get(self, "default_acl")
 
@@ -209,7 +209,7 @@ class GetKafkaResult:
     @pulumi.getter
     def kafkas(self) -> Sequence['outputs.GetKafkaKafkaResult']:
         """
-        Kafka server provided values
+        Kafka server connection details.
         """
         return pulumi.get(self, "kafkas")
 
@@ -217,7 +217,7 @@ class GetKafkaResult:
     @pulumi.getter
     def karapace(self) -> bool:
         """
-        Switch the service to use Karapace for schema registry and REST proxy
+        Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         """
         return pulumi.get(self, "karapace")
 
@@ -249,7 +249,7 @@ class GetKafkaResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -353,7 +353,7 @@ class GetKafkaResult:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetKafkaTechEmailResult']:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -409,7 +409,7 @@ def get_kafka(project: Optional[str] = None,
               service_name: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaResult:
     """
-    The Kafka data source provides information about the existing Aiven Kafka services.
+    Gets information about an Aiven for Apache Kafka® service.
 
     ## Example Usage
 
@@ -417,12 +417,12 @@ def get_kafka(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka1 = aiven.get_kafka(project=pr1["project"],
-        service_name="my-kafka1")
+    example_kafka = aiven.get_kafka(project=example_project["project"],
+        service_name="example-kafka")
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     __args__ = dict()
@@ -470,7 +470,7 @@ def get_kafka_output(project: Optional[pulumi.Input[str]] = None,
                      service_name: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaResult]:
     """
-    The Kafka data source provides information about the existing Aiven Kafka services.
+    Gets information about an Aiven for Apache Kafka® service.
 
     ## Example Usage
 
@@ -478,12 +478,12 @@ def get_kafka_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    kafka1 = aiven.get_kafka(project=pr1["project"],
-        service_name="my-kafka1")
+    example_kafka = aiven.get_kafka(project=example_project["project"],
+        service_name="example-kafka")
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     ...

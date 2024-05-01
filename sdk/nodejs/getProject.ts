@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Project data source provides information about the existing Aiven Project.
+ * Gets information about an Aiven project.
  *
  * ## Example Usage
  *
@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myproject = aiven.getProject({
- *     project: "<PROJECT_NAME>",
+ * const exampleProject = aiven.getProject({
+ *     project: "example-project",
  * });
  * ```
  */
@@ -33,7 +33,7 @@ export function getProject(args: GetProjectArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetProjectArgs {
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project: string;
 }
@@ -43,7 +43,7 @@ export interface GetProjectArgs {
  */
 export interface GetProjectResult {
     /**
-     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly accountId: string;
     /**
@@ -51,27 +51,27 @@ export interface GetProjectResult {
      */
     readonly addAccountOwnersAdminAccess: boolean;
     /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * The number of trial or promotional credits remaining for this project.
      */
     readonly availableCredits: string;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly billingGroup: string;
     /**
-     * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      */
     readonly caCert: string;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly copyFromProject: string;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      */
     readonly defaultCloud: string;
     /**
-     * The current accumulated bill for this project in the current billing period.
+     * The monthly running estimate for this project for the current billing period.
      */
     readonly estimatedBalance: string;
     /**
@@ -79,15 +79,15 @@ export interface GetProjectResult {
      */
     readonly id: string;
     /**
-     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     readonly parentId: string;
     /**
-     * The method of invoicing used for payments for this project, e.g. `card`.
+     * The payment type used for this project. For example,`card`.
      */
     readonly paymentMethod: string;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     readonly project: string;
     /**
@@ -95,7 +95,7 @@ export interface GetProjectResult {
      */
     readonly tags: outputs.GetProjectTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     readonly technicalEmails: string[];
     /**
@@ -104,7 +104,7 @@ export interface GetProjectResult {
     readonly useSourceProjectBillingGroup: boolean;
 }
 /**
- * The Project data source provides information about the existing Aiven Project.
+ * Gets information about an Aiven project.
  *
  * ## Example Usage
  *
@@ -112,8 +112,8 @@ export interface GetProjectResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const myproject = aiven.getProject({
- *     project: "<PROJECT_NAME>",
+ * const exampleProject = aiven.getProject({
+ *     project: "example-project",
  * });
  * ```
  */
@@ -126,7 +126,7 @@ export function getProjectOutput(args: GetProjectOutputArgs, opts?: pulumi.Invok
  */
 export interface GetProjectOutputArgs {
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project: pulumi.Input<string>;
 }

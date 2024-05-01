@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages billing groups and assigns them to projects.
+    /// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
     /// 
     /// ## Example Usage
     /// 
@@ -22,17 +22,18 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var bybg1 = new Aiven.BillingGroup("bybg1", new()
+    ///     var exampleBillingGroup = new Aiven.BillingGroup("example_billing_group", new()
     ///     {
-    ///         Name = "bybg1",
+    ///         Name = "example-billing-group",
     ///         BillingCurrency = "USD",
     ///         VatId = "123ABC",
+    ///         ParentId = main.Id,
     ///     });
     /// 
-    ///     var pr1 = new Aiven.Project("pr1", new()
+    ///     var exampleProject = new Aiven.Project("example_project", new()
     ///     {
-    ///         ProjectName = "pr1",
-    ///         BillingGroup = bybg1.Id,
+    ///         ProjectName = "example-project",
+    ///         BillingGroup = exampleBillingGroup.Id,
     ///     });
     /// 
     /// });
@@ -41,7 +42,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+    /// $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/billingGroup:BillingGroup")]

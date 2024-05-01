@@ -30,14 +30,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs ext
     }
 
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
      * 
      */
     @Import(name="serviceAccountCredentials", required=true)
     private Output<String> serviceAccountCredentials;
 
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
      * 
      */
     public Output<String> serviceAccountCredentials() {
@@ -91,7 +91,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs ext
         }
 
         /**
-         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudBigqueryArgs ext
         }
 
         /**
-         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys .
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
          * 
          * @return builder
          * 

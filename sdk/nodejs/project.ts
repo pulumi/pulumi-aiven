@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Project resource allows the creation and management of Aiven Projects.
+ * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/projects_accounts_access#projects).
  *
  * ## Example Usage
  *
@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as aiven from "@pulumi/aiven";
  *
  * const exampleProject = new aiven.Project("example_project", {
- *     project: "Example project",
+ *     project: "example-project",
  *     parentId: main.id,
  * });
  * ```
@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/project:Project myproject project
+ * $ pulumi import aiven:index/project:Project example_project PROJECT
  * ```
  */
 export class Project extends pulumi.CustomResource {
@@ -56,7 +56,7 @@ export class Project extends pulumi.CustomResource {
     }
 
     /**
-     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      *
      * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
@@ -68,39 +68,39 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly addAccountOwnersAdminAccess!: pulumi.Output<boolean | undefined>;
     /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * The number of trial or promotional credits remaining for this project.
      */
     public /*out*/ readonly availableCredits!: pulumi.Output<string>;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly billingGroup!: pulumi.Output<string | undefined>;
     /**
-     * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      */
     public /*out*/ readonly caCert!: pulumi.Output<string>;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly copyFromProject!: pulumi.Output<string | undefined>;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      */
     public readonly defaultCloud!: pulumi.Output<string | undefined>;
     /**
-     * The current accumulated bill for this project in the current billing period.
+     * The monthly running estimate for this project for the current billing period.
      */
     public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
     /**
-     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly parentId!: pulumi.Output<string | undefined>;
     /**
-     * The method of invoicing used for payments for this project, e.g. `card`.
+     * The payment type used for this project. For example,`card`.
      */
     public /*out*/ readonly paymentMethod!: pulumi.Output<string>;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -108,7 +108,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.ProjectTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     public readonly technicalEmails!: pulumi.Output<string[] | undefined>;
     /**
@@ -177,7 +177,7 @@ export class Project extends pulumi.CustomResource {
  */
 export interface ProjectState {
     /**
-     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      *
      * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
@@ -189,39 +189,39 @@ export interface ProjectState {
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * The number of trial or promotional credits remaining for this project.
      */
     availableCredits?: pulumi.Input<string>;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroup?: pulumi.Input<string>;
     /**
-     * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      */
     caCert?: pulumi.Input<string>;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      */
     copyFromProject?: pulumi.Input<string>;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      */
     defaultCloud?: pulumi.Input<string>;
     /**
-     * The current accumulated bill for this project in the current billing period.
+     * The monthly running estimate for this project for the current billing period.
      */
     estimatedBalance?: pulumi.Input<string>;
     /**
-     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * The method of invoicing used for payments for this project, e.g. `card`.
+     * The payment type used for this project. For example,`card`.
      */
     paymentMethod?: pulumi.Input<string>;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project?: pulumi.Input<string>;
     /**
@@ -229,7 +229,7 @@ export interface ProjectState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ProjectTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -245,7 +245,7 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
      *
      * @deprecated Use parentId instead. This field will be removed in the next major release.
      */
@@ -257,23 +257,23 @@ export interface ProjectArgs {
      */
     addAccountOwnersAdminAccess?: pulumi.Input<boolean>;
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      */
     billingGroup?: pulumi.Input<string>;
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      */
     copyFromProject?: pulumi.Input<string>;
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      */
     defaultCloud?: pulumi.Input<string>;
     /**
-     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      */
     project: pulumi.Input<string>;
     /**
@@ -281,7 +281,7 @@ export interface ProjectArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.ProjectTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
      */
     technicalEmails?: pulumi.Input<pulumi.Input<string>[]>;
     /**

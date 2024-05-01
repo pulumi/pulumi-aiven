@@ -210,7 +210,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable Boolean pgStatMonitorDotPgsmEnableQueryPlan;
     /**
-     * @return Sets the maximum number of buckets .
+     * @return Sets the maximum number of buckets.
      * 
      */
     private @Nullable Integer pgStatMonitorDotPgsmMaxBuckets;
@@ -535,7 +535,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.pgStatMonitorDotPgsmEnableQueryPlan);
     }
     /**
-     * @return Sets the maximum number of buckets .
+     * @return Sets the maximum number of buckets.
      * 
      */
     public Optional<Integer> pgStatMonitorDotPgsmMaxBuckets() {

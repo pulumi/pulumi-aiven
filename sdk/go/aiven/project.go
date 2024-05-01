@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Project resource allows the creation and management of Aiven Projects.
+// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/projects_accounts_access#projects).
 //
 // ## Example Usage
 //
@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
-//				Project:  pulumi.String("Example project"),
+//				Project:  pulumi.String("example-project"),
 //				ParentId: pulumi.Any(main.Id),
 //			})
 //			if err != nil {
@@ -44,12 +44,12 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/project:Project myproject project
+// $ pulumi import aiven:index/project:Project example_project PROJECT
 // ```
 type Project struct {
 	pulumi.CustomResourceState
 
-	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//
 	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
@@ -57,27 +57,27 @@ type Project struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrOutput `pulumi:"addAccountOwnersAdminAccess"`
-	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+	// The number of trial or promotional credits remaining for this project.
 	AvailableCredits pulumi.StringOutput `pulumi:"availableCredits"`
-	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrOutput `pulumi:"billingGroup"`
-	// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
 	CaCert pulumi.StringOutput `pulumi:"caCert"`
-	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+	// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
 	CopyFromProject pulumi.StringPtrOutput `pulumi:"copyFromProject"`
-	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
-	// The current accumulated bill for this project in the current billing period.
+	// The monthly running estimate for this project for the current billing period.
 	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
-	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
-	// The method of invoicing used for payments for this project, e.g. `card`.
+	// The payment type used for this project. For example,`card`.
 	PaymentMethod pulumi.StringOutput `pulumi:"paymentMethod"`
-	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags ProjectTagArrayOutput `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayOutput `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	//
@@ -122,7 +122,7 @@ func GetProject(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Project resources.
 type projectState struct {
-	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//
 	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
@@ -130,27 +130,27 @@ type projectState struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
-	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+	// The number of trial or promotional credits remaining for this project.
 	AvailableCredits *string `pulumi:"availableCredits"`
-	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup *string `pulumi:"billingGroup"`
-	// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
 	CaCert *string `pulumi:"caCert"`
-	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+	// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
 	CopyFromProject *string `pulumi:"copyFromProject"`
-	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
-	// The current accumulated bill for this project in the current billing period.
+	// The monthly running estimate for this project for the current billing period.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
-	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// The method of invoicing used for payments for this project, e.g. `card`.
+	// The payment type used for this project. For example,`card`.
 	PaymentMethod *string `pulumi:"paymentMethod"`
-	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project *string `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []ProjectTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	//
@@ -159,7 +159,7 @@ type projectState struct {
 }
 
 type ProjectState struct {
-	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//
 	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
@@ -167,27 +167,27 @@ type ProjectState struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
-	// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+	// The number of trial or promotional credits remaining for this project.
 	AvailableCredits pulumi.StringPtrInput
-	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrInput
-	// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+	// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
 	CaCert pulumi.StringPtrInput
-	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+	// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
 	CopyFromProject pulumi.StringPtrInput
-	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud pulumi.StringPtrInput
-	// The current accumulated bill for this project in the current billing period.
+	// The monthly running estimate for this project for the current billing period.
 	EstimatedBalance pulumi.StringPtrInput
-	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// The method of invoicing used for payments for this project, e.g. `card`.
+	// The payment type used for this project. For example,`card`.
 	PaymentMethod pulumi.StringPtrInput
-	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringPtrInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags ProjectTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// Use the same billing group that is used in source project.
 	//
@@ -200,7 +200,7 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//
 	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId *string `pulumi:"accountId"`
@@ -208,19 +208,19 @@ type projectArgs struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess *bool `pulumi:"addAccountOwnersAdminAccess"`
-	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup *string `pulumi:"billingGroup"`
-	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+	// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
 	CopyFromProject *string `pulumi:"copyFromProject"`
-	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
-	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
-	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project string `pulumi:"project"`
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags []ProjectTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails []string `pulumi:"technicalEmails"`
 	// Use the same billing group that is used in source project.
 	//
@@ -230,7 +230,7 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 	//
 	// Deprecated: Use parentId instead. This field will be removed in the next major release.
 	AccountId pulumi.StringPtrInput
@@ -238,19 +238,19 @@ type ProjectArgs struct {
 	//
 	// Deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.
 	AddAccountOwnersAdminAccess pulumi.BoolPtrInput
-	// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+	// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 	BillingGroup pulumi.StringPtrInput
-	// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+	// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
 	CopyFromProject pulumi.StringPtrInput
-	// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud pulumi.StringPtrInput
-	// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
-	// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringInput
 	// Tags are key-value pairs that allow you to categorize projects.
 	Tags ProjectTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+	// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 	TechnicalEmails pulumi.StringArrayInput
 	// Use the same billing group that is used in source project.
 	//
@@ -345,7 +345,7 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
-// An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a project to an existing account using its account ID. This field is deprecated. Use `parentId` instead. To set up proper dependencies please refer to this variable as a reference.
 //
 // Deprecated: Use parentId instead. This field will be removed in the next major release.
 func (o ProjectOutput) AccountId() pulumi.StringPtrOutput {
@@ -359,47 +359,47 @@ func (o ProjectOutput) AddAccountOwnersAdminAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.AddAccountOwnersAdminAccess }).(pulumi.BoolPtrOutput)
 }
 
-// The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+// The number of trial or promotional credits remaining for this project.
 func (o ProjectOutput) AvailableCredits() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AvailableCredits }).(pulumi.StringOutput)
 }
 
-// The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+// The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
 func (o ProjectOutput) BillingGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.BillingGroup }).(pulumi.StringPtrOutput)
 }
 
-// The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+// The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
 func (o ProjectOutput) CaCert() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CaCert }).(pulumi.StringOutput)
 }
 
-// is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+// The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can't set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
 func (o ProjectOutput) CopyFromProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.CopyFromProject }).(pulumi.StringPtrOutput)
 }
 
-// Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 func (o ProjectOutput) DefaultCloud() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.DefaultCloud }).(pulumi.StringPtrOutput)
 }
 
-// The current accumulated bill for this project in the current billing period.
+// The monthly running estimate for this project for the current billing period.
 func (o ProjectOutput) EstimatedBalance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.EstimatedBalance }).(pulumi.StringOutput)
 }
 
-// An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o ProjectOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }
 
-// The method of invoicing used for payments for this project, e.g. `card`.
+// The payment type used for this project. For example,`card`.
 func (o ProjectOutput) PaymentMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.PaymentMethod }).(pulumi.StringOutput)
 }
 
-// Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 func (o ProjectOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -409,7 +409,7 @@ func (o ProjectOutput) Tags() ProjectTagArrayOutput {
 	return o.ApplyT(func(v *Project) ProjectTagArrayOutput { return v.Tags }).(ProjectTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+// The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It's good practice to keep these up-to-date to be aware of any potential issues with your project.
 func (o ProjectOutput) TechnicalEmails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringArrayOutput { return v.TechnicalEmails }).(pulumi.StringArrayOutput)
 }

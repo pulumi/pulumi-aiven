@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+        /// Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
         /// </summary>
         public readonly bool? AlertingEnabled;
         /// <summary>
@@ -166,7 +166,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? StaticIps;
         /// <summary>
-        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+        /// Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         /// </summary>
         public readonly bool? UnifiedAlertingEnabled;
         /// <summary>

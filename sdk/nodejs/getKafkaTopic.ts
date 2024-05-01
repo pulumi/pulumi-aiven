@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+ * Gets information about an Aiven for Apache Kafka® topic.
  *
  * ## Example Usage
  *
@@ -15,10 +15,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytesttopic = aiven.getKafkaTopic({
- *     project: myproject.project,
- *     serviceName: myservice.serviceName,
- *     topicName: "<TOPIC_NAME>",
+ * const exampleTopic = aiven.getKafkaTopic({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     topicName: "example-topic",
  * });
  * ```
  */
@@ -37,11 +37,11 @@ export function getKafkaTopic(args: GetKafkaTopicArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetKafkaTopicArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: string;
     /**
@@ -55,7 +55,7 @@ export interface GetKafkaTopicArgs {
  */
 export interface GetKafkaTopicResult {
     /**
-     * Kafka topic configuration
+     * Kafka topic configuration.
      */
     readonly configs: outputs.GetKafkaTopicConfig[];
     /**
@@ -67,7 +67,7 @@ export interface GetKafkaTopicResult {
      */
     readonly partitions: number;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -75,11 +75,11 @@ export interface GetKafkaTopicResult {
      */
     readonly replication: number;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly serviceName: string;
     /**
-     * Kafka Topic tag.
+     * Tags for the Kafka topic.
      */
     readonly tags: outputs.GetKafkaTopicTag[];
     readonly terminationProtection: boolean;
@@ -89,7 +89,7 @@ export interface GetKafkaTopicResult {
     readonly topicName: string;
 }
 /**
- * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+ * Gets information about an Aiven for Apache Kafka® topic.
  *
  * ## Example Usage
  *
@@ -97,10 +97,10 @@ export interface GetKafkaTopicResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as aiven from "@pulumi/aiven";
  *
- * const mytesttopic = aiven.getKafkaTopic({
- *     project: myproject.project,
- *     serviceName: myservice.serviceName,
- *     topicName: "<TOPIC_NAME>",
+ * const exampleTopic = aiven.getKafkaTopic({
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     topicName: "example-topic",
  * });
  * ```
  */
@@ -113,11 +113,11 @@ export function getKafkaTopicOutput(args: GetKafkaTopicOutputArgs, opts?: pulumi
  */
 export interface GetKafkaTopicOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

@@ -29,11 +29,7 @@ public final class GetGrafanaGrafanaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
      * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
@@ -249,11 +245,7 @@ public final class GetGrafanaGrafanaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }

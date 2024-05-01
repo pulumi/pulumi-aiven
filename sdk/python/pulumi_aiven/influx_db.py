@@ -39,7 +39,7 @@ class InfluxDbArgs:
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
                service so name should be picked based on intended service usage rather than current attributes.
@@ -64,8 +64,8 @@ class InfluxDbArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
+        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+               important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -122,7 +122,7 @@ class InfluxDbArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
@@ -282,8 +282,8 @@ class InfluxDbArgs:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -366,7 +366,7 @@ class _InfluxDbState:
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -385,8 +385,8 @@ class _InfluxDbState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
+        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+               important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -628,7 +628,7 @@ class _InfluxDbState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
@@ -790,8 +790,8 @@ class _InfluxDbState:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbTechEmailArgs']]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -858,7 +858,7 @@ class InfluxDb(pulumi.CustomResource):
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -870,8 +870,8 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+               important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1031,7 +1031,7 @@ class InfluxDb(pulumi.CustomResource):
                `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
                other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
                options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
                value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
@@ -1050,8 +1050,8 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
                static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-               instability.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+               important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
                unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
                much of the content can at least be restored from backup in case accidental deletion is done.
@@ -1215,7 +1215,7 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
@@ -1325,8 +1325,8 @@ class InfluxDb(pulumi.CustomResource):
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.InfluxDbTechEmail']]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 

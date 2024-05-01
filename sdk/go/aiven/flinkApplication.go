@@ -45,7 +45,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp project/service/application_name
+// $ pulumi import aiven:index/flinkApplication:FlinkApplication myapp PROJECT/SERVICE/APPLICATION_NAME
 // ```
 type FlinkApplication struct {
 	pulumi.CustomResourceState
@@ -58,9 +58,9 @@ type FlinkApplication struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Application name
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Application update time
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -112,9 +112,9 @@ type flinkApplicationState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// Application name
 	Name *string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Application update time
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -131,9 +131,9 @@ type FlinkApplicationState struct {
 	CreatedBy pulumi.StringPtrInput
 	// Application name
 	Name pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Application update time
 	UpdatedAt pulumi.StringPtrInput
@@ -148,9 +148,9 @@ func (FlinkApplicationState) ElementType() reflect.Type {
 type flinkApplicationArgs struct {
 	// Application name
 	Name *string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -158,9 +158,9 @@ type flinkApplicationArgs struct {
 type FlinkApplicationArgs struct {
 	// Application name
 	Name pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -271,12 +271,12 @@ func (o FlinkApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o FlinkApplicationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o FlinkApplicationOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplication) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

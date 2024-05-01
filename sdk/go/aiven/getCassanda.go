@@ -53,7 +53,7 @@ func GetCassanda(ctx *pulumi.Context, args *GetCassandaArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -65,8 +65,6 @@ type GetCassandaResult struct {
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfigs []GetCassandaCassandraUserConfig `pulumi:"cassandraUserConfigs"`
-	// Cassandra server provided values
-	Cassandras []GetCassandaCassandra `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
@@ -89,7 +87,7 @@ type GetCassandaResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
@@ -115,7 +113,7 @@ type GetCassandaResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetCassandaTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetCassandaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -136,7 +134,7 @@ func GetCassandaOutput(ctx *pulumi.Context, args GetCassandaOutputArgs, opts ...
 
 // A collection of arguments for invoking getCassanda.
 type GetCassandaOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -169,11 +167,6 @@ func (o GetCassandaResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
 // Cassandra user configurable settings
 func (o GetCassandaResultOutput) CassandraUserConfigs() GetCassandaCassandraUserConfigArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandaCassandraUserConfigArrayOutput)
-}
-
-// Cassandra server provided values
-func (o GetCassandaResultOutput) Cassandras() GetCassandaCassandraArrayOutput {
-	return o.ApplyT(func(v GetCassandaResult) []GetCassandaCassandra { return v.Cassandras }).(GetCassandaCassandraArrayOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -231,7 +224,7 @@ func (o GetCassandaResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o GetCassandaResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCassandaResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -296,7 +289,7 @@ func (o GetCassandaResultOutput) Tags() GetCassandaTagArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaTag { return v.Tags }).(GetCassandaTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o GetCassandaResultOutput) TechEmails() GetCassandaTechEmailArrayOutput {
 	return o.ApplyT(func(v GetCassandaResult) []GetCassandaTechEmail { return v.TechEmails }).(GetCassandaTechEmailArrayOutput)
 }

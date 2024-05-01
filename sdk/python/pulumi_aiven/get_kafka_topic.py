@@ -55,7 +55,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def configs(self) -> Sequence['outputs.GetKafkaTopicConfigResult']:
         """
-        Kafka topic configuration
+        Kafka topic configuration.
         """
         return pulumi.get(self, "configs")
 
@@ -79,7 +79,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -95,7 +95,7 @@ class GetKafkaTopicResult:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -103,7 +103,7 @@ class GetKafkaTopicResult:
     @pulumi.getter
     def tags(self) -> Sequence['outputs.GetKafkaTopicTagResult']:
         """
-        Kafka Topic tag.
+        Tags for the Kafka topic.
         """
         return pulumi.get(self, "tags")
 
@@ -143,7 +143,7 @@ def get_kafka_topic(project: Optional[str] = None,
                     topic_name: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKafkaTopicResult:
     """
-    The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+    Gets information about an Aiven for Apache Kafka® topic.
 
     ## Example Usage
 
@@ -151,14 +151,14 @@ def get_kafka_topic(project: Optional[str] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytesttopic = aiven.get_kafka_topic(project=myproject["project"],
-        service_name=myservice["serviceName"],
-        topic_name="<TOPIC_NAME>")
+    example_topic = aiven.get_kafka_topic(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
+        topic_name="example-topic")
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str topic_name: The name of the topic. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
@@ -186,7 +186,7 @@ def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
                            topic_name: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKafkaTopicResult]:
     """
-    The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+    Gets information about an Aiven for Apache Kafka® topic.
 
     ## Example Usage
 
@@ -194,14 +194,14 @@ def get_kafka_topic_output(project: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_aiven as aiven
 
-    mytesttopic = aiven.get_kafka_topic(project=myproject["project"],
-        service_name=myservice["serviceName"],
-        topic_name="<TOPIC_NAME>")
+    example_topic = aiven.get_kafka_topic(project=example_project["project"],
+        service_name=example_kafka["serviceName"],
+        topic_name="example-topic")
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-    :param str service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str topic_name: The name of the topic. Changing this property forces recreation of the resource.
     """
     ...

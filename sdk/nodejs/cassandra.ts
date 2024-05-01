@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
+ * $ pulumi import aiven:index/cassandra:Cassandra bar PROJECT/SERVICE_NAME
  * ```
  */
 export class Cassandra extends pulumi.CustomResource {
@@ -73,10 +73,6 @@ export class Cassandra extends pulumi.CustomResource {
      * Cassandra user configurable settings
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
-    /**
-     * Cassandra server provided values
-     */
-    public /*out*/ readonly cassandras!: pulumi.Output<outputs.CassandraCassandra[]>;
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
@@ -120,7 +116,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -172,7 +168,7 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.CassandraTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     public readonly techEmails!: pulumi.Output<outputs.CassandraTechEmail[] | undefined>;
     /**
@@ -195,7 +191,6 @@ export class Cassandra extends pulumi.CustomResource {
             const state = argsOrState as CassandraState | undefined;
             resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
             resourceInputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
-            resourceInputs["cassandras"] = state ? state.cassandras : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
             resourceInputs["components"] = state ? state.components : undefined;
             resourceInputs["diskSpace"] = state ? state.diskSpace : undefined;
@@ -247,7 +242,6 @@ export class Cassandra extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["techEmails"] = args ? args.techEmails : undefined;
             resourceInputs["terminationProtection"] = args ? args.terminationProtection : undefined;
-            resourceInputs["cassandras"] = undefined /*out*/;
             resourceInputs["components"] = undefined /*out*/;
             resourceInputs["diskSpaceCap"] = undefined /*out*/;
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
@@ -280,10 +274,6 @@ export interface CassandraState {
      * Cassandra user configurable settings
      */
     cassandraUserConfig?: pulumi.Input<inputs.CassandraCassandraUserConfig>;
-    /**
-     * Cassandra server provided values
-     */
-    cassandras?: pulumi.Input<pulumi.Input<inputs.CassandraCassandra>[]>;
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
@@ -327,7 +317,7 @@ export interface CassandraState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -379,7 +369,7 @@ export interface CassandraState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.CassandraTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.CassandraTechEmail>[]>;
     /**
@@ -423,7 +413,7 @@ export interface CassandraArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -447,7 +437,7 @@ export interface CassandraArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.CassandraTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.CassandraTechEmail>[]>;
     /**

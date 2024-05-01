@@ -16,14 +16,14 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
     public static final KafkaKafkaArgs Empty = new KafkaKafkaArgs();
 
     /**
-     * The Kafka client certificate
+     * The Kafka client certificate.
      * 
      */
     @Import(name="accessCert")
     private @Nullable Output<String> accessCert;
 
     /**
-     * @return The Kafka client certificate
+     * @return The Kafka client certificate.
      * 
      */
     public Optional<Output<String>> accessCert() {
@@ -31,14 +31,14 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Kafka client certificate key
+     * The Kafka client certificate key.
      * 
      */
     @Import(name="accessKey")
     private @Nullable Output<String> accessKey;
 
     /**
-     * @return The Kafka client certificate key
+     * @return The Kafka client certificate key.
      * 
      */
     public Optional<Output<String>> accessKey() {
@@ -46,14 +46,14 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Kafka Connect URI, if any
+     * The Kafka Connect URI.
      * 
      */
     @Import(name="connectUri")
     private @Nullable Output<String> connectUri;
 
     /**
-     * @return The Kafka Connect URI, if any
+     * @return The Kafka Connect URI.
      * 
      */
     public Optional<Output<String>> connectUri() {
@@ -61,14 +61,14 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Kafka REST URI, if any
+     * The Kafka REST URI.
      * 
      */
     @Import(name="restUri")
     private @Nullable Output<String> restUri;
 
     /**
-     * @return The Kafka REST URI, if any
+     * @return The Kafka REST URI.
      * 
      */
     public Optional<Output<String>> restUri() {
@@ -76,14 +76,14 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Schema Registry URI, if any
+     * The Schema Registry URI.
      * 
      */
     @Import(name="schemaRegistryUri")
     private @Nullable Output<String> schemaRegistryUri;
 
     /**
-     * @return The Schema Registry URI, if any
+     * @return The Schema Registry URI.
      * 
      */
     public Optional<Output<String>> schemaRegistryUri() {
@@ -119,7 +119,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert The Kafka client certificate
+         * @param accessCert The Kafka client certificate.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessCert The Kafka client certificate
+         * @param accessCert The Kafka client certificate.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey The Kafka client certificate key
+         * @param accessKey The Kafka client certificate key.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKey The Kafka client certificate key
+         * @param accessKey The Kafka client certificate key.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectUri The Kafka Connect URI, if any
+         * @param connectUri The Kafka Connect URI.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectUri The Kafka Connect URI, if any
+         * @param connectUri The Kafka Connect URI.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restUri The Kafka REST URI, if any
+         * @param restUri The Kafka REST URI.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restUri The Kafka REST URI, if any
+         * @param restUri The Kafka REST URI.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaRegistryUri The Schema Registry URI, if any
+         * @param schemaRegistryUri The Schema Registry URI.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param schemaRegistryUri The Schema Registry URI, if any
+         * @param schemaRegistryUri The Schema Registry URI.
          * 
          * @return builder
          * 
