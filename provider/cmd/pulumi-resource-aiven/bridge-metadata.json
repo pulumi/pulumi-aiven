@@ -72,9 +72,6 @@
                 "current": "aiven:index/cassandra:Cassandra",
                 "majorVersion": 6,
                 "fields": {
-                    "cassandra": {
-                        "maxItemsOne": false
-                    },
                     "cassandra_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -128,9 +125,6 @@
                 "current": "aiven:index/clickhouse:Clickhouse",
                 "majorVersion": 6,
                 "fields": {
-                    "clickhouse": {
-                        "maxItemsOne": false
-                    },
                     "clickhouse_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -209,9 +203,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "dragonfly": {
                         "maxItemsOne": false
                     },
                     "dragonfly_user_config": {
@@ -352,9 +343,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "grafana": {
                         "maxItemsOne": false
                     },
                     "grafana_user_config": {
@@ -621,9 +609,6 @@
                     "components": {
                         "maxItemsOne": false
                     },
-                    "kafka_connect": {
-                        "maxItemsOne": false
-                    },
                     "kafka_connect_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -683,9 +668,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "kafka_mirrormaker": {
                         "maxItemsOne": false
                     },
                     "kafka_mirrormaker_user_config": {
@@ -759,9 +741,6 @@
                     "components": {
                         "maxItemsOne": false
                     },
-                    "m3aggregator": {
-                        "maxItemsOne": false
-                    },
                     "m3aggregator_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -797,9 +776,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "m3db": {
                         "maxItemsOne": false
                     },
                     "m3db_user_config": {
@@ -921,9 +897,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "mysql": {
                         "maxItemsOne": false
                     },
                     "mysql_user_config": {
@@ -1232,9 +1205,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "redis": {
                         "maxItemsOne": false
                     },
                     "redis_user_config": {
@@ -1618,9 +1588,6 @@
                 "current": "aiven:index/getCassandra:getCassandra",
                 "majorVersion": 6,
                 "fields": {
-                    "cassandra": {
-                        "maxItemsOne": false
-                    },
                     "cassandra_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1670,9 +1637,6 @@
                 "current": "aiven:index/getCassanda:getCassanda",
                 "majorVersion": 6,
                 "fields": {
-                    "cassandra": {
-                        "maxItemsOne": false
-                    },
                     "cassandra_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1726,9 +1690,6 @@
                 "current": "aiven:index/getClickhouse:getClickhouse",
                 "majorVersion": 6,
                 "fields": {
-                    "clickhouse": {
-                        "maxItemsOne": false
-                    },
                     "clickhouse_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1791,9 +1752,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "dragonfly": {
                         "maxItemsOne": false
                     },
                     "dragonfly_user_config": {
@@ -1926,9 +1884,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "grafana": {
                         "maxItemsOne": false
                     },
                     "grafana_user_config": {
@@ -2195,9 +2150,6 @@
                     "components": {
                         "maxItemsOne": false
                     },
-                    "kafka_connect": {
-                        "maxItemsOne": false
-                    },
                     "kafka_connect_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2257,9 +2209,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "kafka_mirrormaker": {
                         "maxItemsOne": false
                     },
                     "kafka_mirrormaker_user_config": {
@@ -2333,9 +2282,6 @@
                     "components": {
                         "maxItemsOne": false
                     },
-                    "m3aggregator": {
-                        "maxItemsOne": false
-                    },
                     "m3aggregator_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2371,9 +2317,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "m3db": {
                         "maxItemsOne": false
                     },
                     "m3db_user_config": {
@@ -2495,9 +2438,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "mysql": {
                         "maxItemsOne": false
                     },
                     "mysql_user_config": {
@@ -2798,9 +2738,6 @@
                 "majorVersion": 6,
                 "fields": {
                     "components": {
-                        "maxItemsOne": false
-                    },
-                    "redis": {
                         "maxItemsOne": false
                     },
                     "redis_user_config": {
