@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ProjectTag {
     /**
-     * @return Project tag key
+     * @return Project tag key.
      * 
      */
     private String key;
     /**
-     * @return Project tag value
+     * @return Project tag value.
      * 
      */
     private String value;
 
     private ProjectTag() {}
     /**
-     * @return Project tag key
+     * @return Project tag key.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Project tag value
+     * @return Project tag value.
      * 
      */
     public String value() {

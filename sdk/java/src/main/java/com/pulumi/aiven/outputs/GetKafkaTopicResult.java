@@ -16,7 +16,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKafkaTopicResult {
     /**
-     * @return Kafka topic configuration
+     * @return Kafka topic configuration.
      * 
      */
     private List<GetKafkaTopicConfig> configs;
@@ -31,7 +31,7 @@ public final class GetKafkaTopicResult {
      */
     private Integer partitions;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -41,12 +41,12 @@ public final class GetKafkaTopicResult {
      */
     private Integer replication;
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String serviceName;
     /**
-     * @return Kafka Topic tag.
+     * @return Tags for the Kafka topic.
      * 
      */
     private List<GetKafkaTopicTag> tags;
@@ -59,7 +59,7 @@ public final class GetKafkaTopicResult {
 
     private GetKafkaTopicResult() {}
     /**
-     * @return Kafka topic configuration
+     * @return Kafka topic configuration.
      * 
      */
     public List<GetKafkaTopicConfig> configs() {
@@ -80,7 +80,7 @@ public final class GetKafkaTopicResult {
         return this.partitions;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -94,14 +94,14 @@ public final class GetKafkaTopicResult {
         return this.replication;
     }
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String serviceName() {
         return this.serviceName;
     }
     /**
-     * @return Kafka Topic tag.
+     * @return Tags for the Kafka topic.
      * 
      */
     public List<GetKafkaTopicTag> tags() {

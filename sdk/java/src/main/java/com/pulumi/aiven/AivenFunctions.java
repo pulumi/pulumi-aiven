@@ -1191,7 +1191,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getAzureVpcPeeringConnection:getAzureVpcPeeringConnection", TypeShape.of(GetAzureVpcPeeringConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides information about an existing billing group.
+     * Gets information about a billing group.
      * 
      * ## Example Usage
      * 
@@ -1217,8 +1217,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;&lt;BILLING_GROUP_NAME&gt;&#34;)
+     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *             .name(&#34;example-billing-group&#34;)
      *             .build());
      * 
      *     }
@@ -1231,7 +1231,7 @@ public final class AivenFunctions {
         return getBillingGroup(args, InvokeOptions.Empty);
     }
     /**
-     * Provides information about an existing billing group.
+     * Gets information about a billing group.
      * 
      * ## Example Usage
      * 
@@ -1257,8 +1257,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;&lt;BILLING_GROUP_NAME&gt;&#34;)
+     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *             .name(&#34;example-billing-group&#34;)
      *             .build());
      * 
      *     }
@@ -1271,7 +1271,7 @@ public final class AivenFunctions {
         return getBillingGroupPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides information about an existing billing group.
+     * Gets information about a billing group.
      * 
      * ## Example Usage
      * 
@@ -1297,8 +1297,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;&lt;BILLING_GROUP_NAME&gt;&#34;)
+     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *             .name(&#34;example-billing-group&#34;)
      *             .build());
      * 
      *     }
@@ -1311,7 +1311,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getBillingGroup:getBillingGroup", TypeShape.of(GetBillingGroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides information about an existing billing group.
+     * Gets information about a billing group.
      * 
      * ## Example Usage
      * 
@@ -1337,8 +1337,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foo = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;&lt;BILLING_GROUP_NAME&gt;&#34;)
+     *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
+     *             .name(&#34;example-billing-group&#34;)
      *             .build());
      * 
      *     }
@@ -2531,28 +2531,164 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getConnectionPool:getConnectionPool", TypeShape.of(GetConnectionPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+     * Gets information about an Aiven for Dragonfly® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetDragonflyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDragonflyResult> getDragonfly(GetDragonflyArgs args) {
         return getDragonfly(args, InvokeOptions.Empty);
     }
     /**
-     * The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+     * Gets information about an Aiven for Dragonfly® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetDragonflyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDragonflyResult> getDragonflyPlain(GetDragonflyPlainArgs args) {
         return getDragonflyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+     * Gets information about an Aiven for Dragonfly® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetDragonflyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetDragonflyResult> getDragonfly(GetDragonflyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getDragonfly:getDragonfly", TypeShape.of(GetDragonflyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+     * Gets information about an Aiven for Dragonfly® service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetDragonflyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDragonflyResult> getDragonflyPlain(GetDragonflyPlainArgs args, InvokeOptions options) {
@@ -3443,7 +3579,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getInfluxdbUser:getInfluxdbUser", TypeShape.of(GetInfluxdbUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka data source provides information about the existing Aiven Kafka services.
+     * Gets information about an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -3469,9 +3605,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName(&#34;my-kafka1&#34;)
+     *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-kafka&#34;)
      *             .build());
      * 
      *     }
@@ -3484,7 +3620,7 @@ public final class AivenFunctions {
         return getKafka(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka data source provides information about the existing Aiven Kafka services.
+     * Gets information about an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -3510,9 +3646,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName(&#34;my-kafka1&#34;)
+     *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-kafka&#34;)
      *             .build());
      * 
      *     }
@@ -3525,7 +3661,7 @@ public final class AivenFunctions {
         return getKafkaPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka data source provides information about the existing Aiven Kafka services.
+     * Gets information about an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -3551,9 +3687,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName(&#34;my-kafka1&#34;)
+     *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-kafka&#34;)
      *             .build());
      * 
      *     }
@@ -3566,7 +3702,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafka:getKafka", TypeShape.of(GetKafkaResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka data source provides information about the existing Aiven Kafka services.
+     * Gets information about an Aiven for Apache Kafka® service.
      * 
      * ## Example Usage
      * 
@@ -3592,9 +3728,9 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var kafka1 = AivenFunctions.getKafka(GetKafkaArgs.builder()
-     *             .project(pr1.project())
-     *             .serviceName(&#34;my-kafka1&#34;)
+     *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(&#34;example-kafka&#34;)
      *             .build());
      * 
      *     }
@@ -4639,7 +4775,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getKafkaSchemaRegistryAcl:getKafkaSchemaRegistryAcl", TypeShape.of(GetKafkaSchemaRegistryAclResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+     * Gets information about an Aiven for Apache Kafka® topic.
      * 
      * ## Example Usage
      * 
@@ -4665,10 +4801,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
+     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topicName(&#34;example-topic&#34;)
      *             .build());
      * 
      *     }
@@ -4681,7 +4817,7 @@ public final class AivenFunctions {
         return getKafkaTopic(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+     * Gets information about an Aiven for Apache Kafka® topic.
      * 
      * ## Example Usage
      * 
@@ -4707,10 +4843,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
+     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topicName(&#34;example-topic&#34;)
      *             .build());
      * 
      *     }
@@ -4723,7 +4859,7 @@ public final class AivenFunctions {
         return getKafkaTopicPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+     * Gets information about an Aiven for Apache Kafka® topic.
      * 
      * ## Example Usage
      * 
@@ -4749,10 +4885,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
+     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topicName(&#34;example-topic&#34;)
      *             .build());
      * 
      *     }
@@ -4765,7 +4901,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getKafkaTopic:getKafkaTopic", TypeShape.of(GetKafkaTopicResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Kafka Topic data source provides information about the existing Aiven Kafka Topic.
+     * Gets information about an Aiven for Apache Kafka® topic.
      * 
      * ## Example Usage
      * 
@@ -4791,10 +4927,10 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mytesttopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
-     *             .project(myproject.project())
-     *             .serviceName(myservice.serviceName())
-     *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
+     *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .topicName(&#34;example-topic&#34;)
      *             .build());
      * 
      *     }
@@ -8071,7 +8207,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getPgUser:getPgUser", TypeShape.of(GetPgUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Project data source provides information about the existing Aiven Project.
+     * Gets information about an Aiven project.
      * 
      * ## Example Usage
      * 
@@ -8097,8 +8233,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myproject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;&lt;PROJECT_NAME&gt;&#34;)
+     *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
+     *             .project(&#34;example-project&#34;)
      *             .build());
      * 
      *     }
@@ -8111,7 +8247,7 @@ public final class AivenFunctions {
         return getProject(args, InvokeOptions.Empty);
     }
     /**
-     * The Project data source provides information about the existing Aiven Project.
+     * Gets information about an Aiven project.
      * 
      * ## Example Usage
      * 
@@ -8137,8 +8273,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myproject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;&lt;PROJECT_NAME&gt;&#34;)
+     *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
+     *             .project(&#34;example-project&#34;)
      *             .build());
      * 
      *     }
@@ -8151,7 +8287,7 @@ public final class AivenFunctions {
         return getProjectPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Project data source provides information about the existing Aiven Project.
+     * Gets information about an Aiven project.
      * 
      * ## Example Usage
      * 
@@ -8177,8 +8313,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myproject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;&lt;PROJECT_NAME&gt;&#34;)
+     *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
+     *             .project(&#34;example-project&#34;)
      *             .build());
      * 
      *     }
@@ -8191,7 +8327,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Project data source provides information about the existing Aiven Project.
+     * Gets information about an Aiven project.
      * 
      * ## Example Usage
      * 
@@ -8217,8 +8353,8 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myproject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;&lt;PROJECT_NAME&gt;&#34;)
+     *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
+     *             .project(&#34;example-project&#34;)
      *             .build());
      * 
      *     }
@@ -9157,12 +9293,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invokeAsync("aiven:index/getServiceComponent:getServiceComponent", TypeShape.of(GetServiceComponentResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Service Integration data source provides information about the existing Aiven Service Integration.
-     * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
-     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-     * OpenSearch, etc.
+     * Gets information about an Aiven service integration.
      * 
      * ## Example Usage
      * 
@@ -9188,11 +9319,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(myproject.project())
-     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
-     *             .integrationType(&#34;datadog&#34;)
-     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .integrationType(&#34;metrics&#34;)
+     *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -9205,12 +9336,7 @@ public final class AivenFunctions {
         return getServiceIntegration(args, InvokeOptions.Empty);
     }
     /**
-     * The Service Integration data source provides information about the existing Aiven Service Integration.
-     * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
-     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-     * OpenSearch, etc.
+     * Gets information about an Aiven service integration.
      * 
      * ## Example Usage
      * 
@@ -9236,11 +9362,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(myproject.project())
-     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
-     *             .integrationType(&#34;datadog&#34;)
-     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .integrationType(&#34;metrics&#34;)
+     *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -9253,12 +9379,7 @@ public final class AivenFunctions {
         return getServiceIntegrationPlain(args, InvokeOptions.Empty);
     }
     /**
-     * The Service Integration data source provides information about the existing Aiven Service Integration.
-     * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
-     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-     * OpenSearch, etc.
+     * Gets information about an Aiven service integration.
      * 
      * ## Example Usage
      * 
@@ -9284,11 +9405,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(myproject.project())
-     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
-     *             .integrationType(&#34;datadog&#34;)
-     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .integrationType(&#34;metrics&#34;)
+     *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
@@ -9301,12 +9422,7 @@ public final class AivenFunctions {
         return Deployment.getInstance().invoke("aiven:index/getServiceIntegration:getServiceIntegration", TypeShape.of(GetServiceIntegrationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * The Service Integration data source provides information about the existing Aiven Service Integration.
-     * 
-     * Service Integration defines an integration between two Aiven services or between Aiven service and an external
-     * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-     * getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-     * OpenSearch, etc.
+     * Gets information about an Aiven service integration.
      * 
      * ## Example Usage
      * 
@@ -9332,11 +9448,11 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var myintegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
-     *             .project(myproject.project())
-     *             .destinationServiceName(&#34;&lt;DESTINATION_SERVICE_NAME&gt;&#34;)
-     *             .integrationType(&#34;datadog&#34;)
-     *             .sourceServiceName(&#34;&lt;SOURCE_SERVICE_NAME&gt;&#34;)
+     *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
+     *             .project(exampleProject.project())
+     *             .destinationServiceName(exampleM3db.serviceName())
+     *             .integrationType(&#34;metrics&#34;)
+     *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }

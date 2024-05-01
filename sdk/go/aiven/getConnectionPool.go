@@ -54,9 +54,9 @@ func LookupConnectionPool(ctx *pulumi.Context, args *LookupConnectionPoolArgs, o
 type LookupConnectionPoolArgs struct {
 	// The name of the created pool. Changing this property forces recreation of the resource.
 	PoolName string `pulumi:"poolName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -74,9 +74,9 @@ type LookupConnectionPoolResult struct {
 	PoolName string `pulumi:"poolName"`
 	// The number of connections the pool may create towards the backend server. This does not affect the number of incoming connections, which is always a much larger number. The default value is `10`.
 	PoolSize int `pulumi:"poolSize"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The name of the service user used to connect to the database. To set up proper dependencies please refer to this variable as a reference.
 	Username string `pulumi:"username"`
@@ -99,9 +99,9 @@ func LookupConnectionPoolOutput(ctx *pulumi.Context, args LookupConnectionPoolOu
 type LookupConnectionPoolOutputArgs struct {
 	// The name of the created pool. Changing this property forces recreation of the resource.
 	PoolName pulumi.StringInput `pulumi:"poolName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -154,12 +154,12 @@ func (o LookupConnectionPoolResultOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) int { return v.PoolSize }).(pulumi.IntOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupConnectionPoolResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionPoolResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

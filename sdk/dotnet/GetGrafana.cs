@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
     public sealed class GetGrafanaArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven
     public sealed class GetGrafanaInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -144,10 +144,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigResult> GrafanaUserConfigs;
         /// <summary>
-        /// Grafana server provided values
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetGrafanaGrafanaResult> Grafanas;
-        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -164,7 +160,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -216,7 +212,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGrafanaTagResult> Tags;
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGrafanaTechEmailResult> TechEmails;
         /// <summary>
@@ -243,8 +239,6 @@ namespace Pulumi.Aiven
             string diskSpaceUsed,
 
             ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigResult> grafanaUserConfigs,
-
-            ImmutableArray<Outputs.GetGrafanaGrafanaResult> grafanas,
 
             string id,
 
@@ -293,7 +287,6 @@ namespace Pulumi.Aiven
             DiskSpaceStep = diskSpaceStep;
             DiskSpaceUsed = diskSpaceUsed;
             GrafanaUserConfigs = grafanaUserConfigs;
-            Grafanas = grafanas;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;

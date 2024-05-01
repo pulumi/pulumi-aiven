@@ -38,6 +38,21 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
+     * When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * 
+     */
+    @Import(name="dragonflyPersistence")
+    private @Nullable Output<String> dragonflyPersistence;
+
+    /**
+     * @return When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * 
+     */
+    public Optional<Output<String>> dragonflyPersistence() {
+        return Optional.ofNullable(this.dragonflyPersistence);
+    }
+
+    /**
      * Require SSL to access Dragonfly. The default value is `true`.
      * 
      */
@@ -244,6 +259,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
 
     private DragonflyDragonflyUserConfigArgs(DragonflyDragonflyUserConfigArgs $) {
         this.cacheMode = $.cacheMode;
+        this.dragonflyPersistence = $.dragonflyPersistence;
         this.dragonflySsl = $.dragonflySsl;
         this.ipFilterObjects = $.ipFilterObjects;
         this.ipFilterStrings = $.ipFilterStrings;
@@ -296,6 +312,27 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
          */
         public Builder cacheMode(Boolean cacheMode) {
             return cacheMode(Output.of(cacheMode));
+        }
+
+        /**
+         * @param dragonflyPersistence When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dragonflyPersistence(@Nullable Output<String> dragonflyPersistence) {
+            $.dragonflyPersistence = dragonflyPersistence;
+            return this;
+        }
+
+        /**
+         * @param dragonflyPersistence When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dragonflyPersistence(String dragonflyPersistence) {
+            return dragonflyPersistence(Output.of(dragonflyPersistence));
         }
 
         /**

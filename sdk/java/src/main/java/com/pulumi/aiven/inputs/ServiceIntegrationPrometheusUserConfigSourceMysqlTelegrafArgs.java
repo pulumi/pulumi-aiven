@@ -32,14 +32,14 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
     }
 
     /**
-     * gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
      * 
      */
     @Import(name="gatherFileEventsStats")
     private @Nullable Output<Boolean> gatherFileEventsStats;
 
     /**
-     * @return gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+     * @return Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
      * 
      */
     public Optional<Output<Boolean>> gatherFileEventsStats() {
@@ -285,7 +285,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param gatherFileEventsStats gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+         * @param gatherFileEventsStats Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ServiceIntegrationPrometheusUserConfigSourceMysqlTelegrafArgs
         }
 
         /**
-         * @param gatherFileEventsStats gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+         * @param gatherFileEventsStats Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
          * 
          * @return builder
          * 

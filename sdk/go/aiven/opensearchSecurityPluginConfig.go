@@ -70,7 +70,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo project/service_name
+// $ pulumi import aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig foo PROJECT/SERVICE_NAME
 // ```
 type OpensearchSecurityPluginConfig struct {
 	pulumi.CustomResourceState
@@ -83,9 +83,9 @@ type OpensearchSecurityPluginConfig struct {
 	Available pulumi.BoolOutput `pulumi:"available"`
 	// Whether the security plugin is enabled. This is always true for recently created services.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 }
 
@@ -143,9 +143,9 @@ type opensearchSecurityPluginConfigState struct {
 	Available *bool `pulumi:"available"`
 	// Whether the security plugin is enabled. This is always true for recently created services.
 	Enabled *bool `pulumi:"enabled"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 }
 
@@ -158,9 +158,9 @@ type OpensearchSecurityPluginConfigState struct {
 	Available pulumi.BoolPtrInput
 	// Whether the security plugin is enabled. This is always true for recently created services.
 	Enabled pulumi.BoolPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 }
 
@@ -171,9 +171,9 @@ func (OpensearchSecurityPluginConfigState) ElementType() reflect.Type {
 type opensearchSecurityPluginConfigArgs struct {
 	// The password for the os-sec-admin user.
 	AdminPassword string `pulumi:"adminPassword"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -181,9 +181,9 @@ type opensearchSecurityPluginConfigArgs struct {
 type OpensearchSecurityPluginConfigArgs struct {
 	// The password for the os-sec-admin user.
 	AdminPassword pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 }
 
@@ -294,12 +294,12 @@ func (o OpensearchSecurityPluginConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o OpensearchSecurityPluginConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o OpensearchSecurityPluginConfigOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchSecurityPluginConfig) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

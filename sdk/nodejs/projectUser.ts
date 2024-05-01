@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * The Project User resource allows the creation and management of Aiven Project Users.
+ * Creates and manages an Aiven project member.
  *
  * ## Example Usage
  *
@@ -23,7 +23,7 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * ```sh
- * $ pulumi import aiven:index/projectUser:ProjectUser mytestuser project/email
+ * $ pulumi import aiven:index/projectUser:ProjectUser mytestuser PROJECT/EMAIL
  * ```
  */
 export class ProjectUser extends pulumi.CustomResource {
@@ -55,11 +55,11 @@ export class ProjectUser extends pulumi.CustomResource {
     }
 
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      */
     public /*out*/ readonly accepted!: pulumi.Output<boolean>;
     /**
-     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -67,7 +67,7 @@ export class ProjectUser extends pulumi.CustomResource {
      */
     public readonly memberType!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
 
@@ -114,11 +114,11 @@ export class ProjectUser extends pulumi.CustomResource {
  */
 export interface ProjectUserState {
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      */
     accepted?: pulumi.Input<boolean>;
     /**
-     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      */
     email?: pulumi.Input<string>;
     /**
@@ -126,7 +126,7 @@ export interface ProjectUserState {
      */
     memberType?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
 }
@@ -136,7 +136,7 @@ export interface ProjectUserState {
  */
 export interface ProjectUserArgs {
     /**
-     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      */
     email: pulumi.Input<string>;
     /**
@@ -144,7 +144,7 @@ export interface ProjectUserArgs {
      */
     memberType: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
 }

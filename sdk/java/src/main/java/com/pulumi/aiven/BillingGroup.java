@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages billing groups and assigns them to projects.
+ * Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
  * 
  * ## Example Usage
  * 
@@ -44,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bybg1 = new BillingGroup(&#34;bybg1&#34;, BillingGroupArgs.builder()        
- *             .name(&#34;bybg1&#34;)
+ *         var exampleBillingGroup = new BillingGroup(&#34;exampleBillingGroup&#34;, BillingGroupArgs.builder()        
+ *             .name(&#34;example-billing-group&#34;)
  *             .billingCurrency(&#34;USD&#34;)
  *             .vatId(&#34;123ABC&#34;)
+ *             .parentId(main.id())
  *             .build());
  * 
- *         var pr1 = new Project(&#34;pr1&#34;, ProjectArgs.builder()        
- *             .project(&#34;pr1&#34;)
- *             .billingGroup(bybg1.id())
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .project(&#34;example-project&#34;)
+ *             .billingGroup(exampleBillingGroup.id())
  *             .build());
  * 
  *     }
@@ -63,7 +64,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+ * $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
  * ```
  * 
  */

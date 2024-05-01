@@ -239,7 +239,7 @@ class AwaitableGetBillingGroupResult(GetBillingGroupResult):
 def get_billing_group(billing_group_id: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingGroupResult:
     """
-    Provides information about an existing billing group.
+    Gets information about a billing group.
 
 
     :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.
@@ -273,7 +273,7 @@ def get_billing_group(billing_group_id: Optional[str] = None,
 def get_billing_group_output(billing_group_id: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingGroupResult]:
     """
-    Provides information about an existing billing group.
+    Gets information about a billing group.
 
 
     :param str billing_group_id: The ID of the billing group. To set up proper dependencies please refer to this variable as a reference.

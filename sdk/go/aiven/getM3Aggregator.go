@@ -51,7 +51,7 @@ func LookupM3Aggregator(ctx *pulumi.Context, args *LookupM3AggregatorArgs, opts 
 
 // A collection of arguments for invoking getM3Aggregator.
 type LookupM3AggregatorArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -79,15 +79,13 @@ type LookupM3AggregatorResult struct {
 	Id string `pulumi:"id"`
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfigs []GetM3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfigs"`
-	// M3 aggregator specific server provided values
-	M3aggregators []GetM3AggregatorM3aggregator `pulumi:"m3aggregators"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
@@ -113,7 +111,7 @@ type LookupM3AggregatorResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetM3AggregatorTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetM3AggregatorTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -134,7 +132,7 @@ func LookupM3AggregatorOutput(ctx *pulumi.Context, args LookupM3AggregatorOutput
 
 // A collection of arguments for invoking getM3Aggregator.
 type LookupM3AggregatorOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -211,11 +209,6 @@ func (o LookupM3AggregatorResultOutput) M3aggregatorUserConfigs() GetM3Aggregato
 	}).(GetM3AggregatorM3aggregatorUserConfigArrayOutput)
 }
 
-// M3 aggregator specific server provided values
-func (o LookupM3AggregatorResultOutput) M3aggregators() GetM3AggregatorM3aggregatorArrayOutput {
-	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorM3aggregator { return v.M3aggregators }).(GetM3AggregatorM3aggregatorArrayOutput)
-}
-
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o LookupM3AggregatorResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
@@ -231,7 +224,7 @@ func (o LookupM3AggregatorResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupM3AggregatorResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -296,7 +289,7 @@ func (o LookupM3AggregatorResultOutput) Tags() GetM3AggregatorTagArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorTag { return v.Tags }).(GetM3AggregatorTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o LookupM3AggregatorResultOutput) TechEmails() GetM3AggregatorTechEmailArrayOutput {
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorTechEmail { return v.TechEmails }).(GetM3AggregatorTechEmailArrayOutput)
 }

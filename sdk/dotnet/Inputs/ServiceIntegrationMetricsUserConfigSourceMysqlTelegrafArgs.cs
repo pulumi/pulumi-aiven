@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? GatherEventWaits { get; set; }
 
         /// <summary>
-        /// gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
+        /// Gather metrics from PERFORMANCE*SCHEMA.FILE*SUMMARY*BY*EVENT_NAME.
         /// </summary>
         [Input("gatherFileEventsStats")]
         public Input<bool>? GatherFileEventsStats { get; set; }

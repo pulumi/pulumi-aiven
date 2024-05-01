@@ -51,7 +51,7 @@ func LookupKafkaMirrorMaker(ctx *pulumi.Context, args *LookupKafkaMirrorMakerArg
 
 // A collection of arguments for invoking getKafkaMirrorMaker.
 type LookupKafkaMirrorMakerArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -79,15 +79,13 @@ type LookupKafkaMirrorMakerResult struct {
 	Id string `pulumi:"id"`
 	// KafkaMirrormaker user configurable settings
 	KafkaMirrormakerUserConfigs []GetKafkaMirrorMakerKafkaMirrormakerUserConfig `pulumi:"kafkaMirrormakerUserConfigs"`
-	// Kafka MirrorMaker 2 server provided values
-	KafkaMirrormakers []GetKafkaMirrorMakerKafkaMirrormaker `pulumi:"kafkaMirrormakers"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
@@ -113,7 +111,7 @@ type LookupKafkaMirrorMakerResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetKafkaMirrorMakerTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetKafkaMirrorMakerTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -134,7 +132,7 @@ func LookupKafkaMirrorMakerOutput(ctx *pulumi.Context, args LookupKafkaMirrorMak
 
 // A collection of arguments for invoking getKafkaMirrorMaker.
 type LookupKafkaMirrorMakerOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -211,11 +209,6 @@ func (o LookupKafkaMirrorMakerResultOutput) KafkaMirrormakerUserConfigs() GetKaf
 	}).(GetKafkaMirrorMakerKafkaMirrormakerUserConfigArrayOutput)
 }
 
-// Kafka MirrorMaker 2 server provided values
-func (o LookupKafkaMirrorMakerResultOutput) KafkaMirrormakers() GetKafkaMirrorMakerKafkaMirrormakerArrayOutput {
-	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerKafkaMirrormaker { return v.KafkaMirrormakers }).(GetKafkaMirrorMakerKafkaMirrormakerArrayOutput)
-}
-
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 func (o LookupKafkaMirrorMakerResultOutput) MaintenanceWindowDow() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) string { return v.MaintenanceWindowDow }).(pulumi.StringOutput)
@@ -231,7 +224,7 @@ func (o LookupKafkaMirrorMakerResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupKafkaMirrorMakerResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -298,7 +291,7 @@ func (o LookupKafkaMirrorMakerResultOutput) Tags() GetKafkaMirrorMakerTagArrayOu
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerTag { return v.Tags }).(GetKafkaMirrorMakerTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o LookupKafkaMirrorMakerResultOutput) TechEmails() GetKafkaMirrorMakerTechEmailArrayOutput {
 	return o.ApplyT(func(v LookupKafkaMirrorMakerResult) []GetKafkaMirrorMakerTechEmail { return v.TechEmails }).(GetKafkaMirrorMakerTechEmailArrayOutput)
 }

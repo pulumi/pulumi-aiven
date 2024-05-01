@@ -92,7 +92,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? KeepIndexRefreshInterval { get; set; }
 
         /// <summary>
-        /// use index_patterns instead. The default value is `0`.
+        /// Use index_patterns instead. The default value is `0`.
         /// </summary>
         [Input("maxIndexCount")]
         public Input<int>? MaxIndexCount { get; set; }

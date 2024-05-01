@@ -121,7 +121,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogLocalRetentionMs { get; set; }
 
         /// <summary>
-        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+        /// This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         /// </summary>
         [Input("logMessageDownconversionEnable")]
         public Input<bool>? LogMessageDownconversionEnable { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SaslOauthbearerExpectedIssuer { get; set; }
 
         /// <summary>
-        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+        /// OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
         /// </summary>
         [Input("saslOauthbearerJwksEndpointUrl")]
         public Input<string>? SaslOauthbearerJwksEndpointUrl { get; set; }

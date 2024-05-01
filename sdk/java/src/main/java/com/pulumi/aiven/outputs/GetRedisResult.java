@@ -4,7 +4,6 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetRedisComponent;
-import com.pulumi.aiven.outputs.GetRedisRedi;
 import com.pulumi.aiven.outputs.GetRedisRedisUserConfig;
 import com.pulumi.aiven.outputs.GetRedisServiceIntegration;
 import com.pulumi.aiven.outputs.GetRedisTag;
@@ -80,7 +79,7 @@ public final class GetRedisResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -89,11 +88,6 @@ public final class GetRedisResult {
      * 
      */
     private String projectVpcId;
-    /**
-     * @return Redis server provided values
-     * 
-     */
-    private List<GetRedisRedi> redis;
     /**
      * @return Redis user configurable settings
      * 
@@ -155,7 +149,7 @@ public final class GetRedisResult {
      */
     private List<GetRedisTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetRedisTechEmail> techEmails;
@@ -251,7 +245,7 @@ public final class GetRedisResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -263,13 +257,6 @@ public final class GetRedisResult {
      */
     public String projectVpcId() {
         return this.projectVpcId;
-    }
-    /**
-     * @return Redis server provided values
-     * 
-     */
-    public List<GetRedisRedi> redis() {
-        return this.redis;
     }
     /**
      * @return Redis user configurable settings
@@ -356,7 +343,7 @@ public final class GetRedisResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetRedisTechEmail> techEmails() {
@@ -393,7 +380,6 @@ public final class GetRedisResult {
         private String plan;
         private String project;
         private String projectVpcId;
-        private List<GetRedisRedi> redis;
         private List<GetRedisRedisUserConfig> redisUserConfigs;
         private String serviceHost;
         private List<GetRedisServiceIntegration> serviceIntegrations;
@@ -425,7 +411,6 @@ public final class GetRedisResult {
     	      this.plan = defaults.plan;
     	      this.project = defaults.project;
     	      this.projectVpcId = defaults.projectVpcId;
-    	      this.redis = defaults.redis;
     	      this.redisUserConfigs = defaults.redisUserConfigs;
     	      this.serviceHost = defaults.serviceHost;
     	      this.serviceIntegrations = defaults.serviceIntegrations;
@@ -556,17 +541,6 @@ public final class GetRedisResult {
             }
             this.projectVpcId = projectVpcId;
             return this;
-        }
-        @CustomType.Setter
-        public Builder redis(List<GetRedisRedi> redis) {
-            if (redis == null) {
-              throw new MissingRequiredPropertyException("GetRedisResult", "redis");
-            }
-            this.redis = redis;
-            return this;
-        }
-        public Builder redis(GetRedisRedi... redis) {
-            return redis(List.of(redis));
         }
         @CustomType.Setter
         public Builder redisUserConfigs(List<GetRedisRedisUserConfig> redisUserConfigs) {
@@ -711,7 +685,6 @@ public final class GetRedisResult {
             _resultValue.plan = plan;
             _resultValue.project = project;
             _resultValue.projectVpcId = projectVpcId;
-            _resultValue.redis = redis;
             _resultValue.redisUserConfigs = redisUserConfigs;
             _resultValue.serviceHost = serviceHost;
             _resultValue.serviceIntegrations = serviceIntegrations;

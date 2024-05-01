@@ -165,14 +165,21 @@ class OrganizationGroupProject(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_project = aiven.Project("example_project",
+            project="example-project",
+            parent_id=main["id"])
         example = aiven.OrganizationUserGroup("example",
             description="Example group of users.",
             organization_id=main["id"],
             name="Example group")
-        example_organization_user_group_project = aiven.index.OrganizationUserGroupProject("example",
+        project_admin = aiven.OrganizationUserGroupMember("project_admin",
             group_id=example.group_id,
-            project=example_aiven_project.project,
-            role=admin)
+            organization_id=main["id"],
+            user_id="u123a456b7890c")
+        example_organization_group_project = aiven.OrganizationGroupProject("example",
+            group_id=example.group_id,
+            project=example_project_aiven_project["project"],
+            role="admin")
         ```
 
         ## Import
@@ -202,14 +209,21 @@ class OrganizationGroupProject(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
+        example_project = aiven.Project("example_project",
+            project="example-project",
+            parent_id=main["id"])
         example = aiven.OrganizationUserGroup("example",
             description="Example group of users.",
             organization_id=main["id"],
             name="Example group")
-        example_organization_user_group_project = aiven.index.OrganizationUserGroupProject("example",
+        project_admin = aiven.OrganizationUserGroupMember("project_admin",
             group_id=example.group_id,
-            project=example_aiven_project.project,
-            role=admin)
+            organization_id=main["id"],
+            user_id="u123a456b7890c")
+        example_organization_group_project = aiven.OrganizationGroupProject("example",
+            group_id=example.group_id,
+            project=example_project_aiven_project["project"],
+            role="admin")
         ```
 
         ## Import

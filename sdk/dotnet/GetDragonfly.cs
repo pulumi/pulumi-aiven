@@ -12,13 +12,51 @@ namespace Pulumi.Aiven
     public static class GetDragonfly
     {
         /// <summary>
-        /// The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+        /// Gets information about an Aiven for Dragonfly® service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleDragonfly = Aiven.GetDragonfly.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-dragonfly-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetDragonflyResult> InvokeAsync(GetDragonflyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDragonflyResult>("aiven:index/getDragonfly:getDragonfly", args ?? new GetDragonflyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+        /// Gets information about an Aiven for Dragonfly® service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleDragonfly = Aiven.GetDragonfly.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = "example-dragonfly-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetDragonflyResult> Invoke(GetDragonflyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDragonflyResult>("aiven:index/getDragonfly:getDragonfly", args ?? new GetDragonflyInvokeArgs(), options.WithDefaults());
@@ -28,7 +66,7 @@ namespace Pulumi.Aiven
     public sealed class GetDragonflyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -48,7 +86,7 @@ namespace Pulumi.Aiven
     public sealed class GetDragonflyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -102,10 +140,6 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DiskSpaceUsed;
         /// <summary>
-        /// Dragonfly server provided values
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetDragonflyDragonflyResult> Dragonflies;
-        /// <summary>
         /// Dragonfly user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyDragonflyUserConfigResult> DragonflyUserConfigs;
@@ -126,7 +160,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -178,7 +212,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyTagResult> Tags;
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyTechEmailResult> TechEmails;
         /// <summary>
@@ -203,8 +237,6 @@ namespace Pulumi.Aiven
             string diskSpaceStep,
 
             string diskSpaceUsed,
-
-            ImmutableArray<Outputs.GetDragonflyDragonflyResult> dragonflies,
 
             ImmutableArray<Outputs.GetDragonflyDragonflyUserConfigResult> dragonflyUserConfigs,
 
@@ -254,7 +286,6 @@ namespace Pulumi.Aiven
             DiskSpaceDefault = diskSpaceDefault;
             DiskSpaceStep = diskSpaceStep;
             DiskSpaceUsed = diskSpaceUsed;
-            Dragonflies = dragonflies;
             DragonflyUserConfigs = dragonflyUserConfigs;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;

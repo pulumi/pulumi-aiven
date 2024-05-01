@@ -22,6 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var exampleProject = new Aiven.Project("example_project", new()
+    ///     {
+    ///         ProjectName = "example-project",
+    ///         ParentId = main.Id,
+    ///     });
+    /// 
     ///     var example = new Aiven.OrganizationUserGroup("example", new()
     ///     {
     ///         Description = "Example group of users.",
@@ -29,10 +35,17 @@ namespace Pulumi.Aiven
     ///         Name = "Example group",
     ///     });
     /// 
-    ///     var exampleOrganizationUserGroupProject = new Aiven.Index.OrganizationUserGroupProject("example", new()
+    ///     var projectAdmin = new Aiven.OrganizationUserGroupMember("project_admin", new()
     ///     {
     ///         GroupId = example.GroupId,
-    ///         Project = exampleAivenProject.Project,
+    ///         OrganizationId = main.Id,
+    ///         UserId = "u123a456b7890c",
+    ///     });
+    /// 
+    ///     var exampleOrganizationGroupProject = new Aiven.OrganizationGroupProject("example", new()
+    ///     {
+    ///         GroupId = example.GroupId,
+    ///         Project = exampleProjectAivenProject.Project,
     ///         Role = "admin",
     ///     });
     /// 

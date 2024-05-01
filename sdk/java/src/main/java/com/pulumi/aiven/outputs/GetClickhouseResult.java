@@ -3,7 +3,6 @@
 
 package com.pulumi.aiven.outputs;
 
-import com.pulumi.aiven.outputs.GetClickhouseClickhouse;
 import com.pulumi.aiven.outputs.GetClickhouseClickhouseUserConfig;
 import com.pulumi.aiven.outputs.GetClickhouseComponent;
 import com.pulumi.aiven.outputs.GetClickhouseServiceIntegration;
@@ -29,11 +28,6 @@ public final class GetClickhouseResult {
      * 
      */
     private List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs;
-    /**
-     * @return Clickhouse server provided values
-     * 
-     */
-    private List<GetClickhouseClickhouse> clickhouses;
     /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
@@ -90,7 +84,7 @@ public final class GetClickhouseResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -155,7 +149,7 @@ public final class GetClickhouseResult {
      */
     private List<GetClickhouseTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetClickhouseTechEmail> techEmails;
@@ -179,13 +173,6 @@ public final class GetClickhouseResult {
      */
     public List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs() {
         return this.clickhouseUserConfigs;
-    }
-    /**
-     * @return Clickhouse server provided values
-     * 
-     */
-    public List<GetClickhouseClickhouse> clickhouses() {
-        return this.clickhouses;
     }
     /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -265,7 +252,7 @@ public final class GetClickhouseResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -356,7 +343,7 @@ public final class GetClickhouseResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetClickhouseTechEmail> techEmails() {
@@ -381,7 +368,6 @@ public final class GetClickhouseResult {
     public static final class Builder {
         private String additionalDiskSpace;
         private List<GetClickhouseClickhouseUserConfig> clickhouseUserConfigs;
-        private List<GetClickhouseClickhouse> clickhouses;
         private String cloudName;
         private List<GetClickhouseComponent> components;
         private String diskSpace;
@@ -413,7 +399,6 @@ public final class GetClickhouseResult {
     	      Objects.requireNonNull(defaults);
     	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.clickhouseUserConfigs = defaults.clickhouseUserConfigs;
-    	      this.clickhouses = defaults.clickhouses;
     	      this.cloudName = defaults.cloudName;
     	      this.components = defaults.components;
     	      this.diskSpace = defaults.diskSpace;
@@ -460,17 +445,6 @@ public final class GetClickhouseResult {
         }
         public Builder clickhouseUserConfigs(GetClickhouseClickhouseUserConfig... clickhouseUserConfigs) {
             return clickhouseUserConfigs(List.of(clickhouseUserConfigs));
-        }
-        @CustomType.Setter
-        public Builder clickhouses(List<GetClickhouseClickhouse> clickhouses) {
-            if (clickhouses == null) {
-              throw new MissingRequiredPropertyException("GetClickhouseResult", "clickhouses");
-            }
-            this.clickhouses = clickhouses;
-            return this;
-        }
-        public Builder clickhouses(GetClickhouseClickhouse... clickhouses) {
-            return clickhouses(List.of(clickhouses));
         }
         @CustomType.Setter
         public Builder cloudName(String cloudName) {
@@ -699,7 +673,6 @@ public final class GetClickhouseResult {
             final var _resultValue = new GetClickhouseResult();
             _resultValue.additionalDiskSpace = additionalDiskSpace;
             _resultValue.clickhouseUserConfigs = clickhouseUserConfigs;
-            _resultValue.clickhouses = clickhouses;
             _resultValue.cloudName = cloudName;
             _resultValue.components = components;
             _resultValue.diskSpace = diskSpace;

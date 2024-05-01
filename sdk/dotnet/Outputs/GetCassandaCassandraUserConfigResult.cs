@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? BackupMinute;
         /// <summary>
-        /// cassandra configuration values
+        /// Cassandra configuration values
         /// </summary>
         public readonly Outputs.GetCassandaCassandraUserConfigCassandraResult? Cassandra;
         /// <summary>

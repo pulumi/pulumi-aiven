@@ -20,7 +20,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+ * Creates and manages an Aiven for Apache Kafka® topic.
  * 
  * ## Example Usage
  * 
@@ -47,10 +47,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytesttopic = new KafkaTopic(&#34;mytesttopic&#34;, KafkaTopicArgs.builder()        
- *             .project(myproject.project())
- *             .serviceName(myservice.serviceName())
- *             .topicName(&#34;&lt;TOPIC_NAME&gt;&#34;)
+ *         var exampleTopic = new KafkaTopic(&#34;exampleTopic&#34;, KafkaTopicArgs.builder()        
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
+ *             .topicName(&#34;example-topic&#34;)
  *             .partitions(5)
  *             .replication(3)
  *             .terminationProtection(true)
@@ -68,21 +68,21 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+ * $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
  * ```
  * 
  */
 @ResourceType(type="aiven:index/kafkaTopic:KafkaTopic")
 public class KafkaTopic extends com.pulumi.resources.CustomResource {
     /**
-     * Kafka topic configuration
+     * Kafka topic configuration.
      * 
      */
     @Export(name="config", refs={KafkaTopicConfig.class}, tree="[0]")
     private Output</* @Nullable */ KafkaTopicConfig> config;
 
     /**
-     * @return Kafka topic configuration
+     * @return Kafka topic configuration.
      * 
      */
     public Output<Optional<KafkaTopicConfig>> config() {
@@ -103,14 +103,14 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return this.partitions;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -131,44 +131,44 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
         return this.replication;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {
         return this.serviceName;
     }
     /**
-     * Kafka Topic tag.
+     * Tags for the Kafka topic.
      * 
      */
     @Export(name="tags", refs={List.class,KafkaTopicTag.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KafkaTopicTag>> tags;
 
     /**
-     * @return Kafka Topic tag.
+     * @return Tags for the Kafka topic.
      * 
      */
     public Output<Optional<List<KafkaTopicTag>>> tags() {
         return Codegen.optional(this.tags);
     }
     /**
-     * It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-     * enable this for any production Kafka topic containing critical data.
+     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
+     * still be deleted in the Aiven Console.**
      * 
      */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**
-     * @return It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-     * enable this for any production Kafka topic containing critical data.
+     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
+     * still be deleted in the Aiven Console.**
      * 
      */
     public Output<Optional<Boolean>> terminationProtection() {

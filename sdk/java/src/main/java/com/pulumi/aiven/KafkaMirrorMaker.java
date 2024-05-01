@@ -7,7 +7,6 @@ import com.pulumi.aiven.KafkaMirrorMakerArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.KafkaMirrorMakerState;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerComponent;
-import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormaker;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerServiceIntegration;
 import com.pulumi.aiven.outputs.KafkaMirrorMakerTag;
@@ -82,40 +81,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="aiven:index/kafkaMirrorMaker:KafkaMirrorMaker")
 public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-     * reducing will result in the service rebalancing.
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     @Export(name="additionalDiskSpace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> additionalDiskSpace;
 
     /**
-     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-     * reducing will result in the service rebalancing.
+     * @return Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Output<Optional<String>> additionalDiskSpace() {
         return Codegen.optional(this.additionalDiskSpace);
     }
     /**
-     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-     * created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-     * provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-     * are documented on each Cloud provider&#39;s own support articles, like [here for
-     * Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-     * AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
     @Export(name="cloudName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudName;
 
     /**
-     * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-     * created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-     * provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-     * are documented on each Cloud provider&#39;s own support articles, like [here for
-     * Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-     * AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
      */
     public Output<Optional<String>> cloudName() {
@@ -136,8 +123,7 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      * @deprecated
      * This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.
@@ -148,8 +134,7 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> diskSpace;
 
     /**
-     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * @return Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      * 
      */
     public Output<Optional<String>> diskSpace() {
@@ -170,32 +155,28 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return this.diskSpaceCap;
     }
     /**
-     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
      * 
      */
     @Export(name="diskSpaceDefault", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceDefault;
 
     /**
-     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * @return The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
      * 
      */
     public Output<String> diskSpaceDefault() {
         return this.diskSpaceDefault;
     }
     /**
-     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
      * 
      */
     @Export(name="diskSpaceStep", refs={String.class}, tree="[0]")
     private Output<String> diskSpaceStep;
 
     /**
-     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * @return The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
      * 
      */
     public Output<String> diskSpaceStep() {
@@ -230,20 +211,6 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kafkaMirrormakerUserConfig);
     }
     /**
-     * Kafka MirrorMaker 2 server provided values
-     * 
-     */
-    @Export(name="kafkaMirrormakers", refs={List.class,KafkaMirrorMakerKafkaMirrormaker.class}, tree="[0,1]")
-    private Output<List<KafkaMirrorMakerKafkaMirrormaker>> kafkaMirrormakers;
-
-    /**
-     * @return Kafka MirrorMaker 2 server provided values
-     * 
-     */
-    public Output<List<KafkaMirrorMakerKafkaMirrormaker>> kafkaMirrormakers() {
-        return this.kafkaMirrormakers;
-    }
-    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -272,60 +239,42 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindowTime);
     }
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     @Export(name="plan", refs={String.class}, tree="[0]")
     private Output<String> plan;
 
     /**
-     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * @return Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      * 
      */
     public Output<String> plan() {
         return this.plan;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-     * value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-     * as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-     * servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      * 
      */
     @Export(name="projectVpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> projectVpcId;
 
     /**
-     * @return Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-     * value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-     * as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-     * servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * @return Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      * 
      */
     public Output<Optional<String>> projectVpcId() {
@@ -360,16 +309,14 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceIntegrations);
     }
     /**
-     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * @return Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      * 
      */
     public Output<String> serviceName() {
@@ -460,16 +407,14 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return this.state;
     }
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-     * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     @Export(name="staticIps", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> staticIps;
 
     /**
-     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a
-     * static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
+     * @return Static IPs that are going to be associated with this service. Please assign a value using the &#39;toset&#39; function. Once a static ip resource is in the &#39;assigned&#39; state it cannot be unbound from the node again
      * 
      */
     public Output<Optional<List<String>>> staticIps() {
@@ -490,34 +435,28 @@ public class KafkaMirrorMaker extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Export(name="techEmails", refs={List.class,KafkaMirrorMakerTechEmail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KafkaMirrorMakerTechEmail>> techEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Output<Optional<List<KafkaMirrorMakerTechEmail>>> techEmails() {
         return Codegen.optional(this.techEmails);
     }
     /**
-     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
     /**
-     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * @return Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      * 
      */
     public Output<Optional<Boolean>> terminationProtection() {

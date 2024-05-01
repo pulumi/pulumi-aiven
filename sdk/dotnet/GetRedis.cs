@@ -66,7 +66,7 @@ namespace Pulumi.Aiven
     public sealed class GetRedisArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven
     public sealed class GetRedisInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -156,17 +156,13 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Plan;
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         public readonly string Project;
         /// <summary>
         /// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         /// </summary>
         public readonly string ProjectVpcId;
-        /// <summary>
-        /// Redis server provided values
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetRedisRediResult> Redis;
         /// <summary>
         /// Redis user configurable settings
         /// </summary>
@@ -216,7 +212,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisTagResult> Tags;
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisTechEmailResult> TechEmails;
         /// <summary>
@@ -253,8 +249,6 @@ namespace Pulumi.Aiven
             string project,
 
             string projectVpcId,
-
-            ImmutableArray<Outputs.GetRedisRediResult> redis,
 
             ImmutableArray<Outputs.GetRedisRedisUserConfigResult> redisUserConfigs,
 
@@ -298,7 +292,6 @@ namespace Pulumi.Aiven
             Plan = plan;
             Project = project;
             ProjectVpcId = projectVpcId;
-            Redis = redis;
             RedisUserConfigs = redisUserConfigs;
             ServiceHost = serviceHost;
             ServiceIntegrations = serviceIntegrations;

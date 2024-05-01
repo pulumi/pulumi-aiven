@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? KeepIndexRefreshInterval;
         /// <summary>
-        /// use index_patterns instead. The default value is `0`.
+        /// Use index_patterns instead. The default value is `0`.
         /// </summary>
         public readonly int? MaxIndexCount;
         /// <summary>

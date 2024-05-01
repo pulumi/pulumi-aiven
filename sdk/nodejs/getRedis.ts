@@ -35,7 +35,7 @@ export function getRedis(args: GetRedisArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetRedisArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -97,17 +97,13 @@ export interface GetRedisResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
      * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     readonly projectVpcId: string;
-    /**
-     * Redis server provided values
-     */
-    readonly redis: outputs.GetRedisRedi[];
     /**
      * Redis user configurable settings
      */
@@ -157,7 +153,7 @@ export interface GetRedisResult {
      */
     readonly tags: outputs.GetRedisTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetRedisTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getRedisOutput(args: GetRedisOutputArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetRedisOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

@@ -28,14 +28,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Service Integration resource allows the creation and management of Aiven Service Integrations.
+ * Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
  * 
- * **Note** For services running on `hobbyist` plan service integrations are not supported.
+ * You can set up an integration between two Aiven services or an Aiven service and an external
+ * service. For example, you can send metrics from a Kafka service to an M3DB service,
+ * send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
+ * any service to OpenSearch.
  * 
- * Service Integration defines an integration between two Aiven services or between Aiven service and an external
- * integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
- * getting metrics from an M3DB service to a Grafana service to show dashboards, sending logs from any service to
- * OpenSearch, etc.
+ * **Services integrations are not supported for services running on hobbyist plans.**
  * 
  * ## Example Usage
  * 
@@ -61,11 +61,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myIntegrationMetrics = new ServiceIntegration(&#34;myIntegrationMetrics&#34;, ServiceIntegrationArgs.builder()        
- *             .project(myproject.project())
+ *         var exampleIntegration = new ServiceIntegration(&#34;exampleIntegration&#34;, ServiceIntegrationArgs.builder()        
+ *             .project(exampleProject.project())
  *             .integrationType(&#34;metrics&#34;)
- *             .sourceServiceName(kfk1.serviceName())
- *             .destinationServiceName(m3db.serviceName())
+ *             .sourceServiceName(exampleKafka.serviceName())
+ *             .destinationServiceName(exampleM3db.serviceName())
  *             .build());
  * 
  *     }
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+ * $ pulumi import aiven:index/serviceIntegration:ServiceIntegration example_integration PROJECT/INTEGRATION_ID
  * ```
  * 
  */
@@ -125,28 +125,28 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.datadogUserConfig);
     }
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      * 
      */
     @Export(name="destinationEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointId;
 
     /**
-     * @return Destination endpoint for the integration (if any)
+     * @return Destination endpoint for the integration.
      * 
      */
     public Output<Optional<String>> destinationEndpointId() {
         return Codegen.optional(this.destinationEndpointId);
     }
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      * 
      */
     @Export(name="destinationServiceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationServiceName;
 
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     public Output<Optional<String>> destinationServiceName() {
@@ -209,14 +209,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.externalOpensearchLogsUserConfig);
     }
     /**
-     * Service Integration Id at aiven
+     * The ID of the Aiven service integration.
      * 
      */
     @Export(name="integrationId", refs={String.class}, tree="[0]")
     private Output<String> integrationId;
 
     /**
-     * @return Service Integration Id at aiven
+     * @return The ID of the Aiven service integration.
      * 
      */
     public Output<String> integrationId() {
@@ -307,14 +307,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.metricsUserConfig);
     }
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     public Output<String> project() {
@@ -335,14 +335,14 @@ public class ServiceIntegration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.prometheusUserConfig);
     }
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      * 
      */
     @Export(name="sourceEndpointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointId;
 
     /**
-     * @return Source endpoint for the integration (if any)
+     * @return Source endpoint for the integration.
      * 
      */
     public Output<Optional<String>> sourceEndpointId() {

@@ -51,7 +51,7 @@ func LookupMySql(ctx *pulumi.Context, args *LookupMySqlArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getMySql.
 type LookupMySqlArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -83,11 +83,9 @@ type LookupMySqlResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Mysql user configurable settings
 	MysqlUserConfigs []GetMySqlMysqlUserConfig `pulumi:"mysqlUserConfigs"`
-	// MySQL specific server provided values
-	Mysqls []GetMySqlMysql `pulumi:"mysqls"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
@@ -113,7 +111,7 @@ type LookupMySqlResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetMySqlTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetMySqlTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -134,7 +132,7 @@ func LookupMySqlOutput(ctx *pulumi.Context, args LookupMySqlOutputArgs, opts ...
 
 // A collection of arguments for invoking getMySql.
 type LookupMySqlOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -219,17 +217,12 @@ func (o LookupMySqlResultOutput) MysqlUserConfigs() GetMySqlMysqlUserConfigArray
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlMysqlUserConfig { return v.MysqlUserConfigs }).(GetMySqlMysqlUserConfigArrayOutput)
 }
 
-// MySQL specific server provided values
-func (o LookupMySqlResultOutput) Mysqls() GetMySqlMysqlArrayOutput {
-	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlMysql { return v.Mysqls }).(GetMySqlMysqlArrayOutput)
-}
-
 // Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o LookupMySqlResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMySqlResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupMySqlResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMySqlResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -294,7 +287,7 @@ func (o LookupMySqlResultOutput) Tags() GetMySqlTagArrayOutput {
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlTag { return v.Tags }).(GetMySqlTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o LookupMySqlResultOutput) TechEmails() GetMySqlTechEmailArrayOutput {
 	return o.ApplyT(func(v LookupMySqlResult) []GetMySqlTechEmail { return v.TechEmails }).(GetMySqlTechEmailArrayOutput)
 }

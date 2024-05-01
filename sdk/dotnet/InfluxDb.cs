@@ -105,7 +105,7 @@ namespace Pulumi.Aiven
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
@@ -189,8 +189,8 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.InfluxDbTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        /// important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         [Output("techEmails")]
         public Output<ImmutableArray<Outputs.InfluxDbTechEmail>> TechEmails { get; private set; } = null!;
@@ -309,7 +309,7 @@ namespace Pulumi.Aiven
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
@@ -372,8 +372,8 @@ namespace Pulumi.Aiven
         private InputList<Inputs.InfluxDbTechEmailArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        /// important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.InfluxDbTechEmailArgs> TechEmails
         {
@@ -502,7 +502,7 @@ namespace Pulumi.Aiven
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
         /// reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
@@ -627,8 +627,8 @@ namespace Pulumi.Aiven
         private InputList<Inputs.InfluxDbTechEmailGetArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-        /// instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+        /// important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.InfluxDbTechEmailGetArgs> TechEmails
         {

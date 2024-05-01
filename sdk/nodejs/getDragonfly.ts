@@ -7,7 +7,19 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+ * Gets information about an Aiven for Dragonfly® service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleDragonfly = aiven.getDragonfly({
+ *     project: exampleProject.project,
+ *     serviceName: "example-dragonfly-service",
+ * });
+ * ```
  */
 export function getDragonfly(args: GetDragonflyArgs, opts?: pulumi.InvokeOptions): Promise<GetDragonflyResult> {
 
@@ -23,7 +35,7 @@ export function getDragonfly(args: GetDragonflyArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetDragonflyArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -69,10 +81,6 @@ export interface GetDragonflyResult {
      */
     readonly diskSpaceUsed: string;
     /**
-     * Dragonfly server provided values
-     */
-    readonly dragonflies: outputs.GetDragonflyDragonfly[];
-    /**
      * Dragonfly user configurable settings
      */
     readonly dragonflyUserConfigs: outputs.GetDragonflyDragonflyUserConfig[];
@@ -93,7 +101,7 @@ export interface GetDragonflyResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -145,7 +153,7 @@ export interface GetDragonflyResult {
      */
     readonly tags: outputs.GetDragonflyTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetDragonflyTechEmail[];
     /**
@@ -154,7 +162,19 @@ export interface GetDragonflyResult {
     readonly terminationProtection: boolean;
 }
 /**
- * The Dragonfly data source provides information about the existing Aiven Dragonfly service.
+ * Gets information about an Aiven for Dragonfly® service.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const exampleDragonfly = aiven.getDragonfly({
+ *     project: exampleProject.project,
+ *     serviceName: "example-dragonfly-service",
+ * });
+ * ```
  */
 export function getDragonflyOutput(args: GetDragonflyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDragonflyResult> {
     return pulumi.output(args).apply((a: any) => getDragonfly(a, opts))
@@ -165,7 +185,7 @@ export function getDragonflyOutput(args: GetDragonflyOutputArgs, opts?: pulumi.I
  */
 export interface GetDragonflyOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

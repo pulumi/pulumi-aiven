@@ -29,14 +29,10 @@ public final class GrafanaGrafanaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
      * 
      */
     private @Nullable Boolean alertingEnabled;
@@ -225,7 +221,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
      * 
      */
     private @Nullable Boolean unifiedAlertingEnabled;
@@ -249,16 +245,12 @@ public final class GrafanaGrafanaUserConfig {
     /**
      * @return Additional Cloud Regions for Backup Replication.
      * 
-     * @deprecated
-     * This property is deprecated.
-     * 
      */
-    @Deprecated /* This property is deprecated. */
     public Optional<String> additionalBackupRegions() {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
+     * @return Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
      * 
      */
     public Optional<Boolean> alertingEnabled() {
@@ -521,7 +513,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
+     * @return Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
      * 
      */
     public Optional<Boolean> unifiedAlertingEnabled() {

@@ -15,14 +15,14 @@ public final class ProjectTagArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectTagArgs Empty = new ProjectTagArgs();
 
     /**
-     * Project tag key
+     * Project tag key.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Project tag key
+     * @return Project tag key.
      * 
      */
     public Output<String> key() {
@@ -30,14 +30,14 @@ public final class ProjectTagArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Project tag value
+     * Project tag value.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Project tag value
+     * @return Project tag value.
      * 
      */
     public Output<String> value() {
@@ -70,7 +70,7 @@ public final class ProjectTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Project tag key
+         * @param key Project tag key.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ProjectTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Project tag key
+         * @param key Project tag key.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ProjectTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Project tag value
+         * @param value Project tag value.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ProjectTagArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Project tag value
+         * @param value Project tag value.
          * 
          * @return builder
          * 

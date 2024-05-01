@@ -27,10 +27,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.Project;
+ * import com.pulumi.aiven.ProjectArgs;
  * import com.pulumi.aiven.OrganizationUserGroup;
  * import com.pulumi.aiven.OrganizationUserGroupArgs;
- * import com.pulumi.aiven.organizationUserGroupProject;
- * import com.pulumi.aiven.OrganizationUserGroupProjectArgs;
+ * import com.pulumi.aiven.OrganizationUserGroupMember;
+ * import com.pulumi.aiven.OrganizationUserGroupMemberArgs;
+ * import com.pulumi.aiven.OrganizationGroupProject;
+ * import com.pulumi.aiven.OrganizationGroupProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,15 +48,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *             .project(&#34;example-project&#34;)
+ *             .parentId(main.id())
+ *             .build());
+ * 
  *         var example = new OrganizationUserGroup(&#34;example&#34;, OrganizationUserGroupArgs.builder()        
  *             .description(&#34;Example group of users.&#34;)
  *             .organizationId(main.id())
  *             .name(&#34;Example group&#34;)
  *             .build());
  * 
- *         var exampleOrganizationUserGroupProject = new OrganizationUserGroupProject(&#34;exampleOrganizationUserGroupProject&#34;, OrganizationUserGroupProjectArgs.builder()        
+ *         var projectAdmin = new OrganizationUserGroupMember(&#34;projectAdmin&#34;, OrganizationUserGroupMemberArgs.builder()        
  *             .groupId(example.groupId())
- *             .project(exampleAivenProject.project())
+ *             .organizationId(main.id())
+ *             .userId(&#34;u123a456b7890c&#34;)
+ *             .build());
+ * 
+ *         var exampleOrganizationGroupProject = new OrganizationGroupProject(&#34;exampleOrganizationGroupProject&#34;, OrganizationGroupProjectArgs.builder()        
+ *             .groupId(example.groupId())
+ *             .project(exampleProjectAivenProject.project())
  *             .role(&#34;admin&#34;)
  *             .build());
  * 

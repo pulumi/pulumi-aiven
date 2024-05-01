@@ -77,14 +77,14 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
     }
 
     /**
-     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     @Import(name="consumerMaxPartitionFetchBytes")
     private @Nullable Output<Integer> consumerMaxPartitionFetchBytes;
 
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
      * 
      */
     public Optional<Output<Integer>> consumerMaxPartitionFetchBytes() {
@@ -380,7 +380,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class KafkaKafkaUserConfigKafkaConnectConfigArgs extends com.pulumi
         }
 
         /**
-         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. .
+         * @param consumerMaxPartitionFetchBytes Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
          * 
          * @return builder
          * 

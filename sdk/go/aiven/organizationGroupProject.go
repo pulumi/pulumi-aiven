@@ -28,6 +28,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
+//				Project:  pulumi.String("example-project"),
+//				ParentId: pulumi.Any(main.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			example, err := aiven.NewOrganizationUserGroup(ctx, "example", &aiven.OrganizationUserGroupArgs{
 //				Description:    pulumi.String("Example group of users."),
 //				OrganizationId: pulumi.Any(main.Id),
@@ -36,10 +43,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewOrganizationUserGroupProject(ctx, "example", &aiven.OrganizationUserGroupProjectArgs{
+//			_, err = aiven.NewOrganizationUserGroupMember(ctx, "project_admin", &aiven.OrganizationUserGroupMemberArgs{
+//				GroupId:        example.GroupId,
+//				OrganizationId: pulumi.Any(main.Id),
+//				UserId:         pulumi.String("u123a456b7890c"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = aiven.NewOrganizationGroupProject(ctx, "example", &aiven.OrganizationGroupProjectArgs{
 //				GroupId: example.GroupId,
-//				Project: exampleAivenProject.Project,
-//				Role:    "admin",
+//				Project: pulumi.Any(exampleProjectAivenProject.Project),
+//				Role:    pulumi.String("admin"),
 //			})
 //			if err != nil {
 //				return err

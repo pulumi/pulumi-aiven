@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Kafka resource allows the creation and management of Aiven Kafka services.
+// Creates and manages an [Aiven for Apache Kafka®](https://aiven.io/docs/products/kafka) service.
 //
 // ## Example Usage
 //
@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := aiven.NewKafka(ctx, "kafka1", &aiven.KafkaArgs{
-//				Project:               pulumi.Any(pr1.Project),
+//			_, err := aiven.NewKafka(ctx, "example_kafka", &aiven.KafkaArgs{
+//				Project:               pulumi.Any(exampleProject.Project),
 //				CloudName:             pulumi.String("google-europe-west1"),
 //				Plan:                  pulumi.String("business-4"),
-//				ServiceName:           pulumi.String("my-kafka1"),
+//				ServiceName:           pulumi.String("example-kafka"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
 //				KafkaUserConfig: &aiven.KafkaKafkaUserConfigArgs{
@@ -62,7 +62,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/kafka:Kafka kafka1 project/service_name
+// $ pulumi import aiven:index/kafka:Kafka example_kafka PROJECT/SERVICE_NAME
 // ```
 type Kafka struct {
 	pulumi.CustomResourceState
@@ -73,7 +73,7 @@ type Kafka struct {
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components KafkaComponentArrayOutput `pulumi:"components"`
-	// Create default wildcard Kafka ACL
+	// Create a default wildcard Kafka ACL.
 	DefaultAcl pulumi.BoolPtrOutput `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -89,9 +89,9 @@ type Kafka struct {
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrOutput `pulumi:"kafkaUserConfig"`
-	// Kafka server provided values
+	// Kafka server connection details.
 	Kafkas KafkaKafkaArrayOutput `pulumi:"kafkas"`
-	// Switch the service to use Karapace for schema registry and REST proxy
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrOutput `pulumi:"karapace"`
@@ -101,7 +101,7 @@ type Kafka struct {
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
@@ -127,7 +127,7 @@ type Kafka struct {
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaTagArrayOutput `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails KafkaTechEmailArrayOutput `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
@@ -150,6 +150,7 @@ func NewKafka(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"kafkas",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -183,7 +184,7 @@ type kafkaState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []KafkaComponent `pulumi:"components"`
-	// Create default wildcard Kafka ACL
+	// Create a default wildcard Kafka ACL.
 	DefaultAcl *bool `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -199,9 +200,9 @@ type kafkaState struct {
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
-	// Kafka server provided values
+	// Kafka server connection details.
 	Kafkas []KafkaKafka `pulumi:"kafkas"`
-	// Switch the service to use Karapace for schema registry and REST proxy
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace *bool `pulumi:"karapace"`
@@ -211,7 +212,7 @@ type kafkaState struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
@@ -237,7 +238,7 @@ type kafkaState struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []KafkaTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []KafkaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -250,7 +251,7 @@ type KafkaState struct {
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components KafkaComponentArrayInput
-	// Create default wildcard Kafka ACL
+	// Create a default wildcard Kafka ACL.
 	DefaultAcl pulumi.BoolPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -266,9 +267,9 @@ type KafkaState struct {
 	DiskSpaceUsed pulumi.StringPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
-	// Kafka server provided values
+	// Kafka server connection details.
 	Kafkas KafkaKafkaArrayInput
-	// Switch the service to use Karapace for schema registry and REST proxy
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrInput
@@ -278,7 +279,7 @@ type KafkaState struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
@@ -304,7 +305,7 @@ type KafkaState struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails KafkaTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -319,7 +320,7 @@ type kafkaArgs struct {
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// Create default wildcard Kafka ACL
+	// Create a default wildcard Kafka ACL.
 	DefaultAcl *bool `pulumi:"defaultAcl"`
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -327,7 +328,7 @@ type kafkaArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
-	// Switch the service to use Karapace for schema registry and REST proxy
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace *bool `pulumi:"karapace"`
@@ -337,7 +338,7 @@ type kafkaArgs struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
@@ -349,7 +350,7 @@ type kafkaArgs struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []KafkaTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []KafkaTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
@@ -361,7 +362,7 @@ type KafkaArgs struct {
 	AdditionalDiskSpace pulumi.StringPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// Create default wildcard Kafka ACL
+	// Create a default wildcard Kafka ACL.
 	DefaultAcl pulumi.BoolPtrInput
 	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
@@ -369,7 +370,7 @@ type KafkaArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
-	// Switch the service to use Karapace for schema registry and REST proxy
+	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.
 	Karapace pulumi.BoolPtrInput
@@ -379,7 +380,7 @@ type KafkaArgs struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
@@ -391,7 +392,7 @@ type KafkaArgs struct {
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags KafkaTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails KafkaTechEmailArrayInput
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
@@ -499,7 +500,7 @@ func (o KafkaOutput) Components() KafkaComponentArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaComponentArrayOutput { return v.Components }).(KafkaComponentArrayOutput)
 }
 
-// Create default wildcard Kafka ACL
+// Create a default wildcard Kafka ACL.
 func (o KafkaOutput) DefaultAcl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.BoolPtrOutput { return v.DefaultAcl }).(pulumi.BoolPtrOutput)
 }
@@ -536,12 +537,12 @@ func (o KafkaOutput) KafkaUserConfig() KafkaKafkaUserConfigPtrOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaUserConfigPtrOutput { return v.KafkaUserConfig }).(KafkaKafkaUserConfigPtrOutput)
 }
 
-// Kafka server provided values
+// Kafka server connection details.
 func (o KafkaOutput) Kafkas() KafkaKafkaArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaKafkaArrayOutput { return v.Kafkas }).(KafkaKafkaArrayOutput)
 }
 
-// Switch the service to use Karapace for schema registry and REST proxy
+// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 //
 // Deprecated: Usage of this field is discouraged.
 func (o KafkaOutput) Karapace() pulumi.BoolPtrOutput {
@@ -563,7 +564,7 @@ func (o KafkaOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o KafkaOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kafka) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -628,7 +629,7 @@ func (o KafkaOutput) Tags() KafkaTagArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaTagArrayOutput { return v.Tags }).(KafkaTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o KafkaOutput) TechEmails() KafkaTechEmailArrayOutput {
 	return o.ApplyT(func(v *Kafka) KafkaTechEmailArrayOutput { return v.TechEmails }).(KafkaTechEmailArrayOutput)
 }

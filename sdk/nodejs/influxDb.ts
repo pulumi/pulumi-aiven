@@ -103,7 +103,7 @@ export class InfluxDb extends pulumi.CustomResource {
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
@@ -161,8 +161,8 @@ export class InfluxDb extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.InfluxDbTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+     * important alerts and updates about this service. You can also set email contacts at the project level.
      */
     public readonly techEmails!: pulumi.Output<outputs.InfluxDbTechEmail[] | undefined>;
     /**
@@ -333,7 +333,7 @@ export interface InfluxDbState {
      */
     plan?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
@@ -391,8 +391,8 @@ export interface InfluxDbState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.InfluxDbTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+     * important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.InfluxDbTechEmail>[]>;
     /**
@@ -450,7 +450,7 @@ export interface InfluxDbArgs {
      */
     plan: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
      * reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
@@ -480,8 +480,8 @@ export interface InfluxDbArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.InfluxDbTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive
+     * important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.InfluxDbTechEmail>[]>;
     /**

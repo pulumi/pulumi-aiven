@@ -27,14 +27,14 @@ class KafkaTopicArgs:
         """
         The set of arguments for constructing a KafkaTopic resource.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
-        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Kafka Topic tag.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+               still be deleted in the Aiven Console.**
         """
         pulumi.set(__self__, "partitions", partitions)
         pulumi.set(__self__, "project", project)
@@ -64,7 +64,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -88,7 +88,7 @@ class KafkaTopicArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -112,7 +112,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
         """
-        Kafka topic configuration
+        Kafka topic configuration.
         """
         return pulumi.get(self, "config")
 
@@ -124,7 +124,7 @@ class KafkaTopicArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
         """
-        Kafka Topic tag.
+        Tags for the Kafka topic.
         """
         return pulumi.get(self, "tags")
 
@@ -136,8 +136,8 @@ class KafkaTopicArgs:
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-        enable this for any production Kafka topic containing critical data.
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+        still be deleted in the Aiven Console.**
         """
         return pulumi.get(self, "termination_protection")
 
@@ -159,14 +159,14 @@ class _KafkaTopicState:
                  topic_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KafkaTopic resources.
-        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration
+        :param pulumi.Input['KafkaTopicConfigArgs'] config: Kafka topic configuration.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Kafka Topic tag.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+               still be deleted in the Aiven Console.**
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         if config is not None:
@@ -190,7 +190,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def config(self) -> Optional[pulumi.Input['KafkaTopicConfigArgs']]:
         """
-        Kafka topic configuration
+        Kafka topic configuration.
         """
         return pulumi.get(self, "config")
 
@@ -214,7 +214,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -238,7 +238,7 @@ class _KafkaTopicState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -250,7 +250,7 @@ class _KafkaTopicState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaTopicTagArgs']]]]:
         """
-        Kafka Topic tag.
+        Tags for the Kafka topic.
         """
         return pulumi.get(self, "tags")
 
@@ -262,8 +262,8 @@ class _KafkaTopicState:
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-        enable this for any production Kafka topic containing critical data.
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+        still be deleted in the Aiven Console.**
         """
         return pulumi.get(self, "termination_protection")
 
@@ -299,7 +299,7 @@ class KafkaTopic(pulumi.CustomResource):
                  topic_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+        Creates and manages an Aiven for Apache Kafka® topic.
 
         ## Example Usage
 
@@ -307,10 +307,10 @@ class KafkaTopic(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mytesttopic = aiven.KafkaTopic("mytesttopic",
-            project=myproject["project"],
-            service_name=myservice["serviceName"],
-            topic_name="<TOPIC_NAME>",
+        example_topic = aiven.KafkaTopic("example_topic",
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
+            topic_name="example-topic",
             partitions=5,
             replication=3,
             termination_protection=True,
@@ -323,19 +323,19 @@ class KafkaTopic(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+        $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration
+        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Kafka Topic tag.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+               still be deleted in the Aiven Console.**
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         ...
@@ -345,7 +345,7 @@ class KafkaTopic(pulumi.CustomResource):
                  args: KafkaTopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+        Creates and manages an Aiven for Apache Kafka® topic.
 
         ## Example Usage
 
@@ -353,10 +353,10 @@ class KafkaTopic(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        mytesttopic = aiven.KafkaTopic("mytesttopic",
-            project=myproject["project"],
-            service_name=myservice["serviceName"],
-            topic_name="<TOPIC_NAME>",
+        example_topic = aiven.KafkaTopic("example_topic",
+            project=example_project["project"],
+            service_name=example_kafka["serviceName"],
+            topic_name="example-topic",
             partitions=5,
             replication=3,
             termination_protection=True,
@@ -369,7 +369,7 @@ class KafkaTopic(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+        $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -447,14 +447,14 @@ class KafkaTopic(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration
+        :param pulumi.Input[pulumi.InputType['KafkaTopicConfigArgs']] config: Kafka topic configuration.
         :param pulumi.Input[int] partitions: The number of partitions to create in the topic.
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[int] replication: The replication factor for the topic.
-        :param pulumi.Input[str] service_name: Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Kafka Topic tag.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-               enable this for any production Kafka topic containing critical data.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaTopicTagArgs']]]] tags: Tags for the Kafka topic.
+        :param pulumi.Input[bool] termination_protection: Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+               still be deleted in the Aiven Console.**
         :param pulumi.Input[str] topic_name: The name of the topic. Changing this property forces recreation of the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -475,7 +475,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def config(self) -> pulumi.Output[Optional['outputs.KafkaTopicConfig']]:
         """
-        Kafka topic configuration
+        Kafka topic configuration.
         """
         return pulumi.get(self, "config")
 
@@ -491,7 +491,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -507,7 +507,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -515,7 +515,7 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence['outputs.KafkaTopicTag']]]:
         """
-        Kafka Topic tag.
+        Tags for the Kafka topic.
         """
         return pulumi.get(self, "tags")
 
@@ -523,8 +523,8 @@ class KafkaTopic(pulumi.CustomResource):
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[bool]]:
         """
-        It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-        enable this for any production Kafka topic containing critical data.
+        Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+        still be deleted in the Aiven Console.**
         """
         return pulumi.get(self, "termination_protection")
 

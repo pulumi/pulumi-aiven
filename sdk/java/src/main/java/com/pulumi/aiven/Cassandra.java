@@ -6,7 +6,6 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.CassandraArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.CassandraState;
-import com.pulumi.aiven.outputs.CassandraCassandra;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfig;
 import com.pulumi.aiven.outputs.CassandraComponent;
 import com.pulumi.aiven.outputs.CassandraServiceIntegration;
@@ -75,7 +74,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
+ * $ pulumi import aiven:index/cassandra:Cassandra bar PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -108,20 +107,6 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<CassandraCassandraUserConfig>> cassandraUserConfig() {
         return Codegen.optional(this.cassandraUserConfig);
-    }
-    /**
-     * Cassandra server provided values
-     * 
-     */
-    @Export(name="cassandras", refs={List.class,CassandraCassandra.class}, tree="[0,1]")
-    private Output<List<CassandraCassandra>> cassandras;
-
-    /**
-     * @return Cassandra server provided values
-     * 
-     */
-    public Output<List<CassandraCassandra>> cassandras() {
-        return this.cassandras;
     }
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -268,14 +253,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return this.plan;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -450,14 +435,14 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Export(name="techEmails", refs={List.class,CassandraTechEmail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CassandraTechEmail>> techEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Output<Optional<List<CassandraTechEmail>>> techEmails() {

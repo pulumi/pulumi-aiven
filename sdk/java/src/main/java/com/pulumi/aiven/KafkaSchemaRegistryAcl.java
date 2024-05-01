@@ -16,6 +16,49 @@ import javax.annotation.Nullable;
 /**
  * The Resource Kafka Schema Registry ACL resource allows the creation and management of Schema Registry ACLs for an Aiven Kafka service.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.KafkaSchemaRegistryAcl;
+ * import com.pulumi.aiven.KafkaSchemaRegistryAclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new KafkaSchemaRegistryAcl(&#34;foo&#34;, KafkaSchemaRegistryAclArgs.builder()        
+ *             .project(kafka_schemas_project1.project())
+ *             .serviceName(kafka_service1.serviceName())
+ *             .resource(&#34;Subject:topic-1&#34;)
+ *             .username(&#34;group-user-*&#34;)
+ *             .permission(&#34;schema_registry_read&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl foo PROJECT/SERVICE_NAME
+ * ```
+ * 
  */
 @ResourceType(type="aiven:index/kafkaSchemaRegistryAcl:KafkaSchemaRegistryAcl")
 public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource {
@@ -48,14 +91,14 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
         return this.permission;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -76,14 +119,14 @@ public class KafkaSchemaRegistryAcl extends com.pulumi.resources.CustomResource 
         return this.resource;
     }
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

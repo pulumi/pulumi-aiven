@@ -38,7 +38,7 @@ public final class CassandraCassandraUserConfig {
      */
     private @Nullable Integer backupMinute;
     /**
-     * @return cassandra configuration values
+     * @return Cassandra configuration values
      * 
      */
     private @Nullable CassandraCassandraUserConfigCassandra cassandra;
@@ -134,7 +134,7 @@ public final class CassandraCassandraUserConfig {
         return Optional.ofNullable(this.backupMinute);
     }
     /**
-     * @return cassandra configuration values
+     * @return Cassandra configuration values
      * 
      */
     public Optional<CassandraCassandraUserConfigCassandra> cassandra() {

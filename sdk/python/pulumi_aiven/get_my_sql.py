@@ -22,7 +22,7 @@ class GetMySqlResult:
     """
     A collection of values returned by getMySql.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, mysql_user_configs=None, mysqls=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, mysql_user_configs=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -59,9 +59,6 @@ class GetMySqlResult:
         if mysql_user_configs and not isinstance(mysql_user_configs, list):
             raise TypeError("Expected argument 'mysql_user_configs' to be a list")
         pulumi.set(__self__, "mysql_user_configs", mysql_user_configs)
-        if mysqls and not isinstance(mysqls, list):
-            raise TypeError("Expected argument 'mysqls' to be a list")
-        pulumi.set(__self__, "mysqls", mysqls)
         if plan and not isinstance(plan, str):
             raise TypeError("Expected argument 'plan' to be a str")
         pulumi.set(__self__, "plan", plan)
@@ -209,14 +206,6 @@ class GetMySqlResult:
 
     @property
     @pulumi.getter
-    def mysqls(self) -> Sequence['outputs.GetMySqlMysqlResult']:
-        """
-        MySQL specific server provided values
-        """
-        return pulumi.get(self, "mysqls")
-
-    @property
-    @pulumi.getter
     def plan(self) -> str:
         """
         Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -227,7 +216,7 @@ class GetMySqlResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -331,7 +320,7 @@ class GetMySqlResult:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetMySqlTechEmailResult']:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -362,7 +351,6 @@ class AwaitableGetMySqlResult(GetMySqlResult):
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
             mysql_user_configs=self.mysql_user_configs,
-            mysqls=self.mysqls,
             plan=self.plan,
             project=self.project,
             project_vpc_id=self.project_vpc_id,
@@ -398,7 +386,7 @@ def get_my_sql(project: Optional[str] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     __args__ = dict()
@@ -420,7 +408,6 @@ def get_my_sql(project: Optional[str] = None,
         maintenance_window_dow=pulumi.get(__ret__, 'maintenance_window_dow'),
         maintenance_window_time=pulumi.get(__ret__, 'maintenance_window_time'),
         mysql_user_configs=pulumi.get(__ret__, 'mysql_user_configs'),
-        mysqls=pulumi.get(__ret__, 'mysqls'),
         plan=pulumi.get(__ret__, 'plan'),
         project=pulumi.get(__ret__, 'project'),
         project_vpc_id=pulumi.get(__ret__, 'project_vpc_id'),
@@ -457,7 +444,7 @@ def get_my_sql_output(project: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     ...

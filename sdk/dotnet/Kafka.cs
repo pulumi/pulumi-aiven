@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Kafka resource allows the creation and management of Aiven Kafka services.
+    /// Creates and manages an [Aiven for Apache Kafka®](https://aiven.io/docs/products/kafka) service.
     /// 
     /// ## Example Usage
     /// 
@@ -22,12 +22,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka1 = new Aiven.Kafka("kafka1", new()
+    ///     var exampleKafka = new Aiven.Kafka("example_kafka", new()
     ///     {
-    ///         Project = pr1.Project,
+    ///         Project = exampleProject.Project,
     ///         CloudName = "google-europe-west1",
     ///         Plan = "business-4",
-    ///         ServiceName = "my-kafka1",
+    ///         ServiceName = "example-kafka",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
     ///         KafkaUserConfig = new Aiven.Inputs.KafkaKafkaUserConfigArgs
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafka:Kafka kafka1 project/service_name
+    /// $ pulumi import aiven:index/kafka:Kafka example_kafka PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafka:Kafka")]
@@ -80,7 +80,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.KafkaComponent>> Components { get; private set; } = null!;
 
         /// <summary>
-        /// Create default wildcard Kafka ACL
+        /// Create a default wildcard Kafka ACL.
         /// </summary>
         [Output("defaultAcl")]
         public Output<bool?> DefaultAcl { get; private set; } = null!;
@@ -122,13 +122,13 @@ namespace Pulumi.Aiven
         public Output<Outputs.KafkaKafkaUserConfig?> KafkaUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka server provided values
+        /// Kafka server connection details.
         /// </summary>
         [Output("kafkas")]
         public Output<ImmutableArray<Outputs.KafkaKafka>> KafkaServer { get; private set; } = null!;
 
         /// <summary>
-        /// Switch the service to use Karapace for schema registry and REST proxy
+        /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         /// </summary>
         [Output("karapace")]
         public Output<bool?> Karapace { get; private set; } = null!;
@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -230,7 +230,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.KafkaTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         [Output("techEmails")]
         public Output<ImmutableArray<Outputs.KafkaTechEmail>> TechEmails { get; private set; } = null!;
@@ -266,6 +266,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "kafkas",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -305,7 +306,7 @@ namespace Pulumi.Aiven
         public Input<string>? CloudName { get; set; }
 
         /// <summary>
-        /// Create default wildcard Kafka ACL
+        /// Create a default wildcard Kafka ACL.
         /// </summary>
         [Input("defaultAcl")]
         public Input<bool>? DefaultAcl { get; set; }
@@ -323,7 +324,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.KafkaKafkaUserConfigArgs>? KafkaUserConfig { get; set; }
 
         /// <summary>
-        /// Switch the service to use Karapace for schema registry and REST proxy
+        /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         /// </summary>
         [Input("karapace")]
         public Input<bool>? Karapace { get; set; }
@@ -347,7 +348,7 @@ namespace Pulumi.Aiven
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -404,7 +405,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTechEmailArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.KafkaTechEmailArgs> TechEmails
         {
@@ -451,7 +452,7 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// Create default wildcard Kafka ACL
+        /// Create a default wildcard Kafka ACL.
         /// </summary>
         [Input("defaultAcl")]
         public Input<bool>? DefaultAcl { get; set; }
@@ -496,16 +497,20 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaKafkaGetArgs>? _kafkas;
 
         /// <summary>
-        /// Kafka server provided values
+        /// Kafka server connection details.
         /// </summary>
         public InputList<Inputs.KafkaKafkaGetArgs> KafkaServer
         {
             get => _kafkas ?? (_kafkas = new InputList<Inputs.KafkaKafkaGetArgs>());
-            set => _kafkas = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.KafkaKafkaGetArgs>());
+                _kafkas = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>
-        /// Switch the service to use Karapace for schema registry and REST proxy
+        /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         /// </summary>
         [Input("karapace")]
         public Input<bool>? Karapace { get; set; }
@@ -529,7 +534,7 @@ namespace Pulumi.Aiven
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -648,7 +653,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTechEmailGetArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.KafkaTechEmailGetArgs> TechEmails
         {

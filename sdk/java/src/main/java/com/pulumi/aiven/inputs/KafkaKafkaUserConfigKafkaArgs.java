@@ -289,14 +289,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      * 
      */
     @Import(name="logMessageDownconversionEnable")
     private @Nullable Output<Boolean> logMessageDownconversionEnable;
 
     /**
-     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+     * @return This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      * 
      */
     public Optional<Output<Boolean>> logMessageDownconversionEnable() {
@@ -619,14 +619,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
      * 
      */
     @Import(name="saslOauthbearerJwksEndpointUrl")
     private @Nullable Output<String> saslOauthbearerJwksEndpointUrl;
 
     /**
-     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+     * @return OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
      * 
      */
     public Optional<Output<String>> saslOauthbearerJwksEndpointUrl() {
@@ -1156,7 +1156,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logMessageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+         * @param logMessageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logMessageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests. .
+         * @param logMessageDownconversionEnable This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
          * 
          * @return builder
          * 
@@ -1618,7 +1618,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param saslOauthbearerJwksEndpointUrl OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+         * @param saslOauthbearerJwksEndpointUrl OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
          * 
          * @return builder
          * 
@@ -1629,7 +1629,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param saslOauthbearerJwksEndpointUrl OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC. .
+         * @param saslOauthbearerJwksEndpointUrl OIDC JWKS endpoint URL. By setting this the SASL SSL OAuth2/OIDC authentication is enabled. See also other options for SASL OAuth2/OIDC.
          * 
          * @return builder
          * 

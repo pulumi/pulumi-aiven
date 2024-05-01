@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo account_id/authentication_id
+ * $ pulumi import aiven:index/accountAuthentication:AccountAuthentication foo ACCOUNT_ID/AUTHENTICATION_ID
  * ```
  * 
  */

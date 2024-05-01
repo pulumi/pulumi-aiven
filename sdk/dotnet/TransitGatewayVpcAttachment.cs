@@ -40,7 +40,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment project/vpc_id/peer_cloud_account/peer_vpc/peer_region
+    /// $ pulumi import aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment attachment PROJECT/VPC_ID/PEER_CLOUD_ACCOUNT/PEER_VPC/PEER_REGION
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/transitGatewayVpcAttachment:TransitGatewayVpcAttachment")]

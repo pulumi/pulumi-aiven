@@ -12,66 +12,83 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Dragonfly resource allows the creation and management of Aiven Dragonfly services.
+// Creates and manages an [Aiven for Dragonfly®](https://aiven.io/docs/products/dragonfly/concepts/overview) service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewDragonfly(ctx, "example_dragonfly", &aiven.DragonflyArgs{
+//				Project:     pulumi.Any(exampleProject.Project),
+//				Plan:        pulumi.String("startup-4"),
+//				CloudName:   pulumi.String("google-europe-west1"),
+//				ServiceName: pulumi.String("example-dragonfly-service"),
+//				DragonflyUserConfig: &aiven.DragonflyDragonflyUserConfigArgs{
+//					CacheMode: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/dragonfly:Dragonfly example_dragonfly PROJECT/SERVICE_NAME
+// ```
 type Dragonfly struct {
 	pulumi.CustomResourceState
 
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-	// are documented on each Cloud provider's own support articles, like [here for
-	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrOutput `pulumi:"cloudName"`
 	// Service component information objects
 	Components DragonflyComponentArrayOutput `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-	// will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrOutput `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	// Its also the minimum value for `disk_space`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
-	// Dragonfly server provided values
-	Dragonflies DragonflyDragonflyArrayOutput `pulumi:"dragonflies"`
 	// Dragonfly user configurable settings
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrOutput `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringOutput `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost pulumi.StringOutput `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations DragonflyServiceIntegrationArrayOutput `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-	// service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Password used for connecting to the service, if applicable
 	ServicePassword pulumi.StringOutput `pulumi:"servicePassword"`
@@ -85,17 +102,13 @@ type Dragonfly struct {
 	ServiceUsername pulumi.StringOutput `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayOutput `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags DragonflyTagArrayOutput `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails DragonflyTechEmailArrayOutput `pulumi:"techEmails"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-	// much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -143,62 +156,41 @@ func GetDragonfly(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Dragonfly resources.
 type dragonflyState struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-	// are documented on each Cloud provider's own support articles, like [here for
-	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
 	// Service component information objects
 	Components []DragonflyComponent `pulumi:"components"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-	// will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	// Its also the minimum value for `disk_space`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
-	// Dragonfly server provided values
-	Dragonflies []DragonflyDragonfly `pulumi:"dragonflies"`
 	// Dragonfly user configurable settings
 	DragonflyUserConfig *DragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan *string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// The hostname of the service.
 	ServiceHost *string `pulumi:"serviceHost"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []DragonflyServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-	// service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName *string `pulumi:"serviceName"`
 	// Password used for connecting to the service, if applicable
 	ServicePassword *string `pulumi:"servicePassword"`
@@ -212,77 +204,52 @@ type dragonflyState struct {
 	ServiceUsername *string `pulumi:"serviceUsername"`
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State *string `pulumi:"state"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []DragonflyTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []DragonflyTechEmail `pulumi:"techEmails"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-	// much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 type DragonflyState struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrInput
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-	// are documented on each Cloud provider's own support articles, like [here for
-	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
 	// Service component information objects
 	Components DragonflyComponentArrayInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-	// will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
-	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	// Its also the minimum value for `disk_space`
+	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 	DiskSpaceDefault pulumi.StringPtrInput
-	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
-	// Dragonfly server provided values
-	Dragonflies DragonflyDragonflyArrayInput
 	// Dragonfly user configurable settings
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// The hostname of the service.
 	ServiceHost pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations DragonflyServiceIntegrationArrayInput
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-	// service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringPtrInput
 	// Password used for connecting to the service, if applicable
 	ServicePassword pulumi.StringPtrInput
@@ -296,17 +263,13 @@ type DragonflyState struct {
 	ServiceUsername pulumi.StringPtrInput
 	// Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
 	State pulumi.StringPtrInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags DragonflyTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails DragonflyTechEmailArrayInput
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-	// much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -315,18 +278,11 @@ func (DragonflyState) ElementType() reflect.Type {
 }
 
 type dragonflyArgs struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-	// are documented on each Cloud provider's own support articles, like [here for
-	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName *string `pulumi:"cloudName"`
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-	// will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
@@ -336,54 +292,33 @@ type dragonflyArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations []DragonflyServiceIntegration `pulumi:"serviceIntegrations"`
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-	// service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []DragonflyTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []DragonflyTechEmail `pulumi:"techEmails"`
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-	// much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection *bool `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a Dragonfly resource.
 type DragonflyArgs struct {
-	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-	// reducing will result in the service rebalancing.
+	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrInput
-	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-	// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-	// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-	// are documented on each Cloud provider's own support articles, like [here for
-	// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-	// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName pulumi.StringPtrInput
-	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-	// will result in the service rebalancing.
+	// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
@@ -393,37 +328,23 @@ type DragonflyArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
-	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-	// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-	// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-	// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-	// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-	// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
-	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-	// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-	// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-	// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
 	ServiceIntegrations DragonflyServiceIntegrationArrayInput
-	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-	// service so name should be picked based on intended service usage rather than current attributes.
+	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput
-	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-	// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+	// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 	StaticIps pulumi.StringArrayInput
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags DragonflyTagArrayInput
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-	// instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails DragonflyTechEmailArrayInput
-	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-	// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-	// much of the content can at least be restored from backup in case accidental deletion is done.
+	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -514,18 +435,12 @@ func (o DragonflyOutput) ToDragonflyOutputWithContext(ctx context.Context) Drago
 	return o
 }
 
-// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-// reducing will result in the service rebalancing.
+// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o DragonflyOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
 }
 
-// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-// created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-// provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-// are documented on each Cloud provider's own support articles, like [here for
-// Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-// AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 func (o DragonflyOutput) CloudName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringPtrOutput { return v.CloudName }).(pulumi.StringPtrOutput)
 }
@@ -535,8 +450,7 @@ func (o DragonflyOutput) Components() DragonflyComponentArrayOutput {
 	return o.ApplyT(func(v *Dragonfly) DragonflyComponentArrayOutput { return v.Components }).(DragonflyComponentArrayOutput)
 }
 
-// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-// will result in the service rebalancing.
+// Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 //
 // Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 func (o DragonflyOutput) DiskSpace() pulumi.StringPtrOutput {
@@ -548,14 +462,12 @@ func (o DragonflyOutput) DiskSpaceCap() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.DiskSpaceCap }).(pulumi.StringOutput)
 }
 
-// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-// Its also the minimum value for `disk_space`
+// The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
 func (o DragonflyOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
-// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+// The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 func (o DragonflyOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }
@@ -563,11 +475,6 @@ func (o DragonflyOutput) DiskSpaceStep() pulumi.StringOutput {
 // Disk space that service is currently using
 func (o DragonflyOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
-}
-
-// Dragonfly server provided values
-func (o DragonflyOutput) Dragonflies() DragonflyDragonflyArrayOutput {
-	return o.ApplyT(func(v *Dragonfly) DragonflyDragonflyArrayOutput { return v.Dragonflies }).(DragonflyDragonflyArrayOutput)
 }
 
 // Dragonfly user configurable settings
@@ -585,26 +492,17 @@ func (o DragonflyOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
 }
 
-// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-// are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-// store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-// `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-// other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-// options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 func (o DragonflyOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o DragonflyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-// value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-// as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-// servers so the operation can take significant amount of time to complete if the service has a lot of data.
+// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o DragonflyOutput) ProjectVpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
 }
@@ -619,8 +517,7 @@ func (o DragonflyOutput) ServiceIntegrations() DragonflyServiceIntegrationArrayO
 	return o.ApplyT(func(v *Dragonfly) DragonflyServiceIntegrationArrayOutput { return v.ServiceIntegrations }).(DragonflyServiceIntegrationArrayOutput)
 }
 
-// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-// service so name should be picked based on intended service usage rather than current attributes.
+// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 func (o DragonflyOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
@@ -655,8 +552,7 @@ func (o DragonflyOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-// static ip resource is in the 'assigned' state it cannot be unbound from the node again
+// Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
 func (o DragonflyOutput) StaticIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringArrayOutput { return v.StaticIps }).(pulumi.StringArrayOutput)
 }
@@ -666,15 +562,12 @@ func (o DragonflyOutput) Tags() DragonflyTagArrayOutput {
 	return o.ApplyT(func(v *Dragonfly) DragonflyTagArrayOutput { return v.Tags }).(DragonflyTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-// instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o DragonflyOutput) TechEmails() DragonflyTechEmailArrayOutput {
 	return o.ApplyT(func(v *Dragonfly) DragonflyTechEmailArrayOutput { return v.TechEmails }).(DragonflyTechEmailArrayOutput)
 }
 
-// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-// unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-// much of the content can at least be restored from backup in case accidental deletion is done.
+// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 func (o DragonflyOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

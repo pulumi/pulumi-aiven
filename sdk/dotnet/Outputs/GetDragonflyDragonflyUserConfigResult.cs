@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? CacheMode;
         /// <summary>
+        /// When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// </summary>
+        public readonly string? DragonflyPersistence;
+        /// <summary>
         /// Require SSL to access Dragonfly. The default value is `true`.
         /// </summary>
         public readonly bool? DragonflySsl;
@@ -74,6 +78,8 @@ namespace Pulumi.Aiven.Outputs
         private GetDragonflyDragonflyUserConfigResult(
             bool? cacheMode,
 
+            string? dragonflyPersistence,
+
             bool? dragonflySsl,
 
             ImmutableArray<Outputs.GetDragonflyDragonflyUserConfigIpFilterObjectResult> ipFilterObjects,
@@ -101,6 +107,7 @@ namespace Pulumi.Aiven.Outputs
             bool? staticIps)
         {
             CacheMode = cacheMode;
+            DragonflyPersistence = dragonflyPersistence;
             DragonflySsl = dragonflySsl;
             IpFilterObjects = ipFilterObjects;
             IpFilterStrings = ipFilterStrings;

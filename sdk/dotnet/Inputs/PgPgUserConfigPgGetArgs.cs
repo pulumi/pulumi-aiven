@@ -247,7 +247,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? PgStatMonitorDotPgsmEnableQueryPlan { get; set; }
 
         /// <summary>
-        /// Sets the maximum number of buckets .
+        /// Sets the maximum number of buckets.
         /// </summary>
         [Input("pgStatMonitorDotPgsmMaxBuckets")]
         public Input<int>? PgStatMonitorDotPgsmMaxBuckets { get; set; }

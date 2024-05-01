@@ -39,9 +39,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * ```sh
- * $ pulumi import aiven:index/openSearchAclConfig:OpenSearchAclConfig foo project/service_name
- * ```
+ * TERRAFORM IMPORT AIVEN_OPENSEARCH_ACL_CONFIG.FOO project/service_name
  */
 export class OpenSearchAclConfig extends pulumi.CustomResource {
     /**
@@ -80,11 +78,11 @@ export class OpenSearchAclConfig extends pulumi.CustomResource {
      */
     public readonly extendedAcl!: pulumi.Output<boolean | undefined>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -136,11 +134,11 @@ export interface OpenSearchAclConfigState {
      */
     extendedAcl?: pulumi.Input<boolean>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -158,11 +156,11 @@ export interface OpenSearchAclConfigArgs {
      */
     extendedAcl?: pulumi.Input<boolean>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
 }

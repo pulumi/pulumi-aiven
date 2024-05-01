@@ -16,6 +16,21 @@ public final class ServiceIntegrationDatadogUserConfigOpensearchArgs extends com
     public static final ServiceIntegrationDatadogUserConfigOpensearchArgs Empty = new ServiceIntegrationDatadogUserConfigOpensearchArgs();
 
     /**
+     * Enable Datadog Opensearch Cluster Monitoring.
+     * 
+     */
+    @Import(name="clusterStatsEnabled")
+    private @Nullable Output<Boolean> clusterStatsEnabled;
+
+    /**
+     * @return Enable Datadog Opensearch Cluster Monitoring.
+     * 
+     */
+    public Optional<Output<Boolean>> clusterStatsEnabled() {
+        return Optional.ofNullable(this.clusterStatsEnabled);
+    }
+
+    /**
      * Enable Datadog Opensearch Index Monitoring.
      * 
      */
@@ -63,6 +78,7 @@ public final class ServiceIntegrationDatadogUserConfigOpensearchArgs extends com
     private ServiceIntegrationDatadogUserConfigOpensearchArgs() {}
 
     private ServiceIntegrationDatadogUserConfigOpensearchArgs(ServiceIntegrationDatadogUserConfigOpensearchArgs $) {
+        this.clusterStatsEnabled = $.clusterStatsEnabled;
         this.indexStatsEnabled = $.indexStatsEnabled;
         this.pendingTaskStatsEnabled = $.pendingTaskStatsEnabled;
         this.pshardStatsEnabled = $.pshardStatsEnabled;
@@ -84,6 +100,27 @@ public final class ServiceIntegrationDatadogUserConfigOpensearchArgs extends com
 
         public Builder(ServiceIntegrationDatadogUserConfigOpensearchArgs defaults) {
             $ = new ServiceIntegrationDatadogUserConfigOpensearchArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clusterStatsEnabled Enable Datadog Opensearch Cluster Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterStatsEnabled(@Nullable Output<Boolean> clusterStatsEnabled) {
+            $.clusterStatsEnabled = clusterStatsEnabled;
+            return this;
+        }
+
+        /**
+         * @param clusterStatsEnabled Enable Datadog Opensearch Cluster Monitoring.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterStatsEnabled(Boolean clusterStatsEnabled) {
+            return clusterStatsEnabled(Output.of(clusterStatsEnabled));
         }
 
         /**

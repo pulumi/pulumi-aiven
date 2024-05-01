@@ -24,7 +24,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Kafka resource allows the creation and management of Aiven Kafka services.
+ * Creates and manages an [Aiven for Apache Kafka®](https://aiven.io/docs/products/kafka) service.
  * 
  * ## Example Usage
  * 
@@ -53,11 +53,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka1 = new Kafka(&#34;kafka1&#34;, KafkaArgs.builder()        
- *             .project(pr1.project())
+ *         var exampleKafka = new Kafka(&#34;exampleKafka&#34;, KafkaArgs.builder()        
+ *             .project(exampleProject.project())
  *             .cloudName(&#34;google-europe-west1&#34;)
  *             .plan(&#34;business-4&#34;)
- *             .serviceName(&#34;my-kafka1&#34;)
+ *             .serviceName(&#34;example-kafka&#34;)
  *             .maintenanceWindowDow(&#34;monday&#34;)
  *             .maintenanceWindowTime(&#34;10:00:00&#34;)
  *             .kafkaUserConfig(KafkaKafkaUserConfigArgs.builder()
@@ -84,7 +84,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/kafka:Kafka kafka1 project/service_name
+ * $ pulumi import aiven:index/kafka:Kafka example_kafka PROJECT/SERVICE_NAME
  * ```
  * 
  */
@@ -133,14 +133,14 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return this.components;
     }
     /**
-     * Create default wildcard Kafka ACL
+     * Create a default wildcard Kafka ACL.
      * 
      */
     @Export(name="defaultAcl", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> defaultAcl;
 
     /**
-     * @return Create default wildcard Kafka ACL
+     * @return Create a default wildcard Kafka ACL.
      * 
      */
     public Output<Optional<Boolean>> defaultAcl() {
@@ -235,21 +235,21 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kafkaUserConfig);
     }
     /**
-     * Kafka server provided values
+     * Kafka server connection details.
      * 
      */
     @Export(name="kafkas", refs={List.class,KafkaKafka.class}, tree="[0,1]")
     private Output<List<KafkaKafka>> kafkas;
 
     /**
-     * @return Kafka server provided values
+     * @return Kafka server connection details.
      * 
      */
     public Output<List<KafkaKafka>> kafkas() {
         return this.kafkas;
     }
     /**
-     * Switch the service to use Karapace for schema registry and REST proxy
+     * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      * 
      * @deprecated
      * Usage of this field is discouraged.
@@ -260,7 +260,7 @@ public class Kafka extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> karapace;
 
     /**
-     * @return Switch the service to use Karapace for schema registry and REST proxy
+     * @return Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      * 
      */
     public Output<Optional<Boolean>> karapace() {
@@ -309,14 +309,14 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return this.plan;
     }
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -491,14 +491,14 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     @Export(name="techEmails", refs={List.class,KafkaTechEmail.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KafkaTechEmail>> techEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public Output<Optional<List<KafkaTechEmail>>> techEmails() {
@@ -552,6 +552,7 @@ public class Kafka extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "kafkas",
                 "servicePassword",
                 "serviceUri"
             ))

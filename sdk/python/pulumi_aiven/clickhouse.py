@@ -34,7 +34,7 @@ class ClickhouseArgs:
         """
         The set of arguments for constructing a Clickhouse resource.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
@@ -46,7 +46,7 @@ class ClickhouseArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         pulumi.set(__self__, "plan", plan)
@@ -96,7 +96,7 @@ class ClickhouseArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -243,7 +243,7 @@ class ClickhouseArgs:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseTechEmailArgs']]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -269,7 +269,6 @@ class _ClickhouseState:
     def __init__(__self__, *,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  clickhouse_user_config: Optional[pulumi.Input['ClickhouseClickhouseUserConfigArgs']] = None,
-                 clickhouses: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseArgs']]]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseComponentArgs']]]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -299,7 +298,6 @@ class _ClickhouseState:
         Input properties used for looking up and filtering Clickhouse resources.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseArgs']]] clickhouses: Clickhouse server provided values
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseComponentArgs']]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -310,7 +308,7 @@ class _ClickhouseState:
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
@@ -323,15 +321,13 @@ class _ClickhouseState:
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTagArgs']]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTechEmailArgs']]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        :param pulumi.Input[Sequence[pulumi.Input['ClickhouseTechEmailArgs']]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if clickhouse_user_config is not None:
             pulumi.set(__self__, "clickhouse_user_config", clickhouse_user_config)
-        if clickhouses is not None:
-            pulumi.set(__self__, "clickhouses", clickhouses)
         if cloud_name is not None:
             pulumi.set(__self__, "cloud_name", cloud_name)
         if components is not None:
@@ -409,18 +405,6 @@ class _ClickhouseState:
     @clickhouse_user_config.setter
     def clickhouse_user_config(self, value: Optional[pulumi.Input['ClickhouseClickhouseUserConfigArgs']]):
         pulumi.set(self, "clickhouse_user_config", value)
-
-    @property
-    @pulumi.getter
-    def clickhouses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseArgs']]]]:
-        """
-        Clickhouse server provided values
-        """
-        return pulumi.get(self, "clickhouses")
-
-    @clickhouses.setter
-    def clickhouses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseClickhouseArgs']]]]):
-        pulumi.set(self, "clickhouses", value)
 
     @property
     @pulumi.getter(name="cloudName")
@@ -549,7 +533,7 @@ class _ClickhouseState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -705,7 +689,7 @@ class _ClickhouseState:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseTechEmailArgs']]]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -768,7 +752,7 @@ class Clickhouse(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
+        $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -780,13 +764,13 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         ...
@@ -816,7 +800,7 @@ class Clickhouse(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse project/service_name
+        $ pulumi import aiven:index/clickhouse:Clickhouse clickhouse PROJECT/SERVICE_NAME
         ```
 
         :param str resource_name: The name of the resource.
@@ -879,7 +863,6 @@ class Clickhouse(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["tech_emails"] = tech_emails
             __props__.__dict__["termination_protection"] = termination_protection
-            __props__.__dict__["clickhouses"] = None
             __props__.__dict__["components"] = None
             __props__.__dict__["disk_space_cap"] = None
             __props__.__dict__["disk_space_default"] = None
@@ -906,7 +889,6 @@ class Clickhouse(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: Optional[pulumi.Input[str]] = None,
             clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']]] = None,
-            clickhouses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']]]]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseComponentArgs']]]]] = None,
             disk_space: Optional[pulumi.Input[str]] = None,
@@ -941,7 +923,6 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']] clickhouse_user_config: Clickhouse user configurable settings
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']]]] clickhouses: Clickhouse server provided values
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseComponentArgs']]]] components: Service component information objects
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -952,7 +933,7 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
-        :param pulumi.Input[str] project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[str] service_host: The hostname of the service.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseServiceIntegrationArgs']]]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
@@ -965,7 +946,7 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.Input[str] state: Service state. One of `POWEROFF`, `REBALANCING`, `REBUILDING` or `RUNNING`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseTagArgs']]]] tags: Tags are key-value pairs that allow you to categorize services.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseTechEmailArgs']]]] tech_emails: Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseTechEmailArgs']]]] tech_emails: The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         :param pulumi.Input[bool] termination_protection: Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -974,7 +955,6 @@ class Clickhouse(pulumi.CustomResource):
 
         __props__.__dict__["additional_disk_space"] = additional_disk_space
         __props__.__dict__["clickhouse_user_config"] = clickhouse_user_config
-        __props__.__dict__["clickhouses"] = clickhouses
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
         __props__.__dict__["disk_space"] = disk_space
@@ -1017,14 +997,6 @@ class Clickhouse(pulumi.CustomResource):
         Clickhouse user configurable settings
         """
         return pulumi.get(self, "clickhouse_user_config")
-
-    @property
-    @pulumi.getter
-    def clickhouses(self) -> pulumi.Output[Sequence['outputs.ClickhouseClickhouse']]:
-        """
-        Clickhouse server provided values
-        """
-        return pulumi.get(self, "clickhouses")
 
     @property
     @pulumi.getter(name="cloudName")
@@ -1113,7 +1085,7 @@ class Clickhouse(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -1217,7 +1189,7 @@ class Clickhouse(pulumi.CustomResource):
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> pulumi.Output[Optional[Sequence['outputs.ClickhouseTechEmail']]]:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 

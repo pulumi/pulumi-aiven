@@ -20,7 +20,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectArgs Empty = new ProjectArgs();
 
     /**
-     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      * @deprecated
      * Use parent_id instead. This field will be removed in the next major release.
@@ -31,7 +31,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> accountId;
 
     /**
-     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      * @deprecated
      * Use parent_id instead. This field will be removed in the next major release.
@@ -66,14 +66,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="billingGroup")
     private @Nullable Output<String> billingGroup;
 
     /**
-     * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Optional<Output<String>> billingGroup() {
@@ -81,14 +81,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="copyFromProject")
     private @Nullable Output<String> copyFromProject;
 
     /**
-     * @return is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * @return The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Optional<Output<String>> copyFromProject() {
@@ -96,14 +96,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      * 
      */
     @Import(name="defaultCloud")
     private @Nullable Output<String> defaultCloud;
 
     /**
-     * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * @return Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      * 
      */
     public Optional<Output<String>> defaultCloud() {
@@ -111,14 +111,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Import(name="parentId")
     private @Nullable Output<String> parentId;
 
     /**
-     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Optional<Output<String>> parentId() {
@@ -126,14 +126,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * @return The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     public Output<String> project() {
@@ -156,14 +156,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     @Import(name="technicalEmails")
     private @Nullable Output<List<String>> technicalEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     public Optional<Output<List<String>>> technicalEmails() {
@@ -227,7 +227,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param accountId Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accountId An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param accountId Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingGroup The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+         * @param billingGroup The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param billingGroup The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+         * @param billingGroup The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromProject is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+         * @param copyFromProject The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param copyFromProject is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+         * @param copyFromProject The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultCloud Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+         * @param defaultCloud Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param defaultCloud Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+         * @param defaultCloud Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parentId An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+         * @param parentId Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+         * @param project The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+         * @param project The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -432,7 +432,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param technicalEmails Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+         * @param technicalEmails The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
          * 
          * @return builder
          * 

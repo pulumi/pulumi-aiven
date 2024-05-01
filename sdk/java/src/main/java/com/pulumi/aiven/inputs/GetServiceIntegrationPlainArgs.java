@@ -14,14 +14,14 @@ public final class GetServiceIntegrationPlainArgs extends com.pulumi.resources.I
     public static final GetServiceIntegrationPlainArgs Empty = new GetServiceIntegrationPlainArgs();
 
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      * 
      */
     @Import(name="destinationServiceName", required=true)
     private String destinationServiceName;
 
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     public String destinationServiceName() {
@@ -44,14 +44,14 @@ public final class GetServiceIntegrationPlainArgs extends com.pulumi.resources.I
     }
 
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     public String project() {
@@ -101,7 +101,7 @@ public final class GetServiceIntegrationPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class GetServiceIntegrationPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 

@@ -14,14 +14,14 @@ public final class GetProjectUserPlainArgs extends com.pulumi.resources.InvokeAr
     public static final GetProjectUserPlainArgs Empty = new GetProjectUserPlainArgs();
 
     /**
-     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="email", required=true)
     private String email;
 
     /**
-     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * @return Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public String email() {
@@ -29,14 +29,14 @@ public final class GetProjectUserPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project", required=true)
     private String project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -69,7 +69,7 @@ public final class GetProjectUserPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param email Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+         * @param email Email address of the user in lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class GetProjectUserPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

@@ -24,6 +24,11 @@ public final class GetDragonflyDragonflyUserConfig {
      */
     private @Nullable Boolean cacheMode;
     /**
+     * @return When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * 
+     */
+    private @Nullable String dragonflyPersistence;
+    /**
      * @return Require SSL to access Dragonfly. The default value is `true`.
      * 
      */
@@ -100,6 +105,13 @@ public final class GetDragonflyDragonflyUserConfig {
      */
     public Optional<Boolean> cacheMode() {
         return Optional.ofNullable(this.cacheMode);
+    }
+    /**
+     * @return When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * 
+     */
+    public Optional<String> dragonflyPersistence() {
+        return Optional.ofNullable(this.dragonflyPersistence);
     }
     /**
      * @return Require SSL to access Dragonfly. The default value is `true`.
@@ -207,6 +219,7 @@ public final class GetDragonflyDragonflyUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean cacheMode;
+        private @Nullable String dragonflyPersistence;
         private @Nullable Boolean dragonflySsl;
         private @Nullable List<GetDragonflyDragonflyUserConfigIpFilterObject> ipFilterObjects;
         private @Nullable List<String> ipFilterStrings;
@@ -224,6 +237,7 @@ public final class GetDragonflyDragonflyUserConfig {
         public Builder(GetDragonflyDragonflyUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cacheMode = defaults.cacheMode;
+    	      this.dragonflyPersistence = defaults.dragonflyPersistence;
     	      this.dragonflySsl = defaults.dragonflySsl;
     	      this.ipFilterObjects = defaults.ipFilterObjects;
     	      this.ipFilterStrings = defaults.ipFilterStrings;
@@ -243,6 +257,12 @@ public final class GetDragonflyDragonflyUserConfig {
         public Builder cacheMode(@Nullable Boolean cacheMode) {
 
             this.cacheMode = cacheMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dragonflyPersistence(@Nullable String dragonflyPersistence) {
+
+            this.dragonflyPersistence = dragonflyPersistence;
             return this;
         }
         @CustomType.Setter
@@ -335,6 +355,7 @@ public final class GetDragonflyDragonflyUserConfig {
         public GetDragonflyDragonflyUserConfig build() {
             final var _resultValue = new GetDragonflyDragonflyUserConfig();
             _resultValue.cacheMode = cacheMode;
+            _resultValue.dragonflyPersistence = dragonflyPersistence;
             _resultValue.dragonflySsl = dragonflySsl;
             _resultValue.ipFilterObjects = ipFilterObjects;
             _resultValue.ipFilterStrings = ipFilterStrings;

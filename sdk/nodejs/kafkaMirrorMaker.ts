@@ -66,17 +66,11 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
     }
 
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-     * reducing will result in the service rebalancing.
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
     /**
-     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-     * created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-     * provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-     * are documented on each Cloud provider's own support articles, like [here for
-     * Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-     * AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     public readonly cloudName!: pulumi.Output<string | undefined>;
     /**
@@ -84,8 +78,7 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public /*out*/ readonly components!: pulumi.Output<outputs.KafkaMirrorMakerComponent[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
@@ -95,13 +88,11 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceCap!: pulumi.Output<string>;
     /**
-     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      */
     public /*out*/ readonly diskSpaceDefault!: pulumi.Output<string>;
     /**
-     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      */
     public /*out*/ readonly diskSpaceStep!: pulumi.Output<string>;
     /**
@@ -113,10 +104,6 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly kafkaMirrormakerUserConfig!: pulumi.Output<outputs.KafkaMirrorMakerKafkaMirrormakerUserConfig | undefined>;
     /**
-     * Kafka MirrorMaker 2 server provided values
-     */
-    public /*out*/ readonly kafkaMirrormakers!: pulumi.Output<outputs.KafkaMirrorMakerKafkaMirrormaker[]>;
-    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     public readonly maintenanceWindowDow!: pulumi.Output<string | undefined>;
@@ -125,24 +112,15 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     public readonly plan!: pulumi.Output<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-     * value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-     * as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-     * servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     public readonly projectVpcId!: pulumi.Output<string | undefined>;
     /**
@@ -154,8 +132,7 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly serviceIntegrations!: pulumi.Output<outputs.KafkaMirrorMakerServiceIntegration[] | undefined>;
     /**
-     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -183,8 +160,7 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-     * static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     public readonly staticIps!: pulumi.Output<string[] | undefined>;
     /**
@@ -192,14 +168,11 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<outputs.KafkaMirrorMakerTag[] | undefined>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     public readonly techEmails!: pulumi.Output<outputs.KafkaMirrorMakerTechEmail[] | undefined>;
     /**
-     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
 
@@ -225,7 +198,6 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
             resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
             resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
             resourceInputs["kafkaMirrormakerUserConfig"] = state ? state.kafkaMirrormakerUserConfig : undefined;
-            resourceInputs["kafkaMirrormakers"] = state ? state.kafkaMirrormakers : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
@@ -275,7 +247,6 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
-            resourceInputs["kafkaMirrormakers"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -296,17 +267,11 @@ export class KafkaMirrorMaker extends pulumi.CustomResource {
  */
 export interface KafkaMirrorMakerState {
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-     * reducing will result in the service rebalancing.
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
-     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-     * created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-     * provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-     * are documented on each Cloud provider's own support articles, like [here for
-     * Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-     * AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     cloudName?: pulumi.Input<string>;
     /**
@@ -314,8 +279,7 @@ export interface KafkaMirrorMakerState {
      */
     components?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerComponent>[]>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
@@ -325,13 +289,11 @@ export interface KafkaMirrorMakerState {
      */
     diskSpaceCap?: pulumi.Input<string>;
     /**
-     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `diskSpace`
      */
     diskSpaceDefault?: pulumi.Input<string>;
     /**
-     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      */
     diskSpaceStep?: pulumi.Input<string>;
     /**
@@ -343,10 +305,6 @@ export interface KafkaMirrorMakerState {
      */
     kafkaMirrormakerUserConfig?: pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormakerUserConfig>;
     /**
-     * Kafka MirrorMaker 2 server provided values
-     */
-    kafkaMirrormakers?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerKafkaMirrormaker>[]>;
-    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     maintenanceWindowDow?: pulumi.Input<string>;
@@ -355,24 +313,15 @@ export interface KafkaMirrorMakerState {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan?: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
-     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-     * value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-     * as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-     * servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     projectVpcId?: pulumi.Input<string>;
     /**
@@ -384,8 +333,7 @@ export interface KafkaMirrorMakerState {
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerServiceIntegration>[]>;
     /**
-     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -413,8 +361,7 @@ export interface KafkaMirrorMakerState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-     * static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -422,14 +369,11 @@ export interface KafkaMirrorMakerState {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTechEmail>[]>;
     /**
-     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     terminationProtection?: pulumi.Input<boolean>;
 }
@@ -439,22 +383,15 @@ export interface KafkaMirrorMakerState {
  */
 export interface KafkaMirrorMakerArgs {
     /**
-     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore,
-     * reducing will result in the service rebalancing.
+     * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     additionalDiskSpace?: pulumi.Input<string>;
     /**
-     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is
-     * created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud
-     * provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These
-     * are documented on each Cloud provider's own support articles, like [here for
-     * Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for
-     * AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+     * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
     cloudName?: pulumi.Input<string>;
     /**
-     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
-     * will result in the service rebalancing.
+     * Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      *
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
@@ -472,24 +409,15 @@ export interface KafkaMirrorMakerArgs {
      */
     maintenanceWindowTime?: pulumi.Input<string>;
     /**
-     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
-     * are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to
-     * store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are
-     * `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also
-     * other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available
-     * options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
+     * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
     plan: pulumi.Input<string>;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
-     * value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region
-     * as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new
-     * servers so the operation can take significant amount of time to complete if the service has a lot of data.
+     * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     projectVpcId?: pulumi.Input<string>;
     /**
@@ -497,13 +425,11 @@ export interface KafkaMirrorMakerArgs {
      */
     serviceIntegrations?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerServiceIntegration>[]>;
     /**
-     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the
-     * service so name should be picked based on intended service usage rather than current attributes.
+     * Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
      */
     serviceName: pulumi.Input<string>;
     /**
-     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a
-     * static ip resource is in the 'assigned' state it cannot be unbound from the node again
+     * Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
      */
     staticIps?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -511,14 +437,11 @@ export interface KafkaMirrorMakerArgs {
      */
     tags?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTag>[]>;
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service
-     * instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     techEmails?: pulumi.Input<pulumi.Input<inputs.KafkaMirrorMakerTechEmail>[]>;
     /**
-     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent
-     * unintentional service deletion. This does not shield against deleting databases or topics but for services with backups
-     * much of the content can at least be restored from backup in case accidental deletion is done.
+     * Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
      */
     terminationProtection?: pulumi.Input<boolean>;
 }

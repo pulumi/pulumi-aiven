@@ -35,7 +35,7 @@ export function getClickhouse(args: GetClickhouseArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetClickhouseArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -56,10 +56,6 @@ export interface GetClickhouseResult {
      * Clickhouse user configurable settings
      */
     readonly clickhouseUserConfigs: outputs.GetClickhouseClickhouseUserConfig[];
-    /**
-     * Clickhouse server provided values
-     */
-    readonly clickhouses: outputs.GetClickhouseClickhouse[];
     /**
      * Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      */
@@ -105,7 +101,7 @@ export interface GetClickhouseResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +153,7 @@ export interface GetClickhouseResult {
      */
     readonly tags: outputs.GetClickhouseTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetClickhouseTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getClickhouseOutput(args: GetClickhouseOutputArgs, opts?: pulumi
  */
 export interface GetClickhouseOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides information about an existing billing group.
+ * Gets information about a billing group.
  */
 export function getBillingGroup(args: GetBillingGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingGroupResult> {
 
@@ -99,7 +99,7 @@ export interface GetBillingGroupResult {
     readonly zipCode: string;
 }
 /**
- * Provides information about an existing billing group.
+ * Gets information about a billing group.
  */
 export function getBillingGroupOutput(args: GetBillingGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingGroupResult> {
     return pulumi.output(args).apply((a: any) => getBillingGroup(a, opts))

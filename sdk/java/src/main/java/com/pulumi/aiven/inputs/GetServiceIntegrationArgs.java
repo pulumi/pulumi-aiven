@@ -15,14 +15,14 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
     public static final GetServiceIntegrationArgs Empty = new GetServiceIntegrationArgs();
 
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      * 
      */
     @Import(name="destinationServiceName", required=true)
     private Output<String> destinationServiceName;
 
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     public Output<String> destinationServiceName() {
@@ -45,14 +45,14 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      * 
      */
     @Import(name="project", required=true)
     private Output<String> project;
 
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     public Output<String> project() {
@@ -102,7 +102,7 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 
@@ -155,7 +155,7 @@ public final class GetServiceIntegrationArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 

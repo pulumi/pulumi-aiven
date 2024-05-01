@@ -174,16 +174,7 @@ class OrganizationUser(pulumi.CustomResource):
                  user_email: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        **This resource is deprecated**. Use the `OrganizationUser` data source instead.
-
-        The organization user resource allows the creation and management of an Aiven organization user.
-
-        During the creation of `OrganizationUser`resource, an email invitation will be sent
-        to a user using `user_email` address. If the user accepts an invitation, they will become
-        a member of the organization. The deletion of `OrganizationUser` will not only
-        delete the invitation if one was sent but not yet accepted by the user, it will also
-        eliminate the member from the organization if one has accepted an invitation previously.
-
+        Create a OrganizationUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization_id: The unique organization ID. Changing this property forces recreation of the resource.
@@ -196,16 +187,7 @@ class OrganizationUser(pulumi.CustomResource):
                  args: OrganizationUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **This resource is deprecated**. Use the `OrganizationUser` data source instead.
-
-        The organization user resource allows the creation and management of an Aiven organization user.
-
-        During the creation of `OrganizationUser`resource, an email invitation will be sent
-        to a user using `user_email` address. If the user accepts an invitation, they will become
-        a member of the organization. The deletion of `OrganizationUser` will not only
-        delete the invitation if one was sent but not yet accepted by the user, it will also
-        eliminate the member from the organization if one has accepted an invitation previously.
-
+        Create a OrganizationUser resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param OrganizationUserArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

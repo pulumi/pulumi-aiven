@@ -541,7 +541,7 @@ class BillingGroup(pulumi.CustomResource):
                  zip_code: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates and manages billing groups and assigns them to projects.
+        Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
 
         ## Example Usage
 
@@ -549,19 +549,20 @@ class BillingGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        bybg1 = aiven.BillingGroup("bybg1",
-            name="bybg1",
+        example_billing_group = aiven.BillingGroup("example_billing_group",
+            name="example-billing-group",
             billing_currency="USD",
-            vat_id="123ABC")
-        pr1 = aiven.Project("pr1",
-            project="pr1",
-            billing_group=bybg1.id)
+            vat_id="123ABC",
+            parent_id=main["id"])
+        example_project = aiven.Project("example_project",
+            project="example-project",
+            billing_group=example_billing_group.id)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+        $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
         ```
 
         :param str resource_name: The name of the resource.
@@ -589,7 +590,7 @@ class BillingGroup(pulumi.CustomResource):
                  args: Optional[BillingGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages billing groups and assigns them to projects.
+        Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
 
         ## Example Usage
 
@@ -597,19 +598,20 @@ class BillingGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_aiven as aiven
 
-        bybg1 = aiven.BillingGroup("bybg1",
-            name="bybg1",
+        example_billing_group = aiven.BillingGroup("example_billing_group",
+            name="example-billing-group",
             billing_currency="USD",
-            vat_id="123ABC")
-        pr1 = aiven.Project("pr1",
-            project="pr1",
-            billing_group=bybg1.id)
+            vat_id="123ABC",
+            parent_id=main["id"])
+        example_project = aiven.Project("example_project",
+            project="example-project",
+            billing_group=example_billing_group.id)
         ```
 
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+        $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
         ```
 
         :param str resource_name: The name of the resource.

@@ -12,12 +12,7 @@ namespace Pulumi.Aiven
     public static class GetServiceIntegration
     {
         /// <summary>
-        /// The Service Integration data source provides information about the existing Aiven Service Integration.
-        /// 
-        /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
-        /// integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-        /// getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-        /// OpenSearch, etc.
+        /// Gets information about an Aiven service integration.
         /// 
         /// ## Example Usage
         /// 
@@ -29,12 +24,12 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     var exampleIntegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
-        ///         IntegrationType = "datadog",
-        ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         DestinationServiceName = exampleM3db.ServiceName,
+        ///         IntegrationType = "metrics",
+        ///         SourceServiceName = exampleKafka.ServiceName,
         ///     });
         /// 
         /// });
@@ -44,12 +39,7 @@ namespace Pulumi.Aiven
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceIntegrationResult>("aiven:index/getServiceIntegration:getServiceIntegration", args ?? new GetServiceIntegrationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// The Service Integration data source provides information about the existing Aiven Service Integration.
-        /// 
-        /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
-        /// integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-        /// getting metrics from an M3Db service to a Grafana service to show dashboards, sending logs from any service to
-        /// OpenSearch, etc.
+        /// Gets information about an Aiven service integration.
         /// 
         /// ## Example Usage
         /// 
@@ -61,12 +51,12 @@ namespace Pulumi.Aiven
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var myintegration = Aiven.GetServiceIntegration.Invoke(new()
+        ///     var exampleIntegration = Aiven.GetServiceIntegration.Invoke(new()
         ///     {
-        ///         Project = myproject.Project,
-        ///         DestinationServiceName = "&lt;DESTINATION_SERVICE_NAME&gt;",
-        ///         IntegrationType = "datadog",
-        ///         SourceServiceName = "&lt;SOURCE_SERVICE_NAME&gt;",
+        ///         Project = exampleProject.Project,
+        ///         DestinationServiceName = exampleM3db.ServiceName,
+        ///         IntegrationType = "metrics",
+        ///         SourceServiceName = exampleKafka.ServiceName,
         ///     });
         /// 
         /// });
@@ -80,7 +70,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Destination service for the integration (if any)
+        /// Destination service for the integration.
         /// </summary>
         [Input("destinationServiceName", required: true)]
         public string DestinationServiceName { get; set; } = null!;
@@ -92,7 +82,7 @@ namespace Pulumi.Aiven
         public string IntegrationType { get; set; } = null!;
 
         /// <summary>
-        /// Project the integration belongs to
+        /// Project the integration belongs to.
         /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
@@ -112,7 +102,7 @@ namespace Pulumi.Aiven
     public sealed class GetServiceIntegrationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Destination service for the integration (if any)
+        /// Destination service for the integration.
         /// </summary>
         [Input("destinationServiceName", required: true)]
         public Input<string> DestinationServiceName { get; set; } = null!;
@@ -124,7 +114,7 @@ namespace Pulumi.Aiven
         public Input<string> IntegrationType { get; set; } = null!;
 
         /// <summary>
-        /// Project the integration belongs to
+        /// Project the integration belongs to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -158,11 +148,11 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigResult> DatadogUserConfigs;
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// Destination endpoint for the integration.
         /// </summary>
         public readonly string DestinationEndpointId;
         /// <summary>
-        /// Destination service for the integration (if any)
+        /// Destination service for the integration.
         /// </summary>
         public readonly string DestinationServiceName;
         /// <summary>
@@ -186,7 +176,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Service Integration Id at aiven
+        /// The ID of the Aiven service integration.
         /// </summary>
         public readonly string IntegrationId;
         /// <summary>
@@ -214,7 +204,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationMetricsUserConfigResult> MetricsUserConfigs;
         /// <summary>
-        /// Project the integration belongs to
+        /// Project the integration belongs to.
         /// </summary>
         public readonly string Project;
         /// <summary>
@@ -222,7 +212,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationPrometheusUserConfigResult> PrometheusUserConfigs;
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// Source endpoint for the integration.
         /// </summary>
         public readonly string SourceEndpointId;
         /// <summary>

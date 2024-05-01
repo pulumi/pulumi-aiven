@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages billing groups and assigns them to projects.
+// Creates and manages [billing groups](https://aiven.io/docs/platform/concepts/billing-groups) and assigns them to projects.
 //
 // ## Example Usage
 //
@@ -27,17 +27,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			bybg1, err := aiven.NewBillingGroup(ctx, "bybg1", &aiven.BillingGroupArgs{
-//				Name:            pulumi.String("bybg1"),
+//			exampleBillingGroup, err := aiven.NewBillingGroup(ctx, "example_billing_group", &aiven.BillingGroupArgs{
+//				Name:            pulumi.String("example-billing-group"),
 //				BillingCurrency: pulumi.String("USD"),
 //				VatId:           pulumi.String("123ABC"),
+//				ParentId:        pulumi.Any(main.Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = aiven.NewProject(ctx, "pr1", &aiven.ProjectArgs{
-//				Project:      pulumi.String("pr1"),
-//				BillingGroup: bybg1.ID(),
+//			_, err = aiven.NewProject(ctx, "example_project", &aiven.ProjectArgs{
+//				Project:      pulumi.String("example-project"),
+//				BillingGroup: exampleBillingGroup.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -51,7 +52,7 @@ import (
 // ## Import
 //
 // ```sh
-// $ pulumi import aiven:index/billingGroup:BillingGroup bybg1 id
+// $ pulumi import aiven:index/billingGroup:BillingGroup example_billing_group ID
 // ```
 type BillingGroup struct {
 	pulumi.CustomResourceState

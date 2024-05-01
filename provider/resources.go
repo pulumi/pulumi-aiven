@@ -109,15 +109,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Markdown: []byte(" "),
 				}},
-			"aiven_billing_group": {Tok: makeResource(mainMod, "BillingGroup")},
-			"aiven_cassandra": {
-				Tok: makeResource(mainMod, "Cassandra"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"cassandra": {
-						CSharpName: "CassandraServer",
-					},
-				},
-			},
+			"aiven_billing_group":       {Tok: makeResource(mainMod, "BillingGroup")},
 			"aiven_connection_pool":     {Tok: makeResource(mainMod, "ConnectionPool")},
 			"aiven_clickhouse":          {Tok: makeResource(mainMod, "Clickhouse")},
 			"aiven_clickhouse_database": {Tok: makeResource(mainMod, "ClickhouseDatabase")},
@@ -127,9 +119,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_grafana": {
 				Tok: makeResource(mainMod, "Grafana"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"grafana": {
-						CSharpName: "GrafanaServer",
-					},
 					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
 				},
 			},
@@ -143,13 +132,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					"kafka": {CSharpName: "KafkaServer"},
 				},
 			},
-			"aiven_kafka_acl": {Tok: makeResource(mainMod, "KafkaAcl")},
-			"aiven_kafka_connect": {
-				Tok: makeResource(mainMod, "KafkaConnect"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"kafka_connect": {CSharpName: "KafkaConnectServer"},
-				},
-			},
+			"aiven_kafka_acl":                    {Tok: makeResource(mainMod, "KafkaAcl")},
 			"aiven_kafka_connector":              {Tok: makeResource(mainMod, "KafkaConnector")},
 			"aiven_kafka_mirrormaker":            {Tok: makeResource(mainMod, "KafkaMirrorMaker")},
 			"aiven_kafka_schema":                 {Tok: makeResource(mainMod, "KafkaSchema")},
@@ -172,16 +155,8 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"aiven_project_user": {Tok: makeResource(mainMod, "ProjectUser")},
-			"aiven_project_vpc":  {Tok: makeResource(mainMod, "ProjectVpc")},
-			"aiven_redis": {
-				Tok: makeResource(mainMod, "Redis"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"redis": {
-						CSharpName: "RedisServer",
-					},
-				},
-			},
+			"aiven_project_user":                   {Tok: makeResource(mainMod, "ProjectUser")},
+			"aiven_project_vpc":                    {Tok: makeResource(mainMod, "ProjectVpc")},
 			"aiven_service_integration":            {Tok: makeResource(mainMod, "ServiceIntegration")},
 			"aiven_service_integration_endpoint":   {Tok: makeResource(mainMod, "ServiceIntegrationEndpoint")},
 			"aiven_transit_gateway_vpc_attachment": {Tok: makeResource(mainMod, "TransitGatewayVpcAttachment")},

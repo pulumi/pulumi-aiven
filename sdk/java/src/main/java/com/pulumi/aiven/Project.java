@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Project resource allows the creation and management of Aiven Projects.
+ * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/projects_accounts_access#projects).
  * 
  * ## Example Usage
  * 
@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .project(&#34;Example project&#34;)
+ *             .project(&#34;example-project&#34;)
  *             .parentId(main.id())
  *             .build());
  * 
@@ -57,14 +57,14 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ```sh
- * $ pulumi import aiven:index/project:Project myproject project
+ * $ pulumi import aiven:index/project:Project example_project PROJECT
  * ```
  * 
  */
 @ResourceType(type="aiven:index/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
-     * An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      * @deprecated
      * Use parent_id instead. This field will be removed in the next major release.
@@ -75,7 +75,7 @@ public class Project extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> accountId;
 
     /**
-     * @return An optional property to link a project to an already existing account by using account ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> accountId() {
@@ -100,126 +100,126 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.addAccountOwnersAdminAccess);
     }
     /**
-     * The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * The number of trial or promotional credits remaining for this project.
      * 
      */
     @Export(name="availableCredits", refs={String.class}, tree="[0]")
     private Output<String> availableCredits;
 
     /**
-     * @return The amount of platform credits available to the project. This could be your free trial or other promotional credits.
+     * @return The number of trial or promotional credits remaining for this project.
      * 
      */
     public Output<String> availableCredits() {
         return this.availableCredits;
     }
     /**
-     * The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="billingGroup", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingGroup;
 
     /**
-     * @return The id of the billing group that is linked to this project. To set up proper dependencies please refer to this variable as a reference.
+     * @return The ID of the billing group this project is assigned to. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> billingGroup() {
         return Codegen.optional(this.billingGroup);
     }
     /**
-     * The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      * 
      */
     @Export(name="caCert", refs={String.class}, tree="[0]")
     private Output<String> caCert;
 
     /**
-     * @return The CA certificate of the project. This is required for configuring clients that connect to certain services like Kafka.
+     * @return The CA certificate for the project. This is required for configuring clients that connect to certain services like Kafka.
      * 
      */
     public Output<String> caCert() {
         return this.caCert;
     }
     /**
-     * is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="copyFromProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> copyFromProject;
 
     /**
-     * @return is the name of another project used to copy billing information and some other project attributes like technical contacts from. This is mostly relevant when an existing project has billing type set to invoice and that needs to be copied over to a new project. (Setting billing is otherwise not allowed over the API.) This only has effect when the project is created. To set up proper dependencies please refer to this variable as a reference.
+     * @return The name of the project to copy billing information, technical contacts, and some other project attributes from. This is most useful to set up the same billing method when you use bank transfers to pay invoices for other projects. You can only do this when creating a project. You can&#39;t set the billing over the API for an existing. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> copyFromProject() {
         return Codegen.optional(this.copyFromProject);
     }
     /**
-     * Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      * 
      */
     @Export(name="defaultCloud", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultCloud;
 
     /**
-     * @return Defines the default cloud provider and region where services are hosted. This can be changed freely after the project is created. This will not affect existing services.
+     * @return Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
      * 
      */
     public Output<Optional<String>> defaultCloud() {
         return Codegen.optional(this.defaultCloud);
     }
     /**
-     * The current accumulated bill for this project in the current billing period.
+     * The monthly running estimate for this project for the current billing period.
      * 
      */
     @Export(name="estimatedBalance", refs={String.class}, tree="[0]")
     private Output<String> estimatedBalance;
 
     /**
-     * @return The current accumulated bill for this project in the current billing period.
+     * @return The monthly running estimate for this project for the current billing period.
      * 
      */
     public Output<String> estimatedBalance() {
         return this.estimatedBalance;
     }
     /**
-     * An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
-     * @return An optional property to link a project to an already existing organization or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public Output<Optional<String>> parentId() {
         return Codegen.optional(this.parentId);
     }
     /**
-     * The method of invoicing used for payments for this project, e.g. `card`.
+     * The payment type used for this project. For example,`card`.
      * 
      */
     @Export(name="paymentMethod", refs={String.class}, tree="[0]")
     private Output<String> paymentMethod;
 
     /**
-     * @return The method of invoicing used for payments for this project, e.g. `card`.
+     * @return The payment type used for this project. For example,`card`.
      * 
      */
     public Output<String> paymentMethod() {
         return this.paymentMethod;
     }
     /**
-     * Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return Defines the name of the project. Name must be globally unique (between all Aiven customers) and cannot be changed later without destroying and re-creating the project, including all sub-resources.
+     * @return The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
      * 
      */
     public Output<String> project() {
@@ -240,14 +240,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     @Export(name="technicalEmails", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> technicalEmails;
 
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability. It is a good practice to keep this up-to-date to be aware of any potential issues with your project.
+     * @return The email addresses for [project contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this project and its services. You can also set email contacts at the service level. It&#39;s good practice to keep these up-to-date to be aware of any potential issues with your project.
      * 
      */
     public Output<Optional<List<String>>> technicalEmails() {

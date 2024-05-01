@@ -170,7 +170,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? PgStatMonitorDotPgsmEnableQueryPlan;
         /// <summary>
-        /// Sets the maximum number of buckets .
+        /// Sets the maximum number of buckets.
         /// </summary>
         public readonly int? PgStatMonitorDotPgsmMaxBuckets;
         /// <summary>

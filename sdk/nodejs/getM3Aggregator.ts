@@ -35,7 +35,7 @@ export function getM3Aggregator(args: GetM3AggregatorArgs, opts?: pulumi.InvokeO
  */
 export interface GetM3AggregatorArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -89,10 +89,6 @@ export interface GetM3AggregatorResult {
      */
     readonly m3aggregatorUserConfigs: outputs.GetM3AggregatorM3aggregatorUserConfig[];
     /**
-     * M3 aggregator specific server provided values
-     */
-    readonly m3aggregators: outputs.GetM3AggregatorM3aggregator[];
-    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow: string;
@@ -105,7 +101,7 @@ export interface GetM3AggregatorResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +153,7 @@ export interface GetM3AggregatorResult {
      */
     readonly tags: outputs.GetM3AggregatorTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetM3AggregatorTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getM3AggregatorOutput(args: GetM3AggregatorOutputArgs, opts?: pu
  */
 export interface GetM3AggregatorOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Kafka Topic resource allows the creation and management of Aiven Kafka Topics.
+    /// Creates and manages an Aiven for Apache Kafka® topic.
     /// 
     /// ## Example Usage
     /// 
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mytesttopic = new Aiven.KafkaTopic("mytesttopic", new()
+    ///     var exampleTopic = new Aiven.KafkaTopic("example_topic", new()
     ///     {
-    ///         Project = myproject.Project,
-    ///         ServiceName = myservice.ServiceName,
-    ///         TopicName = "&lt;TOPIC_NAME&gt;",
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
+    ///         TopicName = "example-topic",
     ///         Partitions = 5,
     ///         Replication = 3,
     ///         TerminationProtection = true,
@@ -43,14 +43,14 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/kafkaTopic:KafkaTopic mytesttopic project/service_name/topic_name
+    /// $ pulumi import aiven:index/kafkaTopic:KafkaTopic example_topic PROJECT/SERVICE_NAME/TOPIC_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/kafkaTopic:KafkaTopic")]
     public partial class KafkaTopic : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Kafka topic configuration
+        /// Kafka topic configuration.
         /// </summary>
         [Output("config")]
         public Output<Outputs.KafkaTopicConfig?> Config { get; private set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven
         public Output<int> Partitions { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -74,20 +74,20 @@ namespace Pulumi.Aiven
         public Output<int> Replication { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
 
         /// <summary>
-        /// Kafka Topic tag.
+        /// Tags for the Kafka topic.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<Outputs.KafkaTopicTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-        /// enable this for any production Kafka topic containing critical data.
+        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+        /// still be deleted in the Aiven Console.**
         /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka topic configuration
+        /// Kafka topic configuration.
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigArgs>? Config { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.Aiven
         public Input<int> Partitions { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.Aiven
         public Input<int> Replication { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTopicTagArgs>? _tags;
 
         /// <summary>
-        /// Kafka Topic tag.
+        /// Tags for the Kafka topic.
         /// </summary>
         public InputList<Inputs.KafkaTopicTagArgs> Tags
         {
@@ -187,8 +187,8 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-        /// enable this for any production Kafka topic containing critical data.
+        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+        /// still be deleted in the Aiven Console.**
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.Aiven
     public sealed class KafkaTopicState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Kafka topic configuration
+        /// Kafka topic configuration.
         /// </summary>
         [Input("config")]
         public Input<Inputs.KafkaTopicConfigGetArgs>? Config { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.Aiven
         public Input<int>? Partitions { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.Aiven
         public Input<int>? Replication { get; set; }
 
         /// <summary>
-        /// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }
@@ -241,7 +241,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.KafkaTopicTagGetArgs>? _tags;
 
         /// <summary>
-        /// Kafka Topic tag.
+        /// Tags for the Kafka topic.
         /// </summary>
         public InputList<Inputs.KafkaTopicTagGetArgs> Tags
         {
@@ -250,8 +250,8 @@ namespace Pulumi.Aiven
         }
 
         /// <summary>
-        /// It is a Terraform client-side deletion protection, which prevents a Kafka topic from being deleted. It is recommended to
-        /// enable this for any production Kafka topic containing critical data.
+        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
+        /// still be deleted in the Aiven Console.**
         /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }

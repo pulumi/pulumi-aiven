@@ -12,12 +12,12 @@ import java.util.Objects;
 @CustomType
 public final class GetProjectUserResult {
     /**
-     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * @return Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      * 
      */
     private Boolean accepted;
     /**
-     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * @return Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     private String email;
@@ -32,21 +32,21 @@ public final class GetProjectUserResult {
      */
     private String memberType;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
 
     private GetProjectUserResult() {}
     /**
-     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * @return Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      * 
      */
     public Boolean accepted() {
         return this.accepted;
     }
     /**
-     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * @return Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public String email() {
@@ -67,7 +67,7 @@ public final class GetProjectUserResult {
         return this.memberType;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {

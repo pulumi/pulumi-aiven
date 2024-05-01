@@ -46,7 +46,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/cassandra:Cassandra bar project/service_name
+    /// $ pulumi import aiven:index/cassandra:Cassandra bar PROJECT/SERVICE_NAME
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/cassandra:Cassandra")]
@@ -63,12 +63,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("cassandraUserConfig")]
         public Output<Outputs.CassandraCassandraUserConfig?> CassandraUserConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Cassandra server provided values
-        /// </summary>
-        [Output("cassandras")]
-        public Output<ImmutableArray<Outputs.CassandraCassandra>> CassandraServer { get; private set; } = null!;
 
         /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -131,7 +125,7 @@ namespace Pulumi.Aiven
         public Output<string> Plan { get; private set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -209,7 +203,7 @@ namespace Pulumi.Aiven
         public Output<ImmutableArray<Outputs.CassandraTag>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         [Output("techEmails")]
         public Output<ImmutableArray<Outputs.CassandraTechEmail>> TechEmails { get; private set; } = null!;
@@ -314,7 +308,7 @@ namespace Pulumi.Aiven
         public Input<string> Plan { get; set; } = null!;
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -371,7 +365,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.CassandraTechEmailArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.CassandraTechEmailArgs> TechEmails
         {
@@ -404,18 +398,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("cassandraUserConfig")]
         public Input<Inputs.CassandraCassandraUserConfigGetArgs>? CassandraUserConfig { get; set; }
-
-        [Input("cassandras")]
-        private InputList<Inputs.CassandraCassandraGetArgs>? _cassandras;
-
-        /// <summary>
-        /// Cassandra server provided values
-        /// </summary>
-        public InputList<Inputs.CassandraCassandraGetArgs> CassandraServer
-        {
-            get => _cassandras ?? (_cassandras = new InputList<Inputs.CassandraCassandraGetArgs>());
-            set => _cassandras = value;
-        }
 
         /// <summary>
         /// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -484,7 +466,7 @@ namespace Pulumi.Aiven
         public Input<string>? Plan { get; set; }
 
         /// <summary>
-        /// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -603,7 +585,7 @@ namespace Pulumi.Aiven
         private InputList<Inputs.CassandraTechEmailGetArgs>? _techEmails;
 
         /// <summary>
-        /// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        /// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         /// </summary>
         public InputList<Inputs.CassandraTechEmailGetArgs> TechEmails
         {

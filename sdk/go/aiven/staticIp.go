@@ -20,7 +20,7 @@ type StaticIp struct {
 	CloudName pulumi.StringOutput `pulumi:"cloudName"`
 	// The address of the static ip.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The service name the static ip is associated with.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -70,7 +70,7 @@ type staticIpState struct {
 	CloudName *string `pulumi:"cloudName"`
 	// The address of the static ip.
 	IpAddress *string `pulumi:"ipAddress"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The service name the static ip is associated with.
 	ServiceName *string `pulumi:"serviceName"`
@@ -85,7 +85,7 @@ type StaticIpState struct {
 	CloudName pulumi.StringPtrInput
 	// The address of the static ip.
 	IpAddress pulumi.StringPtrInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The service name the static ip is associated with.
 	ServiceName pulumi.StringPtrInput
@@ -102,7 +102,7 @@ func (StaticIpState) ElementType() reflect.Type {
 type staticIpArgs struct {
 	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
 	CloudName string `pulumi:"cloudName"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 }
 
@@ -110,7 +110,7 @@ type staticIpArgs struct {
 type StaticIpArgs struct {
 	// Specifies the cloud that the static ip belongs to. Changing this property forces recreation of the resource.
 	CloudName pulumi.StringInput
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 }
 
@@ -211,7 +211,7 @@ func (o StaticIpOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.IpAddress }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o StaticIpOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticIp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

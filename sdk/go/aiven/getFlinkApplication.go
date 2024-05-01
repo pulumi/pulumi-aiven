@@ -54,9 +54,9 @@ func LookupFlinkApplication(ctx *pulumi.Context, args *LookupFlinkApplicationArg
 type LookupFlinkApplicationArgs struct {
 	// Application name
 	Name string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -72,9 +72,9 @@ type LookupFlinkApplicationResult struct {
 	Id string `pulumi:"id"`
 	// Application name
 	Name string `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Application update time
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -99,9 +99,9 @@ func LookupFlinkApplicationOutput(ctx *pulumi.Context, args LookupFlinkApplicati
 type LookupFlinkApplicationOutputArgs struct {
 	// Application name
 	Name pulumi.StringInput `pulumi:"name"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -149,12 +149,12 @@ func (o LookupFlinkApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupFlinkApplicationResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupFlinkApplicationResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlinkApplicationResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

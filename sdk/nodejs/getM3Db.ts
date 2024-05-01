@@ -35,7 +35,7 @@ export function getM3Db(args: GetM3DbArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetM3DbArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: string;
     /**
@@ -89,10 +89,6 @@ export interface GetM3DbResult {
      */
     readonly m3dbUserConfigs: outputs.GetM3DbM3dbUserConfig[];
     /**
-     * M3 specific server provided values
-     */
-    readonly m3dbs: outputs.GetM3DbM3db[];
-    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow: string;
@@ -105,7 +101,7 @@ export interface GetM3DbResult {
      */
     readonly plan: string;
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     readonly project: string;
     /**
@@ -157,7 +153,7 @@ export interface GetM3DbResult {
      */
     readonly tags: outputs.GetM3DbTag[];
     /**
-     * Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      */
     readonly techEmails: outputs.GetM3DbTechEmail[];
     /**
@@ -189,7 +185,7 @@ export function getM3DbOutput(args: GetM3DbOutputArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetM3DbOutputArgs {
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**

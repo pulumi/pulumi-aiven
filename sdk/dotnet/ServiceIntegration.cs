@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// The Service Integration resource allows the creation and management of Aiven Service Integrations.
+    /// Creates and manages an Aiven [service integration](https://aiven.io/docs/platform/concepts/service-integration).
     /// 
-    /// **Note** For services running on `hobbyist` plan service integrations are not supported.
+    /// You can set up an integration between two Aiven services or an Aiven service and an external
+    /// service. For example, you can send metrics from a Kafka service to an M3DB service,
+    /// send metrics from an M3DB service to a Grafana service to show dashboards, and send logs from
+    /// any service to OpenSearch.
     /// 
-    /// Service Integration defines an integration between two Aiven services or between Aiven service and an external
-    /// integration endpoint. Integration could be for example sending metrics from Kafka service to an M3DB service,
-    /// getting metrics from an M3DB service to a Grafana service to show dashboards, sending logs from any service to
-    /// OpenSearch, etc.
+    /// **Services integrations are not supported for services running on hobbyist plans.**
     /// 
     /// ## Example Usage
     /// 
@@ -29,12 +29,12 @@ namespace Pulumi.Aiven
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myIntegrationMetrics = new Aiven.ServiceIntegration("my_integration_metrics", new()
+    ///     var exampleIntegration = new Aiven.ServiceIntegration("example_integration", new()
     ///     {
-    ///         Project = myproject.Project,
+    ///         Project = exampleProject.Project,
     ///         IntegrationType = "metrics",
-    ///         SourceServiceName = kfk1.ServiceName,
-    ///         DestinationServiceName = m3db.ServiceName,
+    ///         SourceServiceName = exampleKafka.ServiceName,
+    ///         DestinationServiceName = exampleM3db.ServiceName,
     ///     });
     /// 
     /// });
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven
     /// ## Import
     /// 
     /// ```sh
-    /// $ pulumi import aiven:index/serviceIntegration:ServiceIntegration myintegration project/integration_id
+    /// $ pulumi import aiven:index/serviceIntegration:ServiceIntegration example_integration PROJECT/INTEGRATION_ID
     /// ```
     /// </summary>
     [AivenResourceType("aiven:index/serviceIntegration:ServiceIntegration")]
@@ -68,13 +68,13 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationDatadogUserConfig?> DatadogUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// Destination endpoint for the integration.
         /// </summary>
         [Output("destinationEndpointId")]
         public Output<string?> DestinationEndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// Destination service for the integration (if any)
+        /// Destination service for the integration.
         /// </summary>
         [Output("destinationServiceName")]
         public Output<string?> DestinationServiceName { get; private set; } = null!;
@@ -104,7 +104,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationExternalOpensearchLogsUserConfig?> ExternalOpensearchLogsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Service Integration Id at aiven
+        /// The ID of the Aiven service integration.
         /// </summary>
         [Output("integrationId")]
         public Output<string> IntegrationId { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationMetricsUserConfig?> MetricsUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Project the integration belongs to
+        /// Project the integration belongs to.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven
         public Output<Outputs.ServiceIntegrationPrometheusUserConfig?> PrometheusUserConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// Source endpoint for the integration.
         /// </summary>
         [Output("sourceEndpointId")]
         public Output<string?> SourceEndpointId { get; private set; } = null!;
@@ -234,13 +234,13 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationDatadogUserConfigArgs>? DatadogUserConfig { get; set; }
 
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// Destination endpoint for the integration.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
 
         /// <summary>
-        /// Destination service for the integration (if any)
+        /// Destination service for the integration.
         /// </summary>
         [Input("destinationServiceName")]
         public Input<string>? DestinationServiceName { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationMetricsUserConfigArgs>? MetricsUserConfig { get; set; }
 
         /// <summary>
-        /// Project the integration belongs to
+        /// Project the integration belongs to.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -318,7 +318,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// Source endpoint for the integration.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }
@@ -356,13 +356,13 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationDatadogUserConfigGetArgs>? DatadogUserConfig { get; set; }
 
         /// <summary>
-        /// Destination endpoint for the integration (if any)
+        /// Destination endpoint for the integration.
         /// </summary>
         [Input("destinationEndpointId")]
         public Input<string>? DestinationEndpointId { get; set; }
 
         /// <summary>
-        /// Destination service for the integration (if any)
+        /// Destination service for the integration.
         /// </summary>
         [Input("destinationServiceName")]
         public Input<string>? DestinationServiceName { get; set; }
@@ -392,7 +392,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationExternalOpensearchLogsUserConfigGetArgs>? ExternalOpensearchLogsUserConfig { get; set; }
 
         /// <summary>
-        /// Service Integration Id at aiven
+        /// The ID of the Aiven service integration.
         /// </summary>
         [Input("integrationId")]
         public Input<string>? IntegrationId { get; set; }
@@ -434,7 +434,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationMetricsUserConfigGetArgs>? MetricsUserConfig { get; set; }
 
         /// <summary>
-        /// Project the integration belongs to
+        /// Project the integration belongs to.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -446,7 +446,7 @@ namespace Pulumi.Aiven
         public Input<Inputs.ServiceIntegrationPrometheusUserConfigGetArgs>? PrometheusUserConfig { get; set; }
 
         /// <summary>
-        /// Source endpoint for the integration (if any)
+        /// Source endpoint for the integration.
         /// </summary>
         [Input("sourceEndpointId")]
         public Input<string>? SourceEndpointId { get; set; }

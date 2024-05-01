@@ -51,7 +51,7 @@ func LookupRedis(ctx *pulumi.Context, args *LookupRedisArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getRedis.
 type LookupRedisArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName string `pulumi:"serviceName"`
@@ -83,12 +83,10 @@ type LookupRedisResult struct {
 	MaintenanceWindowTime string `pulumi:"maintenanceWindowTime"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
-	// Redis server provided values
-	Redis []GetRedisRedi `pulumi:"redis"`
 	// Redis user configurable settings
 	RedisUserConfigs []GetRedisRedisUserConfig `pulumi:"redisUserConfigs"`
 	// The hostname of the service.
@@ -113,7 +111,7 @@ type LookupRedisResult struct {
 	StaticIps []string `pulumi:"staticIps"`
 	// Tags are key-value pairs that allow you to categorize services.
 	Tags []GetRedisTag `pulumi:"tags"`
-	// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+	// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 	TechEmails []GetRedisTechEmail `pulumi:"techEmails"`
 	// Prevents the service from being deleted. It is recommended to set this to `true` for all production services to prevent unintentional service deletion. This does not shield against deleting databases or topics but for services with backups much of the content can at least be restored from backup in case accidental deletion is done.
 	TerminationProtection bool `pulumi:"terminationProtection"`
@@ -134,7 +132,7 @@ func LookupRedisOutput(ctx *pulumi.Context, args LookupRedisOutputArgs, opts ...
 
 // A collection of arguments for invoking getRedis.
 type LookupRedisOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
 	// Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
@@ -219,7 +217,7 @@ func (o LookupRedisResultOutput) Plan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.Plan }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupRedisResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -227,11 +225,6 @@ func (o LookupRedisResultOutput) Project() pulumi.StringOutput {
 // Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o LookupRedisResultOutput) ProjectVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
-}
-
-// Redis server provided values
-func (o LookupRedisResultOutput) Redis() GetRedisRediArrayOutput {
-	return o.ApplyT(func(v LookupRedisResult) []GetRedisRedi { return v.Redis }).(GetRedisRediArrayOutput)
 }
 
 // Redis user configurable settings
@@ -294,7 +287,7 @@ func (o LookupRedisResultOutput) Tags() GetRedisTagArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []GetRedisTag { return v.Tags }).(GetRedisTagArrayOutput)
 }
 
-// Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+// The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
 func (o LookupRedisResultOutput) TechEmails() GetRedisTechEmailArrayOutput {
 	return o.ApplyT(func(v LookupRedisResult) []GetRedisTechEmail { return v.TechEmails }).(GetRedisTechEmailArrayOutput)
 }

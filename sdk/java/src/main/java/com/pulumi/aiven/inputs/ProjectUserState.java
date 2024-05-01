@@ -17,14 +17,14 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectUserState Empty = new ProjectUserState();
 
     /**
-     * Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      * 
      */
     @Import(name="accepted")
     private @Nullable Output<Boolean> accepted;
 
     /**
-     * @return Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+     * @return Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
      * 
      */
     public Optional<Output<Boolean>> accepted() {
@@ -32,14 +32,14 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="email")
     private @Nullable Output<String> email;
 
     /**
-     * @return Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+     * @return Email address of the user in lowercase. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> email() {
@@ -62,14 +62,14 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Optional<Output<String>> project() {
@@ -104,7 +104,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accepted Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+         * @param accepted Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accepted Whether the user has accepted the request to join the project; adding user to a project sends an invitation to the target user and the actual membership is only created once the user accepts the invitation.
+         * @param accepted Whether the user has accepted the request to join the project. Users get an invite and become project members after accepting the invite.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+         * @param email Email address of the user in lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email address of the user. Should be lowercase. Changing this property forces recreation of the resource.
+         * @param email Email address of the user in lowercase. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ProjectUserState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
          * 
          * @return builder
          * 

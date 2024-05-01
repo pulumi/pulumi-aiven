@@ -22,7 +22,7 @@ class GetKafkaConnectResult:
     """
     A collection of values returned by getKafkaConnect.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_connect_user_configs=None, kafka_connects=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, kafka_connect_user_configs=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -53,9 +53,6 @@ class GetKafkaConnectResult:
         if kafka_connect_user_configs and not isinstance(kafka_connect_user_configs, list):
             raise TypeError("Expected argument 'kafka_connect_user_configs' to be a list")
         pulumi.set(__self__, "kafka_connect_user_configs", kafka_connect_user_configs)
-        if kafka_connects and not isinstance(kafka_connects, list):
-            raise TypeError("Expected argument 'kafka_connects' to be a list")
-        pulumi.set(__self__, "kafka_connects", kafka_connects)
         if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
             raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
         pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -192,14 +189,6 @@ class GetKafkaConnectResult:
         return pulumi.get(self, "kafka_connect_user_configs")
 
     @property
-    @pulumi.getter(name="kafkaConnects")
-    def kafka_connects(self) -> Sequence['outputs.GetKafkaConnectKafkaConnectResult']:
-        """
-        Kafka Connect server provided values
-        """
-        return pulumi.get(self, "kafka_connects")
-
-    @property
     @pulumi.getter(name="maintenanceWindowDow")
     def maintenance_window_dow(self) -> str:
         """
@@ -227,7 +216,7 @@ class GetKafkaConnectResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -331,7 +320,7 @@ class GetKafkaConnectResult:
     @pulumi.getter(name="techEmails")
     def tech_emails(self) -> Sequence['outputs.GetKafkaConnectTechEmailResult']:
         """
-        Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+        The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
         """
         return pulumi.get(self, "tech_emails")
 
@@ -360,7 +349,6 @@ class AwaitableGetKafkaConnectResult(GetKafkaConnectResult):
             disk_space_used=self.disk_space_used,
             id=self.id,
             kafka_connect_user_configs=self.kafka_connect_user_configs,
-            kafka_connects=self.kafka_connects,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
             plan=self.plan,
@@ -398,7 +386,7 @@ def get_kafka_connect(project: Optional[str] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     __args__ = dict()
@@ -418,7 +406,6 @@ def get_kafka_connect(project: Optional[str] = None,
         disk_space_used=pulumi.get(__ret__, 'disk_space_used'),
         id=pulumi.get(__ret__, 'id'),
         kafka_connect_user_configs=pulumi.get(__ret__, 'kafka_connect_user_configs'),
-        kafka_connects=pulumi.get(__ret__, 'kafka_connects'),
         maintenance_window_dow=pulumi.get(__ret__, 'maintenance_window_dow'),
         maintenance_window_time=pulumi.get(__ret__, 'maintenance_window_time'),
         plan=pulumi.get(__ret__, 'plan'),
@@ -457,7 +444,7 @@ def get_kafka_connect_output(project: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str project: Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     :param str service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
     """
     ...

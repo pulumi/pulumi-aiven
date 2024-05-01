@@ -12,62 +12,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KafkaKafka {
     /**
-     * @return The Kafka client certificate
+     * @return The Kafka client certificate.
      * 
      */
     private @Nullable String accessCert;
     /**
-     * @return The Kafka client certificate key
+     * @return The Kafka client certificate key.
      * 
      */
     private @Nullable String accessKey;
     /**
-     * @return The Kafka Connect URI, if any
+     * @return The Kafka Connect URI.
      * 
      */
     private @Nullable String connectUri;
     /**
-     * @return The Kafka REST URI, if any
+     * @return The Kafka REST URI.
      * 
      */
     private @Nullable String restUri;
     /**
-     * @return The Schema Registry URI, if any
+     * @return The Schema Registry URI.
      * 
      */
     private @Nullable String schemaRegistryUri;
 
     private KafkaKafka() {}
     /**
-     * @return The Kafka client certificate
+     * @return The Kafka client certificate.
      * 
      */
     public Optional<String> accessCert() {
         return Optional.ofNullable(this.accessCert);
     }
     /**
-     * @return The Kafka client certificate key
+     * @return The Kafka client certificate key.
      * 
      */
     public Optional<String> accessKey() {
         return Optional.ofNullable(this.accessKey);
     }
     /**
-     * @return The Kafka Connect URI, if any
+     * @return The Kafka Connect URI.
      * 
      */
     public Optional<String> connectUri() {
         return Optional.ofNullable(this.connectUri);
     }
     /**
-     * @return The Kafka REST URI, if any
+     * @return The Kafka REST URI.
      * 
      */
     public Optional<String> restUri() {
         return Optional.ofNullable(this.restUri);
     }
     /**
-     * @return The Schema Registry URI, if any
+     * @return The Schema Registry URI.
      * 
      */
     public Optional<String> schemaRegistryUri() {

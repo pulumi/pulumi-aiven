@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationDatadogUserConfigOpensearch {
     /**
+     * @return Enable Datadog Opensearch Cluster Monitoring.
+     * 
+     */
+    private @Nullable Boolean clusterStatsEnabled;
+    /**
      * @return Enable Datadog Opensearch Index Monitoring.
      * 
      */
@@ -28,6 +33,13 @@ public final class GetServiceIntegrationDatadogUserConfigOpensearch {
     private @Nullable Boolean pshardStatsEnabled;
 
     private GetServiceIntegrationDatadogUserConfigOpensearch() {}
+    /**
+     * @return Enable Datadog Opensearch Cluster Monitoring.
+     * 
+     */
+    public Optional<Boolean> clusterStatsEnabled() {
+        return Optional.ofNullable(this.clusterStatsEnabled);
+    }
     /**
      * @return Enable Datadog Opensearch Index Monitoring.
      * 
@@ -59,17 +71,25 @@ public final class GetServiceIntegrationDatadogUserConfigOpensearch {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean clusterStatsEnabled;
         private @Nullable Boolean indexStatsEnabled;
         private @Nullable Boolean pendingTaskStatsEnabled;
         private @Nullable Boolean pshardStatsEnabled;
         public Builder() {}
         public Builder(GetServiceIntegrationDatadogUserConfigOpensearch defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clusterStatsEnabled = defaults.clusterStatsEnabled;
     	      this.indexStatsEnabled = defaults.indexStatsEnabled;
     	      this.pendingTaskStatsEnabled = defaults.pendingTaskStatsEnabled;
     	      this.pshardStatsEnabled = defaults.pshardStatsEnabled;
         }
 
+        @CustomType.Setter
+        public Builder clusterStatsEnabled(@Nullable Boolean clusterStatsEnabled) {
+
+            this.clusterStatsEnabled = clusterStatsEnabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder indexStatsEnabled(@Nullable Boolean indexStatsEnabled) {
 
@@ -90,6 +110,7 @@ public final class GetServiceIntegrationDatadogUserConfigOpensearch {
         }
         public GetServiceIntegrationDatadogUserConfigOpensearch build() {
             final var _resultValue = new GetServiceIntegrationDatadogUserConfigOpensearch();
+            _resultValue.clusterStatsEnabled = clusterStatsEnabled;
             _resultValue.indexStatsEnabled = indexStatsEnabled;
             _resultValue.pendingTaskStatsEnabled = pendingTaskStatsEnabled;
             _resultValue.pshardStatsEnabled = pshardStatsEnabled;

@@ -51,9 +51,9 @@ func LookupAzurePrivatelink(ctx *pulumi.Context, args *LookupAzurePrivatelinkArg
 
 // A collection of arguments for invoking getAzurePrivatelink.
 type LookupAzurePrivatelinkArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
@@ -67,9 +67,9 @@ type LookupAzurePrivatelinkResult struct {
 	Id string `pulumi:"id"`
 	// Printable result of the Azure Private Link request.
 	Message string `pulumi:"message"`
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// The state of the Private Link resource.
 	State string `pulumi:"state"`
@@ -92,9 +92,9 @@ func LookupAzurePrivatelinkOutput(ctx *pulumi.Context, args LookupAzurePrivateli
 
 // A collection of arguments for invoking getAzurePrivatelink.
 type LookupAzurePrivatelinkOutputArgs struct {
-	// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput `pulumi:"project"`
-	// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -137,12 +137,12 @@ func (o LookupAzurePrivatelinkResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAzurePrivatelinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
-// Specifies the name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupAzurePrivatelinkResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePrivatelinkResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }

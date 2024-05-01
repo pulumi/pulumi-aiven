@@ -24,7 +24,7 @@ public final class M3DbM3dbUserConfigLimits {
      */
     private @Nullable Integer maxRecentlyQueriedSeriesDiskBytesRead;
     /**
-     * @return The lookback period for &#39;max_recently_queried_series_blocks&#39; and &#39;max_recently_queried_series_disk_bytes_read&#39;.
+     * @return The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
      * 
      */
     private @Nullable String maxRecentlyQueriedSeriesLookback;
@@ -60,7 +60,7 @@ public final class M3DbM3dbUserConfigLimits {
         return Optional.ofNullable(this.maxRecentlyQueriedSeriesDiskBytesRead);
     }
     /**
-     * @return The lookback period for &#39;max_recently_queried_series_blocks&#39; and &#39;max_recently_queried_series_disk_bytes_read&#39;.
+     * @return The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
      * 
      */
     public Optional<String> maxRecentlyQueriedSeriesLookback() {

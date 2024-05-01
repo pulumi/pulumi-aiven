@@ -74,14 +74,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Destination endpoint for the integration (if any)
+     * Destination endpoint for the integration.
      * 
      */
     @Import(name="destinationEndpointId")
     private @Nullable Output<String> destinationEndpointId;
 
     /**
-     * @return Destination endpoint for the integration (if any)
+     * @return Destination endpoint for the integration.
      * 
      */
     public Optional<Output<String>> destinationEndpointId() {
@@ -89,14 +89,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Destination service for the integration (if any)
+     * Destination service for the integration.
      * 
      */
     @Import(name="destinationServiceName")
     private @Nullable Output<String> destinationServiceName;
 
     /**
-     * @return Destination service for the integration (if any)
+     * @return Destination service for the integration.
      * 
      */
     public Optional<Output<String>> destinationServiceName() {
@@ -164,14 +164,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Service Integration Id at aiven
+     * The ID of the Aiven service integration.
      * 
      */
     @Import(name="integrationId")
     private @Nullable Output<String> integrationId;
 
     /**
-     * @return Service Integration Id at aiven
+     * @return The ID of the Aiven service integration.
      * 
      */
     public Optional<Output<String>> integrationId() {
@@ -269,14 +269,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Project the integration belongs to
+     * Project the integration belongs to.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return Project the integration belongs to
+     * @return Project the integration belongs to.
      * 
      */
     public Optional<Output<String>> project() {
@@ -299,14 +299,14 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Source endpoint for the integration (if any)
+     * Source endpoint for the integration.
      * 
      */
     @Import(name="sourceEndpointId")
     private @Nullable Output<String> sourceEndpointId;
 
     /**
-     * @return Source endpoint for the integration (if any)
+     * @return Source endpoint for the integration.
      * 
      */
     public Optional<Output<String>> sourceEndpointId() {
@@ -435,7 +435,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param destinationEndpointId Destination endpoint for the integration (if any)
+         * @param destinationEndpointId Destination endpoint for the integration.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param destinationEndpointId Destination endpoint for the integration (if any)
+         * @param destinationEndpointId Destination endpoint for the integration.
          * 
          * @return builder
          * 
@@ -456,7 +456,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -467,7 +467,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param destinationServiceName Destination service for the integration (if any)
+         * @param destinationServiceName Destination service for the integration.
          * 
          * @return builder
          * 
@@ -561,7 +561,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param integrationId Service Integration Id at aiven
+         * @param integrationId The ID of the Aiven service integration.
          * 
          * @return builder
          * 
@@ -572,7 +572,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param integrationId Service Integration Id at aiven
+         * @param integrationId The ID of the Aiven service integration.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project Project the integration belongs to
+         * @param project Project the integration belongs to.
          * 
          * @return builder
          * 
@@ -750,7 +750,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceEndpointId Source endpoint for the integration (if any)
+         * @param sourceEndpointId Source endpoint for the integration.
          * 
          * @return builder
          * 
@@ -761,7 +761,7 @@ public final class ServiceIntegrationState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceEndpointId Source endpoint for the integration (if any)
+         * @param sourceEndpointId Source endpoint for the integration.
          * 
          * @return builder
          * 

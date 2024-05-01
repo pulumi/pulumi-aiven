@@ -59,7 +59,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     private @Nullable Integer refreshTopicsIntervalSeconds;
     /**
-     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
      * 
      */
     private @Nullable Boolean syncGroupOffsetsEnabled;
@@ -144,7 +144,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker {
         return Optional.ofNullable(this.refreshTopicsIntervalSeconds);
     }
     /**
-     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to __consumer_offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
+     * @return Whether to periodically write the translated offsets of replicated consumer groups (in the source cluster) to _*consumer*offsets topic in target cluster, as long as no active consumers in that group are connected to the target cluster.
      * 
      */
     public Optional<Boolean> syncGroupOffsetsEnabled() {

@@ -195,7 +195,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo project_name/vpc_id/gcp_project_id/peer_vpc
+        $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo PROJECT_NAME/VPC_ID/GCP_PROJECT_ID/PEER_VPC
         ```
 
         :param str resource_name: The name of the resource.
@@ -228,7 +228,7 @@ class GcpVpcPeeringConnection(pulumi.CustomResource):
         ## Import
 
         ```sh
-        $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo project_name/vpc_id/gcp_project_id/peer_vpc
+        $ pulumi import aiven:index/gcpVpcPeeringConnection:GcpVpcPeeringConnection foo PROJECT_NAME/VPC_ID/GCP_PROJECT_ID/PEER_VPC
         ```
 
         :param str resource_name: The name of the resource.

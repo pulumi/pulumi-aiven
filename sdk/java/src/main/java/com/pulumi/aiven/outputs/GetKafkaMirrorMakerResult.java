@@ -4,7 +4,6 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetKafkaMirrorMakerComponent;
-import com.pulumi.aiven.outputs.GetKafkaMirrorMakerKafkaMirrormaker;
 import com.pulumi.aiven.outputs.GetKafkaMirrorMakerKafkaMirrormakerUserConfig;
 import com.pulumi.aiven.outputs.GetKafkaMirrorMakerServiceIntegration;
 import com.pulumi.aiven.outputs.GetKafkaMirrorMakerTag;
@@ -70,11 +69,6 @@ public final class GetKafkaMirrorMakerResult {
      */
     private List<GetKafkaMirrorMakerKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
     /**
-     * @return Kafka MirrorMaker 2 server provided values
-     * 
-     */
-    private List<GetKafkaMirrorMakerKafkaMirrormaker> kafkaMirrormakers;
-    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -90,7 +84,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private String plan;
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     private String project;
@@ -155,7 +149,7 @@ public final class GetKafkaMirrorMakerResult {
      */
     private List<GetKafkaMirrorMakerTag> tags;
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     private List<GetKafkaMirrorMakerTechEmail> techEmails;
@@ -237,13 +231,6 @@ public final class GetKafkaMirrorMakerResult {
         return this.kafkaMirrormakerUserConfigs;
     }
     /**
-     * @return Kafka MirrorMaker 2 server provided values
-     * 
-     */
-    public List<GetKafkaMirrorMakerKafkaMirrormaker> kafkaMirrormakers() {
-        return this.kafkaMirrormakers;
-    }
-    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -265,7 +252,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.plan;
     }
     /**
-     * @return Identifies the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public String project() {
@@ -356,7 +343,7 @@ public final class GetKafkaMirrorMakerResult {
         return this.tags;
     }
     /**
-     * @return Defines the email addresses that will receive alerts about upcoming maintenance updates or warnings about service instability.
+     * @return The email addresses for [service contacts](https://aiven.io/docs/platform/howto/technical-emails), who will receive important alerts and updates about this service. You can also set email contacts at the project level.
      * 
      */
     public List<GetKafkaMirrorMakerTechEmail> techEmails() {
@@ -389,7 +376,6 @@ public final class GetKafkaMirrorMakerResult {
         private String diskSpaceUsed;
         private String id;
         private List<GetKafkaMirrorMakerKafkaMirrormakerUserConfig> kafkaMirrormakerUserConfigs;
-        private List<GetKafkaMirrorMakerKafkaMirrormaker> kafkaMirrormakers;
         private String maintenanceWindowDow;
         private String maintenanceWindowTime;
         private String plan;
@@ -421,7 +407,6 @@ public final class GetKafkaMirrorMakerResult {
     	      this.diskSpaceUsed = defaults.diskSpaceUsed;
     	      this.id = defaults.id;
     	      this.kafkaMirrormakerUserConfigs = defaults.kafkaMirrormakerUserConfigs;
-    	      this.kafkaMirrormakers = defaults.kafkaMirrormakers;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
@@ -527,17 +512,6 @@ public final class GetKafkaMirrorMakerResult {
         }
         public Builder kafkaMirrormakerUserConfigs(GetKafkaMirrorMakerKafkaMirrormakerUserConfig... kafkaMirrormakerUserConfigs) {
             return kafkaMirrormakerUserConfigs(List.of(kafkaMirrormakerUserConfigs));
-        }
-        @CustomType.Setter
-        public Builder kafkaMirrormakers(List<GetKafkaMirrorMakerKafkaMirrormaker> kafkaMirrormakers) {
-            if (kafkaMirrormakers == null) {
-              throw new MissingRequiredPropertyException("GetKafkaMirrorMakerResult", "kafkaMirrormakers");
-            }
-            this.kafkaMirrormakers = kafkaMirrormakers;
-            return this;
-        }
-        public Builder kafkaMirrormakers(GetKafkaMirrorMakerKafkaMirrormaker... kafkaMirrormakers) {
-            return kafkaMirrormakers(List.of(kafkaMirrormakers));
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
@@ -707,7 +681,6 @@ public final class GetKafkaMirrorMakerResult {
             _resultValue.diskSpaceUsed = diskSpaceUsed;
             _resultValue.id = id;
             _resultValue.kafkaMirrormakerUserConfigs = kafkaMirrormakerUserConfigs;
-            _resultValue.kafkaMirrormakers = kafkaMirrormakers;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;

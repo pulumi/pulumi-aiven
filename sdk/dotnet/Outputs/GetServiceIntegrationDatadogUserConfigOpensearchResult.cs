@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationDatadogUserConfigOpensearchResult
     {
         /// <summary>
+        /// Enable Datadog Opensearch Cluster Monitoring.
+        /// </summary>
+        public readonly bool? ClusterStatsEnabled;
+        /// <summary>
         /// Enable Datadog Opensearch Index Monitoring.
         /// </summary>
         public readonly bool? IndexStatsEnabled;
@@ -28,12 +32,15 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private GetServiceIntegrationDatadogUserConfigOpensearchResult(
+            bool? clusterStatsEnabled,
+
             bool? indexStatsEnabled,
 
             bool? pendingTaskStatsEnabled,
 
             bool? pshardStatsEnabled)
         {
+            ClusterStatsEnabled = clusterStatsEnabled;
             IndexStatsEnabled = indexStatsEnabled;
             PendingTaskStatsEnabled = pendingTaskStatsEnabled;
             PshardStatsEnabled = pshardStatsEnabled;
