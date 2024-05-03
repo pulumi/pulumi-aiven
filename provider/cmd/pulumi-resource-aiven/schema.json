@@ -17323,8 +17323,7 @@
                     "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by\nTerraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The\ndefault value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -17349,8 +17348,7 @@
                     "willReplaceOnChanges": true
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by\nTerraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The\ndefault value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "requiredInputs": [
@@ -17376,8 +17374,7 @@
                         "willReplaceOnChanges": true
                     },
                     "terminationProtection": {
-                        "type": "boolean",
-                        "description": "It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by\nTerraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The\ndefault value is `false`.\n"
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
@@ -20029,8 +20026,7 @@
                     "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -20055,8 +20051,7 @@
                     "willReplaceOnChanges": true
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "requiredInputs": [
@@ -20083,8 +20078,7 @@
                         "willReplaceOnChanges": true
                     },
                     "terminationProtection": {
-                        "type": "boolean",
-                        "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
@@ -21924,8 +21918,7 @@
                     "description": "Tags for the Kafka topic.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can\nstill be deleted in the Aiven Console.**\n"
+                    "type": "boolean"
                 },
                 "topicName": {
                     "type": "string",
@@ -21970,8 +21963,7 @@
                     "description": "Tags for the Kafka topic.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can\nstill be deleted in the Aiven Console.**\n"
+                    "type": "boolean"
                 },
                 "topicName": {
                     "type": "string",
@@ -22019,8 +22011,7 @@
                         "description": "Tags for the Kafka topic.\n"
                     },
                     "terminationProtection": {
-                        "type": "boolean",
-                        "description": "Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can\nstill be deleted in the Aiven Console.**\n"
+                        "type": "boolean"
                     },
                     "topicName": {
                         "type": "string",
@@ -23550,8 +23541,7 @@
                     "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -23576,8 +23566,7 @@
                     "willReplaceOnChanges": true
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "requiredInputs": [
@@ -23604,8 +23593,7 @@
                         "willReplaceOnChanges": true
                     },
                     "terminationProtection": {
-                        "type": "boolean",
-                        "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
@@ -25337,8 +25325,7 @@
                     "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "required": [
@@ -25373,8 +25360,7 @@
                     "willReplaceOnChanges": true
                 },
                 "terminationProtection": {
-                    "type": "boolean",
-                    "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                    "type": "boolean"
                 }
             },
             "requiredInputs": [
@@ -25411,8 +25397,7 @@
                         "willReplaceOnChanges": true
                     },
                     "terminationProtection": {
-                        "type": "boolean",
-                        "description": "It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is\nrecommended to enable this for any production databases containing critical data. The default value is `false`.\n"
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
