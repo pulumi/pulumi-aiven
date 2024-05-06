@@ -104,21 +104,9 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
     public Output<String> serviceName() {
         return this.serviceName;
     }
-    /**
-     * It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-     * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-     * default value is `false`.
-     * 
-     */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
-    /**
-     * @return It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-     * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-     * default value is `false`.
-     * 
-     */
     public Output<Optional<Boolean>> terminationProtection() {
         return Codegen.optional(this.terminationProtection);
     }
