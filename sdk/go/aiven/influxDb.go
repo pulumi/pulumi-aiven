@@ -35,10 +35,10 @@ type InfluxDb struct {
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringOutput `pulumi:"diskSpaceCap"`
 	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	// Its also the minimum value for `disk_space`
+	// Its also the minimum value for `diskSpace`
 	DiskSpaceDefault pulumi.StringOutput `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+	// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
@@ -162,10 +162,10 @@ type influxDbState struct {
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap *string `pulumi:"diskSpaceCap"`
 	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	// Its also the minimum value for `disk_space`
+	// Its also the minimum value for `diskSpace`
 	DiskSpaceDefault *string `pulumi:"diskSpaceDefault"`
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+	// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
@@ -246,10 +246,10 @@ type InfluxDbState struct {
 	// The maximum disk space of the service, possible values depend on the service type, the cloud provider and the project.
 	DiskSpaceCap pulumi.StringPtrInput
 	// The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-	// Its also the minimum value for `disk_space`
+	// Its also the minimum value for `diskSpace`
 	DiskSpaceDefault pulumi.StringPtrInput
 	// The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-	// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+	// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
@@ -548,13 +548,13 @@ func (o InfluxDbOutput) DiskSpaceCap() pulumi.StringOutput {
 }
 
 // The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-// Its also the minimum value for `disk_space`
+// Its also the minimum value for `diskSpace`
 func (o InfluxDbOutput) DiskSpaceDefault() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.DiskSpaceDefault }).(pulumi.StringOutput)
 }
 
 // The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-// project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+// project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
 func (o InfluxDbOutput) DiskSpaceStep() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfluxDb) pulumi.StringOutput { return v.DiskSpaceStep }).(pulumi.StringOutput)
 }

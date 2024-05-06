@@ -25,8 +25,6 @@ class InfluxdbDatabaseArgs:
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-               recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
         pulumi.set(__self__, "database_name", database_name)
         pulumi.set(__self__, "project", project)
@@ -75,10 +73,6 @@ class InfluxdbDatabaseArgs:
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-        recommended to enable this for any production databases containing critical data. The default value is `false`.
-        """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
@@ -100,8 +94,6 @@ class _InfluxdbDatabaseState:
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-               recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
@@ -153,10 +145,6 @@ class _InfluxdbDatabaseState:
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> Optional[pulumi.Input[bool]]:
-        """
-        It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-        recommended to enable this for any production databases containing critical data. The default value is `false`.
-        """
         return pulumi.get(self, "termination_protection")
 
     @termination_protection.setter
@@ -183,8 +171,6 @@ class InfluxdbDatabase(pulumi.CustomResource):
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-               recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
         ...
     @overload
@@ -258,8 +244,6 @@ class InfluxdbDatabase(pulumi.CustomResource):
                reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
                reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[bool] termination_protection: It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-               recommended to enable this for any production databases containing critical data. The default value is `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -300,9 +284,5 @@ class InfluxdbDatabase(pulumi.CustomResource):
     @property
     @pulumi.getter(name="terminationProtection")
     def termination_protection(self) -> pulumi.Output[Optional[bool]]:
-        """
-        It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-        recommended to enable this for any production databases containing critical data. The default value is `false`.
-        """
         return pulumi.get(self, "termination_protection")
 
