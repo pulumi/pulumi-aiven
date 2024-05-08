@@ -55,9 +55,7 @@ type MysqlDatabase struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
-	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data. The default value is `false`.
+	ServiceName           pulumi.StringOutput  `pulumi:"serviceName"`
 	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
 }
 
@@ -105,10 +103,8 @@ type mysqlDatabaseState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName *string `pulumi:"serviceName"`
-	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data. The default value is `false`.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	ServiceName           *string `pulumi:"serviceName"`
+	TerminationProtection *bool   `pulumi:"terminationProtection"`
 }
 
 type MysqlDatabaseState struct {
@@ -117,9 +113,7 @@ type MysqlDatabaseState struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringPtrInput
-	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data. The default value is `false`.
+	ServiceName           pulumi.StringPtrInput
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -133,10 +127,8 @@ type mysqlDatabaseArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName string `pulumi:"serviceName"`
-	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data. The default value is `false`.
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	ServiceName           string `pulumi:"serviceName"`
+	TerminationProtection *bool  `pulumi:"terminationProtection"`
 }
 
 // The set of arguments for constructing a MysqlDatabase resource.
@@ -146,9 +138,7 @@ type MysqlDatabaseArgs struct {
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
-	ServiceName pulumi.StringInput
-	// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-	// recommended to enable this for any production databases containing critical data. The default value is `false`.
+	ServiceName           pulumi.StringInput
 	TerminationProtection pulumi.BoolPtrInput
 }
 
@@ -254,8 +244,6 @@ func (o MysqlDatabaseOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-// recommended to enable this for any production databases containing critical data. The default value is `false`.
 func (o MysqlDatabaseOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MysqlDatabase) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

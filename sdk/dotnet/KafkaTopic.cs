@@ -85,10 +85,6 @@ namespace Pulumi.Aiven
         [Output("tags")]
         public Output<ImmutableArray<Outputs.KafkaTopicTag>> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-        /// still be deleted in the Aiven Console.**
-        /// </summary>
         [Output("terminationProtection")]
         public Output<bool?> TerminationProtection { get; private set; } = null!;
 
@@ -186,10 +182,6 @@ namespace Pulumi.Aiven
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-        /// still be deleted in the Aiven Console.**
-        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
@@ -249,10 +241,6 @@ namespace Pulumi.Aiven
             set => _tags = value;
         }
 
-        /// <summary>
-        /// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-        /// still be deleted in the Aiven Console.**
-        /// </summary>
         [Input("terminationProtection")]
         public Input<bool>? TerminationProtection { get; set; }
 
