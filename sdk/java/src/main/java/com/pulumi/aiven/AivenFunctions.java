@@ -102,6 +102,8 @@ import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigArgs;
 import com.pulumi.aiven.inputs.GetOpensearchSecurityPluginConfigPlainArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserArgs;
 import com.pulumi.aiven.inputs.GetOpensearchUserPlainArgs;
+import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
+import com.pulumi.aiven.inputs.GetOrganizationApplicationUserPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationArgs;
 import com.pulumi.aiven.inputs.GetOrganizationPlainArgs;
 import com.pulumi.aiven.inputs.GetOrganizationUserArgs;
@@ -183,6 +185,7 @@ import com.pulumi.aiven.outputs.GetOpenSearchAclRuleResult;
 import com.pulumi.aiven.outputs.GetOpenSearchResult;
 import com.pulumi.aiven.outputs.GetOpensearchSecurityPluginConfigResult;
 import com.pulumi.aiven.outputs.GetOpensearchUserResult;
+import com.pulumi.aiven.outputs.GetOrganizationApplicationUserResult;
 import com.pulumi.aiven.outputs.GetOrganizationResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserGroupResult;
 import com.pulumi.aiven.outputs.GetOrganizationUserResult;
@@ -7349,6 +7352,182 @@ public final class AivenFunctions {
      */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an application user.
+     * 
+     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
+     *             .organizationId(main.id())
+     *             .userId(&#34;u123a456b7890c&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationApplicationUserResult> getOrganizationApplicationUser(GetOrganizationApplicationUserArgs args) {
+        return getOrganizationApplicationUser(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an application user.
+     * 
+     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
+     *             .organizationId(main.id())
+     *             .userId(&#34;u123a456b7890c&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args) {
+        return getOrganizationApplicationUserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about an application user.
+     * 
+     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
+     *             .organizationId(main.id())
+     *             .userId(&#34;u123a456b7890c&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationApplicationUserResult> getOrganizationApplicationUser(GetOrganizationApplicationUserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about an application user.
+     * 
+     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
+     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()
+     *             .organizationId(main.id())
+     *             .userId(&#34;u123a456b7890c&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetOrganizationApplicationUserResult> getOrganizationApplicationUserPlain(GetOrganizationApplicationUserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser", TypeShape.of(GetOrganizationApplicationUserResult.class), args, Utilities.withVersion(options));
     }
     /**
      * The Organization User data source provides information about the existing Aiven Organization User.

@@ -129,6 +129,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OpensearchUser{}
 	case "aiven:index/organization:Organization":
 		r = &Organization{}
+	case "aiven:index/organizationApplicationUser:OrganizationApplicationUser":
+		r = &OrganizationApplicationUser{}
+	case "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken":
+		r = &OrganizationApplicationUserToken{}
 	case "aiven:index/organizationGroupProject:OrganizationGroupProject":
 		r = &OrganizationGroupProject{}
 	case "aiven:index/organizationUser:OrganizationUser":
@@ -462,6 +466,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"aiven",
 		"index/organization",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/organizationApplicationUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"aiven",
+		"index/organizationApplicationUserToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

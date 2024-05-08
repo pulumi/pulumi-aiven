@@ -31,7 +31,7 @@ import (
 //			bar, err := aiven.NewClickhouse(ctx, "bar", &aiven.ClickhouseArgs{
 //				Project:               pulumi.String("example-project"),
 //				CloudName:             pulumi.String("google-europe-west1"),
-//				Plan:                  pulumi.String("startup-beta-8"),
+//				Plan:                  pulumi.String("startup-8"),
 //				ServiceName:           pulumi.String("example-service"),
 //				MaintenanceWindowDow:  pulumi.String("monday"),
 //				MaintenanceWindowTime: pulumi.String("10:00:00"),
