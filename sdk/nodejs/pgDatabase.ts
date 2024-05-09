@@ -74,10 +74,6 @@ export class PgDatabase extends pulumi.CustomResource {
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
-    /**
-     * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-     * recommended to enable this for any production databases containing critical data. The default value is `false`.
-     */
     public readonly terminationProtection!: pulumi.Output<boolean | undefined>;
 
     /**
@@ -146,10 +142,6 @@ export interface PgDatabaseState {
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
-    /**
-     * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-     * recommended to enable this for any production databases containing critical data. The default value is `false`.
-     */
     terminationProtection?: pulumi.Input<boolean>;
 }
 
@@ -177,9 +169,5 @@ export interface PgDatabaseArgs {
      * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
-    /**
-     * It is a Terraform client-side deletion protections, which prevents the database from being deleted by Terraform. It is
-     * recommended to enable this for any production databases containing critical data. The default value is `false`.
-     */
     terminationProtection?: pulumi.Input<boolean>;
 }

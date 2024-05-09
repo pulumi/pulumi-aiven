@@ -65,12 +65,12 @@ export class InfluxDb extends pulumi.CustomResource {
     public /*out*/ readonly diskSpaceCap!: pulumi.Output<string>;
     /**
      * The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * Its also the minimum value for `diskSpace`
      */
     public /*out*/ readonly diskSpaceDefault!: pulumi.Output<string>;
     /**
      * The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      */
     public /*out*/ readonly diskSpaceStep!: pulumi.Output<string>;
     /**
@@ -295,12 +295,12 @@ export interface InfluxDbState {
     diskSpaceCap?: pulumi.Input<string>;
     /**
      * The default disk space of the service, possible values depend on the service type, the cloud provider and the project.
-     * Its also the minimum value for `disk_space`
+     * Its also the minimum value for `diskSpace`
      */
     diskSpaceDefault?: pulumi.Input<string>;
     /**
      * The default disk space step of the service, possible values depend on the service type, the cloud provider and the
-     * project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
+     * project. `diskSpace` needs to increment from `diskSpaceDefault` by increments of this size.
      */
     diskSpaceStep?: pulumi.Input<string>;
     /**
