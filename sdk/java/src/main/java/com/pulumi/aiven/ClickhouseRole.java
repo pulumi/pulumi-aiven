@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *         var bar = new Clickhouse("bar", ClickhouseArgs.builder()        
  *             .project("example-project")
  *             .cloudName("google-europe-west1")
- *             .plan("startup-beta-8")
+ *             .plan("startup-8")
  *             .serviceName("example-service")
  *             .maintenanceWindowDow("monday")
  *             .maintenanceWindowTime("10:00:00")
