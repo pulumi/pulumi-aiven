@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,15 +43,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new GcpVpcPeeringConnection(&#34;foo&#34;, GcpVpcPeeringConnectionArgs.builder()        
+ *         var foo = new GcpVpcPeeringConnection("foo", GcpVpcPeeringConnectionArgs.builder()        
  *             .vpcId(vpc.id())
- *             .gcpProjectId(&#34;xxxx&#34;)
- *             .peerVpc(&#34;xxxx&#34;)
+ *             .gcpProjectId("xxxx")
+ *             .peerVpc("xxxx")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

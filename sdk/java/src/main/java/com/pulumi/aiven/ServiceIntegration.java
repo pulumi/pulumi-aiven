@@ -40,7 +40,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -61,16 +62,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleIntegration = new ServiceIntegration(&#34;exampleIntegration&#34;, ServiceIntegrationArgs.builder()        
+ *         var exampleIntegration = new ServiceIntegration("exampleIntegration", ServiceIntegrationArgs.builder()        
  *             .project(exampleProject.project())
- *             .integrationType(&#34;metrics&#34;)
+ *             .integrationType("metrics")
  *             .sourceServiceName(exampleKafka.serviceName())
  *             .destinationServiceName(exampleM3db.serviceName())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

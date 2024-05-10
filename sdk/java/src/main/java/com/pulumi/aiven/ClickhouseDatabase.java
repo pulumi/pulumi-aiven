@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,15 +43,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouseDb = new ClickhouseDatabase(&#34;clickhouseDb&#34;, ClickhouseDatabaseArgs.builder()        
+ *         var clickhouseDb = new ClickhouseDatabase("clickhouseDb", ClickhouseDatabaseArgs.builder()        
  *             .project(ch.project())
  *             .serviceName(ch.serviceName())
- *             .name(&#34;my-ch-db&#34;)
+ *             .name("my-ch-db")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -104,21 +106,9 @@ public class ClickhouseDatabase extends com.pulumi.resources.CustomResource {
     public Output<String> serviceName() {
         return this.serviceName;
     }
-    /**
-     * It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-     * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-     * default value is `false`.
-     * 
-     */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
-    /**
-     * @return It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-     * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-     * default value is `false`.
-     * 
-     */
     public Output<Optional<Boolean>> terminationProtection() {
         return Codegen.optional(this.terminationProtection);
     }

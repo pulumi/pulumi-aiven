@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new AwsPrivatelink(&#34;main&#34;, AwsPrivatelinkArgs.builder()        
+ *         var main = new AwsPrivatelink("main", AwsPrivatelinkArgs.builder()        
  *             .project(exampleProject.project())
  *             .serviceName(exampleKafka.serviceName())
- *             .principals(&#34;arn:aws:iam::012345678901:user/mwf&#34;)
+ *             .principals("arn:aws:iam::012345678901:user/mwf")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

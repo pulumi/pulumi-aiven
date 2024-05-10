@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,15 +43,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ch_user = new ClickhouseUser(&#34;ch-user&#34;, ClickhouseUserArgs.builder()        
+ *         var ch_user = new ClickhouseUser("ch-user", ClickhouseUserArgs.builder()        
  *             .project(myproject.project())
  *             .serviceName(myservice.serviceName())
- *             .username(&#34;&lt;USERNAME&gt;&#34;)
+ *             .username("<USERNAME>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

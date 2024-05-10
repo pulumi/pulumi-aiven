@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,18 +54,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleKafka = new Kafka(&#34;exampleKafka&#34;, KafkaArgs.builder()        
+ *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()        
  *             .project(exampleProject.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;business-4&#34;)
- *             .serviceName(&#34;example-kafka&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-4")
+ *             .serviceName("example-kafka")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .kafkaUserConfig(KafkaKafkaUserConfigArgs.builder()
  *                 .kafkaRest(true)
  *                 .kafkaConnect(true)
  *                 .schemaRegistry(true)
- *                 .kafkaVersion(&#34;3.5&#34;)
+ *                 .kafkaVersion("3.5")
  *                 .kafka(KafkaKafkaUserConfigKafkaArgs.builder()
  *                     .groupMaxSessionTimeoutMs(70000)
  *                     .logRetentionBytes(1000000000)
@@ -78,7 +79,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

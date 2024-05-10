@@ -111,19 +111,9 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.tags);
     }
 
-    /**
-     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
-     * still be deleted in the Aiven Console.**
-     * 
-     */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
-    /**
-     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
-     * still be deleted in the Aiven Console.**
-     * 
-     */
     public Optional<Output<Boolean>> terminationProtection() {
         return Optional.ofNullable(this.terminationProtection);
     }
@@ -310,25 +300,11 @@ public final class KafkaTopicArgs extends com.pulumi.resources.ResourceArgs {
             return tags(List.of(tags));
         }
 
-        /**
-         * @param terminationProtection Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
-         * still be deleted in the Aiven Console.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminationProtection(@Nullable Output<Boolean> terminationProtection) {
             $.terminationProtection = terminationProtection;
             return this;
         }
 
-        /**
-         * @param terminationProtection Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
-         * still be deleted in the Aiven Console.**
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminationProtection(Boolean terminationProtection) {
             return terminationProtection(Output.of(terminationProtection));
         }

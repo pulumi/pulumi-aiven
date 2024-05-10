@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,17 +41,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestacl = new KafkaAcl(&#34;mytestacl&#34;, KafkaAclArgs.builder()        
+ *         var mytestacl = new KafkaAcl("mytestacl", KafkaAclArgs.builder()        
  *             .project(myproject.project())
  *             .serviceName(myservice.serviceName())
- *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
- *             .permission(&#34;admin&#34;)
- *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
+ *             .topic("<TOPIC_NAME_PATTERN>")
+ *             .permission("admin")
+ *             .username("<USERNAME_PATTERN>")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

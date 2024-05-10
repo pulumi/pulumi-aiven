@@ -68,10 +68,8 @@ type KafkaTopic struct {
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Tags for the Kafka topic.
-	Tags KafkaTopicTagArrayOutput `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-	// still be deleted in the Aiven Console.**
-	TerminationProtection pulumi.BoolPtrOutput `pulumi:"terminationProtection"`
+	Tags                  KafkaTopicTagArrayOutput `pulumi:"tags"`
+	TerminationProtection pulumi.BoolPtrOutput     `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringOutput `pulumi:"topicName"`
 }
@@ -132,10 +130,8 @@ type kafkaTopicState struct {
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Tags for the Kafka topic.
-	Tags []KafkaTopicTag `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-	// still be deleted in the Aiven Console.**
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	Tags                  []KafkaTopicTag `pulumi:"tags"`
+	TerminationProtection *bool           `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName *string `pulumi:"topicName"`
 }
@@ -152,9 +148,7 @@ type KafkaTopicState struct {
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Tags for the Kafka topic.
-	Tags KafkaTopicTagArrayInput
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-	// still be deleted in the Aiven Console.**
+	Tags                  KafkaTopicTagArrayInput
 	TerminationProtection pulumi.BoolPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringPtrInput
@@ -176,10 +170,8 @@ type kafkaTopicArgs struct {
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Tags for the Kafka topic.
-	Tags []KafkaTopicTag `pulumi:"tags"`
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-	// still be deleted in the Aiven Console.**
-	TerminationProtection *bool `pulumi:"terminationProtection"`
+	Tags                  []KafkaTopicTag `pulumi:"tags"`
+	TerminationProtection *bool           `pulumi:"terminationProtection"`
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName string `pulumi:"topicName"`
 }
@@ -197,9 +189,7 @@ type KafkaTopicArgs struct {
 	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// Tags for the Kafka topic.
-	Tags KafkaTopicTagArrayInput
-	// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-	// still be deleted in the Aiven Console.**
+	Tags                  KafkaTopicTagArrayInput
 	TerminationProtection pulumi.BoolPtrInput
 	// The name of the topic. Changing this property forces recreation of the resource.
 	TopicName pulumi.StringInput
@@ -322,8 +312,6 @@ func (o KafkaTopicOutput) Tags() KafkaTopicTagArrayOutput {
 	return o.ApplyT(func(v *KafkaTopic) KafkaTopicTagArrayOutput { return v.Tags }).(KafkaTopicTagArrayOutput)
 }
 
-// Prevents topics from being deleted by Terraform. It's recommended for topics containing critical data. **Topics can
-// still be deleted in the Aiven Console.**
 func (o KafkaTopicOutput) TerminationProtection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KafkaTopic) pulumi.BoolPtrOutput { return v.TerminationProtection }).(pulumi.BoolPtrOutput)
 }

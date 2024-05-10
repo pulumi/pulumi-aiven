@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -59,48 +60,48 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouse = new Clickhouse(&#34;clickhouse&#34;, ClickhouseArgs.builder()        
+ *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()        
  *             .project(aivenProjectName)
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-8&#34;)
- *             .serviceName(&#34;exapmle-clickhouse&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-8")
+ *             .serviceName("exapmle-clickhouse")
  *             .build());
  * 
- *         var demodb = new ClickhouseDatabase(&#34;demodb&#34;, ClickhouseDatabaseArgs.builder()        
+ *         var demodb = new ClickhouseDatabase("demodb", ClickhouseDatabaseArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
- *             .name(&#34;demo&#34;)
+ *             .name("demo")
  *             .build());
  * 
- *         var demo = new ClickhouseRole(&#34;demo&#34;, ClickhouseRoleArgs.builder()        
+ *         var demo = new ClickhouseRole("demo", ClickhouseRoleArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
- *             .role(&#34;demo-role&#34;)
+ *             .role("demo-role")
  *             .build());
  * 
- *         var demo_role_grant = new ClickhouseGrant(&#34;demo-role-grant&#34;, ClickhouseGrantArgs.builder()        
+ *         var demo_role_grant = new ClickhouseGrant("demo-role-grant", ClickhouseGrantArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .role(demo.role())
  *             .privilegeGrants(            
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
- *                     .privilege(&#34;INSERT&#34;)
+ *                     .privilege("INSERT")
  *                     .database(demodb.name())
- *                     .table(&#34;demo-table&#34;)
+ *                     .table("demo-table")
  *                     .build(),
  *                 ClickhouseGrantPrivilegeGrantArgs.builder()
- *                     .privilege(&#34;SELECT&#34;)
+ *                     .privilege("SELECT")
  *                     .database(demodb.name())
  *                     .build())
  *             .build());
  * 
- *         var demoClickhouseUser = new ClickhouseUser(&#34;demoClickhouseUser&#34;, ClickhouseUserArgs.builder()        
+ *         var demoClickhouseUser = new ClickhouseUser("demoClickhouseUser", ClickhouseUserArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
- *             .username(&#34;demo-user&#34;)
+ *             .username("demo-user")
  *             .build());
  * 
- *         var demo_user_grant = new ClickhouseGrant(&#34;demo-user-grant&#34;, ClickhouseGrantArgs.builder()        
+ *         var demo_user_grant = new ClickhouseGrant("demo-user-grant", ClickhouseGrantArgs.builder()        
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .user(demoClickhouseUser.username())
@@ -111,7 +112,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

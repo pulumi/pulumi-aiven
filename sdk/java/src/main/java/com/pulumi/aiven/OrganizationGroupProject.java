@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -48,32 +49,33 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .project(&#34;example-project&#34;)
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *             .project("example-project")
  *             .parentId(main.id())
  *             .build());
  * 
- *         var example = new OrganizationUserGroup(&#34;example&#34;, OrganizationUserGroupArgs.builder()        
- *             .description(&#34;Example group of users.&#34;)
+ *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()        
+ *             .description("Example group of users.")
  *             .organizationId(main.id())
- *             .name(&#34;Example group&#34;)
+ *             .name("Example group")
  *             .build());
  * 
- *         var projectAdmin = new OrganizationUserGroupMember(&#34;projectAdmin&#34;, OrganizationUserGroupMemberArgs.builder()        
+ *         var projectAdmin = new OrganizationUserGroupMember("projectAdmin", OrganizationUserGroupMemberArgs.builder()        
  *             .groupId(example.groupId())
  *             .organizationId(main.id())
- *             .userId(&#34;u123a456b7890c&#34;)
+ *             .userId("u123a456b7890c")
  *             .build());
  * 
- *         var exampleOrganizationGroupProject = new OrganizationGroupProject(&#34;exampleOrganizationGroupProject&#34;, OrganizationGroupProjectArgs.builder()        
+ *         var exampleOrganizationGroupProject = new OrganizationGroupProject("exampleOrganizationGroupProject", OrganizationGroupProjectArgs.builder()        
  *             .groupId(example.groupId())
  *             .project(exampleProjectAivenProject.project())
- *             .role(&#34;admin&#34;)
+ *             .role("admin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,22 +45,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var f1 = new MirrorMakerReplicationFlow(&#34;f1&#34;, MirrorMakerReplicationFlowArgs.builder()        
+ *         var f1 = new MirrorMakerReplicationFlow("f1", MirrorMakerReplicationFlowArgs.builder()        
  *             .project(kafka_mm_project1.project())
  *             .serviceName(mm.serviceName())
  *             .sourceCluster(source.serviceName())
  *             .targetCluster(target.serviceName())
  *             .enable(true)
- *             .topics(&#34;.*&#34;)
+ *             .topics(".*")
  *             .topicsBlacklists(            
- *                 &#34;.*[\\-\\.]internal&#34;,
- *                 &#34;.*\\.replica&#34;,
- *                 &#34;__.*&#34;)
+ *                 ".*[\\-\\.]internal",
+ *                 ".*\\.replica",
+ *                 "__.*")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

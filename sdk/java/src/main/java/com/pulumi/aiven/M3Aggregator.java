@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var m3a = new M3Aggregator(&#34;m3a&#34;, M3AggregatorArgs.builder()        
+ *         var m3a = new M3Aggregator("m3a", M3AggregatorArgs.builder()        
  *             .project(foo.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;business-8&#34;)
- *             .serviceName(&#34;my-m3a&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-8")
+ *             .serviceName("my-m3a")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .m3aggregatorUserConfig(M3AggregatorM3aggregatorUserConfigArgs.builder()
  *                 .m3aggregatorVersion(0.15)
  *                 .build())
@@ -64,7 +65,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

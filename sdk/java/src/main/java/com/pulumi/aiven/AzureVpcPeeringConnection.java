@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,24 +45,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+ *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
  *             .project(exampleProject.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .networkCidr(&#34;192.168.1.0/24&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .networkCidr("192.168.1.0/24")
  *             .build());
  * 
- *         var azureToAivenPeering = new AzureVpcPeeringConnection(&#34;azureToAivenPeering&#34;, AzureVpcPeeringConnectionArgs.builder()        
+ *         var azureToAivenPeering = new AzureVpcPeeringConnection("azureToAivenPeering", AzureVpcPeeringConnectionArgs.builder()        
  *             .vpcId(exampleVpc.id())
- *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .peerResourceGroup(&#34;example-resource-group&#34;)
- *             .vnetName(&#34;example-vnet&#34;)
- *             .peerAzureAppId(&#34;00000000-0000-0000-0000-000000000000&#34;)
- *             .peerAzureTenantId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .azureSubscriptionId("00000000-0000-0000-0000-000000000000")
+ *             .peerResourceGroup("example-resource-group")
+ *             .vnetName("example-vnet")
+ *             .peerAzureAppId("00000000-0000-0000-0000-000000000000")
+ *             .peerAzureTenantId("00000000-0000-0000-0000-000000000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,26 +51,27 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .project(&#34;project-1&#34;)
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *             .project("project-1")
  *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
  *             .build());
  * 
- *         var exampleTeam = new AccountTeam(&#34;exampleTeam&#34;, AccountTeamArgs.builder()        
+ *         var exampleTeam = new AccountTeam("exampleTeam", AccountTeamArgs.builder()        
  *             .accountId(ACCOUNT_RESOURCE_NAMEAivenAccount.accountId())
- *             .name(&#34;Example team&#34;)
+ *             .name("Example team")
  *             .build());
  * 
- *         var main = new AccountTeamProject(&#34;main&#34;, AccountTeamProjectArgs.builder()        
+ *         var main = new AccountTeamProject("main", AccountTeamProjectArgs.builder()        
  *             .accountId(ACCOUNT_RESOURCE_NAMEAivenAccount.accountId())
  *             .teamId(exampleTeam.teamId())
  *             .projectName(exampleProject.project())
- *             .teamType(&#34;admin&#34;)
+ *             .teamType("admin")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

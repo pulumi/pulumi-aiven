@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -45,14 +46,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTeam = new AccountTeam(&#34;exampleTeam&#34;, AccountTeamArgs.builder()        
+ *         var exampleTeam = new AccountTeam("exampleTeam", AccountTeamArgs.builder()        
  *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
- *             .name(&#34;Example team&#34;)
+ *             .name("Example team")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

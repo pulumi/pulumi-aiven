@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,11 +51,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDragonfly = new Dragonfly(&#34;exampleDragonfly&#34;, DragonflyArgs.builder()        
+ *         var exampleDragonfly = new Dragonfly("exampleDragonfly", DragonflyArgs.builder()        
  *             .project(exampleProject.project())
- *             .plan(&#34;startup-4&#34;)
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .serviceName(&#34;example-dragonfly-service&#34;)
+ *             .plan("startup-4")
+ *             .cloudName("google-europe-west1")
+ *             .serviceName("example-dragonfly-service")
  *             .dragonflyUserConfig(DragonflyDragonflyUserConfigArgs.builder()
  *                 .cacheMode(true)
  *                 .build())
@@ -62,7 +63,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

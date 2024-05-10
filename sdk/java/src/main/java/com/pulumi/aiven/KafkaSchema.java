@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -42,33 +43,34 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_schema1 = new KafkaSchema(&#34;kafka-schema1&#34;, KafkaSchemaArgs.builder()        
+ *         var kafka_schema1 = new KafkaSchema("kafka-schema1", KafkaSchemaArgs.builder()        
  *             .project(kafka_schemas_project1.project())
  *             .serviceName(kafka_service1.serviceName())
- *             .subjectName(&#34;kafka-schema1&#34;)
- *             .compatibilityLevel(&#34;FORWARD&#34;)
- *             .schema(&#34;&#34;&#34;
+ *             .subjectName("kafka-schema1")
+ *             .compatibilityLevel("FORWARD")
+ *             .schema("""
  *     {
- *       &#34;doc&#34;: &#34;example&#34;,
- *       &#34;fields&#34;: [
+ *       "doc": "example",
+ *       "fields": [
  *         {
- *           &#34;default&#34;: 5,
- *           &#34;doc&#34;: &#34;my test number&#34;,
- *           &#34;name&#34;: &#34;test&#34;,
- *           &#34;namespace&#34;: &#34;test&#34;,
- *           &#34;type&#34;: &#34;int&#34;
+ *           "default": 5,
+ *           "doc": "my test number",
+ *           "name": "test",
+ *           "namespace": "test",
+ *           "type": "int"
  *         }
  *       ],
- *       &#34;name&#34;: &#34;example&#34;,
- *       &#34;namespace&#34;: &#34;example&#34;,
- *       &#34;type&#34;: &#34;record&#34;
+ *       "name": "example",
+ *       "namespace": "example",
+ *       "type": "record"
  *     }
- *             &#34;&#34;&#34;)
+ *             """)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
