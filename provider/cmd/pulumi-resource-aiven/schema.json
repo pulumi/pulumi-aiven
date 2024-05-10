@@ -5089,6 +5089,48 @@
                 "email"
             ]
         },
+        "aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts": {
             "properties": {
                 "create": {
@@ -17504,7 +17546,7 @@
             }
         },
         "aiven:index/clickhouseRole:ClickhouseRole": {
-            "description": "The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bar = new aiven.Clickhouse(\"bar\", {\n    project: \"example-project\",\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-beta-8\",\n    serviceName: \"example-service\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n});\nconst foo = new aiven.ClickhouseRole(\"foo\", {\n    serviceName: bar.serviceName,\n    project: bar.project,\n    role: \"writer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbar = aiven.Clickhouse(\"bar\",\n    project=\"example-project\",\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-beta-8\",\n    service_name=\"example-service\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\")\nfoo = aiven.ClickhouseRole(\"foo\",\n    service_name=bar.service_name,\n    project=bar.project,\n    role=\"writer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bar = new Aiven.Clickhouse(\"bar\", new()\n    {\n        Project = \"example-project\",\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-beta-8\",\n        ServiceName = \"example-service\",\n        MaintenanceWindowDow = \"monday\",\n        MaintenanceWindowTime = \"10:00:00\",\n    });\n\n    var foo = new Aiven.ClickhouseRole(\"foo\", new()\n    {\n        ServiceName = bar.ServiceName,\n        Project = bar.Project,\n        Role = \"writer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbar, err := aiven.NewClickhouse(ctx, \"bar\", \u0026aiven.ClickhouseArgs{\n\t\t\tProject:               pulumi.String(\"example-project\"),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-beta-8\"),\n\t\t\tServiceName:           pulumi.String(\"example-service\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewClickhouseRole(ctx, \"foo\", \u0026aiven.ClickhouseRoleArgs{\n\t\t\tServiceName: bar.ServiceName,\n\t\t\tProject:     bar.Project,\n\t\t\tRole:        pulumi.String(\"writer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Clickhouse;\nimport com.pulumi.aiven.ClickhouseArgs;\nimport com.pulumi.aiven.ClickhouseRole;\nimport com.pulumi.aiven.ClickhouseRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bar = new Clickhouse(\"bar\", ClickhouseArgs.builder()        \n            .project(\"example-project\")\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-beta-8\")\n            .serviceName(\"example-service\")\n            .maintenanceWindowDow(\"monday\")\n            .maintenanceWindowTime(\"10:00:00\")\n            .build());\n\n        var foo = new ClickhouseRole(\"foo\", ClickhouseRoleArgs.builder()        \n            .serviceName(bar.serviceName())\n            .project(bar.project())\n            .role(\"writer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bar:\n    type: aiven:Clickhouse\n    properties:\n      project: example-project\n      cloudName: google-europe-west1\n      plan: startup-beta-8\n      serviceName: example-service\n      maintenanceWindowDow: monday\n      maintenanceWindowTime: 10:00:00\n  foo:\n    type: aiven:ClickhouseRole\n    properties:\n      serviceName: ${bar.serviceName}\n      project: ${bar.project}\n      role: writer\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE\n```\n\n",
+            "description": "The Clickhouse Role resource allows the creation and management of Roles in Aiven Clickhouse services\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst bar = new aiven.Clickhouse(\"bar\", {\n    project: \"example-project\",\n    cloudName: \"google-europe-west1\",\n    plan: \"startup-8\",\n    serviceName: \"example-service\",\n    maintenanceWindowDow: \"monday\",\n    maintenanceWindowTime: \"10:00:00\",\n});\nconst foo = new aiven.ClickhouseRole(\"foo\", {\n    serviceName: bar.serviceName,\n    project: bar.project,\n    role: \"writer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nbar = aiven.Clickhouse(\"bar\",\n    project=\"example-project\",\n    cloud_name=\"google-europe-west1\",\n    plan=\"startup-8\",\n    service_name=\"example-service\",\n    maintenance_window_dow=\"monday\",\n    maintenance_window_time=\"10:00:00\")\nfoo = aiven.ClickhouseRole(\"foo\",\n    service_name=bar.service_name,\n    project=bar.project,\n    role=\"writer\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var bar = new Aiven.Clickhouse(\"bar\", new()\n    {\n        Project = \"example-project\",\n        CloudName = \"google-europe-west1\",\n        Plan = \"startup-8\",\n        ServiceName = \"example-service\",\n        MaintenanceWindowDow = \"monday\",\n        MaintenanceWindowTime = \"10:00:00\",\n    });\n\n    var foo = new Aiven.ClickhouseRole(\"foo\", new()\n    {\n        ServiceName = bar.ServiceName,\n        Project = bar.Project,\n        Role = \"writer\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tbar, err := aiven.NewClickhouse(ctx, \"bar\", \u0026aiven.ClickhouseArgs{\n\t\t\tProject:               pulumi.String(\"example-project\"),\n\t\t\tCloudName:             pulumi.String(\"google-europe-west1\"),\n\t\t\tPlan:                  pulumi.String(\"startup-8\"),\n\t\t\tServiceName:           pulumi.String(\"example-service\"),\n\t\t\tMaintenanceWindowDow:  pulumi.String(\"monday\"),\n\t\t\tMaintenanceWindowTime: pulumi.String(\"10:00:00\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewClickhouseRole(ctx, \"foo\", \u0026aiven.ClickhouseRoleArgs{\n\t\t\tServiceName: bar.ServiceName,\n\t\t\tProject:     bar.Project,\n\t\t\tRole:        pulumi.String(\"writer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.Clickhouse;\nimport com.pulumi.aiven.ClickhouseArgs;\nimport com.pulumi.aiven.ClickhouseRole;\nimport com.pulumi.aiven.ClickhouseRoleArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var bar = new Clickhouse(\"bar\", ClickhouseArgs.builder()        \n            .project(\"example-project\")\n            .cloudName(\"google-europe-west1\")\n            .plan(\"startup-8\")\n            .serviceName(\"example-service\")\n            .maintenanceWindowDow(\"monday\")\n            .maintenanceWindowTime(\"10:00:00\")\n            .build());\n\n        var foo = new ClickhouseRole(\"foo\", ClickhouseRoleArgs.builder()        \n            .serviceName(bar.serviceName())\n            .project(bar.project())\n            .role(\"writer\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  bar:\n    type: aiven:Clickhouse\n    properties:\n      project: example-project\n      cloudName: google-europe-west1\n      plan: startup-8\n      serviceName: example-service\n      maintenanceWindowDow: monday\n      maintenanceWindowTime: 10:00:00\n  foo:\n    type: aiven:ClickhouseRole\n    properties:\n      serviceName: ${bar.serviceName}\n      project: ${bar.project}\n      role: writer\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/clickhouseRole:ClickhouseRole foo PROJECT/SERVICE_NAME/ROLE\n```\n\n",
             "properties": {
                 "project": {
                     "type": "string",
@@ -24512,6 +24554,280 @@
                     "updateTime": {
                         "type": "string",
                         "description": "Timestamp of the last update of the organization.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/organizationApplicationUser:OrganizationApplicationUser": {
+            "description": "Creates and manages an organization application user. [Application users](https://aiven.io/docs/platform/howto/manage-application-users) can be used for programmatic access to the platform.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst tfUser = new aiven.OrganizationApplicationUser(\"tf_user\", {\n    organizationId: main.id,\n    name: \"app-terraform\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\ntf_user = aiven.OrganizationApplicationUser(\"tf_user\",\n    organization_id=main[\"id\"],\n    name=\"app-terraform\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfUser = new Aiven.OrganizationApplicationUser(\"tf_user\", new()\n    {\n        OrganizationId = main.Id,\n        Name = \"app-terraform\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewOrganizationApplicationUser(ctx, \"tf_user\", \u0026aiven.OrganizationApplicationUserArgs{\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tName:           pulumi.String(\"app-terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationApplicationUser;\nimport com.pulumi.aiven.OrganizationApplicationUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfUser = new OrganizationApplicationUser(\"tfUser\", OrganizationApplicationUserArgs.builder()        \n            .organizationId(main.id())\n            .name(\"app-terraform\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfUser:\n    type: aiven:OrganizationApplicationUser\n    name: tf_user\n    properties:\n      organizationId: ${main.id}\n      name: app-terraform\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationApplicationUser:OrganizationApplicationUser example ORGANIZATION_ID/USER_ID\n```\n\n",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "An email address automatically generated by Aiven to help identify the application user.\n\t\t\tNo notifications are sent to this email.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the application user.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The ID of the organization the application user belongs to.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the application user.\n"
+                }
+            },
+            "required": [
+                "email",
+                "name",
+                "organizationId",
+                "userId"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the application user.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The ID of the organization the application user belongs to.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts"
+                }
+            },
+            "requiredInputs": [
+                "organizationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationApplicationUser resources.\n",
+                "properties": {
+                    "email": {
+                        "type": "string",
+                        "description": "An email address automatically generated by Aiven to help identify the application user.\n\t\t\tNo notifications are sent to this email.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the application user.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The ID of the organization the application user belongs to.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the application user.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": {
+            "description": "Creates and manages an application user token. Review the [best practices](https://aiven.io/docs/platform/concepts/application-users#security-best-practices) for securing application users and their tokens.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst tfUser = new aiven.OrganizationApplicationUser(\"tf_user\", {\n    organizationId: main.id,\n    name: \"app-terraform\",\n});\nconst example = new aiven.OrganizationApplicationUserToken(\"example\", {\n    organizationId: main.id,\n    userId: tfUser.userId,\n    description: \"Token for TF access to Aiven.\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\ntf_user = aiven.OrganizationApplicationUser(\"tf_user\",\n    organization_id=main[\"id\"],\n    name=\"app-terraform\")\nexample = aiven.OrganizationApplicationUserToken(\"example\",\n    organization_id=main[\"id\"],\n    user_id=tf_user.user_id,\n    description=\"Token for TF access to Aiven.\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfUser = new Aiven.OrganizationApplicationUser(\"tf_user\", new()\n    {\n        OrganizationId = main.Id,\n        Name = \"app-terraform\",\n    });\n\n    var example = new Aiven.OrganizationApplicationUserToken(\"example\", new()\n    {\n        OrganizationId = main.Id,\n        UserId = tfUser.UserId,\n        Description = \"Token for TF access to Aiven.\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttfUser, err := aiven.NewOrganizationApplicationUser(ctx, \"tf_user\", \u0026aiven.OrganizationApplicationUserArgs{\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tName:           pulumi.String(\"app-terraform\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = aiven.NewOrganizationApplicationUserToken(ctx, \"example\", \u0026aiven.OrganizationApplicationUserTokenArgs{\n\t\t\tOrganizationId: pulumi.Any(main.Id),\n\t\t\tUserId:         tfUser.UserId,\n\t\t\tDescription:    pulumi.String(\"Token for TF access to Aiven.\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.OrganizationApplicationUser;\nimport com.pulumi.aiven.OrganizationApplicationUserArgs;\nimport com.pulumi.aiven.OrganizationApplicationUserToken;\nimport com.pulumi.aiven.OrganizationApplicationUserTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var tfUser = new OrganizationApplicationUser(\"tfUser\", OrganizationApplicationUserArgs.builder()        \n            .organizationId(main.id())\n            .name(\"app-terraform\")\n            .build());\n\n        var example = new OrganizationApplicationUserToken(\"example\", OrganizationApplicationUserTokenArgs.builder()        \n            .organizationId(main.id())\n            .userId(tfUser.userId())\n            .description(\"Token for TF access to Aiven.\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  tfUser:\n    type: aiven:OrganizationApplicationUser\n    name: tf_user\n    properties:\n      organizationId: ${main.id}\n      name: app-terraform\n  example:\n    type: aiven:OrganizationApplicationUserToken\n    properties:\n      organizationId: ${main.id}\n      userId: ${tfUser.userId}\n      description: Token for TF access to Aiven.\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken example ORGANIZATION_ID/USER_ID/TOKEN_PREFIX\n```\n\n",
+            "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "Time when the token was created.\n"
+                },
+                "createdManually": {
+                    "type": "boolean",
+                    "description": "True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.\n"
+                },
+                "currentlyActive": {
+                    "type": "boolean",
+                    "description": "True if the API request was made with this token.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the token.\n"
+                },
+                "expiryTime": {
+                    "type": "string",
+                    "description": "Timestamp when the access token will expire unless extended.\n"
+                },
+                "extendWhenUsed": {
+                    "type": "boolean",
+                    "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n"
+                },
+                "fullToken": {
+                    "type": "string",
+                    "description": "Full token.\n",
+                    "secret": true
+                },
+                "lastIp": {
+                    "type": "string",
+                    "description": "IP address of the last request made with this token.\n"
+                },
+                "lastUsedTime": {
+                    "type": "string",
+                    "description": "Timestamp when the access token was last used.\n"
+                },
+                "lastUserAgent": {
+                    "type": "string",
+                    "description": "User agent of the last request made with this token.\n"
+                },
+                "lastUserAgentHumanReadable": {
+                    "type": "string",
+                    "description": "User agent of the last request made with this token in human-readable format.\n"
+                },
+                "maxAgeSeconds": {
+                    "type": "number",
+                    "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The ID of the organization the application user belongs to.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts the scopes for this token.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts"
+                },
+                "tokenPrefix": {
+                    "type": "string",
+                    "description": "Prefix of the token.\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the application user the token is created for.\n"
+                }
+            },
+            "required": [
+                "createTime",
+                "createdManually",
+                "currentlyActive",
+                "expiryTime",
+                "fullToken",
+                "lastIp",
+                "lastUsedTime",
+                "lastUserAgent",
+                "lastUserAgentHumanReadable",
+                "organizationId",
+                "tokenPrefix",
+                "userId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the token.\n"
+                },
+                "extendWhenUsed": {
+                    "type": "boolean",
+                    "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n"
+                },
+                "maxAgeSeconds": {
+                    "type": "number",
+                    "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n"
+                },
+                "organizationId": {
+                    "type": "string",
+                    "description": "The ID of the organization the application user belongs to.\n"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts the scopes for this token.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "The ID of the application user the token is created for.\n"
+                }
+            },
+            "requiredInputs": [
+                "organizationId",
+                "userId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering OrganizationApplicationUserToken resources.\n",
+                "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "Time when the token was created.\n"
+                    },
+                    "createdManually": {
+                        "type": "boolean",
+                        "description": "True for tokens explicitly created using the `access_tokens` API. False for tokens created when a user logs in.\n"
+                    },
+                    "currentlyActive": {
+                        "type": "boolean",
+                        "description": "True if the API request was made with this token.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the token.\n"
+                    },
+                    "expiryTime": {
+                        "type": "string",
+                        "description": "Timestamp when the access token will expire unless extended.\n"
+                    },
+                    "extendWhenUsed": {
+                        "type": "boolean",
+                        "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n"
+                    },
+                    "fullToken": {
+                        "type": "string",
+                        "description": "Full token.\n",
+                        "secret": true
+                    },
+                    "lastIp": {
+                        "type": "string",
+                        "description": "IP address of the last request made with this token.\n"
+                    },
+                    "lastUsedTime": {
+                        "type": "string",
+                        "description": "Timestamp when the access token was last used.\n"
+                    },
+                    "lastUserAgent": {
+                        "type": "string",
+                        "description": "User agent of the last request made with this token.\n"
+                    },
+                    "lastUserAgentHumanReadable": {
+                        "type": "string",
+                        "description": "User agent of the last request made with this token in human-readable format.\n"
+                    },
+                    "maxAgeSeconds": {
+                        "type": "number",
+                        "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n"
+                    },
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The ID of the organization the application user belongs to.\n"
+                    },
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Restricts the scopes for this token.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts"
+                    },
+                    "tokenPrefix": {
+                        "type": "string",
+                        "description": "Prefix of the token.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the application user the token is created for.\n"
                     }
                 },
                 "type": "object"
@@ -32546,6 +32862,60 @@
                     "createTime",
                     "tenantId",
                     "updateTime"
+                ],
+                "type": "object"
+            }
+        },
+        "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": {
+            "description": "Gets information about an application user. \n\n**This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it's enabled, set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst tfUser = aiven.getOrganizationApplicationUser({\n    organizationId: main.id,\n    userId: \"u123a456b7890c\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\ntf_user = aiven.get_organization_application_user(organization_id=main[\"id\"],\n    user_id=\"u123a456b7890c\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfUser = Aiven.GetOrganizationApplicationUser.Invoke(new()\n    {\n        OrganizationId = main.Id,\n        UserId = \"u123a456b7890c\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganizationApplicationUser(ctx, \u0026aiven.LookupOrganizationApplicationUserArgs{\n\t\t\tOrganizationId: main.Id,\n\t\t\tUserId:         \"u123a456b7890c\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()\n            .organizationId(main.id())\n            .userId(\"u123a456b7890c\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  tfUser:\n    fn::invoke:\n      Function: aiven:getOrganizationApplicationUser\n      Arguments:\n        organizationId: ${main.id}\n        userId: u123a456b7890c\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getOrganizationApplicationUser.\n",
+                "properties": {
+                    "organizationId": {
+                        "type": "string",
+                        "description": "The ID of the organization the application user belongs to.\n"
+                    },
+                    "userId": {
+                        "type": "string",
+                        "description": "The ID of the application user.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "organizationId",
+                    "userId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getOrganizationApplicationUser.\n",
+                "properties": {
+                    "email": {
+                        "description": "The auto-generated email address of the application user.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the application user.\n",
+                        "type": "string"
+                    },
+                    "organizationId": {
+                        "description": "The ID of the organization the application user belongs to.\n",
+                        "type": "string"
+                    },
+                    "userId": {
+                        "description": "The ID of the application user.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "email",
+                    "name",
+                    "organizationId",
+                    "userId",
+                    "id"
                 ],
                 "type": "object"
             }

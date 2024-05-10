@@ -1065,6 +1065,19 @@
                 "current": "aiven:index/organization:Organization",
                 "majorVersion": 6
             },
+            "aiven_organization_application_user": {
+                "current": "aiven:index/organizationApplicationUser:OrganizationApplicationUser",
+                "majorVersion": 6
+            },
+            "aiven_organization_application_user_token": {
+                "current": "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken",
+                "majorVersion": 6,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "aiven_organization_group_project": {
                 "current": "aiven:index/organizationGroupProject:OrganizationGroupProject",
                 "majorVersion": 6
@@ -2606,6 +2619,10 @@
                 "current": "aiven:index/getOrganization:getOrganization",
                 "majorVersion": 6
             },
+            "aiven_organization_application_user": {
+                "current": "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser",
+                "majorVersion": 6
+            },
             "aiven_organization_user": {
                 "current": "aiven:index/getOrganizationUser:getOrganizationUser",
                 "majorVersion": 6
@@ -3111,6 +3128,8 @@
             "aiven:index/opensearchSecurityPluginConfig:OpensearchSecurityPluginConfig": 0,
             "aiven:index/opensearchUser:OpensearchUser": 0,
             "aiven:index/organization:Organization": 1,
+            "aiven:index/organizationApplicationUser:OrganizationApplicationUser": 1,
+            "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": 1,
             "aiven:index/organizationGroupProject:OrganizationGroupProject": 1,
             "aiven:index/organizationUser:OrganizationUser": 0,
             "aiven:index/organizationUserGroup:OrganizationUserGroup": 0,
@@ -3180,6 +3199,7 @@
             "aiven:index/getOpensearchSecurityPluginConfig:getOpensearchSecurityPluginConfig": 0,
             "aiven:index/getOpensearchUser:getOpensearchUser": 0,
             "aiven:index/getOrganization:getOrganization": 1,
+            "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": 1,
             "aiven:index/getOrganizationUser:getOrganizationUser": 0,
             "aiven:index/getOrganizationUserGroup:getOrganizationUserGroup": 0,
             "aiven:index/getOrganizationalUnit:getOrganizationalUnit": 0,
