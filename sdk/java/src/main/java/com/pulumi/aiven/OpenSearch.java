@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -53,13 +54,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var os1 = new OpenSearch(&#34;os1&#34;, OpenSearchArgs.builder()        
+ *         var os1 = new OpenSearch("os1", OpenSearchArgs.builder()        
  *             .project(pr1.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-4&#34;)
- *             .serviceName(&#34;my-os1&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("my-os1")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .opensearchUserConfig(OpenSearchOpensearchUserConfigArgs.builder()
  *                 .opensearchVersion(1)
  *                 .opensearchDashboards(OpenSearchOpensearchUserConfigOpensearchDashboardsArgs.builder()
@@ -75,7 +76,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

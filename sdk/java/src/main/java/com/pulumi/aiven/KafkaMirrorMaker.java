@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mm1 = new KafkaMirrorMaker(&#34;mm1&#34;, KafkaMirrorMakerArgs.builder()        
+ *         var mm1 = new KafkaMirrorMaker("mm1", KafkaMirrorMakerArgs.builder()        
  *             .project(pr1.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-4&#34;)
- *             .serviceName(&#34;my-mm1&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("my-mm1")
  *             .kafkaMirrormakerUserConfig(KafkaMirrorMakerKafkaMirrormakerUserConfigArgs.builder()
- *                 .ipFilters(&#34;0.0.0.0/0&#34;)
+ *                 .ipFilters("0.0.0.0/0")
  *                 .kafkaMirrormaker(KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArgs.builder()
  *                     .refreshGroupsIntervalSeconds(600)
  *                     .refreshTopicsEnabled(true)
@@ -68,7 +69,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

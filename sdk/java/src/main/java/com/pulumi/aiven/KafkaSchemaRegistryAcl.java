@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,17 +41,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new KafkaSchemaRegistryAcl(&#34;foo&#34;, KafkaSchemaRegistryAclArgs.builder()        
+ *         var foo = new KafkaSchemaRegistryAcl("foo", KafkaSchemaRegistryAclArgs.builder()        
  *             .project(kafka_schemas_project1.project())
  *             .serviceName(kafka_service1.serviceName())
- *             .resource(&#34;Subject:topic-1&#34;)
- *             .username(&#34;group-user-*&#34;)
- *             .permission(&#34;schema_registry_read&#34;)
+ *             .resource("Subject:topic-1")
+ *             .username("group-user-*")
+ *             .permission("schema_registry_read")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

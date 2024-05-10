@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
+ *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
  *             .project(kafka_schemas_project1.project())
  *             .serviceName(kafka_service1.serviceName())
- *             .compatibilityLevel(&#34;BACKWARD&#34;)
+ *             .compatibilityLevel("BACKWARD")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

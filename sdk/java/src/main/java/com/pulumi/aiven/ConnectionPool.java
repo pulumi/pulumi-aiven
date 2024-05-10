@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,19 +44,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestpool = new ConnectionPool(&#34;mytestpool&#34;, ConnectionPoolArgs.builder()        
+ *         var mytestpool = new ConnectionPool("mytestpool", ConnectionPoolArgs.builder()        
  *             .project(myproject.project())
  *             .serviceName(mypg.serviceName())
  *             .databaseName(mypgdatabase.databaseName())
- *             .poolMode(&#34;transaction&#34;)
- *             .poolName(&#34;mypool&#34;)
+ *             .poolMode("transaction")
+ *             .poolName("mypool")
  *             .poolSize(10)
  *             .username(mypguser.username())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

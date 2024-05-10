@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,17 +53,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql1 = new MySql(&#34;mysql1&#34;, MySqlArgs.builder()        
+ *         var mysql1 = new MySql("mysql1", MySqlArgs.builder()        
  *             .project(foo.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;business-4&#34;)
- *             .serviceName(&#34;my-mysql1&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-4")
+ *             .serviceName("my-mysql1")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .mysqlUserConfig(MySqlMysqlUserConfigArgs.builder()
  *                 .mysqlVersion(8)
  *                 .mysql(MySqlMysqlUserConfigMysqlArgs.builder()
- *                     .sqlMode(&#34;ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE&#34;)
+ *                     .sqlMode("ANSI,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION,NO_ZERO_DATE,NO_ZERO_IN_DATE")
  *                     .sqlRequirePrimaryKey(true)
  *                     .build())
  *                 .publicAccess(MySqlMysqlUserConfigPublicAccessArgs.builder()
@@ -73,7 +74,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

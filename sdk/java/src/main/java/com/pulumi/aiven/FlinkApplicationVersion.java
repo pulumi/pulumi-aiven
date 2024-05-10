@@ -24,7 +24,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,48 +48,49 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new FlinkApplicationVersion(&#34;foo&#34;, FlinkApplicationVersionArgs.builder()        
+ *         var foo = new FlinkApplicationVersion("foo", FlinkApplicationVersionArgs.builder()        
  *             .project(fooAivenProject.project())
  *             .serviceName(fooAivenFlink.serviceName())
  *             .applicationId(fooAivenFlinkApplication.applicationId())
- *             .statement(&#34;&#34;&#34;
- *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE &#39;%Luigis Pizza%&#39;
- *             &#34;&#34;&#34;)
+ *             .statement("""
+ *     INSERT INTO kafka_known_pizza SELECT * FROM kafka_pizza WHERE shop LIKE '%Luigis Pizza%'
+ *             """)
  *             .sinks(FlinkApplicationVersionSinkArgs.builder()
- *                 .createTable(&#34;&#34;&#34;
+ *                 .createTable("""
  *       CREATE TABLE kafka_known_pizza (
  *         shop STRING,
  *         name STRING
  *       ) WITH (
- *         &#39;connector&#39; = &#39;kafka&#39;,
- *         &#39;properties.bootstrap.servers&#39; = &#39;&#39;,
- *         &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
- *         &#39;topic&#39; = &#39;sink_topic&#39;,
- *         &#39;value.format&#39; = &#39;json&#39;
+ *         'connector' = 'kafka',
+ *         'properties.bootstrap.servers' = '',
+ *         'scan.startup.mode' = 'earliest-offset',
+ *         'topic' = 'sink_topic',
+ *         'value.format' = 'json'
  *       )
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .integrationId(flinkToKafka.integrationId())
  *                 .build())
  *             .sources(FlinkApplicationVersionSourceArgs.builder()
- *                 .createTable(&#34;&#34;&#34;
+ *                 .createTable("""
  *       CREATE TABLE kafka_pizza (
  *         shop STRING,
  *         name STRING
  *       ) WITH (
- *         &#39;connector&#39; = &#39;kafka&#39;,
- *         &#39;properties.bootstrap.servers&#39; = &#39;&#39;,
- *         &#39;scan.startup.mode&#39; = &#39;earliest-offset&#39;,
- *         &#39;topic&#39; = &#39;source_topic&#39;,
- *         &#39;value.format&#39; = &#39;json&#39;
+ *         'connector' = 'kafka',
+ *         'properties.bootstrap.servers' = '',
+ *         'scan.startup.mode' = 'earliest-offset',
+ *         'topic' = 'source_topic',
+ *         'value.format' = 'json'
  *       )
- *                 &#34;&#34;&#34;)
+ *                 """)
  *                 .integrationId(flinkToKafka.integrationId())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

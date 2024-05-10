@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -52,16 +53,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kc1 = new KafkaConnect(&#34;kc1&#34;, KafkaConnectArgs.builder()        
+ *         var kc1 = new KafkaConnect("kc1", KafkaConnectArgs.builder()        
  *             .project(pr1.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-4&#34;)
- *             .serviceName(&#34;my-kc1&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("my-kc1")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .kafkaConnectUserConfig(KafkaConnectKafkaConnectUserConfigArgs.builder()
  *                 .kafkaConnect(KafkaConnectKafkaConnectUserConfigKafkaConnectArgs.builder()
- *                     .consumerIsolationLevel(&#34;read_committed&#34;)
+ *                     .consumerIsolationLevel("read_committed")
  *                     .build())
  *                 .publicAccess(KafkaConnectKafkaConnectUserConfigPublicAccessArgs.builder()
  *                     .kafkaConnect(true)
@@ -71,7 +72,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

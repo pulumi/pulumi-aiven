@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gr1 = new Grafana(&#34;gr1&#34;, GrafanaArgs.builder()        
+ *         var gr1 = new Grafana("gr1", GrafanaArgs.builder()        
  *             .project(ps1.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-1&#34;)
- *             .serviceName(&#34;my-gr1&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-1")
+ *             .serviceName("my-gr1")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .grafanaUserConfig(GrafanaGrafanaUserConfigArgs.builder()
  *                 .alertingEnabled(true)
  *                 .publicAccess(GrafanaGrafanaUserConfigPublicAccessArgs.builder()
@@ -68,7 +69,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

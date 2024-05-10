@@ -212,7 +212,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -234,12 +235,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()
-     *             .name(&#34;&lt;ACCOUNT_NAME&gt;&#34;)
+     *             .name("<ACCOUNT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -252,7 +254,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -274,12 +277,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()
-     *             .name(&#34;&lt;ACCOUNT_NAME&gt;&#34;)
+     *             .name("<ACCOUNT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -292,7 +296,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -314,12 +319,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()
-     *             .name(&#34;&lt;ACCOUNT_NAME&gt;&#34;)
+     *             .name("<ACCOUNT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -332,7 +338,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -354,12 +361,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var account1 = AivenFunctions.getAccount(GetAccountArgs.builder()
-     *             .name(&#34;&lt;ACCOUNT_NAME&gt;&#34;)
+     *             .name("<ACCOUNT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -484,7 +492,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -512,7 +521,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -525,7 +535,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -553,7 +564,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -566,7 +578,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -594,7 +607,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -607,7 +621,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -635,7 +650,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -648,7 +664,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -671,22 +688,23 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
-     *             .networkCidr(&#34;192.168.1.0/24&#34;)
+     *             .cloudName("google-europe-west1")
+     *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
-     *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
-     *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
+     *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
+     *             .awsVpcRegion("aws-us-east-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -699,7 +717,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -722,22 +741,23 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
-     *             .networkCidr(&#34;192.168.1.0/24&#34;)
+     *             .cloudName("google-europe-west1")
+     *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
-     *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
-     *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
+     *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
+     *             .awsVpcRegion("aws-us-east-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -750,7 +770,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -773,22 +794,23 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
-     *             .networkCidr(&#34;192.168.1.0/24&#34;)
+     *             .cloudName("google-europe-west1")
+     *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
-     *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
-     *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
+     *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
+     *             .awsVpcRegion("aws-us-east-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -801,7 +823,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -824,22 +847,23 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
-     *             .networkCidr(&#34;192.168.1.0/24&#34;)
+     *             .cloudName("google-europe-west1")
+     *             .networkCidr("192.168.1.0/24")
      *             .build());
      * 
      *         final var awsToAivenPeering = AivenFunctions.getAwsVpcPeeringConnection(GetAwsVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
      *             .awsAccountId(awsId)
-     *             .awsVpcId(&#34;vpc-1a2b3c4d5e6f7g8h9&#34;)
-     *             .awsVpcRegion(&#34;aws-us-east-2&#34;)
+     *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")
+     *             .awsVpcRegion("aws-us-east-2")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -852,7 +876,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -880,7 +905,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -893,7 +919,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -921,7 +948,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -934,7 +962,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -962,7 +991,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -975,7 +1005,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1003,7 +1034,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1016,7 +1048,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1039,16 +1072,17 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerResourceGroup(&#34;example-resource-group&#34;)
-     *             .vnetName(&#34;example-vnet&#34;)
-     *             .peerAzureAppId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerAzureTenantId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .azureSubscriptionId("00000000-0000-0000-0000-000000000000")
+     *             .peerResourceGroup("example-resource-group")
+     *             .vnetName("example-vnet")
+     *             .peerAzureAppId("00000000-0000-0000-0000-000000000000")
+     *             .peerAzureTenantId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1061,7 +1095,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1084,16 +1119,17 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerResourceGroup(&#34;example-resource-group&#34;)
-     *             .vnetName(&#34;example-vnet&#34;)
-     *             .peerAzureAppId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerAzureTenantId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .azureSubscriptionId("00000000-0000-0000-0000-000000000000")
+     *             .peerResourceGroup("example-resource-group")
+     *             .vnetName("example-vnet")
+     *             .peerAzureAppId("00000000-0000-0000-0000-000000000000")
+     *             .peerAzureTenantId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1106,7 +1142,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1129,16 +1166,17 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerResourceGroup(&#34;example-resource-group&#34;)
-     *             .vnetName(&#34;example-vnet&#34;)
-     *             .peerAzureAppId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerAzureTenantId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .azureSubscriptionId("00000000-0000-0000-0000-000000000000")
+     *             .peerResourceGroup("example-resource-group")
+     *             .vnetName("example-vnet")
+     *             .peerAzureAppId("00000000-0000-0000-0000-000000000000")
+     *             .peerAzureTenantId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1151,7 +1189,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1174,16 +1213,17 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var azureToAivenPeering = AivenFunctions.getAzureVpcPeeringConnection(GetAzureVpcPeeringConnectionArgs.builder()
      *             .vpcId(exampleVpc.id())
-     *             .azureSubscriptionId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerResourceGroup(&#34;example-resource-group&#34;)
-     *             .vnetName(&#34;example-vnet&#34;)
-     *             .peerAzureAppId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .peerAzureTenantId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .azureSubscriptionId("00000000-0000-0000-0000-000000000000")
+     *             .peerResourceGroup("example-resource-group")
+     *             .vnetName("example-vnet")
+     *             .peerAzureAppId("00000000-0000-0000-0000-000000000000")
+     *             .peerAzureTenantId("00000000-0000-0000-0000-000000000000")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1196,7 +1236,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1218,12 +1259,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;example-billing-group&#34;)
+     *             .name("example-billing-group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1236,7 +1278,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1258,12 +1301,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;example-billing-group&#34;)
+     *             .name("example-billing-group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1276,7 +1320,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1298,12 +1343,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;example-billing-group&#34;)
+     *             .name("example-billing-group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1316,7 +1362,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1338,12 +1385,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleBillingGroup = AivenFunctions.getBillingGroup(GetBillingGroupArgs.builder()
-     *             .name(&#34;example-billing-group&#34;)
+     *             .name("example-billing-group")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1356,7 +1404,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1379,12 +1428,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1401,7 +1451,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1424,12 +1475,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1446,7 +1498,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1469,12 +1522,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1491,7 +1545,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1514,12 +1569,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * @deprecated
@@ -1536,7 +1592,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1559,12 +1616,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1577,7 +1635,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1600,12 +1659,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1618,7 +1678,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1641,12 +1702,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1659,7 +1721,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1682,12 +1745,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var bar = AivenFunctions.getCassandra(GetCassandraArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1700,7 +1764,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1722,14 +1787,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1742,7 +1808,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1764,14 +1831,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1784,7 +1852,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1806,14 +1875,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1826,7 +1896,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1848,14 +1919,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getCassandraUser(GetCassandraUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1868,7 +1940,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1891,12 +1964,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1909,7 +1983,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1932,12 +2007,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1950,7 +2026,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -1973,12 +2050,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -1991,7 +2069,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2014,12 +2093,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var clickhouse = AivenFunctions.getClickhouse(GetClickhouseArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2032,7 +2112,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2056,12 +2137,13 @@ public final class AivenFunctions {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
      *             .project(ch.project())
      *             .serviceName(ch.serviceName())
-     *             .name(&#34;my-ch-db&#34;)
+     *             .name("my-ch-db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2074,7 +2156,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2098,12 +2181,13 @@ public final class AivenFunctions {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
      *             .project(ch.project())
      *             .serviceName(ch.serviceName())
-     *             .name(&#34;my-ch-db&#34;)
+     *             .name("my-ch-db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2116,7 +2200,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2140,12 +2225,13 @@ public final class AivenFunctions {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
      *             .project(ch.project())
      *             .serviceName(ch.serviceName())
-     *             .name(&#34;my-ch-db&#34;)
+     *             .name("my-ch-db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2158,7 +2244,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2182,12 +2269,13 @@ public final class AivenFunctions {
      *         final var clickhouseDb = AivenFunctions.getClickhouseDatabase(GetClickhouseDatabaseArgs.builder()
      *             .project(ch.project())
      *             .serviceName(ch.serviceName())
-     *             .name(&#34;my-ch-db&#34;)
+     *             .name("my-ch-db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2200,7 +2288,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2224,12 +2313,13 @@ public final class AivenFunctions {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(myservice.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
+     *             .username("<USERNAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2242,7 +2332,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2266,12 +2357,13 @@ public final class AivenFunctions {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(myservice.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
+     *             .username("<USERNAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2284,7 +2376,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2308,12 +2401,13 @@ public final class AivenFunctions {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(myservice.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
+     *             .username("<USERNAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2326,7 +2420,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2350,12 +2445,13 @@ public final class AivenFunctions {
      *         final var ch-user = AivenFunctions.getClickhouseUser(GetClickhouseUserArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(myservice.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
+     *             .username("<USERNAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2368,7 +2464,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2392,12 +2489,13 @@ public final class AivenFunctions {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .poolName(&#34;mypool&#34;)
+     *             .poolName("mypool")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2410,7 +2508,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2434,12 +2533,13 @@ public final class AivenFunctions {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .poolName(&#34;mypool&#34;)
+     *             .poolName("mypool")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2452,7 +2552,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2476,12 +2577,13 @@ public final class AivenFunctions {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .poolName(&#34;mypool&#34;)
+     *             .poolName("mypool")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2494,7 +2596,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2518,12 +2621,13 @@ public final class AivenFunctions {
      *         final var mytestpool = AivenFunctions.getConnectionPool(GetConnectionPoolArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .poolName(&#34;mypool&#34;)
+     *             .poolName("mypool")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2536,7 +2640,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2559,12 +2664,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .serviceName("example-dragonfly-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2577,7 +2683,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2600,12 +2707,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .serviceName("example-dragonfly-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2618,7 +2726,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2641,12 +2750,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .serviceName("example-dragonfly-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2659,7 +2769,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2682,12 +2793,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleDragonfly = AivenFunctions.getDragonfly(GetDragonflyArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-dragonfly-service&#34;)
+     *             .serviceName("example-dragonfly-service")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2700,7 +2812,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2723,12 +2836,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2741,7 +2855,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2764,12 +2879,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2782,7 +2898,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2805,12 +2922,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2823,7 +2941,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2846,12 +2965,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var flink = AivenFunctions.getFlink(GetFlinkArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2864,7 +2984,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2887,13 +3008,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .name("<APPLICATION_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2906,7 +3028,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2929,13 +3052,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .name("<APPLICATION_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2948,7 +3072,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -2971,13 +3096,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .name("<APPLICATION_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -2990,7 +3116,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3013,13 +3140,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplication(GetFlinkApplicationArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .name(&#34;&lt;APPLICATION_NAME&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .name("<APPLICATION_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3032,7 +3160,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3055,14 +3184,15 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
-     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .applicationId("<APPLICATION_ID>")
+     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3075,7 +3205,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3098,14 +3229,15 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
-     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .applicationId("<APPLICATION_ID>")
+     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3118,7 +3250,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3141,14 +3274,15 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
-     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .applicationId("<APPLICATION_ID>")
+     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3161,7 +3295,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3184,14 +3319,15 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var app1 = AivenFunctions.getFlinkApplicationVersion(GetFlinkApplicationVersionArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;&lt;SERVICE_NAME&gt;&#34;)
-     *             .applicationId(&#34;&lt;APPLICATION_ID&gt;&#34;)
-     *             .applicationVersionId(&#34;&lt;APPLICATION_VERSION_ID&gt;&#34;)
+     *             .serviceName("<SERVICE_NAME>")
+     *             .applicationId("<APPLICATION_ID>")
+     *             .applicationVersionId("<APPLICATION_VERSION_ID>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3216,7 +3352,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3239,13 +3376,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
      *             .vpcId(vpc.id())
-     *             .gcpProjectId(&#34;example-project&#34;)
-     *             .peerVpc(&#34;example-network&#34;)
+     *             .gcpProjectId("example-project")
+     *             .peerVpc("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3258,7 +3396,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3281,13 +3420,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
      *             .vpcId(vpc.id())
-     *             .gcpProjectId(&#34;example-project&#34;)
-     *             .peerVpc(&#34;example-network&#34;)
+     *             .gcpProjectId("example-project")
+     *             .peerVpc("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3300,7 +3440,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3323,13 +3464,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
      *             .vpcId(vpc.id())
-     *             .gcpProjectId(&#34;example-project&#34;)
-     *             .peerVpc(&#34;example-network&#34;)
+     *             .gcpProjectId("example-project")
+     *             .peerVpc("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3342,7 +3484,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3365,13 +3508,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getGcpVpcPeeringConnection(GetGcpVpcPeeringConnectionArgs.builder()
      *             .vpcId(vpc.id())
-     *             .gcpProjectId(&#34;example-project&#34;)
-     *             .peerVpc(&#34;example-network&#34;)
+     *             .gcpProjectId("example-project")
+     *             .peerVpc("example-network")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3384,7 +3528,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3407,12 +3552,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
      *             .project(ps1.project())
-     *             .serviceName(&#34;my-gr1&#34;)
+     *             .serviceName("my-gr1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3425,7 +3571,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3448,12 +3595,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
      *             .project(ps1.project())
-     *             .serviceName(&#34;my-gr1&#34;)
+     *             .serviceName("my-gr1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3466,7 +3614,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3489,12 +3638,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
      *             .project(ps1.project())
-     *             .serviceName(&#34;my-gr1&#34;)
+     *             .serviceName("my-gr1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3507,7 +3657,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3530,12 +3681,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var gr1 = AivenFunctions.getGrafana(GetGrafanaArgs.builder()
      *             .project(ps1.project())
-     *             .serviceName(&#34;my-gr1&#34;)
+     *             .serviceName("my-gr1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3584,7 +3736,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3607,12 +3760,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-kafka&#34;)
+     *             .serviceName("example-kafka")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3625,7 +3779,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3648,12 +3803,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-kafka&#34;)
+     *             .serviceName("example-kafka")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3666,7 +3822,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3689,12 +3846,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-kafka&#34;)
+     *             .serviceName("example-kafka")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3707,7 +3865,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3730,12 +3889,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleKafka = AivenFunctions.getKafka(GetKafkaArgs.builder()
      *             .project(exampleProject.project())
-     *             .serviceName(&#34;example-kafka&#34;)
+     *             .serviceName("example-kafka")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3748,7 +3908,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3772,14 +3933,15 @@ public final class AivenFunctions {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mykafka.serviceName())
-     *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
-     *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
-     *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
+     *             .topic("<TOPIC_NAME_PATTERN>")
+     *             .permission("<PERMISSON>")
+     *             .username("<USERNAME_PATTERN>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3792,7 +3954,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3816,14 +3979,15 @@ public final class AivenFunctions {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mykafka.serviceName())
-     *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
-     *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
-     *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
+     *             .topic("<TOPIC_NAME_PATTERN>")
+     *             .permission("<PERMISSON>")
+     *             .username("<USERNAME_PATTERN>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3836,7 +4000,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3860,14 +4025,15 @@ public final class AivenFunctions {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mykafka.serviceName())
-     *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
-     *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
-     *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
+     *             .topic("<TOPIC_NAME_PATTERN>")
+     *             .permission("<PERMISSON>")
+     *             .username("<USERNAME_PATTERN>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3880,7 +4046,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3904,14 +4071,15 @@ public final class AivenFunctions {
      *         final var mytestacl = AivenFunctions.getKafkaAcl(GetKafkaAclArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mykafka.serviceName())
-     *             .topic(&#34;&lt;TOPIC_NAME_PATTERN&gt;&#34;)
-     *             .permission(&#34;&lt;PERMISSON&gt;&#34;)
-     *             .username(&#34;&lt;USERNAME_PATTERN&gt;&#34;)
+     *             .topic("<TOPIC_NAME_PATTERN>")
+     *             .permission("<PERMISSON>")
+     *             .username("<USERNAME_PATTERN>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3924,7 +4092,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3947,12 +4116,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-kc1&#34;)
+     *             .serviceName("my-kc1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -3965,7 +4135,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -3988,12 +4159,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-kc1&#34;)
+     *             .serviceName("my-kc1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4006,7 +4178,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4029,12 +4202,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-kc1&#34;)
+     *             .serviceName("my-kc1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4047,7 +4221,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4070,12 +4245,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var kc1 = AivenFunctions.getKafkaConnect(GetKafkaConnectArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-kc1&#34;)
+     *             .serviceName("my-kc1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4088,7 +4264,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4112,12 +4289,13 @@ public final class AivenFunctions {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(kafka_con_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName(&#34;kafka-es-con1&#34;)
+     *             .connectorName("kafka-es-con1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4130,7 +4308,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4154,12 +4333,13 @@ public final class AivenFunctions {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(kafka_con_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName(&#34;kafka-es-con1&#34;)
+     *             .connectorName("kafka-es-con1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4172,7 +4352,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4196,12 +4377,13 @@ public final class AivenFunctions {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(kafka_con_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName(&#34;kafka-es-con1&#34;)
+     *             .connectorName("kafka-es-con1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4214,7 +4396,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4238,12 +4421,13 @@ public final class AivenFunctions {
      *         final var kafka-es-con1 = AivenFunctions.getKafkaConnector(GetKafkaConnectorArgs.builder()
      *             .project(kafka_con_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .connectorName(&#34;kafka-es-con1&#34;)
+     *             .connectorName("kafka-es-con1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4256,7 +4440,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4279,12 +4464,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-mm1&#34;)
+     *             .serviceName("my-mm1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4297,7 +4483,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4320,12 +4507,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-mm1&#34;)
+     *             .serviceName("my-mm1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4338,7 +4526,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4361,12 +4550,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-mm1&#34;)
+     *             .serviceName("my-mm1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4379,7 +4569,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4402,12 +4593,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mm1 = AivenFunctions.getKafkaMirrorMaker(GetKafkaMirrorMakerArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-mm1&#34;)
+     *             .serviceName("my-mm1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4420,7 +4612,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4448,7 +4641,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4461,7 +4655,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4489,7 +4684,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4502,7 +4698,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4530,7 +4727,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4543,7 +4741,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4571,7 +4770,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4584,7 +4784,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4605,15 +4806,16 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .compatibilityLevel(&#34;BACKWARD&#34;)
+     *             .compatibilityLevel("BACKWARD")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4626,7 +4828,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4647,15 +4850,16 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .compatibilityLevel(&#34;BACKWARD&#34;)
+     *             .compatibilityLevel("BACKWARD")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4668,7 +4872,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4689,15 +4894,16 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .compatibilityLevel(&#34;BACKWARD&#34;)
+     *             .compatibilityLevel("BACKWARD")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4710,7 +4916,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4731,15 +4938,16 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration(&#34;config&#34;, KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
-     *             .compatibilityLevel(&#34;BACKWARD&#34;)
+     *             .compatibilityLevel("BACKWARD")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4780,7 +4988,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4804,12 +5013,13 @@ public final class AivenFunctions {
      *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(exampleProject.project())
      *             .serviceName(exampleKafka.serviceName())
-     *             .topicName(&#34;example-topic&#34;)
+     *             .topicName("example-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4822,7 +5032,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4846,12 +5057,13 @@ public final class AivenFunctions {
      *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(exampleProject.project())
      *             .serviceName(exampleKafka.serviceName())
-     *             .topicName(&#34;example-topic&#34;)
+     *             .topicName("example-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4864,7 +5076,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4888,12 +5101,13 @@ public final class AivenFunctions {
      *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(exampleProject.project())
      *             .serviceName(exampleKafka.serviceName())
-     *             .topicName(&#34;example-topic&#34;)
+     *             .topicName("example-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4906,7 +5120,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4930,12 +5145,13 @@ public final class AivenFunctions {
      *         final var exampleTopic = AivenFunctions.getKafkaTopic(GetKafkaTopicArgs.builder()
      *             .project(exampleProject.project())
      *             .serviceName(exampleKafka.serviceName())
-     *             .topicName(&#34;example-topic&#34;)
+     *             .topicName("example-topic")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4948,7 +5164,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -4970,14 +5187,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -4990,7 +5208,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5012,14 +5231,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5032,7 +5252,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5054,14 +5275,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5074,7 +5296,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5096,14 +5319,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getKafkaUser(GetKafkaUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5116,7 +5340,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5139,12 +5364,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3a&#34;)
+     *             .serviceName("my-m3a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5157,7 +5383,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5180,12 +5407,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3a&#34;)
+     *             .serviceName("my-m3a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5198,7 +5426,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5221,12 +5450,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3a&#34;)
+     *             .serviceName("my-m3a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5239,7 +5469,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5262,12 +5493,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3a = AivenFunctions.getM3Aggregator(GetM3AggregatorArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3a&#34;)
+     *             .serviceName("my-m3a")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5280,7 +5512,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5303,12 +5536,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3db&#34;)
+     *             .serviceName("my-m3db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5321,7 +5555,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5344,12 +5579,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3db&#34;)
+     *             .serviceName("my-m3db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5362,7 +5598,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5385,12 +5622,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3db&#34;)
+     *             .serviceName("my-m3db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5403,7 +5641,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5426,12 +5665,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var m3 = AivenFunctions.getM3Db(GetM3DbArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-m3db&#34;)
+     *             .serviceName("my-m3db")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5444,7 +5684,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5466,14 +5707,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5486,7 +5728,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5508,14 +5751,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5528,7 +5772,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5550,14 +5795,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5570,7 +5816,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5592,14 +5839,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getM3dbUser(GetM3dbUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5612,7 +5860,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5642,7 +5891,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5655,7 +5905,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5685,7 +5936,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5698,7 +5950,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5728,7 +5981,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5741,7 +5995,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5771,7 +6026,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5784,7 +6040,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5807,12 +6064,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-mysql1&#34;)
+     *             .serviceName("my-mysql1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5825,7 +6083,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5848,12 +6107,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-mysql1&#34;)
+     *             .serviceName("my-mysql1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5866,7 +6126,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5889,12 +6150,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-mysql1&#34;)
+     *             .serviceName("my-mysql1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5907,7 +6169,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5930,12 +6193,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mysql1 = AivenFunctions.getMySql(GetMySqlArgs.builder()
      *             .project(foo.project())
-     *             .serviceName(&#34;my-mysql1&#34;)
+     *             .serviceName("my-mysql1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5948,7 +6212,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -5972,12 +6237,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mymysql.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -5990,7 +6256,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6014,12 +6281,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mymysql.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6032,7 +6300,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6056,12 +6325,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mymysql.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6074,7 +6344,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6098,12 +6369,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getMysqlDatabase(GetMysqlDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mymysql.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6116,7 +6388,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6138,14 +6411,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6158,7 +6432,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6180,14 +6455,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6200,7 +6476,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6222,14 +6499,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6242,7 +6520,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6264,14 +6543,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getMysqlUser(GetMysqlUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6284,7 +6564,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6307,12 +6588,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-os1&#34;)
+     *             .serviceName("my-os1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6325,7 +6607,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6348,12 +6631,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-os1&#34;)
+     *             .serviceName("my-os1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6366,7 +6650,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6389,12 +6674,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-os1&#34;)
+     *             .serviceName("my-os1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6407,7 +6693,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6430,12 +6717,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var os1 = AivenFunctions.getOpenSearch(GetOpenSearchArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-os1&#34;)
+     *             .serviceName("my-os1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6448,7 +6736,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6476,7 +6765,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6489,7 +6779,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6517,7 +6808,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6530,7 +6822,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6558,7 +6851,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6571,7 +6865,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6599,7 +6894,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6612,7 +6908,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6636,13 +6933,14 @@ public final class AivenFunctions {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
      *             .project(osAclsConfig.project())
      *             .serviceName(osAclsConfig.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
-     *             .index(&#34;&lt;INDEX&gt;&#34;)
+     *             .username("<USERNAME>")
+     *             .index("<INDEX>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6655,7 +6953,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6679,13 +6978,14 @@ public final class AivenFunctions {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
      *             .project(osAclsConfig.project())
      *             .serviceName(osAclsConfig.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
-     *             .index(&#34;&lt;INDEX&gt;&#34;)
+     *             .username("<USERNAME>")
+     *             .index("<INDEX>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6698,7 +6998,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6722,13 +7023,14 @@ public final class AivenFunctions {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
      *             .project(osAclsConfig.project())
      *             .serviceName(osAclsConfig.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
-     *             .index(&#34;&lt;INDEX&gt;&#34;)
+     *             .username("<USERNAME>")
+     *             .index("<INDEX>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6741,7 +7043,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6765,13 +7068,14 @@ public final class AivenFunctions {
      *         final var osAclRule = AivenFunctions.getOpenSearchAclRule(GetOpenSearchAclRuleArgs.builder()
      *             .project(osAclsConfig.project())
      *             .serviceName(osAclsConfig.serviceName())
-     *             .username(&#34;&lt;USERNAME&gt;&#34;)
-     *             .index(&#34;&lt;INDEX&gt;&#34;)
+     *             .username("<USERNAME>")
+     *             .index("<INDEX>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6784,7 +7088,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6812,7 +7117,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6825,7 +7131,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6853,7 +7160,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6866,7 +7174,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6894,7 +7203,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6907,7 +7217,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6935,7 +7246,8 @@ public final class AivenFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6948,7 +7260,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -6970,14 +7283,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -6990,7 +7304,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7012,14 +7327,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7032,7 +7348,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7054,14 +7371,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7074,7 +7392,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7096,14 +7415,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getOpensearchUser(GetOpensearchUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7116,7 +7436,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7138,12 +7459,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;Example organization&#34;)
+     *             .name("Example organization")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7156,7 +7478,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7178,12 +7501,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;Example organization&#34;)
+     *             .name("Example organization")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7196,7 +7520,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7218,12 +7543,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;Example organization&#34;)
+     *             .name("Example organization")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7236,7 +7562,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7258,12 +7585,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;Example organization&#34;)
+     *             .name("Example organization")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7276,7 +7604,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7298,12 +7627,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;Example organization&#34;)
+     *             .name("Example organization")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7316,7 +7646,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7338,12 +7669,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var main = AivenFunctions.getOrganization(GetOrganizationArgs.builder()
-     *             .name(&#34;Example organization&#34;)
+     *             .name("Example organization")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7384,7 +7716,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7406,13 +7739,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name(&#34;Example group&#34;)
+     *             .name("Example group")
      *             .organizationId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7425,7 +7759,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7447,13 +7782,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name(&#34;Example group&#34;)
+     *             .name("Example group")
      *             .organizationId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7466,7 +7802,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7488,13 +7825,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name(&#34;Example group&#34;)
+     *             .name("Example group")
      *             .organizationId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7507,7 +7845,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7529,13 +7868,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = AivenFunctions.getOrganizationUserGroup(GetOrganizationUserGroupArgs.builder()
-     *             .name(&#34;Example group&#34;)
+     *             .name("Example group")
      *             .organizationId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7548,7 +7888,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7570,13 +7911,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name(&#34;Example organizational unit&#34;)
+     *             .name("Example organizational unit")
      *             .parentId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7589,7 +7931,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7611,13 +7954,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name(&#34;Example organizational unit&#34;)
+     *             .name("Example organizational unit")
      *             .parentId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7630,7 +7974,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7652,13 +7997,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name(&#34;Example organizational unit&#34;)
+     *             .name("Example organizational unit")
      *             .parentId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7671,7 +8017,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7693,13 +8040,14 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUnit = AivenFunctions.getOrganizationalUnit(GetOrganizationalUnitArgs.builder()
-     *             .name(&#34;Example organizational unit&#34;)
+     *             .name("Example organizational unit")
      *             .parentId(main.id())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7712,7 +8060,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7735,12 +8084,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-pg1&#34;)
+     *             .serviceName("my-pg1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7753,7 +8103,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7776,12 +8127,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-pg1&#34;)
+     *             .serviceName("my-pg1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7794,7 +8146,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7817,12 +8170,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-pg1&#34;)
+     *             .serviceName("my-pg1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7835,7 +8189,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7858,12 +8213,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var pg = AivenFunctions.getPg(GetPgArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-pg1&#34;)
+     *             .serviceName("my-pg1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7876,7 +8232,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7900,12 +8257,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7918,7 +8276,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7942,12 +8301,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -7960,7 +8320,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -7984,12 +8345,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8002,7 +8364,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8026,12 +8389,13 @@ public final class AivenFunctions {
      *         final var mydatabase = AivenFunctions.getPgDatabase(GetPgDatabaseArgs.builder()
      *             .project(myproject.project())
      *             .serviceName(mypg.serviceName())
-     *             .databaseName(&#34;&lt;DATABASE_NAME&gt;&#34;)
+     *             .databaseName("<DATABASE_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8044,7 +8408,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8066,14 +8431,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8086,7 +8452,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8108,14 +8475,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8128,7 +8496,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8150,14 +8519,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8170,7 +8540,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8192,14 +8563,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getPgUser(GetPgUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8212,7 +8584,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8234,12 +8607,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;example-project&#34;)
+     *             .project("example-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8252,7 +8626,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8274,12 +8649,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;example-project&#34;)
+     *             .project("example-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8292,7 +8668,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8314,12 +8691,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;example-project&#34;)
+     *             .project("example-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8332,7 +8710,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8354,12 +8733,13 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleProject = AivenFunctions.getProject(GetProjectArgs.builder()
-     *             .project(&#34;example-project&#34;)
+     *             .project("example-project")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8372,7 +8752,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8395,12 +8776,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
      *             .project(myproject.project())
-     *             .email(&#34;john.doe@example.com&#34;)
+     *             .email("john.doe{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8413,7 +8795,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8436,12 +8819,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
      *             .project(myproject.project())
-     *             .email(&#34;john.doe@example.com&#34;)
+     *             .email("john.doe{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8454,7 +8838,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8477,12 +8862,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
      *             .project(myproject.project())
-     *             .email(&#34;john.doe@example.com&#34;)
+     *             .email("john.doe{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8495,7 +8881,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8518,12 +8905,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var mytestuser = AivenFunctions.getProjectUser(GetProjectUserArgs.builder()
      *             .project(myproject.project())
-     *             .email(&#34;john.doe@example.com&#34;)
+     *             .email("john.doe{@literal @}example.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8536,7 +8924,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8559,12 +8948,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .cloudName("google-europe-west1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8577,7 +8967,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8600,12 +8991,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .cloudName("google-europe-west1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8618,7 +9010,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8641,12 +9034,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .cloudName("google-europe-west1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8659,7 +9053,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8682,12 +9077,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .cloudName("google-europe-west1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8700,7 +9096,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8723,12 +9120,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .cloudName("google-europe-west1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8741,7 +9139,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8764,12 +9163,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var exampleVpc = AivenFunctions.getProjectVpc(GetProjectVpcArgs.builder()
      *             .project(exampleProject.project())
-     *             .cloudName(&#34;google-europe-west1&#34;)
+     *             .cloudName("google-europe-west1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8782,7 +9182,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8805,12 +9206,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-redis1&#34;)
+     *             .serviceName("my-redis1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8823,7 +9225,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8846,12 +9249,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-redis1&#34;)
+     *             .serviceName("my-redis1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8864,7 +9268,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8887,12 +9292,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-redis1&#34;)
+     *             .serviceName("my-redis1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8905,7 +9311,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8928,12 +9335,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var redis1 = AivenFunctions.getRedis(GetRedisArgs.builder()
      *             .project(pr1.project())
-     *             .serviceName(&#34;my-redis1&#34;)
+     *             .serviceName("my-redis1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8946,7 +9354,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -8968,14 +9377,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -8988,7 +9398,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9010,14 +9421,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9030,7 +9442,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9052,14 +9465,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9072,7 +9486,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9094,14 +9509,15 @@ public final class AivenFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var user = AivenFunctions.getRedisUser(GetRedisUserArgs.builder()
-     *             .serviceName(&#34;my-service&#34;)
-     *             .project(&#34;my-project&#34;)
-     *             .username(&#34;user1&#34;)
+     *             .serviceName("my-service")
+     *             .project("my-project")
+     *             .username("user1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9116,7 +9532,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9140,14 +9557,15 @@ public final class AivenFunctions {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
      *             .project(project1.project())
      *             .serviceName(service1.serviceName())
-     *             .component(&#34;kafka&#34;)
-     *             .route(&#34;dynamic&#34;)
-     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .component("kafka")
+     *             .route("dynamic")
+     *             .kafkaAuthenticationMethod("certificate")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9162,7 +9580,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9186,14 +9605,15 @@ public final class AivenFunctions {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
      *             .project(project1.project())
      *             .serviceName(service1.serviceName())
-     *             .component(&#34;kafka&#34;)
-     *             .route(&#34;dynamic&#34;)
-     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .component("kafka")
+     *             .route("dynamic")
+     *             .kafkaAuthenticationMethod("certificate")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9208,7 +9628,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9232,14 +9653,15 @@ public final class AivenFunctions {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
      *             .project(project1.project())
      *             .serviceName(service1.serviceName())
-     *             .component(&#34;kafka&#34;)
-     *             .route(&#34;dynamic&#34;)
-     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .component("kafka")
+     *             .route("dynamic")
+     *             .kafkaAuthenticationMethod("certificate")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9254,7 +9676,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9278,14 +9701,15 @@ public final class AivenFunctions {
      *         final var sc1 = AivenFunctions.getServiceComponent(GetServiceComponentArgs.builder()
      *             .project(project1.project())
      *             .serviceName(service1.serviceName())
-     *             .component(&#34;kafka&#34;)
-     *             .route(&#34;dynamic&#34;)
-     *             .kafkaAuthenticationMethod(&#34;certificate&#34;)
+     *             .component("kafka")
+     *             .route("dynamic")
+     *             .kafkaAuthenticationMethod("certificate")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9298,7 +9722,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9322,13 +9747,14 @@ public final class AivenFunctions {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
      *             .destinationServiceName(exampleM3db.serviceName())
-     *             .integrationType(&#34;metrics&#34;)
+     *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9341,7 +9767,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9365,13 +9792,14 @@ public final class AivenFunctions {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
      *             .destinationServiceName(exampleM3db.serviceName())
-     *             .integrationType(&#34;metrics&#34;)
+     *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9384,7 +9812,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9408,13 +9837,14 @@ public final class AivenFunctions {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
      *             .destinationServiceName(exampleM3db.serviceName())
-     *             .integrationType(&#34;metrics&#34;)
+     *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9427,7 +9857,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9451,13 +9882,14 @@ public final class AivenFunctions {
      *         final var exampleIntegration = AivenFunctions.getServiceIntegration(GetServiceIntegrationArgs.builder()
      *             .project(exampleProject.project())
      *             .destinationServiceName(exampleM3db.serviceName())
-     *             .integrationType(&#34;metrics&#34;)
+     *             .integrationType("metrics")
      *             .sourceServiceName(exampleKafka.serviceName())
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9470,7 +9902,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9493,12 +9926,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
      *             .project(myproject.project())
-     *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
+     *             .endpointName("<ENDPOINT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9511,7 +9945,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9534,12 +9969,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
      *             .project(myproject.project())
-     *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
+     *             .endpointName("<ENDPOINT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9552,7 +9988,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9575,12 +10012,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
      *             .project(myproject.project())
-     *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
+     *             .endpointName("<ENDPOINT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9593,7 +10031,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9616,12 +10055,13 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var myendpoint = AivenFunctions.getServiceIntegrationEndpoint(GetServiceIntegrationEndpointArgs.builder()
      *             .project(myproject.project())
-     *             .endpointName(&#34;&lt;ENDPOINT_NAME&gt;&#34;)
+     *             .endpointName("<ENDPOINT_NAME>")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9634,7 +10074,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9657,13 +10098,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
      *             .vpcId(bar.id())
-     *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
-     *             .peerVpc(&#34;google-project1&#34;)
+     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
+     *             .peerVpc("google-project1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9676,7 +10118,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9699,13 +10142,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
      *             .vpcId(bar.id())
-     *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
-     *             .peerVpc(&#34;google-project1&#34;)
+     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
+     *             .peerVpc("google-project1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9718,7 +10162,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9741,13 +10186,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
      *             .vpcId(bar.id())
-     *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
-     *             .peerVpc(&#34;google-project1&#34;)
+     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
+     *             .peerVpc("google-project1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -9760,7 +10206,8 @@ public final class AivenFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -9783,13 +10230,14 @@ public final class AivenFunctions {
      *     public static void stack(Context ctx) {
      *         final var attachment = AivenFunctions.getTransitGatewayVpcAttachment(GetTransitGatewayVpcAttachmentArgs.builder()
      *             .vpcId(bar.id())
-     *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
-     *             .peerVpc(&#34;google-project1&#34;)
+     *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
+     *             .peerVpc("google-project1")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

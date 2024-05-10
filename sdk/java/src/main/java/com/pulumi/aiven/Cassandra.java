@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Cassandra(&#34;bar&#34;, CassandraArgs.builder()        
+ *         var bar = new Cassandra("bar", CassandraArgs.builder()        
  *             .project(foo.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-4&#34;)
- *             .serviceName(&#34;test-service-name&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("test-service-name")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .cassandraUserConfig(CassandraCassandraUserConfigArgs.builder()
  *                 .migrateSstableloader(true)
  *                 .publicAccess(CassandraCassandraUserConfigPublicAccessArgs.builder()
@@ -68,7 +69,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

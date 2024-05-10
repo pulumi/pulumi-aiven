@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,22 +48,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new KafkaTopic(&#34;exampleTopic&#34;, KafkaTopicArgs.builder()        
+ *         var exampleTopic = new KafkaTopic("exampleTopic", KafkaTopicArgs.builder()        
  *             .project(exampleProject.project())
  *             .serviceName(exampleKafka.serviceName())
- *             .topicName(&#34;example-topic&#34;)
+ *             .topicName("example-topic")
  *             .partitions(5)
  *             .replication(3)
  *             .terminationProtection(true)
  *             .config(KafkaTopicConfigArgs.builder()
  *                 .flushMs(10)
- *                 .cleanupPolicy(&#34;compact,delete&#34;)
+ *                 .cleanupPolicy("compact,delete")
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
@@ -158,19 +160,9 @@ public class KafkaTopic extends com.pulumi.resources.CustomResource {
     public Output<Optional<List<KafkaTopicTag>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
-     * still be deleted in the Aiven Console.**
-     * 
-     */
     @Export(name="terminationProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminationProtection;
 
-    /**
-     * @return Prevents topics from being deleted by Terraform. It&#39;s recommended for topics containing critical data. **Topics can
-     * still be deleted in the Aiven Console.**
-     * 
-     */
     public Output<Optional<Boolean>> terminationProtection() {
         return Codegen.optional(this.terminationProtection);
     }

@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,21 +45,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleBillingGroup = new BillingGroup(&#34;exampleBillingGroup&#34;, BillingGroupArgs.builder()        
- *             .name(&#34;example-billing-group&#34;)
- *             .billingCurrency(&#34;USD&#34;)
- *             .vatId(&#34;123ABC&#34;)
+ *         var exampleBillingGroup = new BillingGroup("exampleBillingGroup", BillingGroupArgs.builder()        
+ *             .name("example-billing-group")
+ *             .billingCurrency("USD")
+ *             .vatId("123ABC")
  *             .parentId(main.id())
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
- *             .project(&#34;example-project&#34;)
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *             .project("example-project")
  *             .billingGroup(exampleBillingGroup.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

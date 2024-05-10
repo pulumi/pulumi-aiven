@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,24 +44,25 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_os_con1 = new KafkaConnector(&#34;kafka-os-con1&#34;, KafkaConnectorArgs.builder()        
+ *         var kafka_os_con1 = new KafkaConnector("kafka-os-con1", KafkaConnectorArgs.builder()        
  *             .project(kafka_con_project1.project())
  *             .serviceName(kafka_service1.serviceName())
- *             .connectorName(&#34;kafka-os-con1&#34;)
+ *             .connectorName("kafka-os-con1")
  *             .config(Map.ofEntries(
- *                 Map.entry(&#34;topics&#34;, kafka_topic1.topicName()),
- *                 Map.entry(&#34;connector.class&#34;, &#34;io.aiven.kafka.connect.opensearch.OpensearchSinkConnector&#34;),
- *                 Map.entry(&#34;type.name&#34;, &#34;os-connector&#34;),
- *                 Map.entry(&#34;name&#34;, &#34;kafka-os-con1&#34;),
- *                 Map.entry(&#34;connection.url&#34;, os_service1.serviceUri()),
- *                 Map.entry(&#34;connection.username&#34;, os_service1.serviceUsername()),
- *                 Map.entry(&#34;connection.password&#34;, os_service1.servicePassword())
+ *                 Map.entry("topics", kafka_topic1.topicName()),
+ *                 Map.entry("connector.class", "io.aiven.kafka.connect.opensearch.OpensearchSinkConnector"),
+ *                 Map.entry("type.name", "os-connector"),
+ *                 Map.entry("name", "kafka-os-con1"),
+ *                 Map.entry("connection.url", os_service1.serviceUri()),
+ *                 Map.entry("connection.username", os_service1.serviceUsername()),
+ *                 Map.entry("connection.password", os_service1.servicePassword())
  *             ))
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -20,7 +20,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new AzurePrivatelink(&#34;main&#34;, AzurePrivatelinkArgs.builder()        
+ *         var main = new AzurePrivatelink("main", AzurePrivatelinkArgs.builder()        
  *             .project(exampleProject.project())
  *             .serviceName(exampleKafka.serviceName())
- *             .userSubscriptionIds(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .userSubscriptionIds("00000000-0000-0000-0000-000000000000")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

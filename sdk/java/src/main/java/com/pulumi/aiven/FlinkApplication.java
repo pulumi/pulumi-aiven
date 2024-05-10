@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,15 +41,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new FlinkApplication(&#34;foo&#34;, FlinkApplicationArgs.builder()        
+ *         var foo = new FlinkApplication("foo", FlinkApplicationArgs.builder()        
  *             .project(fooAivenProject.project())
- *             .serviceName(&#34;flink-service-1&#34;)
- *             .name(&#34;my-flink-app&#34;)
+ *             .serviceName("flink-service-1")
+ *             .name("my-flink-app")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

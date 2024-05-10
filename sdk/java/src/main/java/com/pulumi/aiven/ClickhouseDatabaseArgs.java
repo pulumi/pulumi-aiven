@@ -62,21 +62,9 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
         return this.serviceName;
     }
 
-    /**
-     * It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-     * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-     * default value is `false`.
-     * 
-     */
     @Import(name="terminationProtection")
     private @Nullable Output<Boolean> terminationProtection;
 
-    /**
-     * @return It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-     * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-     * default value is `false`.
-     * 
-     */
     public Optional<Output<Boolean>> terminationProtection() {
         return Optional.ofNullable(this.terminationProtection);
     }
@@ -171,27 +159,11 @@ public final class ClickhouseDatabaseArgs extends com.pulumi.resources.ResourceA
             return serviceName(Output.of(serviceName));
         }
 
-        /**
-         * @param terminationProtection It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-         * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-         * default value is `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminationProtection(@Nullable Output<Boolean> terminationProtection) {
             $.terminationProtection = terminationProtection;
             return this;
         }
 
-        /**
-         * @param terminationProtection It is a Terraform client-side deletion protections, which prevents the Clickhouse database from being deleted by
-         * Terraform. It is recommended to enable this for any production Clickhouse databases containing critical data. The
-         * default value is `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder terminationProtection(Boolean terminationProtection) {
             return terminationProtection(Output.of(terminationProtection));
         }

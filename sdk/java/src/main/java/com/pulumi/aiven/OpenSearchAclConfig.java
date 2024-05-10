@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -49,26 +50,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var foo = AivenFunctions.getProject(GetProjectArgs.builder()
- *             .project(&#34;example_project&#34;)
+ *             .project("example_project")
  *             .build());
  * 
- *         var bar = new OpenSearch(&#34;bar&#34;, OpenSearchArgs.builder()        
- *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.project()))
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;startup-4&#34;)
- *             .serviceName(&#34;example_service_name&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *         var bar = new OpenSearch("bar", OpenSearchArgs.builder()        
+ *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
+ *             .cloudName("google-europe-west1")
+ *             .plan("startup-4")
+ *             .serviceName("example_service_name")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .build());
  * 
- *         var fooOpensearchUser = new OpensearchUser(&#34;fooOpensearchUser&#34;, OpensearchUserArgs.builder()        
+ *         var fooOpensearchUser = new OpensearchUser("fooOpensearchUser", OpensearchUserArgs.builder()        
  *             .serviceName(bar.serviceName())
- *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.project()))
- *             .username(&#34;user-example&#34;)
+ *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
+ *             .username("user-example")
  *             .build());
  * 
- *         var fooOpenSearchAclConfig = new OpenSearchAclConfig(&#34;fooOpenSearchAclConfig&#34;, OpenSearchAclConfigArgs.builder()        
- *             .project(foo.applyValue(getProjectResult -&gt; getProjectResult.project()))
+ *         var fooOpenSearchAclConfig = new OpenSearchAclConfig("fooOpenSearchAclConfig", OpenSearchAclConfigArgs.builder()        
+ *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
  *             .serviceName(bar.serviceName())
  *             .enabled(true)
  *             .extendedAcl(false)
@@ -76,7 +77,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

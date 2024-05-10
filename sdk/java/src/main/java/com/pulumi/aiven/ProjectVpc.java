@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,15 +41,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new ProjectVpc(&#34;exampleVpc&#34;, ProjectVpcArgs.builder()        
+ *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
  *             .project(exampleProject.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .networkCidr(&#34;192.168.1.0/24&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .networkCidr("192.168.1.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

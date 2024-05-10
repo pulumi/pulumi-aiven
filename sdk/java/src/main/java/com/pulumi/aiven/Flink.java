@@ -29,7 +29,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -51,13 +52,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var flink = new Flink(&#34;flink&#34;, FlinkArgs.builder()        
+ *         var flink = new Flink("flink", FlinkArgs.builder()        
  *             .project(pr1.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;business-4&#34;)
- *             .serviceName(&#34;my-flink&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-4")
+ *             .serviceName("my-flink")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .flinkUserConfig(FlinkFlinkUserConfigArgs.builder()
  *                 .flinkVersion(1.16)
  *                 .build())
@@ -65,7 +66,8 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

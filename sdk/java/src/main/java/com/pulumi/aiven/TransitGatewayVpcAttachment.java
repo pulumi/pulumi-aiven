@@ -23,7 +23,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -44,17 +45,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attachment = new TransitGatewayVpcAttachment(&#34;attachment&#34;, TransitGatewayVpcAttachmentArgs.builder()        
+ *         var attachment = new TransitGatewayVpcAttachment("attachment", TransitGatewayVpcAttachmentArgs.builder()        
  *             .vpcId(bar.id())
- *             .peerCloudAccount(&#34;&lt;PEER_ACCOUNT_ID&gt;&#34;)
- *             .peerVpc(&#34;google-project1&#34;)
- *             .peerRegion(&#34;aws-eu-west-1&#34;)
- *             .userPeerNetworkCidrs(&#34;10.0.0.0/24&#34;)
+ *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
+ *             .peerVpc("google-project1")
+ *             .peerRegion("aws-eu-west-1")
+ *             .userPeerNetworkCidrs("10.0.0.0/24")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

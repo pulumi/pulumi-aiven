@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -40,14 +41,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUnit = new OrganizationalUnit(&#34;exampleUnit&#34;, OrganizationalUnitArgs.builder()        
- *             .name(&#34;Example organizational unit&#34;)
+ *         var exampleUnit = new OrganizationalUnit("exampleUnit", OrganizationalUnitArgs.builder()        
+ *             .name("Example organizational unit")
  *             .parentId(main.id())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -28,7 +28,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -50,25 +51,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var m3 = new M3Db(&#34;m3&#34;, M3DbArgs.builder()        
+ *         var m3 = new M3Db("m3", M3DbArgs.builder()        
  *             .project(foo.project())
- *             .cloudName(&#34;google-europe-west1&#34;)
- *             .plan(&#34;business-8&#34;)
- *             .serviceName(&#34;my-m3db&#34;)
- *             .maintenanceWindowDow(&#34;monday&#34;)
- *             .maintenanceWindowTime(&#34;10:00:00&#34;)
+ *             .cloudName("google-europe-west1")
+ *             .plan("business-8")
+ *             .serviceName("my-m3db")
+ *             .maintenanceWindowDow("monday")
+ *             .maintenanceWindowTime("10:00:00")
  *             .m3dbUserConfig(M3DbM3dbUserConfigArgs.builder()
  *                 .m3dbVersion(1.1)
  *                 .namespaces(M3DbM3dbUserConfigNamespaceArgs.builder()
- *                     .name(&#34;my_ns1&#34;)
- *                     .type(&#34;unaggregated&#34;)
+ *                     .name("my_ns1")
+ *                     .type("unaggregated")
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
