@@ -141,7 +141,7 @@ class ClickhouseRole(pulumi.CustomResource):
         bar = aiven.Clickhouse("bar",
             project="example-project",
             cloud_name="google-europe-west1",
-            plan="startup-beta-8",
+            plan="startup-8",
             service_name="example-service",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")
@@ -181,7 +181,7 @@ class ClickhouseRole(pulumi.CustomResource):
         bar = aiven.Clickhouse("bar",
             project="example-project",
             cloud_name="google-europe-west1",
-            plan="startup-beta-8",
+            plan="startup-8",
             service_name="example-service",
             maintenance_window_dow="monday",
             maintenance_window_time="10:00:00")

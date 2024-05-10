@@ -82,6 +82,7 @@ from .get_open_search_acl_rule import *
 from .get_opensearch_security_plugin_config import *
 from .get_opensearch_user import *
 from .get_organization import *
+from .get_organization_application_user import *
 from .get_organization_user import *
 from .get_organization_user_group import *
 from .get_organizational_unit import *
@@ -124,6 +125,8 @@ from .open_search_acl_rule import *
 from .opensearch_security_plugin_config import *
 from .opensearch_user import *
 from .organization import *
+from .organization_application_user import *
+from .organization_application_user_token import *
 from .organization_group_project import *
 from .organization_user import *
 from .organization_user_group import *
@@ -585,6 +588,22 @@ _utilities.register(
   "fqn": "pulumi_aiven",
   "classes": {
    "aiven:index/organization:Organization": "Organization"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationApplicationUser",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationApplicationUser:OrganizationApplicationUser": "OrganizationApplicationUser"
+  }
+ },
+ {
+  "pkg": "aiven",
+  "mod": "index/organizationApplicationUserToken",
+  "fqn": "pulumi_aiven",
+  "classes": {
+   "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken": "OrganizationApplicationUserToken"
   }
  },
  {

@@ -390,6 +390,11 @@ export const getOrganization: typeof import("./getOrganization").getOrganization
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
 utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
 
+export { GetOrganizationApplicationUserArgs, GetOrganizationApplicationUserResult, GetOrganizationApplicationUserOutputArgs } from "./getOrganizationApplicationUser";
+export const getOrganizationApplicationUser: typeof import("./getOrganizationApplicationUser").getOrganizationApplicationUser = null as any;
+export const getOrganizationApplicationUserOutput: typeof import("./getOrganizationApplicationUser").getOrganizationApplicationUserOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationApplicationUser","getOrganizationApplicationUserOutput"], () => require("./getOrganizationApplicationUser"));
+
 export { GetOrganizationUserArgs, GetOrganizationUserResult, GetOrganizationUserOutputArgs } from "./getOrganizationUser";
 export const getOrganizationUser: typeof import("./getOrganizationUser").getOrganizationUser = null as any;
 export const getOrganizationUserOutput: typeof import("./getOrganizationUser").getOrganizationUserOutput = null as any;
@@ -599,6 +604,16 @@ export { OrganizationArgs, OrganizationState } from "./organization";
 export type Organization = import("./organization").Organization;
 export const Organization: typeof import("./organization").Organization = null as any;
 utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+
+export { OrganizationApplicationUserArgs, OrganizationApplicationUserState } from "./organizationApplicationUser";
+export type OrganizationApplicationUser = import("./organizationApplicationUser").OrganizationApplicationUser;
+export const OrganizationApplicationUser: typeof import("./organizationApplicationUser").OrganizationApplicationUser = null as any;
+utilities.lazyLoad(exports, ["OrganizationApplicationUser"], () => require("./organizationApplicationUser"));
+
+export { OrganizationApplicationUserTokenArgs, OrganizationApplicationUserTokenState } from "./organizationApplicationUserToken";
+export type OrganizationApplicationUserToken = import("./organizationApplicationUserToken").OrganizationApplicationUserToken;
+export const OrganizationApplicationUserToken: typeof import("./organizationApplicationUserToken").OrganizationApplicationUserToken = null as any;
+utilities.lazyLoad(exports, ["OrganizationApplicationUserToken"], () => require("./organizationApplicationUserToken"));
 
 export { OrganizationGroupProjectArgs, OrganizationGroupProjectState } from "./organizationGroupProject";
 export type OrganizationGroupProject = import("./organizationGroupProject").OrganizationGroupProject;
@@ -812,6 +827,10 @@ const _module = {
                 return new OpensearchUser(name, <any>undefined, { urn })
             case "aiven:index/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
+            case "aiven:index/organizationApplicationUser:OrganizationApplicationUser":
+                return new OrganizationApplicationUser(name, <any>undefined, { urn })
+            case "aiven:index/organizationApplicationUserToken:OrganizationApplicationUserToken":
+                return new OrganizationApplicationUserToken(name, <any>undefined, { urn })
             case "aiven:index/organizationGroupProject:OrganizationGroupProject":
                 return new OrganizationGroupProject(name, <any>undefined, { urn })
             case "aiven:index/organizationUser:OrganizationUser":
@@ -905,6 +924,8 @@ pulumi.runtime.registerResourceModule("aiven", "index/openSearchAclRule", _modul
 pulumi.runtime.registerResourceModule("aiven", "index/opensearchSecurityPluginConfig", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/opensearchUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organization", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationApplicationUser", _module)
+pulumi.runtime.registerResourceModule("aiven", "index/organizationApplicationUserToken", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationGroupProject", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUser", _module)
 pulumi.runtime.registerResourceModule("aiven", "index/organizationUserGroup", _module)

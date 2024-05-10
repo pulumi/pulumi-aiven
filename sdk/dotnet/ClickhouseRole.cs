@@ -26,7 +26,7 @@ namespace Pulumi.Aiven
     ///     {
     ///         Project = "example-project",
     ///         CloudName = "google-europe-west1",
-    ///         Plan = "startup-beta-8",
+    ///         Plan = "startup-8",
     ///         ServiceName = "example-service",
     ///         MaintenanceWindowDow = "monday",
     ///         MaintenanceWindowTime = "10:00:00",
