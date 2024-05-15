@@ -103,12 +103,14 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "GcpPrivatelink"),
 				Docs: &tfbridge.DocInfo{
 					Markdown: []byte(" "),
-				}},
+				},
+			},
 			"aiven_gcp_privatelink_connection_approval": {
 				Tok: makeResource(mainMod, "GcpPrivatelinkConnectionApproval"),
 				Docs: &tfbridge.DocInfo{
 					Markdown: []byte(" "),
-				}},
+				},
+			},
 			"aiven_billing_group":       {Tok: makeResource(mainMod, "BillingGroup")},
 			"aiven_connection_pool":     {Tok: makeResource(mainMod, "ConnectionPool")},
 			"aiven_clickhouse":          {Tok: makeResource(mainMod, "Clickhouse")},
@@ -234,7 +236,8 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 				Tok: makeDataSource(mainMod, "getGcpPrivatelink"),
 				Docs: &tfbridge.DocInfo{
 					Markdown: []byte(" "),
-				}},
+				},
+			},
 			"aiven_billing_group":                {Tok: makeDataSource(mainMod, "getBillingGroup")},
 			"aiven_clickhouse":                   {Tok: makeDataSource(mainMod, "getClickhouse")},
 			"aiven_clickhouse_database":          {Tok: makeDataSource(mainMod, "getClickhouseDatabase")},
@@ -270,6 +273,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0",
 				"@types/mime": "^2.0.0",
 			},
+			RespectSchemaVersion: true,
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
@@ -279,15 +283,18 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 
 		Python: &tfbridge.PythonInfo{
+			RespectSchemaVersion: true,
 			Requires: map[string]string{
 				"pulumi": ">=3.0.0,<4.0.0",
 			},
 			PyProject: struct{ Enabled bool }{true},
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
