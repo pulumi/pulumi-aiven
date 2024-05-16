@@ -1,6 +1,6 @@
 {
     "name": "@pulumi/aiven",
-    "version": "${VERSION}",
+    "version": "6.0.0-alpha.0+dev",
     "description": "A Pulumi package for creating and managing Aiven cloud resources.",
     "keywords": [
         "pulumi",
@@ -22,6 +22,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "aiven"
+        "name": "aiven",
+        "version": "6.0.0-alpha.0+dev"
     }
 }
