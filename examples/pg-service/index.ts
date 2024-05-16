@@ -25,7 +25,7 @@ const service = new aiven.Pg("my-new-service", {
         pgUserConfig: {
             adminUsername: 'master',
             adminPassword: 'demoPassword1234-',
-            pgVersion: '12',
+            pgVersion: '15',
             backupHour: 2,
             backupMinute: 1,
         },
