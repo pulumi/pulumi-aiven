@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleDragonfly = new Dragonfly("exampleDragonfly", DragonflyArgs.builder()        
+ *         var exampleDragonfly = new Dragonfly("exampleDragonfly", DragonflyArgs.builder()
  *             .project(exampleProject.project())
  *             .plan("startup-4")
  *             .cloudName("google-europe-west1")

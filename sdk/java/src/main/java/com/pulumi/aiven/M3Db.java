@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var m3 = new M3Db("m3", M3DbArgs.builder()        
+ *         var m3 = new M3Db("m3", M3DbArgs.builder()
  *             .project(foo.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-8")

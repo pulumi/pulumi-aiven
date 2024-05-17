@@ -49,24 +49,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .project("example-project")
  *             .parentId(main.id())
  *             .build());
  * 
- *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()        
+ *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()
  *             .description("Example group of users.")
  *             .organizationId(main.id())
  *             .name("Example group")
  *             .build());
  * 
- *         var projectAdmin = new OrganizationUserGroupMember("projectAdmin", OrganizationUserGroupMemberArgs.builder()        
+ *         var projectAdmin = new OrganizationUserGroupMember("projectAdmin", OrganizationUserGroupMemberArgs.builder()
  *             .groupId(example.groupId())
  *             .organizationId(main.id())
  *             .userId("u123a456b7890c")
  *             .build());
  * 
- *         var exampleOrganizationGroupProject = new OrganizationGroupProject("exampleOrganizationGroupProject", OrganizationGroupProjectArgs.builder()        
+ *         var exampleOrganizationGroupProject = new OrganizationGroupProject("exampleOrganizationGroupProject", OrganizationGroupProjectArgs.builder()
  *             .groupId(example.groupId())
  *             .project(exampleProjectAivenProject.project())
  *             .role("admin")

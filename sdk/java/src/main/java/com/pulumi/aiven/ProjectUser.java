@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestuser = new ProjectUser("mytestuser", ProjectUserArgs.builder()        
+ *         var mytestuser = new ProjectUser("mytestuser", ProjectUserArgs.builder()
  *             .project(myproject.project())
  *             .email("john.doe{@literal @}example.com")
  *             .memberType("admin")

@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mm1 = new KafkaMirrorMaker("mm1", KafkaMirrorMakerArgs.builder()        
+ *         var mm1 = new KafkaMirrorMaker("mm1", KafkaMirrorMakerArgs.builder()
  *             .project(pr1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")

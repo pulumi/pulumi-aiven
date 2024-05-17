@@ -60,26 +60,26 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()        
+ *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()
  *             .project(aivenProjectName)
  *             .cloudName("google-europe-west1")
  *             .plan("startup-8")
  *             .serviceName("exapmle-clickhouse")
  *             .build());
  * 
- *         var demodb = new ClickhouseDatabase("demodb", ClickhouseDatabaseArgs.builder()        
+ *         var demodb = new ClickhouseDatabase("demodb", ClickhouseDatabaseArgs.builder()
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .name("demo")
  *             .build());
  * 
- *         var demo = new ClickhouseRole("demo", ClickhouseRoleArgs.builder()        
+ *         var demo = new ClickhouseRole("demo", ClickhouseRoleArgs.builder()
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .role("demo-role")
  *             .build());
  * 
- *         var demo_role_grant = new ClickhouseGrant("demo-role-grant", ClickhouseGrantArgs.builder()        
+ *         var demo_role_grant = new ClickhouseGrant("demo-role-grant", ClickhouseGrantArgs.builder()
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .role(demo.role())
@@ -95,13 +95,13 @@ import javax.annotation.Nullable;
  *                     .build())
  *             .build());
  * 
- *         var demoClickhouseUser = new ClickhouseUser("demoClickhouseUser", ClickhouseUserArgs.builder()        
+ *         var demoClickhouseUser = new ClickhouseUser("demoClickhouseUser", ClickhouseUserArgs.builder()
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .username("demo-user")
  *             .build());
  * 
- *         var demo_user_grant = new ClickhouseGrant("demo-user-grant", ClickhouseGrantArgs.builder()        
+ *         var demo_user_grant = new ClickhouseGrant("demo-user-grant", ClickhouseGrantArgs.builder()
  *             .project(clickhouse.project())
  *             .serviceName(clickhouse.serviceName())
  *             .user(demoClickhouseUser.username())

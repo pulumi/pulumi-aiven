@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new AccountTeamMember("main", AccountTeamMemberArgs.builder()        
+ *         var main = new AccountTeamMember("main", AccountTeamMemberArgs.builder()
  *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
  *             .teamId(TEAM_RESOURCE_NAME.teamId())
  *             .userEmail("user+1{@literal @}example.com")

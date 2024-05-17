@@ -46,7 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTeam = new AccountTeam("exampleTeam", AccountTeamArgs.builder()        
+ *         var exampleTeam = new AccountTeam("exampleTeam", AccountTeamArgs.builder()
  *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
  *             .name("Example team")
  *             .build());

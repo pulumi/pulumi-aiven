@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new MysqlUser("foo", MysqlUserArgs.builder()        
+ *         var foo = new MysqlUser("foo", MysqlUserArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project("my-project")
  *             .username("user-1")

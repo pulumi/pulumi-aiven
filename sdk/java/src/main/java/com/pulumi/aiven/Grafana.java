@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var gr1 = new Grafana("gr1", GrafanaArgs.builder()        
+ *         var gr1 = new Grafana("gr1", GrafanaArgs.builder()
  *             .project(ps1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-1")

@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Clickhouse("bar", ClickhouseArgs.builder()        
+ *         var bar = new Clickhouse("bar", ClickhouseArgs.builder()
  *             .project("example-project")
  *             .cloudName("google-europe-west1")
  *             .plan("startup-8")
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowTime("10:00:00")
  *             .build());
  * 
- *         var foo = new ClickhouseRole("foo", ClickhouseRoleArgs.builder()        
+ *         var foo = new ClickhouseRole("foo", ClickhouseRoleArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project(bar.project())
  *             .role("writer")

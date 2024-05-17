@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
+ *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
  *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .networkCidr("192.168.1.0/24")

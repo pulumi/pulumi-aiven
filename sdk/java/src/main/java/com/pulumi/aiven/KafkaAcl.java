@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestacl = new KafkaAcl("mytestacl", KafkaAclArgs.builder()        
+ *         var mytestacl = new KafkaAcl("mytestacl", KafkaAclArgs.builder()
  *             .project(myproject.project())
  *             .serviceName(myservice.serviceName())
  *             .topic("<TOPIC_NAME_PATTERN>")

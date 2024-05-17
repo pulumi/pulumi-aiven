@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kafka_os_con1 = new KafkaConnector("kafka-os-con1", KafkaConnectorArgs.builder()        
+ *         var kafka_os_con1 = new KafkaConnector("kafka-os-con1", KafkaConnectorArgs.builder()
  *             .project(kafka_con_project1.project())
  *             .serviceName(kafka_service1.serviceName())
  *             .connectorName("kafka-os-con1")
