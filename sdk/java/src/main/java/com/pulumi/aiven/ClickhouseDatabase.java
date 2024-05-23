@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouseDb = new ClickhouseDatabase("clickhouseDb", ClickhouseDatabaseArgs.builder()        
+ *         var clickhouseDb = new ClickhouseDatabase("clickhouseDb", ClickhouseDatabaseArgs.builder()
  *             .project(ch.project())
  *             .serviceName(ch.serviceName())
  *             .name("my-ch-db")

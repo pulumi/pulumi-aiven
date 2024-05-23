@@ -45,13 +45,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()        
+ *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()
  *             .description("Example group of users.")
  *             .organizationId(main.id())
  *             .name("Example group")
  *             .build());
  * 
- *         var projectAdmin = new OrganizationUserGroupMember("projectAdmin", OrganizationUserGroupMemberArgs.builder()        
+ *         var projectAdmin = new OrganizationUserGroupMember("projectAdmin", OrganizationUserGroupMemberArgs.builder()
  *             .groupId(example.groupId())
  *             .organizationId(main.id())
  *             .userId("u123a456b7890c")

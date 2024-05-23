@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var kc1 = new KafkaConnect("kc1", KafkaConnectArgs.builder()        
+ *         var kc1 = new KafkaConnect("kc1", KafkaConnectArgs.builder()
  *             .project(pr1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")

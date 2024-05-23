@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var os1 = new OpenSearch("os1", OpenSearchArgs.builder()        
+ *         var os1 = new OpenSearch("os1", OpenSearchArgs.builder()
  *             .project(pr1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")

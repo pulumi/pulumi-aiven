@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var f1 = new MirrorMakerReplicationFlow("f1", MirrorMakerReplicationFlowArgs.builder()        
+ *         var f1 = new MirrorMakerReplicationFlow("f1", MirrorMakerReplicationFlowArgs.builder()
  *             .project(kafka_mm_project1.project())
  *             .serviceName(mm.serviceName())
  *             .sourceCluster(source.serviceName())

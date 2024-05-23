@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleUnit = new OrganizationalUnit("exampleUnit", OrganizationalUnitArgs.builder()        
+ *         var exampleUnit = new OrganizationalUnit("exampleUnit", OrganizationalUnitArgs.builder()
  *             .name("Example organizational unit")
  *             .parentId(main.id())
  *             .build());

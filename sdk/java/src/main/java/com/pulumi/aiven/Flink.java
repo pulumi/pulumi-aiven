@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var flink = new Flink("flink", FlinkArgs.builder()        
+ *         var flink = new Flink("flink", FlinkArgs.builder()
  *             .project(pr1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")

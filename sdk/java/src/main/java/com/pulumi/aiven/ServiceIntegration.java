@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleIntegration = new ServiceIntegration("exampleIntegration", ServiceIntegrationArgs.builder()        
+ *         var exampleIntegration = new ServiceIntegration("exampleIntegration", ServiceIntegrationArgs.builder()
  *             .project(exampleProject.project())
  *             .integrationType("metrics")
  *             .sourceServiceName(exampleKafka.serviceName())
