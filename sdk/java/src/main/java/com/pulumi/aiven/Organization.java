@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new Organization("main", OrganizationArgs.builder()        
+ *         var main = new Organization("main", OrganizationArgs.builder()
  *             .name("Example organization")
  *             .build());
  * 

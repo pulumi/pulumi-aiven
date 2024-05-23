@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .project("example_project")
  *             .build());
  * 
- *         var bar = new OpenSearch("bar", OpenSearchArgs.builder()        
+ *         var bar = new OpenSearch("bar", OpenSearchArgs.builder()
  *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")
@@ -62,13 +62,13 @@ import javax.annotation.Nullable;
  *             .maintenanceWindowTime("10:00:00")
  *             .build());
  * 
- *         var fooOpensearchUser = new OpensearchUser("fooOpensearchUser", OpensearchUserArgs.builder()        
+ *         var fooOpensearchUser = new OpensearchUser("fooOpensearchUser", OpensearchUserArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
  *             .username("user-example")
  *             .build());
  * 
- *         var fooOpenSearchAclConfig = new OpenSearchAclConfig("fooOpenSearchAclConfig", OpenSearchAclConfigArgs.builder()        
+ *         var fooOpenSearchAclConfig = new OpenSearchAclConfig("fooOpenSearchAclConfig", OpenSearchAclConfigArgs.builder()
  *             .project(foo.applyValue(getProjectResult -> getProjectResult.project()))
  *             .serviceName(bar.serviceName())
  *             .enabled(true)

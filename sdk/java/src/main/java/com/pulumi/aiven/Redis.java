@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redis1 = new Redis("redis1", RedisArgs.builder()        
+ *         var redis1 = new Redis("redis1", RedisArgs.builder()
  *             .project(pr1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")

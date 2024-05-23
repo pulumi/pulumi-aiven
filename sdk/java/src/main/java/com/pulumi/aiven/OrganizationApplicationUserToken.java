@@ -48,12 +48,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfUser = new OrganizationApplicationUser("tfUser", OrganizationApplicationUserArgs.builder()        
+ *         var tfUser = new OrganizationApplicationUser("tfUser", OrganizationApplicationUserArgs.builder()
  *             .organizationId(main.id())
  *             .name("app-terraform")
  *             .build());
  * 
- *         var example = new OrganizationApplicationUserToken("example", OrganizationApplicationUserTokenArgs.builder()        
+ *         var example = new OrganizationApplicationUserToken("example", OrganizationApplicationUserTokenArgs.builder()
  *             .organizationId(main.id())
  *             .userId(tfUser.userId())
  *             .description("Token for TF access to Aiven.")

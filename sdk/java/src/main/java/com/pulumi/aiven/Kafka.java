@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()        
+ *         var exampleKafka = new Kafka("exampleKafka", KafkaArgs.builder()
  *             .project(exampleProject.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")

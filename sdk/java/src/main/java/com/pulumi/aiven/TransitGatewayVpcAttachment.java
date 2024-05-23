@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var attachment = new TransitGatewayVpcAttachment("attachment", TransitGatewayVpcAttachmentArgs.builder()        
+ *         var attachment = new TransitGatewayVpcAttachment("attachment", TransitGatewayVpcAttachmentArgs.builder()
  *             .vpcId(bar.id())
  *             .peerCloudAccount("<PEER_ACCOUNT_ID>")
  *             .peerVpc("google-project1")

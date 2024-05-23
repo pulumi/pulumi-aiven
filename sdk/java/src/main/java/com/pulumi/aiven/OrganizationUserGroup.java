@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()        
+ *         var example = new OrganizationUserGroup("example", OrganizationUserGroupArgs.builder()
  *             .description("Example group of users.")
  *             .organizationId(main.id())
  *             .name("Example group")

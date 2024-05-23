@@ -41,7 +41,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new KafkaSchemaRegistryAcl("foo", KafkaSchemaRegistryAclArgs.builder()        
+ *         var foo = new KafkaSchemaRegistryAcl("foo", KafkaSchemaRegistryAclArgs.builder()
  *             .project(kafka_schemas_project1.project())
  *             .serviceName(kafka_service1.serviceName())
  *             .resource("Subject:topic-1")
