@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var ch_user = new ClickhouseUser("ch-user", ClickhouseUserArgs.builder()        
+ *         var ch_user = new ClickhouseUser("ch-user", ClickhouseUserArgs.builder()
  *             .project(myproject.project())
  *             .serviceName(myservice.serviceName())
  *             .username("<USERNAME>")

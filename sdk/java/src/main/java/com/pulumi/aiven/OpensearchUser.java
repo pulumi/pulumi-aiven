@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new OpensearchUser("foo", OpensearchUserArgs.builder()        
+ *         var foo = new OpensearchUser("foo", OpensearchUserArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project("my-project")
  *             .username("user-1")

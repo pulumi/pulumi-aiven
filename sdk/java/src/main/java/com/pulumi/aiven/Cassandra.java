@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bar = new Cassandra("bar", CassandraArgs.builder()        
+ *         var bar = new Cassandra("bar", CassandraArgs.builder()
  *             .project(foo.project())
  *             .cloudName("google-europe-west1")
  *             .plan("startup-4")

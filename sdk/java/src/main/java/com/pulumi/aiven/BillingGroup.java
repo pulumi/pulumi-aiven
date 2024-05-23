@@ -45,14 +45,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleBillingGroup = new BillingGroup("exampleBillingGroup", BillingGroupArgs.builder()        
+ *         var exampleBillingGroup = new BillingGroup("exampleBillingGroup", BillingGroupArgs.builder()
  *             .name("example-billing-group")
  *             .billingCurrency("USD")
  *             .vatId("123ABC")
  *             .parentId(main.id())
  *             .build());
  * 
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .project("example-project")
  *             .billingGroup(exampleBillingGroup.id())
  *             .build());

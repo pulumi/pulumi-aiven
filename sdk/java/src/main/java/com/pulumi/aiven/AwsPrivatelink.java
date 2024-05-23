@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var main = new AwsPrivatelink("main", AwsPrivatelinkArgs.builder()        
+ *         var main = new AwsPrivatelink("main", AwsPrivatelinkArgs.builder()
  *             .project(exampleProject.project())
  *             .serviceName(exampleKafka.serviceName())
  *             .principals("arn:aws:iam::012345678901:user/mwf")

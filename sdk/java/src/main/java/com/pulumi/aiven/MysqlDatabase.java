@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mydatabase = new MysqlDatabase("mydatabase", MysqlDatabaseArgs.builder()        
+ *         var mydatabase = new MysqlDatabase("mydatabase", MysqlDatabaseArgs.builder()
  *             .project(myproject.project())
  *             .serviceName(mymysql.serviceName())
  *             .databaseName("<DATABASE_NAME>")

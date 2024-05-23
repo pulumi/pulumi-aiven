@@ -691,7 +691,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
      *             .project(exampleProject.project())
      *             .cloudName("google-europe-west1")
      *             .networkCidr("192.168.1.0/24")
@@ -744,7 +744,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
      *             .project(exampleProject.project())
      *             .cloudName("google-europe-west1")
      *             .networkCidr("192.168.1.0/24")
@@ -797,7 +797,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
      *             .project(exampleProject.project())
      *             .cloudName("google-europe-west1")
      *             .networkCidr("192.168.1.0/24")
@@ -850,7 +850,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
+     *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
      *             .project(exampleProject.project())
      *             .cloudName("google-europe-west1")
      *             .networkCidr("192.168.1.0/24")
@@ -4809,7 +4809,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel("BACKWARD")
@@ -4853,7 +4853,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel("BACKWARD")
@@ -4897,7 +4897,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel("BACKWARD")
@@ -4941,7 +4941,7 @@ public final class AivenFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
+     *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()
      *             .project(kafka_schemas_project1.project())
      *             .serviceName(kafka_service1.serviceName())
      *             .compatibilityLevel("BACKWARD")

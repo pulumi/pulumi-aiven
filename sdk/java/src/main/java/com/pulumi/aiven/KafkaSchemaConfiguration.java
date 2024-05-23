@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()        
+ *         var config = new KafkaSchemaConfiguration("config", KafkaSchemaConfigurationArgs.builder()
  *             .project(kafka_schemas_project1.project())
  *             .serviceName(kafka_service1.serviceName())
  *             .compatibilityLevel("BACKWARD")

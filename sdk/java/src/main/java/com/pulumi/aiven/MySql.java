@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mysql1 = new MySql("mysql1", MySqlArgs.builder()        
+ *         var mysql1 = new MySql("mysql1", MySqlArgs.builder()
  *             .project(foo.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")

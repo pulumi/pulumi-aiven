@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleTopic = new KafkaTopic("exampleTopic", KafkaTopicArgs.builder()        
+ *         var exampleTopic = new KafkaTopic("exampleTopic", KafkaTopicArgs.builder()
  *             .project(exampleProject.project())
  *             .serviceName(exampleKafka.serviceName())
  *             .topicName("example-topic")

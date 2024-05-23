@@ -51,17 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()        
+ *         var exampleProject = new Project("exampleProject", ProjectArgs.builder()
  *             .project("project-1")
  *             .accountId(ACCOUNT_RESOURCE_NAME.accountId())
  *             .build());
  * 
- *         var exampleTeam = new AccountTeam("exampleTeam", AccountTeamArgs.builder()        
+ *         var exampleTeam = new AccountTeam("exampleTeam", AccountTeamArgs.builder()
  *             .accountId(ACCOUNT_RESOURCE_NAMEAivenAccount.accountId())
  *             .name("Example team")
  *             .build());
  * 
- *         var main = new AccountTeamProject("main", AccountTeamProjectArgs.builder()        
+ *         var main = new AccountTeamProject("main", AccountTeamProjectArgs.builder()
  *             .accountId(ACCOUNT_RESOURCE_NAMEAivenAccount.accountId())
  *             .teamId(exampleTeam.teamId())
  *             .projectName(exampleProject.project())

@@ -45,13 +45,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()        
+ *         var exampleVpc = new ProjectVpc("exampleVpc", ProjectVpcArgs.builder()
  *             .project(exampleProject.project())
  *             .cloudName("aws-us-east-2")
  *             .networkCidr("192.168.1.0/24")
  *             .build());
  * 
- *         var awsToAivenPeering = new AwsVpcPeeringConnection("awsToAivenPeering", AwsVpcPeeringConnectionArgs.builder()        
+ *         var awsToAivenPeering = new AwsVpcPeeringConnection("awsToAivenPeering", AwsVpcPeeringConnectionArgs.builder()
  *             .vpcId(exampleVpc.id())
  *             .awsAccountId(awsId)
  *             .awsVpcId("vpc-1a2b3c4d5e6f7g8h9")

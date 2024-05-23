@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var tfUser = new OrganizationApplicationUser("tfUser", OrganizationApplicationUserArgs.builder()        
+ *         var tfUser = new OrganizationApplicationUser("tfUser", OrganizationApplicationUserArgs.builder()
  *             .organizationId(main.id())
  *             .name("app-terraform")
  *             .build());

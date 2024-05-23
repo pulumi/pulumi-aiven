@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new M3dbUser("foo", M3dbUserArgs.builder()        
+ *         var foo = new M3dbUser("foo", M3dbUserArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project("my-project")
  *             .username("user-1")

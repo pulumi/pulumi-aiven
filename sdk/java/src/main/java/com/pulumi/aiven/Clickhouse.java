@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()        
+ *         var clickhouse = new Clickhouse("clickhouse", ClickhouseArgs.builder()
  *             .project(pr1.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-4")

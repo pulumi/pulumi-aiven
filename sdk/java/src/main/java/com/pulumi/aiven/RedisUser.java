@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new RedisUser("foo", RedisUserArgs.builder()        
+ *         var foo = new RedisUser("foo", RedisUserArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project("my-project")
  *             .username("user-1")
