@@ -45,7 +45,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var account1 = new Account("account1", AccountArgs.builder()        
+ *         var account1 = new Account("account1", AccountArgs.builder()
  *             .name("<ACCOUNT_NAME>")
  *             .build());
  * 

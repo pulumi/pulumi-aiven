@@ -43,7 +43,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mydatabase = new PgDatabase("mydatabase", PgDatabaseArgs.builder()        
+ *         var mydatabase = new PgDatabase("mydatabase", PgDatabaseArgs.builder()
  *             .project(myproject.project())
  *             .serviceName(mypg.serviceName())
  *             .databaseName("<DATABASE_NAME>")

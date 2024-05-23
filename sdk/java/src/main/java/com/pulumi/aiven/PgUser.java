@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foo = new PgUser("foo", PgUserArgs.builder()        
+ *         var foo = new PgUser("foo", PgUserArgs.builder()
  *             .serviceName(bar.serviceName())
  *             .project("my-project")
  *             .username("user-1")

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var m3a = new M3Aggregator("m3a", M3AggregatorArgs.builder()        
+ *         var m3a = new M3Aggregator("m3a", M3AggregatorArgs.builder()
  *             .project(foo.project())
  *             .cloudName("google-europe-west1")
  *             .plan("business-8")

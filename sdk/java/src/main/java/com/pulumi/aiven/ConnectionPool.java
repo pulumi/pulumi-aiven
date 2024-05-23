@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var mytestpool = new ConnectionPool("mytestpool", ConnectionPoolArgs.builder()        
+ *         var mytestpool = new ConnectionPool("mytestpool", ConnectionPoolArgs.builder()
  *             .project(myproject.project())
  *             .serviceName(mypg.serviceName())
  *             .databaseName(mypgdatabase.databaseName())
