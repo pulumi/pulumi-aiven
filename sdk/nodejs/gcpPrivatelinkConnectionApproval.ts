@@ -4,6 +4,28 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Approves a Google Private Service Connect connection to an Aiven service with an associated endpoint IP.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const approve = new aiven.GcpPrivatelinkConnectionApproval("approve", {
+ *     project: exampleProject.project,
+ *     serviceName: exampleKafka.serviceName,
+ *     userIpAddress: "10.0.0.100",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval main PROJECT/SERVICE_NAME
+ * ```
+ */
 export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
     /**
      * Get an existing GcpPrivatelinkConnectionApproval resource's state with the given name, ID, and optional extra
@@ -37,8 +59,7 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
      */
     public /*out*/ readonly privatelinkConnectionId!: pulumi.Output<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -46,8 +67,7 @@ export class GcpPrivatelinkConnectionApproval extends pulumi.CustomResource {
      */
     public /*out*/ readonly pscConnectionId!: pulumi.Output<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -110,8 +130,7 @@ export interface GcpPrivatelinkConnectionApprovalState {
      */
     privatelinkConnectionId?: pulumi.Input<string>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -119,8 +138,7 @@ export interface GcpPrivatelinkConnectionApprovalState {
      */
     pscConnectionId?: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -138,13 +156,11 @@ export interface GcpPrivatelinkConnectionApprovalState {
  */
 export interface GcpPrivatelinkConnectionApprovalArgs {
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

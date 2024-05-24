@@ -16,6 +16,54 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.FlinkApplicationDeployment;
+ * import com.pulumi.aiven.FlinkApplicationDeploymentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var deployment = new FlinkApplicationDeployment("deployment", FlinkApplicationDeploymentArgs.builder()
+ *             .project(foo.project())
+ *             .serviceName(fooAivenFlink.serviceName())
+ *             .applicationId(fooApp.applicationId())
+ *             .versionId(fooAppVersion.applicationVersionId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+ * ```
+ * 
+ */
 @ResourceType(type="aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment")
 public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResource {
     /**
@@ -75,16 +123,14 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.parallelism);
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -105,16 +151,14 @@ public class FlinkApplicationDeployment extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.restartEnabled);
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

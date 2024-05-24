@@ -24,10 +24,8 @@ class FlinkApplicationDeploymentArgs:
         """
         The set of arguments for constructing a FlinkApplicationDeployment resource.
         :param pulumi.Input[str] application_id: Application ID
-        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
-        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] version_id: ApplicationVersion ID
         :param pulumi.Input[int] parallelism: Flink Job parallelism
         :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
@@ -60,8 +58,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -73,8 +70,7 @@ class FlinkApplicationDeploymentArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -149,11 +145,9 @@ class _FlinkApplicationDeploymentState:
         :param pulumi.Input[str] created_at: Application deployment creation time
         :param pulumi.Input[str] created_by: Application deployment creator
         :param pulumi.Input[int] parallelism: Flink Job parallelism
-        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
-        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] starting_savepoint: Job savepoint
         :param pulumi.Input[str] version_id: ApplicationVersion ID
         """
@@ -228,8 +222,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -253,8 +246,7 @@ class _FlinkApplicationDeploymentState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 
@@ -301,16 +293,34 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a FlinkApplicationDeployment resource with the given unique name, props, and options.
+        The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        deployment = aiven.FlinkApplicationDeployment("deployment",
+            project=foo["project"],
+            service_name=foo_aiven_flink["serviceName"],
+            application_id=foo_app["applicationId"],
+            version_id=foo_app_version["applicationVersionId"])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: Application ID
         :param pulumi.Input[int] parallelism: Flink Job parallelism
-        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
-        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] starting_savepoint: Job savepoint
         :param pulumi.Input[str] version_id: ApplicationVersion ID
         """
@@ -321,7 +331,27 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
                  args: FlinkApplicationDeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a FlinkApplicationDeployment resource with the given unique name, props, and options.
+        The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_aiven as aiven
+
+        deployment = aiven.FlinkApplicationDeployment("deployment",
+            project=foo["project"],
+            service_name=foo_aiven_flink["serviceName"],
+            application_id=foo_app["applicationId"],
+            version_id=foo_app_version["applicationVersionId"])
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+        ```
+
         :param str resource_name: The name of the resource.
         :param FlinkApplicationDeploymentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -400,11 +430,9 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] created_at: Application deployment creation time
         :param pulumi.Input[str] created_by: Application deployment creator
         :param pulumi.Input[int] parallelism: Flink Job parallelism
-        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[bool] restart_enabled: Specifies whether a Flink Job is restarted in case it fails
-        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-               reference. Changing this property forces recreation of the resource.
+        :param pulumi.Input[str] service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] starting_savepoint: Job savepoint
         :param pulumi.Input[str] version_id: ApplicationVersion ID
         """
@@ -459,8 +487,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
 
@@ -476,8 +503,7 @@ class FlinkApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        reference. Changing this property forces recreation of the resource.
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "service_name")
 

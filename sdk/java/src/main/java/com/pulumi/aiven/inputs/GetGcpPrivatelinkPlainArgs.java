@@ -13,16 +13,32 @@ public final class GetGcpPrivatelinkPlainArgs extends com.pulumi.resources.Invok
 
     public static final GetGcpPrivatelinkPlainArgs Empty = new GetGcpPrivatelinkPlainArgs();
 
+    /**
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
 
+    /**
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     @Import(name="serviceName", required=true)
     private String serviceName;
 
+    /**
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
@@ -52,11 +68,23 @@ public final class GetGcpPrivatelinkPlainArgs extends com.pulumi.resources.Invok
             $ = new GetGcpPrivatelinkPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param project The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param serviceName The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+         * 
+         * @return builder
+         * 
+         */
         public Builder serviceName(String serviceName) {
             $.serviceName = serviceName;
             return this;

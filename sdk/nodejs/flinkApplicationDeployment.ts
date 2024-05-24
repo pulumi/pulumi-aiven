@@ -4,6 +4,29 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as aiven from "@pulumi/aiven";
+ *
+ * const deployment = new aiven.FlinkApplicationDeployment("deployment", {
+ *     project: foo.project,
+ *     serviceName: fooAivenFlink.serviceName,
+ *     applicationId: fooApp.applicationId,
+ *     versionId: fooAppVersion.applicationVersionId,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ```sh
+ * $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+ * ```
+ */
 export class FlinkApplicationDeployment extends pulumi.CustomResource {
     /**
      * Get an existing FlinkApplicationDeployment resource's state with the given name, ID, and optional extra
@@ -49,8 +72,7 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
      */
     public readonly parallelism!: pulumi.Output<number | undefined>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -58,8 +80,7 @@ export class FlinkApplicationDeployment extends pulumi.CustomResource {
      */
     public readonly restartEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     public readonly serviceName!: pulumi.Output<string>;
     /**
@@ -143,8 +164,7 @@ export interface FlinkApplicationDeploymentState {
      */
     parallelism?: pulumi.Input<number>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
     /**
@@ -152,8 +172,7 @@ export interface FlinkApplicationDeploymentState {
      */
     restartEnabled?: pulumi.Input<boolean>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName?: pulumi.Input<string>;
     /**
@@ -179,8 +198,7 @@ export interface FlinkApplicationDeploymentArgs {
      */
     parallelism?: pulumi.Input<number>;
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
     /**
@@ -188,8 +206,7 @@ export interface FlinkApplicationDeploymentArgs {
      */
     restartEnabled?: pulumi.Input<boolean>;
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     serviceName: pulumi.Input<string>;
     /**

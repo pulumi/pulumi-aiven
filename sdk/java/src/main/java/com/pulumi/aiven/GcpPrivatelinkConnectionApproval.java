@@ -13,6 +13,53 @@ import com.pulumi.core.internal.Codegen;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Approves a Google Private Service Connect connection to an Aiven service with an associated endpoint IP.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.aiven.GcpPrivatelinkConnectionApproval;
+ * import com.pulumi.aiven.GcpPrivatelinkConnectionApprovalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var approve = new GcpPrivatelinkConnectionApproval("approve", GcpPrivatelinkConnectionApprovalArgs.builder()
+ *             .project(exampleProject.project())
+ *             .serviceName(exampleKafka.serviceName())
+ *             .userIpAddress("10.0.0.100")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval main PROJECT/SERVICE_NAME
+ * ```
+ * 
+ */
 @ResourceType(type="aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval")
 public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.CustomResource {
     /**
@@ -30,16 +77,14 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
         return this.privatelinkConnectionId;
     }
     /**
-     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> project() {
@@ -60,16 +105,14 @@ public class GcpPrivatelinkConnectionApproval extends com.pulumi.resources.Custo
         return this.pscConnectionId;
     }
     /**
-     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
-     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-     * reference. Changing this property forces recreation of the resource.
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      * 
      */
     public Output<String> serviceName() {

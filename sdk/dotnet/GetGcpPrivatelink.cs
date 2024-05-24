@@ -11,9 +11,53 @@ namespace Pulumi.Aiven
 {
     public static class GetGcpPrivatelink
     {
+        /// <summary>
+        /// Gets information about a Google Private Service Connect connection for an Aiven service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetGcpPrivatelink.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetGcpPrivatelinkResult> InvokeAsync(GetGcpPrivatelinkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGcpPrivatelinkResult>("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args ?? new GetGcpPrivatelinkArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Gets information about a Google Private Service Connect connection for an Aiven service.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Aiven = Pulumi.Aiven;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = Aiven.GetGcpPrivatelink.Invoke(new()
+        ///     {
+        ///         Project = exampleProject.Project,
+        ///         ServiceName = exampleKafka.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetGcpPrivatelinkResult> Invoke(GetGcpPrivatelinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGcpPrivatelinkResult>("aiven:index/getGcpPrivatelink:getGcpPrivatelink", args ?? new GetGcpPrivatelinkInvokeArgs(), options.WithDefaults());
     }
@@ -21,9 +65,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetGcpPrivatelinkArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
 
@@ -35,9 +85,15 @@ namespace Pulumi.Aiven
 
     public sealed class GetGcpPrivatelinkInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        /// <summary>
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
 
@@ -51,14 +107,29 @@ namespace Pulumi.Aiven
     [OutputType]
     public sealed class GetGcpPrivatelinkResult
     {
+        /// <summary>
+        /// Google Private Service Connect service attachment.
+        /// </summary>
         public readonly string GoogleServiceAttachment;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Printable result of the Google Cloud Private Service Connect request.
+        /// </summary>
         public readonly string Message;
+        /// <summary>
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// </summary>
         public readonly string Project;
+        /// <summary>
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        /// </summary>
         public readonly string ServiceName;
+        /// <summary>
+        /// The state of the Private Service Connect resource.
+        /// </summary>
         public readonly string State;
 
         [OutputConstructor]

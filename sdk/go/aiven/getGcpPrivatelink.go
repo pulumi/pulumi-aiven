@@ -11,6 +11,34 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets information about a Google Private Service Connect connection for an Aiven service.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.LookupGcpPrivatelink(ctx, &aiven.LookupGcpPrivatelinkArgs{
+//				Project:     exampleProject.Project,
+//				ServiceName: exampleKafka.ServiceName,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupGcpPrivatelink(ctx *pulumi.Context, args *LookupGcpPrivatelinkArgs, opts ...pulumi.InvokeOption) (*LookupGcpPrivatelinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGcpPrivatelinkResult
@@ -23,19 +51,26 @@ func LookupGcpPrivatelink(ctx *pulumi.Context, args *LookupGcpPrivatelinkArgs, o
 
 // A collection of arguments for invoking getGcpPrivatelink.
 type LookupGcpPrivatelinkArgs struct {
-	Project     string `pulumi:"project"`
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 }
 
 // A collection of values returned by getGcpPrivatelink.
 type LookupGcpPrivatelinkResult struct {
+	// Google Private Service Connect service attachment.
 	GoogleServiceAttachment string `pulumi:"googleServiceAttachment"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	Message     string `pulumi:"message"`
-	Project     string `pulumi:"project"`
+	Id string `pulumi:"id"`
+	// Printable result of the Google Cloud Private Service Connect request.
+	Message string `pulumi:"message"`
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project string `pulumi:"project"`
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
-	State       string `pulumi:"state"`
+	// The state of the Private Service Connect resource.
+	State string `pulumi:"state"`
 }
 
 func LookupGcpPrivatelinkOutput(ctx *pulumi.Context, args LookupGcpPrivatelinkOutputArgs, opts ...pulumi.InvokeOption) LookupGcpPrivatelinkResultOutput {
@@ -53,7 +88,9 @@ func LookupGcpPrivatelinkOutput(ctx *pulumi.Context, args LookupGcpPrivatelinkOu
 
 // A collection of arguments for invoking getGcpPrivatelink.
 type LookupGcpPrivatelinkOutputArgs struct {
-	Project     pulumi.StringInput `pulumi:"project"`
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput `pulumi:"serviceName"`
 }
 
@@ -76,6 +113,7 @@ func (o LookupGcpPrivatelinkResultOutput) ToLookupGcpPrivatelinkResultOutputWith
 	return o
 }
 
+// Google Private Service Connect service attachment.
 func (o LookupGcpPrivatelinkResultOutput) GoogleServiceAttachment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.GoogleServiceAttachment }).(pulumi.StringOutput)
 }
@@ -85,18 +123,22 @@ func (o LookupGcpPrivatelinkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Printable result of the Google Cloud Private Service Connect request.
 func (o LookupGcpPrivatelinkResultOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupGcpPrivatelinkResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.Project }).(pulumi.StringOutput)
 }
 
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o LookupGcpPrivatelinkResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
+// The state of the Private Service Connect resource.
 func (o LookupGcpPrivatelinkResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGcpPrivatelinkResult) string { return v.State }).(pulumi.StringOutput)
 }
