@@ -92,8 +92,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"api_token": {Secret: tfbridge.True()},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"aiven_gcp_privatelink":                     {Docs: &tfbridge.DocInfo{Markdown: []byte(" ")}},
-			"aiven_gcp_privatelink_connection_approval": {Docs: &tfbridge.DocInfo{Markdown: []byte(" ")}},
 			"aiven_clickhouse": {
 				Fields: map[string]*tfbridge.SchemaInfo{"clickhouse": {CSharpName: "ClickhouseServer"}},
 			},
@@ -126,13 +124,12 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					"project": {CSharpName: "ProjectName"},
 				},
 			},
-			"aiven_m3aggregator":                 {Tok: makeResource(mainMod, "M3Aggregator")},
-			"aiven_m3db":                         {Tok: makeResource(mainMod, "M3Db")},
-			"aiven_opensearch":                   {Tok: makeResource(mainMod, "OpenSearch")},
-			"aiven_opensearch_acl_config":        {Tok: makeResource(mainMod, "OpenSearchAclConfig")},
-			"aiven_opensearch_acl_rule":          {Tok: makeResource(mainMod, "OpenSearchAclRule")},
-			"aiven_flink":                        {Fields: map[string]*tfbridge.SchemaInfo{"flink": {CSharpName: "FlinkDetails"}}},
-			"aiven_flink_application_deployment": {Docs: &tfbridge.DocInfo{Markdown: []byte(" ")}},
+			"aiven_m3aggregator":          {Tok: makeResource(mainMod, "M3Aggregator")},
+			"aiven_m3db":                  {Tok: makeResource(mainMod, "M3Db")},
+			"aiven_opensearch":            {Tok: makeResource(mainMod, "OpenSearch")},
+			"aiven_opensearch_acl_config": {Tok: makeResource(mainMod, "OpenSearchAclConfig")},
+			"aiven_opensearch_acl_rule":   {Tok: makeResource(mainMod, "OpenSearchAclRule")},
+			"aiven_flink":                 {Fields: map[string]*tfbridge.SchemaInfo{"flink": {CSharpName: "FlinkDetails"}}},
 
 			"aiven_cassandra":         {Fields: map[string]*tfbridge.SchemaInfo{"cassandra": {CSharpName: "CassandraServer"}}},
 			"aiven_dragonfly":         {Fields: map[string]*tfbridge.SchemaInfo{"dragonfly": {CSharpName: "DragonflyServer"}}},
@@ -157,7 +154,6 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_opensearch":            {Tok: makeDataSource(mainMod, "getOpenSearch")},
 			"aiven_opensearch_acl_config": {Tok: makeDataSource(mainMod, "getOpenSearchAclConfig")},
 
-			"aiven_gcp_privatelink":   {Docs: &tfbridge.DocInfo{Markdown: []byte(" ")}},
 			"aiven_influxdb_database": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"aiven_influxdb_user":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
