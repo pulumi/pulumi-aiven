@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? LogClient;
         /// <summary>
-        /// Specifies the log level that will be used for log entries. The default value is `log`.
+        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>

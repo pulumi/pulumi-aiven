@@ -82,7 +82,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? InteractiveTimeout;
         /// <summary>
-        /// The storage engine for in-memory internal temporary tables.
+        /// Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
         /// </summary>
         public readonly string? InternalTmpMemStorageEngine;
         /// <summary>

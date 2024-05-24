@@ -18,6 +18,12 @@ namespace Pulumi.Aiven.Inputs
         [Input("datadogDbmEnabled")]
         public Input<bool>? DatadogDbmEnabled { get; set; }
 
+        /// <summary>
+        /// Enable Datadog PgBouncer Metric Tracking.
+        /// </summary>
+        [Input("datadogPgbouncerEnabled")]
+        public Input<bool>? DatadogPgbouncerEnabled { get; set; }
+
         [Input("datadogTags")]
         private InputList<Inputs.ServiceIntegrationDatadogUserConfigDatadogTagGetArgs>? _datadogTags;
 

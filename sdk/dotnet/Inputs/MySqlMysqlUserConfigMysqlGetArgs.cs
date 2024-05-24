@@ -115,7 +115,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? InteractiveTimeout { get; set; }
 
         /// <summary>
-        /// The storage engine for in-memory internal temporary tables.
+        /// Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
         /// </summary>
         [Input("internalTmpMemStorageEngine")]
         public Input<string>? InternalTmpMemStorageEngine { get; set; }

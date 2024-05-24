@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>
-        /// SSL Mode. The default value is `verify-full`.
+        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
         /// </summary>
         public readonly string? SslMode;
         /// <summary>

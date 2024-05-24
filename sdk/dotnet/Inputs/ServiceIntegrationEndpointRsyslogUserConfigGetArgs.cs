@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// Message format. The default value is `rfc5424`.
+        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;

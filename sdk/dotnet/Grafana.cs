@@ -101,6 +101,12 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
+        /// Grafana server provided values
+        /// </summary>
+        [Output("grafana")]
+        public Output<Outputs.GrafanaGrafana> GrafanaServer { get; private set; } = null!;
+
+        /// <summary>
         /// Grafana user configurable settings
         /// </summary>
         [Output("grafanaUserConfig")]
@@ -239,6 +245,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "grafana",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -282,6 +289,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
+
+        [Input("grafana")]
+        private Input<Inputs.GrafanaGrafanaArgs>? _grafana;
+
+        /// <summary>
+        /// Grafana server provided values
+        /// </summary>
+        public Input<Inputs.GrafanaGrafanaArgs>? GrafanaServer
+        {
+            get => _grafana;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _grafana = Output.Tuple<Input<Inputs.GrafanaGrafanaArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Grafana user configurable settings
@@ -440,6 +463,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
+
+        [Input("grafana")]
+        private Input<Inputs.GrafanaGrafanaGetArgs>? _grafana;
+
+        /// <summary>
+        /// Grafana server provided values
+        /// </summary>
+        public Input<Inputs.GrafanaGrafanaGetArgs>? GrafanaServer
+        {
+            get => _grafana;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _grafana = Output.Tuple<Input<Inputs.GrafanaGrafanaGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Grafana user configurable settings

@@ -63,6 +63,8 @@ type LookupCassandraResult struct {
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Cassandra user configurable settings
 	CassandraUserConfigs []GetCassandraCassandraUserConfig `pulumi:"cassandraUserConfigs"`
+	// Cassandra server provided values
+	Cassandras []GetCassandraCassandra `pulumi:"cassandras"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
@@ -165,6 +167,11 @@ func (o LookupCassandraResultOutput) AdditionalDiskSpace() pulumi.StringOutput {
 // Cassandra user configurable settings
 func (o LookupCassandraResultOutput) CassandraUserConfigs() GetCassandraCassandraUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraCassandraUserConfig { return v.CassandraUserConfigs }).(GetCassandraCassandraUserConfigArrayOutput)
+}
+
+// Cassandra server provided values
+func (o LookupCassandraResultOutput) Cassandras() GetCassandraCassandraArrayOutput {
+	return o.ApplyT(func(v LookupCassandraResult) []GetCassandraCassandra { return v.Cassandras }).(GetCassandraCassandraArrayOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).

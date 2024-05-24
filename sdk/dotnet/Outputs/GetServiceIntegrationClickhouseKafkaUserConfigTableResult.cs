@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigTableResult
     {
         /// <summary>
-        /// Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        /// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
         /// </summary>
         public readonly string? AutoOffsetReset;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult> Columns;
         /// <summary>
-        /// Message data format. The default value is `JSONEachRow`.
+        /// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
         /// </summary>
         public readonly string DataFormat;
         /// <summary>
-        /// Method to read DateTime from text input formats. The default value is `basic`.
+        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
         /// </summary>
         public readonly string? DateTimeInputFormat;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// How to handle errors for Kafka engine. The default value is `default`.
+        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
         /// </summary>
         public readonly string? HandleErrorMode;
         /// <summary>

@@ -164,6 +164,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string ProjectVpcId;
         /// <summary>
+        /// Redis server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRedisRediResult> Redis;
+        /// <summary>
         /// Redis user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisRedisUserConfigResult> RedisUserConfigs;
@@ -250,6 +254,8 @@ namespace Pulumi.Aiven
 
             string projectVpcId,
 
+            ImmutableArray<Outputs.GetRedisRediResult> redis,
+
             ImmutableArray<Outputs.GetRedisRedisUserConfigResult> redisUserConfigs,
 
             string serviceHost,
@@ -292,6 +298,7 @@ namespace Pulumi.Aiven
             Plan = plan;
             Project = project;
             ProjectVpcId = projectVpcId;
+            Redis = redis;
             RedisUserConfigs = redisUserConfigs;
             ServiceHost = serviceHost;
             ServiceIntegrations = serviceIntegrations;

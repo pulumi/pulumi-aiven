@@ -77,6 +77,8 @@ type LookupGrafanaResult struct {
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
 	// Grafana user configurable settings
 	GrafanaUserConfigs []GetGrafanaGrafanaUserConfig `pulumi:"grafanaUserConfigs"`
+	// Grafana server provided values
+	Grafanas []GetGrafanaGrafana `pulumi:"grafanas"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -200,6 +202,11 @@ func (o LookupGrafanaResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 // Grafana user configurable settings
 func (o LookupGrafanaResultOutput) GrafanaUserConfigs() GetGrafanaGrafanaUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafanaUserConfig { return v.GrafanaUserConfigs }).(GetGrafanaGrafanaUserConfigArrayOutput)
+}
+
+// Grafana server provided values
+func (o LookupGrafanaResultOutput) Grafanas() GetGrafanaGrafanaArrayOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) []GetGrafanaGrafana { return v.Grafanas }).(GetGrafanaGrafanaArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

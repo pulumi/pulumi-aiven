@@ -22,7 +22,7 @@ class GetM3DbResult:
     """
     A collection of values returned by getM3Db.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, m3db_user_configs=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, m3db_user_configs=None, m3dbs=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -53,6 +53,9 @@ class GetM3DbResult:
         if m3db_user_configs and not isinstance(m3db_user_configs, list):
             raise TypeError("Expected argument 'm3db_user_configs' to be a list")
         pulumi.set(__self__, "m3db_user_configs", m3db_user_configs)
+        if m3dbs and not isinstance(m3dbs, list):
+            raise TypeError("Expected argument 'm3dbs' to be a list")
+        pulumi.set(__self__, "m3dbs", m3dbs)
         if maintenance_window_dow and not isinstance(maintenance_window_dow, str):
             raise TypeError("Expected argument 'maintenance_window_dow' to be a str")
         pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
@@ -187,6 +190,14 @@ class GetM3DbResult:
         M3db user configurable settings
         """
         return pulumi.get(self, "m3db_user_configs")
+
+    @property
+    @pulumi.getter
+    def m3dbs(self) -> Sequence['outputs.GetM3DbM3dbResult']:
+        """
+        M3DB server provided values
+        """
+        return pulumi.get(self, "m3dbs")
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
@@ -349,6 +360,7 @@ class AwaitableGetM3DbResult(GetM3DbResult):
             disk_space_used=self.disk_space_used,
             id=self.id,
             m3db_user_configs=self.m3db_user_configs,
+            m3dbs=self.m3dbs,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
             plan=self.plan,
@@ -406,6 +418,7 @@ def get_m3_db(project: Optional[str] = None,
         disk_space_used=pulumi.get(__ret__, 'disk_space_used'),
         id=pulumi.get(__ret__, 'id'),
         m3db_user_configs=pulumi.get(__ret__, 'm3db_user_configs'),
+        m3dbs=pulumi.get(__ret__, 'm3dbs'),
         maintenance_window_dow=pulumi.get(__ret__, 'maintenance_window_dow'),
         maintenance_window_time=pulumi.get(__ret__, 'maintenance_window_time'),
         plan=pulumi.get(__ret__, 'plan'),

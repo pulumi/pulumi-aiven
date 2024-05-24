@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string BucketUrl;
         /// <summary>
-        /// Provider type.
+        /// Enum: `s3`. Provider type.
         /// </summary>
         public readonly string Provider;
         /// <summary>

@@ -70,7 +70,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? DeadlockTimeout;
         /// <summary>
-        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        /// Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
         /// </summary>
         public readonly string? DefaultToastCompression;
         /// <summary>
@@ -86,11 +86,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? LogAutovacuumMinDuration;
         /// <summary>
-        /// Controls the amount of detail written in the server log for each message that is logged.
+        /// Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
         /// </summary>
         public readonly string? LogErrorVerbosity;
         /// <summary>
-        /// Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        /// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
         /// </summary>
         public readonly string? LogLinePrefix;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? PgStatMonitorDotPgsmMaxBuckets;
         /// <summary>
-        /// Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        /// Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         /// </summary>
         public readonly string? PgStatStatementsDotTrack;
         /// <summary>
@@ -190,15 +190,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? TrackActivityQuerySize;
         /// <summary>
-        /// Record commit time of transactions.
+        /// Enum: `off`, `on`. Record commit time of transactions.
         /// </summary>
         public readonly string? TrackCommitTimestamp;
         /// <summary>
-        /// Enables tracking of function call counts and time used.
+        /// Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
         /// </summary>
         public readonly string? TrackFunctions;
         /// <summary>
-        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        /// Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         /// </summary>
         public readonly string? TrackIoTiming;
         /// <summary>

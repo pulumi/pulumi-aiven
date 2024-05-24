@@ -74,6 +74,8 @@ type M3Aggregator struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
+	// M3 Aggregator server provided values
+	M3aggregator M3AggregatorM3aggregatorOutput `pulumi:"m3aggregator"`
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrOutput `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -130,7 +132,11 @@ func NewM3Aggregator(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.M3aggregator != nil {
+		args.M3aggregator = pulumi.ToSecret(args.M3aggregator).(M3AggregatorM3aggregatorPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"m3aggregator",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -176,6 +182,8 @@ type m3aggregatorState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
+	// M3 Aggregator server provided values
+	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -235,6 +243,8 @@ type M3AggregatorState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
+	// M3 Aggregator server provided values
+	M3aggregator M3AggregatorM3aggregatorPtrInput
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -288,6 +298,8 @@ type m3aggregatorArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
+	// M3 Aggregator server provided values
+	M3aggregator *M3AggregatorM3aggregator `pulumi:"m3aggregator"`
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig *M3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -324,6 +336,8 @@ type M3AggregatorArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
+	// M3 Aggregator server provided values
+	M3aggregator M3AggregatorM3aggregatorPtrInput
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfig M3AggregatorM3aggregatorUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -477,6 +491,11 @@ func (o M3AggregatorOutput) DiskSpaceStep() pulumi.StringOutput {
 // Disk space that service is currently using
 func (o M3AggregatorOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3Aggregator) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// M3 Aggregator server provided values
+func (o M3AggregatorOutput) M3aggregator() M3AggregatorM3aggregatorOutput {
+	return o.ApplyT(func(v *M3Aggregator) M3AggregatorM3aggregatorOutput { return v.M3aggregator }).(M3AggregatorM3aggregatorOutput)
 }
 
 // M3aggregator user configurable settings

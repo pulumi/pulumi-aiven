@@ -131,6 +131,12 @@ namespace Pulumi.Aiven
         public Output<string?> ProjectVpcId { get; private set; } = null!;
 
         /// <summary>
+        /// Redis server provided values
+        /// </summary>
+        [Output("redis")]
+        public Output<Outputs.RedisRedis> RedisServer { get; private set; } = null!;
+
+        /// <summary>
         /// Redis user configurable settings
         /// </summary>
         [Output("redisUserConfig")]
@@ -239,6 +245,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "redis",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -312,6 +319,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
+
+        [Input("redis")]
+        private Input<Inputs.RedisRedisArgs>? _redis;
+
+        /// <summary>
+        /// Redis server provided values
+        /// </summary>
+        public Input<Inputs.RedisRedisArgs>? RedisServer
+        {
+            get => _redis;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _redis = Output.Tuple<Input<Inputs.RedisRedisArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Redis user configurable settings
@@ -470,6 +493,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("projectVpcId")]
         public Input<string>? ProjectVpcId { get; set; }
+
+        [Input("redis")]
+        private Input<Inputs.RedisRedisGetArgs>? _redis;
+
+        /// <summary>
+        /// Redis server provided values
+        /// </summary>
+        public Input<Inputs.RedisRedisGetArgs>? RedisServer
+        {
+            get => _redis;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _redis = Output.Tuple<Input<Inputs.RedisRedisGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Redis user configurable settings

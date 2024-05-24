@@ -120,6 +120,10 @@ export class Redis extends pulumi.CustomResource {
      */
     public readonly projectVpcId!: pulumi.Output<string | undefined>;
     /**
+     * Redis server provided values
+     */
+    public readonly redis!: pulumi.Output<outputs.RedisRedis>;
+    /**
      * Redis user configurable settings
      */
     public readonly redisUserConfig!: pulumi.Output<outputs.RedisRedisUserConfig | undefined>;
@@ -202,6 +206,7 @@ export class Redis extends pulumi.CustomResource {
             resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["projectVpcId"] = state ? state.projectVpcId : undefined;
+            resourceInputs["redis"] = state ? state.redis : undefined;
             resourceInputs["redisUserConfig"] = state ? state.redisUserConfig : undefined;
             resourceInputs["serviceHost"] = state ? state.serviceHost : undefined;
             resourceInputs["serviceIntegrations"] = state ? state.serviceIntegrations : undefined;
@@ -235,6 +240,7 @@ export class Redis extends pulumi.CustomResource {
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectVpcId"] = args ? args.projectVpcId : undefined;
+            resourceInputs["redis"] = args?.redis ? pulumi.secret(args.redis) : undefined;
             resourceInputs["redisUserConfig"] = args ? args.redisUserConfig : undefined;
             resourceInputs["serviceIntegrations"] = args ? args.serviceIntegrations : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
@@ -256,7 +262,7 @@ export class Redis extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["redis", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Redis.__pulumiType, name, resourceInputs, opts);
     }
@@ -320,6 +326,10 @@ export interface RedisState {
      * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     projectVpcId?: pulumi.Input<string>;
+    /**
+     * Redis server provided values
+     */
+    redis?: pulumi.Input<inputs.RedisRedis>;
     /**
      * Redis user configurable settings
      */
@@ -416,6 +426,10 @@ export interface RedisArgs {
      * Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
      */
     projectVpcId?: pulumi.Input<string>;
+    /**
+     * Redis server provided values
+     */
+    redis?: pulumi.Input<inputs.RedisRedis>;
     /**
      * Redis user configurable settings
      */

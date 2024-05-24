@@ -22,7 +22,7 @@ class GetDragonflyResult:
     """
     A collection of values returned by getDragonfly.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, dragonfly_user_configs=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, dragonflies=None, dragonfly_user_configs=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -47,6 +47,9 @@ class GetDragonflyResult:
         if disk_space_used and not isinstance(disk_space_used, str):
             raise TypeError("Expected argument 'disk_space_used' to be a str")
         pulumi.set(__self__, "disk_space_used", disk_space_used)
+        if dragonflies and not isinstance(dragonflies, list):
+            raise TypeError("Expected argument 'dragonflies' to be a list")
+        pulumi.set(__self__, "dragonflies", dragonflies)
         if dragonfly_user_configs and not isinstance(dragonfly_user_configs, list):
             raise TypeError("Expected argument 'dragonfly_user_configs' to be a list")
         pulumi.set(__self__, "dragonfly_user_configs", dragonfly_user_configs)
@@ -171,6 +174,14 @@ class GetDragonflyResult:
         Disk space that service is currently using
         """
         return pulumi.get(self, "disk_space_used")
+
+    @property
+    @pulumi.getter
+    def dragonflies(self) -> Sequence['outputs.GetDragonflyDragonflyResult']:
+        """
+        Dragonfly server provided values
+        """
+        return pulumi.get(self, "dragonflies")
 
     @property
     @pulumi.getter(name="dragonflyUserConfigs")
@@ -347,6 +358,7 @@ class AwaitableGetDragonflyResult(GetDragonflyResult):
             disk_space_default=self.disk_space_default,
             disk_space_step=self.disk_space_step,
             disk_space_used=self.disk_space_used,
+            dragonflies=self.dragonflies,
             dragonfly_user_configs=self.dragonfly_user_configs,
             id=self.id,
             maintenance_window_dow=self.maintenance_window_dow,
@@ -404,6 +416,7 @@ def get_dragonfly(project: Optional[str] = None,
         disk_space_default=pulumi.get(__ret__, 'disk_space_default'),
         disk_space_step=pulumi.get(__ret__, 'disk_space_step'),
         disk_space_used=pulumi.get(__ret__, 'disk_space_used'),
+        dragonflies=pulumi.get(__ret__, 'dragonflies'),
         dragonfly_user_configs=pulumi.get(__ret__, 'dragonfly_user_configs'),
         id=pulumi.get(__ret__, 'id'),
         maintenance_window_dow=pulumi.get(__ret__, 'maintenance_window_dow'),

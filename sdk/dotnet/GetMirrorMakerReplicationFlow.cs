@@ -152,7 +152,7 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Offset syncs topic location.
+        /// Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
         /// </summary>
         public readonly string OffsetSyncsTopicLocation;
         /// <summary>

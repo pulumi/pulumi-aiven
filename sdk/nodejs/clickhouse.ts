@@ -64,6 +64,10 @@ export class Clickhouse extends pulumi.CustomResource {
      */
     public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
     /**
+     * Clickhouse server provided values
+     */
+    public readonly clickhouse!: pulumi.Output<outputs.ClickhouseClickhouse>;
+    /**
      * Clickhouse user configurable settings
      */
     public readonly clickhouseUserConfig!: pulumi.Output<outputs.ClickhouseClickhouseUserConfig | undefined>;
@@ -184,6 +188,7 @@ export class Clickhouse extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClickhouseState | undefined;
             resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
+            resourceInputs["clickhouse"] = state ? state.clickhouse : undefined;
             resourceInputs["clickhouseUserConfig"] = state ? state.clickhouseUserConfig : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
             resourceInputs["components"] = state ? state.components : undefined;
@@ -222,6 +227,7 @@ export class Clickhouse extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
+            resourceInputs["clickhouse"] = args?.clickhouse ? pulumi.secret(args.clickhouse) : undefined;
             resourceInputs["clickhouseUserConfig"] = args ? args.clickhouseUserConfig : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
@@ -250,7 +256,7 @@ export class Clickhouse extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["clickhouse", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Clickhouse.__pulumiType, name, resourceInputs, opts);
     }
@@ -264,6 +270,10 @@ export interface ClickhouseState {
      * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     additionalDiskSpace?: pulumi.Input<string>;
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: pulumi.Input<inputs.ClickhouseClickhouse>;
     /**
      * Clickhouse user configurable settings
      */
@@ -380,6 +390,10 @@ export interface ClickhouseArgs {
      * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     additionalDiskSpace?: pulumi.Input<string>;
+    /**
+     * Clickhouse server provided values
+     */
+    clickhouse?: pulumi.Input<inputs.ClickhouseClickhouse>;
     /**
      * Clickhouse user configurable settings
      */

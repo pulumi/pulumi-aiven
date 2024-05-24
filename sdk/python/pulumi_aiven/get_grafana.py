@@ -22,7 +22,7 @@ class GetGrafanaResult:
     """
     A collection of values returned by getGrafana.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, grafana_user_configs=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, grafana_user_configs=None, grafanas=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -50,6 +50,9 @@ class GetGrafanaResult:
         if grafana_user_configs and not isinstance(grafana_user_configs, list):
             raise TypeError("Expected argument 'grafana_user_configs' to be a list")
         pulumi.set(__self__, "grafana_user_configs", grafana_user_configs)
+        if grafanas and not isinstance(grafanas, list):
+            raise TypeError("Expected argument 'grafanas' to be a list")
+        pulumi.set(__self__, "grafanas", grafanas)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -179,6 +182,14 @@ class GetGrafanaResult:
         Grafana user configurable settings
         """
         return pulumi.get(self, "grafana_user_configs")
+
+    @property
+    @pulumi.getter
+    def grafanas(self) -> Sequence['outputs.GetGrafanaGrafanaResult']:
+        """
+        Grafana server provided values
+        """
+        return pulumi.get(self, "grafanas")
 
     @property
     @pulumi.getter
@@ -348,6 +359,7 @@ class AwaitableGetGrafanaResult(GetGrafanaResult):
             disk_space_step=self.disk_space_step,
             disk_space_used=self.disk_space_used,
             grafana_user_configs=self.grafana_user_configs,
+            grafanas=self.grafanas,
             id=self.id,
             maintenance_window_dow=self.maintenance_window_dow,
             maintenance_window_time=self.maintenance_window_time,
@@ -405,6 +417,7 @@ def get_grafana(project: Optional[str] = None,
         disk_space_step=pulumi.get(__ret__, 'disk_space_step'),
         disk_space_used=pulumi.get(__ret__, 'disk_space_used'),
         grafana_user_configs=pulumi.get(__ret__, 'grafana_user_configs'),
+        grafanas=pulumi.get(__ret__, 'grafanas'),
         id=pulumi.get(__ret__, 'id'),
         maintenance_window_dow=pulumi.get(__ret__, 'maintenance_window_dow'),
         maintenance_window_time=pulumi.get(__ret__, 'maintenance_window_time'),

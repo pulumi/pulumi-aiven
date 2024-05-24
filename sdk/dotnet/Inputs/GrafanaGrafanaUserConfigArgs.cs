@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AlertingEnabled { get; set; }
 
         /// <summary>
-        /// Default error or timeout setting for new alerting rules.
+        /// Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         /// </summary>
         [Input("alertingErrorOrTimeout")]
         public Input<string>? AlertingErrorOrTimeout { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AlertingMaxAnnotationsToKeep { get; set; }
 
         /// <summary>
-        /// Default value for 'no data or null values' for new alerting rules.
+        /// Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
         /// </summary>
         [Input("alertingNodataOrNullvalues")]
         public Input<string>? AlertingNodataOrNullvalues { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.GrafanaGrafanaUserConfigAuthGoogleArgs>? AuthGoogle { get; set; }
 
         /// <summary>
-        /// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         /// </summary>
         [Input("cookieSamesite")]
         public Input<string>? CookieSamesite { get; set; }
@@ -272,7 +272,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? UserAutoAssignOrg { get; set; }
 
         /// <summary>
-        /// Set role for new signups. Defaults to Viewer.
+        /// Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         /// </summary>
         [Input("userAutoAssignOrgRole")]
         public Input<string>? UserAutoAssignOrgRole { get; set; }

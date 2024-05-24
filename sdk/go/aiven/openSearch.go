@@ -140,7 +140,11 @@ func NewOpenSearch(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Opensearches != nil {
+		args.Opensearches = pulumi.ToSecret(args.Opensearches).(OpenSearchOpensearchArrayInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"opensearches",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -308,6 +312,8 @@ type openSearchArgs struct {
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
 	// Opensearch user configurable settings
 	OpensearchUserConfig *OpenSearchOpensearchUserConfig `pulumi:"opensearchUserConfig"`
+	// OpenSearch server provided values
+	Opensearches []OpenSearchOpensearch `pulumi:"opensearches"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan string `pulumi:"plan"`
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -344,6 +350,8 @@ type OpenSearchArgs struct {
 	MaintenanceWindowTime pulumi.StringPtrInput
 	// Opensearch user configurable settings
 	OpensearchUserConfig OpenSearchOpensearchUserConfigPtrInput
+	// OpenSearch server provided values
+	Opensearches OpenSearchOpensearchArrayInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
 	Plan pulumi.StringInput
 	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.

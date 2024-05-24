@@ -28,6 +28,13 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: string;
 }
 
+export interface CassandraCassandra {
+    /**
+     * Cassandra server URIs.
+     */
+    uris: string[];
+}
+
 export interface CassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -48,7 +55,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
     /**
-     * Cassandra version.
+     * Enum: `3`, `4`, `4.1`. Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -201,6 +208,13 @@ export interface CassandraTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface ClickhouseClickhouse {
+    /**
+     * Clickhouse server URIs.
+     */
+    uris: string[];
 }
 
 export interface ClickhouseClickhouseUserConfig {
@@ -451,13 +465,32 @@ export interface DragonflyComponent {
     usage: string;
 }
 
+export interface DragonflyDragonfly {
+    /**
+     * Dragonfly password.
+     */
+    password: string;
+    /**
+     * Dragonfly replica server URI.
+     */
+    replicaUri: string;
+    /**
+     * Dragonfly slave server URIs.
+     */
+    slaveUris: string[];
+    /**
+     * Dragonfly server URIs.
+     */
+    uris: string[];
+}
+
 export interface DragonflyDragonflyUserConfig {
     /**
      * Evict entries when getting close to maxmemory limit. The default value is `false`.
      */
     cacheMode?: boolean;
     /**
-     * When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
     dragonflyPersistence?: string;
     /**
@@ -541,7 +574,7 @@ export interface DragonflyDragonflyUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -696,7 +729,7 @@ export interface FlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Flink major version.
+     * Enum: `1.16`. Flink major version.
      */
     flinkVersion?: string;
     /**
@@ -805,6 +838,13 @@ export interface GetAccountAuthenticationSamlFieldMapping {
     realName?: string;
 }
 
+export interface GetCassandaCassandra {
+    /**
+     * Cassandra server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetCassandaCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -825,7 +865,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     /**
-     * Cassandra version.
+     * Enum: `3`, `4`, `4.1`. Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -980,6 +1020,13 @@ export interface GetCassandaTechEmail {
     email: string;
 }
 
+export interface GetCassandraCassandra {
+    /**
+     * Cassandra server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetCassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -1000,7 +1047,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     /**
-     * Cassandra version.
+     * Enum: `3`, `4`, `4.1`. Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -1153,6 +1200,13 @@ export interface GetCassandraTechEmail {
      * An email address to contact for technical issues
      */
     email: string;
+}
+
+export interface GetClickhouseClickhouse {
+    /**
+     * Clickhouse server URIs.
+     */
+    uris: string[];
 }
 
 export interface GetClickhouseClickhouseUserConfig {
@@ -1373,13 +1427,32 @@ export interface GetDragonflyComponent {
     usage: string;
 }
 
+export interface GetDragonflyDragonfly {
+    /**
+     * Dragonfly password.
+     */
+    password: string;
+    /**
+     * Dragonfly replica server URI.
+     */
+    replicaUri: string;
+    /**
+     * Dragonfly slave server URIs.
+     */
+    slaveUris: string[];
+    /**
+     * Dragonfly server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetDragonflyDragonflyUserConfig {
     /**
      * Evict entries when getting close to maxmemory limit. The default value is `false`.
      */
     cacheMode?: boolean;
     /**
-     * When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
     dragonflyPersistence?: string;
     /**
@@ -1463,7 +1536,7 @@ export interface GetDragonflyDragonflyUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -1618,7 +1691,7 @@ export interface GetFlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Flink major version.
+     * Enum: `1.16`. Flink major version.
      */
     flinkVersion?: string;
     /**
@@ -1739,6 +1812,13 @@ export interface GetGrafanaComponent {
     usage: string;
 }
 
+export interface GetGrafanaGrafana {
+    /**
+     * Grafana server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetGrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -1749,7 +1829,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     alertingEnabled?: boolean;
     /**
-     * Default error or timeout setting for new alerting rules.
+     * Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      */
     alertingErrorOrTimeout?: string;
     /**
@@ -1757,7 +1837,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     alertingMaxAnnotationsToKeep?: number;
     /**
-     * Default value for 'no data or null values' for new alerting rules.
+     * Enum: `alerting`, `noData`, `keepState`, `ok`. Default value for 'no data or null values' for new alerting rules.
      */
     alertingNodataOrNullvalues?: string;
     /**
@@ -1789,7 +1869,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     authGoogle?: outputs.GetGrafanaGrafanaUserConfigAuthGoogle;
     /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
      */
     cookieSamesite?: string;
     /**
@@ -1903,7 +1983,7 @@ export interface GetGrafanaGrafanaUserConfig {
      */
     userAutoAssignOrg?: boolean;
     /**
-     * Set role for new signups. Defaults to Viewer.
+     * Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      */
     userAutoAssignOrgRole?: string;
     /**
@@ -2116,7 +2196,7 @@ export interface GetGrafanaGrafanaUserConfigExternalImageStorage {
      */
     bucketUrl: string;
     /**
-     * Provider type.
+     * Enum: `s3`. Provider type.
      */
     provider: string;
     /**
@@ -2183,7 +2263,7 @@ export interface GetGrafanaGrafanaUserConfigSmtpServer {
      */
     skipVerify?: boolean;
     /**
-     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      */
     starttlsPolicy?: string;
     /**
@@ -2261,6 +2341,18 @@ export interface GetInfluxDbInfluxdb {
      * Name of the default InfluxDB database
      */
     databaseName: string;
+    /**
+     * InfluxDB password
+     */
+    password: string;
+    /**
+     * InfluxDB server URIs.
+     */
+    uris: string[];
+    /**
+     * InfluxDB username
+     */
+    username: string;
 }
 
 export interface GetInfluxDbInfluxdbUserConfig {
@@ -2548,11 +2640,11 @@ export interface GetKafkaConnectKafkaConnectUserConfigIpFilterObject {
 
 export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: string;
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: string;
     /**
@@ -2560,7 +2652,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerFetchMaxBytes?: number;
     /**
-     * Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: string;
     /**
@@ -2592,7 +2684,7 @@ export interface GetKafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: number;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -2711,6 +2803,10 @@ export interface GetKafkaKafka {
      * The Schema Registry URI.
      */
     schemaRegistryUri: string;
+    /**
+     * Kafka server URIs.
+     */
+    uris: string[];
 }
 
 export interface GetKafkaKafkaUserConfig {
@@ -2771,7 +2867,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
     /**
-     * Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -2825,7 +2921,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: boolean;
     /**
-     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
      */
     compressionType?: string;
     /**
@@ -2865,7 +2961,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logCleanerMinCompactionLagMs?: number;
     /**
-     * The default cleanup policy for segments beyond the retention window.
+     * Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      */
     logCleanupPolicy?: string;
     /**
@@ -2901,7 +2997,7 @@ export interface GetKafkaKafkaUserConfigKafka {
      */
     logMessageTimestampDifferenceMaxMs?: number;
     /**
-     * Define whether the timestamp in the message is message create time or log append time.
+     * Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      */
     logMessageTimestampType?: string;
     /**
@@ -3019,11 +3115,11 @@ export interface GetKafkaKafkaUserConfigKafkaAuthenticationMethods {
 
 export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: string;
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: string;
     /**
@@ -3031,7 +3127,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerFetchMaxBytes?: number;
     /**
-     * Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
+     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. readUncommitted is the default, but readCommitted can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: string;
     /**
@@ -3063,7 +3159,7 @@ export interface GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: number;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -3094,11 +3190,11 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
      */
     consumerRequestMaxBytes?: number;
     /**
-     * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      */
     consumerRequestTimeoutMs?: number;
     /**
-     * Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
      */
     nameStrategy?: string;
     /**
@@ -3106,11 +3202,11 @@ export interface GetKafkaKafkaUserConfigKafkaRestConfig {
      */
     nameStrategyValidation?: boolean;
     /**
-     * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      */
     producerAcks?: string;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -3586,6 +3682,17 @@ export interface GetM3AggregatorComponent {
     usage: string;
 }
 
+export interface GetM3AggregatorM3aggregator {
+    /**
+     * M3 Aggregator HTTP URI.
+     */
+    aggregatorHttpUri: string;
+    /**
+     * M3 Aggregator server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetM3AggregatorM3aggregatorUserConfig {
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -3606,11 +3713,11 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
      */
     ipFilters?: string[];
     /**
-     * M3 major version (deprecated, use m3aggregator_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      */
     m3Version?: string;
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      */
     m3aggregatorVersion?: string;
     /**
@@ -3698,6 +3805,33 @@ export interface GetM3DbComponent {
     usage: string;
 }
 
+export interface GetM3DbM3db {
+    /**
+     * M3DB cluster URI.
+     */
+    httpClusterUri: string;
+    /**
+     * M3DB node URI.
+     */
+    httpNodeUri: string;
+    /**
+     * InfluxDB URI.
+     */
+    influxdbUri: string;
+    /**
+     * Prometheus remote read URI.
+     */
+    prometheusRemoteReadUri: string;
+    /**
+     * Prometheus remote write URI.
+     */
+    prometheusRemoteWriteUri: string;
+    /**
+     * M3DB server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetM3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -3730,7 +3864,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     m3?: outputs.GetM3DbM3dbUserConfigM3;
     /**
-     * M3 major version (deprecated, use m3db_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      */
     m3Version?: string;
     /**
@@ -3738,7 +3872,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      */
     m3dbVersion?: string;
     /**
@@ -3845,7 +3979,7 @@ export interface GetM3DbM3dbUserConfigNamespace {
      */
     resolution?: string;
     /**
-     * The type of aggregation (aggregated/unaggregated).
+     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      */
     type: string;
 }
@@ -4032,6 +4166,56 @@ export interface GetMySqlComponent {
     usage: string;
 }
 
+export interface GetMySqlMysql {
+    /**
+     * MySQL connection parameters
+     */
+    params: outputs.GetMySqlMysqlParam[];
+    /**
+     * MySQL replica URI for services with a replica
+     */
+    replicaUri: string;
+    /**
+     * MySQL standby connection URIs
+     */
+    standbyUris: string[];
+    /**
+     * MySQL syncing connection URIs
+     */
+    syncingUris: string[];
+    /**
+     * MySQL master connection URIs
+     */
+    uris: string[];
+}
+
+export interface GetMySqlMysqlParam {
+    /**
+     * Primary MySQL database name
+     */
+    databaseName: string;
+    /**
+     * MySQL host IP or name
+     */
+    host: string;
+    /**
+     * MySQL admin user password
+     */
+    password: string;
+    /**
+     * MySQL port
+     */
+    port: number;
+    /**
+     * MySQL sslmode setting (currently always "require")
+     */
+    sslmode: string;
+    /**
+     * MySQL admin user name
+     */
+    user: string;
+}
+
 export interface GetMySqlMysqlUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -4080,7 +4264,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
     /**
-     * MySQL major version.
+     * Enum: `8`. MySQL major version.
      */
     mysqlVersion?: string;
     /**
@@ -4142,7 +4326,7 @@ export interface GetMySqlMysqlUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -4233,7 +4417,7 @@ export interface GetMySqlMysqlUserConfigMysql {
      */
     interactiveTimeout?: number;
     /**
-     * The storage engine for in-memory internal temporary tables.
+     * Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      */
     internalTmpMemStorageEngine?: string;
     /**
@@ -4397,9 +4581,25 @@ export interface GetOpenSearchComponent {
 
 export interface GetOpenSearchOpensearch {
     /**
+     * URI for Kibana dashboard frontend
+     */
+    kibanaUri: string;
+    /**
      * URI for OpenSearch dashboard frontend
      */
     opensearchDashboardsUri: string;
+    /**
+     * OpenSearch password
+     */
+    password: string;
+    /**
+     * OpenSearch server URIs.
+     */
+    uris: string[];
+    /**
+     * OpenSearch username
+     */
+    username: string;
 }
 
 export interface GetOpenSearchOpensearchUserConfig {
@@ -4458,7 +4658,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * OpenSearch major version.
+     * Enum: `1`, `2`. OpenSearch major version.
      */
     opensearchVersion?: string;
     /**
@@ -4509,7 +4709,7 @@ export interface GetOpenSearchOpensearchUserConfigIndexPattern {
      */
     pattern: string;
     /**
-     * Deletion sorting algorithm. The default value is `creationDate`.
+     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. The default value is `creationDate`.
      */
     sortingAlgorithm?: string;
 }
@@ -4776,7 +4976,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     allowedTries?: number;
     /**
-     * internal_authentication_backend_limiting.authentication_backend.
+     * Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.
      */
     authenticationBackend?: string;
     /**
@@ -4796,7 +4996,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     timeWindowSeconds?: number;
     /**
-     * internal_authentication_backend_limiting.type.
+     * Enum: `username`. internal_authentication_backend_limiting.type.
      */
     type?: string;
 }
@@ -4823,7 +5023,7 @@ export interface GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListeners
      */
     timeWindowSeconds?: number;
     /**
-     * The type of rate limiting.
+     * Enum: `ip`. The type of rate limiting.
      */
     type?: string;
 }
@@ -4985,6 +5185,10 @@ export interface GetPgComponent {
 
 export interface GetPgPg {
     /**
+     * Bouncer connection details
+     */
+    bouncer: string;
+    /**
      * Primary PostgreSQL database name
      */
     dbname: string;
@@ -4996,6 +5200,10 @@ export interface GetPgPg {
      * Connection limit
      */
     maxConnections: number;
+    /**
+     * PostgreSQL connection parameters
+     */
+    params: outputs.GetPgPgParam[];
     /**
      * PostgreSQL admin user password
      */
@@ -5013,9 +5221,48 @@ export interface GetPgPg {
      */
     sslmode: string;
     /**
+     * PostgreSQL standby connection URIs
+     */
+    standbyUris: string[];
+    /**
+     * PostgreSQL syncing connection URIs
+     */
+    syncingUris: string[];
+    /**
      * PostgreSQL master connection URI
      */
     uri: string;
+    /**
+     * PostgreSQL master connection URIs
+     */
+    uris: string[];
+    /**
+     * PostgreSQL admin user name
+     */
+    user: string;
+}
+
+export interface GetPgPgParam {
+    /**
+     * Primary PostgreSQL database name
+     */
+    databaseName: string;
+    /**
+     * PostgreSQL host IP or name
+     */
+    host: string;
+    /**
+     * PostgreSQL admin user password
+     */
+    password: string;
+    /**
+     * PostgreSQL port
+     */
+    port: number;
+    /**
+     * PostgreSQL sslmode setting (currently always "require")
+     */
+    sslmode: string;
     /**
      * PostgreSQL admin user name
      */
@@ -5088,7 +5335,7 @@ export interface GetPgPgUserConfig {
      */
     pgStatMonitorEnable?: boolean;
     /**
-     * PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      */
     pgVersion?: string;
     /**
@@ -5140,7 +5387,7 @@ export interface GetPgPgUserConfig {
      */
     staticIps?: boolean;
     /**
-     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: string;
     /**
@@ -5148,7 +5395,7 @@ export interface GetPgPgUserConfig {
      */
     timescaledb?: outputs.GetPgPgUserConfigTimescaledb;
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: string;
     /**
@@ -5182,7 +5429,7 @@ export interface GetPgPgUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -5261,7 +5508,7 @@ export interface GetPgPgUserConfigPg {
      */
     deadlockTimeout?: number;
     /**
-     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
      */
     defaultToastCompression?: string;
     /**
@@ -5277,11 +5524,11 @@ export interface GetPgPgUserConfigPg {
      */
     logAutovacuumMinDuration?: number;
     /**
-     * Controls the amount of detail written in the server log for each message that is logged.
+     * Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      */
     logErrorVerbosity?: string;
     /**
-     * Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
      */
     logLinePrefix?: string;
     /**
@@ -5365,7 +5612,7 @@ export interface GetPgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmMaxBuckets?: number;
     /**
-     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      */
     pgStatStatementsDotTrack?: string;
     /**
@@ -5381,15 +5628,15 @@ export interface GetPgPgUserConfigPg {
      */
     trackActivityQuerySize?: number;
     /**
-     * Record commit time of transactions.
+     * Enum: `off`, `on`. Record commit time of transactions.
      */
     trackCommitTimestamp?: string;
     /**
-     * Enables tracking of function call counts and time used.
+     * Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
      */
     trackFunctions?: string;
     /**
-     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      */
     trackIoTiming?: string;
     /**
@@ -5449,7 +5696,7 @@ export interface GetPgPgUserConfigPgaudit {
      */
     logClient?: boolean;
     /**
-     * Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      */
     logLevel?: string;
     /**
@@ -5504,7 +5751,7 @@ export interface GetPgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: number;
     /**
-     * PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
      */
     autodbPoolMode?: string;
     /**
@@ -5667,6 +5914,25 @@ export interface GetRedisComponent {
     usage: string;
 }
 
+export interface GetRedisRedi {
+    /**
+     * Redis password.
+     */
+    password: string;
+    /**
+     * Redis replica server URI.
+     */
+    replicaUri: string;
+    /**
+     * Redis slave server URIs.
+     */
+    slaveUris: string[];
+    /**
+     * Redis server URIs.
+     */
+    uris: string[];
+}
+
 export interface GetRedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -5711,7 +5977,7 @@ export interface GetRedisRedisUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
-     * Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
      */
     redisAclChannelsDefault?: string;
     /**
@@ -5727,7 +5993,7 @@ export interface GetRedisRedisUserConfig {
      */
     redisLfuLogFactor?: number;
     /**
-     * Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      */
     redisMaxmemoryPolicy?: string;
     /**
@@ -5739,7 +6005,7 @@ export interface GetRedisRedisUserConfig {
      */
     redisNumberOfDatabases?: number;
     /**
-     * When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
     redisPersistence?: string;
     /**
@@ -5755,7 +6021,7 @@ export interface GetRedisRedisUserConfig {
      */
     redisTimeout?: number;
     /**
-     * Redis major version.
+     * Enum: `7.0`. Redis major version.
      */
     redisVersion?: string;
     /**
@@ -5797,7 +6063,7 @@ export interface GetRedisRedisUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -5889,7 +6155,7 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      */
     autoOffsetReset?: string;
     /**
@@ -5897,11 +6163,11 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     /**
-     * Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      */
     dataFormat: string;
     /**
-     * Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. The default value is `basic`.
      */
     dateTimeInputFormat?: string;
     /**
@@ -5909,7 +6175,7 @@ export interface GetServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     groupName: string;
     /**
-     * How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      */
     handleErrorMode?: string;
     /**
@@ -5983,6 +6249,10 @@ export interface GetServiceIntegrationDatadogUserConfig {
      * Enable Datadog Database Monitoring.
      */
     datadogDbmEnabled?: boolean;
+    /**
+     * Enable Datadog PgBouncer Metric Tracking.
+     */
+    datadogPgbouncerEnabled?: boolean;
     /**
      * Custom tags provided by user
      */
@@ -6084,7 +6354,7 @@ export interface GetServiceIntegrationEndpointDatadogUserConfig {
      */
     maxPartitionContexts?: number;
     /**
-     * Datadog intake site. Defaults to datadoghq.com.
+     * Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      */
     site?: string;
 }
@@ -6193,7 +6463,7 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     bootstrapServers: string;
     /**
-     * SASL mechanism used for connections to the Kafka server.
+     * Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      */
     saslMechanism?: string;
     /**
@@ -6205,7 +6475,7 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslPlainUsername?: string;
     /**
-     * Security protocol.
+     * Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      */
     securityProtocol: string;
     /**
@@ -6221,7 +6491,7 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     sslClientKey?: string;
     /**
-     * The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: string;
 }
@@ -6275,7 +6545,7 @@ export interface GetServiceIntegrationEndpointExternalPostgresql {
      */
     sslClientKey?: string;
     /**
-     * SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      */
     sslMode?: string;
     /**
@@ -6290,7 +6560,7 @@ export interface GetServiceIntegrationEndpointExternalPostgresql {
 
 export interface GetServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * Authentication method.
+     * Enum: `none`, `basic`. Authentication method.
      */
     authentication: string;
     /**
@@ -6339,7 +6609,7 @@ export interface GetServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: string;
     /**
-     * Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
      */
     format: string;
     /**
@@ -6488,7 +6758,7 @@ export interface GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     producerBufferMemory?: number;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -6713,6 +6983,13 @@ export interface GrafanaComponent {
     usage: string;
 }
 
+export interface GrafanaGrafana {
+    /**
+     * Grafana server URIs.
+     */
+    uris: string[];
+}
+
 export interface GrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -6723,7 +7000,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingEnabled?: boolean;
     /**
-     * Default error or timeout setting for new alerting rules.
+     * Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      */
     alertingErrorOrTimeout?: string;
     /**
@@ -6731,7 +7008,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingMaxAnnotationsToKeep?: number;
     /**
-     * Default value for 'no data or null values' for new alerting rules.
+     * Enum: `alerting`, `noData`, `keepState`, `ok`. Default value for 'no data or null values' for new alerting rules.
      */
     alertingNodataOrNullvalues?: string;
     /**
@@ -6763,7 +7040,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     authGoogle?: outputs.GrafanaGrafanaUserConfigAuthGoogle;
     /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
      */
     cookieSamesite?: string;
     /**
@@ -6877,7 +7154,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     userAutoAssignOrg?: boolean;
     /**
-     * Set role for new signups. Defaults to Viewer.
+     * Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      */
     userAutoAssignOrgRole?: string;
     /**
@@ -7090,7 +7367,7 @@ export interface GrafanaGrafanaUserConfigExternalImageStorage {
      */
     bucketUrl: string;
     /**
-     * Provider type.
+     * Enum: `s3`. Provider type.
      */
     provider: string;
     /**
@@ -7157,7 +7434,7 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     skipVerify?: boolean;
     /**
-     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      */
     starttlsPolicy?: string;
     /**
@@ -7235,6 +7512,18 @@ export interface InfluxDbInfluxdb {
      * Name of the default InfluxDB database
      */
     databaseName: string;
+    /**
+     * InfluxDB password
+     */
+    password: string;
+    /**
+     * InfluxDB server URIs.
+     */
+    uris: string[];
+    /**
+     * InfluxDB username
+     */
+    username: string;
 }
 
 export interface InfluxDbInfluxdbUserConfig {
@@ -7522,11 +7811,11 @@ export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: string;
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: string;
     /**
@@ -7534,7 +7823,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerFetchMaxBytes?: number;
     /**
-     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: string;
     /**
@@ -7566,7 +7855,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: number;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -7685,6 +7974,10 @@ export interface KafkaKafka {
      * The Schema Registry URI.
      */
     schemaRegistryUri: string;
+    /**
+     * Kafka server URIs.
+     */
+    uris: string[];
 }
 
 export interface KafkaKafkaUserConfig {
@@ -7745,7 +8038,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
     /**
-     * Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -7799,7 +8092,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: boolean;
     /**
-     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
      */
     compressionType?: string;
     /**
@@ -7839,7 +8132,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanerMinCompactionLagMs?: number;
     /**
-     * The default cleanup policy for segments beyond the retention window.
+     * Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      */
     logCleanupPolicy?: string;
     /**
@@ -7875,7 +8168,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logMessageTimestampDifferenceMaxMs?: number;
     /**
-     * Define whether the timestamp in the message is message create time or log append time.
+     * Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      */
     logMessageTimestampType?: string;
     /**
@@ -7993,11 +8286,11 @@ export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: string;
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: string;
     /**
@@ -8005,7 +8298,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerFetchMaxBytes?: number;
     /**
-     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: string;
     /**
@@ -8037,7 +8330,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: number;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -8068,11 +8361,11 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     consumerRequestMaxBytes?: number;
     /**
-     * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      */
     consumerRequestTimeoutMs?: number;
     /**
-     * Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
      */
     nameStrategy?: string;
     /**
@@ -8080,11 +8373,11 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     nameStrategyValidation?: boolean;
     /**
-     * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      */
     producerAcks?: string;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**
@@ -8560,6 +8853,17 @@ export interface M3AggregatorComponent {
     usage: string;
 }
 
+export interface M3AggregatorM3aggregator {
+    /**
+     * M3 Aggregator HTTP URI.
+     */
+    aggregatorHttpUri: string;
+    /**
+     * M3 Aggregator server URIs.
+     */
+    uris: string[];
+}
+
 export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -8580,11 +8884,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
      */
     ipFilters?: string[];
     /**
-     * M3 major version (deprecated, use m3aggregator_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      */
     m3Version?: string;
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      */
     m3aggregatorVersion?: string;
     /**
@@ -8672,6 +8976,33 @@ export interface M3DbComponent {
     usage: string;
 }
 
+export interface M3DbM3db {
+    /**
+     * M3DB cluster URI.
+     */
+    httpClusterUri: string;
+    /**
+     * M3DB node URI.
+     */
+    httpNodeUri: string;
+    /**
+     * InfluxDB URI.
+     */
+    influxdbUri: string;
+    /**
+     * Prometheus remote read URI.
+     */
+    prometheusRemoteReadUri: string;
+    /**
+     * Prometheus remote write URI.
+     */
+    prometheusRemoteWriteUri: string;
+    /**
+     * M3DB server URIs.
+     */
+    uris: string[];
+}
+
 export interface M3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -8704,7 +9035,7 @@ export interface M3DbM3dbUserConfig {
      */
     m3?: outputs.M3DbM3dbUserConfigM3;
     /**
-     * M3 major version (deprecated, use m3db_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      */
     m3Version?: string;
     /**
@@ -8712,7 +9043,7 @@ export interface M3DbM3dbUserConfig {
      */
     m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      */
     m3dbVersion?: string;
     /**
@@ -8819,7 +9150,7 @@ export interface M3DbM3dbUserConfigNamespace {
      */
     resolution?: string;
     /**
-     * The type of aggregation (aggregated/unaggregated).
+     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      */
     type: string;
 }
@@ -9006,6 +9337,56 @@ export interface MySqlComponent {
     usage: string;
 }
 
+export interface MySqlMysql {
+    /**
+     * MySQL connection parameters
+     */
+    params: outputs.MySqlMysqlParam[];
+    /**
+     * MySQL replica URI for services with a replica
+     */
+    replicaUri: string;
+    /**
+     * MySQL standby connection URIs
+     */
+    standbyUris: string[];
+    /**
+     * MySQL syncing connection URIs
+     */
+    syncingUris: string[];
+    /**
+     * MySQL master connection URIs
+     */
+    uris: string[];
+}
+
+export interface MySqlMysqlParam {
+    /**
+     * Primary MySQL database name
+     */
+    databaseName: string;
+    /**
+     * MySQL host IP or name
+     */
+    host: string;
+    /**
+     * MySQL admin user password
+     */
+    password: string;
+    /**
+     * MySQL port
+     */
+    port: number;
+    /**
+     * MySQL sslmode setting (currently always "require")
+     */
+    sslmode: string;
+    /**
+     * MySQL admin user name
+     */
+    user: string;
+}
+
 export interface MySqlMysqlUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -9054,7 +9435,7 @@ export interface MySqlMysqlUserConfig {
      */
     mysql?: outputs.MySqlMysqlUserConfigMysql;
     /**
-     * MySQL major version.
+     * Enum: `8`. MySQL major version.
      */
     mysqlVersion?: string;
     /**
@@ -9116,7 +9497,7 @@ export interface MySqlMysqlUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -9207,7 +9588,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     interactiveTimeout?: number;
     /**
-     * The storage engine for in-memory internal temporary tables.
+     * Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      */
     internalTmpMemStorageEngine?: string;
     /**
@@ -9371,9 +9752,25 @@ export interface OpenSearchComponent {
 
 export interface OpenSearchOpensearch {
     /**
+     * URI for Kibana dashboard frontend
+     */
+    kibanaUri: string;
+    /**
      * URI for OpenSearch dashboard frontend
      */
     opensearchDashboardsUri: string;
+    /**
+     * OpenSearch password
+     */
+    password: string;
+    /**
+     * OpenSearch server URIs.
+     */
+    uris: string[];
+    /**
+     * OpenSearch username
+     */
+    username: string;
 }
 
 export interface OpenSearchOpensearchUserConfig {
@@ -9432,7 +9829,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * OpenSearch major version.
+     * Enum: `1`, `2`. OpenSearch major version.
      */
     opensearchVersion?: string;
     /**
@@ -9483,7 +9880,7 @@ export interface OpenSearchOpensearchUserConfigIndexPattern {
      */
     pattern: string;
     /**
-     * Deletion sorting algorithm. The default value is `creationDate`.
+     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. The default value is `creationDate`.
      */
     sortingAlgorithm?: string;
 }
@@ -9750,7 +10147,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     allowedTries?: number;
     /**
-     * internal*authentication*backend*limiting.authentication*backend.
+     * Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
      */
     authenticationBackend?: string;
     /**
@@ -9770,7 +10167,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     timeWindowSeconds?: number;
     /**
-     * internal*authentication*backend_limiting.type.
+     * Enum: `username`. internal*authentication*backend_limiting.type.
      */
     type?: string;
 }
@@ -9797,7 +10194,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     timeWindowSeconds?: number;
     /**
-     * The type of rate limiting.
+     * Enum: `ip`. The type of rate limiting.
      */
     type?: string;
 }
@@ -10054,6 +10451,10 @@ export interface PgComponent {
 
 export interface PgPg {
     /**
+     * Bouncer connection details
+     */
+    bouncer: string;
+    /**
      * Primary PostgreSQL database name
      */
     dbname: string;
@@ -10065,6 +10466,10 @@ export interface PgPg {
      * Connection limit
      */
     maxConnections: number;
+    /**
+     * PostgreSQL connection parameters
+     */
+    params: outputs.PgPgParam[];
     /**
      * PostgreSQL admin user password
      */
@@ -10082,9 +10487,48 @@ export interface PgPg {
      */
     sslmode: string;
     /**
+     * PostgreSQL standby connection URIs
+     */
+    standbyUris: string[];
+    /**
+     * PostgreSQL syncing connection URIs
+     */
+    syncingUris: string[];
+    /**
      * PostgreSQL master connection URI
      */
     uri: string;
+    /**
+     * PostgreSQL master connection URIs
+     */
+    uris: string[];
+    /**
+     * PostgreSQL admin user name
+     */
+    user: string;
+}
+
+export interface PgPgParam {
+    /**
+     * Primary PostgreSQL database name
+     */
+    databaseName: string;
+    /**
+     * PostgreSQL host IP or name
+     */
+    host: string;
+    /**
+     * PostgreSQL admin user password
+     */
+    password: string;
+    /**
+     * PostgreSQL port
+     */
+    port: number;
+    /**
+     * PostgreSQL sslmode setting (currently always "require")
+     */
+    sslmode: string;
     /**
      * PostgreSQL admin user name
      */
@@ -10157,7 +10601,7 @@ export interface PgPgUserConfig {
      */
     pgStatMonitorEnable?: boolean;
     /**
-     * PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      */
     pgVersion?: string;
     /**
@@ -10209,7 +10653,7 @@ export interface PgPgUserConfig {
      */
     staticIps?: boolean;
     /**
-     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: string;
     /**
@@ -10217,7 +10661,7 @@ export interface PgPgUserConfig {
      */
     timescaledb?: outputs.PgPgUserConfigTimescaledb;
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: string;
     /**
@@ -10251,7 +10695,7 @@ export interface PgPgUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -10330,7 +10774,7 @@ export interface PgPgUserConfigPg {
      */
     deadlockTimeout?: number;
     /**
-     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
      */
     defaultToastCompression?: string;
     /**
@@ -10346,11 +10790,11 @@ export interface PgPgUserConfigPg {
      */
     logAutovacuumMinDuration?: number;
     /**
-     * Controls the amount of detail written in the server log for each message that is logged.
+     * Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      */
     logErrorVerbosity?: string;
     /**
-     * Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
      */
     logLinePrefix?: string;
     /**
@@ -10434,7 +10878,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmMaxBuckets?: number;
     /**
-     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      */
     pgStatStatementsDotTrack?: string;
     /**
@@ -10450,15 +10894,15 @@ export interface PgPgUserConfigPg {
      */
     trackActivityQuerySize?: number;
     /**
-     * Record commit time of transactions.
+     * Enum: `off`, `on`. Record commit time of transactions.
      */
     trackCommitTimestamp?: string;
     /**
-     * Enables tracking of function call counts and time used.
+     * Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
      */
     trackFunctions?: string;
     /**
-     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      */
     trackIoTiming?: string;
     /**
@@ -10518,7 +10962,7 @@ export interface PgPgUserConfigPgaudit {
      */
     logClient?: boolean;
     /**
-     * Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      */
     logLevel?: string;
     /**
@@ -10573,7 +11017,7 @@ export interface PgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: number;
     /**
-     * PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
      */
     autodbPoolMode?: string;
     /**
@@ -10736,6 +11180,25 @@ export interface RedisComponent {
     usage: string;
 }
 
+export interface RedisRedis {
+    /**
+     * Redis password.
+     */
+    password: string;
+    /**
+     * Redis replica server URI.
+     */
+    replicaUri: string;
+    /**
+     * Redis slave server URIs.
+     */
+    slaveUris: string[];
+    /**
+     * Redis server URIs.
+     */
+    uris: string[];
+}
+
 export interface RedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -10780,7 +11243,7 @@ export interface RedisRedisUserConfig {
      */
     recoveryBasebackupName?: string;
     /**
-     * Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
      */
     redisAclChannelsDefault?: string;
     /**
@@ -10796,7 +11259,7 @@ export interface RedisRedisUserConfig {
      */
     redisLfuLogFactor?: number;
     /**
-     * Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      */
     redisMaxmemoryPolicy?: string;
     /**
@@ -10808,7 +11271,7 @@ export interface RedisRedisUserConfig {
      */
     redisNumberOfDatabases?: number;
     /**
-     * When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
     redisPersistence?: string;
     /**
@@ -10824,7 +11287,7 @@ export interface RedisRedisUserConfig {
      */
     redisTimeout?: number;
     /**
-     * Redis major version.
+     * Enum: `7.0`. Redis major version.
      */
     redisVersion?: string;
     /**
@@ -10866,7 +11329,7 @@ export interface RedisRedisUserConfigMigration {
      */
     ignoreDbs?: string;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: string;
     /**
@@ -10958,7 +11421,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      */
     autoOffsetReset?: string;
     /**
@@ -10966,11 +11429,11 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: outputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn[];
     /**
-     * Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      */
     dataFormat: string;
     /**
-     * Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. The default value is `basic`.
      */
     dateTimeInputFormat?: string;
     /**
@@ -10978,7 +11441,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     groupName: string;
     /**
-     * How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      */
     handleErrorMode?: string;
     /**
@@ -11052,6 +11515,10 @@ export interface ServiceIntegrationDatadogUserConfig {
      * Enable Datadog Database Monitoring.
      */
     datadogDbmEnabled?: boolean;
+    /**
+     * Enable Datadog PgBouncer Metric Tracking.
+     */
+    datadogPgbouncerEnabled?: boolean;
     /**
      * Custom tags provided by user
      */
@@ -11153,7 +11620,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     maxPartitionContexts?: number;
     /**
-     * Datadog intake site. Defaults to datadoghq.com.
+     * Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      */
     site?: string;
 }
@@ -11262,7 +11729,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     bootstrapServers: string;
     /**
-     * SASL mechanism used for connections to the Kafka server.
+     * Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      */
     saslMechanism?: string;
     /**
@@ -11274,7 +11741,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslPlainUsername?: string;
     /**
-     * Security protocol.
+     * Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      */
     securityProtocol: string;
     /**
@@ -11290,7 +11757,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     sslClientKey?: string;
     /**
-     * The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: string;
 }
@@ -11344,7 +11811,7 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
      */
     sslClientKey?: string;
     /**
-     * SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      */
     sslMode?: string;
     /**
@@ -11359,7 +11826,7 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * Authentication method.
+     * Enum: `none`, `basic`. Authentication method.
      */
     authentication: string;
     /**
@@ -11408,7 +11875,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: string;
     /**
-     * Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
      */
     format: string;
     /**
@@ -11557,7 +12024,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerBufferMemory?: number;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: string;
     /**

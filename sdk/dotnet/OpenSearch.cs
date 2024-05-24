@@ -251,6 +251,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "opensearches",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -312,6 +313,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("opensearchUserConfig")]
         public Input<Inputs.OpenSearchOpensearchUserConfigArgs>? OpensearchUserConfig { get; set; }
+
+        [Input("opensearches")]
+        private InputList<Inputs.OpenSearchOpensearchArgs>? _opensearches;
+
+        /// <summary>
+        /// OpenSearch server provided values
+        /// </summary>
+        public InputList<Inputs.OpenSearchOpensearchArgs> Opensearches
+        {
+            get => _opensearches ?? (_opensearches = new InputList<Inputs.OpenSearchOpensearchArgs>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.OpenSearchOpensearchArgs>());
+                _opensearches = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -480,7 +497,11 @@ namespace Pulumi.Aiven
         public InputList<Inputs.OpenSearchOpensearchGetArgs> Opensearches
         {
             get => _opensearches ?? (_opensearches = new InputList<Inputs.OpenSearchOpensearchGetArgs>());
-            set => _opensearches = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.OpenSearchOpensearchGetArgs>());
+                _opensearches = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

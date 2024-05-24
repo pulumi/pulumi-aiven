@@ -81,6 +81,10 @@ export interface GetDragonflyResult {
      */
     readonly diskSpaceUsed: string;
     /**
+     * Dragonfly server provided values
+     */
+    readonly dragonflies: outputs.GetDragonflyDragonfly[];
+    /**
      * Dragonfly user configurable settings
      */
     readonly dragonflyUserConfigs: outputs.GetDragonflyDragonflyUserConfig[];

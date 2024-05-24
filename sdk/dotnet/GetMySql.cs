@@ -156,6 +156,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMySqlMysqlUserConfigResult> MysqlUserConfigs;
         /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetMySqlMysqlResult> Mysqls;
+        /// <summary>
         /// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         /// </summary>
         public readonly string Plan;
@@ -246,6 +250,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetMySqlMysqlUserConfigResult> mysqlUserConfigs,
 
+            ImmutableArray<Outputs.GetMySqlMysqlResult> mysqls,
+
             string plan,
 
             string project,
@@ -290,6 +296,7 @@ namespace Pulumi.Aiven
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
             MysqlUserConfigs = mysqlUserConfigs;
+            Mysqls = mysqls;
             Plan = plan;
             Project = project;
             ProjectVpcId = projectVpcId;

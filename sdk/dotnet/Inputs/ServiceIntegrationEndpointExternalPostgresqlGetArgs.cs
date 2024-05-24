@@ -59,7 +59,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SslClientKey { get; set; }
 
         /// <summary>
-        /// SSL Mode. The default value is `verify-full`.
+        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
         /// </summary>
         [Input("sslMode")]
         public Input<string>? SslMode { get; set; }

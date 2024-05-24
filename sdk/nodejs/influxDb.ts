@@ -84,7 +84,7 @@ export class InfluxDb extends pulumi.CustomResource {
     /**
      * InfluxDB server provided values
      */
-    public /*out*/ readonly influxdbs!: pulumi.Output<outputs.InfluxDbInfluxdb[]>;
+    public readonly influxdbs!: pulumi.Output<outputs.InfluxDbInfluxdb[]>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
@@ -228,6 +228,7 @@ export class InfluxDb extends pulumi.CustomResource {
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["influxdbUserConfig"] = args ? args.influxdbUserConfig : undefined;
+            resourceInputs["influxdbs"] = args?.influxdbs ? pulumi.secret(args.influxdbs) : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
@@ -244,7 +245,6 @@ export class InfluxDb extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
-            resourceInputs["influxdbs"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -254,7 +254,7 @@ export class InfluxDb extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["influxdbs", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(InfluxDb.__pulumiType, name, resourceInputs, opts);
     }
@@ -432,6 +432,10 @@ export interface InfluxDbArgs {
      * Influxdb user configurable settings
      */
     influxdbUserConfig?: pulumi.Input<inputs.InfluxDbInfluxdbUserConfig>;
+    /**
+     * InfluxDB server provided values
+     */
+    influxdbs?: pulumi.Input<pulumi.Input<inputs.InfluxDbInfluxdb>[]>;
     /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */

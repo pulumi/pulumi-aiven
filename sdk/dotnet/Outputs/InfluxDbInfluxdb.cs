@@ -17,11 +17,33 @@ namespace Pulumi.Aiven.Outputs
         /// Name of the default InfluxDB database
         /// </summary>
         public readonly string? DatabaseName;
+        /// <summary>
+        /// InfluxDB password
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
+        /// InfluxDB server URIs.
+        /// </summary>
+        public readonly ImmutableArray<string> Uris;
+        /// <summary>
+        /// InfluxDB username
+        /// </summary>
+        public readonly string? Username;
 
         [OutputConstructor]
-        private InfluxDbInfluxdb(string? databaseName)
+        private InfluxDbInfluxdb(
+            string? databaseName,
+
+            string? password,
+
+            ImmutableArray<string> uris,
+
+            string? username)
         {
             DatabaseName = databaseName;
+            Password = password;
+            Uris = uris;
+            Username = username;
         }
     }
 }

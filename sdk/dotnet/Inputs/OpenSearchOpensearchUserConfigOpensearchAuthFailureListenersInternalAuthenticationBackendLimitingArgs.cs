@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? AllowedTries { get; set; }
 
         /// <summary>
-        /// internal*authentication*backend*limiting.authentication*backend.
+        /// Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
         /// </summary>
         [Input("authenticationBackend")]
         public Input<string>? AuthenticationBackend { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? TimeWindowSeconds { get; set; }
 
         /// <summary>
-        /// internal*authentication*backend_limiting.type.
+        /// Enum: `username`. internal*authentication*backend_limiting.type.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -214,6 +214,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "pg",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -270,11 +271,21 @@ namespace Pulumi.Aiven
         [Input("maintenanceWindowTime")]
         public Input<string>? MaintenanceWindowTime { get; set; }
 
+        [Input("pg")]
+        private Input<Inputs.PgPgArgs>? _pg;
+
         /// <summary>
         /// PostgreSQL specific server provided values
         /// </summary>
-        [Input("pg")]
-        public Input<Inputs.PgPgArgs>? PgServer { get; set; }
+        public Input<Inputs.PgPgArgs>? PgServer
+        {
+            get => _pg;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _pg = Output.Tuple<Input<Inputs.PgPgArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Pg user configurable settings
@@ -434,11 +445,21 @@ namespace Pulumi.Aiven
         [Input("maintenanceWindowTime")]
         public Input<string>? MaintenanceWindowTime { get; set; }
 
+        [Input("pg")]
+        private Input<Inputs.PgPgGetArgs>? _pg;
+
         /// <summary>
         /// PostgreSQL specific server provided values
         /// </summary>
-        [Input("pg")]
-        public Input<Inputs.PgPgGetArgs>? PgServer { get; set; }
+        public Input<Inputs.PgPgGetArgs>? PgServer
+        {
+            get => _pg;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _pg = Output.Tuple<Input<Inputs.PgPgGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Pg user configurable settings

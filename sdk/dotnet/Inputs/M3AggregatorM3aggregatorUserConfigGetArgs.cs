@@ -56,13 +56,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// M3 major version (deprecated, use m3aggregator_version).
+        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
         /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
 
         /// <summary>
-        /// M3 major version (the minimum compatible version).
+        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         /// </summary>
         [Input("m3aggregatorVersion")]
         public Input<string>? M3aggregatorVersion { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? IgnoreDbs;
         /// <summary>
-        /// The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        /// Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         /// </summary>
         public readonly string? Method;
         /// <summary>

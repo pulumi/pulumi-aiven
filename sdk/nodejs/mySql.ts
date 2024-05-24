@@ -112,6 +112,10 @@ export class MySql extends pulumi.CustomResource {
      */
     public readonly maintenanceWindowTime!: pulumi.Output<string | undefined>;
     /**
+     * MySQL specific server provided values
+     */
+    public readonly mysql!: pulumi.Output<outputs.MySqlMysql>;
+    /**
      * Mysql user configurable settings
      */
     public readonly mysqlUserConfig!: pulumi.Output<outputs.MySqlMysqlUserConfig | undefined>;
@@ -203,6 +207,7 @@ export class MySql extends pulumi.CustomResource {
             resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
+            resourceInputs["mysql"] = state ? state.mysql : undefined;
             resourceInputs["mysqlUserConfig"] = state ? state.mysqlUserConfig : undefined;
             resourceInputs["plan"] = state ? state.plan : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -236,6 +241,7 @@ export class MySql extends pulumi.CustomResource {
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
+            resourceInputs["mysql"] = args?.mysql ? pulumi.secret(args.mysql) : undefined;
             resourceInputs["mysqlUserConfig"] = args ? args.mysqlUserConfig : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -260,7 +266,7 @@ export class MySql extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["mysql", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(MySql.__pulumiType, name, resourceInputs, opts);
     }
@@ -312,6 +318,10 @@ export interface MySqlState {
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     maintenanceWindowTime?: pulumi.Input<string>;
+    /**
+     * MySQL specific server provided values
+     */
+    mysql?: pulumi.Input<inputs.MySqlMysql>;
     /**
      * Mysql user configurable settings
      */
@@ -408,6 +418,10 @@ export interface MySqlArgs {
      * Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
      */
     maintenanceWindowTime?: pulumi.Input<string>;
+    /**
+     * MySQL specific server provided values
+     */
+    mysql?: pulumi.Input<inputs.MySqlMysql>;
     /**
      * Mysql user configurable settings
      */

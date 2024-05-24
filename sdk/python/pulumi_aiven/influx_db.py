@@ -23,6 +23,7 @@ class InfluxDbArgs:
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  influxdb_user_config: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']] = None,
+                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,7 @@ class InfluxDbArgs:
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
         :param pulumi.Input['InfluxDbInfluxdbUserConfigArgs'] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the
@@ -84,6 +86,8 @@ class InfluxDbArgs:
             pulumi.set(__self__, "disk_space", disk_space)
         if influxdb_user_config is not None:
             pulumi.set(__self__, "influxdb_user_config", influxdb_user_config)
+        if influxdbs is not None:
+            pulumi.set(__self__, "influxdbs", influxdbs)
         if maintenance_window_dow is not None:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
@@ -201,6 +205,18 @@ class InfluxDbArgs:
     @influxdb_user_config.setter
     def influxdb_user_config(self, value: Optional[pulumi.Input['InfluxDbInfluxdbUserConfigArgs']]):
         pulumi.set(self, "influxdb_user_config", value)
+
+    @property
+    @pulumi.getter
+    def influxdbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]]]:
+        """
+        InfluxDB server provided values
+        """
+        return pulumi.get(self, "influxdbs")
+
+    @influxdbs.setter
+    def influxdbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfluxDbInfluxdbArgs']]]]):
+        pulumi.set(self, "influxdbs", value)
 
     @property
     @pulumi.getter(name="maintenanceWindowDow")
@@ -823,6 +839,7 @@ class InfluxDb(pulumi.CustomResource):
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']]] = None,
+                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -850,6 +867,7 @@ class InfluxDb(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing
                will result in the service rebalancing.
         :param pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']] influxdb_user_config: Influxdb user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]] influxdbs: InfluxDB server provided values
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there
@@ -903,6 +921,7 @@ class InfluxDb(pulumi.CustomResource):
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  influxdb_user_config: Optional[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbUserConfigArgs']]] = None,
+                 influxdbs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InfluxDbInfluxdbArgs']]]]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
@@ -927,6 +946,7 @@ class InfluxDb(pulumi.CustomResource):
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["influxdb_user_config"] = influxdb_user_config
+            __props__.__dict__["influxdbs"] = None if influxdbs is None else pulumi.Output.secret(influxdbs)
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
             if plan is None and not opts.urn:
@@ -949,7 +969,6 @@ class InfluxDb(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
-            __props__.__dict__["influxdbs"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -957,7 +976,7 @@ class InfluxDb(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["influxdbs", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InfluxDb, __self__).__init__(
             'aiven:index/influxDb:InfluxDb',

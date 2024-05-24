@@ -144,6 +144,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigResult> GrafanaUserConfigs;
         /// <summary>
+        /// Grafana server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGrafanaGrafanaResult> Grafanas;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -240,6 +244,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetGrafanaGrafanaUserConfigResult> grafanaUserConfigs,
 
+            ImmutableArray<Outputs.GetGrafanaGrafanaResult> grafanas,
+
             string id,
 
             string maintenanceWindowDow,
@@ -287,6 +293,7 @@ namespace Pulumi.Aiven
             DiskSpaceStep = diskSpaceStep;
             DiskSpaceUsed = diskSpaceUsed;
             GrafanaUserConfigs = grafanaUserConfigs;
+            Grafanas = grafanas;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;

@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }

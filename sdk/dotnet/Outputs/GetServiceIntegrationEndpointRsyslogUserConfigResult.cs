@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Cert;
         /// <summary>
-        /// Message format. The default value is `rfc5424`.
+        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
         /// </summary>
         public readonly string Format;
         /// <summary>

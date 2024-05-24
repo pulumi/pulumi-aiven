@@ -111,9 +111,12 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 					Markdown: []byte(" "),
 				},
 			},
-			"aiven_billing_group":       {Tok: makeResource(mainMod, "BillingGroup")},
-			"aiven_connection_pool":     {Tok: makeResource(mainMod, "ConnectionPool")},
-			"aiven_clickhouse":          {Tok: makeResource(mainMod, "Clickhouse")},
+			"aiven_billing_group":   {Tok: makeResource(mainMod, "BillingGroup")},
+			"aiven_connection_pool": {Tok: makeResource(mainMod, "ConnectionPool")},
+			"aiven_clickhouse": {
+				Tok:    makeResource(mainMod, "Clickhouse"),
+				Fields: map[string]*tfbridge.SchemaInfo{"clickhouse": {CSharpName: "ClickhouseServer"}},
+			},
 			"aiven_clickhouse_database": {Tok: makeResource(mainMod, "ClickhouseDatabase")},
 			"aiven_clickhouse_grant":    {Tok: makeResource(mainMod, "ClickhouseGrant")},
 			"aiven_clickhouse_role":     {Tok: makeResource(mainMod, "ClickhouseRole")},
@@ -122,6 +125,7 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "Grafana"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"service_name": tfbridge.AutoName("serviceName", 255, "-"),
+					"grafana":      {CSharpName: "GrafanaServer"},
 				},
 			},
 			"aiven_influxdb": {
@@ -186,7 +190,16 @@ func Provider(ctx context.Context) tfbridge.ProviderInfo {
 			"aiven_aws_vpc_peering_connection":   {Tok: makeResource(mainMod, "AwsVpcPeeringConnection")},
 			"aiven_azure_vpc_peering_connection": {Tok: makeResource(mainMod, "AzureVpcPeeringConnection")},
 			"aiven_gcp_vpc_peering_connection":   {Tok: makeResource(mainMod, "GcpVpcPeeringConnection")},
-			"aiven_cassandra_user":               {Tok: makeResource(mainMod, "CassandraUser")},
+			"aiven_cassandra": {
+				Fields: map[string]*tfbridge.SchemaInfo{"cassandra": {CSharpName: "CassandraServer"}},
+			},
+			"aiven_cassandra_user": {Tok: makeResource(mainMod, "CassandraUser")},
+			"aiven_dragonfly": {
+				Fields: map[string]*tfbridge.SchemaInfo{"dragonfly": {CSharpName: "DragonflyServer"}},
+			},
+			"aiven_redis": {
+				Fields: map[string]*tfbridge.SchemaInfo{"redis": {CSharpName: "RedisServer"}},
+			},
 			"aiven_influxdb_database": {
 				Tok:  makeResource(mainMod, "InfluxdbDatabase"),
 				Docs: &tfbridge.DocInfo{AllowMissing: true},

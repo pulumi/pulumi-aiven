@@ -228,6 +228,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "influxdbs",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -284,6 +285,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("influxdbUserConfig")]
         public Input<Inputs.InfluxDbInfluxdbUserConfigArgs>? InfluxdbUserConfig { get; set; }
+
+        [Input("influxdbs")]
+        private InputList<Inputs.InfluxDbInfluxdbArgs>? _influxdbs;
+
+        /// <summary>
+        /// InfluxDB server provided values
+        /// </summary>
+        public InputList<Inputs.InfluxDbInfluxdbArgs> Influxdbs
+        {
+            get => _influxdbs ?? (_influxdbs = new InputList<Inputs.InfluxDbInfluxdbArgs>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.InfluxDbInfluxdbArgs>());
+                _influxdbs = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -475,7 +492,11 @@ namespace Pulumi.Aiven
         public InputList<Inputs.InfluxDbInfluxdbGetArgs> Influxdbs
         {
             get => _influxdbs ?? (_influxdbs = new InputList<Inputs.InfluxDbInfluxdbGetArgs>());
-            set => _influxdbs = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.InfluxDbInfluxdbGetArgs>());
+                _influxdbs = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

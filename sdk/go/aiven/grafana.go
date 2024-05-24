@@ -77,6 +77,8 @@ type Grafana struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
+	// Grafana server provided values
+	Grafana GrafanaGrafanaOutput `pulumi:"grafana"`
 	// Grafana user configurable settings
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrOutput `pulumi:"grafanaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -130,7 +132,11 @@ func NewGrafana(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Grafana != nil {
+		args.Grafana = pulumi.ToSecret(args.Grafana).(GrafanaGrafanaPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"grafana",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -176,6 +182,8 @@ type grafanaState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
+	// Grafana server provided values
+	Grafana *GrafanaGrafana `pulumi:"grafana"`
 	// Grafana user configurable settings
 	GrafanaUserConfig *GrafanaGrafanaUserConfig `pulumi:"grafanaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -235,6 +243,8 @@ type GrafanaState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
+	// Grafana server provided values
+	Grafana GrafanaGrafanaPtrInput
 	// Grafana user configurable settings
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -288,6 +298,8 @@ type grafanaArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
+	// Grafana server provided values
+	Grafana *GrafanaGrafana `pulumi:"grafana"`
 	// Grafana user configurable settings
 	GrafanaUserConfig *GrafanaGrafanaUserConfig `pulumi:"grafanaUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -324,6 +336,8 @@ type GrafanaArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
+	// Grafana server provided values
+	Grafana GrafanaGrafanaPtrInput
 	// Grafana user configurable settings
 	GrafanaUserConfig GrafanaGrafanaUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -477,6 +491,11 @@ func (o GrafanaOutput) DiskSpaceStep() pulumi.StringOutput {
 // Disk space that service is currently using
 func (o GrafanaOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Grafana) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// Grafana server provided values
+func (o GrafanaOutput) Grafana() GrafanaGrafanaOutput {
+	return o.ApplyT(func(v *Grafana) GrafanaGrafanaOutput { return v.Grafana }).(GrafanaGrafanaOutput)
 }
 
 // Grafana user configurable settings

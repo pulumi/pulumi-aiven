@@ -22,7 +22,7 @@ class GetRedisResult:
     """
     A collection of values returned by getRedis.
     """
-    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, redis_user_configs=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, redis=None, redis_user_configs=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
@@ -65,6 +65,9 @@ class GetRedisResult:
         if project_vpc_id and not isinstance(project_vpc_id, str):
             raise TypeError("Expected argument 'project_vpc_id' to be a str")
         pulumi.set(__self__, "project_vpc_id", project_vpc_id)
+        if redis and not isinstance(redis, list):
+            raise TypeError("Expected argument 'redis' to be a list")
+        pulumi.set(__self__, "redis", redis)
         if redis_user_configs and not isinstance(redis_user_configs, list):
             raise TypeError("Expected argument 'redis_user_configs' to be a list")
         pulumi.set(__self__, "redis_user_configs", redis_user_configs)
@@ -221,6 +224,14 @@ class GetRedisResult:
         return pulumi.get(self, "project_vpc_id")
 
     @property
+    @pulumi.getter
+    def redis(self) -> Sequence['outputs.GetRedisRediResult']:
+        """
+        Redis server provided values
+        """
+        return pulumi.get(self, "redis")
+
+    @property
     @pulumi.getter(name="redisUserConfigs")
     def redis_user_configs(self) -> Sequence['outputs.GetRedisRedisUserConfigResult']:
         """
@@ -353,6 +364,7 @@ class AwaitableGetRedisResult(GetRedisResult):
             plan=self.plan,
             project=self.project,
             project_vpc_id=self.project_vpc_id,
+            redis=self.redis,
             redis_user_configs=self.redis_user_configs,
             service_host=self.service_host,
             service_integrations=self.service_integrations,
@@ -410,6 +422,7 @@ def get_redis(project: Optional[str] = None,
         plan=pulumi.get(__ret__, 'plan'),
         project=pulumi.get(__ret__, 'project'),
         project_vpc_id=pulumi.get(__ret__, 'project_vpc_id'),
+        redis=pulumi.get(__ret__, 'redis'),
         redis_user_configs=pulumi.get(__ret__, 'redis_user_configs'),
         service_host=pulumi.get(__ret__, 'service_host'),
         service_integrations=pulumi.get(__ret__, 'service_integrations'),

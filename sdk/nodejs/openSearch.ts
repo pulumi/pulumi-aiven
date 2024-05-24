@@ -119,7 +119,7 @@ export class OpenSearch extends pulumi.CustomResource {
     /**
      * OpenSearch server provided values
      */
-    public /*out*/ readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
+    public readonly opensearches!: pulumi.Output<outputs.OpenSearchOpensearch[]>;
     /**
      * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */
@@ -243,6 +243,7 @@ export class OpenSearch extends pulumi.CustomResource {
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
             resourceInputs["opensearchUserConfig"] = args ? args.opensearchUserConfig : undefined;
+            resourceInputs["opensearches"] = args?.opensearches ? pulumi.secret(args.opensearches) : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["projectVpcId"] = args ? args.projectVpcId : undefined;
@@ -257,7 +258,6 @@ export class OpenSearch extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
-            resourceInputs["opensearches"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -267,7 +267,7 @@ export class OpenSearch extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["opensearches", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(OpenSearch.__pulumiType, name, resourceInputs, opts);
     }
@@ -423,6 +423,10 @@ export interface OpenSearchArgs {
      * Opensearch user configurable settings
      */
     opensearchUserConfig?: pulumi.Input<inputs.OpenSearchOpensearchUserConfig>;
+    /**
+     * OpenSearch server provided values
+     */
+    opensearches?: pulumi.Input<pulumi.Input<inputs.OpenSearchOpensearch>[]>;
     /**
      * Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
      */

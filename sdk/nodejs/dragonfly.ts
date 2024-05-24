@@ -95,6 +95,10 @@ export class Dragonfly extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
+     * Dragonfly server provided values
+     */
+    public readonly dragonfly!: pulumi.Output<outputs.DragonflyDragonfly>;
+    /**
      * Dragonfly user configurable settings
      */
     public readonly dragonflyUserConfig!: pulumi.Output<outputs.DragonflyDragonflyUserConfig | undefined>;
@@ -192,6 +196,7 @@ export class Dragonfly extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
             resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
             resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
+            resourceInputs["dragonfly"] = state ? state.dragonfly : undefined;
             resourceInputs["dragonflyUserConfig"] = state ? state.dragonflyUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
@@ -225,6 +230,7 @@ export class Dragonfly extends pulumi.CustomResource {
             resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
+            resourceInputs["dragonfly"] = args?.dragonfly ? pulumi.secret(args.dragonfly) : undefined;
             resourceInputs["dragonflyUserConfig"] = args ? args.dragonflyUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -251,7 +257,7 @@ export class Dragonfly extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["dragonfly", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Dragonfly.__pulumiType, name, resourceInputs, opts);
     }
@@ -295,6 +301,10 @@ export interface DragonflyState {
      * Disk space that service is currently using
      */
     diskSpaceUsed?: pulumi.Input<string>;
+    /**
+     * Dragonfly server provided values
+     */
+    dragonfly?: pulumi.Input<inputs.DragonflyDragonfly>;
     /**
      * Dragonfly user configurable settings
      */
@@ -391,6 +401,10 @@ export interface DragonflyArgs {
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
+    /**
+     * Dragonfly server provided values
+     */
+    dragonfly?: pulumi.Input<inputs.DragonflyDragonfly>;
     /**
      * Dragonfly user configurable settings
      */

@@ -79,6 +79,8 @@ type LookupM3DbResult struct {
 	Id string `pulumi:"id"`
 	// M3db user configurable settings
 	M3dbUserConfigs []GetM3DbM3dbUserConfig `pulumi:"m3dbUserConfigs"`
+	// M3DB server provided values
+	M3dbs []GetM3DbM3db `pulumi:"m3dbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -205,6 +207,11 @@ func (o LookupM3DbResultOutput) Id() pulumi.StringOutput {
 // M3db user configurable settings
 func (o LookupM3DbResultOutput) M3dbUserConfigs() GetM3DbM3dbUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbM3dbUserConfig { return v.M3dbUserConfigs }).(GetM3DbM3dbUserConfigArrayOutput)
+}
+
+// M3DB server provided values
+func (o LookupM3DbResultOutput) M3dbs() GetM3DbM3dbArrayOutput {
+	return o.ApplyT(func(v LookupM3DbResult) []GetM3DbM3db { return v.M3dbs }).(GetM3DbM3dbArrayOutput)
 }
 
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.

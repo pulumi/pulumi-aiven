@@ -24,6 +24,7 @@ class MySqlArgs:
                  disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 mysql: Optional[pulumi.Input['MySqlMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['MySqlMysqlUserConfigArgs']] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]]] = None,
@@ -41,6 +42,7 @@ class MySqlArgs:
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input['MySqlMysqlArgs'] mysql: MySQL specific server provided values
         :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['MySqlServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
@@ -65,6 +67,8 @@ class MySqlArgs:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+        if mysql is not None:
+            pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
         if project_vpc_id is not None:
@@ -180,6 +184,18 @@ class MySqlArgs:
         pulumi.set(self, "maintenance_window_time", value)
 
     @property
+    @pulumi.getter
+    def mysql(self) -> Optional[pulumi.Input['MySqlMysqlArgs']]:
+        """
+        MySQL specific server provided values
+        """
+        return pulumi.get(self, "mysql")
+
+    @mysql.setter
+    def mysql(self, value: Optional[pulumi.Input['MySqlMysqlArgs']]):
+        pulumi.set(self, "mysql", value)
+
+    @property
     @pulumi.getter(name="mysqlUserConfig")
     def mysql_user_config(self) -> Optional[pulumi.Input['MySqlMysqlUserConfigArgs']]:
         """
@@ -277,6 +293,7 @@ class _MySqlState:
                  disk_space_used: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 mysql: Optional[pulumi.Input['MySqlMysqlArgs']] = None,
                  mysql_user_config: Optional[pulumi.Input['MySqlMysqlUserConfigArgs']] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -306,6 +323,7 @@ class _MySqlState:
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input['MySqlMysqlArgs'] mysql: MySQL specific server provided values
         :param pulumi.Input['MySqlMysqlUserConfigArgs'] mysql_user_config: Mysql user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -347,6 +365,8 @@ class _MySqlState:
             pulumi.set(__self__, "maintenance_window_dow", maintenance_window_dow)
         if maintenance_window_time is not None:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
+        if mysql is not None:
+            pulumi.set(__self__, "mysql", mysql)
         if mysql_user_config is not None:
             pulumi.set(__self__, "mysql_user_config", mysql_user_config)
         if plan is not None:
@@ -504,6 +524,18 @@ class _MySqlState:
     @maintenance_window_time.setter
     def maintenance_window_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "maintenance_window_time", value)
+
+    @property
+    @pulumi.getter
+    def mysql(self) -> Optional[pulumi.Input['MySqlMysqlArgs']]:
+        """
+        MySQL specific server provided values
+        """
+        return pulumi.get(self, "mysql")
+
+    @mysql.setter
+    def mysql(self, value: Optional[pulumi.Input['MySqlMysqlArgs']]):
+        pulumi.set(self, "mysql", value)
 
     @property
     @pulumi.getter(name="mysqlUserConfig")
@@ -720,6 +752,7 @@ class MySql(pulumi.CustomResource):
                  disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -772,6 +805,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[pulumi.InputType['MySqlMysqlArgs']] mysql: MySQL specific server provided values
         :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -843,6 +877,7 @@ class MySql(pulumi.CustomResource):
                  disk_space: Optional[pulumi.Input[str]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
+                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
                  mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -867,6 +902,7 @@ class MySql(pulumi.CustomResource):
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
+            __props__.__dict__["mysql"] = None if mysql is None else pulumi.Output.secret(mysql)
             __props__.__dict__["mysql_user_config"] = mysql_user_config
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
@@ -895,7 +931,7 @@ class MySql(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["mysql", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(MySql, __self__).__init__(
             'aiven:index/mySql:MySql',
@@ -917,6 +953,7 @@ class MySql(pulumi.CustomResource):
             disk_space_used: Optional[pulumi.Input[str]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
+            mysql: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlArgs']]] = None,
             mysql_user_config: Optional[pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']]] = None,
             plan: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -951,6 +988,7 @@ class MySql(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
+        :param pulumi.Input[pulumi.InputType['MySqlMysqlArgs']] mysql: MySQL specific server provided values
         :param pulumi.Input[pulumi.InputType['MySqlMysqlUserConfigArgs']] mysql_user_config: Mysql user configurable settings
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
@@ -983,6 +1021,7 @@ class MySql(pulumi.CustomResource):
         __props__.__dict__["disk_space_used"] = disk_space_used
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
+        __props__.__dict__["mysql"] = mysql
         __props__.__dict__["mysql_user_config"] = mysql_user_config
         __props__.__dict__["plan"] = plan
         __props__.__dict__["project"] = project
@@ -1084,6 +1123,14 @@ class MySql(pulumi.CustomResource):
         Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         """
         return pulumi.get(self, "maintenance_window_time")
+
+    @property
+    @pulumi.getter
+    def mysql(self) -> pulumi.Output['outputs.MySqlMysql']:
+        """
+        MySQL specific server provided values
+        """
+        return pulumi.get(self, "mysql")
 
     @property
     @pulumi.getter(name="mysqlUserConfig")

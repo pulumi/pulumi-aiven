@@ -97,6 +97,12 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
+        /// M3 Aggregator server provided values
+        /// </summary>
+        [Output("m3aggregator")]
+        public Output<Outputs.M3AggregatorM3aggregator> M3aggregator { get; private set; } = null!;
+
+        /// <summary>
         /// M3aggregator user configurable settings
         /// </summary>
         [Output("m3aggregatorUserConfig")]
@@ -235,6 +241,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "m3aggregator",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -278,6 +285,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
+
+        [Input("m3aggregator")]
+        private Input<Inputs.M3AggregatorM3aggregatorArgs>? _m3aggregator;
+
+        /// <summary>
+        /// M3 Aggregator server provided values
+        /// </summary>
+        public Input<Inputs.M3AggregatorM3aggregatorArgs>? M3aggregator
+        {
+            get => _m3aggregator;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _m3aggregator = Output.Tuple<Input<Inputs.M3AggregatorM3aggregatorArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// M3aggregator user configurable settings
@@ -436,6 +459,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
+
+        [Input("m3aggregator")]
+        private Input<Inputs.M3AggregatorM3aggregatorGetArgs>? _m3aggregator;
+
+        /// <summary>
+        /// M3 Aggregator server provided values
+        /// </summary>
+        public Input<Inputs.M3AggregatorM3aggregatorGetArgs>? M3aggregator
+        {
+            get => _m3aggregator;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _m3aggregator = Output.Tuple<Input<Inputs.M3AggregatorM3aggregatorGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// M3aggregator user configurable settings

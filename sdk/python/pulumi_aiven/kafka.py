@@ -24,6 +24,7 @@ class KafkaArgs:
                  default_acl: Optional[pulumi.Input[bool]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  kafka_user_config: Optional[pulumi.Input['KafkaKafkaUserConfigArgs']] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class KafkaArgs:
         :param pulumi.Input[bool] default_acl: Create a default wildcard Kafka ACL.
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input['KafkaKafkaUserConfigArgs'] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]] kafkas: Kafka server connection details.
         :param pulumi.Input[bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -69,6 +71,8 @@ class KafkaArgs:
             pulumi.set(__self__, "disk_space", disk_space)
         if kafka_user_config is not None:
             pulumi.set(__self__, "kafka_user_config", kafka_user_config)
+        if kafkas is not None:
+            pulumi.set(__self__, "kafkas", kafkas)
         if karapace is not None:
             warnings.warn("""Usage of this field is discouraged.""", DeprecationWarning)
             pulumi.log.warn("""karapace is deprecated: Usage of this field is discouraged.""")
@@ -189,6 +193,18 @@ class KafkaArgs:
     @kafka_user_config.setter
     def kafka_user_config(self, value: Optional[pulumi.Input['KafkaKafkaUserConfigArgs']]):
         pulumi.set(self, "kafka_user_config", value)
+
+    @property
+    @pulumi.getter
+    def kafkas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]]:
+        """
+        Kafka server connection details.
+        """
+        return pulumi.get(self, "kafkas")
+
+    @kafkas.setter
+    def kafkas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KafkaKafkaArgs']]]]):
+        pulumi.set(self, "kafkas", value)
 
     @property
     @pulumi.getter
@@ -812,6 +828,7 @@ class Kafka(pulumi.CustomResource):
                  default_acl: Optional[pulumi.Input[bool]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  kafka_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']]] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]]] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -870,6 +887,7 @@ class Kafka(pulumi.CustomResource):
         :param pulumi.Input[bool] default_acl: Create a default wildcard Kafka ACL.
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']] kafka_user_config: Kafka user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]] kafkas: Kafka server connection details.
         :param pulumi.Input[bool] karapace: Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -947,6 +965,7 @@ class Kafka(pulumi.CustomResource):
                  default_acl: Optional[pulumi.Input[bool]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
                  kafka_user_config: Optional[pulumi.Input[pulumi.InputType['KafkaKafkaUserConfigArgs']]] = None,
+                 kafkas: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KafkaKafkaArgs']]]]] = None,
                  karapace: Optional[pulumi.Input[bool]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -973,6 +992,7 @@ class Kafka(pulumi.CustomResource):
             __props__.__dict__["default_acl"] = default_acl
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["kafka_user_config"] = kafka_user_config
+            __props__.__dict__["kafkas"] = None if kafkas is None else pulumi.Output.secret(kafkas)
             __props__.__dict__["karapace"] = karapace
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -996,7 +1016,6 @@ class Kafka(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
-            __props__.__dict__["kafkas"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None

@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AutodbMaxDbConnections;
         /// <summary>
-        /// PGBouncer pool mode. The default value is `transaction`.
+        /// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
         /// </summary>
         public readonly string? AutodbPoolMode;
         /// <summary>

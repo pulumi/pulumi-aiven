@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AutoCreateTopicsEnable { get; set; }
 
         /// <summary>
-        /// Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
         /// </summary>
         [Input("compressionType")]
         public Input<string>? CompressionType { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogCleanerMinCompactionLagMs { get; set; }
 
         /// <summary>
-        /// The default cleanup policy for segments beyond the retention window.
+        /// Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
         /// </summary>
         [Input("logCleanupPolicy")]
         public Input<string>? LogCleanupPolicy { get; set; }
@@ -133,7 +133,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? LogMessageTimestampDifferenceMaxMs { get; set; }
 
         /// <summary>
-        /// Define whether the timestamp in the message is message create time or log append time.
+        /// Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
         /// </summary>
         [Input("logMessageTimestampType")]
         public Input<string>? LogMessageTimestampType { get; set; }

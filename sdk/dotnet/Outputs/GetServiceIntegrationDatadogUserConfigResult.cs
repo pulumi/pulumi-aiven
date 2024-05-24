@@ -18,6 +18,10 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? DatadogDbmEnabled;
         /// <summary>
+        /// Enable Datadog PgBouncer Metric Tracking.
+        /// </summary>
+        public readonly bool? DatadogPgbouncerEnabled;
+        /// <summary>
         /// Custom tags provided by user
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> DatadogTags;
@@ -58,6 +62,8 @@ namespace Pulumi.Aiven.Outputs
         private GetServiceIntegrationDatadogUserConfigResult(
             bool? datadogDbmEnabled,
 
+            bool? datadogPgbouncerEnabled,
+
             ImmutableArray<Outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult> datadogTags,
 
             ImmutableArray<string> excludeConsumerGroups,
@@ -77,6 +83,7 @@ namespace Pulumi.Aiven.Outputs
             Outputs.GetServiceIntegrationDatadogUserConfigRedisResult? redis)
         {
             DatadogDbmEnabled = datadogDbmEnabled;
+            DatadogPgbouncerEnabled = datadogPgbouncerEnabled;
             DatadogTags = datadogTags;
             ExcludeConsumerGroups = excludeConsumerGroups;
             ExcludeTopics = excludeTopics;

@@ -80,6 +80,8 @@ type M3Db struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
+	// M3DB server provided values
+	M3db M3DbM3dbOutput `pulumi:"m3db"`
 	// M3db user configurable settings
 	M3dbUserConfig M3DbM3dbUserConfigPtrOutput `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -136,7 +138,11 @@ func NewM3Db(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.M3db != nil {
+		args.M3db = pulumi.ToSecret(args.M3db).(M3DbM3dbPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"m3db",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -182,6 +188,8 @@ type m3dbState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
+	// M3DB server provided values
+	M3db *M3DbM3db `pulumi:"m3db"`
 	// M3db user configurable settings
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -241,6 +249,8 @@ type M3DbState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
+	// M3DB server provided values
+	M3db M3DbM3dbPtrInput
 	// M3db user configurable settings
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -294,6 +304,8 @@ type m3dbArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
+	// M3DB server provided values
+	M3db *M3DbM3db `pulumi:"m3db"`
 	// M3db user configurable settings
 	M3dbUserConfig *M3DbM3dbUserConfig `pulumi:"m3dbUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -330,6 +342,8 @@ type M3DbArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
+	// M3DB server provided values
+	M3db M3DbM3dbPtrInput
 	// M3db user configurable settings
 	M3dbUserConfig M3DbM3dbUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -483,6 +497,11 @@ func (o M3DbOutput) DiskSpaceStep() pulumi.StringOutput {
 // Disk space that service is currently using
 func (o M3DbOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *M3Db) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// M3DB server provided values
+func (o M3DbOutput) M3db() M3DbM3dbOutput {
+	return o.ApplyT(func(v *M3Db) M3DbM3dbOutput { return v.M3db }).(M3DbM3dbOutput)
 }
 
 // M3db user configurable settings

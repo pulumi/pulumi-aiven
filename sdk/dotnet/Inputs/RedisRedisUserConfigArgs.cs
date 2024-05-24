@@ -92,7 +92,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? RecoveryBasebackupName { get; set; }
 
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        /// Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         /// </summary>
         [Input("redisAclChannelsDefault")]
         public Input<string>? RedisAclChannelsDefault { get; set; }
@@ -116,7 +116,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RedisLfuLogFactor { get; set; }
 
         /// <summary>
-        /// Redis maxmemory-policy. The default value is `noeviction`.
+        /// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
         /// </summary>
         [Input("redisMaxmemoryPolicy")]
         public Input<string>? RedisMaxmemoryPolicy { get; set; }
@@ -134,7 +134,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RedisNumberOfDatabases { get; set; }
 
         /// <summary>
-        /// When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         /// </summary>
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RedisTimeout { get; set; }
 
         /// <summary>
-        /// Redis major version.
+        /// Enum: `7.0`. Redis major version.
         /// </summary>
         [Input("redisVersion")]
         public Input<string>? RedisVersion { get; set; }

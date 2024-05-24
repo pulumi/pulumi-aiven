@@ -20,6 +20,7 @@ class ClickhouseArgs:
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 clickhouse: Optional[pulumi.Input['ClickhouseClickhouseArgs']] = None,
                  clickhouse_user_config: Optional[pulumi.Input['ClickhouseClickhouseUserConfigArgs']] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class ClickhouseArgs:
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input['ClickhouseClickhouseArgs'] clickhouse: Clickhouse server provided values
         :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -54,6 +56,8 @@ class ClickhouseArgs:
         pulumi.set(__self__, "service_name", service_name)
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
         if clickhouse_user_config is not None:
             pulumi.set(__self__, "clickhouse_user_config", clickhouse_user_config)
         if cloud_name is not None:
@@ -127,6 +131,18 @@ class ClickhouseArgs:
     @additional_disk_space.setter
     def additional_disk_space(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "additional_disk_space", value)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[pulumi.Input['ClickhouseClickhouseArgs']]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @clickhouse.setter
+    def clickhouse(self, value: Optional[pulumi.Input['ClickhouseClickhouseArgs']]):
+        pulumi.set(self, "clickhouse", value)
 
     @property
     @pulumi.getter(name="clickhouseUserConfig")
@@ -268,6 +284,7 @@ class ClickhouseArgs:
 class _ClickhouseState:
     def __init__(__self__, *,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 clickhouse: Optional[pulumi.Input['ClickhouseClickhouseArgs']] = None,
                  clickhouse_user_config: Optional[pulumi.Input['ClickhouseClickhouseUserConfigArgs']] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['ClickhouseComponentArgs']]]] = None,
@@ -297,6 +314,7 @@ class _ClickhouseState:
         """
         Input properties used for looking up and filtering Clickhouse resources.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input['ClickhouseClickhouseArgs'] clickhouse: Clickhouse server provided values
         :param pulumi.Input['ClickhouseClickhouseUserConfigArgs'] clickhouse_user_config: Clickhouse user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['ClickhouseComponentArgs']]] components: Service component information objects
@@ -326,6 +344,8 @@ class _ClickhouseState:
         """
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+        if clickhouse is not None:
+            pulumi.set(__self__, "clickhouse", clickhouse)
         if clickhouse_user_config is not None:
             pulumi.set(__self__, "clickhouse_user_config", clickhouse_user_config)
         if cloud_name is not None:
@@ -393,6 +413,18 @@ class _ClickhouseState:
     @additional_disk_space.setter
     def additional_disk_space(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "additional_disk_space", value)
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> Optional[pulumi.Input['ClickhouseClickhouseArgs']]:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
+
+    @clickhouse.setter
+    def clickhouse(self, value: Optional[pulumi.Input['ClickhouseClickhouseArgs']]):
+        pulumi.set(self, "clickhouse", value)
 
     @property
     @pulumi.getter(name="clickhouseUserConfig")
@@ -716,6 +748,7 @@ class Clickhouse(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 clickhouse: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']]] = None,
                  clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -758,6 +791,7 @@ class Clickhouse(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']] clickhouse: Clickhouse server provided values
         :param pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']] clickhouse_user_config: Clickhouse user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -819,6 +853,7 @@ class Clickhouse(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 clickhouse: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']]] = None,
                  clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -843,6 +878,7 @@ class Clickhouse(pulumi.CustomResource):
             __props__ = ClickhouseArgs.__new__(ClickhouseArgs)
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
+            __props__.__dict__["clickhouse"] = None if clickhouse is None else pulumi.Output.secret(clickhouse)
             __props__.__dict__["clickhouse_user_config"] = clickhouse_user_config
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
@@ -875,7 +911,7 @@ class Clickhouse(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clickhouse", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Clickhouse, __self__).__init__(
             'aiven:index/clickhouse:Clickhouse',
@@ -888,6 +924,7 @@ class Clickhouse(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: Optional[pulumi.Input[str]] = None,
+            clickhouse: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']]] = None,
             clickhouse_user_config: Optional[pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseComponentArgs']]]]] = None,
@@ -922,6 +959,7 @@ class Clickhouse(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[pulumi.InputType['ClickhouseClickhouseArgs']] clickhouse: Clickhouse server provided values
         :param pulumi.Input[pulumi.InputType['ClickhouseClickhouseUserConfigArgs']] clickhouse_user_config: Clickhouse user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClickhouseComponentArgs']]]] components: Service component information objects
@@ -954,6 +992,7 @@ class Clickhouse(pulumi.CustomResource):
         __props__ = _ClickhouseState.__new__(_ClickhouseState)
 
         __props__.__dict__["additional_disk_space"] = additional_disk_space
+        __props__.__dict__["clickhouse"] = clickhouse
         __props__.__dict__["clickhouse_user_config"] = clickhouse_user_config
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
@@ -989,6 +1028,14 @@ class Clickhouse(pulumi.CustomResource):
         Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "additional_disk_space")
+
+    @property
+    @pulumi.getter
+    def clickhouse(self) -> pulumi.Output['outputs.ClickhouseClickhouse']:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouse")
 
     @property
     @pulumi.getter(name="clickhouseUserConfig")

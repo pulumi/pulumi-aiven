@@ -92,6 +92,18 @@ namespace Pulumi.Aiven.Inputs
             }
         }
 
+        [Input("uris")]
+        private InputList<string>? _uris;
+
+        /// <summary>
+        /// Kafka server URIs.
+        /// </summary>
+        public InputList<string> Uris
+        {
+            get => _uris ?? (_uris = new InputList<string>());
+            set => _uris = value;
+        }
+
         public KafkaKafkaGetArgs()
         {
         }

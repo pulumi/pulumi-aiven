@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AllowedTries;
         /// <summary>
-        /// internal_authentication_backend_limiting.authentication_backend.
+        /// Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.
         /// </summary>
         public readonly string? AuthenticationBackend;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>
-        /// internal_authentication_backend_limiting.type.
+        /// Enum: `username`. internal_authentication_backend_limiting.type.
         /// </summary>
         public readonly string? Type;
 

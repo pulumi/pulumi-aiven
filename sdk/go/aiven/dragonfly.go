@@ -72,6 +72,8 @@ type Dragonfly struct {
 	DiskSpaceStep pulumi.StringOutput `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringOutput `pulumi:"diskSpaceUsed"`
+	// Dragonfly server provided values
+	Dragonfly DragonflyDragonflyOutput `pulumi:"dragonfly"`
 	// Dragonfly user configurable settings
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrOutput `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -128,7 +130,11 @@ func NewDragonfly(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Dragonfly != nil {
+		args.Dragonfly = pulumi.ToSecret(args.Dragonfly).(DragonflyDragonflyPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"dragonfly",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -174,6 +180,8 @@ type dragonflyState struct {
 	DiskSpaceStep *string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed *string `pulumi:"diskSpaceUsed"`
+	// Dragonfly server provided values
+	Dragonfly *DragonflyDragonfly `pulumi:"dragonfly"`
 	// Dragonfly user configurable settings
 	DragonflyUserConfig *DragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -233,6 +241,8 @@ type DragonflyState struct {
 	DiskSpaceStep pulumi.StringPtrInput
 	// Disk space that service is currently using
 	DiskSpaceUsed pulumi.StringPtrInput
+	// Dragonfly server provided values
+	Dragonfly DragonflyDragonflyPtrInput
 	// Dragonfly user configurable settings
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -286,6 +296,8 @@ type dragonflyArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace *string `pulumi:"diskSpace"`
+	// Dragonfly server provided values
+	Dragonfly *DragonflyDragonfly `pulumi:"dragonfly"`
 	// Dragonfly user configurable settings
 	DragonflyUserConfig *DragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfig"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -322,6 +334,8 @@ type DragonflyArgs struct {
 	//
 	// Deprecated: This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
 	DiskSpace pulumi.StringPtrInput
+	// Dragonfly server provided values
+	Dragonfly DragonflyDragonflyPtrInput
 	// Dragonfly user configurable settings
 	DragonflyUserConfig DragonflyDragonflyUserConfigPtrInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
@@ -475,6 +489,11 @@ func (o DragonflyOutput) DiskSpaceStep() pulumi.StringOutput {
 // Disk space that service is currently using
 func (o DragonflyOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dragonfly) pulumi.StringOutput { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// Dragonfly server provided values
+func (o DragonflyOutput) Dragonfly() DragonflyDragonflyOutput {
+	return o.ApplyT(func(v *Dragonfly) DragonflyDragonflyOutput { return v.Dragonfly }).(DragonflyDragonflyOutput)
 }
 
 // Dragonfly user configurable settings

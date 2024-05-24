@@ -75,7 +75,7 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly id: string;
     /**
-     * Offset syncs topic location.
+     * Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
      */
     readonly offsetSyncsTopicLocation: string;
     /**

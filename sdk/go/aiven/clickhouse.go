@@ -55,6 +55,8 @@ type Clickhouse struct {
 
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrOutput `pulumi:"additionalDiskSpace"`
+	// Clickhouse server provided values
+	Clickhouse ClickhouseClickhouseOutput `pulumi:"clickhouse"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrOutput `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -127,7 +129,11 @@ func NewClickhouse(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Clickhouse != nil {
+		args.Clickhouse = pulumi.ToSecret(args.Clickhouse).(ClickhouseClickhousePtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"clickhouse",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -157,6 +163,8 @@ func GetClickhouse(ctx *pulumi.Context,
 type clickhouseState struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
+	// Clickhouse server provided values
+	Clickhouse *ClickhouseClickhouse `pulumi:"clickhouse"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -216,6 +224,8 @@ type clickhouseState struct {
 type ClickhouseState struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrInput
+	// Clickhouse server provided values
+	Clickhouse ClickhouseClickhousePtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -279,6 +289,8 @@ func (ClickhouseState) ElementType() reflect.Type {
 type clickhouseArgs struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace *string `pulumi:"additionalDiskSpace"`
+	// Clickhouse server provided values
+	Clickhouse *ClickhouseClickhouse `pulumi:"clickhouse"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig *ClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfig"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -315,6 +327,8 @@ type clickhouseArgs struct {
 type ClickhouseArgs struct {
 	// Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 	AdditionalDiskSpace pulumi.StringPtrInput
+	// Clickhouse server provided values
+	Clickhouse ClickhouseClickhousePtrInput
 	// Clickhouse user configurable settings
 	ClickhouseUserConfig ClickhouseClickhouseUserConfigPtrInput
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -437,6 +451,11 @@ func (o ClickhouseOutput) ToClickhouseOutputWithContext(ctx context.Context) Cli
 // Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
 func (o ClickhouseOutput) AdditionalDiskSpace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Clickhouse) pulumi.StringPtrOutput { return v.AdditionalDiskSpace }).(pulumi.StringPtrOutput)
+}
+
+// Clickhouse server provided values
+func (o ClickhouseOutput) Clickhouse() ClickhouseClickhouseOutput {
+	return o.ApplyT(func(v *Clickhouse) ClickhouseClickhouseOutput { return v.Clickhouse }).(ClickhouseClickhouseOutput)
 }
 
 // Clickhouse user configurable settings

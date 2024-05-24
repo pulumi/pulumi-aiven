@@ -75,6 +75,8 @@ type LookupDragonflyResult struct {
 	DiskSpaceStep string `pulumi:"diskSpaceStep"`
 	// Disk space that service is currently using
 	DiskSpaceUsed string `pulumi:"diskSpaceUsed"`
+	// Dragonfly server provided values
+	Dragonflies []GetDragonflyDragonfly `pulumi:"dragonflies"`
 	// Dragonfly user configurable settings
 	DragonflyUserConfigs []GetDragonflyDragonflyUserConfig `pulumi:"dragonflyUserConfigs"`
 	// The provider-assigned unique ID for this managed resource.
@@ -195,6 +197,11 @@ func (o LookupDragonflyResultOutput) DiskSpaceStep() pulumi.StringOutput {
 // Disk space that service is currently using
 func (o LookupDragonflyResultOutput) DiskSpaceUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDragonflyResult) string { return v.DiskSpaceUsed }).(pulumi.StringOutput)
+}
+
+// Dragonfly server provided values
+func (o LookupDragonflyResultOutput) Dragonflies() GetDragonflyDragonflyArrayOutput {
+	return o.ApplyT(func(v LookupDragonflyResult) []GetDragonflyDragonfly { return v.Dragonflies }).(GetDragonflyDragonflyArrayOutput)
 }
 
 // Dragonfly user configurable settings

@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AdditionalBackupRegions { get; set; }
 
         /// <summary>
-        /// Flink major version.
+        /// Enum: `1.16`. Flink major version.
         /// </summary>
         [Input("flinkVersion")]
         public Input<string>? FlinkVersion { get; set; }

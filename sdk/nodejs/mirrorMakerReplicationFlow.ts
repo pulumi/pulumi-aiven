@@ -75,7 +75,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly enable!: pulumi.Output<boolean>;
     /**
-     * Offset syncs topic location.
+     * Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
      */
     public readonly offsetSyncsTopicLocation!: pulumi.Output<string>;
     /**
@@ -200,7 +200,7 @@ export interface MirrorMakerReplicationFlowState {
      */
     enable?: pulumi.Input<boolean>;
     /**
-     * Offset syncs topic location.
+     * Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
      */
     offsetSyncsTopicLocation?: pulumi.Input<string>;
     /**
@@ -258,7 +258,7 @@ export interface MirrorMakerReplicationFlowArgs {
      */
     enable: pulumi.Input<boolean>;
     /**
-     * Offset syncs topic location.
+     * Offset syncs topic location. Possible values are `source` & `target`. There is no default value.
      */
     offsetSyncsTopicLocation: pulumi.Input<string>;
     /**

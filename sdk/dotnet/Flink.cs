@@ -241,6 +241,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "flink",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -285,11 +286,21 @@ namespace Pulumi.Aiven
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
 
+        [Input("flink")]
+        private Input<Inputs.FlinkFlinkArgs>? _flink;
+
         /// <summary>
         /// Flink server provided values
         /// </summary>
-        [Input("flink")]
-        public Input<Inputs.FlinkFlinkArgs>? FlinkDetails { get; set; }
+        public Input<Inputs.FlinkFlinkArgs>? FlinkDetails
+        {
+            get => _flink;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _flink = Output.Tuple<Input<Inputs.FlinkFlinkArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Flink user configurable settings
@@ -449,11 +460,21 @@ namespace Pulumi.Aiven
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
 
+        [Input("flink")]
+        private Input<Inputs.FlinkFlinkGetArgs>? _flink;
+
         /// <summary>
         /// Flink server provided values
         /// </summary>
-        [Input("flink")]
-        public Input<Inputs.FlinkFlinkGetArgs>? FlinkDetails { get; set; }
+        public Input<Inputs.FlinkFlinkGetArgs>? FlinkDetails
+        {
+            get => _flink;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _flink = Output.Tuple<Input<Inputs.FlinkFlinkGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Flink user configurable settings

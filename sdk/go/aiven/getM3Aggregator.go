@@ -79,6 +79,8 @@ type LookupM3AggregatorResult struct {
 	Id string `pulumi:"id"`
 	// M3aggregator user configurable settings
 	M3aggregatorUserConfigs []GetM3AggregatorM3aggregatorUserConfig `pulumi:"m3aggregatorUserConfigs"`
+	// M3 Aggregator server provided values
+	M3aggregators []GetM3AggregatorM3aggregator `pulumi:"m3aggregators"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -207,6 +209,11 @@ func (o LookupM3AggregatorResultOutput) M3aggregatorUserConfigs() GetM3Aggregato
 	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorM3aggregatorUserConfig {
 		return v.M3aggregatorUserConfigs
 	}).(GetM3AggregatorM3aggregatorUserConfigArrayOutput)
+}
+
+// M3 Aggregator server provided values
+func (o LookupM3AggregatorResultOutput) M3aggregators() GetM3AggregatorM3aggregatorArrayOutput {
+	return o.ApplyT(func(v LookupM3AggregatorResult) []GetM3AggregatorM3aggregator { return v.M3aggregators }).(GetM3AggregatorM3aggregatorArrayOutput)
 }
 
 // Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.

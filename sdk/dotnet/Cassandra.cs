@@ -59,6 +59,12 @@ namespace Pulumi.Aiven
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
+        /// Cassandra server provided values
+        /// </summary>
+        [Output("cassandra")]
+        public Output<Outputs.CassandraCassandra> CassandraServer { get; private set; } = null!;
+
+        /// <summary>
         /// Cassandra user configurable settings
         /// </summary>
         [Output("cassandraUserConfig")]
@@ -239,6 +245,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "cassandra",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -270,6 +277,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
+
+        [Input("cassandra")]
+        private Input<Inputs.CassandraCassandraArgs>? _cassandra;
+
+        /// <summary>
+        /// Cassandra server provided values
+        /// </summary>
+        public Input<Inputs.CassandraCassandraArgs>? CassandraServer
+        {
+            get => _cassandra;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cassandra = Output.Tuple<Input<Inputs.CassandraCassandraArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Cassandra user configurable settings
@@ -392,6 +415,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
+
+        [Input("cassandra")]
+        private Input<Inputs.CassandraCassandraGetArgs>? _cassandra;
+
+        /// <summary>
+        /// Cassandra server provided values
+        /// </summary>
+        public Input<Inputs.CassandraCassandraGetArgs>? CassandraServer
+        {
+            get => _cassandra;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cassandra = Output.Tuple<Input<Inputs.CassandraCassandraGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Cassandra user configurable settings

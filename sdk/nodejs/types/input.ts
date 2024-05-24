@@ -28,6 +28,13 @@ export interface AccountAuthenticationSamlFieldMapping {
     realName?: pulumi.Input<string>;
 }
 
+export interface CassandraCassandra {
+    /**
+     * Cassandra server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface CassandraCassandraUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -48,7 +55,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandra?: pulumi.Input<inputs.CassandraCassandraUserConfigCassandra>;
     /**
-     * Cassandra version.
+     * Enum: `3`, `4`, `4.1`. Cassandra version.
      */
     cassandraVersion?: pulumi.Input<string>;
     /**
@@ -201,6 +208,13 @@ export interface CassandraTechEmail {
      * An email address to contact for technical issues
      */
     email: pulumi.Input<string>;
+}
+
+export interface ClickhouseClickhouse {
+    /**
+     * Clickhouse server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ClickhouseClickhouseUserConfig {
@@ -451,13 +465,32 @@ export interface DragonflyComponent {
     usage?: pulumi.Input<string>;
 }
 
+export interface DragonflyDragonfly {
+    /**
+     * Dragonfly password.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Dragonfly replica server URI.
+     */
+    replicaUri?: pulumi.Input<string>;
+    /**
+     * Dragonfly slave server URIs.
+     */
+    slaveUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Dragonfly server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface DragonflyDragonflyUserConfig {
     /**
      * Evict entries when getting close to maxmemory limit. The default value is `false`.
      */
     cacheMode?: pulumi.Input<boolean>;
     /**
-     * When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
     dragonflyPersistence?: pulumi.Input<string>;
     /**
@@ -541,7 +574,7 @@ export interface DragonflyDragonflyUserConfigMigration {
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: pulumi.Input<string>;
     /**
@@ -696,7 +729,7 @@ export interface FlinkFlinkUserConfig {
      */
     additionalBackupRegions?: pulumi.Input<string>;
     /**
-     * Flink major version.
+     * Enum: `1.16`. Flink major version.
      */
     flinkVersion?: pulumi.Input<string>;
     /**
@@ -817,6 +850,13 @@ export interface GrafanaComponent {
     usage?: pulumi.Input<string>;
 }
 
+export interface GrafanaGrafana {
+    /**
+     * Grafana server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GrafanaGrafanaUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -827,7 +867,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingEnabled?: pulumi.Input<boolean>;
     /**
-     * Default error or timeout setting for new alerting rules.
+     * Enum: `alerting`, `keepState`. Default error or timeout setting for new alerting rules.
      */
     alertingErrorOrTimeout?: pulumi.Input<string>;
     /**
@@ -835,7 +875,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     alertingMaxAnnotationsToKeep?: pulumi.Input<number>;
     /**
-     * Default value for 'no data or null values' for new alerting rules.
+     * Enum: `alerting`, `noData`, `keepState`, `ok`. Default value for 'no data or null values' for new alerting rules.
      */
     alertingNodataOrNullvalues?: pulumi.Input<string>;
     /**
@@ -867,7 +907,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     authGoogle?: pulumi.Input<inputs.GrafanaGrafanaUserConfigAuthGoogle>;
     /**
-     * Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
      */
     cookieSamesite?: pulumi.Input<string>;
     /**
@@ -981,7 +1021,7 @@ export interface GrafanaGrafanaUserConfig {
      */
     userAutoAssignOrg?: pulumi.Input<boolean>;
     /**
-     * Set role for new signups. Defaults to Viewer.
+     * Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      */
     userAutoAssignOrgRole?: pulumi.Input<string>;
     /**
@@ -1194,7 +1234,7 @@ export interface GrafanaGrafanaUserConfigExternalImageStorage {
      */
     bucketUrl: pulumi.Input<string>;
     /**
-     * Provider type.
+     * Enum: `s3`. Provider type.
      */
     provider: pulumi.Input<string>;
     /**
@@ -1261,7 +1301,7 @@ export interface GrafanaGrafanaUserConfigSmtpServer {
      */
     skipVerify?: pulumi.Input<boolean>;
     /**
-     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      */
     starttlsPolicy?: pulumi.Input<string>;
     /**
@@ -1339,6 +1379,18 @@ export interface InfluxDbInfluxdb {
      * Name of the default InfluxDB database
      */
     databaseName?: pulumi.Input<string>;
+    /**
+     * InfluxDB password
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * InfluxDB server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * InfluxDB username
+     */
+    username?: pulumi.Input<string>;
 }
 
 export interface InfluxDbInfluxdbUserConfig {
@@ -1626,11 +1678,11 @@ export interface KafkaConnectKafkaConnectUserConfigIpFilterObject {
 
 export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
@@ -1638,7 +1690,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
-     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
@@ -1670,7 +1722,7 @@ export interface KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -1789,6 +1841,10 @@ export interface KafkaKafka {
      * The Schema Registry URI.
      */
     schemaRegistryUri?: pulumi.Input<string>;
+    /**
+     * Kafka server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface KafkaKafkaUserConfig {
@@ -1849,7 +1905,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaRestConfig?: pulumi.Input<inputs.KafkaKafkaUserConfigKafkaRestConfig>;
     /**
-     * Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
      */
     kafkaVersion?: pulumi.Input<string>;
     /**
@@ -1903,7 +1959,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     autoCreateTopicsEnable?: pulumi.Input<boolean>;
     /**
-     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
      */
     compressionType?: pulumi.Input<string>;
     /**
@@ -1943,7 +1999,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logCleanerMinCompactionLagMs?: pulumi.Input<number>;
     /**
-     * The default cleanup policy for segments beyond the retention window.
+     * Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      */
     logCleanupPolicy?: pulumi.Input<string>;
     /**
@@ -1979,7 +2035,7 @@ export interface KafkaKafkaUserConfigKafka {
      */
     logMessageTimestampDifferenceMaxMs?: pulumi.Input<number>;
     /**
-     * Define whether the timestamp in the message is message create time or log append time.
+     * Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      */
     logMessageTimestampType?: pulumi.Input<string>;
     /**
@@ -2097,11 +2153,11 @@ export interface KafkaKafkaUserConfigKafkaAuthenticationMethods {
 
 export interface KafkaKafkaUserConfigKafkaConnectConfig {
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      */
     connectorClientConfigOverridePolicy?: pulumi.Input<string>;
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      */
     consumerAutoOffsetReset?: pulumi.Input<string>;
     /**
@@ -2109,7 +2165,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     consumerFetchMaxBytes?: pulumi.Input<number>;
     /**
-     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `readUncommitted`, `readCommitted`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      */
     consumerIsolationLevel?: pulumi.Input<string>;
     /**
@@ -2141,7 +2197,7 @@ export interface KafkaKafkaUserConfigKafkaConnectConfig {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -2172,11 +2228,11 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     consumerRequestMaxBytes?: pulumi.Input<number>;
     /**
-     * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      */
     consumerRequestTimeoutMs?: pulumi.Input<number>;
     /**
-     * Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
+     * Enum: `topicName`, `recordName`, `topicRecordName`. Name strategy to use when selecting subject for storing schemas. The default value is `topicName`.
      */
     nameStrategy?: pulumi.Input<string>;
     /**
@@ -2184,11 +2240,11 @@ export interface KafkaKafkaUserConfigKafkaRestConfig {
      */
     nameStrategyValidation?: pulumi.Input<boolean>;
     /**
-     * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      */
     producerAcks?: pulumi.Input<string>;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**
@@ -2664,6 +2720,17 @@ export interface M3AggregatorComponent {
     usage?: pulumi.Input<string>;
 }
 
+export interface M3AggregatorM3aggregator {
+    /**
+     * M3 Aggregator HTTP URI.
+     */
+    aggregatorHttpUri?: pulumi.Input<string>;
+    /**
+     * M3 Aggregator server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface M3AggregatorM3aggregatorUserConfig {
     /**
      * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
@@ -2684,11 +2751,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
      */
     ipFilters?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * M3 major version (deprecated, use m3aggregator_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      */
     m3Version?: pulumi.Input<string>;
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      */
     m3aggregatorVersion?: pulumi.Input<string>;
     /**
@@ -2776,6 +2843,33 @@ export interface M3DbComponent {
     usage?: pulumi.Input<string>;
 }
 
+export interface M3DbM3db {
+    /**
+     * M3DB cluster URI.
+     */
+    httpClusterUri?: pulumi.Input<string>;
+    /**
+     * M3DB node URI.
+     */
+    httpNodeUri?: pulumi.Input<string>;
+    /**
+     * InfluxDB URI.
+     */
+    influxdbUri?: pulumi.Input<string>;
+    /**
+     * Prometheus remote read URI.
+     */
+    prometheusRemoteReadUri?: pulumi.Input<string>;
+    /**
+     * Prometheus remote write URI.
+     */
+    prometheusRemoteWriteUri?: pulumi.Input<string>;
+    /**
+     * M3DB server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface M3DbM3dbUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -2808,7 +2902,7 @@ export interface M3DbM3dbUserConfig {
      */
     m3?: pulumi.Input<inputs.M3DbM3dbUserConfigM3>;
     /**
-     * M3 major version (deprecated, use m3db_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      */
     m3Version?: pulumi.Input<string>;
     /**
@@ -2816,7 +2910,7 @@ export interface M3DbM3dbUserConfig {
      */
     m3coordinatorEnableGraphiteCarbonIngest?: pulumi.Input<boolean>;
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      */
     m3dbVersion?: pulumi.Input<string>;
     /**
@@ -2923,7 +3017,7 @@ export interface M3DbM3dbUserConfigNamespace {
      */
     resolution?: pulumi.Input<string>;
     /**
-     * The type of aggregation (aggregated/unaggregated).
+     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      */
     type: pulumi.Input<string>;
 }
@@ -3110,6 +3204,56 @@ export interface MySqlComponent {
     usage?: pulumi.Input<string>;
 }
 
+export interface MySqlMysql {
+    /**
+     * MySQL connection parameters
+     */
+    params?: pulumi.Input<pulumi.Input<inputs.MySqlMysqlParam>[]>;
+    /**
+     * MySQL replica URI for services with a replica
+     */
+    replicaUri?: pulumi.Input<string>;
+    /**
+     * MySQL standby connection URIs
+     */
+    standbyUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * MySQL syncing connection URIs
+     */
+    syncingUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * MySQL master connection URIs
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface MySqlMysqlParam {
+    /**
+     * Primary MySQL database name
+     */
+    databaseName?: pulumi.Input<string>;
+    /**
+     * MySQL host IP or name
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * MySQL admin user password
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * MySQL port
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * MySQL sslmode setting (currently always "require")
+     */
+    sslmode?: pulumi.Input<string>;
+    /**
+     * MySQL admin user name
+     */
+    user?: pulumi.Input<string>;
+}
+
 export interface MySqlMysqlUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -3158,7 +3302,7 @@ export interface MySqlMysqlUserConfig {
      */
     mysql?: pulumi.Input<inputs.MySqlMysqlUserConfigMysql>;
     /**
-     * MySQL major version.
+     * Enum: `8`. MySQL major version.
      */
     mysqlVersion?: pulumi.Input<string>;
     /**
@@ -3220,7 +3364,7 @@ export interface MySqlMysqlUserConfigMigration {
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: pulumi.Input<string>;
     /**
@@ -3311,7 +3455,7 @@ export interface MySqlMysqlUserConfigMysql {
      */
     interactiveTimeout?: pulumi.Input<number>;
     /**
-     * The storage engine for in-memory internal temporary tables.
+     * Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      */
     internalTmpMemStorageEngine?: pulumi.Input<string>;
     /**
@@ -3475,9 +3619,25 @@ export interface OpenSearchComponent {
 
 export interface OpenSearchOpensearch {
     /**
+     * URI for Kibana dashboard frontend
+     */
+    kibanaUri?: pulumi.Input<string>;
+    /**
      * URI for OpenSearch dashboard frontend
      */
     opensearchDashboardsUri?: pulumi.Input<string>;
+    /**
+     * OpenSearch password
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * OpenSearch server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * OpenSearch username
+     */
+    username?: pulumi.Input<string>;
 }
 
 export interface OpenSearchOpensearchUserConfig {
@@ -3536,7 +3696,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: pulumi.Input<inputs.OpenSearchOpensearchUserConfigOpensearchDashboards>;
     /**
-     * OpenSearch major version.
+     * Enum: `1`, `2`. OpenSearch major version.
      */
     opensearchVersion?: pulumi.Input<string>;
     /**
@@ -3587,7 +3747,7 @@ export interface OpenSearchOpensearchUserConfigIndexPattern {
      */
     pattern: pulumi.Input<string>;
     /**
-     * Deletion sorting algorithm. The default value is `creationDate`.
+     * Enum: `alphabetical`, `creationDate`. Deletion sorting algorithm. The default value is `creationDate`.
      */
     sortingAlgorithm?: pulumi.Input<string>;
 }
@@ -3854,7 +4014,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     allowedTries?: pulumi.Input<number>;
     /**
-     * internal*authentication*backend*limiting.authentication*backend.
+     * Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
      */
     authenticationBackend?: pulumi.Input<string>;
     /**
@@ -3874,7 +4034,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInt
      */
     timeWindowSeconds?: pulumi.Input<number>;
     /**
-     * internal*authentication*backend_limiting.type.
+     * Enum: `username`. internal*authentication*backend_limiting.type.
      */
     type?: pulumi.Input<string>;
 }
@@ -3901,7 +4061,7 @@ export interface OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpR
      */
     timeWindowSeconds?: pulumi.Input<number>;
     /**
-     * The type of rate limiting.
+     * Enum: `ip`. The type of rate limiting.
      */
     type?: pulumi.Input<string>;
 }
@@ -4158,6 +4318,10 @@ export interface PgComponent {
 
 export interface PgPg {
     /**
+     * Bouncer connection details
+     */
+    bouncer?: pulumi.Input<string>;
+    /**
      * Primary PostgreSQL database name
      */
     dbname?: pulumi.Input<string>;
@@ -4169,6 +4333,10 @@ export interface PgPg {
      * Connection limit
      */
     maxConnections?: pulumi.Input<number>;
+    /**
+     * PostgreSQL connection parameters
+     */
+    params?: pulumi.Input<pulumi.Input<inputs.PgPgParam>[]>;
     /**
      * PostgreSQL admin user password
      */
@@ -4186,9 +4354,48 @@ export interface PgPg {
      */
     sslmode?: pulumi.Input<string>;
     /**
+     * PostgreSQL standby connection URIs
+     */
+    standbyUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * PostgreSQL syncing connection URIs
+     */
+    syncingUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * PostgreSQL master connection URI
      */
     uri?: pulumi.Input<string>;
+    /**
+     * PostgreSQL master connection URIs
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * PostgreSQL admin user name
+     */
+    user?: pulumi.Input<string>;
+}
+
+export interface PgPgParam {
+    /**
+     * Primary PostgreSQL database name
+     */
+    databaseName?: pulumi.Input<string>;
+    /**
+     * PostgreSQL host IP or name
+     */
+    host?: pulumi.Input<string>;
+    /**
+     * PostgreSQL admin user password
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * PostgreSQL port
+     */
+    port?: pulumi.Input<number>;
+    /**
+     * PostgreSQL sslmode setting (currently always "require")
+     */
+    sslmode?: pulumi.Input<string>;
     /**
      * PostgreSQL admin user name
      */
@@ -4261,7 +4468,7 @@ export interface PgPgUserConfig {
      */
     pgStatMonitorEnable?: pulumi.Input<boolean>;
     /**
-     * PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      */
     pgVersion?: pulumi.Input<string>;
     /**
@@ -4313,7 +4520,7 @@ export interface PgPgUserConfig {
      */
     staticIps?: pulumi.Input<boolean>;
     /**
-     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      */
     synchronousReplication?: pulumi.Input<string>;
     /**
@@ -4321,7 +4528,7 @@ export interface PgPgUserConfig {
      */
     timescaledb?: pulumi.Input<inputs.PgPgUserConfigTimescaledb>;
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      */
     variant?: pulumi.Input<string>;
     /**
@@ -4355,7 +4562,7 @@ export interface PgPgUserConfigMigration {
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: pulumi.Input<string>;
     /**
@@ -4434,7 +4641,7 @@ export interface PgPgUserConfigPg {
      */
     deadlockTimeout?: pulumi.Input<number>;
     /**
-     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
      */
     defaultToastCompression?: pulumi.Input<string>;
     /**
@@ -4450,11 +4657,11 @@ export interface PgPgUserConfigPg {
      */
     logAutovacuumMinDuration?: pulumi.Input<number>;
     /**
-     * Controls the amount of detail written in the server log for each message that is logged.
+     * Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      */
     logErrorVerbosity?: pulumi.Input<string>;
     /**
-     * Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
      */
     logLinePrefix?: pulumi.Input<string>;
     /**
@@ -4538,7 +4745,7 @@ export interface PgPgUserConfigPg {
      */
     pgStatMonitorDotPgsmMaxBuckets?: pulumi.Input<number>;
     /**
-     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      */
     pgStatStatementsDotTrack?: pulumi.Input<string>;
     /**
@@ -4554,15 +4761,15 @@ export interface PgPgUserConfigPg {
      */
     trackActivityQuerySize?: pulumi.Input<number>;
     /**
-     * Record commit time of transactions.
+     * Enum: `off`, `on`. Record commit time of transactions.
      */
     trackCommitTimestamp?: pulumi.Input<string>;
     /**
-     * Enables tracking of function call counts and time used.
+     * Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
      */
     trackFunctions?: pulumi.Input<string>;
     /**
-     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      */
     trackIoTiming?: pulumi.Input<string>;
     /**
@@ -4622,7 +4829,7 @@ export interface PgPgUserConfigPgaudit {
      */
     logClient?: pulumi.Input<boolean>;
     /**
-     * Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      */
     logLevel?: pulumi.Input<string>;
     /**
@@ -4677,7 +4884,7 @@ export interface PgPgUserConfigPgbouncer {
      */
     autodbMaxDbConnections?: pulumi.Input<number>;
     /**
-     * PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
      */
     autodbPoolMode?: pulumi.Input<string>;
     /**
@@ -4840,6 +5047,25 @@ export interface RedisComponent {
     usage?: pulumi.Input<string>;
 }
 
+export interface RedisRedis {
+    /**
+     * Redis password.
+     */
+    password?: pulumi.Input<string>;
+    /**
+     * Redis replica server URI.
+     */
+    replicaUri?: pulumi.Input<string>;
+    /**
+     * Redis slave server URIs.
+     */
+    slaveUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Redis server URIs.
+     */
+    uris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface RedisRedisUserConfig {
     /**
      * Additional Cloud Regions for Backup Replication.
@@ -4884,7 +5110,7 @@ export interface RedisRedisUserConfig {
      */
     recoveryBasebackupName?: pulumi.Input<string>;
     /**
-     * Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, allChannels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
      */
     redisAclChannelsDefault?: pulumi.Input<string>;
     /**
@@ -4900,7 +5126,7 @@ export interface RedisRedisUserConfig {
      */
     redisLfuLogFactor?: pulumi.Input<number>;
     /**
-     * Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      */
     redisMaxmemoryPolicy?: pulumi.Input<string>;
     /**
@@ -4912,7 +5138,7 @@ export interface RedisRedisUserConfig {
      */
     redisNumberOfDatabases?: pulumi.Input<number>;
     /**
-     * When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
     redisPersistence?: pulumi.Input<string>;
     /**
@@ -4928,7 +5154,7 @@ export interface RedisRedisUserConfig {
      */
     redisTimeout?: pulumi.Input<number>;
     /**
-     * Redis major version.
+     * Enum: `7.0`. Redis major version.
      */
     redisVersion?: pulumi.Input<string>;
     /**
@@ -4970,7 +5196,7 @@ export interface RedisRedisUserConfigMigration {
      */
     ignoreDbs?: pulumi.Input<string>;
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      */
     method?: pulumi.Input<string>;
     /**
@@ -5062,7 +5288,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfig {
 
 export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      */
     autoOffsetReset?: pulumi.Input<string>;
     /**
@@ -5070,11 +5296,11 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     columns: pulumi.Input<pulumi.Input<inputs.ServiceIntegrationClickhouseKafkaUserConfigTableColumn>[]>;
     /**
-     * Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      */
     dataFormat: pulumi.Input<string>;
     /**
-     * Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `bestEffort`, `bestEffortUs`. Method to read DateTime from text input formats. The default value is `basic`.
      */
     dateTimeInputFormat?: pulumi.Input<string>;
     /**
@@ -5082,7 +5308,7 @@ export interface ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     groupName: pulumi.Input<string>;
     /**
-     * How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      */
     handleErrorMode?: pulumi.Input<string>;
     /**
@@ -5156,6 +5382,10 @@ export interface ServiceIntegrationDatadogUserConfig {
      * Enable Datadog Database Monitoring.
      */
     datadogDbmEnabled?: pulumi.Input<boolean>;
+    /**
+     * Enable Datadog PgBouncer Metric Tracking.
+     */
+    datadogPgbouncerEnabled?: pulumi.Input<boolean>;
     /**
      * Custom tags provided by user
      */
@@ -5257,7 +5487,7 @@ export interface ServiceIntegrationEndpointDatadogUserConfig {
      */
     maxPartitionContexts?: pulumi.Input<number>;
     /**
-     * Datadog intake site. Defaults to datadoghq.com.
+     * Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
      */
     site?: pulumi.Input<string>;
 }
@@ -5366,7 +5596,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     bootstrapServers: pulumi.Input<string>;
     /**
-     * SASL mechanism used for connections to the Kafka server.
+     * Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      */
     saslMechanism?: pulumi.Input<string>;
     /**
@@ -5378,7 +5608,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     saslPlainUsername?: pulumi.Input<string>;
     /**
-     * Security protocol.
+     * Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      */
     securityProtocol: pulumi.Input<string>;
     /**
@@ -5394,7 +5624,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     sslClientKey?: pulumi.Input<string>;
     /**
-     * The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: pulumi.Input<string>;
 }
@@ -5448,7 +5678,7 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
      */
     sslClientKey?: pulumi.Input<string>;
     /**
-     * SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      */
     sslMode?: pulumi.Input<string>;
     /**
@@ -5463,7 +5693,7 @@ export interface ServiceIntegrationEndpointExternalPostgresql {
 
 export interface ServiceIntegrationEndpointExternalSchemaRegistryUserConfig {
     /**
-     * Authentication method.
+     * Enum: `none`, `basic`. Authentication method.
      */
     authentication: pulumi.Input<string>;
     /**
@@ -5512,7 +5742,7 @@ export interface ServiceIntegrationEndpointRsyslogUserConfig {
      */
     cert?: pulumi.Input<string>;
     /**
-     * Message format. The default value is `rfc5424`.
+     * Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
      */
     format: pulumi.Input<string>;
     /**
@@ -5661,7 +5891,7 @@ export interface ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker {
      */
     producerBufferMemory?: pulumi.Input<number>;
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
      */
     producerCompressionType?: pulumi.Input<string>;
     /**

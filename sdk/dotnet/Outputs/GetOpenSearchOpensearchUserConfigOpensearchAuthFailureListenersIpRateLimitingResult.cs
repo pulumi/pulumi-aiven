@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>
-        /// The type of rate limiting.
+        /// Enum: `ip`. The type of rate limiting.
         /// </summary>
         public readonly string? Type;
 
