@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ public final class InfluxDbInfluxdb {
      * 
      */
     private @Nullable String databaseName;
+    /**
+     * @return InfluxDB password
+     * 
+     */
+    private @Nullable String password;
+    /**
+     * @return InfluxDB server URIs.
+     * 
+     */
+    private @Nullable List<String> uris;
+    /**
+     * @return InfluxDB username
+     * 
+     */
+    private @Nullable String username;
 
     private InfluxDbInfluxdb() {}
     /**
@@ -24,6 +40,27 @@ public final class InfluxDbInfluxdb {
      */
     public Optional<String> databaseName() {
         return Optional.ofNullable(this.databaseName);
+    }
+    /**
+     * @return InfluxDB password
+     * 
+     */
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return InfluxDB server URIs.
+     * 
+     */
+    public List<String> uris() {
+        return this.uris == null ? List.of() : this.uris;
+    }
+    /**
+     * @return InfluxDB username
+     * 
+     */
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     public static Builder builder() {
@@ -36,10 +73,16 @@ public final class InfluxDbInfluxdb {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String databaseName;
+        private @Nullable String password;
+        private @Nullable List<String> uris;
+        private @Nullable String username;
         public Builder() {}
         public Builder(InfluxDbInfluxdb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseName = defaults.databaseName;
+    	      this.password = defaults.password;
+    	      this.uris = defaults.uris;
+    	      this.username = defaults.username;
         }
 
         @CustomType.Setter
@@ -48,9 +91,33 @@ public final class InfluxDbInfluxdb {
             this.databaseName = databaseName;
             return this;
         }
+        @CustomType.Setter
+        public Builder password(@Nullable String password) {
+
+            this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uris(@Nullable List<String> uris) {
+
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
+        }
+        @CustomType.Setter
+        public Builder username(@Nullable String username) {
+
+            this.username = username;
+            return this;
+        }
         public InfluxDbInfluxdb build() {
             final var _resultValue = new InfluxDbInfluxdb();
             _resultValue.databaseName = databaseName;
+            _resultValue.password = password;
+            _resultValue.uris = uris;
+            _resultValue.username = username;
             return _resultValue;
         }
     }

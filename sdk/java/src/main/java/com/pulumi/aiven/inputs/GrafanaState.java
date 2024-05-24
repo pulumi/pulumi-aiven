@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.GrafanaComponentArgs;
+import com.pulumi.aiven.inputs.GrafanaGrafanaArgs;
 import com.pulumi.aiven.inputs.GrafanaGrafanaUserConfigArgs;
 import com.pulumi.aiven.inputs.GrafanaServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.GrafanaTagArgs;
@@ -149,6 +150,21 @@ public final class GrafanaState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> diskSpaceUsed() {
         return Optional.ofNullable(this.diskSpaceUsed);
+    }
+
+    /**
+     * Grafana server provided values
+     * 
+     */
+    @Import(name="grafana")
+    private @Nullable Output<GrafanaGrafanaArgs> grafana;
+
+    /**
+     * @return Grafana server provided values
+     * 
+     */
+    public Optional<Output<GrafanaGrafanaArgs>> grafana() {
+        return Optional.ofNullable(this.grafana);
     }
 
     /**
@@ -447,6 +463,7 @@ public final class GrafanaState extends com.pulumi.resources.ResourceArgs {
         this.diskSpaceDefault = $.diskSpaceDefault;
         this.diskSpaceStep = $.diskSpaceStep;
         this.diskSpaceUsed = $.diskSpaceUsed;
+        this.grafana = $.grafana;
         this.grafanaUserConfig = $.grafanaUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -670,6 +687,27 @@ public final class GrafanaState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskSpaceUsed(String diskSpaceUsed) {
             return diskSpaceUsed(Output.of(diskSpaceUsed));
+        }
+
+        /**
+         * @param grafana Grafana server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grafana(@Nullable Output<GrafanaGrafanaArgs> grafana) {
+            $.grafana = grafana;
+            return this;
+        }
+
+        /**
+         * @param grafana Grafana server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grafana(GrafanaGrafanaArgs grafana) {
+            return grafana(Output.of(grafana));
         }
 
         /**

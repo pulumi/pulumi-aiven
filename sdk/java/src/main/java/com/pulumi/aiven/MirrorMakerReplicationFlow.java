@@ -116,14 +116,14 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return this.enable;
     }
     /**
-     * Offset syncs topic location.
+     * Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
      * 
      */
     @Export(name="offsetSyncsTopicLocation", refs={String.class}, tree="[0]")
     private Output<String> offsetSyncsTopicLocation;
 
     /**
-     * @return Offset syncs topic location.
+     * @return Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
      * 
      */
     public Output<String> offsetSyncsTopicLocation() {

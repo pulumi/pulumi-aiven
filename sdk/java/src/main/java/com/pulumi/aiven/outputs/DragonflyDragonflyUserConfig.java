@@ -24,7 +24,7 @@ public final class DragonflyDragonflyUserConfig {
      */
     private @Nullable Boolean cacheMode;
     /**
-     * @return When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
     private @Nullable String dragonflyPersistence;
@@ -107,7 +107,7 @@ public final class DragonflyDragonflyUserConfig {
         return Optional.ofNullable(this.cacheMode);
     }
     /**
-     * @return When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
     public Optional<String> dragonflyPersistence() {

@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -15,6 +16,21 @@ public final class GetInfluxDbInfluxdb {
      * 
      */
     private String databaseName;
+    /**
+     * @return InfluxDB password
+     * 
+     */
+    private String password;
+    /**
+     * @return InfluxDB server URIs.
+     * 
+     */
+    private List<String> uris;
+    /**
+     * @return InfluxDB username
+     * 
+     */
+    private String username;
 
     private GetInfluxDbInfluxdb() {}
     /**
@@ -23,6 +39,27 @@ public final class GetInfluxDbInfluxdb {
      */
     public String databaseName() {
         return this.databaseName;
+    }
+    /**
+     * @return InfluxDB password
+     * 
+     */
+    public String password() {
+        return this.password;
+    }
+    /**
+     * @return InfluxDB server URIs.
+     * 
+     */
+    public List<String> uris() {
+        return this.uris;
+    }
+    /**
+     * @return InfluxDB username
+     * 
+     */
+    public String username() {
+        return this.username;
     }
 
     public static Builder builder() {
@@ -35,10 +72,16 @@ public final class GetInfluxDbInfluxdb {
     @CustomType.Builder
     public static final class Builder {
         private String databaseName;
+        private String password;
+        private List<String> uris;
+        private String username;
         public Builder() {}
         public Builder(GetInfluxDbInfluxdb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.databaseName = defaults.databaseName;
+    	      this.password = defaults.password;
+    	      this.uris = defaults.uris;
+    	      this.username = defaults.username;
         }
 
         @CustomType.Setter
@@ -49,9 +92,39 @@ public final class GetInfluxDbInfluxdb {
             this.databaseName = databaseName;
             return this;
         }
+        @CustomType.Setter
+        public Builder password(String password) {
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetInfluxDbInfluxdb", "password");
+            }
+            this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uris(List<String> uris) {
+            if (uris == null) {
+              throw new MissingRequiredPropertyException("GetInfluxDbInfluxdb", "uris");
+            }
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
+        }
+        @CustomType.Setter
+        public Builder username(String username) {
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetInfluxDbInfluxdb", "username");
+            }
+            this.username = username;
+            return this;
+        }
         public GetInfluxDbInfluxdb build() {
             final var _resultValue = new GetInfluxDbInfluxdb();
             _resultValue.databaseName = databaseName;
+            _resultValue.password = password;
+            _resultValue.uris = uris;
+            _resultValue.username = username;
             return _resultValue;
         }
     }

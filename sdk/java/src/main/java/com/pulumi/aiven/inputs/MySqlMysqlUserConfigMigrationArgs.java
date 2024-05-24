@@ -64,14 +64,14 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
     }
 
     /**
-     * The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     @Import(name="method")
     private @Nullable Output<String> method;
 
     /**
-     * @return The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * @return Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     public Optional<Output<String>> method() {
@@ -233,7 +233,7 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param method The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+         * @param method Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class MySqlMysqlUserConfigMigrationArgs extends com.pulumi.resource
         }
 
         /**
-         * @param method The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+         * @param method Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
          * 
          * @return builder
          * 

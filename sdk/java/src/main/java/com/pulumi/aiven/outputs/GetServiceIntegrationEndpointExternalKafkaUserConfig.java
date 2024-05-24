@@ -18,7 +18,7 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private String bootstrapServers;
     /**
-     * @return SASL mechanism used for connections to the Kafka server.
+     * @return Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      * 
      */
     private @Nullable String saslMechanism;
@@ -33,7 +33,7 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private @Nullable String saslPlainUsername;
     /**
-     * @return Security protocol.
+     * @return Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      * 
      */
     private String securityProtocol;
@@ -53,7 +53,7 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     private @Nullable String sslClientKey;
     /**
-     * @return The endpoint identification algorithm to validate server hostname using server certificate.
+     * @return Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
     private @Nullable String sslEndpointIdentificationAlgorithm;
@@ -67,7 +67,7 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
         return this.bootstrapServers;
     }
     /**
-     * @return SASL mechanism used for connections to the Kafka server.
+     * @return Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      * 
      */
     public Optional<String> saslMechanism() {
@@ -88,7 +88,7 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
         return Optional.ofNullable(this.saslPlainUsername);
     }
     /**
-     * @return Security protocol.
+     * @return Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      * 
      */
     public String securityProtocol() {
@@ -116,7 +116,7 @@ public final class GetServiceIntegrationEndpointExternalKafkaUserConfig {
         return Optional.ofNullable(this.sslClientKey);
     }
     /**
-     * @return The endpoint identification algorithm to validate server hostname using server certificate.
+     * @return Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
     public Optional<String> sslEndpointIdentificationAlgorithm() {

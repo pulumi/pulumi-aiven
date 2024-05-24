@@ -274,14 +274,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The storage engine for in-memory internal temporary tables.
+     * Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      * 
      */
     @Import(name="internalTmpMemStorageEngine")
     private @Nullable Output<String> internalTmpMemStorageEngine;
 
     /**
-     * @return The storage engine for in-memory internal temporary tables.
+     * @return Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      * 
      */
     public Optional<Output<String>> internalTmpMemStorageEngine() {
@@ -879,7 +879,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param internalTmpMemStorageEngine The storage engine for in-memory internal temporary tables.
+         * @param internalTmpMemStorageEngine Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
          * 
          * @return builder
          * 
@@ -890,7 +890,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param internalTmpMemStorageEngine The storage engine for in-memory internal temporary tables.
+         * @param internalTmpMemStorageEngine Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
          * 
          * @return builder
          * 

@@ -23,6 +23,11 @@ public final class GetServiceIntegrationDatadogUserConfig {
      */
     private @Nullable Boolean datadogDbmEnabled;
     /**
+     * @return Enable Datadog PgBouncer Metric Tracking.
+     * 
+     */
+    private @Nullable Boolean datadogPgbouncerEnabled;
+    /**
      * @return Custom tags provided by user
      * 
      */
@@ -75,6 +80,13 @@ public final class GetServiceIntegrationDatadogUserConfig {
      */
     public Optional<Boolean> datadogDbmEnabled() {
         return Optional.ofNullable(this.datadogDbmEnabled);
+    }
+    /**
+     * @return Enable Datadog PgBouncer Metric Tracking.
+     * 
+     */
+    public Optional<Boolean> datadogPgbouncerEnabled() {
+        return Optional.ofNullable(this.datadogPgbouncerEnabled);
     }
     /**
      * @return Custom tags provided by user
@@ -150,6 +162,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean datadogDbmEnabled;
+        private @Nullable Boolean datadogPgbouncerEnabled;
         private @Nullable List<GetServiceIntegrationDatadogUserConfigDatadogTag> datadogTags;
         private @Nullable List<String> excludeConsumerGroups;
         private @Nullable List<String> excludeTopics;
@@ -163,6 +176,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
         public Builder(GetServiceIntegrationDatadogUserConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datadogDbmEnabled = defaults.datadogDbmEnabled;
+    	      this.datadogPgbouncerEnabled = defaults.datadogPgbouncerEnabled;
     	      this.datadogTags = defaults.datadogTags;
     	      this.excludeConsumerGroups = defaults.excludeConsumerGroups;
     	      this.excludeTopics = defaults.excludeTopics;
@@ -178,6 +192,12 @@ public final class GetServiceIntegrationDatadogUserConfig {
         public Builder datadogDbmEnabled(@Nullable Boolean datadogDbmEnabled) {
 
             this.datadogDbmEnabled = datadogDbmEnabled;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder datadogPgbouncerEnabled(@Nullable Boolean datadogPgbouncerEnabled) {
+
+            this.datadogPgbouncerEnabled = datadogPgbouncerEnabled;
             return this;
         }
         @CustomType.Setter
@@ -255,6 +275,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
         public GetServiceIntegrationDatadogUserConfig build() {
             final var _resultValue = new GetServiceIntegrationDatadogUserConfig();
             _resultValue.datadogDbmEnabled = datadogDbmEnabled;
+            _resultValue.datadogPgbouncerEnabled = datadogPgbouncerEnabled;
             _resultValue.datadogTags = datadogTags;
             _resultValue.excludeConsumerGroups = excludeConsumerGroups;
             _resultValue.excludeTopics = excludeTopics;

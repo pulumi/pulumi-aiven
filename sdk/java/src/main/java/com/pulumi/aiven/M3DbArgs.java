@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.M3DbM3dbArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigArgs;
 import com.pulumi.aiven.inputs.M3DbServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.M3DbTagArgs;
@@ -73,6 +74,21 @@ public final class M3DbArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
+    }
+
+    /**
+     * M3DB server provided values
+     * 
+     */
+    @Import(name="m3db")
+    private @Nullable Output<M3DbM3dbArgs> m3db;
+
+    /**
+     * @return M3DB server provided values
+     * 
+     */
+    public Optional<Output<M3DbM3dbArgs>> m3db() {
+        return Optional.ofNullable(this.m3db);
     }
 
     /**
@@ -261,6 +277,7 @@ public final class M3DbArgs extends com.pulumi.resources.ResourceArgs {
         this.additionalDiskSpace = $.additionalDiskSpace;
         this.cloudName = $.cloudName;
         this.diskSpace = $.diskSpace;
+        this.m3db = $.m3db;
         this.m3dbUserConfig = $.m3dbUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -362,6 +379,27 @@ public final class M3DbArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
+        }
+
+        /**
+         * @param m3db M3DB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder m3db(@Nullable Output<M3DbM3dbArgs> m3db) {
+            $.m3db = m3db;
+            return this;
+        }
+
+        /**
+         * @param m3db M3DB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder m3db(M3DbM3dbArgs m3db) {
+            return m3db(Output.of(m3db));
         }
 
         /**

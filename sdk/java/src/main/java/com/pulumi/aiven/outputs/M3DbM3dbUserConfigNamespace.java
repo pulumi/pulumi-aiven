@@ -29,7 +29,7 @@ public final class M3DbM3dbUserConfigNamespace {
      */
     private @Nullable String resolution;
     /**
-     * @return The type of aggregation (aggregated/unaggregated).
+     * @return Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      * 
      */
     private String type;
@@ -57,7 +57,7 @@ public final class M3DbM3dbUserConfigNamespace {
         return Optional.ofNullable(this.resolution);
     }
     /**
-     * @return The type of aggregation (aggregated/unaggregated).
+     * @return Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      * 
      */
     public String type() {

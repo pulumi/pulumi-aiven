@@ -17,14 +17,14 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
     public static final ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs Empty = new ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArgs();
 
     /**
-     * Authentication method.
+     * Enum: `none`, `basic`. Authentication method.
      * 
      */
     @Import(name="authentication", required=true)
     private Output<String> authentication;
 
     /**
-     * @return Authentication method.
+     * @return Enum: `none`, `basic`. Authentication method.
      * 
      */
     public Output<String> authentication() {
@@ -104,7 +104,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param authentication Authentication method.
+         * @param authentication Enum: `none`, `basic`. Authentication method.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ServiceIntegrationEndpointExternalSchemaRegistryUserConfigArg
         }
 
         /**
-         * @param authentication Authentication method.
+         * @param authentication Enum: `none`, `basic`. Authentication method.
          * 
          * @return builder
          * 

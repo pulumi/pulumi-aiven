@@ -109,14 +109,14 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
     }
 
     /**
-     * Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      * 
      */
     @Import(name="starttlsPolicy")
     private @Nullable Output<String> starttlsPolicy;
 
     /**
-     * @return Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * @return Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      * 
      */
     public Optional<Output<String>> starttlsPolicy() {
@@ -296,7 +296,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param starttlsPolicy Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+         * @param starttlsPolicy Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param starttlsPolicy Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+         * @param starttlsPolicy Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
          * 
          * @return builder
          * 

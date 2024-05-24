@@ -45,7 +45,7 @@ public final class GrafanaGrafanaUserConfigSmtpServer {
      */
     private @Nullable Boolean skipVerify;
     /**
-     * @return Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * @return Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      * 
      */
     private @Nullable String starttlsPolicy;
@@ -99,7 +99,7 @@ public final class GrafanaGrafanaUserConfigSmtpServer {
         return Optional.ofNullable(this.skipVerify);
     }
     /**
-     * @return Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+     * @return Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
      * 
      */
     public Optional<String> starttlsPolicy() {

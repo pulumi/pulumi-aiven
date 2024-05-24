@@ -198,14 +198,14 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * MySQL major version.
+     * Enum: `8`. MySQL major version.
      * 
      */
     @Import(name="mysqlVersion")
     private @Nullable Output<String> mysqlVersion;
 
     /**
-     * @return MySQL major version.
+     * @return Enum: `8`. MySQL major version.
      * 
      */
     public Optional<Output<String>> mysqlVersion() {
@@ -649,7 +649,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mysqlVersion MySQL major version.
+         * @param mysqlVersion Enum: `8`. MySQL major version.
          * 
          * @return builder
          * 
@@ -660,7 +660,7 @@ public final class MySqlMysqlUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mysqlVersion MySQL major version.
+         * @param mysqlVersion Enum: `8`. MySQL major version.
          * 
          * @return builder
          * 

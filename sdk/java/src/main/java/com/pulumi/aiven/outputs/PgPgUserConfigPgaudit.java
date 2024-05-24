@@ -30,7 +30,7 @@ public final class PgPgUserConfigPgaudit {
      */
     private @Nullable Boolean logClient;
     /**
-     * @return Specifies the log level that will be used for log entries. The default value is `log`.
+     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      * 
      */
     private @Nullable String logLevel;
@@ -108,7 +108,7 @@ public final class PgPgUserConfigPgaudit {
         return Optional.ofNullable(this.logClient);
     }
     /**
-     * @return Specifies the log level that will be used for log entries. The default value is `log`.
+     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      * 
      */
     public Optional<String> logLevel() {

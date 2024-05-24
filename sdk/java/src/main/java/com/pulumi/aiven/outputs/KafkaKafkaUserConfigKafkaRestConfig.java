@@ -24,12 +24,12 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Integer consumerRequestMaxBytes;
     /**
-     * @return The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * @return Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      * 
      */
     private @Nullable Integer consumerRequestTimeoutMs;
     /**
-     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
      * 
      */
     private @Nullable String nameStrategy;
@@ -39,12 +39,12 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
      */
     private @Nullable Boolean nameStrategyValidation;
     /**
-     * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      * 
      */
     private @Nullable String producerAcks;
     /**
-     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
@@ -80,14 +80,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.consumerRequestMaxBytes);
     }
     /**
-     * @return The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * @return Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      * 
      */
     public Optional<Integer> consumerRequestTimeoutMs() {
         return Optional.ofNullable(this.consumerRequestTimeoutMs);
     }
     /**
-     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
      * 
      */
     public Optional<String> nameStrategy() {
@@ -101,14 +101,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfig {
         return Optional.ofNullable(this.nameStrategyValidation);
     }
     /**
-     * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      * 
      */
     public Optional<String> producerAcks() {
         return Optional.ofNullable(this.producerAcks);
     }
     /**
-     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {

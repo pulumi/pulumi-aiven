@@ -30,7 +30,7 @@ public final class PgPgUserConfigMigration {
      */
     private @Nullable String ignoreDbs;
     /**
-     * @return The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * @return Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     private @Nullable String method;
@@ -78,7 +78,7 @@ public final class PgPgUserConfigMigration {
         return Optional.ofNullable(this.ignoreDbs);
     }
     /**
-     * @return The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+     * @return Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
      * 
      */
     public Optional<String> method() {

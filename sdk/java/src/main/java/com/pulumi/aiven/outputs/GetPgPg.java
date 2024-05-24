@@ -3,14 +3,21 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetPgPgParam;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetPgPg {
+    /**
+     * @return Bouncer connection details
+     * 
+     */
+    private String bouncer;
     /**
      * @return Primary PostgreSQL database name
      * 
@@ -26,6 +33,11 @@ public final class GetPgPg {
      * 
      */
     private Integer maxConnections;
+    /**
+     * @return PostgreSQL connection parameters
+     * 
+     */
+    private List<GetPgPgParam> params;
     /**
      * @return PostgreSQL admin user password
      * 
@@ -47,10 +59,25 @@ public final class GetPgPg {
      */
     private String sslmode;
     /**
+     * @return PostgreSQL standby connection URIs
+     * 
+     */
+    private List<String> standbyUris;
+    /**
+     * @return PostgreSQL syncing connection URIs
+     * 
+     */
+    private List<String> syncingUris;
+    /**
      * @return PostgreSQL master connection URI
      * 
      */
     private String uri;
+    /**
+     * @return PostgreSQL master connection URIs
+     * 
+     */
+    private List<String> uris;
     /**
      * @return PostgreSQL admin user name
      * 
@@ -58,6 +85,13 @@ public final class GetPgPg {
     private String user;
 
     private GetPgPg() {}
+    /**
+     * @return Bouncer connection details
+     * 
+     */
+    public String bouncer() {
+        return this.bouncer;
+    }
     /**
      * @return Primary PostgreSQL database name
      * 
@@ -78,6 +112,13 @@ public final class GetPgPg {
      */
     public Integer maxConnections() {
         return this.maxConnections;
+    }
+    /**
+     * @return PostgreSQL connection parameters
+     * 
+     */
+    public List<GetPgPgParam> params() {
+        return this.params;
     }
     /**
      * @return PostgreSQL admin user password
@@ -108,11 +149,32 @@ public final class GetPgPg {
         return this.sslmode;
     }
     /**
+     * @return PostgreSQL standby connection URIs
+     * 
+     */
+    public List<String> standbyUris() {
+        return this.standbyUris;
+    }
+    /**
+     * @return PostgreSQL syncing connection URIs
+     * 
+     */
+    public List<String> syncingUris() {
+        return this.syncingUris;
+    }
+    /**
      * @return PostgreSQL master connection URI
      * 
      */
     public String uri() {
         return this.uri;
+    }
+    /**
+     * @return PostgreSQL master connection URIs
+     * 
+     */
+    public List<String> uris() {
+        return this.uris;
     }
     /**
      * @return PostgreSQL admin user name
@@ -131,29 +193,47 @@ public final class GetPgPg {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String bouncer;
         private String dbname;
         private String host;
         private Integer maxConnections;
+        private List<GetPgPgParam> params;
         private String password;
         private Integer port;
         private String replicaUri;
         private String sslmode;
+        private List<String> standbyUris;
+        private List<String> syncingUris;
         private String uri;
+        private List<String> uris;
         private String user;
         public Builder() {}
         public Builder(GetPgPg defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bouncer = defaults.bouncer;
     	      this.dbname = defaults.dbname;
     	      this.host = defaults.host;
     	      this.maxConnections = defaults.maxConnections;
+    	      this.params = defaults.params;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.replicaUri = defaults.replicaUri;
     	      this.sslmode = defaults.sslmode;
+    	      this.standbyUris = defaults.standbyUris;
+    	      this.syncingUris = defaults.syncingUris;
     	      this.uri = defaults.uri;
+    	      this.uris = defaults.uris;
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
+        public Builder bouncer(String bouncer) {
+            if (bouncer == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "bouncer");
+            }
+            this.bouncer = bouncer;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbname(String dbname) {
             if (dbname == null) {
@@ -177,6 +257,17 @@ public final class GetPgPg {
             }
             this.maxConnections = maxConnections;
             return this;
+        }
+        @CustomType.Setter
+        public Builder params(List<GetPgPgParam> params) {
+            if (params == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "params");
+            }
+            this.params = params;
+            return this;
+        }
+        public Builder params(GetPgPgParam... params) {
+            return params(List.of(params));
         }
         @CustomType.Setter
         public Builder password(String password) {
@@ -211,12 +302,45 @@ public final class GetPgPg {
             return this;
         }
         @CustomType.Setter
+        public Builder standbyUris(List<String> standbyUris) {
+            if (standbyUris == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "standbyUris");
+            }
+            this.standbyUris = standbyUris;
+            return this;
+        }
+        public Builder standbyUris(String... standbyUris) {
+            return standbyUris(List.of(standbyUris));
+        }
+        @CustomType.Setter
+        public Builder syncingUris(List<String> syncingUris) {
+            if (syncingUris == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "syncingUris");
+            }
+            this.syncingUris = syncingUris;
+            return this;
+        }
+        public Builder syncingUris(String... syncingUris) {
+            return syncingUris(List.of(syncingUris));
+        }
+        @CustomType.Setter
         public Builder uri(String uri) {
             if (uri == null) {
               throw new MissingRequiredPropertyException("GetPgPg", "uri");
             }
             this.uri = uri;
             return this;
+        }
+        @CustomType.Setter
+        public Builder uris(List<String> uris) {
+            if (uris == null) {
+              throw new MissingRequiredPropertyException("GetPgPg", "uris");
+            }
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
         }
         @CustomType.Setter
         public Builder user(String user) {
@@ -228,14 +352,19 @@ public final class GetPgPg {
         }
         public GetPgPg build() {
             final var _resultValue = new GetPgPg();
+            _resultValue.bouncer = bouncer;
             _resultValue.dbname = dbname;
             _resultValue.host = host;
             _resultValue.maxConnections = maxConnections;
+            _resultValue.params = params;
             _resultValue.password = password;
             _resultValue.port = port;
             _resultValue.replicaUri = replicaUri;
             _resultValue.sslmode = sslmode;
+            _resultValue.standbyUris = standbyUris;
+            _resultValue.syncingUris = syncingUris;
             _resultValue.uri = uri;
+            _resultValue.uris = uris;
             _resultValue.user = user;
             return _resultValue;
         }

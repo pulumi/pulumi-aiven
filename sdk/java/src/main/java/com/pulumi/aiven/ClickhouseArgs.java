@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.ClickhouseClickhouseArgs;
 import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigArgs;
 import com.pulumi.aiven.inputs.ClickhouseServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.ClickhouseTagArgs;
@@ -35,6 +36,21 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> additionalDiskSpace() {
         return Optional.ofNullable(this.additionalDiskSpace);
+    }
+
+    /**
+     * Clickhouse server provided values
+     * 
+     */
+    @Import(name="clickhouse")
+    private @Nullable Output<ClickhouseClickhouseArgs> clickhouse;
+
+    /**
+     * @return Clickhouse server provided values
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseArgs>> clickhouse() {
+        return Optional.ofNullable(this.clickhouse);
     }
 
     /**
@@ -259,6 +275,7 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
 
     private ClickhouseArgs(ClickhouseArgs $) {
         this.additionalDiskSpace = $.additionalDiskSpace;
+        this.clickhouse = $.clickhouse;
         this.clickhouseUserConfig = $.clickhouseUserConfig;
         this.cloudName = $.cloudName;
         this.diskSpace = $.diskSpace;
@@ -312,6 +329,27 @@ public final class ClickhouseArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder additionalDiskSpace(String additionalDiskSpace) {
             return additionalDiskSpace(Output.of(additionalDiskSpace));
+        }
+
+        /**
+         * @param clickhouse Clickhouse server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouse(@Nullable Output<ClickhouseClickhouseArgs> clickhouse) {
+            $.clickhouse = clickhouse;
+            return this;
+        }
+
+        /**
+         * @param clickhouse Clickhouse server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouse(ClickhouseClickhouseArgs clickhouse) {
+            return clickhouse(Output.of(clickhouse));
         }
 
         /**

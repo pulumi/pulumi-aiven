@@ -48,14 +48,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      * 
      */
     @Import(name="consumerRequestTimeoutMs")
     private @Nullable Output<Integer> consumerRequestTimeoutMs;
 
     /**
-     * @return The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+     * @return Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
      * 
      */
     public Optional<Output<Integer>> consumerRequestTimeoutMs() {
@@ -63,14 +63,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
      * 
      */
     @Import(name="nameStrategy")
     private @Nullable Output<String> nameStrategy;
 
     /**
-     * @return Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+     * @return Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
      * 
      */
     public Optional<Output<String>> nameStrategy() {
@@ -93,14 +93,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      * 
      */
     @Import(name="producerAcks")
     private @Nullable Output<String> producerAcks;
 
     /**
-     * @return The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+     * @return Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
      * 
      */
     public Optional<Output<String>> producerAcks() {
@@ -108,14 +108,14 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
     /**
-     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     public Optional<Output<String>> producerCompressionType() {
@@ -243,7 +243,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestTimeoutMs The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+         * @param consumerRequestTimeoutMs Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param consumerRequestTimeoutMs The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+         * @param consumerRequestTimeoutMs Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategy Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+         * @param nameStrategy Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param nameStrategy Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+         * @param nameStrategy Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerAcks The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+         * @param producerAcks Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerAcks The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+         * @param producerAcks Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to &#39;all&#39; or &#39;-1&#39;, the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
          * 
          * @return builder
          * 
@@ -327,7 +327,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class KafkaKafkaUserConfigKafkaRestConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
          * 
          * @return builder
          * 

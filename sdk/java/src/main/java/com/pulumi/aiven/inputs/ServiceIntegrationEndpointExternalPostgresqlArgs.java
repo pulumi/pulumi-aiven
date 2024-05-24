@@ -108,14 +108,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      * 
      */
     @Import(name="sslMode")
     private @Nullable Output<String> sslMode;
 
     /**
-     * @return SSL Mode. The default value is `verify-full`.
+     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      * 
      */
     public Optional<Output<String>> sslMode() {
@@ -311,7 +311,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslMode SSL Mode. The default value is `verify-full`.
+         * @param sslMode Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslMode SSL Mode. The default value is `verify-full`.
+         * @param sslMode Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
          * 
          * @return builder
          * 

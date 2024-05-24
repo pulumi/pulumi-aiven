@@ -43,7 +43,7 @@ public final class GetCassandaCassandraUserConfig {
      */
     private @Nullable GetCassandaCassandraUserConfigCassandra cassandra;
     /**
-     * @return Cassandra version.
+     * @return Enum: `3`, `4`, `4.1`. Cassandra version.
      * 
      */
     private @Nullable String cassandraVersion;
@@ -141,7 +141,7 @@ public final class GetCassandaCassandraUserConfig {
         return Optional.ofNullable(this.cassandra);
     }
     /**
-     * @return Cassandra version.
+     * @return Enum: `3`, `4`, `4.1`. Cassandra version.
      * 
      */
     public Optional<String> cassandraVersion() {

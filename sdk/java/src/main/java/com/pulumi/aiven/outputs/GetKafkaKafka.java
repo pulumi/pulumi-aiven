@@ -6,6 +6,7 @@ package com.pulumi.aiven.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -35,6 +36,11 @@ public final class GetKafkaKafka {
      * 
      */
     private String schemaRegistryUri;
+    /**
+     * @return Kafka server URIs.
+     * 
+     */
+    private List<String> uris;
 
     private GetKafkaKafka() {}
     /**
@@ -72,6 +78,13 @@ public final class GetKafkaKafka {
     public String schemaRegistryUri() {
         return this.schemaRegistryUri;
     }
+    /**
+     * @return Kafka server URIs.
+     * 
+     */
+    public List<String> uris() {
+        return this.uris;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -87,6 +100,7 @@ public final class GetKafkaKafka {
         private String connectUri;
         private String restUri;
         private String schemaRegistryUri;
+        private List<String> uris;
         public Builder() {}
         public Builder(GetKafkaKafka defaults) {
     	      Objects.requireNonNull(defaults);
@@ -95,6 +109,7 @@ public final class GetKafkaKafka {
     	      this.connectUri = defaults.connectUri;
     	      this.restUri = defaults.restUri;
     	      this.schemaRegistryUri = defaults.schemaRegistryUri;
+    	      this.uris = defaults.uris;
         }
 
         @CustomType.Setter
@@ -137,6 +152,17 @@ public final class GetKafkaKafka {
             this.schemaRegistryUri = schemaRegistryUri;
             return this;
         }
+        @CustomType.Setter
+        public Builder uris(List<String> uris) {
+            if (uris == null) {
+              throw new MissingRequiredPropertyException("GetKafkaKafka", "uris");
+            }
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
+        }
         public GetKafkaKafka build() {
             final var _resultValue = new GetKafkaKafka();
             _resultValue.accessCert = accessCert;
@@ -144,6 +170,7 @@ public final class GetKafkaKafka {
             _resultValue.connectUri = connectUri;
             _resultValue.restUri = restUri;
             _resultValue.schemaRegistryUri = schemaRegistryUri;
+            _resultValue.uris = uris;
             return _resultValue;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetM3DbComponent;
+import com.pulumi.aiven.outputs.GetM3DbM3db;
 import com.pulumi.aiven.outputs.GetM3DbM3dbUserConfig;
 import com.pulumi.aiven.outputs.GetM3DbServiceIntegration;
 import com.pulumi.aiven.outputs.GetM3DbTag;
@@ -68,6 +69,11 @@ public final class GetM3DbResult {
      * 
      */
     private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
+    /**
+     * @return M3DB server provided values
+     * 
+     */
+    private List<GetM3DbM3db> m3dbs;
     /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
@@ -231,6 +237,13 @@ public final class GetM3DbResult {
         return this.m3dbUserConfigs;
     }
     /**
+     * @return M3DB server provided values
+     * 
+     */
+    public List<GetM3DbM3db> m3dbs() {
+        return this.m3dbs;
+    }
+    /**
      * @return Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      * 
      */
@@ -376,6 +389,7 @@ public final class GetM3DbResult {
         private String diskSpaceUsed;
         private String id;
         private List<GetM3DbM3dbUserConfig> m3dbUserConfigs;
+        private List<GetM3DbM3db> m3dbs;
         private String maintenanceWindowDow;
         private String maintenanceWindowTime;
         private String plan;
@@ -407,6 +421,7 @@ public final class GetM3DbResult {
     	      this.diskSpaceUsed = defaults.diskSpaceUsed;
     	      this.id = defaults.id;
     	      this.m3dbUserConfigs = defaults.m3dbUserConfigs;
+    	      this.m3dbs = defaults.m3dbs;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
     	      this.maintenanceWindowTime = defaults.maintenanceWindowTime;
     	      this.plan = defaults.plan;
@@ -512,6 +527,17 @@ public final class GetM3DbResult {
         }
         public Builder m3dbUserConfigs(GetM3DbM3dbUserConfig... m3dbUserConfigs) {
             return m3dbUserConfigs(List.of(m3dbUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder m3dbs(List<GetM3DbM3db> m3dbs) {
+            if (m3dbs == null) {
+              throw new MissingRequiredPropertyException("GetM3DbResult", "m3dbs");
+            }
+            this.m3dbs = m3dbs;
+            return this;
+        }
+        public Builder m3dbs(GetM3DbM3db... m3dbs) {
+            return m3dbs(List.of(m3dbs));
         }
         @CustomType.Setter
         public Builder maintenanceWindowDow(String maintenanceWindowDow) {
@@ -681,6 +707,7 @@ public final class GetM3DbResult {
             _resultValue.diskSpaceUsed = diskSpaceUsed;
             _resultValue.id = id;
             _resultValue.m3dbUserConfigs = m3dbUserConfigs;
+            _resultValue.m3dbs = m3dbs;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;
             _resultValue.maintenanceWindowTime = maintenanceWindowTime;
             _resultValue.plan = plan;

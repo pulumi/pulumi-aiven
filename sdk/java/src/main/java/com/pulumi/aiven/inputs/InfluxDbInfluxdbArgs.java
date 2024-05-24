@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -30,10 +31,58 @@ public final class InfluxDbInfluxdbArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.databaseName);
     }
 
+    /**
+     * InfluxDB password
+     * 
+     */
+    @Import(name="password")
+    private @Nullable Output<String> password;
+
+    /**
+     * @return InfluxDB password
+     * 
+     */
+    public Optional<Output<String>> password() {
+        return Optional.ofNullable(this.password);
+    }
+
+    /**
+     * InfluxDB server URIs.
+     * 
+     */
+    @Import(name="uris")
+    private @Nullable Output<List<String>> uris;
+
+    /**
+     * @return InfluxDB server URIs.
+     * 
+     */
+    public Optional<Output<List<String>>> uris() {
+        return Optional.ofNullable(this.uris);
+    }
+
+    /**
+     * InfluxDB username
+     * 
+     */
+    @Import(name="username")
+    private @Nullable Output<String> username;
+
+    /**
+     * @return InfluxDB username
+     * 
+     */
+    public Optional<Output<String>> username() {
+        return Optional.ofNullable(this.username);
+    }
+
     private InfluxDbInfluxdbArgs() {}
 
     private InfluxDbInfluxdbArgs(InfluxDbInfluxdbArgs $) {
         this.databaseName = $.databaseName;
+        this.password = $.password;
+        this.uris = $.uris;
+        this.username = $.username;
     }
 
     public static Builder builder() {
@@ -73,6 +122,79 @@ public final class InfluxDbInfluxdbArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder databaseName(String databaseName) {
             return databaseName(Output.of(databaseName));
+        }
+
+        /**
+         * @param password InfluxDB password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(@Nullable Output<String> password) {
+            $.password = password;
+            return this;
+        }
+
+        /**
+         * @param password InfluxDB password
+         * 
+         * @return builder
+         * 
+         */
+        public Builder password(String password) {
+            return password(Output.of(password));
+        }
+
+        /**
+         * @param uris InfluxDB server URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(@Nullable Output<List<String>> uris) {
+            $.uris = uris;
+            return this;
+        }
+
+        /**
+         * @param uris InfluxDB server URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(List<String> uris) {
+            return uris(Output.of(uris));
+        }
+
+        /**
+         * @param uris InfluxDB server URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
+        }
+
+        /**
+         * @param username InfluxDB username
+         * 
+         * @return builder
+         * 
+         */
+        public Builder username(@Nullable Output<String> username) {
+            $.username = username;
+            return this;
+        }
+
+        /**
+         * @param username InfluxDB username
+         * 
+         * @return builder
+         * 
+         */
+        public Builder username(String username) {
+            return username(Output.of(username));
         }
 
         public InfluxDbInfluxdbArgs build() {

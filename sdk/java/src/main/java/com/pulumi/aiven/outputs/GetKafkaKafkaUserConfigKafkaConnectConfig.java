@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
     /**
-     * @return Defines what client configurations can be overridden by the connector. Default is None.
+     * @return Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     private @Nullable String connectorClientConfigOverridePolicy;
     /**
-     * @return What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * @return Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      * 
      */
     private @Nullable String consumerAutoOffsetReset;
@@ -28,7 +28,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable Integer consumerFetchMaxBytes;
     /**
-     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     private @Nullable String consumerIsolationLevel;
@@ -68,7 +68,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
      */
     private @Nullable Integer producerBufferMemory;
     /**
-     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
@@ -95,14 +95,14 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
 
     private GetKafkaKafkaUserConfigKafkaConnectConfig() {}
     /**
-     * @return Defines what client configurations can be overridden by the connector. Default is None.
+     * @return Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     public Optional<String> connectorClientConfigOverridePolicy() {
         return Optional.ofNullable(this.connectorClientConfigOverridePolicy);
     }
     /**
-     * @return What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * @return Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      * 
      */
     public Optional<String> consumerAutoOffsetReset() {
@@ -116,7 +116,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.consumerFetchMaxBytes);
     }
     /**
-     * @return Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<String> consumerIsolationLevel() {
@@ -172,7 +172,7 @@ public final class GetKafkaKafkaUserConfigKafkaConnectConfig {
         return Optional.ofNullable(this.producerBufferMemory);
     }
     /**
-     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {

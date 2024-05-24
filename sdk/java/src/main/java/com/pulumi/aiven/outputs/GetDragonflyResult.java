@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetDragonflyComponent;
+import com.pulumi.aiven.outputs.GetDragonflyDragonfly;
 import com.pulumi.aiven.outputs.GetDragonflyDragonflyUserConfig;
 import com.pulumi.aiven.outputs.GetDragonflyServiceIntegration;
 import com.pulumi.aiven.outputs.GetDragonflyTag;
@@ -58,6 +59,11 @@ public final class GetDragonflyResult {
      * 
      */
     private String diskSpaceUsed;
+    /**
+     * @return Dragonfly server provided values
+     * 
+     */
+    private List<GetDragonflyDragonfly> dragonflies;
     /**
      * @return Dragonfly user configurable settings
      * 
@@ -217,6 +223,13 @@ public final class GetDragonflyResult {
         return this.diskSpaceUsed;
     }
     /**
+     * @return Dragonfly server provided values
+     * 
+     */
+    public List<GetDragonflyDragonfly> dragonflies() {
+        return this.dragonflies;
+    }
+    /**
      * @return Dragonfly user configurable settings
      * 
      */
@@ -374,6 +387,7 @@ public final class GetDragonflyResult {
         private String diskSpaceDefault;
         private String diskSpaceStep;
         private String diskSpaceUsed;
+        private List<GetDragonflyDragonfly> dragonflies;
         private List<GetDragonflyDragonflyUserConfig> dragonflyUserConfigs;
         private String id;
         private String maintenanceWindowDow;
@@ -405,6 +419,7 @@ public final class GetDragonflyResult {
     	      this.diskSpaceDefault = defaults.diskSpaceDefault;
     	      this.diskSpaceStep = defaults.diskSpaceStep;
     	      this.diskSpaceUsed = defaults.diskSpaceUsed;
+    	      this.dragonflies = defaults.dragonflies;
     	      this.dragonflyUserConfigs = defaults.dragonflyUserConfigs;
     	      this.id = defaults.id;
     	      this.maintenanceWindowDow = defaults.maintenanceWindowDow;
@@ -493,6 +508,17 @@ public final class GetDragonflyResult {
             }
             this.diskSpaceUsed = diskSpaceUsed;
             return this;
+        }
+        @CustomType.Setter
+        public Builder dragonflies(List<GetDragonflyDragonfly> dragonflies) {
+            if (dragonflies == null) {
+              throw new MissingRequiredPropertyException("GetDragonflyResult", "dragonflies");
+            }
+            this.dragonflies = dragonflies;
+            return this;
+        }
+        public Builder dragonflies(GetDragonflyDragonfly... dragonflies) {
+            return dragonflies(List.of(dragonflies));
         }
         @CustomType.Setter
         public Builder dragonflyUserConfigs(List<GetDragonflyDragonflyUserConfig> dragonflyUserConfigs) {
@@ -679,6 +705,7 @@ public final class GetDragonflyResult {
             _resultValue.diskSpaceDefault = diskSpaceDefault;
             _resultValue.diskSpaceStep = diskSpaceStep;
             _resultValue.diskSpaceUsed = diskSpaceUsed;
+            _resultValue.dragonflies = dragonflies;
             _resultValue.dragonflyUserConfigs = dragonflyUserConfigs;
             _resultValue.id = id;
             _resultValue.maintenanceWindowDow = maintenanceWindowDow;

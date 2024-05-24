@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.CassandraArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.CassandraState;
+import com.pulumi.aiven.outputs.CassandraCassandra;
 import com.pulumi.aiven.outputs.CassandraCassandraUserConfig;
 import com.pulumi.aiven.outputs.CassandraComponent;
 import com.pulumi.aiven.outputs.CassandraServiceIntegration;
@@ -95,6 +96,20 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> additionalDiskSpace() {
         return Codegen.optional(this.additionalDiskSpace);
+    }
+    /**
+     * Cassandra server provided values
+     * 
+     */
+    @Export(name="cassandra", refs={CassandraCassandra.class}, tree="[0]")
+    private Output<CassandraCassandra> cassandra;
+
+    /**
+     * @return Cassandra server provided values
+     * 
+     */
+    public Output<CassandraCassandra> cassandra() {
+        return this.cassandra;
     }
     /**
      * Cassandra user configurable settings
@@ -498,6 +513,7 @@ public class Cassandra extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "cassandra",
                 "servicePassword",
                 "serviceUri"
             ))

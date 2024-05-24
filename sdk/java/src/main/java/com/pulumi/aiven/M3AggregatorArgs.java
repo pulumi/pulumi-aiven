@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.M3AggregatorM3aggregatorArgs;
 import com.pulumi.aiven.inputs.M3AggregatorM3aggregatorUserConfigArgs;
 import com.pulumi.aiven.inputs.M3AggregatorServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.M3AggregatorTagArgs;
@@ -73,6 +74,21 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
+    }
+
+    /**
+     * M3 Aggregator server provided values
+     * 
+     */
+    @Import(name="m3aggregator")
+    private @Nullable Output<M3AggregatorM3aggregatorArgs> m3aggregator;
+
+    /**
+     * @return M3 Aggregator server provided values
+     * 
+     */
+    public Optional<Output<M3AggregatorM3aggregatorArgs>> m3aggregator() {
+        return Optional.ofNullable(this.m3aggregator);
     }
 
     /**
@@ -261,6 +277,7 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         this.additionalDiskSpace = $.additionalDiskSpace;
         this.cloudName = $.cloudName;
         this.diskSpace = $.diskSpace;
+        this.m3aggregator = $.m3aggregator;
         this.m3aggregatorUserConfig = $.m3aggregatorUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -362,6 +379,27 @@ public final class M3AggregatorArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
+        }
+
+        /**
+         * @param m3aggregator M3 Aggregator server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder m3aggregator(@Nullable Output<M3AggregatorM3aggregatorArgs> m3aggregator) {
+            $.m3aggregator = m3aggregator;
+            return this;
+        }
+
+        /**
+         * @param m3aggregator M3 Aggregator server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder m3aggregator(M3AggregatorM3aggregatorArgs m3aggregator) {
+            return m3aggregator(Output.of(m3aggregator));
         }
 
         /**

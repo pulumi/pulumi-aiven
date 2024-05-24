@@ -4,6 +4,7 @@
 package com.pulumi.aiven.outputs;
 
 import com.pulumi.aiven.outputs.GetRedisComponent;
+import com.pulumi.aiven.outputs.GetRedisRedi;
 import com.pulumi.aiven.outputs.GetRedisRedisUserConfig;
 import com.pulumi.aiven.outputs.GetRedisServiceIntegration;
 import com.pulumi.aiven.outputs.GetRedisTag;
@@ -88,6 +89,11 @@ public final class GetRedisResult {
      * 
      */
     private String projectVpcId;
+    /**
+     * @return Redis server provided values
+     * 
+     */
+    private List<GetRedisRedi> redis;
     /**
      * @return Redis user configurable settings
      * 
@@ -259,6 +265,13 @@ public final class GetRedisResult {
         return this.projectVpcId;
     }
     /**
+     * @return Redis server provided values
+     * 
+     */
+    public List<GetRedisRedi> redis() {
+        return this.redis;
+    }
+    /**
      * @return Redis user configurable settings
      * 
      */
@@ -380,6 +393,7 @@ public final class GetRedisResult {
         private String plan;
         private String project;
         private String projectVpcId;
+        private List<GetRedisRedi> redis;
         private List<GetRedisRedisUserConfig> redisUserConfigs;
         private String serviceHost;
         private List<GetRedisServiceIntegration> serviceIntegrations;
@@ -411,6 +425,7 @@ public final class GetRedisResult {
     	      this.plan = defaults.plan;
     	      this.project = defaults.project;
     	      this.projectVpcId = defaults.projectVpcId;
+    	      this.redis = defaults.redis;
     	      this.redisUserConfigs = defaults.redisUserConfigs;
     	      this.serviceHost = defaults.serviceHost;
     	      this.serviceIntegrations = defaults.serviceIntegrations;
@@ -541,6 +556,17 @@ public final class GetRedisResult {
             }
             this.projectVpcId = projectVpcId;
             return this;
+        }
+        @CustomType.Setter
+        public Builder redis(List<GetRedisRedi> redis) {
+            if (redis == null) {
+              throw new MissingRequiredPropertyException("GetRedisResult", "redis");
+            }
+            this.redis = redis;
+            return this;
+        }
+        public Builder redis(GetRedisRedi... redis) {
+            return redis(List.of(redis));
         }
         @CustomType.Setter
         public Builder redisUserConfigs(List<GetRedisRedisUserConfig> redisUserConfigs) {
@@ -685,6 +711,7 @@ public final class GetRedisResult {
             _resultValue.plan = plan;
             _resultValue.project = project;
             _resultValue.projectVpcId = projectVpcId;
+            _resultValue.redis = redis;
             _resultValue.redisUserConfigs = redisUserConfigs;
             _resultValue.serviceHost = serviceHost;
             _resultValue.serviceIntegrations = serviceIntegrations;

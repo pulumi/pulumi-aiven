@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.OpenSearchOpensearchArgs;
 import com.pulumi.aiven.inputs.OpenSearchOpensearchUserConfigArgs;
 import com.pulumi.aiven.inputs.OpenSearchServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.OpenSearchTagArgs;
@@ -118,6 +119,21 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<OpenSearchOpensearchUserConfigArgs>> opensearchUserConfig() {
         return Optional.ofNullable(this.opensearchUserConfig);
+    }
+
+    /**
+     * OpenSearch server provided values
+     * 
+     */
+    @Import(name="opensearches")
+    private @Nullable Output<List<OpenSearchOpensearchArgs>> opensearches;
+
+    /**
+     * @return OpenSearch server provided values
+     * 
+     */
+    public Optional<Output<List<OpenSearchOpensearchArgs>>> opensearches() {
+        return Optional.ofNullable(this.opensearches);
     }
 
     /**
@@ -264,6 +280,7 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
         this.opensearchUserConfig = $.opensearchUserConfig;
+        this.opensearches = $.opensearches;
         this.plan = $.plan;
         this.project = $.project;
         this.projectVpcId = $.projectVpcId;
@@ -425,6 +442,37 @@ public final class OpenSearchArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder opensearchUserConfig(OpenSearchOpensearchUserConfigArgs opensearchUserConfig) {
             return opensearchUserConfig(Output.of(opensearchUserConfig));
+        }
+
+        /**
+         * @param opensearches OpenSearch server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearches(@Nullable Output<List<OpenSearchOpensearchArgs>> opensearches) {
+            $.opensearches = opensearches;
+            return this;
+        }
+
+        /**
+         * @param opensearches OpenSearch server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearches(List<OpenSearchOpensearchArgs> opensearches) {
+            return opensearches(Output.of(opensearches));
+        }
+
+        /**
+         * @param opensearches OpenSearch server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder opensearches(OpenSearchOpensearchArgs... opensearches) {
+            return opensearches(List.of(opensearches));
         }
 
         /**

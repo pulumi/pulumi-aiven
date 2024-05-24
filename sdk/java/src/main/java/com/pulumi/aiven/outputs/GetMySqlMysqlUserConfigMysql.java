@@ -100,7 +100,7 @@ public final class GetMySqlMysqlUserConfigMysql {
      */
     private @Nullable Integer interactiveTimeout;
     /**
-     * @return The storage engine for in-memory internal temporary tables.
+     * @return Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      * 
      */
     private @Nullable String internalTmpMemStorageEngine;
@@ -286,7 +286,7 @@ public final class GetMySqlMysqlUserConfigMysql {
         return Optional.ofNullable(this.interactiveTimeout);
     }
     /**
-     * @return The storage engine for in-memory internal temporary tables.
+     * @return Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
      * 
      */
     public Optional<String> internalTmpMemStorageEngine() {

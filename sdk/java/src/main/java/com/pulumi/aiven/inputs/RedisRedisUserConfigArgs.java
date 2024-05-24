@@ -182,14 +182,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
      * 
      */
     @Import(name="redisAclChannelsDefault")
     private @Nullable Output<String> redisAclChannelsDefault;
 
     /**
-     * @return Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
      * 
      */
     public Optional<Output<String>> redisAclChannelsDefault() {
@@ -242,14 +242,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      * 
      */
     @Import(name="redisMaxmemoryPolicy")
     private @Nullable Output<String> redisMaxmemoryPolicy;
 
     /**
-     * @return Redis maxmemory-policy. The default value is `noeviction`.
+     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      * 
      */
     public Optional<Output<String>> redisMaxmemoryPolicy() {
@@ -287,14 +287,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
     @Import(name="redisPersistence")
     private @Nullable Output<String> redisPersistence;
 
     /**
-     * @return When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
     public Optional<Output<String>> redisPersistence() {
@@ -347,14 +347,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Redis major version.
+     * Enum: `7.0`. Redis major version.
      * 
      */
     @Import(name="redisVersion")
     private @Nullable Output<String> redisVersion;
 
     /**
-     * @return Redis major version.
+     * @return Enum: `7.0`. Redis major version.
      * 
      */
     public Optional<Output<String>> redisVersion() {
@@ -707,7 +707,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisAclChannelsDefault Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+         * @param redisAclChannelsDefault Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
          * 
          * @return builder
          * 
@@ -718,7 +718,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisAclChannelsDefault Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+         * @param redisAclChannelsDefault Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
          * 
          * @return builder
          * 
@@ -791,7 +791,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisMaxmemoryPolicy Redis maxmemory-policy. The default value is `noeviction`.
+         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
          * 
          * @return builder
          * 
@@ -802,7 +802,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisMaxmemoryPolicy Redis maxmemory-policy. The default value is `noeviction`.
+         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
          * 
          * @return builder
          * 
@@ -854,7 +854,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPersistence When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -865,7 +865,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPersistence When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -938,7 +938,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisVersion Redis major version.
+         * @param redisVersion Enum: `7.0`. Redis major version.
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisVersion Redis major version.
+         * @param redisVersion Enum: `7.0`. Redis major version.
          * 
          * @return builder
          * 

@@ -60,7 +60,7 @@ public final class GetM3DbM3dbUserConfig {
      */
     private @Nullable GetM3DbM3dbUserConfigM3 m3;
     /**
-     * @return M3 major version (deprecated, use m3db_version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      * 
      */
     private @Nullable String m3Version;
@@ -70,7 +70,7 @@ public final class GetM3DbM3dbUserConfig {
      */
     private @Nullable Boolean m3coordinatorEnableGraphiteCarbonIngest;
     /**
-     * @return M3 major version (the minimum compatible version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     private @Nullable String m3dbVersion;
@@ -170,7 +170,7 @@ public final class GetM3DbM3dbUserConfig {
         return Optional.ofNullable(this.m3);
     }
     /**
-     * @return M3 major version (deprecated, use m3db_version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      * 
      */
     public Optional<String> m3Version() {
@@ -184,7 +184,7 @@ public final class GetM3DbM3dbUserConfig {
         return Optional.ofNullable(this.m3coordinatorEnableGraphiteCarbonIngest);
     }
     /**
-     * @return M3 major version (the minimum compatible version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     public Optional<String> m3dbVersion() {

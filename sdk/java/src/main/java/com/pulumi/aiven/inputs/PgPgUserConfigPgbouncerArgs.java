@@ -49,14 +49,14 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * PGBouncer pool mode. The default value is `transaction`.
+     * Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
      * 
      */
     @Import(name="autodbPoolMode")
     private @Nullable Output<String> autodbPoolMode;
 
     /**
-     * @return PGBouncer pool mode. The default value is `transaction`.
+     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
      * 
      */
     public Optional<Output<String>> autodbPoolMode() {
@@ -228,7 +228,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbPoolMode PGBouncer pool mode. The default value is `transaction`.
+         * @param autodbPoolMode Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class PgPgUserConfigPgbouncerArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autodbPoolMode PGBouncer pool mode. The default value is `transaction`.
+         * @param autodbPoolMode Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
          * 
          * @return builder
          * 

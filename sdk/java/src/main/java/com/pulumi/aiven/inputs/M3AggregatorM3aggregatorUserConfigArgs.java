@@ -87,14 +87,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * M3 major version (deprecated, use m3aggregator_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      * 
      */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
     /**
-     * @return M3 major version (deprecated, use m3aggregator_version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      * 
      */
     public Optional<Output<String>> m3Version() {
@@ -102,14 +102,14 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
     }
 
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     @Import(name="m3aggregatorVersion")
     private @Nullable Output<String> m3aggregatorVersion;
 
     /**
-     * @return M3 major version (the minimum compatible version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     public Optional<Output<String>> m3aggregatorVersion() {
@@ -304,7 +304,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param m3Version M3 major version (deprecated, use m3aggregator_version).
+         * @param m3Version Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param m3Version M3 major version (deprecated, use m3aggregator_version).
+         * @param m3Version Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param m3aggregatorVersion M3 major version (the minimum compatible version).
+         * @param m3aggregatorVersion Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class M3AggregatorM3aggregatorUserConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param m3aggregatorVersion M3 major version (the minimum compatible version).
+         * @param m3aggregatorVersion Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
          * 
          * @return builder
          * 

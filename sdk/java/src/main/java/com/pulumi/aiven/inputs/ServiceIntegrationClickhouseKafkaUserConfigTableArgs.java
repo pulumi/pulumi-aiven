@@ -21,14 +21,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableArgs();
 
     /**
-     * Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      * 
      */
     @Import(name="autoOffsetReset")
     private @Nullable Output<String> autoOffsetReset;
 
     /**
-     * @return Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      * 
      */
     public Optional<Output<String>> autoOffsetReset() {
@@ -51,14 +51,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Message data format. The default value is `JSONEachRow`.
+     * Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      * 
      */
     @Import(name="dataFormat", required=true)
     private Output<String> dataFormat;
 
     /**
-     * @return Message data format. The default value is `JSONEachRow`.
+     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      * 
      */
     public Output<String> dataFormat() {
@@ -66,14 +66,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * Method to read DateTime from text input formats. The default value is `basic`.
+     * Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
      * 
      */
     @Import(name="dateTimeInputFormat")
     private @Nullable Output<String> dateTimeInputFormat;
 
     /**
-     * @return Method to read DateTime from text input formats. The default value is `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
      * 
      */
     public Optional<Output<String>> dateTimeInputFormat() {
@@ -96,14 +96,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
     }
 
     /**
-     * How to handle errors for Kafka engine. The default value is `default`.
+     * Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      * 
      */
     @Import(name="handleErrorMode")
     private @Nullable Output<String> handleErrorMode;
 
     /**
-     * @return How to handle errors for Kafka engine. The default value is `default`.
+     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      * 
      */
     public Optional<Output<String>> handleErrorMode() {
@@ -252,7 +252,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param autoOffsetReset Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+         * @param autoOffsetReset Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param autoOffsetReset Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+         * @param autoOffsetReset Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dataFormat Message data format. The default value is `JSONEachRow`.
+         * @param dataFormat Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dataFormat Message data format. The default value is `JSONEachRow`.
+         * @param dataFormat Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dateTimeInputFormat Method to read DateTime from text input formats. The default value is `basic`.
+         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param dateTimeInputFormat Method to read DateTime from text input formats. The default value is `basic`.
+         * @param dateTimeInputFormat Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param handleErrorMode How to handle errors for Kafka engine. The default value is `default`.
+         * @param handleErrorMode Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableArgs extends 
         }
 
         /**
-         * @param handleErrorMode How to handle errors for Kafka engine. The default value is `default`.
+         * @param handleErrorMode Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
          * 
          * @return builder
          * 

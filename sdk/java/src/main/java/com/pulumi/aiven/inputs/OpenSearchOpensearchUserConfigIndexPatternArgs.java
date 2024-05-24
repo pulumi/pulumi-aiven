@@ -48,14 +48,14 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
     }
 
     /**
-     * Deletion sorting algorithm. The default value is `creation_date`.
+     * Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
      * 
      */
     @Import(name="sortingAlgorithm")
     private @Nullable Output<String> sortingAlgorithm;
 
     /**
-     * @return Deletion sorting algorithm. The default value is `creation_date`.
+     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
      * 
      */
     public Optional<Output<String>> sortingAlgorithm() {
@@ -131,7 +131,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param sortingAlgorithm Deletion sorting algorithm. The default value is `creation_date`.
+         * @param sortingAlgorithm Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param sortingAlgorithm Deletion sorting algorithm. The default value is `creation_date`.
+         * @param sortingAlgorithm Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
          * 
          * @return builder
          * 

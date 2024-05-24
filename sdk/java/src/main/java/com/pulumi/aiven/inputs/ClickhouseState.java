@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.ClickhouseClickhouseArgs;
 import com.pulumi.aiven.inputs.ClickhouseClickhouseUserConfigArgs;
 import com.pulumi.aiven.inputs.ClickhouseComponentArgs;
 import com.pulumi.aiven.inputs.ClickhouseServiceIntegrationArgs;
@@ -36,6 +37,21 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> additionalDiskSpace() {
         return Optional.ofNullable(this.additionalDiskSpace);
+    }
+
+    /**
+     * Clickhouse server provided values
+     * 
+     */
+    @Import(name="clickhouse")
+    private @Nullable Output<ClickhouseClickhouseArgs> clickhouse;
+
+    /**
+     * @return Clickhouse server provided values
+     * 
+     */
+    public Optional<Output<ClickhouseClickhouseArgs>> clickhouse() {
+        return Optional.ofNullable(this.clickhouse);
     }
 
     /**
@@ -440,6 +456,7 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
 
     private ClickhouseState(ClickhouseState $) {
         this.additionalDiskSpace = $.additionalDiskSpace;
+        this.clickhouse = $.clickhouse;
         this.clickhouseUserConfig = $.clickhouseUserConfig;
         this.cloudName = $.cloudName;
         this.components = $.components;
@@ -505,6 +522,27 @@ public final class ClickhouseState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder additionalDiskSpace(String additionalDiskSpace) {
             return additionalDiskSpace(Output.of(additionalDiskSpace));
+        }
+
+        /**
+         * @param clickhouse Clickhouse server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouse(@Nullable Output<ClickhouseClickhouseArgs> clickhouse) {
+            $.clickhouse = clickhouse;
+            return this;
+        }
+
+        /**
+         * @param clickhouse Clickhouse server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clickhouse(ClickhouseClickhouseArgs clickhouse) {
+            return clickhouse(Output.of(clickhouse));
         }
 
         /**

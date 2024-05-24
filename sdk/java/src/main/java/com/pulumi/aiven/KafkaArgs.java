@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.KafkaKafkaArgs;
 import com.pulumi.aiven.inputs.KafkaKafkaUserConfigArgs;
 import com.pulumi.aiven.inputs.KafkaServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.KafkaTagArgs;
@@ -103,6 +104,21 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<KafkaKafkaUserConfigArgs>> kafkaUserConfig() {
         return Optional.ofNullable(this.kafkaUserConfig);
+    }
+
+    /**
+     * Kafka server connection details.
+     * 
+     */
+    @Import(name="kafkas")
+    private @Nullable Output<List<KafkaKafkaArgs>> kafkas;
+
+    /**
+     * @return Kafka server connection details.
+     * 
+     */
+    public Optional<Output<List<KafkaKafkaArgs>>> kafkas() {
+        return Optional.ofNullable(this.kafkas);
     }
 
     /**
@@ -301,6 +317,7 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultAcl = $.defaultAcl;
         this.diskSpace = $.diskSpace;
         this.kafkaUserConfig = $.kafkaUserConfig;
+        this.kafkas = $.kafkas;
         this.karapace = $.karapace;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -444,6 +461,37 @@ public final class KafkaArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder kafkaUserConfig(KafkaKafkaUserConfigArgs kafkaUserConfig) {
             return kafkaUserConfig(Output.of(kafkaUserConfig));
+        }
+
+        /**
+         * @param kafkas Kafka server connection details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkas(@Nullable Output<List<KafkaKafkaArgs>> kafkas) {
+            $.kafkas = kafkas;
+            return this;
+        }
+
+        /**
+         * @param kafkas Kafka server connection details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkas(List<KafkaKafkaArgs> kafkas) {
+            return kafkas(Output.of(kafkas));
+        }
+
+        /**
+         * @param kafkas Kafka server connection details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kafkas(KafkaKafkaArgs... kafkas) {
+            return kafkas(List.of(kafkas));
         }
 
         /**
