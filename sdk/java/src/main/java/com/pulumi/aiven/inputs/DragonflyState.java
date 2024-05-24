@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.DragonflyComponentArgs;
+import com.pulumi.aiven.inputs.DragonflyDragonflyArgs;
 import com.pulumi.aiven.inputs.DragonflyDragonflyUserConfigArgs;
 import com.pulumi.aiven.inputs.DragonflyServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.DragonflyTagArgs;
@@ -149,6 +150,21 @@ public final class DragonflyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> diskSpaceUsed() {
         return Optional.ofNullable(this.diskSpaceUsed);
+    }
+
+    /**
+     * Dragonfly server provided values
+     * 
+     */
+    @Import(name="dragonfly")
+    private @Nullable Output<DragonflyDragonflyArgs> dragonfly;
+
+    /**
+     * @return Dragonfly server provided values
+     * 
+     */
+    public Optional<Output<DragonflyDragonflyArgs>> dragonfly() {
+        return Optional.ofNullable(this.dragonfly);
     }
 
     /**
@@ -447,6 +463,7 @@ public final class DragonflyState extends com.pulumi.resources.ResourceArgs {
         this.diskSpaceDefault = $.diskSpaceDefault;
         this.diskSpaceStep = $.diskSpaceStep;
         this.diskSpaceUsed = $.diskSpaceUsed;
+        this.dragonfly = $.dragonfly;
         this.dragonflyUserConfig = $.dragonflyUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -670,6 +687,27 @@ public final class DragonflyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskSpaceUsed(String diskSpaceUsed) {
             return diskSpaceUsed(Output.of(diskSpaceUsed));
+        }
+
+        /**
+         * @param dragonfly Dragonfly server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dragonfly(@Nullable Output<DragonflyDragonflyArgs> dragonfly) {
+            $.dragonfly = dragonfly;
+            return this;
+        }
+
+        /**
+         * @param dragonfly Dragonfly server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dragonfly(DragonflyDragonflyArgs dragonfly) {
+            return dragonfly(Output.of(dragonfly));
         }
 
         /**

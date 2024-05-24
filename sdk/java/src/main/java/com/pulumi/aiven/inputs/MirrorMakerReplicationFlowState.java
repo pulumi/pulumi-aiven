@@ -64,14 +64,14 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
     }
 
     /**
-     * Offset syncs topic location.
+     * Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
      * 
      */
     @Import(name="offsetSyncsTopicLocation")
     private @Nullable Output<String> offsetSyncsTopicLocation;
 
     /**
-     * @return Offset syncs topic location.
+     * @return Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
      * 
      */
     public Optional<Output<String>> offsetSyncsTopicLocation() {
@@ -313,7 +313,7 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
         }
 
         /**
-         * @param offsetSyncsTopicLocation Offset syncs topic location.
+         * @param offsetSyncsTopicLocation Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
         }
 
         /**
-         * @param offsetSyncsTopicLocation Offset syncs topic location.
+         * @param offsetSyncsTopicLocation Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
          * 
          * @return builder
          * 

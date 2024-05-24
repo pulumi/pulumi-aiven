@@ -232,7 +232,7 @@ export class Flink extends pulumi.CustomResource {
             resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
-            resourceInputs["flink"] = args ? args.flink : undefined;
+            resourceInputs["flink"] = args?.flink ? pulumi.secret(args.flink) : undefined;
             resourceInputs["flinkUserConfig"] = args ? args.flinkUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -259,7 +259,7 @@ export class Flink extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["flink", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Flink.__pulumiType, name, resourceInputs, opts);
     }

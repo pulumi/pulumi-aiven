@@ -7,6 +7,7 @@ import com.pulumi.aiven.M3DbArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.M3DbState;
 import com.pulumi.aiven.outputs.M3DbComponent;
+import com.pulumi.aiven.outputs.M3DbM3db;
 import com.pulumi.aiven.outputs.M3DbM3dbUserConfig;
 import com.pulumi.aiven.outputs.M3DbServiceIntegration;
 import com.pulumi.aiven.outputs.M3DbTag;
@@ -197,6 +198,20 @@ public class M3Db extends com.pulumi.resources.CustomResource {
      */
     public Output<String> diskSpaceUsed() {
         return this.diskSpaceUsed;
+    }
+    /**
+     * M3DB server provided values
+     * 
+     */
+    @Export(name="m3db", refs={M3DbM3db.class}, tree="[0]")
+    private Output<M3DbM3db> m3db;
+
+    /**
+     * @return M3DB server provided values
+     * 
+     */
+    public Output<M3DbM3db> m3db() {
+        return this.m3db;
     }
     /**
      * M3db user configurable settings
@@ -498,6 +513,7 @@ public class M3Db extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "m3db",
                 "servicePassword",
                 "serviceUri"
             ))

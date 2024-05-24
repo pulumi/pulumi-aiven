@@ -6,6 +6,7 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.ClickhouseArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.ClickhouseState;
+import com.pulumi.aiven.outputs.ClickhouseClickhouse;
 import com.pulumi.aiven.outputs.ClickhouseClickhouseUserConfig;
 import com.pulumi.aiven.outputs.ClickhouseComponent;
 import com.pulumi.aiven.outputs.ClickhouseServiceIntegration;
@@ -87,6 +88,20 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> additionalDiskSpace() {
         return Codegen.optional(this.additionalDiskSpace);
+    }
+    /**
+     * Clickhouse server provided values
+     * 
+     */
+    @Export(name="clickhouse", refs={ClickhouseClickhouse.class}, tree="[0]")
+    private Output<ClickhouseClickhouse> clickhouse;
+
+    /**
+     * @return Clickhouse server provided values
+     * 
+     */
+    public Output<ClickhouseClickhouse> clickhouse() {
+        return this.clickhouse;
     }
     /**
      * Clickhouse user configurable settings
@@ -490,6 +505,7 @@ public class Clickhouse extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "clickhouse",
                 "servicePassword",
                 "serviceUri"
             ))

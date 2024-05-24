@@ -7,6 +7,7 @@ import com.pulumi.aiven.GrafanaArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.GrafanaState;
 import com.pulumi.aiven.outputs.GrafanaComponent;
+import com.pulumi.aiven.outputs.GrafanaGrafana;
 import com.pulumi.aiven.outputs.GrafanaGrafanaUserConfig;
 import com.pulumi.aiven.outputs.GrafanaServiceIntegration;
 import com.pulumi.aiven.outputs.GrafanaTag;
@@ -197,6 +198,20 @@ public class Grafana extends com.pulumi.resources.CustomResource {
      */
     public Output<String> diskSpaceUsed() {
         return this.diskSpaceUsed;
+    }
+    /**
+     * Grafana server provided values
+     * 
+     */
+    @Export(name="grafana", refs={GrafanaGrafana.class}, tree="[0]")
+    private Output<GrafanaGrafana> grafana;
+
+    /**
+     * @return Grafana server provided values
+     * 
+     */
+    public Output<GrafanaGrafana> grafana() {
+        return this.grafana;
     }
     /**
      * Grafana user configurable settings
@@ -498,6 +513,7 @@ public class Grafana extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "grafana",
                 "servicePassword",
                 "serviceUri"
             ))

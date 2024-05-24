@@ -44,7 +44,7 @@ public final class ServiceIntegrationEndpointExternalPostgresql {
      */
     private @Nullable String sslClientKey;
     /**
-     * @return SSL Mode. The default value is `verify-full`.
+     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      * 
      */
     private @Nullable String sslMode;
@@ -103,7 +103,7 @@ public final class ServiceIntegrationEndpointExternalPostgresql {
         return Optional.ofNullable(this.sslClientKey);
     }
     /**
-     * @return SSL Mode. The default value is `verify-full`.
+     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
      * 
      */
     public Optional<String> sslMode() {

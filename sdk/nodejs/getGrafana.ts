@@ -85,6 +85,10 @@ export interface GetGrafanaResult {
      */
     readonly grafanaUserConfigs: outputs.GetGrafanaGrafanaUserConfig[];
     /**
+     * Grafana server provided values
+     */
+    readonly grafanas: outputs.GetGrafanaGrafana[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;

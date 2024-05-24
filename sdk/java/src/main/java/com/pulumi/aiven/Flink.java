@@ -509,6 +509,7 @@ public class Flink extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "flink",
                 "servicePassword",
                 "serviceUri"
             ))

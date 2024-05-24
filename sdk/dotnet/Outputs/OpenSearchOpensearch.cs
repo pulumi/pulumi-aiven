@@ -14,14 +14,43 @@ namespace Pulumi.Aiven.Outputs
     public sealed class OpenSearchOpensearch
     {
         /// <summary>
+        /// URI for Kibana dashboard frontend
+        /// </summary>
+        public readonly string? KibanaUri;
+        /// <summary>
         /// URI for OpenSearch dashboard frontend
         /// </summary>
         public readonly string? OpensearchDashboardsUri;
+        /// <summary>
+        /// OpenSearch password
+        /// </summary>
+        public readonly string? Password;
+        /// <summary>
+        /// OpenSearch server URIs.
+        /// </summary>
+        public readonly ImmutableArray<string> Uris;
+        /// <summary>
+        /// OpenSearch username
+        /// </summary>
+        public readonly string? Username;
 
         [OutputConstructor]
-        private OpenSearchOpensearch(string? opensearchDashboardsUri)
+        private OpenSearchOpensearch(
+            string? kibanaUri,
+
+            string? opensearchDashboardsUri,
+
+            string? password,
+
+            ImmutableArray<string> uris,
+
+            string? username)
         {
+            KibanaUri = kibanaUri;
             OpensearchDashboardsUri = opensearchDashboardsUri;
+            Password = password;
+            Uris = uris;
+            Username = username;
         }
     }
 }

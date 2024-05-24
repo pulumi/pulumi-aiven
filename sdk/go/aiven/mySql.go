@@ -85,6 +85,8 @@ type MySql struct {
 	MaintenanceWindowDow pulumi.StringPtrOutput `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrOutput `pulumi:"maintenanceWindowTime"`
+	// MySQL specific server provided values
+	Mysql MySqlMysqlOutput `pulumi:"mysql"`
 	// Mysql user configurable settings
 	MysqlUserConfig MySqlMysqlUserConfigPtrOutput `pulumi:"mysqlUserConfig"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -137,7 +139,11 @@ func NewMySql(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Mysql != nil {
+		args.Mysql = pulumi.ToSecret(args.Mysql).(MySqlMysqlPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"mysql",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -187,6 +193,8 @@ type mySqlState struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
+	// MySQL specific server provided values
+	Mysql *MySqlMysql `pulumi:"mysql"`
 	// Mysql user configurable settings
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -246,6 +254,8 @@ type MySqlState struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
+	// MySQL specific server provided values
+	Mysql MySqlMysqlPtrInput
 	// Mysql user configurable settings
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -299,6 +309,8 @@ type mySqlArgs struct {
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime *string `pulumi:"maintenanceWindowTime"`
+	// MySQL specific server provided values
+	Mysql *MySqlMysql `pulumi:"mysql"`
 	// Mysql user configurable settings
 	MysqlUserConfig *MySqlMysqlUserConfig `pulumi:"mysqlUserConfig"`
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -335,6 +347,8 @@ type MySqlArgs struct {
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 	MaintenanceWindowTime pulumi.StringPtrInput
+	// MySQL specific server provided values
+	Mysql MySqlMysqlPtrInput
 	// Mysql user configurable settings
 	MysqlUserConfig MySqlMysqlUserConfigPtrInput
 	// Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
@@ -494,6 +508,11 @@ func (o MySqlOutput) MaintenanceWindowDow() pulumi.StringPtrOutput {
 // Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
 func (o MySqlOutput) MaintenanceWindowTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySql) pulumi.StringPtrOutput { return v.MaintenanceWindowTime }).(pulumi.StringPtrOutput)
+}
+
+// MySQL specific server provided values
+func (o MySqlOutput) Mysql() MySqlMysqlOutput {
+	return o.ApplyT(func(v *MySql) MySqlMysqlOutput { return v.Mysql }).(MySqlMysqlOutput)
 }
 
 // Mysql user configurable settings

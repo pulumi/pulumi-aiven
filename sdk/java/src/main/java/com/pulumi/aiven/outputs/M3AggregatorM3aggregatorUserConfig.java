@@ -39,12 +39,12 @@ public final class M3AggregatorM3aggregatorUserConfig {
     @Deprecated /* Deprecated. Use `ip_filter_string` instead. */
     private @Nullable List<String> ipFilters;
     /**
-     * @return M3 major version (deprecated, use m3aggregator_version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      * 
      */
     private @Nullable String m3Version;
     /**
-     * @return M3 major version (the minimum compatible version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     private @Nullable String m3aggregatorVersion;
@@ -93,14 +93,14 @@ public final class M3AggregatorM3aggregatorUserConfig {
         return this.ipFilters == null ? List.of() : this.ipFilters;
     }
     /**
-     * @return M3 major version (deprecated, use m3aggregator_version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
      * 
      */
     public Optional<String> m3Version() {
         return Optional.ofNullable(this.m3Version);
     }
     /**
-     * @return M3 major version (the minimum compatible version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     public Optional<String> m3aggregatorVersion() {

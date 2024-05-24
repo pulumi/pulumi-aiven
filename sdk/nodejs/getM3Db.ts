@@ -89,6 +89,10 @@ export interface GetM3DbResult {
      */
     readonly m3dbUserConfigs: outputs.GetM3DbM3dbUserConfig[];
     /**
+     * M3DB server provided values
+     */
+    readonly m3dbs: outputs.GetM3DbM3db[];
+    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow: string;

@@ -132,7 +132,11 @@ func NewFlink(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Flink != nil {
+		args.Flink = pulumi.ToSecret(args.Flink).(FlinkFlinkPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"flink",
 		"servicePassword",
 		"serviceUri",
 	})

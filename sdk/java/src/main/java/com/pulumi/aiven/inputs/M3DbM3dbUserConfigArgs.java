@@ -138,14 +138,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * M3 major version (deprecated, use m3db_version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      * 
      */
     @Import(name="m3Version")
     private @Nullable Output<String> m3Version;
 
     /**
-     * @return M3 major version (deprecated, use m3db_version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
      * 
      */
     public Optional<Output<String>> m3Version() {
@@ -168,14 +168,14 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     @Import(name="m3dbVersion")
     private @Nullable Output<String> m3dbVersion;
 
     /**
-     * @return M3 major version (the minimum compatible version).
+     * @return Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
      * 
      */
     public Optional<Output<String>> m3dbVersion() {
@@ -533,7 +533,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param m3Version M3 major version (deprecated, use m3db_version).
+         * @param m3Version Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param m3Version M3 major version (deprecated, use m3db_version).
+         * @param m3Version Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param m3dbVersion M3 major version (the minimum compatible version).
+         * @param m3dbVersion Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class M3DbM3dbUserConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param m3dbVersion M3 major version (the minimum compatible version).
+         * @param m3dbVersion Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
          * 
          * @return builder
          * 

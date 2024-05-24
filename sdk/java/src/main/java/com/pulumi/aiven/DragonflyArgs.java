@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.DragonflyDragonflyArgs;
 import com.pulumi.aiven.inputs.DragonflyDragonflyUserConfigArgs;
 import com.pulumi.aiven.inputs.DragonflyServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.DragonflyTagArgs;
@@ -73,6 +74,21 @@ public final class DragonflyArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
+    }
+
+    /**
+     * Dragonfly server provided values
+     * 
+     */
+    @Import(name="dragonfly")
+    private @Nullable Output<DragonflyDragonflyArgs> dragonfly;
+
+    /**
+     * @return Dragonfly server provided values
+     * 
+     */
+    public Optional<Output<DragonflyDragonflyArgs>> dragonfly() {
+        return Optional.ofNullable(this.dragonfly);
     }
 
     /**
@@ -261,6 +277,7 @@ public final class DragonflyArgs extends com.pulumi.resources.ResourceArgs {
         this.additionalDiskSpace = $.additionalDiskSpace;
         this.cloudName = $.cloudName;
         this.diskSpace = $.diskSpace;
+        this.dragonfly = $.dragonfly;
         this.dragonflyUserConfig = $.dragonflyUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -362,6 +379,27 @@ public final class DragonflyArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
+        }
+
+        /**
+         * @param dragonfly Dragonfly server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dragonfly(@Nullable Output<DragonflyDragonflyArgs> dragonfly) {
+            $.dragonfly = dragonfly;
+            return this;
+        }
+
+        /**
+         * @param dragonfly Dragonfly server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dragonfly(DragonflyDragonflyArgs dragonfly) {
+            return dragonfly(Output.of(dragonfly));
         }
 
         /**

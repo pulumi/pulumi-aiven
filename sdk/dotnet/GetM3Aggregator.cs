@@ -148,6 +148,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigResult> M3aggregatorUserConfigs;
         /// <summary>
+        /// M3 Aggregator server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetM3AggregatorM3aggregatorResult> M3aggregators;
+        /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         public readonly string MaintenanceWindowDow;
@@ -242,6 +246,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetM3AggregatorM3aggregatorUserConfigResult> m3aggregatorUserConfigs,
 
+            ImmutableArray<Outputs.GetM3AggregatorM3aggregatorResult> m3aggregators,
+
             string maintenanceWindowDow,
 
             string maintenanceWindowTime,
@@ -288,6 +294,7 @@ namespace Pulumi.Aiven
             DiskSpaceUsed = diskSpaceUsed;
             Id = id;
             M3aggregatorUserConfigs = m3aggregatorUserConfigs;
+            M3aggregators = m3aggregators;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;

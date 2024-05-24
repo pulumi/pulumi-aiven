@@ -149,6 +149,9 @@ func NewKafka(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Kafkas != nil {
+		args.Kafkas = pulumi.ToSecret(args.Kafkas).(KafkaKafkaArrayInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"kafkas",
 		"servicePassword",
@@ -328,6 +331,8 @@ type kafkaArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Kafka user configurable settings
 	KafkaUserConfig *KafkaKafkaUserConfig `pulumi:"kafkaUserConfig"`
+	// Kafka server connection details.
+	Kafkas []KafkaKafka `pulumi:"kafkas"`
 	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.
@@ -370,6 +375,8 @@ type KafkaArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// Kafka user configurable settings
 	KafkaUserConfig KafkaKafkaUserConfigPtrInput
+	// Kafka server connection details.
+	Kafkas KafkaKafkaArrayInput
 	// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
 	//
 	// Deprecated: Usage of this field is discouraged.

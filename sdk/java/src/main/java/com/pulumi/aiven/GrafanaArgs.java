@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.GrafanaGrafanaArgs;
 import com.pulumi.aiven.inputs.GrafanaGrafanaUserConfigArgs;
 import com.pulumi.aiven.inputs.GrafanaServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.GrafanaTagArgs;
@@ -73,6 +74,21 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
     public Optional<Output<String>> diskSpace() {
         return Optional.ofNullable(this.diskSpace);
+    }
+
+    /**
+     * Grafana server provided values
+     * 
+     */
+    @Import(name="grafana")
+    private @Nullable Output<GrafanaGrafanaArgs> grafana;
+
+    /**
+     * @return Grafana server provided values
+     * 
+     */
+    public Optional<Output<GrafanaGrafanaArgs>> grafana() {
+        return Optional.ofNullable(this.grafana);
     }
 
     /**
@@ -261,6 +277,7 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
         this.additionalDiskSpace = $.additionalDiskSpace;
         this.cloudName = $.cloudName;
         this.diskSpace = $.diskSpace;
+        this.grafana = $.grafana;
         this.grafanaUserConfig = $.grafanaUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -362,6 +379,27 @@ public final class GrafanaArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan. */
         public Builder diskSpace(String diskSpace) {
             return diskSpace(Output.of(diskSpace));
+        }
+
+        /**
+         * @param grafana Grafana server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grafana(@Nullable Output<GrafanaGrafanaArgs> grafana) {
+            $.grafana = grafana;
+            return this;
+        }
+
+        /**
+         * @param grafana Grafana server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder grafana(GrafanaGrafanaArgs grafana) {
+            return grafana(Output.of(grafana));
         }
 
         /**

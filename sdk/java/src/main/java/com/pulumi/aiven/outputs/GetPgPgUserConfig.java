@@ -110,7 +110,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable Boolean pgStatMonitorEnable;
     /**
-     * @return PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      * 
      */
     private @Nullable String pgVersion;
@@ -175,7 +175,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable Boolean staticIps;
     /**
-     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     private @Nullable String synchronousReplication;
@@ -185,7 +185,7 @@ public final class GetPgPgUserConfig {
      */
     private @Nullable GetPgPgUserConfigTimescaledb timescaledb;
     /**
-     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * @return Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     private @Nullable String variant;
@@ -310,7 +310,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
     /**
-     * @return PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      * 
      */
     public Optional<String> pgVersion() {
@@ -401,7 +401,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.staticIps);
     }
     /**
-     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     public Optional<String> synchronousReplication() {
@@ -415,7 +415,7 @@ public final class GetPgPgUserConfig {
         return Optional.ofNullable(this.timescaledb);
     }
     /**
-     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * @return Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     public Optional<String> variant() {

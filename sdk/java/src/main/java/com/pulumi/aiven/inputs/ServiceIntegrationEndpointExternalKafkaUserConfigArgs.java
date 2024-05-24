@@ -32,14 +32,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * SASL mechanism used for connections to the Kafka server.
+     * Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      * 
      */
     @Import(name="saslMechanism")
     private @Nullable Output<String> saslMechanism;
 
     /**
-     * @return SASL mechanism used for connections to the Kafka server.
+     * @return Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
      * 
      */
     public Optional<Output<String>> saslMechanism() {
@@ -77,14 +77,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * Security protocol.
+     * Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      * 
      */
     @Import(name="securityProtocol", required=true)
     private Output<String> securityProtocol;
 
     /**
-     * @return Security protocol.
+     * @return Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
      * 
      */
     public Output<String> securityProtocol() {
@@ -137,14 +137,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
     @Import(name="sslEndpointIdentificationAlgorithm")
     private @Nullable Output<String> sslEndpointIdentificationAlgorithm;
 
     /**
-     * @return The endpoint identification algorithm to validate server hostname using server certificate.
+     * @return Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
     public Optional<Output<String>> sslEndpointIdentificationAlgorithm() {
@@ -205,7 +205,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslMechanism SASL mechanism used for connections to the Kafka server.
+         * @param saslMechanism Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslMechanism SASL mechanism used for connections to the Kafka server.
+         * @param saslMechanism Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param securityProtocol Security protocol.
+         * @param securityProtocol Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param securityProtocol Security protocol.
+         * @param securityProtocol Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
          * 
          * @return builder
          * 
@@ -352,7 +352,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslEndpointIdentificationAlgorithm The endpoint identification algorithm to validate server hostname using server certificate.
+         * @param sslEndpointIdentificationAlgorithm Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslEndpointIdentificationAlgorithm The endpoint identification algorithm to validate server hostname using server certificate.
+         * @param sslEndpointIdentificationAlgorithm Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
          * 
          * @return builder
          * 

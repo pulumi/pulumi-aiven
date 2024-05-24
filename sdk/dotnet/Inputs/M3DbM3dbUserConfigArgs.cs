@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.M3DbM3dbUserConfigM3Args>? M3 { get; set; }
 
         /// <summary>
-        /// M3 major version (deprecated, use m3db_version).
+        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
         /// </summary>
         [Input("m3Version")]
         public Input<string>? M3Version { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? M3coordinatorEnableGraphiteCarbonIngest { get; set; }
 
         /// <summary>
-        /// M3 major version (the minimum compatible version).
+        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         /// </summary>
         [Input("m3dbVersion")]
         public Input<string>? M3dbVersion { get; set; }

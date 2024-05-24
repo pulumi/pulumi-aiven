@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? TimeWindowSeconds { get; set; }
 
         /// <summary>
-        /// The type of rate limiting.
+        /// Enum: `ip`. The type of rate limiting.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -87,6 +87,8 @@ type Redis struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrOutput `pulumi:"projectVpcId"`
+	// Redis server provided values
+	Redis RedisRedisOutput `pulumi:"redis"`
 	// Redis user configurable settings
 	RedisUserConfig RedisRedisUserConfigPtrOutput `pulumi:"redisUserConfig"`
 	// The hostname of the service.
@@ -133,7 +135,11 @@ func NewRedis(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Redis != nil {
+		args.Redis = pulumi.ToSecret(args.Redis).(RedisRedisPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"redis",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -189,6 +195,8 @@ type redisState struct {
 	Project *string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
+	// Redis server provided values
+	Redis *RedisRedis `pulumi:"redis"`
 	// Redis user configurable settings
 	RedisUserConfig *RedisRedisUserConfig `pulumi:"redisUserConfig"`
 	// The hostname of the service.
@@ -248,6 +256,8 @@ type RedisState struct {
 	Project pulumi.StringPtrInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
+	// Redis server provided values
+	Redis RedisRedisPtrInput
 	// Redis user configurable settings
 	RedisUserConfig RedisRedisUserConfigPtrInput
 	// The hostname of the service.
@@ -301,6 +311,8 @@ type redisArgs struct {
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId *string `pulumi:"projectVpcId"`
+	// Redis server provided values
+	Redis *RedisRedis `pulumi:"redis"`
 	// Redis user configurable settings
 	RedisUserConfig *RedisRedisUserConfig `pulumi:"redisUserConfig"`
 	// Service integrations to specify when creating a service. Not applied after initial service creation
@@ -337,6 +349,8 @@ type RedisArgs struct {
 	Project pulumi.StringInput
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId pulumi.StringPtrInput
+	// Redis server provided values
+	Redis RedisRedisPtrInput
 	// Redis user configurable settings
 	RedisUserConfig RedisRedisUserConfigPtrInput
 	// Service integrations to specify when creating a service. Not applied after initial service creation
@@ -505,6 +519,11 @@ func (o RedisOutput) Project() pulumi.StringOutput {
 // Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o RedisOutput) ProjectVpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Redis) pulumi.StringPtrOutput { return v.ProjectVpcId }).(pulumi.StringPtrOutput)
+}
+
+// Redis server provided values
+func (o RedisOutput) Redis() RedisRedisOutput {
+	return o.ApplyT(func(v *Redis) RedisRedisOutput { return v.Redis }).(RedisRedisOutput)
 }
 
 // Redis user configurable settings

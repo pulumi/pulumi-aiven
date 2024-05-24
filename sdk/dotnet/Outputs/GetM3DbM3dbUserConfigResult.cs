@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetM3DbM3dbUserConfigM3Result? M3;
         /// <summary>
-        /// M3 major version (deprecated, use m3db_version).
+        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
         /// </summary>
         public readonly string? M3Version;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? M3coordinatorEnableGraphiteCarbonIngest;
         /// <summary>
-        /// M3 major version (the minimum compatible version).
+        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         /// </summary>
         public readonly string? M3dbVersion;
         /// <summary>

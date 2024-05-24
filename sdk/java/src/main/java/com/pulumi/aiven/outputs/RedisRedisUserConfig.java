@@ -74,7 +74,7 @@ public final class RedisRedisUserConfig {
      */
     private @Nullable String recoveryBasebackupName;
     /**
-     * @return Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
      * 
      */
     private @Nullable String redisAclChannelsDefault;
@@ -94,7 +94,7 @@ public final class RedisRedisUserConfig {
      */
     private @Nullable Integer redisLfuLogFactor;
     /**
-     * @return Redis maxmemory-policy. The default value is `noeviction`.
+     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      * 
      */
     private @Nullable String redisMaxmemoryPolicy;
@@ -109,7 +109,7 @@ public final class RedisRedisUserConfig {
      */
     private @Nullable Integer redisNumberOfDatabases;
     /**
-     * @return When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
     private @Nullable String redisPersistence;
@@ -129,7 +129,7 @@ public final class RedisRedisUserConfig {
      */
     private @Nullable Integer redisTimeout;
     /**
-     * @return Redis major version.
+     * @return Enum: `7.0`. Redis major version.
      * 
      */
     private @Nullable String redisVersion;
@@ -225,7 +225,7 @@ public final class RedisRedisUserConfig {
         return Optional.ofNullable(this.recoveryBasebackupName);
     }
     /**
-     * @return Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
+     * @return Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels&#39; ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn&#39;t affect Redis configuration acl-pubsub-default.
      * 
      */
     public Optional<String> redisAclChannelsDefault() {
@@ -253,7 +253,7 @@ public final class RedisRedisUserConfig {
         return Optional.ofNullable(this.redisLfuLogFactor);
     }
     /**
-     * @return Redis maxmemory-policy. The default value is `noeviction`.
+     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
      * 
      */
     public Optional<String> redisMaxmemoryPolicy() {
@@ -274,7 +274,7 @@ public final class RedisRedisUserConfig {
         return Optional.ofNullable(this.redisNumberOfDatabases);
     }
     /**
-     * @return When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
      * 
      */
     public Optional<String> redisPersistence() {
@@ -302,7 +302,7 @@ public final class RedisRedisUserConfig {
         return Optional.ofNullable(this.redisTimeout);
     }
     /**
-     * @return Redis major version.
+     * @return Enum: `7.0`. Redis major version.
      * 
      */
     public Optional<String> redisVersion() {

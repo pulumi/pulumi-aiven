@@ -3,10 +3,12 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.PgPgParamArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +17,21 @@ import javax.annotation.Nullable;
 public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PgPgArgs Empty = new PgPgArgs();
+
+    /**
+     * Bouncer connection details
+     * 
+     */
+    @Import(name="bouncer")
+    private @Nullable Output<String> bouncer;
+
+    /**
+     * @return Bouncer connection details
+     * 
+     */
+    public Optional<Output<String>> bouncer() {
+        return Optional.ofNullable(this.bouncer);
+    }
 
     /**
      * Primary PostgreSQL database name
@@ -59,6 +76,21 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> maxConnections() {
         return Optional.ofNullable(this.maxConnections);
+    }
+
+    /**
+     * PostgreSQL connection parameters
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<List<PgPgParamArgs>> params;
+
+    /**
+     * @return PostgreSQL connection parameters
+     * 
+     */
+    public Optional<Output<List<PgPgParamArgs>>> params() {
+        return Optional.ofNullable(this.params);
     }
 
     /**
@@ -122,6 +154,36 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * PostgreSQL standby connection URIs
+     * 
+     */
+    @Import(name="standbyUris")
+    private @Nullable Output<List<String>> standbyUris;
+
+    /**
+     * @return PostgreSQL standby connection URIs
+     * 
+     */
+    public Optional<Output<List<String>>> standbyUris() {
+        return Optional.ofNullable(this.standbyUris);
+    }
+
+    /**
+     * PostgreSQL syncing connection URIs
+     * 
+     */
+    @Import(name="syncingUris")
+    private @Nullable Output<List<String>> syncingUris;
+
+    /**
+     * @return PostgreSQL syncing connection URIs
+     * 
+     */
+    public Optional<Output<List<String>>> syncingUris() {
+        return Optional.ofNullable(this.syncingUris);
+    }
+
+    /**
      * PostgreSQL master connection URI
      * 
      */
@@ -134,6 +196,21 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> uri() {
         return Optional.ofNullable(this.uri);
+    }
+
+    /**
+     * PostgreSQL master connection URIs
+     * 
+     */
+    @Import(name="uris")
+    private @Nullable Output<List<String>> uris;
+
+    /**
+     * @return PostgreSQL master connection URIs
+     * 
+     */
+    public Optional<Output<List<String>>> uris() {
+        return Optional.ofNullable(this.uris);
     }
 
     /**
@@ -154,14 +231,19 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
     private PgPgArgs() {}
 
     private PgPgArgs(PgPgArgs $) {
+        this.bouncer = $.bouncer;
         this.dbname = $.dbname;
         this.host = $.host;
         this.maxConnections = $.maxConnections;
+        this.params = $.params;
         this.password = $.password;
         this.port = $.port;
         this.replicaUri = $.replicaUri;
         this.sslmode = $.sslmode;
+        this.standbyUris = $.standbyUris;
+        this.syncingUris = $.syncingUris;
         this.uri = $.uri;
+        this.uris = $.uris;
         this.user = $.user;
     }
 
@@ -181,6 +263,27 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(PgPgArgs defaults) {
             $ = new PgPgArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bouncer Bouncer connection details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bouncer(@Nullable Output<String> bouncer) {
+            $.bouncer = bouncer;
+            return this;
+        }
+
+        /**
+         * @param bouncer Bouncer connection details
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bouncer(String bouncer) {
+            return bouncer(Output.of(bouncer));
         }
 
         /**
@@ -244,6 +347,37 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maxConnections(Integer maxConnections) {
             return maxConnections(Output.of(maxConnections));
+        }
+
+        /**
+         * @param params PostgreSQL connection parameters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<List<PgPgParamArgs>> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params PostgreSQL connection parameters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(List<PgPgParamArgs> params) {
+            return params(Output.of(params));
+        }
+
+        /**
+         * @param params PostgreSQL connection parameters
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(PgPgParamArgs... params) {
+            return params(List.of(params));
         }
 
         /**
@@ -331,6 +465,68 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param standbyUris PostgreSQL standby connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyUris(@Nullable Output<List<String>> standbyUris) {
+            $.standbyUris = standbyUris;
+            return this;
+        }
+
+        /**
+         * @param standbyUris PostgreSQL standby connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyUris(List<String> standbyUris) {
+            return standbyUris(Output.of(standbyUris));
+        }
+
+        /**
+         * @param standbyUris PostgreSQL standby connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder standbyUris(String... standbyUris) {
+            return standbyUris(List.of(standbyUris));
+        }
+
+        /**
+         * @param syncingUris PostgreSQL syncing connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncingUris(@Nullable Output<List<String>> syncingUris) {
+            $.syncingUris = syncingUris;
+            return this;
+        }
+
+        /**
+         * @param syncingUris PostgreSQL syncing connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncingUris(List<String> syncingUris) {
+            return syncingUris(Output.of(syncingUris));
+        }
+
+        /**
+         * @param syncingUris PostgreSQL syncing connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder syncingUris(String... syncingUris) {
+            return syncingUris(List.of(syncingUris));
+        }
+
+        /**
          * @param uri PostgreSQL master connection URI
          * 
          * @return builder
@@ -349,6 +545,37 @@ public final class PgPgArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uri(String uri) {
             return uri(Output.of(uri));
+        }
+
+        /**
+         * @param uris PostgreSQL master connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(@Nullable Output<List<String>> uris) {
+            $.uris = uris;
+            return this;
+        }
+
+        /**
+         * @param uris PostgreSQL master connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(List<String> uris) {
+            return uris(Output.of(uris));
+        }
+
+        /**
+         * @param uris PostgreSQL master connection URIs
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
         }
 
         /**

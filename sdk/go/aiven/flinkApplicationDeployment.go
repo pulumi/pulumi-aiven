@@ -12,6 +12,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := aiven.NewFlinkApplicationDeployment(ctx, "deployment", &aiven.FlinkApplicationDeploymentArgs{
+//				Project:       pulumi.Any(foo.Project),
+//				ServiceName:   pulumi.Any(fooAivenFlink.ServiceName),
+//				ApplicationId: pulumi.Any(fooApp.ApplicationId),
+//				VersionId:     pulumi.Any(fooAppVersion.ApplicationVersionId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// ```sh
+// $ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID
+// ```
 type FlinkApplicationDeployment struct {
 	pulumi.CustomResourceState
 
@@ -23,13 +59,11 @@ type FlinkApplicationDeployment struct {
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Flink Job parallelism
 	Parallelism pulumi.IntPtrOutput `pulumi:"parallelism"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Specifies whether a Flink Job is restarted in case it fails
 	RestartEnabled pulumi.BoolPtrOutput `pulumi:"restartEnabled"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
 	// Job savepoint
 	StartingSavepoint pulumi.StringPtrOutput `pulumi:"startingSavepoint"`
@@ -87,13 +121,11 @@ type flinkApplicationDeploymentState struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// Flink Job parallelism
 	Parallelism *int `pulumi:"parallelism"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project *string `pulumi:"project"`
 	// Specifies whether a Flink Job is restarted in case it fails
 	RestartEnabled *bool `pulumi:"restartEnabled"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName *string `pulumi:"serviceName"`
 	// Job savepoint
 	StartingSavepoint *string `pulumi:"startingSavepoint"`
@@ -110,13 +142,11 @@ type FlinkApplicationDeploymentState struct {
 	CreatedBy pulumi.StringPtrInput
 	// Flink Job parallelism
 	Parallelism pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringPtrInput
 	// Specifies whether a Flink Job is restarted in case it fails
 	RestartEnabled pulumi.BoolPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringPtrInput
 	// Job savepoint
 	StartingSavepoint pulumi.StringPtrInput
@@ -133,13 +163,11 @@ type flinkApplicationDeploymentArgs struct {
 	ApplicationId string `pulumi:"applicationId"`
 	// Flink Job parallelism
 	Parallelism *int `pulumi:"parallelism"`
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project string `pulumi:"project"`
 	// Specifies whether a Flink Job is restarted in case it fails
 	RestartEnabled *bool `pulumi:"restartEnabled"`
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName string `pulumi:"serviceName"`
 	// Job savepoint
 	StartingSavepoint *string `pulumi:"startingSavepoint"`
@@ -153,13 +181,11 @@ type FlinkApplicationDeploymentArgs struct {
 	ApplicationId pulumi.StringInput
 	// Flink Job parallelism
 	Parallelism pulumi.IntPtrInput
-	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	Project pulumi.StringInput
 	// Specifies whether a Flink Job is restarted in case it fails
 	RestartEnabled pulumi.BoolPtrInput
-	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-	// reference. Changing this property forces recreation of the resource.
+	// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 	ServiceName pulumi.StringInput
 	// Job savepoint
 	StartingSavepoint pulumi.StringPtrInput
@@ -274,8 +300,7 @@ func (o FlinkApplicationDeploymentOutput) Parallelism() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.IntPtrOutput { return v.Parallelism }).(pulumi.IntPtrOutput)
 }
 
-// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -285,8 +310,7 @@ func (o FlinkApplicationDeploymentOutput) RestartEnabled() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.BoolPtrOutput { return v.RestartEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-// reference. Changing this property forces recreation of the resource.
+// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
 func (o FlinkApplicationDeploymentOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FlinkApplicationDeployment) pulumi.StringOutput { return v.ServiceName }).(pulumi.StringOutput)
 }

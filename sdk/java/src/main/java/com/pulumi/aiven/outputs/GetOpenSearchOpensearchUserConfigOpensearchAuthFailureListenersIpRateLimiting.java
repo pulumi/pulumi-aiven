@@ -38,7 +38,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
      */
     private @Nullable Integer timeWindowSeconds;
     /**
-     * @return The type of rate limiting.
+     * @return Enum: `ip`. The type of rate limiting.
      * 
      */
     private @Nullable String type;
@@ -80,7 +80,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
         return Optional.ofNullable(this.timeWindowSeconds);
     }
     /**
-     * @return The type of rate limiting.
+     * @return Enum: `ip`. The type of rate limiting.
      * 
      */
     public Optional<String> type() {

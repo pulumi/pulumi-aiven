@@ -14,11 +14,11 @@ namespace Pulumi.Aiven.Outputs
     public sealed class KafkaKafkaUserConfigKafkaConnectConfig
     {
         /// <summary>
-        /// Defines what client configurations can be overridden by the connector. Default is None.
+        /// Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
         /// </summary>
         public readonly string? ConnectorClientConfigOverridePolicy;
         /// <summary>
-        /// What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        /// Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         /// </summary>
         public readonly string? ConsumerAutoOffsetReset;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ConsumerFetchMaxBytes;
         /// <summary>
-        /// Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        /// Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         public readonly string? ConsumerIsolationLevel;
         /// <summary>
@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ProducerBufferMemory;
         /// <summary>
-        /// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         /// </summary>
         public readonly string? ProducerCompressionType;
         /// <summary>

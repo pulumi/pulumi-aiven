@@ -212,7 +212,7 @@ export class Pg extends pulumi.CustomResource {
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
-            resourceInputs["pg"] = args ? args.pg : undefined;
+            resourceInputs["pg"] = args?.pg ? pulumi.secret(args.pg) : undefined;
             resourceInputs["pgUserConfig"] = args ? args.pgUserConfig : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -237,7 +237,7 @@ export class Pg extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["pg", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Pg.__pulumiType, name, resourceInputs, opts);
     }

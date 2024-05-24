@@ -3,15 +3,22 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.PgPgParam;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class PgPg {
+    /**
+     * @return Bouncer connection details
+     * 
+     */
+    private @Nullable String bouncer;
     /**
      * @return Primary PostgreSQL database name
      * 
@@ -27,6 +34,11 @@ public final class PgPg {
      * 
      */
     private @Nullable Integer maxConnections;
+    /**
+     * @return PostgreSQL connection parameters
+     * 
+     */
+    private @Nullable List<PgPgParam> params;
     /**
      * @return PostgreSQL admin user password
      * 
@@ -48,10 +60,25 @@ public final class PgPg {
      */
     private @Nullable String sslmode;
     /**
+     * @return PostgreSQL standby connection URIs
+     * 
+     */
+    private @Nullable List<String> standbyUris;
+    /**
+     * @return PostgreSQL syncing connection URIs
+     * 
+     */
+    private @Nullable List<String> syncingUris;
+    /**
      * @return PostgreSQL master connection URI
      * 
      */
     private @Nullable String uri;
+    /**
+     * @return PostgreSQL master connection URIs
+     * 
+     */
+    private @Nullable List<String> uris;
     /**
      * @return PostgreSQL admin user name
      * 
@@ -59,6 +86,13 @@ public final class PgPg {
     private @Nullable String user;
 
     private PgPg() {}
+    /**
+     * @return Bouncer connection details
+     * 
+     */
+    public Optional<String> bouncer() {
+        return Optional.ofNullable(this.bouncer);
+    }
     /**
      * @return Primary PostgreSQL database name
      * 
@@ -79,6 +113,13 @@ public final class PgPg {
      */
     public Optional<Integer> maxConnections() {
         return Optional.ofNullable(this.maxConnections);
+    }
+    /**
+     * @return PostgreSQL connection parameters
+     * 
+     */
+    public List<PgPgParam> params() {
+        return this.params == null ? List.of() : this.params;
     }
     /**
      * @return PostgreSQL admin user password
@@ -109,11 +150,32 @@ public final class PgPg {
         return Optional.ofNullable(this.sslmode);
     }
     /**
+     * @return PostgreSQL standby connection URIs
+     * 
+     */
+    public List<String> standbyUris() {
+        return this.standbyUris == null ? List.of() : this.standbyUris;
+    }
+    /**
+     * @return PostgreSQL syncing connection URIs
+     * 
+     */
+    public List<String> syncingUris() {
+        return this.syncingUris == null ? List.of() : this.syncingUris;
+    }
+    /**
      * @return PostgreSQL master connection URI
      * 
      */
     public Optional<String> uri() {
         return Optional.ofNullable(this.uri);
+    }
+    /**
+     * @return PostgreSQL master connection URIs
+     * 
+     */
+    public List<String> uris() {
+        return this.uris == null ? List.of() : this.uris;
     }
     /**
      * @return PostgreSQL admin user name
@@ -132,29 +194,45 @@ public final class PgPg {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String bouncer;
         private @Nullable String dbname;
         private @Nullable String host;
         private @Nullable Integer maxConnections;
+        private @Nullable List<PgPgParam> params;
         private @Nullable String password;
         private @Nullable Integer port;
         private @Nullable String replicaUri;
         private @Nullable String sslmode;
+        private @Nullable List<String> standbyUris;
+        private @Nullable List<String> syncingUris;
         private @Nullable String uri;
+        private @Nullable List<String> uris;
         private @Nullable String user;
         public Builder() {}
         public Builder(PgPg defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bouncer = defaults.bouncer;
     	      this.dbname = defaults.dbname;
     	      this.host = defaults.host;
     	      this.maxConnections = defaults.maxConnections;
+    	      this.params = defaults.params;
     	      this.password = defaults.password;
     	      this.port = defaults.port;
     	      this.replicaUri = defaults.replicaUri;
     	      this.sslmode = defaults.sslmode;
+    	      this.standbyUris = defaults.standbyUris;
+    	      this.syncingUris = defaults.syncingUris;
     	      this.uri = defaults.uri;
+    	      this.uris = defaults.uris;
     	      this.user = defaults.user;
         }
 
+        @CustomType.Setter
+        public Builder bouncer(@Nullable String bouncer) {
+
+            this.bouncer = bouncer;
+            return this;
+        }
         @CustomType.Setter
         public Builder dbname(@Nullable String dbname) {
 
@@ -172,6 +250,15 @@ public final class PgPg {
 
             this.maxConnections = maxConnections;
             return this;
+        }
+        @CustomType.Setter
+        public Builder params(@Nullable List<PgPgParam> params) {
+
+            this.params = params;
+            return this;
+        }
+        public Builder params(PgPgParam... params) {
+            return params(List.of(params));
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
@@ -198,10 +285,37 @@ public final class PgPg {
             return this;
         }
         @CustomType.Setter
+        public Builder standbyUris(@Nullable List<String> standbyUris) {
+
+            this.standbyUris = standbyUris;
+            return this;
+        }
+        public Builder standbyUris(String... standbyUris) {
+            return standbyUris(List.of(standbyUris));
+        }
+        @CustomType.Setter
+        public Builder syncingUris(@Nullable List<String> syncingUris) {
+
+            this.syncingUris = syncingUris;
+            return this;
+        }
+        public Builder syncingUris(String... syncingUris) {
+            return syncingUris(List.of(syncingUris));
+        }
+        @CustomType.Setter
         public Builder uri(@Nullable String uri) {
 
             this.uri = uri;
             return this;
+        }
+        @CustomType.Setter
+        public Builder uris(@Nullable List<String> uris) {
+
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
         }
         @CustomType.Setter
         public Builder user(@Nullable String user) {
@@ -211,14 +325,19 @@ public final class PgPg {
         }
         public PgPg build() {
             final var _resultValue = new PgPg();
+            _resultValue.bouncer = bouncer;
             _resultValue.dbname = dbname;
             _resultValue.host = host;
             _resultValue.maxConnections = maxConnections;
+            _resultValue.params = params;
             _resultValue.password = password;
             _resultValue.port = port;
             _resultValue.replicaUri = replicaUri;
             _resultValue.sslmode = sslmode;
+            _resultValue.standbyUris = standbyUris;
+            _resultValue.syncingUris = syncingUris;
             _resultValue.uri = uri;
+            _resultValue.uris = uris;
             _resultValue.user = user;
             return _resultValue;
         }

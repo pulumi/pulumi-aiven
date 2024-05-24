@@ -272,14 +272,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      * 
      */
     @Import(name="pgVersion")
     private @Nullable Output<String> pgVersion;
 
     /**
-     * @return PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
      * 
      */
     public Optional<Output<String>> pgVersion() {
@@ -467,14 +467,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     @Import(name="synchronousReplication")
     private @Nullable Output<String> synchronousReplication;
 
     /**
-     * @return Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+     * @return Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
      * 
      */
     public Optional<Output<String>> synchronousReplication() {
@@ -497,14 +497,14 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     @Import(name="variant")
     private @Nullable Output<String> variant;
 
     /**
-     * @return Variant of the PostgreSQL service, may affect the features that are exposed by default.
+     * @return Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
      * 
      */
     public Optional<Output<String>> variant() {
@@ -947,7 +947,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgVersion PostgreSQL major version.
+         * @param pgVersion Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
          * 
          * @return builder
          * 
@@ -958,7 +958,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pgVersion PostgreSQL major version.
+         * @param pgVersion Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
          * 
          * @return builder
          * 
@@ -1220,7 +1220,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param synchronousReplication Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+         * @param synchronousReplication Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
          * 
          * @return builder
          * 
@@ -1231,7 +1231,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param synchronousReplication Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+         * @param synchronousReplication Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
          * 
          * @return builder
          * 
@@ -1262,7 +1262,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param variant Variant of the PostgreSQL service, may affect the features that are exposed by default.
+         * @param variant Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
          * 
          * @return builder
          * 
@@ -1273,7 +1273,7 @@ public final class PgPgUserConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param variant Variant of the PostgreSQL service, may affect the features that are exposed by default.
+         * @param variant Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
          * 
          * @return builder
          * 

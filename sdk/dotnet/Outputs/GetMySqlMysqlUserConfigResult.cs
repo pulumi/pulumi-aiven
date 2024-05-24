@@ -58,7 +58,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetMySqlMysqlUserConfigMysqlResult? Mysql;
         /// <summary>
-        /// MySQL major version.
+        /// Enum: `8`. MySQL major version.
         /// </summary>
         public readonly string? MysqlVersion;
         /// <summary>

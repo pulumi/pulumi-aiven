@@ -51,6 +51,12 @@ namespace Pulumi.Aiven
         public Output<string?> AdditionalDiskSpace { get; private set; } = null!;
 
         /// <summary>
+        /// Clickhouse server provided values
+        /// </summary>
+        [Output("clickhouse")]
+        public Output<Outputs.ClickhouseClickhouse> ClickhouseServer { get; private set; } = null!;
+
+        /// <summary>
         /// Clickhouse user configurable settings
         /// </summary>
         [Output("clickhouseUserConfig")]
@@ -231,6 +237,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "clickhouse",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -262,6 +269,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
+
+        [Input("clickhouse")]
+        private Input<Inputs.ClickhouseClickhouseArgs>? _clickhouse;
+
+        /// <summary>
+        /// Clickhouse server provided values
+        /// </summary>
+        public Input<Inputs.ClickhouseClickhouseArgs>? ClickhouseServer
+        {
+            get => _clickhouse;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clickhouse = Output.Tuple<Input<Inputs.ClickhouseClickhouseArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Clickhouse user configurable settings
@@ -384,6 +407,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("additionalDiskSpace")]
         public Input<string>? AdditionalDiskSpace { get; set; }
+
+        [Input("clickhouse")]
+        private Input<Inputs.ClickhouseClickhouseGetArgs>? _clickhouse;
+
+        /// <summary>
+        /// Clickhouse server provided values
+        /// </summary>
+        public Input<Inputs.ClickhouseClickhouseGetArgs>? ClickhouseServer
+        {
+            get => _clickhouse;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clickhouse = Output.Tuple<Input<Inputs.ClickhouseClickhouseGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Clickhouse user configurable settings

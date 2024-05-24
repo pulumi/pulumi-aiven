@@ -10,18 +10,42 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGcpPrivatelinkResult {
+    /**
+     * @return Google Private Service Connect service attachment.
+     * 
+     */
     private String googleServiceAttachment;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
+    /**
+     * @return Printable result of the Google Cloud Private Service Connect request.
+     * 
+     */
     private String message;
+    /**
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     private String project;
+    /**
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     private String serviceName;
+    /**
+     * @return The state of the Private Service Connect resource.
+     * 
+     */
     private String state;
 
     private GetGcpPrivatelinkResult() {}
+    /**
+     * @return Google Private Service Connect service attachment.
+     * 
+     */
     public String googleServiceAttachment() {
         return this.googleServiceAttachment;
     }
@@ -32,15 +56,31 @@ public final class GetGcpPrivatelinkResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return Printable result of the Google Cloud Private Service Connect request.
+     * 
+     */
     public String message() {
         return this.message;
     }
+    /**
+     * @return The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     public String project() {
         return this.project;
     }
+    /**
+     * @return The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+     * 
+     */
     public String serviceName() {
         return this.serviceName;
     }
+    /**
+     * @return The state of the Private Service Connect resource.
+     * 
+     */
     public String state() {
         return this.state;
     }

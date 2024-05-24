@@ -9,6 +9,35 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Aiven
 {
+    /// <summary>
+    /// Approves a Google Private Service Connect connection to an Aiven service with an associated endpoint IP.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Aiven = Pulumi.Aiven;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var approve = new Aiven.GcpPrivatelinkConnectionApproval("approve", new()
+    ///     {
+    ///         Project = exampleProject.Project,
+    ///         ServiceName = exampleKafka.ServiceName,
+    ///         UserIpAddress = "10.0.0.100",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ```sh
+    /// $ pulumi import aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval main PROJECT/SERVICE_NAME
+    /// ```
+    /// </summary>
     [AivenResourceType("aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval")]
     public partial class GcpPrivatelinkConnectionApproval : global::Pulumi.CustomResource
     {
@@ -19,8 +48,7 @@ namespace Pulumi.Aiven
         public Output<string> PrivatelinkConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -32,8 +60,7 @@ namespace Pulumi.Aiven
         public Output<string> PscConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Output("serviceName")]
         public Output<string> ServiceName { get; private set; } = null!;
@@ -97,15 +124,13 @@ namespace Pulumi.Aiven
     public sealed class GcpPrivatelinkConnectionApprovalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -131,8 +156,7 @@ namespace Pulumi.Aiven
         public Input<string>? PrivatelinkConnectionId { get; set; }
 
         /// <summary>
-        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -144,8 +168,7 @@ namespace Pulumi.Aiven
         public Input<string>? PscConnectionId { get; set; }
 
         /// <summary>
-        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a
-        /// reference. Changing this property forces recreation of the resource.
+        /// The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         /// </summary>
         [Input("serviceName")]
         public Input<string>? ServiceName { get; set; }

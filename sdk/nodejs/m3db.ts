@@ -101,6 +101,10 @@ export class M3Db extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
+     * M3DB server provided values
+     */
+    public readonly m3db!: pulumi.Output<outputs.M3DbM3db>;
+    /**
      * M3db user configurable settings
      */
     public readonly m3dbUserConfig!: pulumi.Output<outputs.M3DbM3dbUserConfig | undefined>;
@@ -198,6 +202,7 @@ export class M3Db extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
             resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
             resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
+            resourceInputs["m3db"] = state ? state.m3db : undefined;
             resourceInputs["m3dbUserConfig"] = state ? state.m3dbUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
@@ -231,6 +236,7 @@ export class M3Db extends pulumi.CustomResource {
             resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
+            resourceInputs["m3db"] = args?.m3db ? pulumi.secret(args.m3db) : undefined;
             resourceInputs["m3dbUserConfig"] = args ? args.m3dbUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -257,7 +263,7 @@ export class M3Db extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["m3db", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(M3Db.__pulumiType, name, resourceInputs, opts);
     }
@@ -301,6 +307,10 @@ export interface M3DbState {
      * Disk space that service is currently using
      */
     diskSpaceUsed?: pulumi.Input<string>;
+    /**
+     * M3DB server provided values
+     */
+    m3db?: pulumi.Input<inputs.M3DbM3db>;
     /**
      * M3db user configurable settings
      */
@@ -397,6 +407,10 @@ export interface M3DbArgs {
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
+    /**
+     * M3DB server provided values
+     */
+    m3db?: pulumi.Input<inputs.M3DbM3db>;
     /**
      * M3db user configurable settings
      */

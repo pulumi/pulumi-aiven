@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -12,18 +13,66 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearch {
     /**
+     * @return URI for Kibana dashboard frontend
+     * 
+     */
+    private @Nullable String kibanaUri;
+    /**
      * @return URI for OpenSearch dashboard frontend
      * 
      */
     private @Nullable String opensearchDashboardsUri;
+    /**
+     * @return OpenSearch password
+     * 
+     */
+    private @Nullable String password;
+    /**
+     * @return OpenSearch server URIs.
+     * 
+     */
+    private @Nullable List<String> uris;
+    /**
+     * @return OpenSearch username
+     * 
+     */
+    private @Nullable String username;
 
     private OpenSearchOpensearch() {}
+    /**
+     * @return URI for Kibana dashboard frontend
+     * 
+     */
+    public Optional<String> kibanaUri() {
+        return Optional.ofNullable(this.kibanaUri);
+    }
     /**
      * @return URI for OpenSearch dashboard frontend
      * 
      */
     public Optional<String> opensearchDashboardsUri() {
         return Optional.ofNullable(this.opensearchDashboardsUri);
+    }
+    /**
+     * @return OpenSearch password
+     * 
+     */
+    public Optional<String> password() {
+        return Optional.ofNullable(this.password);
+    }
+    /**
+     * @return OpenSearch server URIs.
+     * 
+     */
+    public List<String> uris() {
+        return this.uris == null ? List.of() : this.uris;
+    }
+    /**
+     * @return OpenSearch username
+     * 
+     */
+    public Optional<String> username() {
+        return Optional.ofNullable(this.username);
     }
 
     public static Builder builder() {
@@ -35,22 +84,61 @@ public final class OpenSearchOpensearch {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String kibanaUri;
         private @Nullable String opensearchDashboardsUri;
+        private @Nullable String password;
+        private @Nullable List<String> uris;
+        private @Nullable String username;
         public Builder() {}
         public Builder(OpenSearchOpensearch defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.kibanaUri = defaults.kibanaUri;
     	      this.opensearchDashboardsUri = defaults.opensearchDashboardsUri;
+    	      this.password = defaults.password;
+    	      this.uris = defaults.uris;
+    	      this.username = defaults.username;
         }
 
+        @CustomType.Setter
+        public Builder kibanaUri(@Nullable String kibanaUri) {
+
+            this.kibanaUri = kibanaUri;
+            return this;
+        }
         @CustomType.Setter
         public Builder opensearchDashboardsUri(@Nullable String opensearchDashboardsUri) {
 
             this.opensearchDashboardsUri = opensearchDashboardsUri;
             return this;
         }
+        @CustomType.Setter
+        public Builder password(@Nullable String password) {
+
+            this.password = password;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder uris(@Nullable List<String> uris) {
+
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
+        }
+        @CustomType.Setter
+        public Builder username(@Nullable String username) {
+
+            this.username = username;
+            return this;
+        }
         public OpenSearchOpensearch build() {
             final var _resultValue = new OpenSearchOpensearch();
+            _resultValue.kibanaUri = kibanaUri;
             _resultValue.opensearchDashboardsUri = opensearchDashboardsUri;
+            _resultValue.password = password;
+            _resultValue.uris = uris;
+            _resultValue.username = username;
             return _resultValue;
         }
     }

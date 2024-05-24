@@ -7,6 +7,7 @@ import com.pulumi.aiven.MySqlArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.MySqlState;
 import com.pulumi.aiven.outputs.MySqlComponent;
+import com.pulumi.aiven.outputs.MySqlMysql;
 import com.pulumi.aiven.outputs.MySqlMysqlUserConfig;
 import com.pulumi.aiven.outputs.MySqlServiceIntegration;
 import com.pulumi.aiven.outputs.MySqlTag;
@@ -230,6 +231,20 @@ public class MySql extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> maintenanceWindowTime() {
         return Codegen.optional(this.maintenanceWindowTime);
+    }
+    /**
+     * MySQL specific server provided values
+     * 
+     */
+    @Export(name="mysql", refs={MySqlMysql.class}, tree="[0]")
+    private Output<MySqlMysql> mysql;
+
+    /**
+     * @return MySQL specific server provided values
+     * 
+     */
+    public Output<MySqlMysql> mysql() {
+        return this.mysql;
     }
     /**
      * Mysql user configurable settings
@@ -503,6 +518,7 @@ public class MySql extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "mysql",
                 "servicePassword",
                 "serviceUri"
             ))

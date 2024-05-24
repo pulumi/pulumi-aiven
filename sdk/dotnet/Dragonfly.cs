@@ -95,6 +95,12 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
+        /// Dragonfly server provided values
+        /// </summary>
+        [Output("dragonfly")]
+        public Output<Outputs.DragonflyDragonfly> DragonflyServer { get; private set; } = null!;
+
+        /// <summary>
         /// Dragonfly user configurable settings
         /// </summary>
         [Output("dragonflyUserConfig")]
@@ -233,6 +239,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "dragonfly",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -276,6 +283,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
+
+        [Input("dragonfly")]
+        private Input<Inputs.DragonflyDragonflyArgs>? _dragonfly;
+
+        /// <summary>
+        /// Dragonfly server provided values
+        /// </summary>
+        public Input<Inputs.DragonflyDragonflyArgs>? DragonflyServer
+        {
+            get => _dragonfly;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _dragonfly = Output.Tuple<Input<Inputs.DragonflyDragonflyArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Dragonfly user configurable settings
@@ -434,6 +457,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
+
+        [Input("dragonfly")]
+        private Input<Inputs.DragonflyDragonflyGetArgs>? _dragonfly;
+
+        /// <summary>
+        /// Dragonfly server provided values
+        /// </summary>
+        public Input<Inputs.DragonflyDragonflyGetArgs>? DragonflyServer
+        {
+            get => _dragonfly;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _dragonfly = Output.Tuple<Input<Inputs.DragonflyDragonflyGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Dragonfly user configurable settings

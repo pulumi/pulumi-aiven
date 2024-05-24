@@ -18,6 +18,40 @@ namespace Pulumi.Aiven.Inputs
         [Input("databaseName")]
         public Input<string>? DatabaseName { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
+        /// <summary>
+        /// InfluxDB password
+        /// </summary>
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("uris")]
+        private InputList<string>? _uris;
+
+        /// <summary>
+        /// InfluxDB server URIs.
+        /// </summary>
+        public InputList<string> Uris
+        {
+            get => _uris ?? (_uris = new InputList<string>());
+            set => _uris = value;
+        }
+
+        /// <summary>
+        /// InfluxDB username
+        /// </summary>
+        [Input("username")]
+        public Input<string>? Username { get; set; }
+
         public InfluxDbInfluxdbArgs()
         {
         }

@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven;
 
+import com.pulumi.aiven.inputs.InfluxDbInfluxdbArgs;
 import com.pulumi.aiven.inputs.InfluxDbInfluxdbUserConfigArgs;
 import com.pulumi.aiven.inputs.InfluxDbServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.InfluxDbTagArgs;
@@ -102,6 +103,21 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InfluxDbInfluxdbUserConfigArgs>> influxdbUserConfig() {
         return Optional.ofNullable(this.influxdbUserConfig);
+    }
+
+    /**
+     * InfluxDB server provided values
+     * 
+     */
+    @Import(name="influxdbs")
+    private @Nullable Output<List<InfluxDbInfluxdbArgs>> influxdbs;
+
+    /**
+     * @return InfluxDB server provided values
+     * 
+     */
+    public Optional<Output<List<InfluxDbInfluxdbArgs>>> influxdbs() {
+        return Optional.ofNullable(this.influxdbs);
     }
 
     /**
@@ -304,6 +320,7 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudName = $.cloudName;
         this.diskSpace = $.diskSpace;
         this.influxdbUserConfig = $.influxdbUserConfig;
+        this.influxdbs = $.influxdbs;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
         this.plan = $.plan;
@@ -439,6 +456,37 @@ public final class InfluxDbArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder influxdbUserConfig(InfluxDbInfluxdbUserConfigArgs influxdbUserConfig) {
             return influxdbUserConfig(Output.of(influxdbUserConfig));
+        }
+
+        /**
+         * @param influxdbs InfluxDB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxdbs(@Nullable Output<List<InfluxDbInfluxdbArgs>> influxdbs) {
+            $.influxdbs = influxdbs;
+            return this;
+        }
+
+        /**
+         * @param influxdbs InfluxDB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxdbs(List<InfluxDbInfluxdbArgs> influxdbs) {
+            return influxdbs(Output.of(influxdbs));
+        }
+
+        /**
+         * @param influxdbs InfluxDB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxdbs(InfluxDbInfluxdbArgs... influxdbs) {
+            return influxdbs(List.of(influxdbs));
         }
 
         /**

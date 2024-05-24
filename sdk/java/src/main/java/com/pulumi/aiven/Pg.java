@@ -465,6 +465,7 @@ public class Pg extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "pg",
                 "servicePassword",
                 "serviceUri"
             ))

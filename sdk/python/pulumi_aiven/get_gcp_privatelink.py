@@ -44,6 +44,9 @@ class GetGcpPrivatelinkResult:
     @property
     @pulumi.getter(name="googleServiceAttachment")
     def google_service_attachment(self) -> str:
+        """
+        Google Private Service Connect service attachment.
+        """
         return pulumi.get(self, "google_service_attachment")
 
     @property
@@ -57,21 +60,33 @@ class GetGcpPrivatelinkResult:
     @property
     @pulumi.getter
     def message(self) -> str:
+        """
+        Printable result of the Google Cloud Private Service Connect request.
+        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter
     def project(self) -> str:
+        """
+        The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> str:
+        """
+        The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+        """
         return pulumi.get(self, "service_name")
 
     @property
     @pulumi.getter
     def state(self) -> str:
+        """
+        The state of the Private Service Connect resource.
+        """
         return pulumi.get(self, "state")
 
 
@@ -93,7 +108,21 @@ def get_gcp_privatelink(project: Optional[str] = None,
                         service_name: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGcpPrivatelinkResult:
     """
-    Use this data source to access information about an existing resource.
+    Gets information about a Google Private Service Connect connection for an Aiven service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    main = aiven.get_gcp_privatelink(project=example_project["project"],
+        service_name=example_kafka["serviceName"])
+    ```
+
+
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -115,6 +144,20 @@ def get_gcp_privatelink_output(project: Optional[pulumi.Input[str]] = None,
                                service_name: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGcpPrivatelinkResult]:
     """
-    Use this data source to access information about an existing resource.
+    Gets information about a Google Private Service Connect connection for an Aiven service.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_aiven as aiven
+
+    main = aiven.get_gcp_privatelink(project=example_project["project"],
+        service_name=example_kafka["serviceName"])
+    ```
+
+
+    :param str project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
+    :param str service_name: The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
     """
     ...

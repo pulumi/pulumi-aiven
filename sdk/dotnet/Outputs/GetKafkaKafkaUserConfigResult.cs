@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetKafkaKafkaUserConfigKafkaRestConfigResult? KafkaRestConfig;
         /// <summary>
-        /// Kafka major version.
+        /// Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
         /// </summary>
         public readonly string? KafkaVersion;
         /// <summary>

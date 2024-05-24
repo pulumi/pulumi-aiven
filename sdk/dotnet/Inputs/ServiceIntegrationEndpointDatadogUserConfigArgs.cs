@@ -65,7 +65,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? MaxPartitionContexts { get; set; }
 
         /// <summary>
-        /// Datadog intake site. Defaults to datadoghq.com.
+        /// Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         /// </summary>
         [Input("site")]
         public Input<string>? Site { get; set; }

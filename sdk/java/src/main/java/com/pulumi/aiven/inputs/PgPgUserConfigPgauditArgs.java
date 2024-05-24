@@ -64,14 +64,14 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Specifies the log level that will be used for log entries. The default value is `log`.
+     * Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      * 
      */
     @Import(name="logLevel")
     private @Nullable Output<String> logLevel;
 
     /**
-     * @return Specifies the log level that will be used for log entries. The default value is `log`.
+     * @return Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
      * 
      */
     public Optional<Output<String>> logLevel() {
@@ -329,7 +329,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param logLevel Specifies the log level that will be used for log entries. The default value is `log`.
+         * @param logLevel Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class PgPgUserConfigPgauditArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param logLevel Specifies the log level that will be used for log entries. The default value is `log`.
+         * @param logLevel Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
          * 
          * @return builder
          * 

@@ -3337,15 +3337,175 @@ public final class AivenFunctions {
     public static CompletableFuture<GetFlinkApplicationVersionResult> getFlinkApplicationVersionPlain(GetFlinkApplicationVersionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getFlinkApplicationVersion:getFlinkApplicationVersion", TypeShape.of(GetFlinkApplicationVersionResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Gets information about a Google Private Service Connect connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetGcpPrivatelinkResult> getGcpPrivatelink(GetGcpPrivatelinkArgs args) {
         return getGcpPrivatelink(args, InvokeOptions.Empty);
     }
+    /**
+     * Gets information about a Google Private Service Connect connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGcpPrivatelinkResult> getGcpPrivatelinkPlain(GetGcpPrivatelinkPlainArgs args) {
         return getGcpPrivatelinkPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Gets information about a Google Private Service Connect connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetGcpPrivatelinkResult> getGcpPrivatelink(GetGcpPrivatelinkArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("aiven:index/getGcpPrivatelink:getGcpPrivatelink", TypeShape.of(GetGcpPrivatelinkResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Gets information about a Google Private Service Connect connection for an Aiven service.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.aiven.AivenFunctions;
+     * import com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()
+     *             .project(exampleProject.project())
+     *             .serviceName(exampleKafka.serviceName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGcpPrivatelinkResult> getGcpPrivatelinkPlain(GetGcpPrivatelinkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("aiven:index/getGcpPrivatelink:getGcpPrivatelink", TypeShape.of(GetGcpPrivatelinkResult.class), args, Utilities.withVersion(options));
     }

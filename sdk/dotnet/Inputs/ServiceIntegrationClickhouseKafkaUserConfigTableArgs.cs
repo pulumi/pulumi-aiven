@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        /// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
         /// </summary>
         [Input("autoOffsetReset")]
         public Input<string>? AutoOffsetReset { get; set; }
@@ -31,13 +31,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Message data format. The default value is `JSONEachRow`.
+        /// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
         /// </summary>
         [Input("dataFormat", required: true)]
         public Input<string> DataFormat { get; set; } = null!;
 
         /// <summary>
-        /// Method to read DateTime from text input formats. The default value is `basic`.
+        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
         /// </summary>
         [Input("dateTimeInputFormat")]
         public Input<string>? DateTimeInputFormat { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// How to handle errors for Kafka engine. The default value is `default`.
+        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
         /// </summary>
         [Input("handleErrorMode")]
         public Input<string>? HandleErrorMode { get; set; }

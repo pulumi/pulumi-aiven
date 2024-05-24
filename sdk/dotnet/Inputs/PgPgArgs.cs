@@ -13,6 +13,12 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Bouncer connection details
+        /// </summary>
+        [Input("bouncer")]
+        public Input<string>? Bouncer { get; set; }
+
+        /// <summary>
         /// Primary PostgreSQL database name
         /// </summary>
         [Input("dbname")]
@@ -29,6 +35,18 @@ namespace Pulumi.Aiven.Inputs
         /// </summary>
         [Input("maxConnections")]
         public Input<int>? MaxConnections { get; set; }
+
+        [Input("params")]
+        private InputList<Inputs.PgPgParamArgs>? _params;
+
+        /// <summary>
+        /// PostgreSQL connection parameters
+        /// </summary>
+        public InputList<Inputs.PgPgParamArgs> Params
+        {
+            get => _params ?? (_params = new InputList<Inputs.PgPgParamArgs>());
+            set => _params = value;
+        }
 
         [Input("password")]
         private Input<string>? _password;
@@ -74,6 +92,30 @@ namespace Pulumi.Aiven.Inputs
         [Input("sslmode")]
         public Input<string>? Sslmode { get; set; }
 
+        [Input("standbyUris")]
+        private InputList<string>? _standbyUris;
+
+        /// <summary>
+        /// PostgreSQL standby connection URIs
+        /// </summary>
+        public InputList<string> StandbyUris
+        {
+            get => _standbyUris ?? (_standbyUris = new InputList<string>());
+            set => _standbyUris = value;
+        }
+
+        [Input("syncingUris")]
+        private InputList<string>? _syncingUris;
+
+        /// <summary>
+        /// PostgreSQL syncing connection URIs
+        /// </summary>
+        public InputList<string> SyncingUris
+        {
+            get => _syncingUris ?? (_syncingUris = new InputList<string>());
+            set => _syncingUris = value;
+        }
+
         [Input("uri")]
         private Input<string>? _uri;
 
@@ -88,6 +130,18 @@ namespace Pulumi.Aiven.Inputs
                 var emptySecret = Output.CreateSecret(0);
                 _uri = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("uris")]
+        private InputList<string>? _uris;
+
+        /// <summary>
+        /// PostgreSQL master connection URIs
+        /// </summary>
+        public InputList<string> Uris
+        {
+            get => _uris ?? (_uris = new InputList<string>());
+            set => _uris = value;
         }
 
         /// <summary>

@@ -7,6 +7,7 @@ import com.pulumi.aiven.M3AggregatorArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.M3AggregatorState;
 import com.pulumi.aiven.outputs.M3AggregatorComponent;
+import com.pulumi.aiven.outputs.M3AggregatorM3aggregator;
 import com.pulumi.aiven.outputs.M3AggregatorM3aggregatorUserConfig;
 import com.pulumi.aiven.outputs.M3AggregatorServiceIntegration;
 import com.pulumi.aiven.outputs.M3AggregatorTag;
@@ -193,6 +194,20 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
      */
     public Output<String> diskSpaceUsed() {
         return this.diskSpaceUsed;
+    }
+    /**
+     * M3 Aggregator server provided values
+     * 
+     */
+    @Export(name="m3aggregator", refs={M3AggregatorM3aggregator.class}, tree="[0]")
+    private Output<M3AggregatorM3aggregator> m3aggregator;
+
+    /**
+     * @return M3 Aggregator server provided values
+     * 
+     */
+    public Output<M3AggregatorM3aggregator> m3aggregator() {
+        return this.m3aggregator;
     }
     /**
      * M3aggregator user configurable settings
@@ -494,6 +509,7 @@ public class M3Aggregator extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "m3aggregator",
                 "servicePassword",
                 "serviceUri"
             ))

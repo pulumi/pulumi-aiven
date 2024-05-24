@@ -18,7 +18,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
      */
     private @Nullable Integer allowedTries;
     /**
-     * @return internal_authentication_backend_limiting.authentication_backend.
+     * @return Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.
      * 
      */
     private @Nullable String authenticationBackend;
@@ -43,7 +43,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
      */
     private @Nullable Integer timeWindowSeconds;
     /**
-     * @return internal_authentication_backend_limiting.type.
+     * @return Enum: `username`. internal_authentication_backend_limiting.type.
      * 
      */
     private @Nullable String type;
@@ -57,7 +57,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
         return Optional.ofNullable(this.allowedTries);
     }
     /**
-     * @return internal_authentication_backend_limiting.authentication_backend.
+     * @return Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.
      * 
      */
     public Optional<String> authenticationBackend() {
@@ -92,7 +92,7 @@ public final class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListene
         return Optional.ofNullable(this.timeWindowSeconds);
     }
     /**
-     * @return internal_authentication_backend_limiting.type.
+     * @return Enum: `username`. internal_authentication_backend_limiting.type.
      * 
      */
     public Optional<String> type() {

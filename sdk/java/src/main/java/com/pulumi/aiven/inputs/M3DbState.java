@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.M3DbComponentArgs;
+import com.pulumi.aiven.inputs.M3DbM3dbArgs;
 import com.pulumi.aiven.inputs.M3DbM3dbUserConfigArgs;
 import com.pulumi.aiven.inputs.M3DbServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.M3DbTagArgs;
@@ -149,6 +150,21 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> diskSpaceUsed() {
         return Optional.ofNullable(this.diskSpaceUsed);
+    }
+
+    /**
+     * M3DB server provided values
+     * 
+     */
+    @Import(name="m3db")
+    private @Nullable Output<M3DbM3dbArgs> m3db;
+
+    /**
+     * @return M3DB server provided values
+     * 
+     */
+    public Optional<Output<M3DbM3dbArgs>> m3db() {
+        return Optional.ofNullable(this.m3db);
     }
 
     /**
@@ -447,6 +463,7 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
         this.diskSpaceDefault = $.diskSpaceDefault;
         this.diskSpaceStep = $.diskSpaceStep;
         this.diskSpaceUsed = $.diskSpaceUsed;
+        this.m3db = $.m3db;
         this.m3dbUserConfig = $.m3dbUserConfig;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
@@ -670,6 +687,27 @@ public final class M3DbState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskSpaceUsed(String diskSpaceUsed) {
             return diskSpaceUsed(Output.of(diskSpaceUsed));
+        }
+
+        /**
+         * @param m3db M3DB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder m3db(@Nullable Output<M3DbM3dbArgs> m3db) {
+            $.m3db = m3db;
+            return this;
+        }
+
+        /**
+         * @param m3db M3DB server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder m3db(M3DbM3dbArgs m3db) {
+            return m3db(Output.of(m3db));
         }
 
         /**

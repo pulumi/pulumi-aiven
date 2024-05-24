@@ -323,6 +323,22 @@ namespace Pulumi.Aiven
         [Input("kafkaUserConfig")]
         public Input<Inputs.KafkaKafkaUserConfigArgs>? KafkaUserConfig { get; set; }
 
+        [Input("kafkas")]
+        private InputList<Inputs.KafkaKafkaArgs>? _kafkas;
+
+        /// <summary>
+        /// Kafka server connection details.
+        /// </summary>
+        public InputList<Inputs.KafkaKafkaArgs> KafkaServer
+        {
+            get => _kafkas ?? (_kafkas = new InputList<Inputs.KafkaKafkaArgs>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.KafkaKafkaArgs>());
+                _kafkas = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
         /// <summary>
         /// Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
         /// </summary>

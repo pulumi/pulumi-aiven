@@ -32,14 +32,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * internal*authentication*backend*limiting.authentication*backend.
+     * Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
      * 
      */
     @Import(name="authenticationBackend")
     private @Nullable Output<String> authenticationBackend;
 
     /**
-     * @return internal*authentication*backend*limiting.authentication*backend.
+     * @return Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
      * 
      */
     public Optional<Output<String>> authenticationBackend() {
@@ -107,14 +107,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * internal*authentication*backend_limiting.type.
+     * Enum: `username`. internal*authentication*backend_limiting.type.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return internal*authentication*backend_limiting.type.
+     * @return Enum: `username`. internal*authentication*backend_limiting.type.
      * 
      */
     public Optional<Output<String>> type() {
@@ -173,7 +173,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param authenticationBackend internal*authentication*backend*limiting.authentication*backend.
+         * @param authenticationBackend Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param authenticationBackend internal*authentication*backend*limiting.authentication*backend.
+         * @param authenticationBackend Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param type internal*authentication*backend_limiting.type.
+         * @param type Enum: `username`. internal*authentication*backend_limiting.type.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param type internal*authentication*backend_limiting.type.
+         * @param type Enum: `username`. internal*authentication*backend_limiting.type.
          * 
          * @return builder
          * 

@@ -105,6 +105,10 @@ export interface GetRedisResult {
      */
     readonly projectVpcId: string;
     /**
+     * Redis server provided values
+     */
+    readonly redis: outputs.GetRedisRedi[];
+    /**
      * Redis user configurable settings
      */
     readonly redisUserConfigs: outputs.GetRedisRedisUserConfig[];

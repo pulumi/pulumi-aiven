@@ -92,14 +92,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * The type of rate limiting.
+     * Enum: `ip`. The type of rate limiting.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of rate limiting.
+     * @return Enum: `ip`. The type of rate limiting.
      * 
      */
     public Optional<Output<String>> type() {
@@ -241,7 +241,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param type The type of rate limiting.
+         * @param type Enum: `ip`. The type of rate limiting.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param type The type of rate limiting.
+         * @param type Enum: `ip`. The type of rate limiting.
          * 
          * @return builder
          * 

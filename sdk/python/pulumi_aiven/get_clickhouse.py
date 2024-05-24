@@ -22,13 +22,16 @@ class GetClickhouseResult:
     """
     A collection of values returned by getClickhouse.
     """
-    def __init__(__self__, additional_disk_space=None, clickhouse_user_configs=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
+    def __init__(__self__, additional_disk_space=None, clickhouse_user_configs=None, clickhouses=None, cloud_name=None, components=None, disk_space=None, disk_space_cap=None, disk_space_default=None, disk_space_step=None, disk_space_used=None, id=None, maintenance_window_dow=None, maintenance_window_time=None, plan=None, project=None, project_vpc_id=None, service_host=None, service_integrations=None, service_name=None, service_password=None, service_port=None, service_type=None, service_uri=None, service_username=None, state=None, static_ips=None, tags=None, tech_emails=None, termination_protection=None):
         if additional_disk_space and not isinstance(additional_disk_space, str):
             raise TypeError("Expected argument 'additional_disk_space' to be a str")
         pulumi.set(__self__, "additional_disk_space", additional_disk_space)
         if clickhouse_user_configs and not isinstance(clickhouse_user_configs, list):
             raise TypeError("Expected argument 'clickhouse_user_configs' to be a list")
         pulumi.set(__self__, "clickhouse_user_configs", clickhouse_user_configs)
+        if clickhouses and not isinstance(clickhouses, list):
+            raise TypeError("Expected argument 'clickhouses' to be a list")
+        pulumi.set(__self__, "clickhouses", clickhouses)
         if cloud_name and not isinstance(cloud_name, str):
             raise TypeError("Expected argument 'cloud_name' to be a str")
         pulumi.set(__self__, "cloud_name", cloud_name)
@@ -123,6 +126,14 @@ class GetClickhouseResult:
         Clickhouse user configurable settings
         """
         return pulumi.get(self, "clickhouse_user_configs")
+
+    @property
+    @pulumi.getter
+    def clickhouses(self) -> Sequence['outputs.GetClickhouseClickhouseResult']:
+        """
+        Clickhouse server provided values
+        """
+        return pulumi.get(self, "clickhouses")
 
     @property
     @pulumi.getter(name="cloudName")
@@ -341,6 +352,7 @@ class AwaitableGetClickhouseResult(GetClickhouseResult):
         return GetClickhouseResult(
             additional_disk_space=self.additional_disk_space,
             clickhouse_user_configs=self.clickhouse_user_configs,
+            clickhouses=self.clickhouses,
             cloud_name=self.cloud_name,
             components=self.components,
             disk_space=self.disk_space,
@@ -398,6 +410,7 @@ def get_clickhouse(project: Optional[str] = None,
     return AwaitableGetClickhouseResult(
         additional_disk_space=pulumi.get(__ret__, 'additional_disk_space'),
         clickhouse_user_configs=pulumi.get(__ret__, 'clickhouse_user_configs'),
+        clickhouses=pulumi.get(__ret__, 'clickhouses'),
         cloud_name=pulumi.get(__ret__, 'cloud_name'),
         components=pulumi.get(__ret__, 'components'),
         disk_space=pulumi.get(__ret__, 'disk_space'),

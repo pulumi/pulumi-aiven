@@ -37,7 +37,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean alertingEnabled;
     /**
-     * @return Default error or timeout setting for new alerting rules.
+     * @return Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
      * 
      */
     private @Nullable String alertingErrorOrTimeout;
@@ -47,7 +47,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Integer alertingMaxAnnotationsToKeep;
     /**
-     * @return Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     private @Nullable String alertingNodataOrNullvalues;
@@ -87,7 +87,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable GrafanaGrafanaUserConfigAuthGoogle authGoogle;
     /**
-     * @return Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
      * 
      */
     private @Nullable String cookieSamesite;
@@ -231,7 +231,7 @@ public final class GrafanaGrafanaUserConfig {
      */
     private @Nullable Boolean userAutoAssignOrg;
     /**
-     * @return Set role for new signups. Defaults to Viewer.
+     * @return Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      * 
      */
     private @Nullable String userAutoAssignOrgRole;
@@ -257,7 +257,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.alertingEnabled);
     }
     /**
-     * @return Default error or timeout setting for new alerting rules.
+     * @return Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
      * 
      */
     public Optional<String> alertingErrorOrTimeout() {
@@ -271,7 +271,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.alertingMaxAnnotationsToKeep);
     }
     /**
-     * @return Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     public Optional<String> alertingNodataOrNullvalues() {
@@ -327,7 +327,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.authGoogle);
     }
     /**
-     * @return Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
      * 
      */
     public Optional<String> cookieSamesite() {
@@ -527,7 +527,7 @@ public final class GrafanaGrafanaUserConfig {
         return Optional.ofNullable(this.userAutoAssignOrg);
     }
     /**
-     * @return Set role for new signups. Defaults to Viewer.
+     * @return Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      * 
      */
     public Optional<String> userAutoAssignOrgRole() {

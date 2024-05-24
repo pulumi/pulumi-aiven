@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? Resolution { get; set; }
 
         /// <summary>
-        /// The type of aggregation (aggregated/unaggregated).
+        /// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

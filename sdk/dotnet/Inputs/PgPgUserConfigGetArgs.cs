@@ -132,7 +132,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? PgStatMonitorEnable { get; set; }
 
         /// <summary>
-        /// PostgreSQL major version.
+        /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
         /// </summary>
         [Input("pgVersion")]
         public Input<string>? PgVersion { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? StaticIps { get; set; }
 
         /// <summary>
-        /// Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        /// Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         /// </summary>
         [Input("synchronousReplication")]
         public Input<string>? SynchronousReplication { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.PgPgUserConfigTimescaledbGetArgs>? Timescaledb { get; set; }
 
         /// <summary>
-        /// Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        /// Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         /// </summary>
         [Input("variant")]
         public Input<string>? Variant { get; set; }

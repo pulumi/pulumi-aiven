@@ -22,6 +22,7 @@ class DragonflyArgs:
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
+                 dragonfly: Optional[pulumi.Input['DragonflyDragonflyArgs']] = None,
                  dragonfly_user_config: Optional[pulumi.Input['DragonflyDragonflyUserConfigArgs']] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class DragonflyArgs:
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input['DragonflyDragonflyArgs'] dragonfly: Dragonfly server provided values
         :param pulumi.Input['DragonflyDragonflyUserConfigArgs'] dragonfly_user_config: Dragonfly user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -61,6 +63,8 @@ class DragonflyArgs:
             pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
         if disk_space is not None:
             pulumi.set(__self__, "disk_space", disk_space)
+        if dragonfly is not None:
+            pulumi.set(__self__, "dragonfly", dragonfly)
         if dragonfly_user_config is not None:
             pulumi.set(__self__, "dragonfly_user_config", dragonfly_user_config)
         if maintenance_window_dow is not None:
@@ -154,6 +158,18 @@ class DragonflyArgs:
     @disk_space.setter
     def disk_space(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_space", value)
+
+    @property
+    @pulumi.getter
+    def dragonfly(self) -> Optional[pulumi.Input['DragonflyDragonflyArgs']]:
+        """
+        Dragonfly server provided values
+        """
+        return pulumi.get(self, "dragonfly")
+
+    @dragonfly.setter
+    def dragonfly(self, value: Optional[pulumi.Input['DragonflyDragonflyArgs']]):
+        pulumi.set(self, "dragonfly", value)
 
     @property
     @pulumi.getter(name="dragonflyUserConfig")
@@ -275,6 +291,7 @@ class _DragonflyState:
                  disk_space_default: Optional[pulumi.Input[str]] = None,
                  disk_space_step: Optional[pulumi.Input[str]] = None,
                  disk_space_used: Optional[pulumi.Input[str]] = None,
+                 dragonfly: Optional[pulumi.Input['DragonflyDragonflyArgs']] = None,
                  dragonfly_user_config: Optional[pulumi.Input['DragonflyDragonflyUserConfigArgs']] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -304,6 +321,7 @@ class _DragonflyState:
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input['DragonflyDragonflyArgs'] dragonfly: Dragonfly server provided values
         :param pulumi.Input['DragonflyDragonflyUserConfigArgs'] dragonfly_user_config: Dragonfly user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -343,6 +361,8 @@ class _DragonflyState:
             pulumi.set(__self__, "disk_space_step", disk_space_step)
         if disk_space_used is not None:
             pulumi.set(__self__, "disk_space_used", disk_space_used)
+        if dragonfly is not None:
+            pulumi.set(__self__, "dragonfly", dragonfly)
         if dragonfly_user_config is not None:
             pulumi.set(__self__, "dragonfly_user_config", dragonfly_user_config)
         if maintenance_window_dow is not None:
@@ -480,6 +500,18 @@ class _DragonflyState:
     @disk_space_used.setter
     def disk_space_used(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_space_used", value)
+
+    @property
+    @pulumi.getter
+    def dragonfly(self) -> Optional[pulumi.Input['DragonflyDragonflyArgs']]:
+        """
+        Dragonfly server provided values
+        """
+        return pulumi.get(self, "dragonfly")
+
+    @dragonfly.setter
+    def dragonfly(self, value: Optional[pulumi.Input['DragonflyDragonflyArgs']]):
+        pulumi.set(self, "dragonfly", value)
 
     @property
     @pulumi.getter(name="dragonflyUserConfig")
@@ -718,6 +750,7 @@ class Dragonfly(pulumi.CustomResource):
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
+                 dragonfly: Optional[pulumi.Input[pulumi.InputType['DragonflyDragonflyArgs']]] = None,
                  dragonfly_user_config: Optional[pulumi.Input[pulumi.InputType['DragonflyDragonflyUserConfigArgs']]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -761,6 +794,7 @@ class Dragonfly(pulumi.CustomResource):
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[pulumi.InputType['DragonflyDragonflyArgs']] dragonfly: Dragonfly server provided values
         :param pulumi.Input[pulumi.InputType['DragonflyDragonflyUserConfigArgs']] dragonfly_user_config: Dragonfly user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -823,6 +857,7 @@ class Dragonfly(pulumi.CustomResource):
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
+                 dragonfly: Optional[pulumi.Input[pulumi.InputType['DragonflyDragonflyArgs']]] = None,
                  dragonfly_user_config: Optional[pulumi.Input[pulumi.InputType['DragonflyDragonflyUserConfigArgs']]] = None,
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -847,6 +882,7 @@ class Dragonfly(pulumi.CustomResource):
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
+            __props__.__dict__["dragonfly"] = None if dragonfly is None else pulumi.Output.secret(dragonfly)
             __props__.__dict__["dragonfly_user_config"] = dragonfly_user_config
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -877,7 +913,7 @@ class Dragonfly(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["dragonfly", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Dragonfly, __self__).__init__(
             'aiven:index/dragonfly:Dragonfly',
@@ -897,6 +933,7 @@ class Dragonfly(pulumi.CustomResource):
             disk_space_default: Optional[pulumi.Input[str]] = None,
             disk_space_step: Optional[pulumi.Input[str]] = None,
             disk_space_used: Optional[pulumi.Input[str]] = None,
+            dragonfly: Optional[pulumi.Input[pulumi.InputType['DragonflyDragonflyArgs']]] = None,
             dragonfly_user_config: Optional[pulumi.Input[pulumi.InputType['DragonflyDragonflyUserConfigArgs']]] = None,
             maintenance_window_dow: Optional[pulumi.Input[str]] = None,
             maintenance_window_time: Optional[pulumi.Input[str]] = None,
@@ -931,6 +968,7 @@ class Dragonfly(pulumi.CustomResource):
         :param pulumi.Input[str] disk_space_default: The default disk space of the service, possible values depend on the service type, the cloud provider and the project. Its also the minimum value for `disk_space`
         :param pulumi.Input[str] disk_space_step: The default disk space step of the service, possible values depend on the service type, the cloud provider and the project. `disk_space` needs to increment from `disk_space_default` by increments of this size.
         :param pulumi.Input[str] disk_space_used: Disk space that service is currently using
+        :param pulumi.Input[pulumi.InputType['DragonflyDragonflyArgs']] dragonfly: Dragonfly server provided values
         :param pulumi.Input[pulumi.InputType['DragonflyDragonflyUserConfigArgs']] dragonfly_user_config: Dragonfly user configurable settings
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -963,6 +1001,7 @@ class Dragonfly(pulumi.CustomResource):
         __props__.__dict__["disk_space_default"] = disk_space_default
         __props__.__dict__["disk_space_step"] = disk_space_step
         __props__.__dict__["disk_space_used"] = disk_space_used
+        __props__.__dict__["dragonfly"] = dragonfly
         __props__.__dict__["dragonfly_user_config"] = dragonfly_user_config
         __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
         __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -1050,6 +1089,14 @@ class Dragonfly(pulumi.CustomResource):
         Disk space that service is currently using
         """
         return pulumi.get(self, "disk_space_used")
+
+    @property
+    @pulumi.getter
+    def dragonfly(self) -> pulumi.Output['outputs.DragonflyDragonfly']:
+        """
+        Dragonfly server provided values
+        """
+        return pulumi.get(self, "dragonfly")
 
     @property
     @pulumi.getter(name="dragonflyUserConfig")

@@ -14,6 +14,10 @@ namespace Pulumi.Aiven.Outputs
     public sealed class PgPg
     {
         /// <summary>
+        /// Bouncer connection details
+        /// </summary>
+        public readonly string? Bouncer;
+        /// <summary>
         /// Primary PostgreSQL database name
         /// </summary>
         public readonly string? Dbname;
@@ -25,6 +29,10 @@ namespace Pulumi.Aiven.Outputs
         /// Connection limit
         /// </summary>
         public readonly int? MaxConnections;
+        /// <summary>
+        /// PostgreSQL connection parameters
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PgPgParam> Params;
         /// <summary>
         /// PostgreSQL admin user password
         /// </summary>
@@ -42,9 +50,21 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Sslmode;
         /// <summary>
+        /// PostgreSQL standby connection URIs
+        /// </summary>
+        public readonly ImmutableArray<string> StandbyUris;
+        /// <summary>
+        /// PostgreSQL syncing connection URIs
+        /// </summary>
+        public readonly ImmutableArray<string> SyncingUris;
+        /// <summary>
         /// PostgreSQL master connection URI
         /// </summary>
         public readonly string? Uri;
+        /// <summary>
+        /// PostgreSQL master connection URIs
+        /// </summary>
+        public readonly ImmutableArray<string> Uris;
         /// <summary>
         /// PostgreSQL admin user name
         /// </summary>
@@ -52,11 +72,15 @@ namespace Pulumi.Aiven.Outputs
 
         [OutputConstructor]
         private PgPg(
+            string? bouncer,
+
             string? dbname,
 
             string? host,
 
             int? maxConnections,
+
+            ImmutableArray<Outputs.PgPgParam> @params,
 
             string? password,
 
@@ -66,18 +90,29 @@ namespace Pulumi.Aiven.Outputs
 
             string? sslmode,
 
+            ImmutableArray<string> standbyUris,
+
+            ImmutableArray<string> syncingUris,
+
             string? uri,
+
+            ImmutableArray<string> uris,
 
             string? user)
         {
+            Bouncer = bouncer;
             Dbname = dbname;
             Host = host;
             MaxConnections = maxConnections;
+            Params = @params;
             Password = password;
             Port = port;
             ReplicaUri = replicaUri;
             Sslmode = sslmode;
+            StandbyUris = standbyUris;
+            SyncingUris = syncingUris;
             Uri = uri;
+            Uris = uris;
             User = user;
         }
     }

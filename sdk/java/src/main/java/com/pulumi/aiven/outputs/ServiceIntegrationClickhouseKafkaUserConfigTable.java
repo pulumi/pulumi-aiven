@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
     /**
-     * @return Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      * 
      */
     private @Nullable String autoOffsetReset;
@@ -27,12 +27,12 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private List<ServiceIntegrationClickhouseKafkaUserConfigTableColumn> columns;
     /**
-     * @return Message data format. The default value is `JSONEachRow`.
+     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      * 
      */
     private String dataFormat;
     /**
-     * @return Method to read DateTime from text input formats. The default value is `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
      * 
      */
     private @Nullable String dateTimeInputFormat;
@@ -42,7 +42,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
      */
     private String groupName;
     /**
-     * @return How to handle errors for Kafka engine. The default value is `default`.
+     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      * 
      */
     private @Nullable String handleErrorMode;
@@ -84,7 +84,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
 
     private ServiceIntegrationClickhouseKafkaUserConfigTable() {}
     /**
-     * @return Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+     * @return Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
      * 
      */
     public Optional<String> autoOffsetReset() {
@@ -98,14 +98,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.columns;
     }
     /**
-     * @return Message data format. The default value is `JSONEachRow`.
+     * @return Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
      * 
      */
     public String dataFormat() {
         return this.dataFormat;
     }
     /**
-     * @return Method to read DateTime from text input formats. The default value is `basic`.
+     * @return Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
      * 
      */
     public Optional<String> dateTimeInputFormat() {
@@ -119,7 +119,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTable {
         return this.groupName;
     }
     /**
-     * @return How to handle errors for Kafka engine. The default value is `default`.
+     * @return Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
      * 
      */
     public Optional<String> handleErrorMode() {

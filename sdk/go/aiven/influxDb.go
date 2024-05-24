@@ -114,7 +114,11 @@ func NewInfluxDb(ctx *pulumi.Context,
 	if args.ServiceName == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
+	if args.Influxdbs != nil {
+		args.Influxdbs = pulumi.ToSecret(args.Influxdbs).(InfluxDbInfluxdbArrayInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"influxdbs",
 		"servicePassword",
 		"serviceUri",
 	})
@@ -331,6 +335,8 @@ type influxDbArgs struct {
 	DiskSpace *string `pulumi:"diskSpace"`
 	// Influxdb user configurable settings
 	InfluxdbUserConfig *InfluxDbInfluxdbUserConfig `pulumi:"influxdbUserConfig"`
+	// InfluxDB server provided values
+	Influxdbs []InfluxDbInfluxdb `pulumi:"influxdbs"`
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow *string `pulumi:"maintenanceWindowDow"`
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
@@ -388,6 +394,8 @@ type InfluxDbArgs struct {
 	DiskSpace pulumi.StringPtrInput
 	// Influxdb user configurable settings
 	InfluxdbUserConfig InfluxDbInfluxdbUserConfigPtrInput
+	// InfluxDB server provided values
+	Influxdbs InfluxDbInfluxdbArrayInput
 	// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
 	MaintenanceWindowDow pulumi.StringPtrInput
 	// Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.

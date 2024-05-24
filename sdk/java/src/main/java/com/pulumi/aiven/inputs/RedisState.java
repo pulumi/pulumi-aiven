@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.RedisComponentArgs;
+import com.pulumi.aiven.inputs.RedisRedisArgs;
 import com.pulumi.aiven.inputs.RedisRedisUserConfigArgs;
 import com.pulumi.aiven.inputs.RedisServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.RedisTagArgs;
@@ -224,6 +225,21 @@ public final class RedisState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> projectVpcId() {
         return Optional.ofNullable(this.projectVpcId);
+    }
+
+    /**
+     * Redis server provided values
+     * 
+     */
+    @Import(name="redis")
+    private @Nullable Output<RedisRedisArgs> redis;
+
+    /**
+     * @return Redis server provided values
+     * 
+     */
+    public Optional<Output<RedisRedisArgs>> redis() {
+        return Optional.ofNullable(this.redis);
     }
 
     /**
@@ -452,6 +468,7 @@ public final class RedisState extends com.pulumi.resources.ResourceArgs {
         this.plan = $.plan;
         this.project = $.project;
         this.projectVpcId = $.projectVpcId;
+        this.redis = $.redis;
         this.redisUserConfig = $.redisUserConfig;
         this.serviceHost = $.serviceHost;
         this.serviceIntegrations = $.serviceIntegrations;
@@ -775,6 +792,27 @@ public final class RedisState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder projectVpcId(String projectVpcId) {
             return projectVpcId(Output.of(projectVpcId));
+        }
+
+        /**
+         * @param redis Redis server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redis(@Nullable Output<RedisRedisArgs> redis) {
+            $.redis = redis;
+            return this;
+        }
+
+        /**
+         * @param redis Redis server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redis(RedisRedisArgs redis) {
+            return redis(Output.of(redis));
         }
 
         /**

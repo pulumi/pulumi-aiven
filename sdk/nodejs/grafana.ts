@@ -100,6 +100,10 @@ export class Grafana extends pulumi.CustomResource {
      */
     public /*out*/ readonly diskSpaceUsed!: pulumi.Output<string>;
     /**
+     * Grafana server provided values
+     */
+    public readonly grafana!: pulumi.Output<outputs.GrafanaGrafana>;
+    /**
      * Grafana user configurable settings
      */
     public readonly grafanaUserConfig!: pulumi.Output<outputs.GrafanaGrafanaUserConfig | undefined>;
@@ -197,6 +201,7 @@ export class Grafana extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = state ? state.diskSpaceDefault : undefined;
             resourceInputs["diskSpaceStep"] = state ? state.diskSpaceStep : undefined;
             resourceInputs["diskSpaceUsed"] = state ? state.diskSpaceUsed : undefined;
+            resourceInputs["grafana"] = state ? state.grafana : undefined;
             resourceInputs["grafanaUserConfig"] = state ? state.grafanaUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = state ? state.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = state ? state.maintenanceWindowTime : undefined;
@@ -227,6 +232,7 @@ export class Grafana extends pulumi.CustomResource {
             resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
+            resourceInputs["grafana"] = args?.grafana ? pulumi.secret(args.grafana) : undefined;
             resourceInputs["grafanaUserConfig"] = args ? args.grafanaUserConfig : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -253,7 +259,7 @@ export class Grafana extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["grafana", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Grafana.__pulumiType, name, resourceInputs, opts);
     }
@@ -297,6 +303,10 @@ export interface GrafanaState {
      * Disk space that service is currently using
      */
     diskSpaceUsed?: pulumi.Input<string>;
+    /**
+     * Grafana server provided values
+     */
+    grafana?: pulumi.Input<inputs.GrafanaGrafana>;
     /**
      * Grafana user configurable settings
      */
@@ -393,6 +403,10 @@ export interface GrafanaArgs {
      * @deprecated This will be removed in v5.0.0. Please use `additionalDiskSpace` to specify the space to be added to the default `diskSpace` defined by the plan.
      */
     diskSpace?: pulumi.Input<string>;
+    /**
+     * Grafana server provided values
+     */
+    grafana?: pulumi.Input<inputs.GrafanaGrafana>;
     /**
      * Grafana user configurable settings
      */

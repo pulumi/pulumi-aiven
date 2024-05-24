@@ -19,7 +19,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> BootstrapServers { get; set; } = null!;
 
         /// <summary>
-        /// SASL mechanism used for connections to the Kafka server.
+        /// Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
         /// </summary>
         [Input("saslMechanism")]
         public Input<string>? SaslMechanism { get; set; }
@@ -47,7 +47,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SaslPlainUsername { get; set; }
 
         /// <summary>
-        /// Security protocol.
+        /// Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
         /// </summary>
         [Input("securityProtocol", required: true)]
         public Input<string> SecurityProtocol { get; set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SslClientKey { get; set; }
 
         /// <summary>
-        /// The endpoint identification algorithm to validate server hostname using server certificate.
+        /// Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
         /// </summary>
         [Input("sslEndpointIdentificationAlgorithm")]
         public Input<string>? SslEndpointIdentificationAlgorithm { get; set; }

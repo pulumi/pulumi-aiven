@@ -7,6 +7,7 @@ import com.pulumi.aiven.RedisArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.RedisState;
 import com.pulumi.aiven.outputs.RedisComponent;
+import com.pulumi.aiven.outputs.RedisRedis;
 import com.pulumi.aiven.outputs.RedisRedisUserConfig;
 import com.pulumi.aiven.outputs.RedisServiceIntegration;
 import com.pulumi.aiven.outputs.RedisTag;
@@ -269,6 +270,20 @@ public class Redis extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.projectVpcId);
     }
     /**
+     * Redis server provided values
+     * 
+     */
+    @Export(name="redis", refs={RedisRedis.class}, tree="[0]")
+    private Output<RedisRedis> redis;
+
+    /**
+     * @return Redis server provided values
+     * 
+     */
+    public Output<RedisRedis> redis() {
+        return this.redis;
+    }
+    /**
      * Redis user configurable settings
      * 
      */
@@ -498,6 +513,7 @@ public class Redis extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "redis",
                 "servicePassword",
                 "serviceUri"
             ))

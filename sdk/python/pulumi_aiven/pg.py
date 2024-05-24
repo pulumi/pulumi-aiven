@@ -853,7 +853,7 @@ class Pg(pulumi.CustomResource):
             __props__.__dict__["disk_space"] = disk_space
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
-            __props__.__dict__["pg"] = pg
+            __props__.__dict__["pg"] = None if pg is None else pulumi.Output.secret(pg)
             __props__.__dict__["pg_user_config"] = pg_user_config
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
@@ -880,7 +880,7 @@ class Pg(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["pg", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Pg, __self__).__init__(
             'aiven:index/pg:Pg',

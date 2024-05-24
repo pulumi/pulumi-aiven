@@ -6,6 +6,7 @@ package com.pulumi.aiven.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -90,6 +91,21 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.schemaRegistryUri);
     }
 
+    /**
+     * Kafka server URIs.
+     * 
+     */
+    @Import(name="uris")
+    private @Nullable Output<List<String>> uris;
+
+    /**
+     * @return Kafka server URIs.
+     * 
+     */
+    public Optional<Output<List<String>>> uris() {
+        return Optional.ofNullable(this.uris);
+    }
+
     private KafkaKafkaArgs() {}
 
     private KafkaKafkaArgs(KafkaKafkaArgs $) {
@@ -98,6 +114,7 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
         this.connectUri = $.connectUri;
         this.restUri = $.restUri;
         this.schemaRegistryUri = $.schemaRegistryUri;
+        this.uris = $.uris;
     }
 
     public static Builder builder() {
@@ -221,6 +238,37 @@ public final class KafkaKafkaArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder schemaRegistryUri(String schemaRegistryUri) {
             return schemaRegistryUri(Output.of(schemaRegistryUri));
+        }
+
+        /**
+         * @param uris Kafka server URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(@Nullable Output<List<String>> uris) {
+            $.uris = uris;
+            return this;
+        }
+
+        /**
+         * @param uris Kafka server URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(List<String> uris) {
+            return uris(Output.of(uris));
+        }
+
+        /**
+         * @param uris Kafka server URIs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
         }
 
         public KafkaKafkaArgs build() {

@@ -105,6 +105,12 @@ namespace Pulumi.Aiven
         public Output<string> DiskSpaceUsed { get; private set; } = null!;
 
         /// <summary>
+        /// M3DB server provided values
+        /// </summary>
+        [Output("m3db")]
+        public Output<Outputs.M3DbM3db> M3db { get; private set; } = null!;
+
+        /// <summary>
         /// M3db user configurable settings
         /// </summary>
         [Output("m3dbUserConfig")]
@@ -243,6 +249,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "m3db",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -286,6 +293,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpace")]
         public Input<string>? DiskSpace { get; set; }
+
+        [Input("m3db")]
+        private Input<Inputs.M3DbM3dbArgs>? _m3db;
+
+        /// <summary>
+        /// M3DB server provided values
+        /// </summary>
+        public Input<Inputs.M3DbM3dbArgs>? M3db
+        {
+            get => _m3db;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _m3db = Output.Tuple<Input<Inputs.M3DbM3dbArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// M3db user configurable settings
@@ -444,6 +467,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("diskSpaceUsed")]
         public Input<string>? DiskSpaceUsed { get; set; }
+
+        [Input("m3db")]
+        private Input<Inputs.M3DbM3dbGetArgs>? _m3db;
+
+        /// <summary>
+        /// M3DB server provided values
+        /// </summary>
+        public Input<Inputs.M3DbM3dbGetArgs>? M3db
+        {
+            get => _m3db;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _m3db = Output.Tuple<Input<Inputs.M3DbM3dbGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// M3db user configurable settings

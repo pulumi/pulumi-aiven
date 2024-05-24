@@ -4,6 +4,7 @@
 package com.pulumi.aiven.inputs;
 
 import com.pulumi.aiven.inputs.MySqlComponentArgs;
+import com.pulumi.aiven.inputs.MySqlMysqlArgs;
 import com.pulumi.aiven.inputs.MySqlMysqlUserConfigArgs;
 import com.pulumi.aiven.inputs.MySqlServiceIntegrationArgs;
 import com.pulumi.aiven.inputs.MySqlTagArgs;
@@ -179,6 +180,21 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> maintenanceWindowTime() {
         return Optional.ofNullable(this.maintenanceWindowTime);
+    }
+
+    /**
+     * MySQL specific server provided values
+     * 
+     */
+    @Import(name="mysql")
+    private @Nullable Output<MySqlMysqlArgs> mysql;
+
+    /**
+     * @return MySQL specific server provided values
+     * 
+     */
+    public Optional<Output<MySqlMysqlArgs>> mysql() {
+        return Optional.ofNullable(this.mysql);
     }
 
     /**
@@ -449,6 +465,7 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
         this.diskSpaceUsed = $.diskSpaceUsed;
         this.maintenanceWindowDow = $.maintenanceWindowDow;
         this.maintenanceWindowTime = $.maintenanceWindowTime;
+        this.mysql = $.mysql;
         this.mysqlUserConfig = $.mysqlUserConfig;
         this.plan = $.plan;
         this.project = $.project;
@@ -712,6 +729,27 @@ public final class MySqlState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenanceWindowTime(String maintenanceWindowTime) {
             return maintenanceWindowTime(Output.of(maintenanceWindowTime));
+        }
+
+        /**
+         * @param mysql MySQL specific server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mysql(@Nullable Output<MySqlMysqlArgs> mysql) {
+            $.mysql = mysql;
+            return this;
+        }
+
+        /**
+         * @param mysql MySQL specific server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mysql(MySqlMysqlArgs mysql) {
+            return mysql(Output.of(mysql));
         }
 
         /**

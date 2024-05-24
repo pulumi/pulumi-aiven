@@ -25,13 +25,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerRequestMaxBytes { get; set; }
 
         /// <summary>
-        /// The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        /// Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
         /// </summary>
         [Input("consumerRequestTimeoutMs")]
         public Input<int>? ConsumerRequestTimeoutMs { get; set; }
 
         /// <summary>
-        /// Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        /// Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
         /// </summary>
         [Input("nameStrategy")]
         public Input<string>? NameStrategy { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? NameStrategyValidation { get; set; }
 
         /// <summary>
-        /// The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        /// Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         /// </summary>
         [Input("producerAcks")]
         public Input<string>? ProducerAcks { get; set; }
 
         /// <summary>
-        /// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }

@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AccountAuthenticationSamlFieldMapping',
+    'CassandraCassandra',
     'CassandraCassandraUserConfig',
     'CassandraCassandraUserConfigCassandra',
     'CassandraCassandraUserConfigIpFilterObject',
@@ -21,6 +22,7 @@ __all__ = [
     'CassandraServiceIntegration',
     'CassandraTag',
     'CassandraTechEmail',
+    'ClickhouseClickhouse',
     'ClickhouseClickhouseUserConfig',
     'ClickhouseClickhouseUserConfigIpFilterObject',
     'ClickhouseClickhouseUserConfigPrivateAccess',
@@ -33,6 +35,7 @@ __all__ = [
     'ClickhouseTag',
     'ClickhouseTechEmail',
     'DragonflyComponent',
+    'DragonflyDragonfly',
     'DragonflyDragonflyUserConfig',
     'DragonflyDragonflyUserConfigIpFilterObject',
     'DragonflyDragonflyUserConfigMigration',
@@ -53,6 +56,7 @@ __all__ = [
     'FlinkTag',
     'FlinkTechEmail',
     'GrafanaComponent',
+    'GrafanaGrafana',
     'GrafanaGrafanaUserConfig',
     'GrafanaGrafanaUserConfigAuthAzuread',
     'GrafanaGrafanaUserConfigAuthGenericOauth',
@@ -118,12 +122,14 @@ __all__ = [
     'KafkaTopicConfig',
     'KafkaTopicTag',
     'M3AggregatorComponent',
+    'M3AggregatorM3aggregator',
     'M3AggregatorM3aggregatorUserConfig',
     'M3AggregatorM3aggregatorUserConfigIpFilterObject',
     'M3AggregatorServiceIntegration',
     'M3AggregatorTag',
     'M3AggregatorTechEmail',
     'M3DbComponent',
+    'M3DbM3db',
     'M3DbM3dbUserConfig',
     'M3DbM3dbUserConfigIpFilterObject',
     'M3DbM3dbUserConfigLimits',
@@ -142,6 +148,8 @@ __all__ = [
     'M3DbTag',
     'M3DbTechEmail',
     'MySqlComponent',
+    'MySqlMysql',
+    'MySqlMysqlParam',
     'MySqlMysqlUserConfig',
     'MySqlMysqlUserConfigIpFilterObject',
     'MySqlMysqlUserConfigMigration',
@@ -178,6 +186,7 @@ __all__ = [
     'OrganizationUserGroupMemberTimeouts',
     'PgComponent',
     'PgPg',
+    'PgPgParam',
     'PgPgUserConfig',
     'PgPgUserConfigIpFilterObject',
     'PgPgUserConfigMigration',
@@ -195,6 +204,7 @@ __all__ = [
     'PgTechEmail',
     'ProjectTag',
     'RedisComponent',
+    'RedisRedis',
     'RedisRedisUserConfig',
     'RedisRedisUserConfigIpFilterObject',
     'RedisRedisUserConfigMigration',
@@ -247,6 +257,7 @@ __all__ = [
     'ServiceIntegrationPrometheusUserConfigSourceMysql',
     'ServiceIntegrationPrometheusUserConfigSourceMysqlTelegraf',
     'GetAccountAuthenticationSamlFieldMappingResult',
+    'GetCassandaCassandraResult',
     'GetCassandaCassandraUserConfigResult',
     'GetCassandaCassandraUserConfigCassandraResult',
     'GetCassandaCassandraUserConfigIpFilterObjectResult',
@@ -256,6 +267,7 @@ __all__ = [
     'GetCassandaServiceIntegrationResult',
     'GetCassandaTagResult',
     'GetCassandaTechEmailResult',
+    'GetCassandraCassandraResult',
     'GetCassandraCassandraUserConfigResult',
     'GetCassandraCassandraUserConfigCassandraResult',
     'GetCassandraCassandraUserConfigIpFilterObjectResult',
@@ -265,6 +277,7 @@ __all__ = [
     'GetCassandraServiceIntegrationResult',
     'GetCassandraTagResult',
     'GetCassandraTechEmailResult',
+    'GetClickhouseClickhouseResult',
     'GetClickhouseClickhouseUserConfigResult',
     'GetClickhouseClickhouseUserConfigIpFilterObjectResult',
     'GetClickhouseClickhouseUserConfigPrivateAccessResult',
@@ -275,6 +288,7 @@ __all__ = [
     'GetClickhouseTagResult',
     'GetClickhouseTechEmailResult',
     'GetDragonflyComponentResult',
+    'GetDragonflyDragonflyResult',
     'GetDragonflyDragonflyUserConfigResult',
     'GetDragonflyDragonflyUserConfigIpFilterObjectResult',
     'GetDragonflyDragonflyUserConfigMigrationResult',
@@ -295,6 +309,7 @@ __all__ = [
     'GetFlinkTagResult',
     'GetFlinkTechEmailResult',
     'GetGrafanaComponentResult',
+    'GetGrafanaGrafanaResult',
     'GetGrafanaGrafanaUserConfigResult',
     'GetGrafanaGrafanaUserConfigAuthAzureadResult',
     'GetGrafanaGrafanaUserConfigAuthGenericOauthResult',
@@ -360,12 +375,14 @@ __all__ = [
     'GetKafkaTopicConfigResult',
     'GetKafkaTopicTagResult',
     'GetM3AggregatorComponentResult',
+    'GetM3AggregatorM3aggregatorResult',
     'GetM3AggregatorM3aggregatorUserConfigResult',
     'GetM3AggregatorM3aggregatorUserConfigIpFilterObjectResult',
     'GetM3AggregatorServiceIntegrationResult',
     'GetM3AggregatorTagResult',
     'GetM3AggregatorTechEmailResult',
     'GetM3DbComponentResult',
+    'GetM3DbM3dbResult',
     'GetM3DbM3dbUserConfigResult',
     'GetM3DbM3dbUserConfigIpFilterObjectResult',
     'GetM3DbM3dbUserConfigLimitsResult',
@@ -384,6 +401,8 @@ __all__ = [
     'GetM3DbTagResult',
     'GetM3DbTechEmailResult',
     'GetMySqlComponentResult',
+    'GetMySqlMysqlResult',
+    'GetMySqlMysqlParamResult',
     'GetMySqlMysqlUserConfigResult',
     'GetMySqlMysqlUserConfigIpFilterObjectResult',
     'GetMySqlMysqlUserConfigMigrationResult',
@@ -415,6 +434,7 @@ __all__ = [
     'GetOpenSearchTechEmailResult',
     'GetPgComponentResult',
     'GetPgPgResult',
+    'GetPgPgParamResult',
     'GetPgPgUserConfigResult',
     'GetPgPgUserConfigIpFilterObjectResult',
     'GetPgPgUserConfigMigrationResult',
@@ -432,6 +452,7 @@ __all__ = [
     'GetPgTechEmailResult',
     'GetProjectTagResult',
     'GetRedisComponentResult',
+    'GetRedisRediResult',
     'GetRedisRedisUserConfigResult',
     'GetRedisRedisUserConfigIpFilterObjectResult',
     'GetRedisRedisUserConfigMigrationResult',
@@ -574,6 +595,25 @@ class AccountAuthenticationSamlFieldMapping(dict):
 
 
 @pulumi.output_type
+class CassandraCassandra(dict):
+    def __init__(__self__, *,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] uris: Cassandra server URIs.
+        """
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        Cassandra server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class CassandraCassandraUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -642,7 +682,7 @@ class CassandraCassandraUserConfig(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param 'CassandraCassandraUserConfigCassandraArgs' cassandra: Cassandra configuration values
-        :param str cassandra_version: Cassandra version.
+        :param str cassandra_version: Enum: `3`, `4`, `4.1`. Cassandra version.
         :param Sequence['CassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -727,7 +767,7 @@ class CassandraCassandraUserConfig(dict):
     @pulumi.getter(name="cassandraVersion")
     def cassandra_version(self) -> Optional[str]:
         """
-        Cassandra version.
+        Enum: `3`, `4`, `4.1`. Cassandra version.
         """
         return pulumi.get(self, "cassandra_version")
 
@@ -1168,6 +1208,25 @@ class CassandraTechEmail(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class ClickhouseClickhouse(dict):
+    def __init__(__self__, *,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] uris: Clickhouse server URIs.
+        """
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        Clickhouse server URIs.
+        """
+        return pulumi.get(self, "uris")
 
 
 @pulumi.output_type
@@ -2046,6 +2105,80 @@ class DragonflyComponent(dict):
 
 
 @pulumi.output_type
+class DragonflyDragonfly(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaUri":
+            suggest = "replica_uri"
+        elif key == "slaveUris":
+            suggest = "slave_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DragonflyDragonfly. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DragonflyDragonfly.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DragonflyDragonfly.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 replica_uri: Optional[str] = None,
+                 slave_uris: Optional[Sequence[str]] = None,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param str password: Dragonfly password.
+        :param str replica_uri: Dragonfly replica server URI.
+        :param Sequence[str] slave_uris: Dragonfly slave server URIs.
+        :param Sequence[str] uris: Dragonfly server URIs.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if replica_uri is not None:
+            pulumi.set(__self__, "replica_uri", replica_uri)
+        if slave_uris is not None:
+            pulumi.set(__self__, "slave_uris", slave_uris)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Dragonfly password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> Optional[str]:
+        """
+        Dragonfly replica server URI.
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @property
+    @pulumi.getter(name="slaveUris")
+    def slave_uris(self) -> Optional[Sequence[str]]:
+        """
+        Dragonfly slave server URIs.
+        """
+        return pulumi.get(self, "slave_uris")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        Dragonfly server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class DragonflyDragonflyUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -2108,7 +2241,7 @@ class DragonflyDragonflyUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param bool cache_mode: Evict entries when getting close to maxmemory limit. The default value is `false`.
-        :param str dragonfly_persistence: When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param str dragonfly_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param bool dragonfly_ssl: Require SSL to access Dragonfly. The default value is `true`.
         :param Sequence['DragonflyDragonflyUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -2166,7 +2299,7 @@ class DragonflyDragonflyUserConfig(dict):
     @pulumi.getter(name="dragonflyPersistence")
     def dragonfly_persistence(self) -> Optional[str]:
         """
-        When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         """
         return pulumi.get(self, "dragonfly_persistence")
 
@@ -2341,7 +2474,7 @@ class DragonflyDragonflyUserConfigMigration(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -2397,7 +2530,7 @@ class DragonflyDragonflyUserConfigMigration(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -2917,7 +3050,7 @@ class FlinkFlinkUserConfig(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param str flink_version: Flink major version.
+        :param str flink_version: Enum: `1.16`. Flink major version.
         :param Sequence['FlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -2960,7 +3093,7 @@ class FlinkFlinkUserConfig(dict):
     @pulumi.getter(name="flinkVersion")
     def flink_version(self) -> Optional[str]:
         """
-        Flink major version.
+        Enum: `1.16`. Flink major version.
         """
         return pulumi.get(self, "flink_version")
 
@@ -3303,6 +3436,25 @@ class GrafanaComponent(dict):
 
 
 @pulumi.output_type
+class GrafanaGrafana(dict):
+    def __init__(__self__, *,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] uris: Grafana server URIs.
+        """
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        Grafana server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GrafanaGrafanaUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -3449,9 +3601,9 @@ class GrafanaGrafanaUserConfig(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param bool alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified*alerting*enabled.
-        :param str alerting_error_or_timeout: Default error or timeout setting for new alerting rules.
+        :param str alerting_error_or_timeout: Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         :param int alerting_max_annotations_to_keep: Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-        :param str alerting_nodata_or_nullvalues: Default value for 'no data or null values' for new alerting rules.
+        :param str alerting_nodata_or_nullvalues: Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
         :param bool allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
         :param 'GrafanaGrafanaUserConfigAuthAzureadArgs' auth_azuread: Azure AD OAuth integration
         :param bool auth_basic_enabled: Enable or disable basic authentication form, used by Grafana built-in login.
@@ -3459,7 +3611,7 @@ class GrafanaGrafanaUserConfig(dict):
         :param 'GrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Github Auth integration
         :param 'GrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration
         :param 'GrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration
-        :param str cookie_samesite: Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        :param str cookie_samesite: Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param bool dashboard_previews_enabled: This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         :param str dashboards_min_refresh_interval: Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
@@ -3487,7 +3639,7 @@ class GrafanaGrafanaUserConfig(dict):
         :param bool static_ips: Use static public IP addresses.
         :param bool unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified*alerting*enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
-        :param str user_auto_assign_org_role: Set role for new signups. Defaults to Viewer.
+        :param str user_auto_assign_org_role: Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         :param bool viewers_can_edit: Users with view-only permission can edit but not save dashboards.
         """
         if additional_backup_regions is not None:
@@ -3595,7 +3747,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="alertingErrorOrTimeout")
     def alerting_error_or_timeout(self) -> Optional[str]:
         """
-        Default error or timeout setting for new alerting rules.
+        Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         """
         return pulumi.get(self, "alerting_error_or_timeout")
 
@@ -3611,7 +3763,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="alertingNodataOrNullvalues")
     def alerting_nodata_or_nullvalues(self) -> Optional[str]:
         """
-        Default value for 'no data or null values' for new alerting rules.
+        Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
         """
         return pulumi.get(self, "alerting_nodata_or_nullvalues")
 
@@ -3675,7 +3827,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="cookieSamesite")
     def cookie_samesite(self) -> Optional[str]:
         """
-        Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         """
         return pulumi.get(self, "cookie_samesite")
 
@@ -3902,7 +4054,7 @@ class GrafanaGrafanaUserConfig(dict):
     @pulumi.getter(name="userAutoAssignOrgRole")
     def user_auto_assign_org_role(self) -> Optional[str]:
         """
-        Set role for new signups. Defaults to Viewer.
+        Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         """
         return pulumi.get(self, "user_auto_assign_org_role")
 
@@ -4673,7 +4825,7 @@ class GrafanaGrafanaUserConfigExternalImageStorage(dict):
         """
         :param str access_key: S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
         :param str bucket_url: Bucket URL for S3.
-        :param str provider: Provider type.
+        :param str provider: Enum: `s3`. Provider type.
         :param str secret_key: S3 secret key.
         """
         pulumi.set(__self__, "access_key", access_key)
@@ -4701,7 +4853,7 @@ class GrafanaGrafanaUserConfigExternalImageStorage(dict):
     @pulumi.getter
     def provider(self) -> str:
         """
-        Provider type.
+        Enum: `s3`. Provider type.
         """
         return pulumi.get(self, "provider")
 
@@ -4842,7 +4994,7 @@ class GrafanaGrafanaUserConfigSmtpServer(dict):
         :param str from_name: Name used in outgoing emails, defaults to Grafana.
         :param str password: Password for SMTP authentication.
         :param bool skip_verify: Skip verifying server certificate. Defaults to false.
-        :param str starttls_policy: Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        :param str starttls_policy: Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         :param str username: Username for SMTP authentication.
         """
         pulumi.set(__self__, "from_address", from_address)
@@ -4911,7 +5063,7 @@ class GrafanaGrafanaUserConfigSmtpServer(dict):
     @pulumi.getter(name="starttlsPolicy")
     def starttls_policy(self) -> Optional[str]:
         """
-        Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         """
         return pulumi.get(self, "starttls_policy")
 
@@ -5161,12 +5313,24 @@ class InfluxDbInfluxdb(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 database_name: Optional[str] = None):
+                 database_name: Optional[str] = None,
+                 password: Optional[str] = None,
+                 uris: Optional[Sequence[str]] = None,
+                 username: Optional[str] = None):
         """
         :param str database_name: Name of the default InfluxDB database
+        :param str password: InfluxDB password
+        :param Sequence[str] uris: InfluxDB server URIs.
+        :param str username: InfluxDB username
         """
         if database_name is not None:
             pulumi.set(__self__, "database_name", database_name)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -5175,6 +5339,30 @@ class InfluxDbInfluxdb(dict):
         Name of the default InfluxDB database
         """
         return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        InfluxDB password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        InfluxDB server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        InfluxDB username
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -6210,10 +6398,10 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
                  scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         """
-        :param str connector_client_config_override_policy: Defines what client configurations can be overridden by the connector. Default is None.
-        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        :param str connector_client_config_override_policy: Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        :param str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        :param str consumer_isolation_level: Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_isolation_level: Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         :param int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
@@ -6221,7 +6409,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
         :param int offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
         :param int producer_batch_size: This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         :param int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
@@ -6264,7 +6452,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
         """
-        Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         return pulumi.get(self, "connector_client_config_override_policy")
 
@@ -6272,7 +6460,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
         """
-        What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
@@ -6288,7 +6476,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         """
-        Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -6352,7 +6540,7 @@ class KafkaConnectKafkaConnectUserConfigKafkaConnect(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -6703,13 +6891,15 @@ class KafkaKafka(dict):
                  access_key: Optional[str] = None,
                  connect_uri: Optional[str] = None,
                  rest_uri: Optional[str] = None,
-                 schema_registry_uri: Optional[str] = None):
+                 schema_registry_uri: Optional[str] = None,
+                 uris: Optional[Sequence[str]] = None):
         """
         :param str access_cert: The Kafka client certificate.
         :param str access_key: The Kafka client certificate key.
         :param str connect_uri: The Kafka Connect URI.
         :param str rest_uri: The Kafka REST URI.
         :param str schema_registry_uri: The Schema Registry URI.
+        :param Sequence[str] uris: Kafka server URIs.
         """
         if access_cert is not None:
             pulumi.set(__self__, "access_cert", access_cert)
@@ -6721,6 +6911,8 @@ class KafkaKafka(dict):
             pulumi.set(__self__, "rest_uri", rest_uri)
         if schema_registry_uri is not None:
             pulumi.set(__self__, "schema_registry_uri", schema_registry_uri)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="accessCert")
@@ -6761,6 +6953,14 @@ class KafkaKafka(dict):
         The Schema Registry URI.
         """
         return pulumi.get(self, "schema_registry_uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        Kafka server URIs.
+        """
+        return pulumi.get(self, "uris")
 
 
 @pulumi.output_type
@@ -6859,7 +7059,7 @@ class KafkaKafkaUserConfig(dict):
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'KafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
-        :param str kafka_version: Kafka major version.
+        :param str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
         :param 'KafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'KafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'KafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -7028,7 +7228,7 @@ class KafkaKafkaUserConfig(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[str]:
         """
-        Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -7285,7 +7485,7 @@ class KafkaKafkaUserConfigKafka(dict):
                  transaction_state_log_segment_bytes: Optional[int] = None):
         """
         :param bool auto_create_topics_enable: Enable auto creation of topics.
-        :param str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+        :param str compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
         :param int connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
         :param int default_replication_factor: Replication factor for autocreated topics.
         :param int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
@@ -7295,7 +7495,7 @@ class KafkaKafkaUserConfigKafka(dict):
         :param int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
         :param float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
         :param int log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
-        :param str log_cleanup_policy: The default cleanup policy for segments beyond the retention window.
+        :param str log_cleanup_policy: Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
         :param int log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk.
         :param int log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
         :param int log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index.
@@ -7304,7 +7504,7 @@ class KafkaKafkaUserConfigKafka(dict):
         :param int log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
         :param bool log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         :param int log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
-        :param str log_message_timestamp_type: Define whether the timestamp in the message is message create time or log append time.
+        :param str log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
         :param bool log_preallocate: Should pre allocate file when create new segment?
         :param int log_retention_bytes: The maximum size of the log before deleting messages.
         :param int log_retention_hours: The number of hours to keep a log file before deleting it.
@@ -7436,7 +7636,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[str]:
         """
-        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
         """
         return pulumi.get(self, "compression_type")
 
@@ -7516,7 +7716,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logCleanupPolicy")
     def log_cleanup_policy(self) -> Optional[str]:
         """
-        The default cleanup policy for segments beyond the retention window.
+        Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
         """
         return pulumi.get(self, "log_cleanup_policy")
 
@@ -7588,7 +7788,7 @@ class KafkaKafkaUserConfigKafka(dict):
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[str]:
         """
-        Define whether the timestamp in the message is message create time or log append time.
+        Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
         """
         return pulumi.get(self, "log_message_timestamp_type")
 
@@ -7891,10 +8091,10 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
                  scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         """
-        :param str connector_client_config_override_policy: Defines what client configurations can be overridden by the connector. Default is None.
-        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        :param str connector_client_config_override_policy: Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        :param str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        :param str consumer_isolation_level: Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_isolation_level: Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         :param int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
@@ -7902,7 +8102,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
         :param int offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
         :param int producer_batch_size: This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         :param int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
@@ -7945,7 +8145,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
         """
-        Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         return pulumi.get(self, "connector_client_config_override_policy")
 
@@ -7953,7 +8153,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
         """
-        What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
@@ -7969,7 +8169,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         """
-        Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -8033,7 +8233,7 @@ class KafkaKafkaUserConfigKafkaConnectConfig(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -8121,11 +8321,11 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
         """
         :param bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
         :param int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
-        :param int consumer_request_timeout_ms: The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
-        :param str name_strategy: Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        :param int consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        :param str name_strategy: Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
         :param bool name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
-        :param str producer_acks: The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_acks: Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: Wait for up to the given delay to allow batching records together. The default value is `0`.
         :param int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
         :param int simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
@@ -8171,7 +8371,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[int]:
         """
-        The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
         """
         return pulumi.get(self, "consumer_request_timeout_ms")
 
@@ -8179,7 +8379,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="nameStrategy")
     def name_strategy(self) -> Optional[str]:
         """
-        Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
         """
         return pulumi.get(self, "name_strategy")
 
@@ -8195,7 +8395,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="producerAcks")
     def producer_acks(self) -> Optional[str]:
         """
-        The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         """
         return pulumi.get(self, "producer_acks")
 
@@ -8203,7 +8403,7 @@ class KafkaKafkaUserConfigKafkaRestConfig(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -9855,6 +10055,54 @@ class M3AggregatorComponent(dict):
 
 
 @pulumi.output_type
+class M3AggregatorM3aggregator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregatorHttpUri":
+            suggest = "aggregator_http_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3AggregatorM3aggregator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3AggregatorM3aggregator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3AggregatorM3aggregator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aggregator_http_uri: Optional[str] = None,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param str aggregator_http_uri: M3 Aggregator HTTP URI.
+        :param Sequence[str] uris: M3 Aggregator server URIs.
+        """
+        if aggregator_http_uri is not None:
+            pulumi.set(__self__, "aggregator_http_uri", aggregator_http_uri)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="aggregatorHttpUri")
+    def aggregator_http_uri(self) -> Optional[str]:
+        """
+        M3 Aggregator HTTP URI.
+        """
+        return pulumi.get(self, "aggregator_http_uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        M3 Aggregator server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class M3AggregatorM3aggregatorUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -9901,8 +10149,8 @@ class M3AggregatorM3aggregatorUserConfig(dict):
         :param Sequence['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param str m3_version: M3 major version (deprecated, use m3aggregator_version).
-        :param str m3aggregator_version: M3 major version (the minimum compatible version).
+        :param str m3_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
+        :param str m3aggregator_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -9962,7 +10210,7 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
         """
-        M3 major version (deprecated, use m3aggregator_version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
         """
         return pulumi.get(self, "m3_version")
 
@@ -9970,7 +10218,7 @@ class M3AggregatorM3aggregatorUserConfig(dict):
     @pulumi.getter(name="m3aggregatorVersion")
     def m3aggregator_version(self) -> Optional[str]:
         """
-        M3 major version (the minimum compatible version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         """
         return pulumi.get(self, "m3aggregator_version")
 
@@ -10239,6 +10487,110 @@ class M3DbComponent(dict):
 
 
 @pulumi.output_type
+class M3DbM3db(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpClusterUri":
+            suggest = "http_cluster_uri"
+        elif key == "httpNodeUri":
+            suggest = "http_node_uri"
+        elif key == "influxdbUri":
+            suggest = "influxdb_uri"
+        elif key == "prometheusRemoteReadUri":
+            suggest = "prometheus_remote_read_uri"
+        elif key == "prometheusRemoteWriteUri":
+            suggest = "prometheus_remote_write_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in M3DbM3db. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        M3DbM3db.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        M3DbM3db.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 http_cluster_uri: Optional[str] = None,
+                 http_node_uri: Optional[str] = None,
+                 influxdb_uri: Optional[str] = None,
+                 prometheus_remote_read_uri: Optional[str] = None,
+                 prometheus_remote_write_uri: Optional[str] = None,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param str http_cluster_uri: M3DB cluster URI.
+        :param str http_node_uri: M3DB node URI.
+        :param str influxdb_uri: InfluxDB URI.
+        :param str prometheus_remote_read_uri: Prometheus remote read URI.
+        :param str prometheus_remote_write_uri: Prometheus remote write URI.
+        :param Sequence[str] uris: M3DB server URIs.
+        """
+        if http_cluster_uri is not None:
+            pulumi.set(__self__, "http_cluster_uri", http_cluster_uri)
+        if http_node_uri is not None:
+            pulumi.set(__self__, "http_node_uri", http_node_uri)
+        if influxdb_uri is not None:
+            pulumi.set(__self__, "influxdb_uri", influxdb_uri)
+        if prometheus_remote_read_uri is not None:
+            pulumi.set(__self__, "prometheus_remote_read_uri", prometheus_remote_read_uri)
+        if prometheus_remote_write_uri is not None:
+            pulumi.set(__self__, "prometheus_remote_write_uri", prometheus_remote_write_uri)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="httpClusterUri")
+    def http_cluster_uri(self) -> Optional[str]:
+        """
+        M3DB cluster URI.
+        """
+        return pulumi.get(self, "http_cluster_uri")
+
+    @property
+    @pulumi.getter(name="httpNodeUri")
+    def http_node_uri(self) -> Optional[str]:
+        """
+        M3DB node URI.
+        """
+        return pulumi.get(self, "http_node_uri")
+
+    @property
+    @pulumi.getter(name="influxdbUri")
+    def influxdb_uri(self) -> Optional[str]:
+        """
+        InfluxDB URI.
+        """
+        return pulumi.get(self, "influxdb_uri")
+
+    @property
+    @pulumi.getter(name="prometheusRemoteReadUri")
+    def prometheus_remote_read_uri(self) -> Optional[str]:
+        """
+        Prometheus remote read URI.
+        """
+        return pulumi.get(self, "prometheus_remote_read_uri")
+
+    @property
+    @pulumi.getter(name="prometheusRemoteWriteUri")
+    def prometheus_remote_write_uri(self) -> Optional[str]:
+        """
+        Prometheus remote write URI.
+        """
+        return pulumi.get(self, "prometheus_remote_write_uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        M3DB server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class M3DbM3dbUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -10310,9 +10662,9 @@ class M3DbM3dbUserConfig(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'M3DbM3dbUserConfigLimitsArgs' limits: M3 limits
         :param 'M3DbM3dbUserConfigM3Args' m3: M3 specific configuration options
-        :param str m3_version: M3 major version (deprecated, use m3db_version).
+        :param str m3_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
         :param bool m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-        :param str m3db_version: M3 major version (the minimum compatible version).
+        :param str m3db_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         :param Sequence['M3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
         :param 'M3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -10422,7 +10774,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
         """
-        M3 major version (deprecated, use m3db_version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
         """
         return pulumi.get(self, "m3_version")
 
@@ -10438,7 +10790,7 @@ class M3DbM3dbUserConfig(dict):
     @pulumi.getter(name="m3dbVersion")
     def m3db_version(self) -> Optional[str]:
         """
-        M3 major version (the minimum compatible version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         """
         return pulumi.get(self, "m3db_version")
 
@@ -10738,7 +11090,7 @@ class M3DbM3dbUserConfigNamespace(dict):
                  resolution: Optional[str] = None):
         """
         :param str name: The name of the namespace.
-        :param str type: The type of aggregation (aggregated/unaggregated).
+        :param str type: Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
         :param 'M3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options
         :param str resolution: The resolution for an aggregated namespace.
         """
@@ -10761,7 +11113,7 @@ class M3DbM3dbUserConfigNamespace(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of aggregation (aggregated/unaggregated).
+        Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
         """
         return pulumi.get(self, "type")
 
@@ -11395,6 +11747,190 @@ class MySqlComponent(dict):
 
 
 @pulumi.output_type
+class MySqlMysql(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaUri":
+            suggest = "replica_uri"
+        elif key == "standbyUris":
+            suggest = "standby_uris"
+        elif key == "syncingUris":
+            suggest = "syncing_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlMysql. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlMysql.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlMysql.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 params: Optional[Sequence['outputs.MySqlMysqlParam']] = None,
+                 replica_uri: Optional[str] = None,
+                 standby_uris: Optional[Sequence[str]] = None,
+                 syncing_uris: Optional[Sequence[str]] = None,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence['MySqlMysqlParamArgs'] params: MySQL connection parameters
+        :param str replica_uri: MySQL replica URI for services with a replica
+        :param Sequence[str] standby_uris: MySQL standby connection URIs
+        :param Sequence[str] syncing_uris: MySQL syncing connection URIs
+        :param Sequence[str] uris: MySQL master connection URIs
+        """
+        if params is not None:
+            pulumi.set(__self__, "params", params)
+        if replica_uri is not None:
+            pulumi.set(__self__, "replica_uri", replica_uri)
+        if standby_uris is not None:
+            pulumi.set(__self__, "standby_uris", standby_uris)
+        if syncing_uris is not None:
+            pulumi.set(__self__, "syncing_uris", syncing_uris)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[Sequence['outputs.MySqlMysqlParam']]:
+        """
+        MySQL connection parameters
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> Optional[str]:
+        """
+        MySQL replica URI for services with a replica
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @property
+    @pulumi.getter(name="standbyUris")
+    def standby_uris(self) -> Optional[Sequence[str]]:
+        """
+        MySQL standby connection URIs
+        """
+        return pulumi.get(self, "standby_uris")
+
+    @property
+    @pulumi.getter(name="syncingUris")
+    def syncing_uris(self) -> Optional[Sequence[str]]:
+        """
+        MySQL syncing connection URIs
+        """
+        return pulumi.get(self, "syncing_uris")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        MySQL master connection URIs
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class MySqlMysqlParam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlMysqlParam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlMysqlParam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlMysqlParam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_name: Optional[str] = None,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 sslmode: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str database_name: Primary MySQL database name
+        :param str host: MySQL host IP or name
+        :param str password: MySQL admin user password
+        :param int port: MySQL port
+        :param str sslmode: MySQL sslmode setting (currently always "require")
+        :param str user: MySQL admin user name
+        """
+        if database_name is not None:
+            pulumi.set(__self__, "database_name", database_name)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if sslmode is not None:
+            pulumi.set(__self__, "sslmode", sslmode)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[str]:
+        """
+        Primary MySQL database name
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        MySQL host IP or name
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        MySQL admin user password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        MySQL port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def sslmode(self) -> Optional[str]:
+        """
+        MySQL sslmode setting (currently always "require")
+        """
+        return pulumi.get(self, "sslmode")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        MySQL admin user name
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
 class MySqlMysqlUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -11480,7 +12016,7 @@ class MySqlMysqlUserConfig(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'MySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'MySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values
-        :param str mysql_version: MySQL major version.
+        :param str mysql_version: Enum: `8`. MySQL major version.
         :param 'MySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'MySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -11626,7 +12162,7 @@ class MySqlMysqlUserConfig(dict):
     @pulumi.getter(name="mysqlVersion")
     def mysql_version(self) -> Optional[str]:
         """
-        MySQL major version.
+        Enum: `8`. MySQL major version.
         """
         return pulumi.get(self, "mysql_version")
 
@@ -11758,7 +12294,7 @@ class MySqlMysqlUserConfigMigration(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -11814,7 +12350,7 @@ class MySqlMysqlUserConfigMigration(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -11969,7 +12505,7 @@ class MySqlMysqlUserConfigMysql(dict):
         :param int innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
         :param int innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         :param int interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
-        :param str internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
+        :param str internal_tmp_mem_storage_engine: Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
         :param float long_query_time: The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
         :param int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         :param int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
@@ -12184,7 +12720,7 @@ class MySqlMysqlUserConfigMysql(dict):
     @pulumi.getter(name="internalTmpMemStorageEngine")
     def internal_tmp_mem_storage_engine(self) -> Optional[str]:
         """
-        The storage engine for in-memory internal temporary tables.
+        Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
         """
         return pulumi.get(self, "internal_tmp_mem_storage_engine")
 
@@ -12636,7 +13172,9 @@ class OpenSearchOpensearch(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "opensearchDashboardsUri":
+        if key == "kibanaUri":
+            suggest = "kibana_uri"
+        elif key == "opensearchDashboardsUri":
             suggest = "opensearch_dashboards_uri"
 
         if suggest:
@@ -12651,12 +13189,36 @@ class OpenSearchOpensearch(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 opensearch_dashboards_uri: Optional[str] = None):
+                 kibana_uri: Optional[str] = None,
+                 opensearch_dashboards_uri: Optional[str] = None,
+                 password: Optional[str] = None,
+                 uris: Optional[Sequence[str]] = None,
+                 username: Optional[str] = None):
         """
+        :param str kibana_uri: URI for Kibana dashboard frontend
         :param str opensearch_dashboards_uri: URI for OpenSearch dashboard frontend
+        :param str password: OpenSearch password
+        :param Sequence[str] uris: OpenSearch server URIs.
+        :param str username: OpenSearch username
         """
+        if kibana_uri is not None:
+            pulumi.set(__self__, "kibana_uri", kibana_uri)
         if opensearch_dashboards_uri is not None:
             pulumi.set(__self__, "opensearch_dashboards_uri", opensearch_dashboards_uri)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="kibanaUri")
+    def kibana_uri(self) -> Optional[str]:
+        """
+        URI for Kibana dashboard frontend
+        """
+        return pulumi.get(self, "kibana_uri")
 
     @property
     @pulumi.getter(name="opensearchDashboardsUri")
@@ -12665,6 +13227,30 @@ class OpenSearchOpensearch(dict):
         URI for OpenSearch dashboard frontend
         """
         return pulumi.get(self, "opensearch_dashboards_uri")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        OpenSearch password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        OpenSearch server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        OpenSearch username
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -12762,7 +13348,7 @@ class OpenSearchOpensearchUserConfig(dict):
         :param 'OpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'OpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'OpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param str opensearch_version: OpenSearch major version.
+        :param str opensearch_version: Enum: `1`, `2`. OpenSearch major version.
         :param 'OpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'OpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -12931,7 +13517,7 @@ class OpenSearchOpensearchUserConfig(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[str]:
         """
-        OpenSearch major version.
+        Enum: `1`, `2`. OpenSearch major version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -13036,7 +13622,7 @@ class OpenSearchOpensearchUserConfigIndexPattern(dict):
         """
         :param int max_index_count: Maximum number of indexes to keep.
         :param str pattern: fnmatch pattern.
-        :param str sorting_algorithm: Deletion sorting algorithm. The default value is `creation_date`.
+        :param str sorting_algorithm: Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
         """
         pulumi.set(__self__, "max_index_count", max_index_count)
         pulumi.set(__self__, "pattern", pattern)
@@ -13063,7 +13649,7 @@ class OpenSearchOpensearchUserConfigIndexPattern(dict):
     @pulumi.getter(name="sortingAlgorithm")
     def sorting_algorithm(self) -> Optional[str]:
         """
-        Deletion sorting algorithm. The default value is `creation_date`.
+        Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
         """
         return pulumi.get(self, "sorting_algorithm")
 
@@ -14037,12 +14623,12 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
                  type: Optional[str] = None):
         """
         :param int allowed_tries: The number of login attempts allowed before login is blocked.
-        :param str authentication_backend: internal*authentication*backend*limiting.authentication*backend.
+        :param str authentication_backend: Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
         :param int block_expiry_seconds: The duration of time that login remains blocked after a failed login.
         :param int max_blocked_clients: internal*authentication*backend*limiting.max*blocked_clients.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: internal*authentication*backend_limiting.type.
+        :param str type: Enum: `username`. internal*authentication*backend_limiting.type.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -14071,7 +14657,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
     @pulumi.getter(name="authenticationBackend")
     def authentication_backend(self) -> Optional[str]:
         """
-        internal*authentication*backend*limiting.authentication*backend.
+        Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.
         """
         return pulumi.get(self, "authentication_backend")
 
@@ -14111,7 +14697,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthen
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        internal*authentication*backend_limiting.type.
+        Enum: `username`. internal*authentication*backend_limiting.type.
         """
         return pulumi.get(self, "type")
 
@@ -14156,7 +14742,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
         :param int max_blocked_clients: The maximum number of blocked IP addresses.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: The type of rate limiting.
+        :param str type: Enum: `ip`. The type of rate limiting.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -14215,7 +14801,7 @@ class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of rate limiting.
+        Enum: `ip`. The type of rate limiting.
         """
         return pulumi.get(self, "type")
 
@@ -15077,6 +15663,10 @@ class PgPg(dict):
             suggest = "max_connections"
         elif key == "replicaUri":
             suggest = "replica_uri"
+        elif key == "standbyUris":
+            suggest = "standby_uris"
+        elif key == "syncingUris":
+            suggest = "syncing_uris"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PgPg. Access the value via the '{suggest}' property getter instead.")
@@ -15090,32 +15680,46 @@ class PgPg(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bouncer: Optional[str] = None,
                  dbname: Optional[str] = None,
                  host: Optional[str] = None,
                  max_connections: Optional[int] = None,
+                 params: Optional[Sequence['outputs.PgPgParam']] = None,
                  password: Optional[str] = None,
                  port: Optional[int] = None,
                  replica_uri: Optional[str] = None,
                  sslmode: Optional[str] = None,
+                 standby_uris: Optional[Sequence[str]] = None,
+                 syncing_uris: Optional[Sequence[str]] = None,
                  uri: Optional[str] = None,
+                 uris: Optional[Sequence[str]] = None,
                  user: Optional[str] = None):
         """
+        :param str bouncer: Bouncer connection details
         :param str dbname: Primary PostgreSQL database name
         :param str host: PostgreSQL master node host IP or name
         :param int max_connections: Connection limit
+        :param Sequence['PgPgParamArgs'] params: PostgreSQL connection parameters
         :param str password: PostgreSQL admin user password
         :param int port: PostgreSQL port
         :param str replica_uri: PostgreSQL replica URI for services with a replica
         :param str sslmode: PostgreSQL sslmode setting (currently always "require")
+        :param Sequence[str] standby_uris: PostgreSQL standby connection URIs
+        :param Sequence[str] syncing_uris: PostgreSQL syncing connection URIs
         :param str uri: PostgreSQL master connection URI
+        :param Sequence[str] uris: PostgreSQL master connection URIs
         :param str user: PostgreSQL admin user name
         """
+        if bouncer is not None:
+            pulumi.set(__self__, "bouncer", bouncer)
         if dbname is not None:
             pulumi.set(__self__, "dbname", dbname)
         if host is not None:
             pulumi.set(__self__, "host", host)
         if max_connections is not None:
             pulumi.set(__self__, "max_connections", max_connections)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if port is not None:
@@ -15124,10 +15728,24 @@ class PgPg(dict):
             pulumi.set(__self__, "replica_uri", replica_uri)
         if sslmode is not None:
             pulumi.set(__self__, "sslmode", sslmode)
+        if standby_uris is not None:
+            pulumi.set(__self__, "standby_uris", standby_uris)
+        if syncing_uris is not None:
+            pulumi.set(__self__, "syncing_uris", syncing_uris)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
         if user is not None:
             pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def bouncer(self) -> Optional[str]:
+        """
+        Bouncer connection details
+        """
+        return pulumi.get(self, "bouncer")
 
     @property
     @pulumi.getter
@@ -15152,6 +15770,14 @@ class PgPg(dict):
         Connection limit
         """
         return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[Sequence['outputs.PgPgParam']]:
+        """
+        PostgreSQL connection parameters
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter
@@ -15186,12 +15812,132 @@ class PgPg(dict):
         return pulumi.get(self, "sslmode")
 
     @property
+    @pulumi.getter(name="standbyUris")
+    def standby_uris(self) -> Optional[Sequence[str]]:
+        """
+        PostgreSQL standby connection URIs
+        """
+        return pulumi.get(self, "standby_uris")
+
+    @property
+    @pulumi.getter(name="syncingUris")
+    def syncing_uris(self) -> Optional[Sequence[str]]:
+        """
+        PostgreSQL syncing connection URIs
+        """
+        return pulumi.get(self, "syncing_uris")
+
+    @property
     @pulumi.getter
     def uri(self) -> Optional[str]:
         """
         PostgreSQL master connection URI
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        PostgreSQL master connection URIs
+        """
+        return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[str]:
+        """
+        PostgreSQL admin user name
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class PgPgParam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseName":
+            suggest = "database_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgPgParam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgPgParam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgPgParam.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_name: Optional[str] = None,
+                 host: Optional[str] = None,
+                 password: Optional[str] = None,
+                 port: Optional[int] = None,
+                 sslmode: Optional[str] = None,
+                 user: Optional[str] = None):
+        """
+        :param str database_name: Primary PostgreSQL database name
+        :param str host: PostgreSQL host IP or name
+        :param str password: PostgreSQL admin user password
+        :param int port: PostgreSQL port
+        :param str sslmode: PostgreSQL sslmode setting (currently always "require")
+        :param str user: PostgreSQL admin user name
+        """
+        if database_name is not None:
+            pulumi.set(__self__, "database_name", database_name)
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+        if sslmode is not None:
+            pulumi.set(__self__, "sslmode", sslmode)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> Optional[str]:
+        """
+        Primary PostgreSQL database name
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> Optional[str]:
+        """
+        PostgreSQL host IP or name
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        PostgreSQL admin user password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[int]:
+        """
+        PostgreSQL port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def sslmode(self) -> Optional[str]:
+        """
+        PostgreSQL sslmode setting (currently always "require")
+        """
+        return pulumi.get(self, "sslmode")
 
     @property
     @pulumi.getter
@@ -15318,7 +16064,7 @@ class PgPgUserConfig(dict):
         :param bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         :param bool pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
-        :param str pg_version: PostgreSQL major version.
+        :param str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
         :param 'PgPgUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'PgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
         :param 'PgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
@@ -15331,9 +16077,9 @@ class PgPgUserConfig(dict):
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param float shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         :param bool static_ips: Use static public IP addresses.
-        :param str synchronous_replication: Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        :param str synchronous_replication: Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         :param 'PgPgUserConfigTimescaledbArgs' timescaledb: System-wide settings for the timescaledb extension
-        :param str variant: Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        :param str variant: Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param int work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
         if additional_backup_regions is not None:
@@ -15531,7 +16277,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[str]:
         """
-        PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 
@@ -15635,7 +16381,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter(name="synchronousReplication")
     def synchronous_replication(self) -> Optional[str]:
         """
-        Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         """
         return pulumi.get(self, "synchronous_replication")
 
@@ -15651,7 +16397,7 @@ class PgPgUserConfig(dict):
     @pulumi.getter
     def variant(self) -> Optional[str]:
         """
-        Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         """
         return pulumi.get(self, "variant")
 
@@ -15727,7 +16473,7 @@ class PgPgUserConfigMigration(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -15783,7 +16529,7 @@ class PgPgUserConfigMigration(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -15988,12 +16734,12 @@ class PgPgUserConfigPg(dict):
         :param int bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
         :param float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         :param int deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
-        :param str default_toast_compression: Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        :param str default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
         :param int idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
         :param bool jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param int log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
-        :param str log_error_verbosity: Controls the amount of detail written in the server log for each message that is logged.
-        :param str log_line_prefix: Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        :param str log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+        :param str log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
         :param int log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param int log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param int max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -16014,13 +16760,13 @@ class PgPgUserConfigPg(dict):
         :param str pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks.
         :param bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring.
         :param int pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets.
-        :param str pg_stat_statements_dot_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param str pg_stat_statements_dot_track: Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         :param int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param str timezone: PostgreSQL service timezone.
         :param int track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
-        :param str track_commit_timestamp: Record commit time of transactions.
-        :param str track_functions: Enables tracking of function call counts and time used.
-        :param str track_io_timing: Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        :param str track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions.
+        :param str track_functions: Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+        :param str track_io_timing: Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         :param int wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
         :param int wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
         """
@@ -16239,7 +16985,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="defaultToastCompression")
     def default_toast_compression(self) -> Optional[str]:
         """
-        Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
         """
         return pulumi.get(self, "default_toast_compression")
 
@@ -16271,7 +17017,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="logErrorVerbosity")
     def log_error_verbosity(self) -> Optional[str]:
         """
-        Controls the amount of detail written in the server log for each message that is logged.
+        Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
         """
         return pulumi.get(self, "log_error_verbosity")
 
@@ -16279,7 +17025,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[str]:
         """
-        Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
         """
         return pulumi.get(self, "log_line_prefix")
 
@@ -16447,7 +17193,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="pgStatStatementsDotTrack")
     def pg_stat_statements_dot_track(self) -> Optional[str]:
         """
-        Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         """
         return pulumi.get(self, "pg_stat_statements_dot_track")
 
@@ -16479,7 +17225,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="trackCommitTimestamp")
     def track_commit_timestamp(self) -> Optional[str]:
         """
-        Record commit time of transactions.
+        Enum: `off`, `on`. Record commit time of transactions.
         """
         return pulumi.get(self, "track_commit_timestamp")
 
@@ -16487,7 +17233,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="trackFunctions")
     def track_functions(self) -> Optional[str]:
         """
-        Enables tracking of function call counts and time used.
+        Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
         """
         return pulumi.get(self, "track_functions")
 
@@ -16495,7 +17241,7 @@ class PgPgUserConfigPg(dict):
     @pulumi.getter(name="trackIoTiming")
     def track_io_timing(self) -> Optional[str]:
         """
-        Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         """
         return pulumi.get(self, "track_io_timing")
 
@@ -16681,7 +17427,7 @@ class PgPgUserConfigPgaudit(dict):
         :param bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
         :param bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
         :param bool log_client: Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
-        :param str log_level: Specifies the log level that will be used for log entries. The default value is `log`.
+        :param str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
         :param int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
         :param bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
         :param bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
@@ -16750,7 +17496,7 @@ class PgPgUserConfigPgaudit(dict):
     @pulumi.getter(name="logLevel")
     def log_level(self) -> Optional[str]:
         """
-        Specifies the log level that will be used for log entries. The default value is `log`.
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
         """
         return pulumi.get(self, "log_level")
 
@@ -16883,7 +17629,7 @@ class PgPgUserConfigPgbouncer(dict):
         """
         :param int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         :param int autodb_max_db_connections: Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
-        :param str autodb_pool_mode: PGBouncer pool mode. The default value is `transaction`.
+        :param str autodb_pool_mode: Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
         :param int autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         :param Sequence[str] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
         :param int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
@@ -16930,7 +17676,7 @@ class PgPgUserConfigPgbouncer(dict):
     @pulumi.getter(name="autodbPoolMode")
     def autodb_pool_mode(self) -> Optional[str]:
         """
-        PGBouncer pool mode. The default value is `transaction`.
+        Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
         """
         return pulumi.get(self, "autodb_pool_mode")
 
@@ -17431,6 +18177,80 @@ class RedisComponent(dict):
 
 
 @pulumi.output_type
+class RedisRedis(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replicaUri":
+            suggest = "replica_uri"
+        elif key == "slaveUris":
+            suggest = "slave_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedisRedis. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedisRedis.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedisRedis.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: Optional[str] = None,
+                 replica_uri: Optional[str] = None,
+                 slave_uris: Optional[Sequence[str]] = None,
+                 uris: Optional[Sequence[str]] = None):
+        """
+        :param str password: Redis password.
+        :param str replica_uri: Redis replica server URI.
+        :param Sequence[str] slave_uris: Redis slave server URIs.
+        :param Sequence[str] uris: Redis server URIs.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if replica_uri is not None:
+            pulumi.set(__self__, "replica_uri", replica_uri)
+        if slave_uris is not None:
+            pulumi.set(__self__, "slave_uris", slave_uris)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[str]:
+        """
+        Redis password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> Optional[str]:
+        """
+        Redis replica server URI.
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @property
+    @pulumi.getter(name="slaveUris")
+    def slave_uris(self) -> Optional[Sequence[str]]:
+        """
+        Redis slave server URIs.
+        """
+        return pulumi.get(self, "slave_uris")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[Sequence[str]]:
+        """
+        Redis server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class RedisRedisUserConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17532,18 +18352,18 @@ class RedisRedisUserConfig(dict):
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param 'RedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
-        :param str redis_acl_channels_default: Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        :param str redis_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         :param int redis_io_threads: Set Redis IO thread count. Changing this will cause a restart of the Redis service.
         :param int redis_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
         :param int redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
-        :param str redis_maxmemory_policy: Redis maxmemory-policy. The default value is `noeviction`.
+        :param str redis_maxmemory_policy: Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
         :param str redis_notify_keyspace_events: Set notify-keyspace-events option.
         :param int redis_number_of_databases: Set number of Redis databases. Changing this will cause a restart of the Redis service.
-        :param str redis_persistence: When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param str redis_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param int redis_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param bool redis_ssl: Require SSL to access Redis. The default value is `true`.
         :param int redis_timeout: Redis idle connection timeout in seconds. The default value is `300`.
-        :param str redis_version: Redis major version.
+        :param str redis_version: Enum: `7.0`. Redis major version.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -17686,7 +18506,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="redisAclChannelsDefault")
     def redis_acl_channels_default(self) -> Optional[str]:
         """
-        Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         """
         return pulumi.get(self, "redis_acl_channels_default")
 
@@ -17718,7 +18538,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="redisMaxmemoryPolicy")
     def redis_maxmemory_policy(self) -> Optional[str]:
         """
-        Redis maxmemory-policy. The default value is `noeviction`.
+        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
         """
         return pulumi.get(self, "redis_maxmemory_policy")
 
@@ -17742,7 +18562,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="redisPersistence")
     def redis_persistence(self) -> Optional[str]:
         """
-        When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         """
         return pulumi.get(self, "redis_persistence")
 
@@ -17774,7 +18594,7 @@ class RedisRedisUserConfig(dict):
     @pulumi.getter(name="redisVersion")
     def redis_version(self) -> Optional[str]:
         """
-        Redis major version.
+        Enum: `7.0`. Redis major version.
         """
         return pulumi.get(self, "redis_version")
 
@@ -17866,7 +18686,7 @@ class RedisRedisUserConfigMigration(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -17922,7 +18742,7 @@ class RedisRedisUserConfigMigration(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -18211,13 +19031,13 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
                  skip_broken_messages: Optional[int] = None):
         """
         :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Table columns
-        :param str data_format: Message data format. The default value is `JSONEachRow`.
+        :param str data_format: Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
         :param str group_name: Kafka consumers group. The default value is `clickhouse`.
         :param str name: Name of the table.
         :param Sequence['ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Kafka topics
-        :param str auto_offset_reset: Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
-        :param str date_time_input_format: Method to read DateTime from text input formats. The default value is `basic`.
-        :param str handle_error_mode: How to handle errors for Kafka engine. The default value is `default`.
+        :param str auto_offset_reset: Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        :param str date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+        :param str handle_error_mode: Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
         :param int max_block_size: Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
         :param int max_rows_per_message: The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
         :param int num_consumers: The number of consumers per table per replica. The default value is `1`.
@@ -18258,7 +19078,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> str:
         """
-        Message data format. The default value is `JSONEachRow`.
+        Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
         """
         return pulumi.get(self, "data_format")
 
@@ -18290,7 +19110,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="autoOffsetReset")
     def auto_offset_reset(self) -> Optional[str]:
         """
-        Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
         """
         return pulumi.get(self, "auto_offset_reset")
 
@@ -18298,7 +19118,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="dateTimeInputFormat")
     def date_time_input_format(self) -> Optional[str]:
         """
-        Method to read DateTime from text input formats. The default value is `basic`.
+        Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
         """
         return pulumi.get(self, "date_time_input_format")
 
@@ -18306,7 +19126,7 @@ class ServiceIntegrationClickhouseKafkaUserConfigTable(dict):
     @pulumi.getter(name="handleErrorMode")
     def handle_error_mode(self) -> Optional[str]:
         """
-        How to handle errors for Kafka engine. The default value is `default`.
+        Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
         """
         return pulumi.get(self, "handle_error_mode")
 
@@ -18455,6 +19275,8 @@ class ServiceIntegrationDatadogUserConfig(dict):
         suggest = None
         if key == "datadogDbmEnabled":
             suggest = "datadog_dbm_enabled"
+        elif key == "datadogPgbouncerEnabled":
+            suggest = "datadog_pgbouncer_enabled"
         elif key == "datadogTags":
             suggest = "datadog_tags"
         elif key == "excludeConsumerGroups":
@@ -18483,6 +19305,7 @@ class ServiceIntegrationDatadogUserConfig(dict):
 
     def __init__(__self__, *,
                  datadog_dbm_enabled: Optional[bool] = None,
+                 datadog_pgbouncer_enabled: Optional[bool] = None,
                  datadog_tags: Optional[Sequence['outputs.ServiceIntegrationDatadogUserConfigDatadogTag']] = None,
                  exclude_consumer_groups: Optional[Sequence[str]] = None,
                  exclude_topics: Optional[Sequence[str]] = None,
@@ -18494,6 +19317,7 @@ class ServiceIntegrationDatadogUserConfig(dict):
                  redis: Optional['outputs.ServiceIntegrationDatadogUserConfigRedis'] = None):
         """
         :param bool datadog_dbm_enabled: Enable Datadog Database Monitoring.
+        :param bool datadog_pgbouncer_enabled: Enable Datadog PgBouncer Metric Tracking.
         :param Sequence['ServiceIntegrationDatadogUserConfigDatadogTagArgs'] datadog_tags: Custom tags provided by user
         :param Sequence[str] exclude_consumer_groups: List of custom metrics.
         :param Sequence[str] exclude_topics: List of topics to exclude.
@@ -18506,6 +19330,8 @@ class ServiceIntegrationDatadogUserConfig(dict):
         """
         if datadog_dbm_enabled is not None:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
+        if datadog_pgbouncer_enabled is not None:
+            pulumi.set(__self__, "datadog_pgbouncer_enabled", datadog_pgbouncer_enabled)
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if exclude_consumer_groups is not None:
@@ -18532,6 +19358,14 @@ class ServiceIntegrationDatadogUserConfig(dict):
         Enable Datadog Database Monitoring.
         """
         return pulumi.get(self, "datadog_dbm_enabled")
+
+    @property
+    @pulumi.getter(name="datadogPgbouncerEnabled")
+    def datadog_pgbouncer_enabled(self) -> Optional[bool]:
+        """
+        Enable Datadog PgBouncer Metric Tracking.
+        """
+        return pulumi.get(self, "datadog_pgbouncer_enabled")
 
     @property
     @pulumi.getter(name="datadogTags")
@@ -18794,7 +19628,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
         :param int kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with.
         :param int kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers.
         :param int max_partition_contexts: Maximum number of partition contexts to send.
-        :param str site: Datadog intake site. Defaults to datadoghq.com.
+        :param str site: Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
         pulumi.set(__self__, "datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
@@ -18862,7 +19696,7 @@ class ServiceIntegrationEndpointDatadogUserConfig(dict):
     @pulumi.getter
     def site(self) -> Optional[str]:
         """
-        Datadog intake site. Defaults to datadoghq.com.
+        Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
         return pulumi.get(self, "site")
 
@@ -19280,14 +20114,14 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
                  ssl_endpoint_identification_algorithm: Optional[str] = None):
         """
         :param str bootstrap_servers: Bootstrap servers.
-        :param str security_protocol: Security protocol.
-        :param str sasl_mechanism: SASL mechanism used for connections to the Kafka server.
+        :param str security_protocol: Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        :param str sasl_mechanism: Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
         :param str sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server.
         :param str sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server.
         :param str ssl_ca_cert: PEM-encoded CA certificate.
         :param str ssl_client_cert: PEM-encoded client certificate.
         :param str ssl_client_key: PEM-encoded client key.
-        :param str ssl_endpoint_identification_algorithm: The endpoint identification algorithm to validate server hostname using server certificate.
+        :param str ssl_endpoint_identification_algorithm: Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
         """
         pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         pulumi.set(__self__, "security_protocol", security_protocol)
@@ -19318,7 +20152,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
     @pulumi.getter(name="securityProtocol")
     def security_protocol(self) -> str:
         """
-        Security protocol.
+        Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
         """
         return pulumi.get(self, "security_protocol")
 
@@ -19326,7 +20160,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
     @pulumi.getter(name="saslMechanism")
     def sasl_mechanism(self) -> Optional[str]:
         """
-        SASL mechanism used for connections to the Kafka server.
+        Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
         """
         return pulumi.get(self, "sasl_mechanism")
 
@@ -19374,7 +20208,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfig(dict):
     @pulumi.getter(name="sslEndpointIdentificationAlgorithm")
     def ssl_endpoint_identification_algorithm(self) -> Optional[str]:
         """
-        The endpoint identification algorithm to validate server hostname using server certificate.
+        Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
         """
         return pulumi.get(self, "ssl_endpoint_identification_algorithm")
 
@@ -19508,7 +20342,7 @@ class ServiceIntegrationEndpointExternalPostgresql(dict):
         :param str password: Password.
         :param str ssl_client_certificate: Client certificate.
         :param str ssl_client_key: Client key.
-        :param str ssl_mode: SSL Mode. The default value is `verify-full`.
+        :param str ssl_mode: Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
         :param str ssl_root_cert: SSL Root Cert.
         """
         pulumi.set(__self__, "host", host)
@@ -19587,7 +20421,7 @@ class ServiceIntegrationEndpointExternalPostgresql(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[str]:
         """
-        SSL Mode. The default value is `verify-full`.
+        Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -19627,7 +20461,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
                  basic_auth_password: Optional[str] = None,
                  basic_auth_username: Optional[str] = None):
         """
-        :param str authentication: Authentication method.
+        :param str authentication: Enum: `none`, `basic`. Authentication method.
         :param str url: Schema Registry URL.
         :param str basic_auth_password: Basic authentication password.
         :param str basic_auth_username: Basic authentication user name.
@@ -19643,7 +20477,7 @@ class ServiceIntegrationEndpointExternalSchemaRegistryUserConfig(dict):
     @pulumi.getter
     def authentication(self) -> str:
         """
-        Authentication method.
+        Enum: `none`, `basic`. Authentication method.
         """
         return pulumi.get(self, "authentication")
 
@@ -19803,7 +20637,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
                  max_message_size: Optional[int] = None,
                  sd: Optional[str] = None):
         """
-        :param str format: Message format. The default value is `rfc5424`.
+        :param str format: Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
         :param int port: Rsyslog server port. The default value is `514`.
         :param str server: Rsyslog server IP address or hostname.
         :param bool tls: Require TLS. The default value is `true`.
@@ -19835,7 +20669,7 @@ class ServiceIntegrationEndpointRsyslogUserConfig(dict):
     @pulumi.getter
     def format(self) -> str:
         """
-        Message format. The default value is `rfc5424`.
+        Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
         """
         return pulumi.get(self, "format")
 
@@ -20381,7 +21215,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
         :param int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request.
         :param int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker.
         :param int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker.
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing.
         :param int producer_max_request_size: The maximum request size in bytes.
         """
@@ -20426,7 +21260,7 @@ class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormaker(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -21177,6 +22011,24 @@ class GetAccountAuthenticationSamlFieldMappingResult(dict):
 
 
 @pulumi.output_type
+class GetCassandaCassandraResult(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[str]):
+        """
+        :param Sequence[str] uris: Cassandra server URIs.
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Cassandra server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetCassandaCassandraUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
@@ -21200,7 +22052,7 @@ class GetCassandaCassandraUserConfigResult(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param 'GetCassandaCassandraUserConfigCassandraArgs' cassandra: Cassandra configuration values
-        :param str cassandra_version: Cassandra version.
+        :param str cassandra_version: Enum: `3`, `4`, `4.1`. Cassandra version.
         :param Sequence['GetCassandaCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -21285,7 +22137,7 @@ class GetCassandaCassandraUserConfigResult(dict):
     @pulumi.getter(name="cassandraVersion")
     def cassandra_version(self) -> Optional[str]:
         """
-        Cassandra version.
+        Enum: `3`, `4`, `4.1`. Cassandra version.
         """
         return pulumi.get(self, "cassandra_version")
 
@@ -21664,6 +22516,24 @@ class GetCassandaTechEmailResult(dict):
 
 
 @pulumi.output_type
+class GetCassandraCassandraResult(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[str]):
+        """
+        :param Sequence[str] uris: Cassandra server URIs.
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Cassandra server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetCassandraCassandraUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
@@ -21687,7 +22557,7 @@ class GetCassandraCassandraUserConfigResult(dict):
         :param int backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param int backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param 'GetCassandraCassandraUserConfigCassandraArgs' cassandra: Cassandra configuration values
-        :param str cassandra_version: Cassandra version.
+        :param str cassandra_version: Enum: `3`, `4`, `4.1`. Cassandra version.
         :param Sequence['GetCassandraCassandraUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -21772,7 +22642,7 @@ class GetCassandraCassandraUserConfigResult(dict):
     @pulumi.getter(name="cassandraVersion")
     def cassandra_version(self) -> Optional[str]:
         """
-        Cassandra version.
+        Enum: `3`, `4`, `4.1`. Cassandra version.
         """
         return pulumi.get(self, "cassandra_version")
 
@@ -22148,6 +23018,24 @@ class GetCassandraTechEmailResult(dict):
         An email address to contact for technical issues
         """
         return pulumi.get(self, "email")
+
+
+@pulumi.output_type
+class GetClickhouseClickhouseResult(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[str]):
+        """
+        :param Sequence[str] uris: Clickhouse server URIs.
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Clickhouse server URIs.
+        """
+        return pulumi.get(self, "uris")
 
 
 @pulumi.output_type
@@ -22757,6 +23645,57 @@ class GetDragonflyComponentResult(dict):
 
 
 @pulumi.output_type
+class GetDragonflyDragonflyResult(dict):
+    def __init__(__self__, *,
+                 password: str,
+                 replica_uri: str,
+                 slave_uris: Sequence[str],
+                 uris: Sequence[str]):
+        """
+        :param str password: Dragonfly password.
+        :param str replica_uri: Dragonfly replica server URI.
+        :param Sequence[str] slave_uris: Dragonfly slave server URIs.
+        :param Sequence[str] uris: Dragonfly server URIs.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "replica_uri", replica_uri)
+        pulumi.set(__self__, "slave_uris", slave_uris)
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Dragonfly password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> str:
+        """
+        Dragonfly replica server URI.
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @property
+    @pulumi.getter(name="slaveUris")
+    def slave_uris(self) -> Sequence[str]:
+        """
+        Dragonfly slave server URIs.
+        """
+        return pulumi.get(self, "slave_uris")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Dragonfly server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetDragonflyDragonflyUserConfigResult(dict):
     def __init__(__self__, *,
                  cache_mode: Optional[bool] = None,
@@ -22776,7 +23715,7 @@ class GetDragonflyDragonflyUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param bool cache_mode: Evict entries when getting close to maxmemory limit. The default value is `false`.
-        :param str dragonfly_persistence: When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param str dragonfly_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param bool dragonfly_ssl: Require SSL to access Dragonfly. The default value is `true`.
         :param Sequence['GetDragonflyDragonflyUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -22834,7 +23773,7 @@ class GetDragonflyDragonflyUserConfigResult(dict):
     @pulumi.getter(name="dragonflyPersistence")
     def dragonfly_persistence(self) -> Optional[str]:
         """
-        When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         """
         return pulumi.get(self, "dragonfly_persistence")
 
@@ -22992,7 +23931,7 @@ class GetDragonflyDragonflyUserConfigMigrationResult(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -23048,7 +23987,7 @@ class GetDragonflyDragonflyUserConfigMigrationResult(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -23433,7 +24372,7 @@ class GetFlinkFlinkUserConfigResult(dict):
                  static_ips: Optional[bool] = None):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param str flink_version: Flink major version.
+        :param str flink_version: Enum: `1.16`. Flink major version.
         :param Sequence['GetFlinkFlinkUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -23476,7 +24415,7 @@ class GetFlinkFlinkUserConfigResult(dict):
     @pulumi.getter(name="flinkVersion")
     def flink_version(self) -> Optional[str]:
         """
-        Flink major version.
+        Enum: `1.16`. Flink major version.
         """
         return pulumi.get(self, "flink_version")
 
@@ -23773,6 +24712,24 @@ class GetGrafanaComponentResult(dict):
 
 
 @pulumi.output_type
+class GetGrafanaGrafanaResult(dict):
+    def __init__(__self__, *,
+                 uris: Sequence[str]):
+        """
+        :param Sequence[str] uris: Grafana server URIs.
+        """
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Grafana server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetGrafanaGrafanaUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
@@ -23820,9 +24777,9 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         """
         :param str additional_backup_regions: Additional Cloud Regions for Backup Replication.
         :param bool alerting_enabled: Enable or disable Grafana legacy alerting functionality. This should not be enabled with unified_alerting_enabled.
-        :param str alerting_error_or_timeout: Default error or timeout setting for new alerting rules.
+        :param str alerting_error_or_timeout: Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         :param int alerting_max_annotations_to_keep: Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
-        :param str alerting_nodata_or_nullvalues: Default value for 'no data or null values' for new alerting rules.
+        :param str alerting_nodata_or_nullvalues: Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
         :param bool allow_embedding: Allow embedding Grafana dashboards with iframe/frame/object/embed tags. Disabled by default to limit impact of clickjacking.
         :param 'GetGrafanaGrafanaUserConfigAuthAzureadArgs' auth_azuread: Azure AD OAuth integration
         :param bool auth_basic_enabled: Enable or disable basic authentication form, used by Grafana built-in login.
@@ -23830,7 +24787,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param 'GetGrafanaGrafanaUserConfigAuthGithubArgs' auth_github: Github Auth integration
         :param 'GetGrafanaGrafanaUserConfigAuthGitlabArgs' auth_gitlab: GitLab Auth integration
         :param 'GetGrafanaGrafanaUserConfigAuthGoogleArgs' auth_google: Google Auth integration
-        :param str cookie_samesite: Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        :param str cookie_samesite: Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         :param str custom_domain: Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
         :param bool dashboard_previews_enabled: This feature is new in Grafana 9 and is quite resource intensive. It may cause low-end plans to work more slowly while the dashboard previews are rendering.
         :param str dashboards_min_refresh_interval: Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
@@ -23858,7 +24815,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
         :param bool static_ips: Use static public IP addresses.
         :param bool unified_alerting_enabled: Enable or disable Grafana unified alerting functionality. By default this is enabled and any legacy alerts will be migrated on upgrade to Grafana 9+. To stay on legacy alerting, set unified_alerting_enabled to false and alerting_enabled to true. See https://grafana.com/docs/grafana/latest/alerting/set-up/migrating-alerts/ for more details.
         :param bool user_auto_assign_org: Auto-assign new users on signup to main organization. Defaults to false.
-        :param str user_auto_assign_org_role: Set role for new signups. Defaults to Viewer.
+        :param str user_auto_assign_org_role: Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         :param bool viewers_can_edit: Users with view-only permission can edit but not save dashboards.
         """
         if additional_backup_regions is not None:
@@ -23966,7 +24923,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="alertingErrorOrTimeout")
     def alerting_error_or_timeout(self) -> Optional[str]:
         """
-        Default error or timeout setting for new alerting rules.
+        Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         """
         return pulumi.get(self, "alerting_error_or_timeout")
 
@@ -23982,7 +24939,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="alertingNodataOrNullvalues")
     def alerting_nodata_or_nullvalues(self) -> Optional[str]:
         """
-        Default value for 'no data or null values' for new alerting rules.
+        Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
         """
         return pulumi.get(self, "alerting_nodata_or_nullvalues")
 
@@ -24046,7 +25003,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="cookieSamesite")
     def cookie_samesite(self) -> Optional[str]:
         """
-        Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         """
         return pulumi.get(self, "cookie_samesite")
 
@@ -24273,7 +25230,7 @@ class GetGrafanaGrafanaUserConfigResult(dict):
     @pulumi.getter(name="userAutoAssignOrgRole")
     def user_auto_assign_org_role(self) -> Optional[str]:
         """
-        Set role for new signups. Defaults to Viewer.
+        Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         """
         return pulumi.get(self, "user_auto_assign_org_role")
 
@@ -24849,7 +25806,7 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageResult(dict):
         """
         :param str access_key: S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
         :param str bucket_url: Bucket URL for S3.
-        :param str provider: Provider type.
+        :param str provider: Enum: `s3`. Provider type.
         :param str secret_key: S3 secret key.
         """
         pulumi.set(__self__, "access_key", access_key)
@@ -24877,7 +25834,7 @@ class GetGrafanaGrafanaUserConfigExternalImageStorageResult(dict):
     @pulumi.getter
     def provider(self) -> str:
         """
-        Provider type.
+        Enum: `s3`. Provider type.
         """
         return pulumi.get(self, "provider")
 
@@ -24995,7 +25952,7 @@ class GetGrafanaGrafanaUserConfigSmtpServerResult(dict):
         :param str from_name: Name used in outgoing emails, defaults to Grafana.
         :param str password: Password for SMTP authentication.
         :param bool skip_verify: Skip verifying server certificate. Defaults to false.
-        :param str starttls_policy: Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        :param str starttls_policy: Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         :param str username: Username for SMTP authentication.
         """
         pulumi.set(__self__, "from_address", from_address)
@@ -25064,7 +26021,7 @@ class GetGrafanaGrafanaUserConfigSmtpServerResult(dict):
     @pulumi.getter(name="starttlsPolicy")
     def starttls_policy(self) -> Optional[str]:
         """
-        Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
+        Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.
         """
         return pulumi.get(self, "starttls_policy")
 
@@ -25251,11 +26208,20 @@ class GetInfluxDbComponentResult(dict):
 @pulumi.output_type
 class GetInfluxDbInfluxdbResult(dict):
     def __init__(__self__, *,
-                 database_name: str):
+                 database_name: str,
+                 password: str,
+                 uris: Sequence[str],
+                 username: str):
         """
         :param str database_name: Name of the default InfluxDB database
+        :param str password: InfluxDB password
+        :param Sequence[str] uris: InfluxDB server URIs.
+        :param str username: InfluxDB username
         """
         pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "username", username)
 
     @property
     @pulumi.getter(name="databaseName")
@@ -25264,6 +26230,30 @@ class GetInfluxDbInfluxdbResult(dict):
         Name of the default InfluxDB database
         """
         return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        InfluxDB password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        InfluxDB server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        InfluxDB username
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -26074,10 +27064,10 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
                  scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         """
-        :param str connector_client_config_override_policy: Defines what client configurations can be overridden by the connector. Default is None.
-        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        :param str connector_client_config_override_policy: Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        :param str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_isolation_level: Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
         :param int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
@@ -26085,7 +27075,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
         :param int offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
         :param int producer_batch_size: This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         :param int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
@@ -26128,7 +27118,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
         """
-        Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         return pulumi.get(self, "connector_client_config_override_policy")
 
@@ -26136,7 +27126,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
         """
-        What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
@@ -26152,7 +27142,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         """
-        Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -26216,7 +27206,7 @@ class GetKafkaConnectKafkaConnectUserConfigKafkaConnectResult(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -26470,19 +27460,22 @@ class GetKafkaKafkaResult(dict):
                  access_key: str,
                  connect_uri: str,
                  rest_uri: str,
-                 schema_registry_uri: str):
+                 schema_registry_uri: str,
+                 uris: Sequence[str]):
         """
         :param str access_cert: The Kafka client certificate.
         :param str access_key: The Kafka client certificate key.
         :param str connect_uri: The Kafka Connect URI.
         :param str rest_uri: The Kafka REST URI.
         :param str schema_registry_uri: The Schema Registry URI.
+        :param Sequence[str] uris: Kafka server URIs.
         """
         pulumi.set(__self__, "access_cert", access_cert)
         pulumi.set(__self__, "access_key", access_key)
         pulumi.set(__self__, "connect_uri", connect_uri)
         pulumi.set(__self__, "rest_uri", rest_uri)
         pulumi.set(__self__, "schema_registry_uri", schema_registry_uri)
+        pulumi.set(__self__, "uris", uris)
 
     @property
     @pulumi.getter(name="accessCert")
@@ -26524,6 +27517,14 @@ class GetKafkaKafkaResult(dict):
         """
         return pulumi.get(self, "schema_registry_uri")
 
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Kafka server URIs.
+        """
+        return pulumi.get(self, "uris")
+
 
 @pulumi.output_type
 class GetKafkaKafkaUserConfigResult(dict):
@@ -26564,7 +27565,7 @@ class GetKafkaKafkaUserConfigResult(dict):
         :param bool kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param bool kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param 'GetKafkaKafkaUserConfigKafkaRestConfigArgs' kafka_rest_config: Kafka REST configuration
-        :param str kafka_version: Kafka major version.
+        :param str kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
         :param 'GetKafkaKafkaUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetKafkaKafkaUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param 'GetKafkaKafkaUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
@@ -26733,7 +27734,7 @@ class GetKafkaKafkaUserConfigResult(dict):
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[str]:
         """
-        Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -26883,7 +27884,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
                  transaction_state_log_segment_bytes: Optional[int] = None):
         """
         :param bool auto_create_topics_enable: Enable auto creation of topics.
-        :param str compression_type: Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+        :param str compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
         :param int connections_max_idle_ms: Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
         :param int default_replication_factor: Replication factor for autocreated topics.
         :param int group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
@@ -26893,7 +27894,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param int log_cleaner_max_compaction_lag_ms: The maximum amount of time message will remain uncompacted. Only applicable for logs that are being compacted.
         :param float log_cleaner_min_cleanable_ratio: Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
         :param int log_cleaner_min_compaction_lag_ms: The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
-        :param str log_cleanup_policy: The default cleanup policy for segments beyond the retention window.
+        :param str log_cleanup_policy: Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
         :param int log_flush_interval_messages: The number of messages accumulated on a log partition before messages are flushed to disk.
         :param int log_flush_interval_ms: The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
         :param int log_index_interval_bytes: The interval with which Kafka adds an entry to the offset index.
@@ -26902,7 +27903,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
         :param int log_local_retention_ms: The number of milliseconds to keep the local log segments before it gets eligible for deletion. If set to -2, the value of log.retention.ms is used. The effective value should always be less than or equal to log.retention.ms value.
         :param bool log_message_downconversion_enable: This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         :param int log_message_timestamp_difference_max_ms: The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
-        :param str log_message_timestamp_type: Define whether the timestamp in the message is message create time or log append time.
+        :param str log_message_timestamp_type: Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
         :param bool log_preallocate: Should pre allocate file when create new segment?
         :param int log_retention_bytes: The maximum size of the log before deleting messages.
         :param int log_retention_hours: The number of hours to keep a log file before deleting it.
@@ -27034,7 +28035,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="compressionType")
     def compression_type(self) -> Optional[str]:
         """
-        Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.
         """
         return pulumi.get(self, "compression_type")
 
@@ -27114,7 +28115,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logCleanupPolicy")
     def log_cleanup_policy(self) -> Optional[str]:
         """
-        The default cleanup policy for segments beyond the retention window.
+        Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
         """
         return pulumi.get(self, "log_cleanup_policy")
 
@@ -27186,7 +28187,7 @@ class GetKafkaKafkaUserConfigKafkaResult(dict):
     @pulumi.getter(name="logMessageTimestampType")
     def log_message_timestamp_type(self) -> Optional[str]:
         """
-        Define whether the timestamp in the message is message create time or log append time.
+        Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
         """
         return pulumi.get(self, "log_message_timestamp_type")
 
@@ -27442,10 +28443,10 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
                  scheduled_rebalance_max_delay_ms: Optional[int] = None,
                  session_timeout_ms: Optional[int] = None):
         """
-        :param str connector_client_config_override_policy: Defines what client configurations can be overridden by the connector. Default is None.
-        :param str consumer_auto_offset_reset: What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        :param str connector_client_config_override_policy: Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
+        :param str consumer_auto_offset_reset: Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         :param int consumer_fetch_max_bytes: Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
-        :param str consumer_isolation_level: Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        :param str consumer_isolation_level: Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
         :param int consumer_max_partition_fetch_bytes: Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
         :param int consumer_max_poll_interval_ms: The maximum delay in milliseconds between invocations of poll() when using consumer group management (defaults to 300000).
         :param int consumer_max_poll_records: The maximum number of records returned in a single call to poll() (defaults to 500).
@@ -27453,7 +28454,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
         :param int offset_flush_timeout_ms: Maximum number of milliseconds to wait for records to flush and partition offset data to be committed to offset storage before cancelling the process and restoring the offset data to be committed in a future attempt (defaults to 5000).
         :param int producer_batch_size: This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         :param int producer_buffer_memory: The total bytes of memory the producer can use to buffer records waiting to be sent to the broker (defaults to 33554432).
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
         :param int producer_max_request_size: This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
         :param int scheduled_rebalance_max_delay_ms: The maximum delay that is scheduled in order to wait for the return of one or more departed workers before rebalancing and reassigning their connectors and tasks to the group. During this period the connectors and tasks of the departed workers remain unassigned. Defaults to 5 minutes.
@@ -27496,7 +28497,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="connectorClientConfigOverridePolicy")
     def connector_client_config_override_policy(self) -> Optional[str]:
         """
-        Defines what client configurations can be overridden by the connector. Default is None.
+        Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
         """
         return pulumi.get(self, "connector_client_config_override_policy")
 
@@ -27504,7 +28505,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="consumerAutoOffsetReset")
     def consumer_auto_offset_reset(self) -> Optional[str]:
         """
-        What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         """
         return pulumi.get(self, "consumer_auto_offset_reset")
 
@@ -27520,7 +28521,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="consumerIsolationLevel")
     def consumer_isolation_level(self) -> Optional[str]:
         """
-        Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
+        Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.
         """
         return pulumi.get(self, "consumer_isolation_level")
 
@@ -27584,7 +28585,7 @@ class GetKafkaKafkaUserConfigKafkaConnectConfigResult(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -27637,11 +28638,11 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
         """
         :param bool consumer_enable_auto_commit: If true the consumer's offset will be periodically committed to Kafka in the background. The default value is `true`.
         :param int consumer_request_max_bytes: Maximum number of bytes in unencoded message keys and values by a single request. The default value is `67108864`.
-        :param int consumer_request_timeout_ms: The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
-        :param str name_strategy: Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        :param int consumer_request_timeout_ms: Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        :param str name_strategy: Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
         :param bool name_strategy_validation: If true, validate that given schema is registered under expected subject name by the used name strategy when producing messages. The default value is `true`.
-        :param str producer_acks: The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_acks: Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: Wait for up to the given delay to allow batching records together. The default value is `0`.
         :param int producer_max_request_size: The maximum size of a request in bytes. Note that Kafka broker can also cap the record batch size. The default value is `1048576`.
         :param int simpleconsumer_pool_size_max: Maximum number of SimpleConsumers that can be instantiated per broker. The default value is `25`.
@@ -27687,7 +28688,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="consumerRequestTimeoutMs")
     def consumer_request_timeout_ms(self) -> Optional[int]:
         """
-        The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
+        Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.
         """
         return pulumi.get(self, "consumer_request_timeout_ms")
 
@@ -27695,7 +28696,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="nameStrategy")
     def name_strategy(self) -> Optional[str]:
         """
-        Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
+        Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.
         """
         return pulumi.get(self, "name_strategy")
 
@@ -27711,7 +28712,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="producerAcks")
     def producer_acks(self) -> Optional[str]:
         """
-        The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
+        Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.
         """
         return pulumi.get(self, "producer_acks")
 
@@ -27719,7 +28720,7 @@ class GetKafkaKafkaUserConfigKafkaRestConfigResult(dict):
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 
@@ -29045,6 +30046,35 @@ class GetM3AggregatorComponentResult(dict):
 
 
 @pulumi.output_type
+class GetM3AggregatorM3aggregatorResult(dict):
+    def __init__(__self__, *,
+                 aggregator_http_uri: str,
+                 uris: Sequence[str]):
+        """
+        :param str aggregator_http_uri: M3 Aggregator HTTP URI.
+        :param Sequence[str] uris: M3 Aggregator server URIs.
+        """
+        pulumi.set(__self__, "aggregator_http_uri", aggregator_http_uri)
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="aggregatorHttpUri")
+    def aggregator_http_uri(self) -> str:
+        """
+        M3 Aggregator HTTP URI.
+        """
+        return pulumi.get(self, "aggregator_http_uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        M3 Aggregator server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     def __init__(__self__, *,
                  custom_domain: Optional[str] = None,
@@ -29060,8 +30090,8 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
         :param Sequence['GetM3AggregatorM3aggregatorUserConfigIpFilterObjectArgs'] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param Sequence[str] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param str m3_version: M3 major version (deprecated, use m3aggregator_version).
-        :param str m3aggregator_version: M3 major version (the minimum compatible version).
+        :param str m3_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
+        :param str m3aggregator_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param bool static_ips: Use static public IP addresses.
         """
@@ -29121,7 +30151,7 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
         """
-        M3 major version (deprecated, use m3aggregator_version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
         """
         return pulumi.get(self, "m3_version")
 
@@ -29129,7 +30159,7 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
     @pulumi.getter(name="m3aggregatorVersion")
     def m3aggregator_version(self) -> Optional[str]:
         """
-        M3 major version (the minimum compatible version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         """
         return pulumi.get(self, "m3aggregator_version")
 
@@ -29352,6 +30382,79 @@ class GetM3DbComponentResult(dict):
 
 
 @pulumi.output_type
+class GetM3DbM3dbResult(dict):
+    def __init__(__self__, *,
+                 http_cluster_uri: str,
+                 http_node_uri: str,
+                 influxdb_uri: str,
+                 prometheus_remote_read_uri: str,
+                 prometheus_remote_write_uri: str,
+                 uris: Sequence[str]):
+        """
+        :param str http_cluster_uri: M3DB cluster URI.
+        :param str http_node_uri: M3DB node URI.
+        :param str influxdb_uri: InfluxDB URI.
+        :param str prometheus_remote_read_uri: Prometheus remote read URI.
+        :param str prometheus_remote_write_uri: Prometheus remote write URI.
+        :param Sequence[str] uris: M3DB server URIs.
+        """
+        pulumi.set(__self__, "http_cluster_uri", http_cluster_uri)
+        pulumi.set(__self__, "http_node_uri", http_node_uri)
+        pulumi.set(__self__, "influxdb_uri", influxdb_uri)
+        pulumi.set(__self__, "prometheus_remote_read_uri", prometheus_remote_read_uri)
+        pulumi.set(__self__, "prometheus_remote_write_uri", prometheus_remote_write_uri)
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="httpClusterUri")
+    def http_cluster_uri(self) -> str:
+        """
+        M3DB cluster URI.
+        """
+        return pulumi.get(self, "http_cluster_uri")
+
+    @property
+    @pulumi.getter(name="httpNodeUri")
+    def http_node_uri(self) -> str:
+        """
+        M3DB node URI.
+        """
+        return pulumi.get(self, "http_node_uri")
+
+    @property
+    @pulumi.getter(name="influxdbUri")
+    def influxdb_uri(self) -> str:
+        """
+        InfluxDB URI.
+        """
+        return pulumi.get(self, "influxdb_uri")
+
+    @property
+    @pulumi.getter(name="prometheusRemoteReadUri")
+    def prometheus_remote_read_uri(self) -> str:
+        """
+        Prometheus remote read URI.
+        """
+        return pulumi.get(self, "prometheus_remote_read_uri")
+
+    @property
+    @pulumi.getter(name="prometheusRemoteWriteUri")
+    def prometheus_remote_write_uri(self) -> str:
+        """
+        Prometheus remote write URI.
+        """
+        return pulumi.get(self, "prometheus_remote_write_uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        M3DB server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetM3DbM3dbUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
@@ -29380,9 +30483,9 @@ class GetM3DbM3dbUserConfigResult(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'GetM3DbM3dbUserConfigLimitsArgs' limits: M3 limits
         :param 'GetM3DbM3dbUserConfigM3Args' m3: M3 specific configuration options
-        :param str m3_version: M3 major version (deprecated, use m3db_version).
+        :param str m3_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
         :param bool m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-        :param str m3db_version: M3 major version (the minimum compatible version).
+        :param str m3db_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         :param Sequence['GetM3DbM3dbUserConfigNamespaceArgs'] namespaces: List of M3 namespaces
         :param 'GetM3DbM3dbUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -29492,7 +30595,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[str]:
         """
-        M3 major version (deprecated, use m3db_version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
         """
         return pulumi.get(self, "m3_version")
 
@@ -29508,7 +30611,7 @@ class GetM3DbM3dbUserConfigResult(dict):
     @pulumi.getter(name="m3dbVersion")
     def m3db_version(self) -> Optional[str]:
         """
-        M3 major version (the minimum compatible version).
+        Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
         """
         return pulumi.get(self, "m3db_version")
 
@@ -29745,7 +30848,7 @@ class GetM3DbM3dbUserConfigNamespaceResult(dict):
                  resolution: Optional[str] = None):
         """
         :param str name: The name of the namespace.
-        :param str type: The type of aggregation (aggregated/unaggregated).
+        :param str type: Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
         :param 'GetM3DbM3dbUserConfigNamespaceOptionsArgs' options: Namespace options
         :param str resolution: The resolution for an aggregated namespace.
         """
@@ -29768,7 +30871,7 @@ class GetM3DbM3dbUserConfigNamespaceResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of aggregation (aggregated/unaggregated).
+        Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
         """
         return pulumi.get(self, "type")
 
@@ -30291,6 +31394,141 @@ class GetMySqlComponentResult(dict):
 
 
 @pulumi.output_type
+class GetMySqlMysqlResult(dict):
+    def __init__(__self__, *,
+                 params: Sequence['outputs.GetMySqlMysqlParamResult'],
+                 replica_uri: str,
+                 standby_uris: Sequence[str],
+                 syncing_uris: Sequence[str],
+                 uris: Sequence[str]):
+        """
+        :param Sequence['GetMySqlMysqlParamArgs'] params: MySQL connection parameters
+        :param str replica_uri: MySQL replica URI for services with a replica
+        :param Sequence[str] standby_uris: MySQL standby connection URIs
+        :param Sequence[str] syncing_uris: MySQL syncing connection URIs
+        :param Sequence[str] uris: MySQL master connection URIs
+        """
+        pulumi.set(__self__, "params", params)
+        pulumi.set(__self__, "replica_uri", replica_uri)
+        pulumi.set(__self__, "standby_uris", standby_uris)
+        pulumi.set(__self__, "syncing_uris", syncing_uris)
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Sequence['outputs.GetMySqlMysqlParamResult']:
+        """
+        MySQL connection parameters
+        """
+        return pulumi.get(self, "params")
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> str:
+        """
+        MySQL replica URI for services with a replica
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @property
+    @pulumi.getter(name="standbyUris")
+    def standby_uris(self) -> Sequence[str]:
+        """
+        MySQL standby connection URIs
+        """
+        return pulumi.get(self, "standby_uris")
+
+    @property
+    @pulumi.getter(name="syncingUris")
+    def syncing_uris(self) -> Sequence[str]:
+        """
+        MySQL syncing connection URIs
+        """
+        return pulumi.get(self, "syncing_uris")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        MySQL master connection URIs
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
+class GetMySqlMysqlParamResult(dict):
+    def __init__(__self__, *,
+                 database_name: str,
+                 host: str,
+                 password: str,
+                 port: int,
+                 sslmode: str,
+                 user: str):
+        """
+        :param str database_name: Primary MySQL database name
+        :param str host: MySQL host IP or name
+        :param str password: MySQL admin user password
+        :param int port: MySQL port
+        :param str sslmode: MySQL sslmode setting (currently always "require")
+        :param str user: MySQL admin user name
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "sslmode", sslmode)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        """
+        Primary MySQL database name
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        MySQL host IP or name
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        MySQL admin user password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        MySQL port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def sslmode(self) -> str:
+        """
+        MySQL sslmode setting (currently always "require")
+        """
+        return pulumi.get(self, "sslmode")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        MySQL admin user name
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
 class GetMySqlMysqlUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
@@ -30325,7 +31563,7 @@ class GetMySqlMysqlUserConfigResult(dict):
         :param Sequence[str] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param 'GetMySqlMysqlUserConfigMigrationArgs' migration: Migrate data from existing server
         :param 'GetMySqlMysqlUserConfigMysqlArgs' mysql: mysql.conf configuration values
-        :param str mysql_version: MySQL major version.
+        :param str mysql_version: Enum: `8`. MySQL major version.
         :param 'GetMySqlMysqlUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetMySqlMysqlUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -30471,7 +31709,7 @@ class GetMySqlMysqlUserConfigResult(dict):
     @pulumi.getter(name="mysqlVersion")
     def mysql_version(self) -> Optional[str]:
         """
-        MySQL major version.
+        Enum: `8`. MySQL major version.
         """
         return pulumi.get(self, "mysql_version")
 
@@ -30586,7 +31824,7 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -30642,7 +31880,7 @@ class GetMySqlMysqlUserConfigMigrationResult(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -30722,7 +31960,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
         :param int innodb_thread_concurrency: Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
         :param int innodb_write_io_threads: The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
         :param int interactive_timeout: The number of seconds the server waits for activity on an interactive connection before closing it.
-        :param str internal_tmp_mem_storage_engine: The storage engine for in-memory internal temporary tables.
+        :param str internal_tmp_mem_storage_engine: Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
         :param float long_query_time: The slow_query_logs work as SQL statements that take more than long_query_time seconds to execute. Default is 10s.
         :param int max_allowed_packet: Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
         :param int max_heap_table_size: Limits the size of internal in-memory tables. Also set tmp_table_size. Default is 16777216 (16M).
@@ -30937,7 +32175,7 @@ class GetMySqlMysqlUserConfigMysqlResult(dict):
     @pulumi.getter(name="internalTmpMemStorageEngine")
     def internal_tmp_mem_storage_engine(self) -> Optional[str]:
         """
-        The storage engine for in-memory internal temporary tables.
+        Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.
         """
         return pulumi.get(self, "internal_tmp_mem_storage_engine")
 
@@ -31341,11 +32579,31 @@ class GetOpenSearchComponentResult(dict):
 @pulumi.output_type
 class GetOpenSearchOpensearchResult(dict):
     def __init__(__self__, *,
-                 opensearch_dashboards_uri: str):
+                 kibana_uri: str,
+                 opensearch_dashboards_uri: str,
+                 password: str,
+                 uris: Sequence[str],
+                 username: str):
         """
+        :param str kibana_uri: URI for Kibana dashboard frontend
         :param str opensearch_dashboards_uri: URI for OpenSearch dashboard frontend
+        :param str password: OpenSearch password
+        :param Sequence[str] uris: OpenSearch server URIs.
+        :param str username: OpenSearch username
         """
+        pulumi.set(__self__, "kibana_uri", kibana_uri)
         pulumi.set(__self__, "opensearch_dashboards_uri", opensearch_dashboards_uri)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="kibanaUri")
+    def kibana_uri(self) -> str:
+        """
+        URI for Kibana dashboard frontend
+        """
+        return pulumi.get(self, "kibana_uri")
 
     @property
     @pulumi.getter(name="opensearchDashboardsUri")
@@ -31354,6 +32612,30 @@ class GetOpenSearchOpensearchResult(dict):
         URI for OpenSearch dashboard frontend
         """
         return pulumi.get(self, "opensearch_dashboards_uri")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        OpenSearch password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        OpenSearch server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        OpenSearch username
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -31396,7 +32678,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
         :param 'GetOpenSearchOpensearchUserConfigOpenidArgs' openid: OpenSearch OpenID Connect Configuration
         :param 'GetOpenSearchOpensearchUserConfigOpensearchArgs' opensearch: OpenSearch settings
         :param 'GetOpenSearchOpensearchUserConfigOpensearchDashboardsArgs' opensearch_dashboards: OpenSearch Dashboards settings
-        :param str opensearch_version: OpenSearch major version.
+        :param str opensearch_version: Enum: `1`, `2`. OpenSearch major version.
         :param 'GetOpenSearchOpensearchUserConfigPrivateAccessArgs' private_access: Allow access to selected service ports from private networks
         :param 'GetOpenSearchOpensearchUserConfigPrivatelinkAccessArgs' privatelink_access: Allow access to selected service components through Privatelink
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -31565,7 +32847,7 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[str]:
         """
-        OpenSearch major version.
+        Enum: `1`, `2`. OpenSearch major version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -31651,7 +32933,7 @@ class GetOpenSearchOpensearchUserConfigIndexPatternResult(dict):
         """
         :param int max_index_count: Maximum number of indexes to keep.
         :param str pattern: fnmatch pattern.
-        :param str sorting_algorithm: Deletion sorting algorithm. The default value is `creation_date`.
+        :param str sorting_algorithm: Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
         """
         pulumi.set(__self__, "max_index_count", max_index_count)
         pulumi.set(__self__, "pattern", pattern)
@@ -31678,7 +32960,7 @@ class GetOpenSearchOpensearchUserConfigIndexPatternResult(dict):
     @pulumi.getter(name="sortingAlgorithm")
     def sorting_algorithm(self) -> Optional[str]:
         """
-        Deletion sorting algorithm. The default value is `creation_date`.
+        Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
         """
         return pulumi.get(self, "sorting_algorithm")
 
@@ -32453,12 +33735,12 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
                  type: Optional[str] = None):
         """
         :param int allowed_tries: The number of login attempts allowed before login is blocked.
-        :param str authentication_backend: internal_authentication_backend_limiting.authentication_backend.
+        :param str authentication_backend: Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.
         :param int block_expiry_seconds: The duration of time that login remains blocked after a failed login.
         :param int max_blocked_clients: internal_authentication_backend_limiting.max_blocked_clients.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: internal_authentication_backend_limiting.type.
+        :param str type: Enum: `username`. internal_authentication_backend_limiting.type.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -32487,7 +33769,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
     @pulumi.getter(name="authenticationBackend")
     def authentication_backend(self) -> Optional[str]:
         """
-        internal_authentication_backend_limiting.authentication_backend.
+        Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.
         """
         return pulumi.get(self, "authentication_backend")
 
@@ -32527,7 +33809,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAut
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        internal_authentication_backend_limiting.type.
+        Enum: `username`. internal_authentication_backend_limiting.type.
         """
         return pulumi.get(self, "type")
 
@@ -32547,7 +33829,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimit
         :param int max_blocked_clients: The maximum number of blocked IP addresses.
         :param int max_tracked_clients: The maximum number of tracked IP addresses that have failed login.
         :param int time_window_seconds: The window of time in which the value for `allowed_tries` is enforced.
-        :param str type: The type of rate limiting.
+        :param str type: Enum: `ip`. The type of rate limiting.
         """
         if allowed_tries is not None:
             pulumi.set(__self__, "allowed_tries", allowed_tries)
@@ -32606,7 +33888,7 @@ class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimit
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of rate limiting.
+        Enum: `ip`. The type of rate limiting.
         """
         return pulumi.get(self, "type")
 
@@ -33044,35 +34326,58 @@ class GetPgComponentResult(dict):
 @pulumi.output_type
 class GetPgPgResult(dict):
     def __init__(__self__, *,
+                 bouncer: str,
                  dbname: str,
                  host: str,
                  max_connections: int,
+                 params: Sequence['outputs.GetPgPgParamResult'],
                  password: str,
                  port: int,
                  replica_uri: str,
                  sslmode: str,
+                 standby_uris: Sequence[str],
+                 syncing_uris: Sequence[str],
                  uri: str,
+                 uris: Sequence[str],
                  user: str):
         """
+        :param str bouncer: Bouncer connection details
         :param str dbname: Primary PostgreSQL database name
         :param str host: PostgreSQL master node host IP or name
         :param int max_connections: Connection limit
+        :param Sequence['GetPgPgParamArgs'] params: PostgreSQL connection parameters
         :param str password: PostgreSQL admin user password
         :param int port: PostgreSQL port
         :param str replica_uri: PostgreSQL replica URI for services with a replica
         :param str sslmode: PostgreSQL sslmode setting (currently always "require")
+        :param Sequence[str] standby_uris: PostgreSQL standby connection URIs
+        :param Sequence[str] syncing_uris: PostgreSQL syncing connection URIs
         :param str uri: PostgreSQL master connection URI
+        :param Sequence[str] uris: PostgreSQL master connection URIs
         :param str user: PostgreSQL admin user name
         """
+        pulumi.set(__self__, "bouncer", bouncer)
         pulumi.set(__self__, "dbname", dbname)
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "max_connections", max_connections)
+        pulumi.set(__self__, "params", params)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "replica_uri", replica_uri)
         pulumi.set(__self__, "sslmode", sslmode)
+        pulumi.set(__self__, "standby_uris", standby_uris)
+        pulumi.set(__self__, "syncing_uris", syncing_uris)
         pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "uris", uris)
         pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def bouncer(self) -> str:
+        """
+        Bouncer connection details
+        """
+        return pulumi.get(self, "bouncer")
 
     @property
     @pulumi.getter
@@ -33097,6 +34402,14 @@ class GetPgPgResult(dict):
         Connection limit
         """
         return pulumi.get(self, "max_connections")
+
+    @property
+    @pulumi.getter
+    def params(self) -> Sequence['outputs.GetPgPgParamResult']:
+        """
+        PostgreSQL connection parameters
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter
@@ -33131,12 +34444,109 @@ class GetPgPgResult(dict):
         return pulumi.get(self, "sslmode")
 
     @property
+    @pulumi.getter(name="standbyUris")
+    def standby_uris(self) -> Sequence[str]:
+        """
+        PostgreSQL standby connection URIs
+        """
+        return pulumi.get(self, "standby_uris")
+
+    @property
+    @pulumi.getter(name="syncingUris")
+    def syncing_uris(self) -> Sequence[str]:
+        """
+        PostgreSQL syncing connection URIs
+        """
+        return pulumi.get(self, "syncing_uris")
+
+    @property
     @pulumi.getter
     def uri(self) -> str:
         """
         PostgreSQL master connection URI
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        PostgreSQL master connection URIs
+        """
+        return pulumi.get(self, "uris")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        PostgreSQL admin user name
+        """
+        return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class GetPgPgParamResult(dict):
+    def __init__(__self__, *,
+                 database_name: str,
+                 host: str,
+                 password: str,
+                 port: int,
+                 sslmode: str,
+                 user: str):
+        """
+        :param str database_name: Primary PostgreSQL database name
+        :param str host: PostgreSQL host IP or name
+        :param str password: PostgreSQL admin user password
+        :param int port: PostgreSQL port
+        :param str sslmode: PostgreSQL sslmode setting (currently always "require")
+        :param str user: PostgreSQL admin user name
+        """
+        pulumi.set(__self__, "database_name", database_name)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "sslmode", sslmode)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter(name="databaseName")
+    def database_name(self) -> str:
+        """
+        Primary PostgreSQL database name
+        """
+        return pulumi.get(self, "database_name")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        PostgreSQL host IP or name
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        PostgreSQL admin user password
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        PostgreSQL port
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def sslmode(self) -> str:
+        """
+        PostgreSQL sslmode setting (currently always "require")
+        """
+        return pulumi.get(self, "sslmode")
 
     @property
     @pulumi.getter
@@ -33198,7 +34608,7 @@ class GetPgPgUserConfigResult(dict):
         :param bool pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param str pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service_to_fork_from). This has effect only when a new service is being created.
         :param bool pg_stat_monitor_enable: Enable the pg_stat_monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg_stat_statements results for utility commands are unreliable. The default value is `false`.
-        :param str pg_version: PostgreSQL major version.
+        :param str pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
         :param 'GetPgPgUserConfigPgauditArgs' pgaudit: System-wide settings for the pgaudit extension
         :param 'GetPgPgUserConfigPgbouncerArgs' pgbouncer: PGBouncer connection pooling settings
         :param 'GetPgPgUserConfigPglookoutArgs' pglookout: System-wide settings for pglookout
@@ -33211,9 +34621,9 @@ class GetPgPgUserConfigResult(dict):
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param float shared_buffers_percentage: Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
         :param bool static_ips: Use static public IP addresses.
-        :param str synchronous_replication: Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        :param str synchronous_replication: Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         :param 'GetPgPgUserConfigTimescaledbArgs' timescaledb: System-wide settings for the timescaledb extension
-        :param str variant: Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        :param str variant: Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         :param int work_mem: Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
         """
         if additional_backup_regions is not None:
@@ -33411,7 +34821,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[str]:
         """
-        PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 
@@ -33515,7 +34925,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter(name="synchronousReplication")
     def synchronous_replication(self) -> Optional[str]:
         """
-        Synchronous replication type. Note that the service plan also needs to support synchronous replication.
+        Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.
         """
         return pulumi.get(self, "synchronous_replication")
 
@@ -33531,7 +34941,7 @@ class GetPgPgUserConfigResult(dict):
     @pulumi.getter
     def variant(self) -> Optional[str]:
         """
-        Variant of the PostgreSQL service, may affect the features that are exposed by default.
+        Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.
         """
         return pulumi.get(self, "variant")
 
@@ -33590,7 +35000,7 @@ class GetPgPgUserConfigMigrationResult(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -33646,7 +35056,7 @@ class GetPgPgUserConfigMigrationResult(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -33742,12 +35152,12 @@ class GetPgPgUserConfigPgResult(dict):
         :param int bgwriter_lru_maxpages: In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
         :param float bgwriter_lru_multiplier: The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         :param int deadlock_timeout: This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
-        :param str default_toast_compression: Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        :param str default_toast_compression: Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
         :param int idle_in_transaction_session_timeout: Time out sessions with open transactions after this number of milliseconds.
         :param bool jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param int log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
-        :param str log_error_verbosity: Controls the amount of detail written in the server log for each message that is logged.
-        :param str log_line_prefix: Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        :param str log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
+        :param str log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
         :param int log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param int log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param int max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -33768,13 +35178,13 @@ class GetPgPgUserConfigPgResult(dict):
         :param str pg_partman_bgw_dot_role: Controls which role to use for pg_partman's scheduled background tasks.
         :param bool pg_stat_monitor_dot_pgsm_enable_query_plan: Enables or disables query plan monitoring.
         :param int pg_stat_monitor_dot_pgsm_max_buckets: Sets the maximum number of buckets.
-        :param str pg_stat_statements_dot_track: Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        :param str pg_stat_statements_dot_track: Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         :param int temp_file_limit: PostgreSQL temporary file limit in KiB, -1 for unlimited.
         :param str timezone: PostgreSQL service timezone.
         :param int track_activity_query_size: Specifies the number of bytes reserved to track the currently executing command for each active session.
-        :param str track_commit_timestamp: Record commit time of transactions.
-        :param str track_functions: Enables tracking of function call counts and time used.
-        :param str track_io_timing: Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        :param str track_commit_timestamp: Enum: `off`, `on`. Record commit time of transactions.
+        :param str track_functions: Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
+        :param str track_io_timing: Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         :param int wal_sender_timeout: Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
         :param int wal_writer_delay: WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
         """
@@ -33993,7 +35403,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="defaultToastCompression")
     def default_toast_compression(self) -> Optional[str]:
         """
-        Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+        Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
         """
         return pulumi.get(self, "default_toast_compression")
 
@@ -34025,7 +35435,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="logErrorVerbosity")
     def log_error_verbosity(self) -> Optional[str]:
         """
-        Controls the amount of detail written in the server log for each message that is logged.
+        Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
         """
         return pulumi.get(self, "log_error_verbosity")
 
@@ -34033,7 +35443,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[str]:
         """
-        Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
         """
         return pulumi.get(self, "log_line_prefix")
 
@@ -34201,7 +35611,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="pgStatStatementsDotTrack")
     def pg_stat_statements_dot_track(self) -> Optional[str]:
         """
-        Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+        Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
         """
         return pulumi.get(self, "pg_stat_statements_dot_track")
 
@@ -34233,7 +35643,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="trackCommitTimestamp")
     def track_commit_timestamp(self) -> Optional[str]:
         """
-        Record commit time of transactions.
+        Enum: `off`, `on`. Record commit time of transactions.
         """
         return pulumi.get(self, "track_commit_timestamp")
 
@@ -34241,7 +35651,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="trackFunctions")
     def track_functions(self) -> Optional[str]:
         """
-        Enables tracking of function call counts and time used.
+        Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
         """
         return pulumi.get(self, "track_functions")
 
@@ -34249,7 +35659,7 @@ class GetPgPgUserConfigPgResult(dict):
     @pulumi.getter(name="trackIoTiming")
     def track_io_timing(self) -> Optional[str]:
         """
-        Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+        Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
         """
         return pulumi.get(self, "track_io_timing")
 
@@ -34373,7 +35783,7 @@ class GetPgPgUserConfigPgauditResult(dict):
         :param bool feature_enabled: Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
         :param bool log_catalog: Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
         :param bool log_client: Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
-        :param str log_level: Specifies the log level that will be used for log entries. The default value is `log`.
+        :param str log_level: Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
         :param int log_max_string_length: Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
         :param bool log_nested_statements: This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
         :param bool log_parameter: Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
@@ -34442,7 +35852,7 @@ class GetPgPgUserConfigPgauditResult(dict):
     @pulumi.getter(name="logLevel")
     def log_level(self) -> Optional[str]:
         """
-        Specifies the log level that will be used for log entries. The default value is `log`.
+        Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
         """
         return pulumi.get(self, "log_level")
 
@@ -34542,7 +35952,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
         """
         :param int autodb_idle_timeout: If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
         :param int autodb_max_db_connections: Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
-        :param str autodb_pool_mode: PGBouncer pool mode. The default value is `transaction`.
+        :param str autodb_pool_mode: Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
         :param int autodb_pool_size: If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
         :param Sequence[str] ignore_startup_parameters: List of parameters to ignore when given in startup packet.
         :param int min_pool_size: Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
@@ -34589,7 +35999,7 @@ class GetPgPgUserConfigPgbouncerResult(dict):
     @pulumi.getter(name="autodbPoolMode")
     def autodb_pool_mode(self) -> Optional[str]:
         """
-        PGBouncer pool mode. The default value is `transaction`.
+        Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
         """
         return pulumi.get(self, "autodb_pool_mode")
 
@@ -35010,6 +36420,57 @@ class GetRedisComponentResult(dict):
 
 
 @pulumi.output_type
+class GetRedisRediResult(dict):
+    def __init__(__self__, *,
+                 password: str,
+                 replica_uri: str,
+                 slave_uris: Sequence[str],
+                 uris: Sequence[str]):
+        """
+        :param str password: Redis password.
+        :param str replica_uri: Redis replica server URI.
+        :param Sequence[str] slave_uris: Redis slave server URIs.
+        :param Sequence[str] uris: Redis server URIs.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "replica_uri", replica_uri)
+        pulumi.set(__self__, "slave_uris", slave_uris)
+        pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Redis password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="replicaUri")
+    def replica_uri(self) -> str:
+        """
+        Redis replica server URI.
+        """
+        return pulumi.get(self, "replica_uri")
+
+    @property
+    @pulumi.getter(name="slaveUris")
+    def slave_uris(self) -> Sequence[str]:
+        """
+        Redis slave server URIs.
+        """
+        return pulumi.get(self, "slave_uris")
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Sequence[str]:
+        """
+        Redis server URIs.
+        """
+        return pulumi.get(self, "uris")
+
+
+@pulumi.output_type
 class GetRedisRedisUserConfigResult(dict):
     def __init__(__self__, *,
                  additional_backup_regions: Optional[str] = None,
@@ -35048,18 +36509,18 @@ class GetRedisRedisUserConfigResult(dict):
         :param str project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
         :param 'GetRedisRedisUserConfigPublicAccessArgs' public_access: Allow access to selected service ports from the public Internet
         :param str recovery_basebackup_name: Name of the basebackup to restore in forked service.
-        :param str redis_acl_channels_default: Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        :param str redis_acl_channels_default: Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         :param int redis_io_threads: Set Redis IO thread count. Changing this will cause a restart of the Redis service.
         :param int redis_lfu_decay_time: LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
         :param int redis_lfu_log_factor: Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
-        :param str redis_maxmemory_policy: Redis maxmemory-policy. The default value is `noeviction`.
+        :param str redis_maxmemory_policy: Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
         :param str redis_notify_keyspace_events: Set notify-keyspace-events option.
         :param int redis_number_of_databases: Set number of Redis databases. Changing this will cause a restart of the Redis service.
-        :param str redis_persistence: When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param str redis_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         :param int redis_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param bool redis_ssl: Require SSL to access Redis. The default value is `true`.
         :param int redis_timeout: Redis idle connection timeout in seconds. The default value is `300`.
-        :param str redis_version: Redis major version.
+        :param str redis_version: Enum: `7.0`. Redis major version.
         :param bool service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param str service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param bool static_ips: Use static public IP addresses.
@@ -35202,7 +36663,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="redisAclChannelsDefault")
     def redis_acl_channels_default(self) -> Optional[str]:
         """
-        Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
+        Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.
         """
         return pulumi.get(self, "redis_acl_channels_default")
 
@@ -35234,7 +36695,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="redisMaxmemoryPolicy")
     def redis_maxmemory_policy(self) -> Optional[str]:
         """
-        Redis maxmemory-policy. The default value is `noeviction`.
+        Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
         """
         return pulumi.get(self, "redis_maxmemory_policy")
 
@@ -35258,7 +36719,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="redisPersistence")
     def redis_persistence(self) -> Optional[str]:
         """
-        When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         """
         return pulumi.get(self, "redis_persistence")
 
@@ -35290,7 +36751,7 @@ class GetRedisRedisUserConfigResult(dict):
     @pulumi.getter(name="redisVersion")
     def redis_version(self) -> Optional[str]:
         """
-        Redis major version.
+        Enum: `7.0`. Redis major version.
         """
         return pulumi.get(self, "redis_version")
 
@@ -35365,7 +36826,7 @@ class GetRedisRedisUserConfigMigrationResult(dict):
         :param int port: Port number of the server where to migrate data from.
         :param str dbname: Database name for bootstrapping the initial connection.
         :param str ignore_dbs: Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
-        :param str method: The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        :param str method: Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         :param str password: Password for authentication with the server where to migrate data from.
         :param bool ssl: The server where to migrate data from is secured with SSL. The default value is `true`.
         :param str username: User name for authentication with the server where to migrate data from.
@@ -35421,7 +36882,7 @@ class GetRedisRedisUserConfigMigrationResult(dict):
     @pulumi.getter
     def method(self) -> Optional[str]:
         """
-        The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
+        Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).
         """
         return pulumi.get(self, "method")
 
@@ -35656,13 +37117,13 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
                  skip_broken_messages: Optional[int] = None):
         """
         :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableColumnArgs'] columns: Table columns
-        :param str data_format: Message data format. The default value is `JSONEachRow`.
+        :param str data_format: Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
         :param str group_name: Kafka consumers group. The default value is `clickhouse`.
         :param str name: Name of the table.
         :param Sequence['GetServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs'] topics: Kafka topics
-        :param str auto_offset_reset: Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
-        :param str date_time_input_format: Method to read DateTime from text input formats. The default value is `basic`.
-        :param str handle_error_mode: How to handle errors for Kafka engine. The default value is `default`.
+        :param str auto_offset_reset: Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        :param str date_time_input_format: Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+        :param str handle_error_mode: Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
         :param int max_block_size: Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
         :param int max_rows_per_message: The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
         :param int num_consumers: The number of consumers per table per replica. The default value is `1`.
@@ -35703,7 +37164,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> str:
         """
-        Message data format. The default value is `JSONEachRow`.
+        Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
         """
         return pulumi.get(self, "data_format")
 
@@ -35735,7 +37196,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="autoOffsetReset")
     def auto_offset_reset(self) -> Optional[str]:
         """
-        Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
         """
         return pulumi.get(self, "auto_offset_reset")
 
@@ -35743,7 +37204,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="dateTimeInputFormat")
     def date_time_input_format(self) -> Optional[str]:
         """
-        Method to read DateTime from text input formats. The default value is `basic`.
+        Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
         """
         return pulumi.get(self, "date_time_input_format")
 
@@ -35751,7 +37212,7 @@ class GetServiceIntegrationClickhouseKafkaUserConfigTableResult(dict):
     @pulumi.getter(name="handleErrorMode")
     def handle_error_mode(self) -> Optional[str]:
         """
-        How to handle errors for Kafka engine. The default value is `default`.
+        Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
         """
         return pulumi.get(self, "handle_error_mode")
 
@@ -35897,6 +37358,7 @@ class GetServiceIntegrationClickhousePostgresqlUserConfigDatabaseResult(dict):
 class GetServiceIntegrationDatadogUserConfigResult(dict):
     def __init__(__self__, *,
                  datadog_dbm_enabled: Optional[bool] = None,
+                 datadog_pgbouncer_enabled: Optional[bool] = None,
                  datadog_tags: Optional[Sequence['outputs.GetServiceIntegrationDatadogUserConfigDatadogTagResult']] = None,
                  exclude_consumer_groups: Optional[Sequence[str]] = None,
                  exclude_topics: Optional[Sequence[str]] = None,
@@ -35908,6 +37370,7 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
                  redis: Optional['outputs.GetServiceIntegrationDatadogUserConfigRedisResult'] = None):
         """
         :param bool datadog_dbm_enabled: Enable Datadog Database Monitoring.
+        :param bool datadog_pgbouncer_enabled: Enable Datadog PgBouncer Metric Tracking.
         :param Sequence['GetServiceIntegrationDatadogUserConfigDatadogTagArgs'] datadog_tags: Custom tags provided by user
         :param Sequence[str] exclude_consumer_groups: List of custom metrics.
         :param Sequence[str] exclude_topics: List of topics to exclude.
@@ -35920,6 +37383,8 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
         """
         if datadog_dbm_enabled is not None:
             pulumi.set(__self__, "datadog_dbm_enabled", datadog_dbm_enabled)
+        if datadog_pgbouncer_enabled is not None:
+            pulumi.set(__self__, "datadog_pgbouncer_enabled", datadog_pgbouncer_enabled)
         if datadog_tags is not None:
             pulumi.set(__self__, "datadog_tags", datadog_tags)
         if exclude_consumer_groups is not None:
@@ -35946,6 +37411,14 @@ class GetServiceIntegrationDatadogUserConfigResult(dict):
         Enable Datadog Database Monitoring.
         """
         return pulumi.get(self, "datadog_dbm_enabled")
+
+    @property
+    @pulumi.getter(name="datadogPgbouncerEnabled")
+    def datadog_pgbouncer_enabled(self) -> Optional[bool]:
+        """
+        Enable Datadog PgBouncer Metric Tracking.
+        """
+        return pulumi.get(self, "datadog_pgbouncer_enabled")
 
     @property
     @pulumi.getter(name="datadogTags")
@@ -36141,7 +37614,7 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
         :param int kafka_consumer_check_instances: Number of separate instances to fetch kafka consumer statistics with.
         :param int kafka_consumer_stats_timeout: Number of seconds that datadog will wait to get consumer statistics from brokers.
         :param int max_partition_contexts: Maximum number of partition contexts to send.
-        :param str site: Datadog intake site. Defaults to datadoghq.com.
+        :param str site: Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
         pulumi.set(__self__, "datadog_api_key", datadog_api_key)
         if datadog_tags is not None:
@@ -36209,7 +37682,7 @@ class GetServiceIntegrationEndpointDatadogUserConfigResult(dict):
     @pulumi.getter
     def site(self) -> Optional[str]:
         """
-        Datadog intake site. Defaults to datadoghq.com.
+        Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.
         """
         return pulumi.get(self, "site")
 
@@ -36495,14 +37968,14 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
                  ssl_endpoint_identification_algorithm: Optional[str] = None):
         """
         :param str bootstrap_servers: Bootstrap servers.
-        :param str security_protocol: Security protocol.
-        :param str sasl_mechanism: SASL mechanism used for connections to the Kafka server.
+        :param str security_protocol: Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
+        :param str sasl_mechanism: Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
         :param str sasl_plain_password: Password for SASL PLAIN mechanism in the Kafka server.
         :param str sasl_plain_username: Username for SASL PLAIN mechanism in the Kafka server.
         :param str ssl_ca_cert: PEM-encoded CA certificate.
         :param str ssl_client_cert: PEM-encoded client certificate.
         :param str ssl_client_key: PEM-encoded client key.
-        :param str ssl_endpoint_identification_algorithm: The endpoint identification algorithm to validate server hostname using server certificate.
+        :param str ssl_endpoint_identification_algorithm: Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
         """
         pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         pulumi.set(__self__, "security_protocol", security_protocol)
@@ -36533,7 +38006,7 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     @pulumi.getter(name="securityProtocol")
     def security_protocol(self) -> str:
         """
-        Security protocol.
+        Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.
         """
         return pulumi.get(self, "security_protocol")
 
@@ -36541,7 +38014,7 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     @pulumi.getter(name="saslMechanism")
     def sasl_mechanism(self) -> Optional[str]:
         """
-        SASL mechanism used for connections to the Kafka server.
+        Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.
         """
         return pulumi.get(self, "sasl_mechanism")
 
@@ -36589,7 +38062,7 @@ class GetServiceIntegrationEndpointExternalKafkaUserConfigResult(dict):
     @pulumi.getter(name="sslEndpointIdentificationAlgorithm")
     def ssl_endpoint_identification_algorithm(self) -> Optional[str]:
         """
-        The endpoint identification algorithm to validate server hostname using server certificate.
+        Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
         """
         return pulumi.get(self, "ssl_endpoint_identification_algorithm")
 
@@ -36679,7 +38152,7 @@ class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
         :param str password: Password.
         :param str ssl_client_certificate: Client certificate.
         :param str ssl_client_key: Client key.
-        :param str ssl_mode: SSL Mode. The default value is `verify-full`.
+        :param str ssl_mode: Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
         :param str ssl_root_cert: SSL Root Cert.
         """
         pulumi.set(__self__, "host", host)
@@ -36758,7 +38231,7 @@ class GetServiceIntegrationEndpointExternalPostgresqlResult(dict):
     @pulumi.getter(name="sslMode")
     def ssl_mode(self) -> Optional[str]:
         """
-        SSL Mode. The default value is `verify-full`.
+        Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
         """
         return pulumi.get(self, "ssl_mode")
 
@@ -36779,7 +38252,7 @@ class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult(dict):
                  basic_auth_password: Optional[str] = None,
                  basic_auth_username: Optional[str] = None):
         """
-        :param str authentication: Authentication method.
+        :param str authentication: Enum: `none`, `basic`. Authentication method.
         :param str url: Schema Registry URL.
         :param str basic_auth_password: Basic authentication password.
         :param str basic_auth_username: Basic authentication user name.
@@ -36795,7 +38268,7 @@ class GetServiceIntegrationEndpointExternalSchemaRegistryUserConfigResult(dict):
     @pulumi.getter
     def authentication(self) -> str:
         """
-        Authentication method.
+        Enum: `none`, `basic`. Authentication method.
         """
         return pulumi.get(self, "authentication")
 
@@ -36900,7 +38373,7 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
                  max_message_size: Optional[int] = None,
                  sd: Optional[str] = None):
         """
-        :param str format: Message format. The default value is `rfc5424`.
+        :param str format: Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
         :param int port: Rsyslog server port. The default value is `514`.
         :param str server: Rsyslog server IP address or hostname.
         :param bool tls: Require TLS. The default value is `true`.
@@ -36932,7 +38405,7 @@ class GetServiceIntegrationEndpointRsyslogUserConfigResult(dict):
     @pulumi.getter
     def format(self) -> str:
         """
-        Message format. The default value is `rfc5424`.
+        Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
         """
         return pulumi.get(self, "format")
 
@@ -37303,7 +38776,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
         :param int consumer_fetch_min_bytes: The minimum amount of data the server should return for a fetch request.
         :param int producer_batch_size: The batch size in bytes producer will attempt to collect before publishing to broker.
         :param int producer_buffer_memory: The amount of bytes producer can use for buffering data before publishing to broker.
-        :param str producer_compression_type: Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        :param str producer_compression_type: Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         :param int producer_linger_ms: The linger time (ms) for waiting new data to arrive for publishing.
         :param int producer_max_request_size: The maximum request size in bytes.
         """
@@ -37348,7 +38821,7 @@ class GetServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerResult(dict
     @pulumi.getter(name="producerCompressionType")
     def producer_compression_type(self) -> Optional[str]:
         """
-        Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         """
         return pulumi.get(self, "producer_compression_type")
 

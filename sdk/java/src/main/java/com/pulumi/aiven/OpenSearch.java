@@ -519,6 +519,7 @@ public class OpenSearch extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "opensearches",
                 "servicePassword",
                 "serviceUri"
             ))

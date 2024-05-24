@@ -25,6 +25,7 @@ class OpenSearchArgs:
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  opensearch_user_config: Optional[pulumi.Input['OpenSearchOpensearchUserConfigArgs']] = None,
+                 opensearches: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
                  service_integrations: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchServiceIntegrationArgs']]]] = None,
                  static_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -42,6 +43,7 @@ class OpenSearchArgs:
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input['OpenSearchOpensearchUserConfigArgs'] opensearch_user_config: Opensearch user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]] opensearches: OpenSearch server provided values
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
         :param pulumi.Input[Sequence[pulumi.Input['OpenSearchServiceIntegrationArgs']]] service_integrations: Service integrations to specify when creating a service. Not applied after initial service creation
         :param pulumi.Input[Sequence[pulumi.Input[str]]] static_ips: Static IPs that are going to be associated with this service. Please assign a value using the 'toset' function. Once a static ip resource is in the 'assigned' state it cannot be unbound from the node again
@@ -67,6 +69,8 @@ class OpenSearchArgs:
             pulumi.set(__self__, "maintenance_window_time", maintenance_window_time)
         if opensearch_user_config is not None:
             pulumi.set(__self__, "opensearch_user_config", opensearch_user_config)
+        if opensearches is not None:
+            pulumi.set(__self__, "opensearches", opensearches)
         if project_vpc_id is not None:
             pulumi.set(__self__, "project_vpc_id", project_vpc_id)
         if service_integrations is not None:
@@ -190,6 +194,18 @@ class OpenSearchArgs:
     @opensearch_user_config.setter
     def opensearch_user_config(self, value: Optional[pulumi.Input['OpenSearchOpensearchUserConfigArgs']]):
         pulumi.set(self, "opensearch_user_config", value)
+
+    @property
+    @pulumi.getter
+    def opensearches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]]]:
+        """
+        OpenSearch server provided values
+        """
+        return pulumi.get(self, "opensearches")
+
+    @opensearches.setter
+    def opensearches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OpenSearchOpensearchArgs']]]]):
+        pulumi.set(self, "opensearches", value)
 
     @property
     @pulumi.getter(name="projectVpcId")
@@ -737,6 +753,7 @@ class OpenSearch(pulumi.CustomResource):
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['OpenSearchOpensearchUserConfigArgs']]] = None,
+                 opensearches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchOpensearchArgs']]]]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
@@ -790,6 +807,7 @@ class OpenSearch(pulumi.CustomResource):
         :param pulumi.Input[str] maintenance_window_dow: Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         :param pulumi.Input[str] maintenance_window_time: Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.
         :param pulumi.Input[pulumi.InputType['OpenSearchOpensearchUserConfigArgs']] opensearch_user_config: Opensearch user configurable settings
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchOpensearchArgs']]]] opensearches: OpenSearch server provided values
         :param pulumi.Input[str] plan: Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] project_vpc_id: Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
@@ -862,6 +880,7 @@ class OpenSearch(pulumi.CustomResource):
                  maintenance_window_dow: Optional[pulumi.Input[str]] = None,
                  maintenance_window_time: Optional[pulumi.Input[str]] = None,
                  opensearch_user_config: Optional[pulumi.Input[pulumi.InputType['OpenSearchOpensearchUserConfigArgs']]] = None,
+                 opensearches: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OpenSearchOpensearchArgs']]]]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_vpc_id: Optional[pulumi.Input[str]] = None,
@@ -886,6 +905,7 @@ class OpenSearch(pulumi.CustomResource):
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
             __props__.__dict__["opensearch_user_config"] = opensearch_user_config
+            __props__.__dict__["opensearches"] = None if opensearches is None else pulumi.Output.secret(opensearches)
             if plan is None and not opts.urn:
                 raise TypeError("Missing required property 'plan'")
             __props__.__dict__["plan"] = plan
@@ -906,7 +926,6 @@ class OpenSearch(pulumi.CustomResource):
             __props__.__dict__["disk_space_default"] = None
             __props__.__dict__["disk_space_step"] = None
             __props__.__dict__["disk_space_used"] = None
-            __props__.__dict__["opensearches"] = None
             __props__.__dict__["service_host"] = None
             __props__.__dict__["service_password"] = None
             __props__.__dict__["service_port"] = None
@@ -914,7 +933,7 @@ class OpenSearch(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["opensearches", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(OpenSearch, __self__).__init__(
             'aiven:index/openSearch:OpenSearch',

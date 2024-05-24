@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? Resolution;
         /// <summary>
-        /// The type of aggregation (aggregated/unaggregated).
+        /// Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
         /// </summary>
         public readonly string Type;
 

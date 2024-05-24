@@ -63,6 +63,8 @@ type LookupClickhouseResult struct {
 	AdditionalDiskSpace string `pulumi:"additionalDiskSpace"`
 	// Clickhouse user configurable settings
 	ClickhouseUserConfigs []GetClickhouseClickhouseUserConfig `pulumi:"clickhouseUserConfigs"`
+	// Clickhouse server provided values
+	Clickhouses []GetClickhouseClickhouse `pulumi:"clickhouses"`
 	// Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 	CloudName string `pulumi:"cloudName"`
 	// Service component information objects
@@ -165,6 +167,11 @@ func (o LookupClickhouseResultOutput) AdditionalDiskSpace() pulumi.StringOutput 
 // Clickhouse user configurable settings
 func (o LookupClickhouseResultOutput) ClickhouseUserConfigs() GetClickhouseClickhouseUserConfigArrayOutput {
 	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseClickhouseUserConfig { return v.ClickhouseUserConfigs }).(GetClickhouseClickhouseUserConfigArrayOutput)
+}
+
+// Clickhouse server provided values
+func (o LookupClickhouseResultOutput) Clickhouses() GetClickhouseClickhouseArrayOutput {
+	return o.ApplyT(func(v LookupClickhouseResult) []GetClickhouseClickhouse { return v.Clickhouses }).(GetClickhouseClickhouseArrayOutput)
 }
 
 // Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).

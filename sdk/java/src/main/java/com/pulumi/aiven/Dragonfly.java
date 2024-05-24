@@ -7,6 +7,7 @@ import com.pulumi.aiven.DragonflyArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.DragonflyState;
 import com.pulumi.aiven.outputs.DragonflyComponent;
+import com.pulumi.aiven.outputs.DragonflyDragonfly;
 import com.pulumi.aiven.outputs.DragonflyDragonflyUserConfig;
 import com.pulumi.aiven.outputs.DragonflyServiceIntegration;
 import com.pulumi.aiven.outputs.DragonflyTag;
@@ -191,6 +192,20 @@ public class Dragonfly extends com.pulumi.resources.CustomResource {
      */
     public Output<String> diskSpaceUsed() {
         return this.diskSpaceUsed;
+    }
+    /**
+     * Dragonfly server provided values
+     * 
+     */
+    @Export(name="dragonfly", refs={DragonflyDragonfly.class}, tree="[0]")
+    private Output<DragonflyDragonfly> dragonfly;
+
+    /**
+     * @return Dragonfly server provided values
+     * 
+     */
+    public Output<DragonflyDragonfly> dragonfly() {
+        return this.dragonfly;
     }
     /**
      * Dragonfly user configurable settings
@@ -492,6 +507,7 @@ public class Dragonfly extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
+                "dragonfly",
                 "servicePassword",
                 "serviceUri"
             ))

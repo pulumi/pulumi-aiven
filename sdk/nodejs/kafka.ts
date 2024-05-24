@@ -118,7 +118,7 @@ export class Kafka extends pulumi.CustomResource {
     /**
      * Kafka server connection details.
      */
-    public /*out*/ readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
+    public readonly kafkas!: pulumi.Output<outputs.KafkaKafka[]>;
     /**
      * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      *
@@ -257,6 +257,7 @@ export class Kafka extends pulumi.CustomResource {
             resourceInputs["defaultAcl"] = args ? args.defaultAcl : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
             resourceInputs["kafkaUserConfig"] = args ? args.kafkaUserConfig : undefined;
+            resourceInputs["kafkas"] = args?.kafkas ? pulumi.secret(args.kafkas) : undefined;
             resourceInputs["karapace"] = args ? args.karapace : undefined;
             resourceInputs["maintenanceWindowDow"] = args ? args.maintenanceWindowDow : undefined;
             resourceInputs["maintenanceWindowTime"] = args ? args.maintenanceWindowTime : undefined;
@@ -274,7 +275,6 @@ export class Kafka extends pulumi.CustomResource {
             resourceInputs["diskSpaceDefault"] = undefined /*out*/;
             resourceInputs["diskSpaceStep"] = undefined /*out*/;
             resourceInputs["diskSpaceUsed"] = undefined /*out*/;
-            resourceInputs["kafkas"] = undefined /*out*/;
             resourceInputs["serviceHost"] = undefined /*out*/;
             resourceInputs["servicePassword"] = undefined /*out*/;
             resourceInputs["servicePort"] = undefined /*out*/;
@@ -446,6 +446,10 @@ export interface KafkaArgs {
      * Kafka user configurable settings
      */
     kafkaUserConfig?: pulumi.Input<inputs.KafkaKafkaUserConfig>;
+    /**
+     * Kafka server connection details.
+     */
+    kafkas?: pulumi.Input<pulumi.Input<inputs.KafkaKafka>[]>;
     /**
      * Switch the service to use [Karapace](https://aiven.io/docs/products/kafka/karapace) for schema registry and REST proxy.
      *

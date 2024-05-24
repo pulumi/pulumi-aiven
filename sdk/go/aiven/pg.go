@@ -95,7 +95,11 @@ func NewPg(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Pg != nil {
+		args.Pg = pulumi.ToSecret(args.Pg).(PgPgPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"pg",
 		"servicePassword",
 		"serviceUri",
 	})

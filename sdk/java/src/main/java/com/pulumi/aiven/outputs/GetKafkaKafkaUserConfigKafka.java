@@ -20,7 +20,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Boolean autoCreateTopicsEnable;
     /**
-     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
      * 
      */
     private @Nullable String compressionType;
@@ -70,7 +70,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logCleanerMinCompactionLagMs;
     /**
-     * @return The default cleanup policy for segments beyond the retention window.
+     * @return Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      * 
      */
     private @Nullable String logCleanupPolicy;
@@ -115,7 +115,7 @@ public final class GetKafkaKafkaUserConfigKafka {
      */
     private @Nullable Integer logMessageTimestampDifferenceMaxMs;
     /**
-     * @return Define whether the timestamp in the message is message create time or log append time.
+     * @return Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      * 
      */
     private @Nullable String logMessageTimestampType;
@@ -254,7 +254,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.autoCreateTopicsEnable);
     }
     /**
-     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
      * 
      */
     public Optional<String> compressionType() {
@@ -324,7 +324,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logCleanerMinCompactionLagMs);
     }
     /**
-     * @return The default cleanup policy for segments beyond the retention window.
+     * @return Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      * 
      */
     public Optional<String> logCleanupPolicy() {
@@ -387,7 +387,7 @@ public final class GetKafkaKafkaUserConfigKafka {
         return Optional.ofNullable(this.logMessageTimestampDifferenceMaxMs);
     }
     /**
-     * @return Define whether the timestamp in the message is message create time or log append time.
+     * @return Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      * 
      */
     public Optional<String> logMessageTimestampType() {

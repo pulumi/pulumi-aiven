@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? AlertingEnabled;
         /// <summary>
-        /// Default error or timeout setting for new alerting rules.
+        /// Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
         /// </summary>
         public readonly string? AlertingErrorOrTimeout;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? AlertingMaxAnnotationsToKeep;
         /// <summary>
-        /// Default value for 'no data or null values' for new alerting rules.
+        /// Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.
         /// </summary>
         public readonly string? AlertingNodataOrNullvalues;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetGrafanaGrafanaUserConfigAuthGoogleResult? AuthGoogle;
         /// <summary>
-        /// Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
+        /// Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.
         /// </summary>
         public readonly string? CookieSamesite;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? UserAutoAssignOrg;
         /// <summary>
-        /// Set role for new signups. Defaults to Viewer.
+        /// Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
         /// </summary>
         public readonly string? UserAutoAssignOrgRole;
         /// <summary>

@@ -37,6 +37,21 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
+     * Enable Datadog PgBouncer Metric Tracking.
+     * 
+     */
+    @Import(name="datadogPgbouncerEnabled")
+    private @Nullable Output<Boolean> datadogPgbouncerEnabled;
+
+    /**
+     * @return Enable Datadog PgBouncer Metric Tracking.
+     * 
+     */
+    public Optional<Output<Boolean>> datadogPgbouncerEnabled() {
+        return Optional.ofNullable(this.datadogPgbouncerEnabled);
+    }
+
+    /**
      * Custom tags provided by user
      * 
      */
@@ -175,6 +190,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
 
     private ServiceIntegrationDatadogUserConfigArgs(ServiceIntegrationDatadogUserConfigArgs $) {
         this.datadogDbmEnabled = $.datadogDbmEnabled;
+        this.datadogPgbouncerEnabled = $.datadogPgbouncerEnabled;
         this.datadogTags = $.datadogTags;
         this.excludeConsumerGroups = $.excludeConsumerGroups;
         this.excludeTopics = $.excludeTopics;
@@ -223,6 +239,27 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
          */
         public Builder datadogDbmEnabled(Boolean datadogDbmEnabled) {
             return datadogDbmEnabled(Output.of(datadogDbmEnabled));
+        }
+
+        /**
+         * @param datadogPgbouncerEnabled Enable Datadog PgBouncer Metric Tracking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgbouncerEnabled(@Nullable Output<Boolean> datadogPgbouncerEnabled) {
+            $.datadogPgbouncerEnabled = datadogPgbouncerEnabled;
+            return this;
+        }
+
+        /**
+         * @param datadogPgbouncerEnabled Enable Datadog PgBouncer Metric Tracking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder datadogPgbouncerEnabled(Boolean datadogPgbouncerEnabled) {
+            return datadogPgbouncerEnabled(Output.of(datadogPgbouncerEnabled));
         }
 
         /**

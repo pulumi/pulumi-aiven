@@ -140,6 +140,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string DiskSpaceUsed;
         /// <summary>
+        /// Dragonfly server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDragonflyDragonflyResult> Dragonflies;
+        /// <summary>
         /// Dragonfly user configurable settings
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDragonflyDragonflyUserConfigResult> DragonflyUserConfigs;
@@ -238,6 +242,8 @@ namespace Pulumi.Aiven
 
             string diskSpaceUsed,
 
+            ImmutableArray<Outputs.GetDragonflyDragonflyResult> dragonflies,
+
             ImmutableArray<Outputs.GetDragonflyDragonflyUserConfigResult> dragonflyUserConfigs,
 
             string id,
@@ -286,6 +292,7 @@ namespace Pulumi.Aiven
             DiskSpaceDefault = diskSpaceDefault;
             DiskSpaceStep = diskSpaceStep;
             DiskSpaceUsed = diskSpaceUsed;
+            Dragonflies = dragonflies;
             DragonflyUserConfigs = dragonflyUserConfigs;
             Id = id;
             MaintenanceWindowDow = maintenanceWindowDow;

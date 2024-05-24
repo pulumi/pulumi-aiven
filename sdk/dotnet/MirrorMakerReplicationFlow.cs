@@ -72,7 +72,7 @@ namespace Pulumi.Aiven
         public Output<bool> Enable { get; private set; } = null!;
 
         /// <summary>
-        /// Offset syncs topic location.
+        /// Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
         /// </summary>
         [Output("offsetSyncsTopicLocation")]
         public Output<string> OffsetSyncsTopicLocation { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.Aiven
         public Input<bool> Enable { get; set; } = null!;
 
         /// <summary>
-        /// Offset syncs topic location.
+        /// Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
         /// </summary>
         [Input("offsetSyncsTopicLocation", required: true)]
         public Input<string> OffsetSyncsTopicLocation { get; set; } = null!;
@@ -294,7 +294,7 @@ namespace Pulumi.Aiven
         public Input<bool>? Enable { get; set; }
 
         /// <summary>
-        /// Offset syncs topic location.
+        /// Offset syncs topic location. Possible values are `source` &amp; `target`. There is no default value.
         /// </summary>
         [Input("offsetSyncsTopicLocation")]
         public Input<string>? OffsetSyncsTopicLocation { get; set; }

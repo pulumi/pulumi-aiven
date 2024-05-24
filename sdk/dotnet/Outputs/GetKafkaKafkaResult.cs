@@ -33,6 +33,10 @@ namespace Pulumi.Aiven.Outputs
         /// The Schema Registry URI.
         /// </summary>
         public readonly string SchemaRegistryUri;
+        /// <summary>
+        /// Kafka server URIs.
+        /// </summary>
+        public readonly ImmutableArray<string> Uris;
 
         [OutputConstructor]
         private GetKafkaKafkaResult(
@@ -44,13 +48,16 @@ namespace Pulumi.Aiven.Outputs
 
             string restUri,
 
-            string schemaRegistryUri)
+            string schemaRegistryUri,
+
+            ImmutableArray<string> uris)
         {
             AccessCert = accessCert;
             AccessKey = accessKey;
             ConnectUri = connectUri;
             RestUri = restUri;
             SchemaRegistryUri = schemaRegistryUri;
+            Uris = uris;
         }
     }
 }

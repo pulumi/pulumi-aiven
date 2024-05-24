@@ -34,14 +34,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
      * 
      */
     @Import(name="compressionType")
     private @Nullable Output<String> compressionType;
 
     /**
-     * @return Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
      * 
      */
     public Optional<Output<String>> compressionType() {
@@ -184,14 +184,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The default cleanup policy for segments beyond the retention window.
+     * Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      * 
      */
     @Import(name="logCleanupPolicy")
     private @Nullable Output<String> logCleanupPolicy;
 
     /**
-     * @return The default cleanup policy for segments beyond the retention window.
+     * @return Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
      * 
      */
     public Optional<Output<String>> logCleanupPolicy() {
@@ -319,14 +319,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Define whether the timestamp in the message is message create time or log append time.
+     * Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      * 
      */
     @Import(name="logMessageTimestampType")
     private @Nullable Output<String> logMessageTimestampType;
 
     /**
-     * @return Define whether the timestamp in the message is message create time or log append time.
+     * @return Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
      * 
      */
     public Optional<Output<String>> logMessageTimestampType() {
@@ -799,7 +799,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param compressionType Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param compressionType Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
          * 
          * @return builder
          * 
@@ -1009,7 +1009,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanupPolicy The default cleanup policy for segments beyond the retention window.
+         * @param logCleanupPolicy Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
          * 
          * @return builder
          * 
@@ -1020,7 +1020,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanupPolicy The default cleanup policy for segments beyond the retention window.
+         * @param logCleanupPolicy Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.
          * 
          * @return builder
          * 
@@ -1198,7 +1198,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logMessageTimestampType Define whether the timestamp in the message is message create time or log append time.
+         * @param logMessageTimestampType Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
          * 
          * @return builder
          * 
@@ -1209,7 +1209,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logMessageTimestampType Define whether the timestamp in the message is message create time or log append time.
+         * @param logMessageTimestampType Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.
          * 
          * @return builder
          * 

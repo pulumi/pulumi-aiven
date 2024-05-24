@@ -20,6 +20,7 @@ class CassandraArgs:
                  project: pulumi.Input[str],
                  service_name: pulumi.Input[str],
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 cassandra: Optional[pulumi.Input['CassandraCassandraArgs']] = None,
                  cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class CassandraArgs:
         :param pulumi.Input[str] project: The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         :param pulumi.Input[str] service_name: Specifies the actual name of the service. The name cannot be changed later without destroying and re-creating the service so name should be picked based on intended service usage rather than current attributes.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input['CassandraCassandraArgs'] cassandra: Cassandra server provided values
         :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -54,6 +56,8 @@ class CassandraArgs:
         pulumi.set(__self__, "service_name", service_name)
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+        if cassandra is not None:
+            pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name is not None:
@@ -127,6 +131,18 @@ class CassandraArgs:
     @additional_disk_space.setter
     def additional_disk_space(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "additional_disk_space", value)
+
+    @property
+    @pulumi.getter
+    def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraArgs']]:
+        """
+        Cassandra server provided values
+        """
+        return pulumi.get(self, "cassandra")
+
+    @cassandra.setter
+    def cassandra(self, value: Optional[pulumi.Input['CassandraCassandraArgs']]):
+        pulumi.set(self, "cassandra", value)
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
@@ -268,6 +284,7 @@ class CassandraArgs:
 class _CassandraState:
     def __init__(__self__, *,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 cassandra: Optional[pulumi.Input['CassandraCassandraArgs']] = None,
                  cassandra_user_config: Optional[pulumi.Input['CassandraCassandraUserConfigArgs']] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  components: Optional[pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]]] = None,
@@ -297,6 +314,7 @@ class _CassandraState:
         """
         Input properties used for looking up and filtering Cassandra resources.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input['CassandraCassandraArgs'] cassandra: Cassandra server provided values
         :param pulumi.Input['CassandraCassandraUserConfigArgs'] cassandra_user_config: Cassandra user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input['CassandraComponentArgs']]] components: Service component information objects
@@ -326,6 +344,8 @@ class _CassandraState:
         """
         if additional_disk_space is not None:
             pulumi.set(__self__, "additional_disk_space", additional_disk_space)
+        if cassandra is not None:
+            pulumi.set(__self__, "cassandra", cassandra)
         if cassandra_user_config is not None:
             pulumi.set(__self__, "cassandra_user_config", cassandra_user_config)
         if cloud_name is not None:
@@ -393,6 +413,18 @@ class _CassandraState:
     @additional_disk_space.setter
     def additional_disk_space(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "additional_disk_space", value)
+
+    @property
+    @pulumi.getter
+    def cassandra(self) -> Optional[pulumi.Input['CassandraCassandraArgs']]:
+        """
+        Cassandra server provided values
+        """
+        return pulumi.get(self, "cassandra")
+
+    @cassandra.setter
+    def cassandra(self, value: Optional[pulumi.Input['CassandraCassandraArgs']]):
+        pulumi.set(self, "cassandra", value)
 
     @property
     @pulumi.getter(name="cassandraUserConfig")
@@ -716,6 +748,7 @@ class Cassandra(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 cassandra: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -764,6 +797,7 @@ class Cassandra(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra server provided values
         :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[str] disk_space: Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
@@ -831,6 +865,7 @@ class Cassandra(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_disk_space: Optional[pulumi.Input[str]] = None,
+                 cassandra: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]] = None,
                  cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']]] = None,
                  cloud_name: Optional[pulumi.Input[str]] = None,
                  disk_space: Optional[pulumi.Input[str]] = None,
@@ -855,6 +890,7 @@ class Cassandra(pulumi.CustomResource):
             __props__ = CassandraArgs.__new__(CassandraArgs)
 
             __props__.__dict__["additional_disk_space"] = additional_disk_space
+            __props__.__dict__["cassandra"] = None if cassandra is None else pulumi.Output.secret(cassandra)
             __props__.__dict__["cassandra_user_config"] = cassandra_user_config
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
@@ -887,7 +923,7 @@ class Cassandra(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cassandra", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Cassandra, __self__).__init__(
             'aiven:index/cassandra:Cassandra',
@@ -900,6 +936,7 @@ class Cassandra(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_disk_space: Optional[pulumi.Input[str]] = None,
+            cassandra: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraArgs']]] = None,
             cassandra_user_config: Optional[pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']]] = None,
             cloud_name: Optional[pulumi.Input[str]] = None,
             components: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraComponentArgs']]]]] = None,
@@ -934,6 +971,7 @@ class Cassandra(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] additional_disk_space: Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
+        :param pulumi.Input[pulumi.InputType['CassandraCassandraArgs']] cassandra: Cassandra server provided values
         :param pulumi.Input[pulumi.InputType['CassandraCassandraUserConfigArgs']] cassandra_user_config: Cassandra user configurable settings
         :param pulumi.Input[str] cloud_name: Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CassandraComponentArgs']]]] components: Service component information objects
@@ -966,6 +1004,7 @@ class Cassandra(pulumi.CustomResource):
         __props__ = _CassandraState.__new__(_CassandraState)
 
         __props__.__dict__["additional_disk_space"] = additional_disk_space
+        __props__.__dict__["cassandra"] = cassandra
         __props__.__dict__["cassandra_user_config"] = cassandra_user_config
         __props__.__dict__["cloud_name"] = cloud_name
         __props__.__dict__["components"] = components
@@ -1001,6 +1040,14 @@ class Cassandra(pulumi.CustomResource):
         Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
         return pulumi.get(self, "additional_disk_space")
+
+    @property
+    @pulumi.getter
+    def cassandra(self) -> pulumi.Output['outputs.CassandraCassandra']:
+        """
+        Cassandra server provided values
+        """
+        return pulumi.get(self, "cassandra")
 
     @property
     @pulumi.getter(name="cassandraUserConfig")

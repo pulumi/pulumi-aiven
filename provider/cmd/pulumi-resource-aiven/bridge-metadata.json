@@ -72,6 +72,16 @@
                 "current": "aiven:index/cassandra:Cassandra",
                 "majorVersion": 6,
                 "fields": {
+                    "cassandra": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "cassandra_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -125,6 +135,16 @@
                 "current": "aiven:index/clickhouse:Clickhouse",
                 "majorVersion": 6,
                 "fields": {
+                    "clickhouse": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "clickhouse_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -204,6 +224,19 @@
                 "fields": {
                     "components": {
                         "maxItemsOne": false
+                    },
+                    "dragonfly": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "slave_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "dragonfly_user_config": {
                         "maxItemsOne": true,
@@ -345,6 +378,16 @@
                     "components": {
                         "maxItemsOne": false
                     },
+                    "grafana": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grafana_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -466,7 +509,14 @@
                         "maxItemsOne": false
                     },
                     "influxdb": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "influxdb_user_config": {
                         "maxItemsOne": true,
@@ -529,7 +579,14 @@
                         "maxItemsOne": false
                     },
                     "kafka": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "kafka_user_config": {
                         "maxItemsOne": true,
@@ -741,6 +798,16 @@
                     "components": {
                         "maxItemsOne": false
                     },
+                    "m3aggregator": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "m3aggregator_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -777,6 +844,16 @@
                 "fields": {
                     "components": {
                         "maxItemsOne": false
+                    },
+                    "m3db": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "m3db_user_config": {
                         "maxItemsOne": true,
@@ -899,6 +976,25 @@
                     "components": {
                         "maxItemsOne": false
                     },
+                    "mysql": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "params": {
+                                    "maxItemsOne": false
+                                },
+                                "standby_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "syncing_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "mysql_user_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -963,7 +1059,14 @@
                         "maxItemsOne": false
                     },
                     "opensearch": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "opensearch_user_config": {
                         "maxItemsOne": true,
@@ -1106,7 +1209,23 @@
                         "maxItemsOne": false
                     },
                     "pg": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "params": {
+                                    "maxItemsOne": false
+                                },
+                                "standby_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "syncing_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "pg_user_config": {
                         "maxItemsOne": true,
@@ -1219,6 +1338,19 @@
                 "fields": {
                     "components": {
                         "maxItemsOne": false
+                    },
+                    "redis": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "slave_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "redis_user_config": {
                         "maxItemsOne": true,
@@ -1601,6 +1733,16 @@
                 "current": "aiven:index/getCassandra:getCassandra",
                 "majorVersion": 6,
                 "fields": {
+                    "cassandra": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "cassandra_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1650,6 +1792,16 @@
                 "current": "aiven:index/getCassanda:getCassanda",
                 "majorVersion": 6,
                 "fields": {
+                    "cassandra": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "cassandra_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1703,6 +1855,16 @@
                 "current": "aiven:index/getClickhouse:getClickhouse",
                 "majorVersion": 6,
                 "fields": {
+                    "clickhouse": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "clickhouse_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -1766,6 +1928,19 @@
                 "fields": {
                     "components": {
                         "maxItemsOne": false
+                    },
+                    "dragonfly": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "slave_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "dragonfly_user_config": {
                         "maxItemsOne": false,
@@ -1899,6 +2074,16 @@
                     "components": {
                         "maxItemsOne": false
                     },
+                    "grafana": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "grafana_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2020,7 +2205,14 @@
                         "maxItemsOne": false
                     },
                     "influxdb": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "influxdb_user_config": {
                         "maxItemsOne": false,
@@ -2083,7 +2275,14 @@
                         "maxItemsOne": false
                     },
                     "kafka": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "kafka_user_config": {
                         "maxItemsOne": false,
@@ -2295,6 +2494,16 @@
                     "components": {
                         "maxItemsOne": false
                     },
+                    "m3aggregator": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "m3aggregator_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2331,6 +2540,16 @@
                 "fields": {
                     "components": {
                         "maxItemsOne": false
+                    },
+                    "m3db": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "m3db_user_config": {
                         "maxItemsOne": false,
@@ -2453,6 +2672,25 @@
                     "components": {
                         "maxItemsOne": false
                     },
+                    "mysql": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "params": {
+                                    "maxItemsOne": false
+                                },
+                                "standby_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "syncing_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "mysql_user_config": {
                         "maxItemsOne": false,
                         "elem": {
@@ -2517,7 +2755,14 @@
                         "maxItemsOne": false
                     },
                     "opensearch": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "opensearch_user_config": {
                         "maxItemsOne": false,
@@ -2643,7 +2888,23 @@
                         "maxItemsOne": false
                     },
                     "pg": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "params": {
+                                    "maxItemsOne": false
+                                },
+                                "standby_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "syncing_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "pg_user_config": {
                         "maxItemsOne": false,
@@ -2756,6 +3017,19 @@
                 "fields": {
                     "components": {
                         "maxItemsOne": false
+                    },
+                    "redis": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "slave_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "redis_user_config": {
                         "maxItemsOne": false,
@@ -3071,7 +3345,25 @@
             }
         }
     },
-    "auto-settings": {},
+    "auto-settings": {
+        "resources": {
+            "aiven_influxdb": {
+                "maxItemsOneOverrides": {
+                    "influxdb": false
+                }
+            },
+            "aiven_kafka": {
+                "maxItemsOneOverrides": {
+                    "kafka": false
+                }
+            },
+            "aiven_opensearch": {
+                "maxItemsOneOverrides": {
+                    "opensearch": false
+                }
+            }
+        }
+    },
     "mux": {
         "resources": {
             "aiven:index/account:Account": 0,

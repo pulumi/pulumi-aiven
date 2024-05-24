@@ -148,6 +148,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly ImmutableArray<Outputs.GetM3DbM3dbUserConfigResult> M3dbUserConfigs;
         /// <summary>
+        /// M3DB server provided values
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetM3DbM3dbResult> M3dbs;
+        /// <summary>
         /// Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
         /// </summary>
         public readonly string MaintenanceWindowDow;
@@ -242,6 +246,8 @@ namespace Pulumi.Aiven
 
             ImmutableArray<Outputs.GetM3DbM3dbUserConfigResult> m3dbUserConfigs,
 
+            ImmutableArray<Outputs.GetM3DbM3dbResult> m3dbs,
+
             string maintenanceWindowDow,
 
             string maintenanceWindowTime,
@@ -288,6 +294,7 @@ namespace Pulumi.Aiven
             DiskSpaceUsed = diskSpaceUsed;
             Id = id;
             M3dbUserConfigs = m3dbUserConfigs;
+            M3dbs = m3dbs;
             MaintenanceWindowDow = maintenanceWindowDow;
             MaintenanceWindowTime = maintenanceWindowTime;
             Plan = plan;

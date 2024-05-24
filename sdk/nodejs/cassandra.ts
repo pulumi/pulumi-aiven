@@ -70,6 +70,10 @@ export class Cassandra extends pulumi.CustomResource {
      */
     public readonly additionalDiskSpace!: pulumi.Output<string | undefined>;
     /**
+     * Cassandra server provided values
+     */
+    public readonly cassandra!: pulumi.Output<outputs.CassandraCassandra>;
+    /**
      * Cassandra user configurable settings
      */
     public readonly cassandraUserConfig!: pulumi.Output<outputs.CassandraCassandraUserConfig | undefined>;
@@ -190,6 +194,7 @@ export class Cassandra extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as CassandraState | undefined;
             resourceInputs["additionalDiskSpace"] = state ? state.additionalDiskSpace : undefined;
+            resourceInputs["cassandra"] = state ? state.cassandra : undefined;
             resourceInputs["cassandraUserConfig"] = state ? state.cassandraUserConfig : undefined;
             resourceInputs["cloudName"] = state ? state.cloudName : undefined;
             resourceInputs["components"] = state ? state.components : undefined;
@@ -228,6 +233,7 @@ export class Cassandra extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceName'");
             }
             resourceInputs["additionalDiskSpace"] = args ? args.additionalDiskSpace : undefined;
+            resourceInputs["cassandra"] = args?.cassandra ? pulumi.secret(args.cassandra) : undefined;
             resourceInputs["cassandraUserConfig"] = args ? args.cassandraUserConfig : undefined;
             resourceInputs["cloudName"] = args ? args.cloudName : undefined;
             resourceInputs["diskSpace"] = args ? args.diskSpace : undefined;
@@ -256,7 +262,7 @@ export class Cassandra extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["servicePassword", "serviceUri"] };
+        const secretOpts = { additionalSecretOutputs: ["cassandra", "servicePassword", "serviceUri"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Cassandra.__pulumiType, name, resourceInputs, opts);
     }
@@ -270,6 +276,10 @@ export interface CassandraState {
      * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     additionalDiskSpace?: pulumi.Input<string>;
+    /**
+     * Cassandra server provided values
+     */
+    cassandra?: pulumi.Input<inputs.CassandraCassandra>;
     /**
      * Cassandra user configurable settings
      */
@@ -386,6 +396,10 @@ export interface CassandraArgs {
      * Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
      */
     additionalDiskSpace?: pulumi.Input<string>;
+    /**
+     * Cassandra server provided values
+     */
+    cassandra?: pulumi.Input<inputs.CassandraCassandra>;
     /**
      * Cassandra user configurable settings
      */

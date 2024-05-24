@@ -229,14 +229,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
      * 
      */
     @Import(name="defaultToastCompression")
     private @Nullable Output<String> defaultToastCompression;
 
     /**
-     * @return Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+     * @return Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
      * 
      */
     public Optional<Output<String>> defaultToastCompression() {
@@ -289,14 +289,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Controls the amount of detail written in the server log for each message that is logged.
+     * Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      * 
      */
     @Import(name="logErrorVerbosity")
     private @Nullable Output<String> logErrorVerbosity;
 
     /**
-     * @return Controls the amount of detail written in the server log for each message that is logged.
+     * @return Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
      * 
      */
     public Optional<Output<String>> logErrorVerbosity() {
@@ -304,14 +304,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
      * 
      */
     @Import(name="logLinePrefix")
     private @Nullable Output<String> logLinePrefix;
 
     /**
-     * @return Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
      * 
      */
     public Optional<Output<String>> logLinePrefix() {
@@ -619,14 +619,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      * 
      */
     @Import(name="pgStatStatementsDotTrack")
     private @Nullable Output<String> pgStatStatementsDotTrack;
 
     /**
-     * @return Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+     * @return Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
      * 
      */
     public Optional<Output<String>> pgStatStatementsDotTrack() {
@@ -679,14 +679,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Record commit time of transactions.
+     * Enum: `off`, `on`. Record commit time of transactions.
      * 
      */
     @Import(name="trackCommitTimestamp")
     private @Nullable Output<String> trackCommitTimestamp;
 
     /**
-     * @return Record commit time of transactions.
+     * @return Enum: `off`, `on`. Record commit time of transactions.
      * 
      */
     public Optional<Output<String>> trackCommitTimestamp() {
@@ -694,14 +694,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enables tracking of function call counts and time used.
+     * Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
      * 
      */
     @Import(name="trackFunctions")
     private @Nullable Output<String> trackFunctions;
 
     /**
-     * @return Enables tracking of function call counts and time used.
+     * @return Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
      * 
      */
     public Optional<Output<String>> trackFunctions() {
@@ -709,14 +709,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      * 
      */
     @Import(name="trackIoTiming")
     private @Nullable Output<String> trackIoTiming;
 
     /**
-     * @return Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+     * @return Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
      * 
      */
     public Optional<Output<String>> trackIoTiming() {
@@ -1120,7 +1120,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param defaultToastCompression Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+         * @param defaultToastCompression Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
          * 
          * @return builder
          * 
@@ -1131,7 +1131,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param defaultToastCompression Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
+         * @param defaultToastCompression Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).
          * 
          * @return builder
          * 
@@ -1204,7 +1204,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logErrorVerbosity Controls the amount of detail written in the server log for each message that is logged.
+         * @param logErrorVerbosity Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
          * 
          * @return builder
          * 
@@ -1215,7 +1215,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logErrorVerbosity Controls the amount of detail written in the server log for each message that is logged.
+         * @param logErrorVerbosity Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
          * 
          * @return builder
          * 
@@ -1225,7 +1225,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLinePrefix Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
          * 
          * @return builder
          * 
@@ -1236,7 +1236,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLinePrefix Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
          * 
          * @return builder
          * 
@@ -1666,7 +1666,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatStatementsDotTrack Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+         * @param pgStatStatementsDotTrack Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
          * 
          * @return builder
          * 
@@ -1677,7 +1677,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatStatementsDotTrack Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
+         * @param pgStatStatementsDotTrack Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.
          * 
          * @return builder
          * 
@@ -1750,7 +1750,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackCommitTimestamp Record commit time of transactions.
+         * @param trackCommitTimestamp Enum: `off`, `on`. Record commit time of transactions.
          * 
          * @return builder
          * 
@@ -1761,7 +1761,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackCommitTimestamp Record commit time of transactions.
+         * @param trackCommitTimestamp Enum: `off`, `on`. Record commit time of transactions.
          * 
          * @return builder
          * 
@@ -1771,7 +1771,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackFunctions Enables tracking of function call counts and time used.
+         * @param trackFunctions Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
          * 
          * @return builder
          * 
@@ -1782,7 +1782,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackFunctions Enables tracking of function call counts and time used.
+         * @param trackFunctions Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.
          * 
          * @return builder
          * 
@@ -1792,7 +1792,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackIoTiming Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+         * @param trackIoTiming Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
          * 
          * @return builder
          * 
@@ -1803,7 +1803,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackIoTiming Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
+         * @param trackIoTiming Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.
          * 
          * @return builder
          * 

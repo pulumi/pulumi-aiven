@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.outputs;
 
+import com.pulumi.aiven.outputs.GetCassandraCassandra;
 import com.pulumi.aiven.outputs.GetCassandraCassandraUserConfig;
 import com.pulumi.aiven.outputs.GetCassandraComponent;
 import com.pulumi.aiven.outputs.GetCassandraServiceIntegration;
@@ -28,6 +29,11 @@ public final class GetCassandraResult {
      * 
      */
     private List<GetCassandraCassandraUserConfig> cassandraUserConfigs;
+    /**
+     * @return Cassandra server provided values
+     * 
+     */
+    private List<GetCassandraCassandra> cassandras;
     /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
      * 
@@ -173,6 +179,13 @@ public final class GetCassandraResult {
      */
     public List<GetCassandraCassandraUserConfig> cassandraUserConfigs() {
         return this.cassandraUserConfigs;
+    }
+    /**
+     * @return Cassandra server provided values
+     * 
+     */
+    public List<GetCassandraCassandra> cassandras() {
+        return this.cassandras;
     }
     /**
      * @return Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider&#39;s own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
@@ -368,6 +381,7 @@ public final class GetCassandraResult {
     public static final class Builder {
         private String additionalDiskSpace;
         private List<GetCassandraCassandraUserConfig> cassandraUserConfigs;
+        private List<GetCassandraCassandra> cassandras;
         private String cloudName;
         private List<GetCassandraComponent> components;
         private String diskSpace;
@@ -399,6 +413,7 @@ public final class GetCassandraResult {
     	      Objects.requireNonNull(defaults);
     	      this.additionalDiskSpace = defaults.additionalDiskSpace;
     	      this.cassandraUserConfigs = defaults.cassandraUserConfigs;
+    	      this.cassandras = defaults.cassandras;
     	      this.cloudName = defaults.cloudName;
     	      this.components = defaults.components;
     	      this.diskSpace = defaults.diskSpace;
@@ -445,6 +460,17 @@ public final class GetCassandraResult {
         }
         public Builder cassandraUserConfigs(GetCassandraCassandraUserConfig... cassandraUserConfigs) {
             return cassandraUserConfigs(List.of(cassandraUserConfigs));
+        }
+        @CustomType.Setter
+        public Builder cassandras(List<GetCassandraCassandra> cassandras) {
+            if (cassandras == null) {
+              throw new MissingRequiredPropertyException("GetCassandraResult", "cassandras");
+            }
+            this.cassandras = cassandras;
+            return this;
+        }
+        public Builder cassandras(GetCassandraCassandra... cassandras) {
+            return cassandras(List.of(cassandras));
         }
         @CustomType.Setter
         public Builder cloudName(String cloudName) {
@@ -673,6 +699,7 @@ public final class GetCassandraResult {
             final var _resultValue = new GetCassandraResult();
             _resultValue.additionalDiskSpace = additionalDiskSpace;
             _resultValue.cassandraUserConfigs = cassandraUserConfigs;
+            _resultValue.cassandras = cassandras;
             _resultValue.cloudName = cloudName;
             _resultValue.components = components;
             _resultValue.diskSpace = diskSpace;

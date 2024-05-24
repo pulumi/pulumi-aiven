@@ -87,6 +87,8 @@ type LookupRedisResult struct {
 	Project string `pulumi:"project"`
 	// Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 	ProjectVpcId string `pulumi:"projectVpcId"`
+	// Redis server provided values
+	Redis []GetRedisRedi `pulumi:"redis"`
 	// Redis user configurable settings
 	RedisUserConfigs []GetRedisRedisUserConfig `pulumi:"redisUserConfigs"`
 	// The hostname of the service.
@@ -225,6 +227,11 @@ func (o LookupRedisResultOutput) Project() pulumi.StringOutput {
 // Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.
 func (o LookupRedisResultOutput) ProjectVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisResult) string { return v.ProjectVpcId }).(pulumi.StringOutput)
+}
+
+// Redis server provided values
+func (o LookupRedisResultOutput) Redis() GetRedisRediArrayOutput {
+	return o.ApplyT(func(v LookupRedisResult) []GetRedisRedi { return v.Redis }).(GetRedisRediArrayOutput)
 }
 
 // Redis user configurable settings

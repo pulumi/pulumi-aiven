@@ -63,14 +63,14 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
     }
 
     /**
-     * The type of aggregation (aggregated/unaggregated).
+     * Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of aggregation (aggregated/unaggregated).
+     * @return Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
      * 
      */
     public Output<String> type() {
@@ -168,7 +168,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type The type of aggregation (aggregated/unaggregated).
+         * @param type Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param type The type of aggregation (aggregated/unaggregated).
+         * @param type Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).
          * 
          * @return builder
          * 

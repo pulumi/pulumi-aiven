@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaConnectKafkaConnectUserConfigKafkaConnectGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defines what client configurations can be overridden by the connector. Default is None.
+        /// Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
         /// </summary>
         [Input("connectorClientConfigOverridePolicy")]
         public Input<string>? ConnectorClientConfigOverridePolicy { get; set; }
 
         /// <summary>
-        /// What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+        /// Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
         /// </summary>
         [Input("consumerAutoOffsetReset")]
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ConsumerFetchMaxBytes { get; set; }
 
         /// <summary>
-        /// Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+        /// Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
         /// </summary>
         [Input("consumerIsolationLevel")]
         public Input<string>? ConsumerIsolationLevel { get; set; }
@@ -79,7 +79,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }

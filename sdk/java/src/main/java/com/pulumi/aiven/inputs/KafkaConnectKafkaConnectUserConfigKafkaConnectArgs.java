@@ -17,14 +17,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     public static final KafkaConnectKafkaConnectUserConfigKafkaConnectArgs Empty = new KafkaConnectKafkaConnectUserConfigKafkaConnectArgs();
 
     /**
-     * Defines what client configurations can be overridden by the connector. Default is None.
+     * Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     @Import(name="connectorClientConfigOverridePolicy")
     private @Nullable Output<String> connectorClientConfigOverridePolicy;
 
     /**
-     * @return Defines what client configurations can be overridden by the connector. Default is None.
+     * @return Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
      * 
      */
     public Optional<Output<String>> connectorClientConfigOverridePolicy() {
@@ -32,14 +32,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      * 
      */
     @Import(name="consumerAutoOffsetReset")
     private @Nullable Output<String> consumerAutoOffsetReset;
 
     /**
-     * @return What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+     * @return Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
      * 
      */
     public Optional<Output<String>> consumerAutoOffsetReset() {
@@ -62,14 +62,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     @Import(name="consumerIsolationLevel")
     private @Nullable Output<String> consumerIsolationLevel;
 
     /**
-     * @return Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+     * @return Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
      * 
      */
     public Optional<Output<String>> consumerIsolationLevel() {
@@ -182,14 +182,14 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
     }
 
     /**
-     * Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
     /**
-     * @return Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
      * 
      */
     public Optional<Output<String>> producerCompressionType() {
@@ -296,7 +296,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param connectorClientConfigOverridePolicy Defines what client configurations can be overridden by the connector. Default is None.
+         * @param connectorClientConfigOverridePolicy Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param connectorClientConfigOverridePolicy Defines what client configurations can be overridden by the connector. Default is None.
+         * @param connectorClientConfigOverridePolicy Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerAutoOffsetReset What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+         * @param consumerAutoOffsetReset Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerAutoOffsetReset What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
+         * @param consumerAutoOffsetReset Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerIsolationLevel Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param consumerIsolationLevel Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
+         * @param consumerIsolationLevel Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.
          * 
          * @return builder
          * 
@@ -527,7 +527,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnectArgs extends co
         }
 
         /**
-         * @param producerCompressionType Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
          * 
          * @return builder
          * 

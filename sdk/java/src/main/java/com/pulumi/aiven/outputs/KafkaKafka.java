@@ -5,6 +5,7 @@ package com.pulumi.aiven.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,6 +37,11 @@ public final class KafkaKafka {
      * 
      */
     private @Nullable String schemaRegistryUri;
+    /**
+     * @return Kafka server URIs.
+     * 
+     */
+    private @Nullable List<String> uris;
 
     private KafkaKafka() {}
     /**
@@ -73,6 +79,13 @@ public final class KafkaKafka {
     public Optional<String> schemaRegistryUri() {
         return Optional.ofNullable(this.schemaRegistryUri);
     }
+    /**
+     * @return Kafka server URIs.
+     * 
+     */
+    public List<String> uris() {
+        return this.uris == null ? List.of() : this.uris;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -88,6 +101,7 @@ public final class KafkaKafka {
         private @Nullable String connectUri;
         private @Nullable String restUri;
         private @Nullable String schemaRegistryUri;
+        private @Nullable List<String> uris;
         public Builder() {}
         public Builder(KafkaKafka defaults) {
     	      Objects.requireNonNull(defaults);
@@ -96,6 +110,7 @@ public final class KafkaKafka {
     	      this.connectUri = defaults.connectUri;
     	      this.restUri = defaults.restUri;
     	      this.schemaRegistryUri = defaults.schemaRegistryUri;
+    	      this.uris = defaults.uris;
         }
 
         @CustomType.Setter
@@ -128,6 +143,15 @@ public final class KafkaKafka {
             this.schemaRegistryUri = schemaRegistryUri;
             return this;
         }
+        @CustomType.Setter
+        public Builder uris(@Nullable List<String> uris) {
+
+            this.uris = uris;
+            return this;
+        }
+        public Builder uris(String... uris) {
+            return uris(List.of(uris));
+        }
         public KafkaKafka build() {
             final var _resultValue = new KafkaKafka();
             _resultValue.accessCert = accessCert;
@@ -135,6 +159,7 @@ public final class KafkaKafka {
             _resultValue.connectUri = connectUri;
             _resultValue.restUri = restUri;
             _resultValue.schemaRegistryUri = schemaRegistryUri;
+            _resultValue.uris = uris;
             return _resultValue;
         }
     }

@@ -886,7 +886,7 @@ class Flink(pulumi.CustomResource):
             __props__.__dict__["additional_disk_space"] = additional_disk_space
             __props__.__dict__["cloud_name"] = cloud_name
             __props__.__dict__["disk_space"] = disk_space
-            __props__.__dict__["flink"] = flink
+            __props__.__dict__["flink"] = None if flink is None else pulumi.Output.secret(flink)
             __props__.__dict__["flink_user_config"] = flink_user_config
             __props__.__dict__["maintenance_window_dow"] = maintenance_window_dow
             __props__.__dict__["maintenance_window_time"] = maintenance_window_time
@@ -917,7 +917,7 @@ class Flink(pulumi.CustomResource):
             __props__.__dict__["service_uri"] = None
             __props__.__dict__["service_username"] = None
             __props__.__dict__["state"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["servicePassword", "serviceUri"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["flink", "servicePassword", "serviceUri"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Flink, __self__).__init__(
             'aiven:index/flink:Flink',

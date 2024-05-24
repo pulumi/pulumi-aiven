@@ -61,14 +61,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Default error or timeout setting for new alerting rules.
+     * Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
      * 
      */
     @Import(name="alertingErrorOrTimeout")
     private @Nullable Output<String> alertingErrorOrTimeout;
 
     /**
-     * @return Default error or timeout setting for new alerting rules.
+     * @return Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
      * 
      */
     public Optional<Output<String>> alertingErrorOrTimeout() {
@@ -91,14 +91,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Default value for &#39;no data or null values&#39; for new alerting rules.
+     * Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     @Import(name="alertingNodataOrNullvalues")
     private @Nullable Output<String> alertingNodataOrNullvalues;
 
     /**
-     * @return Default value for &#39;no data or null values&#39; for new alerting rules.
+     * @return Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
      * 
      */
     public Optional<Output<String>> alertingNodataOrNullvalues() {
@@ -211,14 +211,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
      * 
      */
     @Import(name="cookieSamesite")
     private @Nullable Output<String> cookieSamesite;
 
     /**
-     * @return Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
      * 
      */
     public Optional<Output<String>> cookieSamesite() {
@@ -639,14 +639,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Set role for new signups. Defaults to Viewer.
+     * Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      * 
      */
     @Import(name="userAutoAssignOrgRole")
     private @Nullable Output<String> userAutoAssignOrgRole;
 
     /**
-     * @return Set role for new signups. Defaults to Viewer.
+     * @return Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
      * 
      */
     public Optional<Output<String>> userAutoAssignOrgRole() {
@@ -776,7 +776,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingErrorOrTimeout Default error or timeout setting for new alerting rules.
+         * @param alertingErrorOrTimeout Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
          * 
          * @return builder
          * 
@@ -787,7 +787,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingErrorOrTimeout Default error or timeout setting for new alerting rules.
+         * @param alertingErrorOrTimeout Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.
          * 
          * @return builder
          * 
@@ -818,7 +818,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingNodataOrNullvalues Default value for &#39;no data or null values&#39; for new alerting rules.
+         * @param alertingNodataOrNullvalues Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
          * 
          * @return builder
          * 
@@ -829,7 +829,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingNodataOrNullvalues Default value for &#39;no data or null values&#39; for new alerting rules.
+         * @param alertingNodataOrNullvalues Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for &#39;no data or null values&#39; for new alerting rules.
          * 
          * @return builder
          * 
@@ -986,7 +986,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cookieSamesite Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
          * 
          * @return builder
          * 
@@ -997,7 +997,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cookieSamesite Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
          * 
          * @return builder
          * 
@@ -1616,7 +1616,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param userAutoAssignOrgRole Set role for new signups. Defaults to Viewer.
+         * @param userAutoAssignOrgRole Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
          * 
          * @return builder
          * 
@@ -1627,7 +1627,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param userAutoAssignOrgRole Set role for new signups. Defaults to Viewer.
+         * @param userAutoAssignOrgRole Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.
          * 
          * @return builder
          * 

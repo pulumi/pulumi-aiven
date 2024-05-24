@@ -3,6 +3,7 @@
 
 package com.pulumi.aiven.inputs;
 
+import com.pulumi.aiven.inputs.CassandraCassandraArgs;
 import com.pulumi.aiven.inputs.CassandraCassandraUserConfigArgs;
 import com.pulumi.aiven.inputs.CassandraComponentArgs;
 import com.pulumi.aiven.inputs.CassandraServiceIntegrationArgs;
@@ -36,6 +37,21 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> additionalDiskSpace() {
         return Optional.ofNullable(this.additionalDiskSpace);
+    }
+
+    /**
+     * Cassandra server provided values
+     * 
+     */
+    @Import(name="cassandra")
+    private @Nullable Output<CassandraCassandraArgs> cassandra;
+
+    /**
+     * @return Cassandra server provided values
+     * 
+     */
+    public Optional<Output<CassandraCassandraArgs>> cassandra() {
+        return Optional.ofNullable(this.cassandra);
     }
 
     /**
@@ -440,6 +456,7 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
 
     private CassandraState(CassandraState $) {
         this.additionalDiskSpace = $.additionalDiskSpace;
+        this.cassandra = $.cassandra;
         this.cassandraUserConfig = $.cassandraUserConfig;
         this.cloudName = $.cloudName;
         this.components = $.components;
@@ -505,6 +522,27 @@ public final class CassandraState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder additionalDiskSpace(String additionalDiskSpace) {
             return additionalDiskSpace(Output.of(additionalDiskSpace));
+        }
+
+        /**
+         * @param cassandra Cassandra server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cassandra(@Nullable Output<CassandraCassandraArgs> cassandra) {
+            $.cassandra = cassandra;
+            return this;
+        }
+
+        /**
+         * @param cassandra Cassandra server provided values
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cassandra(CassandraCassandraArgs cassandra) {
+            return cassandra(Output.of(cassandra));
         }
 
         /**

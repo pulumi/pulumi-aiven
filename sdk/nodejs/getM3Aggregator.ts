@@ -89,6 +89,10 @@ export interface GetM3AggregatorResult {
      */
     readonly m3aggregatorUserConfigs: outputs.GetM3AggregatorM3aggregatorUserConfig[];
     /**
+     * M3 Aggregator server provided values
+     */
+    readonly m3aggregators: outputs.GetM3AggregatorM3aggregator[];
+    /**
      * Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.
      */
     readonly maintenanceWindowDow: string;

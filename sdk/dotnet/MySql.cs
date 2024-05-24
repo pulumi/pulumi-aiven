@@ -118,6 +118,12 @@ namespace Pulumi.Aiven
         public Output<string?> MaintenanceWindowTime { get; private set; } = null!;
 
         /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
+        [Output("mysql")]
+        public Output<Outputs.MySqlMysql> Mysql { get; private set; } = null!;
+
+        /// <summary>
         /// Mysql user configurable settings
         /// </summary>
         [Output("mysqlUserConfig")]
@@ -244,6 +250,7 @@ namespace Pulumi.Aiven
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "mysql",
                     "servicePassword",
                     "serviceUri",
                 },
@@ -299,6 +306,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("maintenanceWindowTime")]
         public Input<string>? MaintenanceWindowTime { get; set; }
+
+        [Input("mysql")]
+        private Input<Inputs.MySqlMysqlArgs>? _mysql;
+
+        /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
+        public Input<Inputs.MySqlMysqlArgs>? Mysql
+        {
+            get => _mysql;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _mysql = Output.Tuple<Input<Inputs.MySqlMysqlArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Mysql user configurable settings
@@ -457,6 +480,22 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("maintenanceWindowTime")]
         public Input<string>? MaintenanceWindowTime { get; set; }
+
+        [Input("mysql")]
+        private Input<Inputs.MySqlMysqlGetArgs>? _mysql;
+
+        /// <summary>
+        /// MySQL specific server provided values
+        /// </summary>
+        public Input<Inputs.MySqlMysqlGetArgs>? Mysql
+        {
+            get => _mysql;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _mysql = Output.Tuple<Input<Inputs.MySqlMysqlGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Mysql user configurable settings
