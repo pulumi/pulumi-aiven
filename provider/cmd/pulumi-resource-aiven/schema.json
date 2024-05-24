@@ -19678,6 +19678,7 @@
             }
         },
         "aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment": {
+            "description": "The Flink Application Deployment resource allows the creation and management of Aiven Flink Application Deployments.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst deployment = new aiven.FlinkApplicationDeployment(\"deployment\", {\n    project: foo.project,\n    serviceName: fooAivenFlink.serviceName,\n    applicationId: fooApp.applicationId,\n    versionId: fooAppVersion.applicationVersionId,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\ndeployment = aiven.FlinkApplicationDeployment(\"deployment\",\n    project=foo[\"project\"],\n    service_name=foo_aiven_flink[\"serviceName\"],\n    application_id=foo_app[\"applicationId\"],\n    version_id=foo_app_version[\"applicationVersionId\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var deployment = new Aiven.FlinkApplicationDeployment(\"deployment\", new()\n    {\n        Project = foo.Project,\n        ServiceName = fooAivenFlink.ServiceName,\n        ApplicationId = fooApp.ApplicationId,\n        VersionId = fooAppVersion.ApplicationVersionId,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewFlinkApplicationDeployment(ctx, \"deployment\", \u0026aiven.FlinkApplicationDeploymentArgs{\n\t\t\tProject:       pulumi.Any(foo.Project),\n\t\t\tServiceName:   pulumi.Any(fooAivenFlink.ServiceName),\n\t\t\tApplicationId: pulumi.Any(fooApp.ApplicationId),\n\t\t\tVersionId:     pulumi.Any(fooAppVersion.ApplicationVersionId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.FlinkApplicationDeployment;\nimport com.pulumi.aiven.FlinkApplicationDeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var deployment = new FlinkApplicationDeployment(\"deployment\", FlinkApplicationDeploymentArgs.builder()\n            .project(foo.project())\n            .serviceName(fooAivenFlink.serviceName())\n            .applicationId(fooApp.applicationId())\n            .versionId(fooAppVersion.applicationVersionId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  deployment:\n    type: aiven:FlinkApplicationDeployment\n    properties:\n      project: ${foo.project}\n      serviceName: ${fooAivenFlink.serviceName}\n      applicationId: ${fooApp.applicationId}\n      versionId: ${fooAppVersion.applicationVersionId}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/flinkApplicationDeployment:FlinkApplicationDeployment foo_deploy PROJECT/SERVICE/APPLICATION_ID/APPLICATION_VERSION_ID/DEPLOYMENT_ID\n```\n\n",
             "properties": {
                 "applicationId": {
                     "type": "string",
@@ -19697,7 +19698,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "restartEnabled": {
                     "type": "boolean",
@@ -19705,7 +19706,7 @@
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "startingSavepoint": {
                     "type": "string",
@@ -19737,7 +19738,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "restartEnabled": {
@@ -19747,7 +19748,7 @@
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "startingSavepoint": {
@@ -19790,7 +19791,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "restartEnabled": {
@@ -19800,7 +19801,7 @@
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "startingSavepoint": {
@@ -20033,6 +20034,7 @@
             }
         },
         "aiven:index/gcpPrivatelink:GcpPrivatelink": {
+            "description": "Creates and manages a Google Private Service Connect for an Aiven service in a VPC.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = new aiven.GcpPrivatelink(\"main\", {\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.GcpPrivatelink(\"main\",\n    project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = new Aiven.GcpPrivatelink(\"main\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewGcpPrivatelink(ctx, \"main\", \u0026aiven.GcpPrivatelinkArgs{\n\t\t\tProject:     pulumi.Any(exampleProject.Project),\n\t\t\tServiceName: pulumi.Any(exampleKafka.ServiceName),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.GcpPrivatelink;\nimport com.pulumi.aiven.GcpPrivatelinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var main = new GcpPrivatelink(\"main\", GcpPrivatelinkArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  main:\n    type: aiven:GcpPrivatelink\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleKafka.serviceName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/gcpPrivatelink:GcpPrivatelink main PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "googleServiceAttachment": {
                     "type": "string",
@@ -20044,11 +20046,11 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "state": {
                     "type": "string",
@@ -20065,12 +20067,12 @@
             "inputProperties": {
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -20091,12 +20093,12 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "state": {
@@ -20108,6 +20110,7 @@
             }
         },
         "aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval": {
+            "description": "Approves a Google Private Service Connect connection to an Aiven service with an associated endpoint IP.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst approve = new aiven.GcpPrivatelinkConnectionApproval(\"approve\", {\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n    userIpAddress: \"10.0.0.100\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\napprove = aiven.GcpPrivatelinkConnectionApproval(\"approve\",\n    project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"],\n    user_ip_address=\"10.0.0.100\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var approve = new Aiven.GcpPrivatelinkConnectionApproval(\"approve\", new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n        UserIpAddress = \"10.0.0.100\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.NewGcpPrivatelinkConnectionApproval(ctx, \"approve\", \u0026aiven.GcpPrivatelinkConnectionApprovalArgs{\n\t\t\tProject:       pulumi.Any(exampleProject.Project),\n\t\t\tServiceName:   pulumi.Any(exampleKafka.ServiceName),\n\t\t\tUserIpAddress: pulumi.String(\"10.0.0.100\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.GcpPrivatelinkConnectionApproval;\nimport com.pulumi.aiven.GcpPrivatelinkConnectionApprovalArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var approve = new GcpPrivatelinkConnectionApproval(\"approve\", GcpPrivatelinkConnectionApprovalArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .userIpAddress(\"10.0.0.100\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  approve:\n    type: aiven:GcpPrivatelinkConnectionApproval\n    properties:\n      project: ${exampleProject.project}\n      serviceName: ${exampleKafka.serviceName}\n      userIpAddress: 10.0.0.100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n```sh\n$ pulumi import aiven:index/gcpPrivatelinkConnectionApproval:GcpPrivatelinkConnectionApproval main PROJECT/SERVICE_NAME\n```\n\n",
             "properties": {
                 "privatelinkConnectionId": {
                     "type": "string",
@@ -20115,7 +20118,7 @@
                 },
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "pscConnectionId": {
                     "type": "string",
@@ -20123,7 +20126,7 @@
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n"
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
                 "state": {
                     "type": "string",
@@ -20145,12 +20148,12 @@
             "inputProperties": {
                 "project": {
                     "type": "string",
-                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "serviceName": {
                     "type": "string",
-                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                    "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
                 },
                 "userIpAddress": {
@@ -20172,7 +20175,7 @@
                     },
                     "project": {
                         "type": "string",
-                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "pscConnectionId": {
@@ -20181,7 +20184,7 @@
                     },
                     "serviceName": {
                         "type": "string",
-                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a\nreference. Changing this property forces recreation of the resource.\n",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
                     },
                     "state": {
@@ -30899,14 +30902,17 @@
             }
         },
         "aiven:index/getGcpPrivatelink:getGcpPrivatelink": {
+            "description": "Gets information about a Google Private Service Connect connection for an Aiven service.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst main = aiven.getGcpPrivatelink({\n    project: exampleProject.project,\n    serviceName: exampleKafka.serviceName,\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\nmain = aiven.get_gcp_privatelink(project=example_project[\"project\"],\n    service_name=example_kafka[\"serviceName\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var main = Aiven.GetGcpPrivatelink.Invoke(new()\n    {\n        Project = exampleProject.Project,\n        ServiceName = exampleKafka.ServiceName,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupGcpPrivatelink(ctx, \u0026aiven.LookupGcpPrivatelinkArgs{\n\t\t\tProject:     exampleProject.Project,\n\t\t\tServiceName: exampleKafka.ServiceName,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetGcpPrivatelinkArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var main = AivenFunctions.getGcpPrivatelink(GetGcpPrivatelinkArgs.builder()\n            .project(exampleProject.project())\n            .serviceName(exampleKafka.serviceName())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  main:\n    fn::invoke:\n      Function: aiven:getGcpPrivatelink\n      Arguments:\n        project: ${exampleProject.project}\n        serviceName: ${exampleKafka.serviceName}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getGcpPrivatelink.\n",
                 "properties": {
                     "project": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                     },
                     "serviceName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                     }
                 },
                 "type": "object",
@@ -30919,6 +30925,7 @@
                 "description": "A collection of values returned by getGcpPrivatelink.\n",
                 "properties": {
                     "googleServiceAttachment": {
+                        "description": "Google Private Service Connect service attachment.\n",
                         "type": "string"
                     },
                     "id": {
@@ -30926,15 +30933,19 @@
                         "type": "string"
                     },
                     "message": {
+                        "description": "Printable result of the Google Cloud Private Service Connect request.\n",
                         "type": "string"
                     },
                     "project": {
+                        "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "type": "string"
                     },
                     "serviceName": {
+                        "description": "The name of the service that this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "type": "string"
                     },
                     "state": {
+                        "description": "The state of the Private Service Connect resource.\n",
                         "type": "string"
                     }
                 },
