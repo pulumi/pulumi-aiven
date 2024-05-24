@@ -90,6 +90,25 @@
             },
             "type": "object"
         },
+        "aiven:index/CassandraCassandra:CassandraCassandra": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Cassandra server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "uris"
+                    ]
+                }
+            }
+        },
         "aiven:index/CassandraCassandraUserConfig:CassandraCassandraUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -111,7 +130,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Cassandra version.\n"
+                    "description": "Enum: `3`, `4`, `4.1`. Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -319,6 +338,25 @@
             "required": [
                 "email"
             ]
+        },
+        "aiven:index/ClickhouseClickhouse:ClickhouseClickhouse": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Clickhouse server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "uris"
+                    ]
+                }
+            }
         },
         "aiven:index/ClickhouseClickhouseUserConfig:ClickhouseClickhouseUserConfig": {
             "properties": {
@@ -652,6 +690,44 @@
                 }
             }
         },
+        "aiven:index/DragonflyDragonfly:DragonflyDragonfly": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Dragonfly password.\n",
+                    "secret": true
+                },
+                "replicaUri": {
+                    "type": "string",
+                    "description": "Dragonfly replica server URI.\n"
+                },
+                "slaveUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Dragonfly slave server URIs.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Dragonfly server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "password",
+                        "replicaUri",
+                        "slaveUris",
+                        "uris"
+                    ]
+                }
+            }
+        },
         "aiven:index/DragonflyDragonflyUserConfig:DragonflyDragonflyUserConfig": {
             "properties": {
                 "cacheMode": {
@@ -660,7 +736,7 @@
                 },
                 "dragonflyPersistence": {
                     "type": "string",
-                    "description": "When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
                 },
                 "dragonflySsl": {
                     "type": "boolean",
@@ -761,7 +837,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -987,7 +1063,7 @@
                 },
                 "flinkVersion": {
                     "type": "string",
-                    "description": "Flink major version.\n"
+                    "description": "Enum: `1.16`. Flink major version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -1156,6 +1232,25 @@
                 }
             }
         },
+        "aiven:index/GrafanaGrafana:GrafanaGrafana": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Grafana server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "uris"
+                    ]
+                }
+            }
+        },
         "aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -1168,7 +1263,7 @@
                 },
                 "alertingErrorOrTimeout": {
                     "type": "string",
-                    "description": "Default error or timeout setting for new alerting rules.\n"
+                    "description": "Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.\n"
                 },
                 "alertingMaxAnnotationsToKeep": {
                     "type": "integer",
@@ -1176,7 +1271,7 @@
                 },
                 "alertingNodataOrNullvalues": {
                     "type": "string",
-                    "description": "Default value for 'no data or null values' for new alerting rules.\n"
+                    "description": "Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.\n"
                 },
                 "allowEmbedding": {
                     "type": "boolean",
@@ -1208,7 +1303,7 @@
                 },
                 "cookieSamesite": {
                     "type": "string",
-                    "description": "Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.\n"
+                    "description": "Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.\n"
                 },
                 "customDomain": {
                     "type": "string",
@@ -1332,7 +1427,7 @@
                 },
                 "userAutoAssignOrgRole": {
                     "type": "string",
-                    "description": "Set role for new signups. Defaults to Viewer.\n"
+                    "description": "Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.\n"
                 },
                 "viewersCanEdit": {
                     "type": "boolean",
@@ -1613,7 +1708,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider type.\n"
+                    "description": "Enum: `s3`. Provider type.\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -1700,7 +1795,7 @@
                 },
                 "starttlsPolicy": {
                     "type": "string",
-                    "description": "Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.\n"
+                    "description": "Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.\n"
                 },
                 "username": {
                     "type": "string",
@@ -1816,13 +1911,32 @@
                 "databaseName": {
                     "type": "string",
                     "description": "Name of the default InfluxDB database\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "InfluxDB password\n",
+                    "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "InfluxDB server URIs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "InfluxDB username\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "databaseName"
+                        "databaseName",
+                        "password",
+                        "uris",
+                        "username"
                     ]
                 }
             }
@@ -2201,11 +2315,11 @@
             "properties": {
                 "connectorClientConfigOverridePolicy": {
                     "type": "string",
-                    "description": "Defines what client configurations can be overridden by the connector. Default is None.\n"
+                    "description": "Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.\n"
                 },
                 "consumerAutoOffsetReset": {
                     "type": "string",
-                    "description": "What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
+                    "description": "Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
                 },
                 "consumerFetchMaxBytes": {
                     "type": "integer",
@@ -2213,7 +2327,7 @@
                 },
                 "consumerIsolationLevel": {
                     "type": "string",
-                    "description": "Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.\n"
+                    "description": "Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
                     "type": "integer",
@@ -2245,7 +2359,7 @@
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -2402,6 +2516,13 @@
                     "type": "string",
                     "description": "The Schema Registry URI.\n",
                     "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Kafka server URIs.\n"
                 }
             },
             "type": "object",
@@ -2412,7 +2533,8 @@
                         "accessKey",
                         "connectUri",
                         "restUri",
-                        "schemaRegistryUri"
+                        "schemaRegistryUri",
+                        "uris"
                     ]
                 }
             }
@@ -2484,7 +2606,7 @@
                 },
                 "kafkaVersion": {
                     "type": "string",
-                    "description": "Kafka major version.\n"
+                    "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigPrivateAccess:KafkaKafkaUserConfigPrivateAccess",
@@ -2545,7 +2667,7 @@
                 },
                 "compressionType": {
                     "type": "string",
-                    "description": "Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.\n"
                 },
                 "connectionsMaxIdleMs": {
                     "type": "integer",
@@ -2585,7 +2707,7 @@
                 },
                 "logCleanupPolicy": {
                     "type": "string",
-                    "description": "The default cleanup policy for segments beyond the retention window.\n"
+                    "description": "Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.\n"
                 },
                 "logFlushIntervalMessages": {
                     "type": "integer",
@@ -2621,7 +2743,7 @@
                 },
                 "logMessageTimestampType": {
                     "type": "string",
-                    "description": "Define whether the timestamp in the message is message create time or log append time.\n"
+                    "description": "Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.\n"
                 },
                 "logPreallocate": {
                     "type": "boolean",
@@ -2743,11 +2865,11 @@
             "properties": {
                 "connectorClientConfigOverridePolicy": {
                     "type": "string",
-                    "description": "Defines what client configurations can be overridden by the connector. Default is None.\n"
+                    "description": "Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.\n"
                 },
                 "consumerAutoOffsetReset": {
                     "type": "string",
-                    "description": "What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
+                    "description": "Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
                 },
                 "consumerFetchMaxBytes": {
                     "type": "integer",
@@ -2755,7 +2877,7 @@
                 },
                 "consumerIsolationLevel": {
                     "type": "string",
-                    "description": "Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.\n"
+                    "description": "Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read*uncommitted is the default, but read*committed can be used if consume-exactly-once behavior is desired.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
                     "type": "integer",
@@ -2787,7 +2909,7 @@
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -2820,11 +2942,11 @@
                 },
                 "consumerRequestTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
+                    "description": "Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
                 },
                 "nameStrategy": {
                     "type": "string",
-                    "description": "Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.\n"
+                    "description": "Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.\n"
                 },
                 "nameStrategyValidation": {
                     "type": "boolean",
@@ -2832,11 +2954,11 @@
                 },
                 "producerAcks": {
                     "type": "string",
-                    "description": "The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.\n"
+                    "description": "Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.\n"
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -3410,6 +3532,30 @@
                 }
             }
         },
+        "aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator": {
+            "properties": {
+                "aggregatorHttpUri": {
+                    "type": "string",
+                    "description": "M3 Aggregator HTTP URI.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "M3 Aggregator server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "aggregatorHttpUri",
+                        "uris"
+                    ]
+                }
+            }
+        },
         "aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig": {
             "properties": {
                 "customDomain": {
@@ -3440,11 +3586,11 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "M3 major version (deprecated, use m3aggregator_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).\n"
                 },
                 "m3aggregatorVersion": {
                     "type": "string",
-                    "description": "M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -3570,6 +3716,50 @@
                 }
             }
         },
+        "aiven:index/M3DbM3db:M3DbM3db": {
+            "properties": {
+                "httpClusterUri": {
+                    "type": "string",
+                    "description": "M3DB cluster URI.\n"
+                },
+                "httpNodeUri": {
+                    "type": "string",
+                    "description": "M3DB node URI.\n"
+                },
+                "influxdbUri": {
+                    "type": "string",
+                    "description": "InfluxDB URI.\n"
+                },
+                "prometheusRemoteReadUri": {
+                    "type": "string",
+                    "description": "Prometheus remote read URI.\n"
+                },
+                "prometheusRemoteWriteUri": {
+                    "type": "string",
+                    "description": "Prometheus remote write URI.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "M3DB server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "httpClusterUri",
+                        "httpNodeUri",
+                        "influxdbUri",
+                        "prometheusRemoteReadUri",
+                        "prometheusRemoteWriteUri",
+                        "uris"
+                    ]
+                }
+            }
+        },
         "aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -3612,7 +3802,7 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "M3 major version (deprecated, use m3db_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).\n"
                 },
                 "m3coordinatorEnableGraphiteCarbonIngest": {
                     "type": "boolean",
@@ -3620,7 +3810,7 @@
                 },
                 "m3dbVersion": {
                     "type": "string",
-                    "description": "M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
                 },
                 "namespaces": {
                     "type": "array",
@@ -3745,7 +3935,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of aggregation (aggregated/unaggregated).\n"
+                    "description": "Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).\n"
                 }
             },
             "type": "object",
@@ -4015,6 +4205,97 @@
                 }
             }
         },
+        "aiven:index/MySqlMysql:MySqlMysql": {
+            "properties": {
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/MySqlMysqlParam:MySqlMysqlParam"
+                    },
+                    "description": "MySQL connection parameters\n"
+                },
+                "replicaUri": {
+                    "type": "string",
+                    "description": "MySQL replica URI for services with a replica\n",
+                    "secret": true
+                },
+                "standbyUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "MySQL standby connection URIs\n"
+                },
+                "syncingUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "MySQL syncing connection URIs\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "MySQL master connection URIs\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "params",
+                        "replicaUri",
+                        "standbyUris",
+                        "syncingUris",
+                        "uris"
+                    ]
+                }
+            }
+        },
+        "aiven:index/MySqlMysqlParam:MySqlMysqlParam": {
+            "properties": {
+                "databaseName": {
+                    "type": "string",
+                    "description": "Primary MySQL database name\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "MySQL host IP or name\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "MySQL admin user password\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "MySQL port\n"
+                },
+                "sslmode": {
+                    "type": "string",
+                    "description": "MySQL sslmode setting (currently always \"require\")\n"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "MySQL admin user name\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "databaseName",
+                        "host",
+                        "password",
+                        "port",
+                        "sslmode",
+                        "user"
+                    ]
+                }
+            }
+        },
         "aiven:index/MySqlMysqlUserConfig:MySqlMysqlUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -4076,7 +4357,7 @@
                 },
                 "mysqlVersion": {
                     "type": "string",
-                    "description": "MySQL major version.\n"
+                    "description": "Enum: `8`. MySQL major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfigPrivateAccess:MySqlMysqlUserConfigPrivateAccess",
@@ -4148,7 +4429,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -4246,7 +4527,7 @@
                 },
                 "internalTmpMemStorageEngine": {
                     "type": "string",
-                    "description": "The storage engine for in-memory internal temporary tables.\n"
+                    "description": "Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.\n"
                 },
                 "longQueryTime": {
                     "type": "number",
@@ -4449,17 +4730,41 @@
         },
         "aiven:index/OpenSearchOpensearch:OpenSearchOpensearch": {
             "properties": {
+                "kibanaUri": {
+                    "type": "string",
+                    "description": "URI for Kibana dashboard frontend\n"
+                },
                 "opensearchDashboardsUri": {
                     "type": "string",
                     "description": "URI for OpenSearch dashboard frontend\n",
                     "secret": true
+                },
+                "password": {
+                    "type": "string",
+                    "description": "OpenSearch password\n",
+                    "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OpenSearch server URIs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "OpenSearch username\n"
                 }
             },
             "type": "object",
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
-                        "opensearchDashboardsUri"
+                        "kibanaUri",
+                        "opensearchDashboardsUri",
+                        "password",
+                        "uris",
+                        "username"
                     ]
                 }
             }
@@ -4533,7 +4838,7 @@
                 },
                 "opensearchVersion": {
                     "type": "string",
-                    "description": "OpenSearch major version.\n"
+                    "description": "Enum: `1`, `2`. OpenSearch major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigPrivateAccess:OpenSearchOpensearchUserConfigPrivateAccess",
@@ -4588,7 +4893,7 @@
                 },
                 "sortingAlgorithm": {
                     "type": "string",
-                    "description": "Deletion sorting algorithm. The default value is `creation_date`.\n"
+                    "description": "Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.\n"
                 }
             },
             "type": "object",
@@ -4886,7 +5191,7 @@
                 },
                 "authenticationBackend": {
                     "type": "string",
-                    "description": "internal*authentication*backend*limiting.authentication*backend.\n"
+                    "description": "Enum: `internal`. internal*authentication*backend*limiting.authentication*backend.\n"
                 },
                 "blockExpirySeconds": {
                     "type": "integer",
@@ -4906,7 +5211,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "internal*authentication*backend_limiting.type.\n"
+                    "description": "Enum: `username`. internal*authentication*backend_limiting.type.\n"
                 }
             },
             "type": "object"
@@ -4935,7 +5240,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of rate limiting.\n"
+                    "description": "Enum: `ip`. The type of rate limiting.\n"
                 }
             },
             "type": "object"
@@ -5251,6 +5556,10 @@
         },
         "aiven:index/PgPg:PgPg": {
             "properties": {
+                "bouncer": {
+                    "type": "string",
+                    "description": "Bouncer connection details\n"
+                },
                 "dbname": {
                     "type": "string",
                     "description": "Primary PostgreSQL database name\n"
@@ -5262,6 +5571,13 @@
                 "maxConnections": {
                     "type": "integer",
                     "description": "Connection limit\n"
+                },
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/PgPgParam:PgPgParam"
+                    },
+                    "description": "PostgreSQL connection parameters\n"
                 },
                 "password": {
                     "type": "string",
@@ -5281,10 +5597,31 @@
                     "type": "string",
                     "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
                 },
+                "standbyUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PostgreSQL standby connection URIs\n"
+                },
+                "syncingUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PostgreSQL syncing connection URIs\n"
+                },
                 "uri": {
                     "type": "string",
                     "description": "PostgreSQL master connection URI\n",
                     "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PostgreSQL master connection URIs\n"
                 },
                 "user": {
                     "type": "string",
@@ -5295,14 +5632,61 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "bouncer",
                         "dbname",
                         "host",
                         "maxConnections",
+                        "params",
                         "password",
                         "port",
                         "replicaUri",
                         "sslmode",
+                        "standbyUris",
+                        "syncingUris",
                         "uri",
+                        "uris",
+                        "user"
+                    ]
+                }
+            }
+        },
+        "aiven:index/PgPgParam:PgPgParam": {
+            "properties": {
+                "databaseName": {
+                    "type": "string",
+                    "description": "Primary PostgreSQL database name\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "PostgreSQL host IP or name\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "PostgreSQL admin user password\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "PostgreSQL port\n"
+                },
+                "sslmode": {
+                    "type": "string",
+                    "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "PostgreSQL admin user name\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "databaseName",
+                        "host",
+                        "password",
+                        "port",
+                        "sslmode",
                         "user"
                     ]
                 }
@@ -5387,7 +5771,7 @@
                 },
                 "pgVersion": {
                     "type": "string",
-                    "description": "PostgreSQL major version.\n"
+                    "description": "Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.\n"
                 },
                 "pgaudit": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPgaudit:PgPgUserConfigPgaudit",
@@ -5442,7 +5826,7 @@
                 },
                 "synchronousReplication": {
                     "type": "string",
-                    "description": "Synchronous replication type. Note that the service plan also needs to support synchronous replication.\n"
+                    "description": "Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.\n"
                 },
                 "timescaledb": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigTimescaledb:PgPgUserConfigTimescaledb",
@@ -5450,7 +5834,7 @@
                 },
                 "variant": {
                     "type": "string",
-                    "description": "Variant of the PostgreSQL service, may affect the features that are exposed by default.\n"
+                    "description": "Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.\n"
                 },
                 "workMem": {
                     "type": "integer",
@@ -5491,7 +5875,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -5577,7 +5961,7 @@
                 },
                 "defaultToastCompression": {
                     "type": "string",
-                    "description": "Specifies the default TOAST compression method for values of compressible columns (the default is lz4).\n"
+                    "description": "Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).\n"
                 },
                 "idleInTransactionSessionTimeout": {
                     "type": "integer",
@@ -5593,11 +5977,11 @@
                 },
                 "logErrorVerbosity": {
                     "type": "string",
-                    "description": "Controls the amount of detail written in the server log for each message that is logged.\n"
+                    "description": "Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.\n"
                 },
                 "logLinePrefix": {
                     "type": "string",
-                    "description": "Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
+                    "description": "Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
                 },
                 "logMinDurationStatement": {
                     "type": "integer",
@@ -5681,7 +6065,7 @@
                 },
                 "pgStatStatementsDotTrack": {
                     "type": "string",
-                    "description": "Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.\n"
+                    "description": "Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.\n"
                 },
                 "tempFileLimit": {
                     "type": "integer",
@@ -5697,15 +6081,15 @@
                 },
                 "trackCommitTimestamp": {
                     "type": "string",
-                    "description": "Record commit time of transactions.\n"
+                    "description": "Enum: `off`, `on`. Record commit time of transactions.\n"
                 },
                 "trackFunctions": {
                     "type": "string",
-                    "description": "Enables tracking of function call counts and time used.\n"
+                    "description": "Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.\n"
                 },
                 "trackIoTiming": {
                     "type": "string",
-                    "description": "Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.\n"
+                    "description": "Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.\n"
                 },
                 "walSenderTimeout": {
                     "type": "integer",
@@ -5764,7 +6148,7 @@
                 },
                 "logLevel": {
                     "type": "string",
-                    "description": "Specifies the log level that will be used for log entries. The default value is `log`.\n"
+                    "description": "Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.\n"
                 },
                 "logMaxStringLength": {
                     "type": "integer",
@@ -5824,7 +6208,7 @@
                 },
                 "autodbPoolMode": {
                     "type": "string",
-                    "description": "PGBouncer pool mode. The default value is `transaction`.\n"
+                    "description": "Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.\n"
                 },
                 "autodbPoolSize": {
                     "type": "integer",
@@ -6039,6 +6423,44 @@
                 }
             }
         },
+        "aiven:index/RedisRedis:RedisRedis": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Redis password.\n",
+                    "secret": true
+                },
+                "replicaUri": {
+                    "type": "string",
+                    "description": "Redis replica server URI.\n"
+                },
+                "slaveUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Redis slave server URIs.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Redis server URIs.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "password",
+                        "replicaUri",
+                        "slaveUris",
+                        "uris"
+                    ]
+                }
+            }
+        },
         "aiven:index/RedisRedisUserConfig:RedisRedisUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -6094,7 +6516,7 @@
                 },
                 "redisAclChannelsDefault": {
                     "type": "string",
-                    "description": "Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.\n"
+                    "description": "Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.\n"
                 },
                 "redisIoThreads": {
                     "type": "integer",
@@ -6110,7 +6532,7 @@
                 },
                 "redisMaxmemoryPolicy": {
                     "type": "string",
-                    "description": "Redis maxmemory-policy. The default value is `noeviction`.\n"
+                    "description": "Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.\n"
                 },
                 "redisNotifyKeyspaceEvents": {
                     "type": "string",
@@ -6122,7 +6544,7 @@
                 },
                 "redisPersistence": {
                     "type": "string",
-                    "description": "When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
                 },
                 "redisPubsubClientOutputBufferLimit": {
                     "type": "integer",
@@ -6138,7 +6560,7 @@
                 },
                 "redisVersion": {
                     "type": "string",
-                    "description": "Redis major version.\n"
+                    "description": "Enum: `7.0`. Redis major version.\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -6188,7 +6610,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -6315,7 +6737,7 @@
             "properties": {
                 "autoOffsetReset": {
                     "type": "string",
-                    "description": "Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.\n"
+                    "description": "Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.\n"
                 },
                 "columns": {
                     "type": "array",
@@ -6326,11 +6748,11 @@
                 },
                 "dataFormat": {
                     "type": "string",
-                    "description": "Message data format. The default value is `JSONEachRow`.\n"
+                    "description": "Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.\n"
                 },
                 "dateTimeInputFormat": {
                     "type": "string",
-                    "description": "Method to read DateTime from text input formats. The default value is `basic`.\n"
+                    "description": "Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.\n"
                 },
                 "groupName": {
                     "type": "string",
@@ -6338,7 +6760,7 @@
                 },
                 "handleErrorMode": {
                     "type": "string",
-                    "description": "How to handle errors for Kafka engine. The default value is `default`.\n"
+                    "description": "Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.\n"
                 },
                 "maxBlockSize": {
                     "type": "integer",
@@ -6440,6 +6862,10 @@
                 "datadogDbmEnabled": {
                     "type": "boolean",
                     "description": "Enable Datadog Database Monitoring.\n"
+                },
+                "datadogPgbouncerEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Datadog PgBouncer Metric Tracking.\n"
                 },
                 "datadogTags": {
                     "type": "array",
@@ -6576,7 +7002,7 @@
                 },
                 "site": {
                     "type": "string",
-                    "description": "Datadog intake site. Defaults to datadoghq.com.\n"
+                    "description": "Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.\n"
                 }
             },
             "type": "object",
@@ -6729,7 +7155,7 @@
                 },
                 "saslMechanism": {
                     "type": "string",
-                    "description": "SASL mechanism used for connections to the Kafka server.\n"
+                    "description": "Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.\n"
                 },
                 "saslPlainPassword": {
                     "type": "string",
@@ -6742,7 +7168,7 @@
                 },
                 "securityProtocol": {
                     "type": "string",
-                    "description": "Security protocol.\n"
+                    "description": "Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.\n"
                 },
                 "sslCaCert": {
                     "type": "string",
@@ -6758,7 +7184,7 @@
                 },
                 "sslEndpointIdentificationAlgorithm": {
                     "type": "string",
-                    "description": "The endpoint identification algorithm to validate server hostname using server certificate.\n"
+                    "description": "Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.\n"
                 }
             },
             "type": "object",
@@ -6825,7 +7251,7 @@
                 },
                 "sslMode": {
                     "type": "string",
-                    "description": "SSL Mode. The default value is `verify-full`.\n"
+                    "description": "Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.\n"
                 },
                 "sslRootCert": {
                     "type": "string",
@@ -6847,7 +7273,7 @@
             "properties": {
                 "authentication": {
                     "type": "string",
-                    "description": "Authentication method.\n"
+                    "description": "Enum: `none`, `basic`. Authentication method.\n"
                 },
                 "basicAuthPassword": {
                     "type": "string",
@@ -6909,7 +7335,7 @@
                 },
                 "format": {
                     "type": "string",
-                    "description": "Message format. The default value is `rfc5424`.\n"
+                    "description": "Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.\n"
                 },
                 "key": {
                     "type": "string",
@@ -7115,7 +7541,7 @@
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -7347,6 +7773,26 @@
             },
             "type": "object"
         },
+        "aiven:index/getCassandaCassandra:getCassandaCassandra": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Cassandra server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getCassandaCassandraUserConfig:getCassandaCassandraUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -7368,7 +7814,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Cassandra version.\n"
+                    "description": "Enum: `3`, `4`, `4.1`. Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -7596,6 +8042,26 @@
                 }
             }
         },
+        "aiven:index/getCassandraCassandra:getCassandraCassandra": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Cassandra server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getCassandraCassandraUserConfig:getCassandraCassandraUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -7617,7 +8083,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Cassandra version.\n"
+                    "description": "Enum: `3`, `4`, `4.1`. Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -7838,6 +8304,26 @@
             "type": "object",
             "required": [
                 "email"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getClickhouseClickhouse:getClickhouseClickhouse": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Clickhouse server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uris"
             ],
             "language": {
                 "nodejs": {
@@ -8154,6 +8640,45 @@
                 }
             }
         },
+        "aiven:index/getDragonflyDragonfly:getDragonflyDragonfly": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Dragonfly password.\n",
+                    "secret": true
+                },
+                "replicaUri": {
+                    "type": "string",
+                    "description": "Dragonfly replica server URI.\n"
+                },
+                "slaveUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Dragonfly slave server URIs.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Dragonfly server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "replicaUri",
+                "slaveUris",
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getDragonflyDragonflyUserConfig:getDragonflyDragonflyUserConfig": {
             "properties": {
                 "cacheMode": {
@@ -8162,7 +8687,7 @@
                 },
                 "dragonflyPersistence": {
                     "type": "string",
-                    "description": "When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
                 },
                 "dragonflySsl": {
                     "type": "boolean",
@@ -8266,7 +8791,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -8520,7 +9045,7 @@
                 },
                 "flinkVersion": {
                     "type": "string",
-                    "description": "Flink major version.\n"
+                    "description": "Enum: `1.16`. Flink major version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -8710,6 +9235,26 @@
                 }
             }
         },
+        "aiven:index/getGrafanaGrafana:getGrafanaGrafana": {
+            "properties": {
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Grafana server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getGrafanaGrafanaUserConfig:getGrafanaGrafanaUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -8722,7 +9267,7 @@
                 },
                 "alertingErrorOrTimeout": {
                     "type": "string",
-                    "description": "Default error or timeout setting for new alerting rules.\n"
+                    "description": "Enum: `alerting`, `keep_state`. Default error or timeout setting for new alerting rules.\n"
                 },
                 "alertingMaxAnnotationsToKeep": {
                     "type": "integer",
@@ -8730,7 +9275,7 @@
                 },
                 "alertingNodataOrNullvalues": {
                     "type": "string",
-                    "description": "Default value for 'no data or null values' for new alerting rules.\n"
+                    "description": "Enum: `alerting`, `no_data`, `keep_state`, `ok`. Default value for 'no data or null values' for new alerting rules.\n"
                 },
                 "allowEmbedding": {
                     "type": "boolean",
@@ -8762,7 +9307,7 @@
                 },
                 "cookieSamesite": {
                     "type": "string",
-                    "description": "Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.\n"
+                    "description": "Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: 'strict' prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. 'lax' is the default value.\n"
                 },
                 "customDomain": {
                     "type": "string",
@@ -8884,7 +9429,7 @@
                 },
                 "userAutoAssignOrgRole": {
                     "type": "string",
-                    "description": "Set role for new signups. Defaults to Viewer.\n"
+                    "description": "Enum: `Viewer`, `Admin`, `Editor`. Set role for new signups. Defaults to Viewer.\n"
                 },
                 "viewersCanEdit": {
                     "type": "boolean",
@@ -9190,7 +9735,7 @@
                 },
                 "provider": {
                     "type": "string",
-                    "description": "Provider type.\n"
+                    "description": "Enum: `s3`. Provider type.\n"
                 },
                 "secretKey": {
                     "type": "string",
@@ -9287,7 +9832,7 @@
                 },
                 "starttlsPolicy": {
                     "type": "string",
-                    "description": "Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.\n"
+                    "description": "Enum: `OpportunisticStartTLS`, `MandatoryStartTLS`, `NoStartTLS`. Either OpportunisticStartTLS, MandatoryStartTLS or NoStartTLS. Default is OpportunisticStartTLS.\n"
                 },
                 "username": {
                     "type": "string",
@@ -9424,11 +9969,30 @@
                 "databaseName": {
                     "type": "string",
                     "description": "Name of the default InfluxDB database\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "InfluxDB password\n",
+                    "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "InfluxDB server URIs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "InfluxDB username\n"
                 }
             },
             "type": "object",
             "required": [
-                "databaseName"
+                "databaseName",
+                "password",
+                "uris",
+                "username"
             ],
             "language": {
                 "nodejs": {
@@ -9835,11 +10399,11 @@
             "properties": {
                 "connectorClientConfigOverridePolicy": {
                     "type": "string",
-                    "description": "Defines what client configurations can be overridden by the connector. Default is None.\n"
+                    "description": "Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.\n"
                 },
                 "consumerAutoOffsetReset": {
                     "type": "string",
-                    "description": "What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
+                    "description": "Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
                 },
                 "consumerFetchMaxBytes": {
                     "type": "integer",
@@ -9847,7 +10411,7 @@
                 },
                 "consumerIsolationLevel": {
                     "type": "string",
-                    "description": "Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.\n"
+                    "description": "Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
                     "type": "integer",
@@ -9879,7 +10443,7 @@
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -10052,6 +10616,13 @@
                     "type": "string",
                     "description": "The Schema Registry URI.\n",
                     "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Kafka server URIs.\n"
                 }
             },
             "type": "object",
@@ -10060,7 +10631,8 @@
                 "accessKey",
                 "connectUri",
                 "restUri",
-                "schemaRegistryUri"
+                "schemaRegistryUri",
+                "uris"
             ],
             "language": {
                 "nodejs": {
@@ -10135,7 +10707,7 @@
                 },
                 "kafkaVersion": {
                     "type": "string",
-                    "description": "Kafka major version.\n"
+                    "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigPrivateAccess:getKafkaKafkaUserConfigPrivateAccess",
@@ -10201,7 +10773,7 @@
                 },
                 "compressionType": {
                     "type": "string",
-                    "description": "Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'uncompressed' which is equivalent to no compression; and 'producer' which means retain the original compression codec set by the producer.\n"
                 },
                 "connectionsMaxIdleMs": {
                     "type": "integer",
@@ -10241,7 +10813,7 @@
                 },
                 "logCleanupPolicy": {
                     "type": "string",
-                    "description": "The default cleanup policy for segments beyond the retention window.\n"
+                    "description": "Enum: `delete`, `compact`, `compact,delete`. The default cleanup policy for segments beyond the retention window.\n"
                 },
                 "logFlushIntervalMessages": {
                     "type": "integer",
@@ -10277,7 +10849,7 @@
                 },
                 "logMessageTimestampType": {
                     "type": "string",
-                    "description": "Define whether the timestamp in the message is message create time or log append time.\n"
+                    "description": "Enum: `CreateTime`, `LogAppendTime`. Define whether the timestamp in the message is message create time or log append time.\n"
                 },
                 "logPreallocate": {
                     "type": "boolean",
@@ -10399,11 +10971,11 @@
             "properties": {
                 "connectorClientConfigOverridePolicy": {
                     "type": "string",
-                    "description": "Defines what client configurations can be overridden by the connector. Default is None.\n"
+                    "description": "Enum: `None`, `All`. Defines what client configurations can be overridden by the connector. Default is None.\n"
                 },
                 "consumerAutoOffsetReset": {
                     "type": "string",
-                    "description": "What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
+                    "description": "Enum: `earliest`, `latest`. What to do when there is no initial offset in Kafka or if the current offset does not exist any more on the server. Default is earliest.\n"
                 },
                 "consumerFetchMaxBytes": {
                     "type": "integer",
@@ -10411,7 +10983,7 @@
                 },
                 "consumerIsolationLevel": {
                     "type": "string",
-                    "description": "Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.\n"
+                    "description": "Enum: `read_uncommitted`, `read_committed`. Transaction read isolation level. read_uncommitted is the default, but read_committed can be used if consume-exactly-once behavior is desired.\n"
                 },
                 "consumerMaxPartitionFetchBytes": {
                     "type": "integer",
@@ -10443,7 +11015,7 @@
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -10476,11 +11048,11 @@
                 },
                 "consumerRequestTimeoutMs": {
                     "type": "integer",
-                    "description": "The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
+                    "description": "Enum: `1000`, `15000`, `30000`. The maximum total time to wait for messages for a request if the maximum number of messages has not yet been reached. The default value is `1000`.\n"
                 },
                 "nameStrategy": {
                     "type": "string",
-                    "description": "Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.\n"
+                    "description": "Enum: `topic_name`, `record_name`, `topic_record_name`. Name strategy to use when selecting subject for storing schemas. The default value is `topic_name`.\n"
                 },
                 "nameStrategyValidation": {
                     "type": "boolean",
@@ -10488,11 +11060,11 @@
                 },
                 "producerAcks": {
                     "type": "string",
-                    "description": "The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.\n"
+                    "description": "Enum: `all`, `-1`, `0`, `1`. The number of acknowledgments the producer requires the leader to have received before considering a request complete. If set to 'all' or '-1', the leader will wait for the full set of in-sync replicas to acknowledge the record. The default value is `1`.\n"
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -11108,6 +11680,31 @@
                 }
             }
         },
+        "aiven:index/getM3AggregatorM3aggregator:getM3AggregatorM3aggregator": {
+            "properties": {
+                "aggregatorHttpUri": {
+                    "type": "string",
+                    "description": "M3 Aggregator HTTP URI.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "M3 Aggregator server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "aggregatorHttpUri",
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getM3AggregatorM3aggregatorUserConfig:getM3AggregatorM3aggregatorUserConfig": {
             "properties": {
                 "customDomain": {
@@ -11138,11 +11735,11 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "M3 major version (deprecated, use m3aggregator_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).\n"
                 },
                 "m3aggregatorVersion": {
                     "type": "string",
-                    "description": "M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -11289,6 +11886,51 @@
                 }
             }
         },
+        "aiven:index/getM3DbM3db:getM3DbM3db": {
+            "properties": {
+                "httpClusterUri": {
+                    "type": "string",
+                    "description": "M3DB cluster URI.\n"
+                },
+                "httpNodeUri": {
+                    "type": "string",
+                    "description": "M3DB node URI.\n"
+                },
+                "influxdbUri": {
+                    "type": "string",
+                    "description": "InfluxDB URI.\n"
+                },
+                "prometheusRemoteReadUri": {
+                    "type": "string",
+                    "description": "Prometheus remote read URI.\n"
+                },
+                "prometheusRemoteWriteUri": {
+                    "type": "string",
+                    "description": "Prometheus remote write URI.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "M3DB server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "httpClusterUri",
+                "httpNodeUri",
+                "influxdbUri",
+                "prometheusRemoteReadUri",
+                "prometheusRemoteWriteUri",
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getM3DbM3dbUserConfig:getM3DbM3dbUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -11331,7 +11973,7 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "M3 major version (deprecated, use m3db_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).\n"
                 },
                 "m3coordinatorEnableGraphiteCarbonIngest": {
                     "type": "boolean",
@@ -11339,7 +11981,7 @@
                 },
                 "m3dbVersion": {
                     "type": "string",
-                    "description": "M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
                 },
                 "namespaces": {
                     "type": "array",
@@ -11467,7 +12109,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of aggregation (aggregated/unaggregated).\n"
+                    "description": "Enum: `aggregated`, `unaggregated`. The type of aggregation (aggregated/unaggregated).\n"
                 }
             },
             "type": "object",
@@ -11778,6 +12420,99 @@
                 }
             }
         },
+        "aiven:index/getMySqlMysql:getMySqlMysql": {
+            "properties": {
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getMySqlMysqlParam:getMySqlMysqlParam"
+                    },
+                    "description": "MySQL connection parameters\n"
+                },
+                "replicaUri": {
+                    "type": "string",
+                    "description": "MySQL replica URI for services with a replica\n",
+                    "secret": true
+                },
+                "standbyUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "MySQL standby connection URIs\n"
+                },
+                "syncingUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "MySQL syncing connection URIs\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "MySQL master connection URIs\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "params",
+                "replicaUri",
+                "standbyUris",
+                "syncingUris",
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getMySqlMysqlParam:getMySqlMysqlParam": {
+            "properties": {
+                "databaseName": {
+                    "type": "string",
+                    "description": "Primary MySQL database name\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "MySQL host IP or name\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "MySQL admin user password\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "MySQL port\n"
+                },
+                "sslmode": {
+                    "type": "string",
+                    "description": "MySQL sslmode setting (currently always \"require\")\n"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "MySQL admin user name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "databaseName",
+                "host",
+                "password",
+                "port",
+                "sslmode",
+                "user"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getMySqlMysqlUserConfig:getMySqlMysqlUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -11837,7 +12572,7 @@
                 },
                 "mysqlVersion": {
                     "type": "string",
-                    "description": "MySQL major version.\n"
+                    "description": "Enum: `8`. MySQL major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigPrivateAccess:getMySqlMysqlUserConfigPrivateAccess",
@@ -11911,7 +12646,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -12014,7 +12749,7 @@
                 },
                 "internalTmpMemStorageEngine": {
                     "type": "string",
-                    "description": "The storage engine for in-memory internal temporary tables.\n"
+                    "description": "Enum: `TempTable`, `MEMORY`. The storage engine for in-memory internal temporary tables.\n"
                 },
                 "longQueryTime": {
                     "type": "number",
@@ -12233,15 +12968,39 @@
         },
         "aiven:index/getOpenSearchOpensearch:getOpenSearchOpensearch": {
             "properties": {
+                "kibanaUri": {
+                    "type": "string",
+                    "description": "URI for Kibana dashboard frontend\n"
+                },
                 "opensearchDashboardsUri": {
                     "type": "string",
                     "description": "URI for OpenSearch dashboard frontend\n",
                     "secret": true
+                },
+                "password": {
+                    "type": "string",
+                    "description": "OpenSearch password\n",
+                    "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "OpenSearch server URIs.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "OpenSearch username\n"
                 }
             },
             "type": "object",
             "required": [
-                "opensearchDashboardsUri"
+                "kibanaUri",
+                "opensearchDashboardsUri",
+                "password",
+                "uris",
+                "username"
             ],
             "language": {
                 "nodejs": {
@@ -12318,7 +13077,7 @@
                 },
                 "opensearchVersion": {
                     "type": "string",
-                    "description": "OpenSearch major version.\n"
+                    "description": "Enum: `1`, `2`. OpenSearch major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigPrivateAccess:getOpenSearchOpensearchUserConfigPrivateAccess",
@@ -12371,7 +13130,7 @@
                 },
                 "sortingAlgorithm": {
                     "type": "string",
-                    "description": "Deletion sorting algorithm. The default value is `creation_date`.\n"
+                    "description": "Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.\n"
                 }
             },
             "type": "object",
@@ -12684,7 +13443,7 @@
                 },
                 "authenticationBackend": {
                     "type": "string",
-                    "description": "internal_authentication_backend_limiting.authentication_backend.\n"
+                    "description": "Enum: `internal`. internal_authentication_backend_limiting.authentication_backend.\n"
                 },
                 "blockExpirySeconds": {
                     "type": "integer",
@@ -12704,7 +13463,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "internal_authentication_backend_limiting.type.\n"
+                    "description": "Enum: `username`. internal_authentication_backend_limiting.type.\n"
                 }
             },
             "type": "object"
@@ -12733,7 +13492,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of rate limiting.\n"
+                    "description": "Enum: `ip`. The type of rate limiting.\n"
                 }
             },
             "type": "object"
@@ -12965,6 +13724,10 @@
         },
         "aiven:index/getPgPg:getPgPg": {
             "properties": {
+                "bouncer": {
+                    "type": "string",
+                    "description": "Bouncer connection details\n"
+                },
                 "dbname": {
                     "type": "string",
                     "description": "Primary PostgreSQL database name\n"
@@ -12976,6 +13739,13 @@
                 "maxConnections": {
                     "type": "integer",
                     "description": "Connection limit\n"
+                },
+                "params": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/getPgPgParam:getPgPgParam"
+                    },
+                    "description": "PostgreSQL connection parameters\n"
                 },
                 "password": {
                     "type": "string",
@@ -12995,10 +13765,31 @@
                     "type": "string",
                     "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
                 },
+                "standbyUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PostgreSQL standby connection URIs\n"
+                },
+                "syncingUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PostgreSQL syncing connection URIs\n"
+                },
                 "uri": {
                     "type": "string",
                     "description": "PostgreSQL master connection URI\n",
                     "secret": true
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "PostgreSQL master connection URIs\n"
                 },
                 "user": {
                     "type": "string",
@@ -13007,14 +13798,62 @@
             },
             "type": "object",
             "required": [
+                "bouncer",
                 "dbname",
                 "host",
                 "maxConnections",
+                "params",
                 "password",
                 "port",
                 "replicaUri",
                 "sslmode",
+                "standbyUris",
+                "syncingUris",
                 "uri",
+                "uris",
+                "user"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "aiven:index/getPgPgParam:getPgPgParam": {
+            "properties": {
+                "databaseName": {
+                    "type": "string",
+                    "description": "Primary PostgreSQL database name\n"
+                },
+                "host": {
+                    "type": "string",
+                    "description": "PostgreSQL host IP or name\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "PostgreSQL admin user password\n",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "PostgreSQL port\n"
+                },
+                "sslmode": {
+                    "type": "string",
+                    "description": "PostgreSQL sslmode setting (currently always \"require\")\n"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "PostgreSQL admin user name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "databaseName",
+                "host",
+                "password",
+                "port",
+                "sslmode",
                 "user"
             ],
             "language": {
@@ -13099,7 +13938,7 @@
                 },
                 "pgVersion": {
                     "type": "string",
-                    "description": "PostgreSQL major version.\n"
+                    "description": "Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.\n"
                 },
                 "pgaudit": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigPgaudit:getPgPgUserConfigPgaudit",
@@ -13151,7 +13990,7 @@
                 },
                 "synchronousReplication": {
                     "type": "string",
-                    "description": "Synchronous replication type. Note that the service plan also needs to support synchronous replication.\n"
+                    "description": "Enum: `quorum`, `off`. Synchronous replication type. Note that the service plan also needs to support synchronous replication.\n"
                 },
                 "timescaledb": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigTimescaledb:getPgPgUserConfigTimescaledb",
@@ -13159,7 +13998,7 @@
                 },
                 "variant": {
                     "type": "string",
-                    "description": "Variant of the PostgreSQL service, may affect the features that are exposed by default.\n"
+                    "description": "Enum: `aiven`, `timescale`. Variant of the PostgreSQL service, may affect the features that are exposed by default.\n"
                 },
                 "workMem": {
                     "type": "integer",
@@ -13205,7 +14044,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -13296,7 +14135,7 @@
                 },
                 "defaultToastCompression": {
                     "type": "string",
-                    "description": "Specifies the default TOAST compression method for values of compressible columns (the default is lz4).\n"
+                    "description": "Enum: `lz4`, `pglz`. Specifies the default TOAST compression method for values of compressible columns (the default is lz4).\n"
                 },
                 "idleInTransactionSessionTimeout": {
                     "type": "integer",
@@ -13312,11 +14151,11 @@
                 },
                 "logErrorVerbosity": {
                     "type": "string",
-                    "description": "Controls the amount of detail written in the server log for each message that is logged.\n"
+                    "description": "Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.\n"
                 },
                 "logLinePrefix": {
                     "type": "string",
-                    "description": "Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
+                    "description": "Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
                 },
                 "logMinDurationStatement": {
                     "type": "integer",
@@ -13400,7 +14239,7 @@
                 },
                 "pgStatStatementsDotTrack": {
                     "type": "string",
-                    "description": "Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.\n"
+                    "description": "Enum: `all`, `top`, `none`. Controls which statements are counted. Specify top to track top-level statements (those issued directly by clients), all to also track nested statements (such as statements invoked within functions), or none to disable statement statistics collection. The default value is top.\n"
                 },
                 "tempFileLimit": {
                     "type": "integer",
@@ -13416,15 +14255,15 @@
                 },
                 "trackCommitTimestamp": {
                     "type": "string",
-                    "description": "Record commit time of transactions.\n"
+                    "description": "Enum: `off`, `on`. Record commit time of transactions.\n"
                 },
                 "trackFunctions": {
                     "type": "string",
-                    "description": "Enables tracking of function call counts and time used.\n"
+                    "description": "Enum: `all`, `pl`, `none`. Enables tracking of function call counts and time used.\n"
                 },
                 "trackIoTiming": {
                     "type": "string",
-                    "description": "Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.\n"
+                    "description": "Enum: `off`, `on`. Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms.\n"
                 },
                 "walSenderTimeout": {
                     "type": "integer",
@@ -13483,7 +14322,7 @@
                 },
                 "logLevel": {
                     "type": "string",
-                    "description": "Specifies the log level that will be used for log entries. The default value is `log`.\n"
+                    "description": "Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.\n"
                 },
                 "logMaxStringLength": {
                     "type": "integer",
@@ -13543,7 +14382,7 @@
                 },
                 "autodbPoolMode": {
                     "type": "string",
-                    "description": "PGBouncer pool mode. The default value is `transaction`.\n"
+                    "description": "Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.\n"
                 },
                 "autodbPoolSize": {
                     "type": "integer",
@@ -13779,6 +14618,45 @@
                 }
             }
         },
+        "aiven:index/getRedisRedi:getRedisRedi": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "Redis password.\n",
+                    "secret": true
+                },
+                "replicaUri": {
+                    "type": "string",
+                    "description": "Redis replica server URI.\n"
+                },
+                "slaveUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Redis slave server URIs.\n"
+                },
+                "uris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Redis server URIs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "password",
+                "replicaUri",
+                "slaveUris",
+                "uris"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "aiven:index/getRedisRedisUserConfig:getRedisRedisUserConfig": {
             "properties": {
                 "additionalBackupRegions": {
@@ -13833,7 +14711,7 @@
                 },
                 "redisAclChannelsDefault": {
                     "type": "string",
-                    "description": "Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.\n"
+                    "description": "Enum: `allchannels`, `resetchannels`. Determines default pub/sub channels' ACL for new users if ACL is not supplied. When this option is not defined, all_channels is assumed to keep backward compatibility. This option doesn't affect Redis configuration acl-pubsub-default.\n"
                 },
                 "redisIoThreads": {
                     "type": "integer",
@@ -13849,7 +14727,7 @@
                 },
                 "redisMaxmemoryPolicy": {
                     "type": "string",
-                    "description": "Redis maxmemory-policy. The default value is `noeviction`.\n"
+                    "description": "Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.\n"
                 },
                 "redisNotifyKeyspaceEvents": {
                     "type": "string",
@@ -13861,7 +14739,7 @@
                 },
                 "redisPersistence": {
                     "type": "string",
-                    "description": "When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
                 },
                 "redisPubsubClientOutputBufferLimit": {
                     "type": "integer",
@@ -13877,7 +14755,7 @@
                 },
                 "redisVersion": {
                     "type": "string",
-                    "description": "Redis major version.\n"
+                    "description": "Enum: `7.0`. Redis major version.\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -13931,7 +14809,7 @@
                 },
                 "method": {
                     "type": "string",
-                    "description": "The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
+                    "description": "Enum: `dump`, `replication`. The migration method to be used (currently supported only by Redis, Dragonfly, MySQL and PostgreSQL service types).\n"
                 },
                 "password": {
                     "type": "string",
@@ -14078,7 +14956,7 @@
             "properties": {
                 "autoOffsetReset": {
                     "type": "string",
-                    "description": "Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.\n"
+                    "description": "Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.\n"
                 },
                 "columns": {
                     "type": "array",
@@ -14089,11 +14967,11 @@
                 },
                 "dataFormat": {
                     "type": "string",
-                    "description": "Message data format. The default value is `JSONEachRow`.\n"
+                    "description": "Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.\n"
                 },
                 "dateTimeInputFormat": {
                     "type": "string",
-                    "description": "Method to read DateTime from text input formats. The default value is `basic`.\n"
+                    "description": "Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.\n"
                 },
                 "groupName": {
                     "type": "string",
@@ -14101,7 +14979,7 @@
                 },
                 "handleErrorMode": {
                     "type": "string",
-                    "description": "How to handle errors for Kafka engine. The default value is `default`.\n"
+                    "description": "Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.\n"
                 },
                 "maxBlockSize": {
                     "type": "integer",
@@ -14218,6 +15096,10 @@
                 "datadogDbmEnabled": {
                     "type": "boolean",
                     "description": "Enable Datadog Database Monitoring.\n"
+                },
+                "datadogPgbouncerEnabled": {
+                    "type": "boolean",
+                    "description": "Enable Datadog PgBouncer Metric Tracking.\n"
                 },
                 "datadogTags": {
                     "type": "array",
@@ -14359,7 +15241,7 @@
                 },
                 "site": {
                     "type": "string",
-                    "description": "Datadog intake site. Defaults to datadoghq.com.\n"
+                    "description": "Enum: `datadoghq.com`, `datadoghq.eu`, `us3.datadoghq.com`, `us5.datadoghq.com`, `ddog-gov.com`, `ap1.datadoghq.com`. Datadog intake site. Defaults to datadoghq.com.\n"
                 }
             },
             "type": "object",
@@ -14547,7 +15429,7 @@
                 },
                 "saslMechanism": {
                     "type": "string",
-                    "description": "SASL mechanism used for connections to the Kafka server.\n"
+                    "description": "Enum: `PLAIN`, `SCRAM-SHA-256`, `SCRAM-SHA-512`. SASL mechanism used for connections to the Kafka server.\n"
                 },
                 "saslPlainPassword": {
                     "type": "string",
@@ -14560,7 +15442,7 @@
                 },
                 "securityProtocol": {
                     "type": "string",
-                    "description": "Security protocol.\n"
+                    "description": "Enum: `PLAINTEXT`, `SSL`, `SASL_PLAINTEXT`, `SASL_SSL`. Security protocol.\n"
                 },
                 "sslCaCert": {
                     "type": "string",
@@ -14576,7 +15458,7 @@
                 },
                 "sslEndpointIdentificationAlgorithm": {
                     "type": "string",
-                    "description": "The endpoint identification algorithm to validate server hostname using server certificate.\n"
+                    "description": "Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.\n"
                 }
             },
             "type": "object",
@@ -14653,7 +15535,7 @@
                 },
                 "sslMode": {
                     "type": "string",
-                    "description": "SSL Mode. The default value is `verify-full`.\n"
+                    "description": "Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.\n"
                 },
                 "sslRootCert": {
                     "type": "string",
@@ -14680,7 +15562,7 @@
             "properties": {
                 "authentication": {
                     "type": "string",
-                    "description": "Authentication method.\n"
+                    "description": "Enum: `none`, `basic`. Authentication method.\n"
                 },
                 "basicAuthPassword": {
                     "type": "string",
@@ -14747,7 +15629,7 @@
                 },
                 "format": {
                     "type": "string",
-                    "description": "Message format. The default value is `rfc5424`.\n"
+                    "description": "Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.\n"
                 },
                 "key": {
                     "type": "string",
@@ -14973,7 +15855,7 @@
                 },
                 "producerCompressionType": {
                     "type": "string",
-                    "description": "Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
+                    "description": "Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.\n"
                 },
                 "producerLingerMs": {
                     "type": "integer",
@@ -16520,6 +17402,11 @@
                     "type": "string",
                     "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
                 },
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
+                    "description": "Cassandra server provided values\n",
+                    "secret": true
+                },
                 "cassandraUserConfig": {
                     "$ref": "#/types/aiven:index/CassandraCassandraUserConfig:CassandraCassandraUserConfig",
                     "description": "Cassandra user configurable settings\n"
@@ -16644,6 +17531,7 @@
                 }
             },
             "required": [
+                "cassandra",
                 "components",
                 "diskSpaceCap",
                 "diskSpaceDefault",
@@ -16664,6 +17552,11 @@
                 "additionalDiskSpace": {
                     "type": "string",
                     "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                },
+                "cassandra": {
+                    "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
+                    "description": "Cassandra server provided values\n",
+                    "secret": true
                 },
                 "cassandraUserConfig": {
                     "$ref": "#/types/aiven:index/CassandraCassandraUserConfig:CassandraCassandraUserConfig",
@@ -16748,6 +17641,11 @@
                     "additionalDiskSpace": {
                         "type": "string",
                         "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    },
+                    "cassandra": {
+                        "$ref": "#/types/aiven:index/CassandraCassandra:CassandraCassandra",
+                        "description": "Cassandra server provided values\n",
+                        "secret": true
                     },
                     "cassandraUserConfig": {
                         "$ref": "#/types/aiven:index/CassandraCassandraUserConfig:CassandraCassandraUserConfig",
@@ -16996,6 +17894,11 @@
                     "type": "string",
                     "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
                 },
+                "clickhouse": {
+                    "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse",
+                    "description": "Clickhouse server provided values\n",
+                    "secret": true
+                },
                 "clickhouseUserConfig": {
                     "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfig:ClickhouseClickhouseUserConfig",
                     "description": "Clickhouse user configurable settings\n"
@@ -17120,6 +18023,7 @@
                 }
             },
             "required": [
+                "clickhouse",
                 "components",
                 "diskSpaceCap",
                 "diskSpaceDefault",
@@ -17140,6 +18044,11 @@
                 "additionalDiskSpace": {
                     "type": "string",
                     "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                },
+                "clickhouse": {
+                    "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse",
+                    "description": "Clickhouse server provided values\n",
+                    "secret": true
                 },
                 "clickhouseUserConfig": {
                     "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfig:ClickhouseClickhouseUserConfig",
@@ -17224,6 +18133,11 @@
                     "additionalDiskSpace": {
                         "type": "string",
                         "description": "Additional disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n"
+                    },
+                    "clickhouse": {
+                        "$ref": "#/types/aiven:index/ClickhouseClickhouse:ClickhouseClickhouse",
+                        "description": "Clickhouse server provided values\n",
+                        "secret": true
                     },
                     "clickhouseUserConfig": {
                         "$ref": "#/types/aiven:index/ClickhouseClickhouseUserConfig:ClickhouseClickhouseUserConfig",
@@ -17875,6 +18789,11 @@
                     "type": "string",
                     "description": "Disk space that service is currently using\n"
                 },
+                "dragonfly": {
+                    "$ref": "#/types/aiven:index/DragonflyDragonfly:DragonflyDragonfly",
+                    "description": "Dragonfly server provided values\n",
+                    "secret": true
+                },
                 "dragonflyUserConfig": {
                     "$ref": "#/types/aiven:index/DragonflyDragonflyUserConfig:DragonflyDragonflyUserConfig",
                     "description": "Dragonfly user configurable settings\n"
@@ -17972,6 +18891,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "dragonfly",
                 "plan",
                 "project",
                 "serviceHost",
@@ -17996,6 +18916,11 @@
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                },
+                "dragonfly": {
+                    "$ref": "#/types/aiven:index/DragonflyDragonfly:DragonflyDragonfly",
+                    "description": "Dragonfly server provided values\n",
+                    "secret": true
                 },
                 "dragonflyUserConfig": {
                     "$ref": "#/types/aiven:index/DragonflyDragonflyUserConfig:DragonflyDragonflyUserConfig",
@@ -18103,6 +19028,11 @@
                     "diskSpaceUsed": {
                         "type": "string",
                         "description": "Disk space that service is currently using\n"
+                    },
+                    "dragonfly": {
+                        "$ref": "#/types/aiven:index/DragonflyDragonfly:DragonflyDragonfly",
+                        "description": "Dragonfly server provided values\n",
+                        "secret": true
                     },
                     "dragonflyUserConfig": {
                         "$ref": "#/types/aiven:index/DragonflyDragonflyUserConfig:DragonflyDragonflyUserConfig",
@@ -18246,7 +19176,8 @@
                         "csharp": {
                             "name": "FlinkDetails"
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "flinkUserConfig": {
                     "$ref": "#/types/aiven:index/FlinkFlinkUserConfig:FlinkFlinkUserConfig",
@@ -18378,7 +19309,8 @@
                         "csharp": {
                             "name": "FlinkDetails"
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "flinkUserConfig": {
                     "$ref": "#/types/aiven:index/FlinkFlinkUserConfig:FlinkFlinkUserConfig",
@@ -18494,7 +19426,8 @@
                             "csharp": {
                                 "name": "FlinkDetails"
                             }
-                        }
+                        },
+                        "secret": true
                     },
                     "flinkUserConfig": {
                         "$ref": "#/types/aiven:index/FlinkFlinkUserConfig:FlinkFlinkUserConfig",
@@ -19355,6 +20288,11 @@
                     "type": "string",
                     "description": "Disk space that service is currently using\n"
                 },
+                "grafana": {
+                    "$ref": "#/types/aiven:index/GrafanaGrafana:GrafanaGrafana",
+                    "description": "Grafana server provided values\n",
+                    "secret": true
+                },
                 "grafanaUserConfig": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig",
                     "description": "Grafana user configurable settings\n"
@@ -19452,6 +20390,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "grafana",
                 "plan",
                 "project",
                 "serviceHost",
@@ -19476,6 +20415,11 @@
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                },
+                "grafana": {
+                    "$ref": "#/types/aiven:index/GrafanaGrafana:GrafanaGrafana",
+                    "description": "Grafana server provided values\n",
+                    "secret": true
                 },
                 "grafanaUserConfig": {
                     "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig",
@@ -19582,6 +20526,11 @@
                     "diskSpaceUsed": {
                         "type": "string",
                         "description": "Disk space that service is currently using\n"
+                    },
+                    "grafana": {
+                        "$ref": "#/types/aiven:index/GrafanaGrafana:GrafanaGrafana",
+                        "description": "Grafana server provided values\n",
+                        "secret": true
                     },
                     "grafanaUserConfig": {
                         "$ref": "#/types/aiven:index/GrafanaGrafanaUserConfig:GrafanaGrafanaUserConfig",
@@ -19726,7 +20675,8 @@
                     "items": {
                         "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                     },
-                    "description": "InfluxDB server provided values\n"
+                    "description": "InfluxDB server provided values\n",
+                    "secret": true
                 },
                 "maintenanceWindowDow": {
                     "type": "string",
@@ -19851,6 +20801,14 @@
                     "$ref": "#/types/aiven:index/InfluxDbInfluxdbUserConfig:InfluxDbInfluxdbUserConfig",
                     "description": "Influxdb user configurable settings\n"
                 },
+                "influxdbs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
+                    },
+                    "description": "InfluxDB server provided values\n",
+                    "secret": true
+                },
                 "maintenanceWindowDow": {
                     "type": "string",
                     "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n"
@@ -19963,7 +20921,8 @@
                         "items": {
                             "$ref": "#/types/aiven:index/InfluxDbInfluxdb:InfluxDbInfluxdb"
                         },
-                        "description": "InfluxDB server provided values\n"
+                        "description": "InfluxDB server provided values\n",
+                        "secret": true
                     },
                     "maintenanceWindowDow": {
                         "type": "string",
@@ -20433,6 +21392,19 @@
                 "kafkaUserConfig": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfig:KafkaKafkaUserConfig",
                     "description": "Kafka user configurable settings\n"
+                },
+                "kafkas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/KafkaKafka:KafkaKafka"
+                    },
+                    "description": "Kafka server connection details.\n",
+                    "language": {
+                        "csharp": {
+                            "name": "KafkaServer"
+                        }
+                    },
+                    "secret": true
                 },
                 "karapace": {
                     "type": "boolean",
@@ -22219,6 +23191,11 @@
                     "type": "string",
                     "description": "Disk space that service is currently using\n"
                 },
+                "m3aggregator": {
+                    "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
+                    "description": "M3 Aggregator server provided values\n",
+                    "secret": true
+                },
                 "m3aggregatorUserConfig": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
                     "description": "M3aggregator user configurable settings\n"
@@ -22316,6 +23293,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "m3aggregator",
                 "plan",
                 "project",
                 "serviceHost",
@@ -22340,6 +23318,11 @@
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                },
+                "m3aggregator": {
+                    "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
+                    "description": "M3 Aggregator server provided values\n",
+                    "secret": true
                 },
                 "m3aggregatorUserConfig": {
                     "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
@@ -22447,6 +23430,11 @@
                     "diskSpaceUsed": {
                         "type": "string",
                         "description": "Disk space that service is currently using\n"
+                    },
+                    "m3aggregator": {
+                        "$ref": "#/types/aiven:index/M3AggregatorM3aggregator:M3AggregatorM3aggregator",
+                        "description": "M3 Aggregator server provided values\n",
+                        "secret": true
                     },
                     "m3aggregatorUserConfig": {
                         "$ref": "#/types/aiven:index/M3AggregatorM3aggregatorUserConfig:M3AggregatorM3aggregatorUserConfig",
@@ -22583,6 +23571,11 @@
                     "type": "string",
                     "description": "Disk space that service is currently using\n"
                 },
+                "m3db": {
+                    "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
+                    "description": "M3DB server provided values\n",
+                    "secret": true
+                },
                 "m3dbUserConfig": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
                     "description": "M3db user configurable settings\n"
@@ -22680,6 +23673,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "m3db",
                 "plan",
                 "project",
                 "serviceHost",
@@ -22704,6 +23698,11 @@
                     "type": "string",
                     "description": "Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.\n",
                     "deprecationMessage": "This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan."
+                },
+                "m3db": {
+                    "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
+                    "description": "M3DB server provided values\n",
+                    "secret": true
                 },
                 "m3dbUserConfig": {
                     "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
@@ -22811,6 +23810,11 @@
                     "diskSpaceUsed": {
                         "type": "string",
                         "description": "Disk space that service is currently using\n"
+                    },
+                    "m3db": {
+                        "$ref": "#/types/aiven:index/M3DbM3db:M3DbM3db",
+                        "description": "M3DB server provided values\n",
+                        "secret": true
                     },
                     "m3dbUserConfig": {
                         "$ref": "#/types/aiven:index/M3DbM3dbUserConfig:M3DbM3dbUserConfig",
@@ -23015,7 +24019,7 @@
                 },
                 "offsetSyncsTopicLocation": {
                     "type": "string",
-                    "description": "Offset syncs topic location.\n"
+                    "description": "Offset syncs topic location. Possible values are `source` \u0026 `target`. There is no default value.\n"
                 },
                 "project": {
                     "type": "string",
@@ -23084,7 +24088,7 @@
                 },
                 "offsetSyncsTopicLocation": {
                     "type": "string",
-                    "description": "Offset syncs topic location.\n"
+                    "description": "Offset syncs topic location. Possible values are `source` \u0026 `target`. There is no default value.\n"
                 },
                 "project": {
                     "type": "string",
@@ -23157,7 +24161,7 @@
                     },
                     "offsetSyncsTopicLocation": {
                         "type": "string",
-                        "description": "Offset syncs topic location.\n"
+                        "description": "Offset syncs topic location. Possible values are `source` \u0026 `target`. There is no default value.\n"
                     },
                     "project": {
                         "type": "string",
@@ -23254,6 +24258,11 @@
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
                 },
+                "mysql": {
+                    "$ref": "#/types/aiven:index/MySqlMysql:MySqlMysql",
+                    "description": "MySQL specific server provided values\n",
+                    "secret": true
+                },
                 "mysqlUserConfig": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfig:MySqlMysqlUserConfig",
                     "description": "Mysql user configurable settings\n"
@@ -23343,6 +24352,7 @@
                 "diskSpaceDefault",
                 "diskSpaceStep",
                 "diskSpaceUsed",
+                "mysql",
                 "plan",
                 "project",
                 "serviceHost",
@@ -23375,6 +24385,11 @@
                 "maintenanceWindowTime": {
                     "type": "string",
                     "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                },
+                "mysql": {
+                    "$ref": "#/types/aiven:index/MySqlMysql:MySqlMysql",
+                    "description": "MySQL specific server provided values\n",
+                    "secret": true
                 },
                 "mysqlUserConfig": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfig:MySqlMysqlUserConfig",
@@ -23482,6 +24497,11 @@
                     "maintenanceWindowTime": {
                         "type": "string",
                         "description": "Time of day when maintenance operations should be performed. UTC time in HH:mm:ss format.\n"
+                    },
+                    "mysql": {
+                        "$ref": "#/types/aiven:index/MySqlMysql:MySqlMysql",
+                        "description": "MySQL specific server provided values\n",
+                        "secret": true
                     },
                     "mysqlUserConfig": {
                         "$ref": "#/types/aiven:index/MySqlMysqlUserConfig:MySqlMysqlUserConfig",
@@ -23825,7 +24845,8 @@
                     "items": {
                         "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                     },
-                    "description": "OpenSearch server provided values\n"
+                    "description": "OpenSearch server provided values\n",
+                    "secret": true
                 },
                 "plan": {
                     "type": "string",
@@ -23950,6 +24971,14 @@
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfig:OpenSearchOpensearchUserConfig",
                     "description": "Opensearch user configurable settings\n"
                 },
+                "opensearches": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
+                    },
+                    "description": "OpenSearch server provided values\n",
+                    "secret": true
+                },
                 "plan": {
                     "type": "string",
                     "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n"
@@ -24062,7 +25091,8 @@
                         "items": {
                             "$ref": "#/types/aiven:index/OpenSearchOpensearch:OpenSearchOpensearch"
                         },
-                        "description": "OpenSearch server provided values\n"
+                        "description": "OpenSearch server provided values\n",
+                        "secret": true
                     },
                     "plan": {
                         "type": "string",
@@ -25284,7 +26314,8 @@
                         "csharp": {
                             "name": "PgServer"
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "pgUserConfig": {
                     "$ref": "#/types/aiven:index/PgPgUserConfig:PgPgUserConfig",
@@ -25416,7 +26447,8 @@
                         "csharp": {
                             "name": "PgServer"
                         }
-                    }
+                    },
+                    "secret": true
                 },
                 "pgUserConfig": {
                     "$ref": "#/types/aiven:index/PgPgUserConfig:PgPgUserConfig",
@@ -25531,7 +26563,8 @@
                             "csharp": {
                                 "name": "PgServer"
                             }
-                        }
+                        },
+                        "secret": true
                     },
                     "pgUserConfig": {
                         "$ref": "#/types/aiven:index/PgPgUserConfig:PgPgUserConfig",
@@ -26271,6 +27304,11 @@
                     "type": "string",
                     "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
                 },
+                "redis": {
+                    "$ref": "#/types/aiven:index/RedisRedis:RedisRedis",
+                    "description": "Redis server provided values\n",
+                    "secret": true
+                },
                 "redisUserConfig": {
                     "$ref": "#/types/aiven:index/RedisRedisUserConfig:RedisRedisUserConfig",
                     "description": "Redis user configurable settings\n"
@@ -26350,6 +27388,7 @@
                 "diskSpaceUsed",
                 "plan",
                 "project",
+                "redis",
                 "serviceHost",
                 "serviceName",
                 "servicePassword",
@@ -26393,6 +27432,11 @@
                 "projectVpcId": {
                     "type": "string",
                     "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
+                },
+                "redis": {
+                    "$ref": "#/types/aiven:index/RedisRedis:RedisRedis",
+                    "description": "Redis server provided values\n",
+                    "secret": true
                 },
                 "redisUserConfig": {
                     "$ref": "#/types/aiven:index/RedisRedisUserConfig:RedisRedisUserConfig",
@@ -26500,6 +27544,11 @@
                     "projectVpcId": {
                         "type": "string",
                         "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n"
+                    },
+                    "redis": {
+                        "$ref": "#/types/aiven:index/RedisRedis:RedisRedis",
+                        "description": "Redis server provided values\n",
+                        "secret": true
                     },
                     "redisUserConfig": {
                         "$ref": "#/types/aiven:index/RedisRedisUserConfig:RedisRedisUserConfig",
@@ -26803,7 +27852,7 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
+                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
                 },
                 "kafkaConnectUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationKafkaConnectUserConfig:ServiceIntegrationKafkaConnectUserConfig",
@@ -26888,7 +27937,7 @@
                 },
                 "integrationType": {
                     "type": "string",
-                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                    "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
                     "willReplaceOnChanges": true
                 },
                 "kafkaConnectUserConfig": {
@@ -26982,7 +28031,7 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
                         "willReplaceOnChanges": true
                     },
                     "kafkaConnectUserConfig": {
@@ -27048,7 +28097,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog`\n"
+                    "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`\n"
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
                     "$ref": "#/types/aiven:index/ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig:ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig",
@@ -27121,7 +28170,7 @@
                 },
                 "endpointType": {
                     "type": "string",
-                    "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog`\n",
+                    "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`\n",
                     "willReplaceOnChanges": true
                 },
                 "externalAwsCloudwatchLogsUserConfig": {
@@ -27204,7 +28253,7 @@
                     },
                     "endpointType": {
                         "type": "string",
-                        "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog`\n",
+                        "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`\n",
                         "willReplaceOnChanges": true
                     },
                     "externalAwsCloudwatchLogsUserConfig": {
@@ -28338,6 +29387,14 @@
                         },
                         "type": "array"
                     },
+                    "cassandras": {
+                        "description": "Cassandra server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandaCassandra:getCassandaCassandra"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "cloudName": {
                         "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n",
                         "type": "string"
@@ -28462,6 +29519,7 @@
                 },
                 "required": [
                     "additionalDiskSpace",
+                    "cassandras",
                     "cassandraUserConfigs",
                     "cloudName",
                     "components",
@@ -28525,6 +29583,14 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getCassandraCassandraUserConfig:getCassandraCassandraUserConfig"
                         },
+                        "type": "array"
+                    },
+                    "cassandras": {
+                        "description": "Cassandra server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getCassandraCassandra:getCassandraCassandra"
+                        },
+                        "secret": true,
                         "type": "array"
                     },
                     "cloudName": {
@@ -28651,6 +29717,7 @@
                 },
                 "required": [
                     "additionalDiskSpace",
+                    "cassandras",
                     "cassandraUserConfigs",
                     "cloudName",
                     "components",
@@ -28793,6 +29860,14 @@
                         },
                         "type": "array"
                     },
+                    "clickhouses": {
+                        "description": "Clickhouse server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getClickhouseClickhouse:getClickhouseClickhouse"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "cloudName": {
                         "description": "Defines where the cloud provider and region where the service is hosted in. This can be changed freely after service is created. Changing the value will trigger a potentially lengthy migration process for the service. Format is cloud provider name (`aws`, `azure`, `do` `google`, `upcloud`, etc.), dash, and the cloud provider specific region name. These are documented on each Cloud provider's own support articles, like [here for Google](https://cloud.google.com/compute/docs/regions-zones/) and [here for AWS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).\n",
                         "type": "string"
@@ -28917,6 +29992,7 @@
                 },
                 "required": [
                     "additionalDiskSpace",
+                    "clickhouses",
                     "clickhouseUserConfigs",
                     "cloudName",
                     "components",
@@ -29214,6 +30290,14 @@
                         "description": "Disk space that service is currently using\n",
                         "type": "string"
                     },
+                    "dragonflies": {
+                        "description": "Dragonfly server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getDragonflyDragonfly:getDragonflyDragonfly"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "dragonflyUserConfigs": {
                         "description": "Dragonfly user configurable settings\n",
                         "items": {
@@ -29321,6 +30405,7 @@
                     "diskSpaceDefault",
                     "diskSpaceStep",
                     "diskSpaceUsed",
+                    "dragonflies",
                     "dragonflyUserConfigs",
                     "maintenanceWindowDow",
                     "maintenanceWindowTime",
@@ -29415,6 +30500,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getFlinkFlink:getFlinkFlink"
                         },
+                        "secret": true,
                         "type": "array"
                     },
                     "id": {
@@ -29925,6 +31011,14 @@
                         },
                         "type": "array"
                     },
+                    "grafanas": {
+                        "description": "Grafana server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getGrafanaGrafana:getGrafanaGrafana"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
@@ -30025,6 +31119,7 @@
                     "diskSpaceDefault",
                     "diskSpaceStep",
                     "diskSpaceUsed",
+                    "grafanas",
                     "grafanaUserConfigs",
                     "maintenanceWindowDow",
                     "maintenanceWindowTime",
@@ -30110,6 +31205,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getInfluxDbInfluxdb:getInfluxDbInfluxdb"
                         },
+                        "secret": true,
                         "type": "array"
                     },
                     "maintenanceWindowDow": {
@@ -31549,6 +32645,14 @@
                         },
                         "type": "array"
                     },
+                    "m3aggregators": {
+                        "description": "M3 Aggregator server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3AggregatorM3aggregator:getM3AggregatorM3aggregator"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "maintenanceWindowDow": {
                         "description": "Day of week when maintenance operations should be performed. One monday, tuesday, wednesday, etc.\n",
                         "type": "string"
@@ -31645,6 +32749,7 @@
                     "diskSpaceDefault",
                     "diskSpaceStep",
                     "diskSpaceUsed",
+                    "m3aggregators",
                     "m3aggregatorUserConfigs",
                     "maintenanceWindowDow",
                     "maintenanceWindowTime",
@@ -31736,6 +32841,14 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getM3DbM3dbUserConfig:getM3DbM3dbUserConfig"
                         },
+                        "type": "array"
+                    },
+                    "m3dbs": {
+                        "description": "M3DB server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getM3DbM3db:getM3DbM3db"
+                        },
+                        "secret": true,
                         "type": "array"
                     },
                     "maintenanceWindowDow": {
@@ -31834,6 +32947,7 @@
                     "diskSpaceDefault",
                     "diskSpaceStep",
                     "diskSpaceUsed",
+                    "m3dbs",
                     "m3dbUserConfigs",
                     "maintenanceWindowDow",
                     "maintenanceWindowTime",
@@ -31973,7 +33087,7 @@
                         "type": "string"
                     },
                     "offsetSyncsTopicLocation": {
-                        "description": "Offset syncs topic location.\n",
+                        "description": "Offset syncs topic location. Possible values are `source` \u0026 `target`. There is no default value.\n",
                         "type": "string"
                     },
                     "project": {
@@ -32115,6 +33229,14 @@
                         },
                         "type": "array"
                     },
+                    "mysqls": {
+                        "description": "MySQL specific server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getMySqlMysql:getMySqlMysql"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "plan": {
                         "description": "Defines what kind of computing resources are allocated for the service. It can be changed after creation, though there are some restrictions when going to a smaller plan such as the new plan must have sufficient amount of disk space to store all current data and switching to a plan with fewer nodes might not be supported. The basic plan names are `hobbyist`, `startup-x`, `business-x` and `premium-x` where `x` is (roughly) the amount of memory on each node (also other attributes like number of CPUs and amount of disk space varies but naming is based on memory). The available options can be seem from the [Aiven pricing page](https://aiven.io/pricing).\n",
                         "type": "string"
@@ -32205,6 +33327,7 @@
                     "diskSpaceUsed",
                     "maintenanceWindowDow",
                     "maintenanceWindowTime",
+                    "mysqls",
                     "mysqlUserConfigs",
                     "plan",
                     "project",
@@ -32449,6 +33572,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getOpenSearchOpensearch:getOpenSearchOpensearch"
                         },
+                        "secret": true,
                         "type": "array"
                     },
                     "plan": {
@@ -33179,6 +34303,7 @@
                         "items": {
                             "$ref": "#/types/aiven:index/getPgPg:getPgPg"
                         },
+                        "secret": true,
                         "type": "array"
                     },
                     "plan": {
@@ -33742,6 +34867,14 @@
                         "description": "Specifies the VPC the service should run in. If the value is not set the service is not run inside a VPC. When set, the value should be given as a reference to set up dependencies correctly and the VPC must be in the same cloud and region as the service itself. Project can be freely moved to and from VPC after creation but doing so triggers migration to new servers so the operation can take significant amount of time to complete if the service has a lot of data.\n",
                         "type": "string"
                     },
+                    "redis": {
+                        "description": "Redis server provided values\n",
+                        "items": {
+                            "$ref": "#/types/aiven:index/getRedisRedi:getRedisRedi"
+                        },
+                        "secret": true,
+                        "type": "array"
+                    },
                     "redisUserConfigs": {
                         "description": "Redis user configurable settings\n",
                         "items": {
@@ -33830,6 +34963,7 @@
                     "plan",
                     "project",
                     "projectVpcId",
+                    "redis",
                     "redisUserConfigs",
                     "serviceHost",
                     "serviceIntegrations",
@@ -34051,7 +35185,7 @@
                     },
                     "integrationType": {
                         "type": "string",
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n"
                     },
                     "project": {
                         "type": "string",
@@ -34139,7 +35273,7 @@
                         "type": "string"
                     },
                     "integrationType": {
-                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
+                        "description": "Type of the service integration. Possible values: `alertmanager`, `autoscaler`, `caching`, `cassandra_cross_service_cluster`, `clickhouse_credentials`, `clickhouse_kafka`, `clickhouse_postgresql`, `dashboard`, `datadog`, `datasource`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_elasticsearch_logs`, `external_google_cloud_logging`, `external_opensearch_logs`, `flink`, `flink_external_bigquery`, `flink_external_kafka`, `flink_external_postgresql`, `internal_connectivity`, `jolokia`, `kafka_connect`, `kafka_connect_postgresql`, `kafka_logs`, `kafka_mirrormaker`, `logs`, `m3aggregator`, `m3coordinator`, `metrics`, `opensearch_cross_cluster_replication`, `opensearch_cross_cluster_search`, `prometheus`, `read_replica`, `rsyslog`, `schema_registry_proxy`, `stresstester`, `thanos_migrate`, `thanoscompactor`, `thanosquery`, `thanosstore`, `vector`, `vmalert`\n",
                         "type": "string"
                     },
                     "kafkaConnectUserConfigs": {
@@ -34265,7 +35399,7 @@
                         "type": "string"
                     },
                     "endpointType": {
-                        "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `jolokia`, `prometheus`, `rsyslog`\n",
+                        "description": "Type of the service integration endpoint. Possible values: `autoscaler`, `datadog`, `external_aws_cloudwatch_logs`, `external_aws_cloudwatch_metrics`, `external_aws_s3`, `external_clickhouse`, `external_elasticsearch_logs`, `external_google_cloud_bigquery`, `external_google_cloud_logging`, `external_kafka`, `external_mysql`, `external_opensearch_logs`, `external_postgresql`, `external_redis`, `external_schema_registry`, `external_sumologic_logs`, `jolokia`, `prometheus`, `rsyslog`\n",
                         "type": "string"
                     },
                     "externalAwsCloudwatchLogsUserConfigs": {
