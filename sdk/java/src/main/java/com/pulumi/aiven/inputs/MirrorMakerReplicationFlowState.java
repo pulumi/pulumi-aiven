@@ -94,6 +94,21 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
     }
 
     /**
+     * Replication factor, `&gt;= 1`.
+     * 
+     */
+    @Import(name="replicationFactor")
+    private @Nullable Output<Integer> replicationFactor;
+
+    /**
+     * @return Replication factor, `&gt;= 1`.
+     * 
+     */
+    public Optional<Output<Integer>> replicationFactor() {
+        return Optional.ofNullable(this.replicationFactor);
+    }
+
+    /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
@@ -221,6 +236,7 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
         this.enable = $.enable;
         this.offsetSyncsTopicLocation = $.offsetSyncsTopicLocation;
         this.project = $.project;
+        this.replicationFactor = $.replicationFactor;
         this.replicationPolicyClass = $.replicationPolicyClass;
         this.serviceName = $.serviceName;
         this.sourceCluster = $.sourceCluster;
@@ -352,6 +368,27 @@ public final class MirrorMakerReplicationFlowState extends com.pulumi.resources.
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param replicationFactor Replication factor, `&gt;= 1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationFactor(@Nullable Output<Integer> replicationFactor) {
+            $.replicationFactor = replicationFactor;
+            return this;
+        }
+
+        /**
+         * @param replicationFactor Replication factor, `&gt;= 1`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationFactor(Integer replicationFactor) {
+            return replicationFactor(Output.of(replicationFactor));
         }
 
         /**

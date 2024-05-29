@@ -287,14 +287,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     @Import(name="redisPersistence")
     private @Nullable Output<String> redisPersistence;
 
     /**
-     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     public Optional<Output<String>> redisPersistence() {
@@ -347,14 +347,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `7.0`. Redis major version.
+     * Enum: `7.0`, and newer. Redis major version.
      * 
      */
     @Import(name="redisVersion")
     private @Nullable Output<String> redisVersion;
 
     /**
-     * @return Enum: `7.0`. Redis major version.
+     * @return Enum: `7.0`, and newer. Redis major version.
      * 
      */
     public Optional<Output<String>> redisVersion() {
@@ -854,7 +854,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -865,7 +865,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can&#39;t be forked.
+         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -938,7 +938,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisVersion Enum: `7.0`. Redis major version.
+         * @param redisVersion Enum: `7.0`, and newer. Redis major version.
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisVersion Enum: `7.0`. Redis major version.
+         * @param redisVersion Enum: `7.0`, and newer. Redis major version.
          * 
          * @return builder
          * 

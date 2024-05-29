@@ -3,10 +3,10 @@
 
 package com.pulumi.aiven;
 
-import com.pulumi.aiven.inputs.OrganizationApplicationUserTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +16,21 @@ import javax.annotation.Nullable;
 public final class OrganizationApplicationUserArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final OrganizationApplicationUserArgs Empty = new OrganizationApplicationUserArgs();
+
+    /**
+     * Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * 
+     */
+    @Import(name="isSuperAdmin")
+    private @Nullable Output<Boolean> isSuperAdmin;
+
+    /**
+     * @return Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+     * 
+     */
+    public Optional<Output<Boolean>> isSuperAdmin() {
+        return Optional.ofNullable(this.isSuperAdmin);
+    }
 
     /**
      * Name of the application user.
@@ -47,19 +62,12 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
         return this.organizationId;
     }
 
-    @Import(name="timeouts")
-    private @Nullable Output<OrganizationApplicationUserTimeoutsArgs> timeouts;
-
-    public Optional<Output<OrganizationApplicationUserTimeoutsArgs>> timeouts() {
-        return Optional.ofNullable(this.timeouts);
-    }
-
     private OrganizationApplicationUserArgs() {}
 
     private OrganizationApplicationUserArgs(OrganizationApplicationUserArgs $) {
+        this.isSuperAdmin = $.isSuperAdmin;
         this.name = $.name;
         this.organizationId = $.organizationId;
-        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -78,6 +86,27 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
 
         public Builder(OrganizationApplicationUserArgs defaults) {
             $ = new OrganizationApplicationUserArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param isSuperAdmin Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSuperAdmin(@Nullable Output<Boolean> isSuperAdmin) {
+            $.isSuperAdmin = isSuperAdmin;
+            return this;
+        }
+
+        /**
+         * @param isSuperAdmin Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isSuperAdmin(Boolean isSuperAdmin) {
+            return isSuperAdmin(Output.of(isSuperAdmin));
         }
 
         /**
@@ -120,15 +149,6 @@ public final class OrganizationApplicationUserArgs extends com.pulumi.resources.
          */
         public Builder organizationId(String organizationId) {
             return organizationId(Output.of(organizationId));
-        }
-
-        public Builder timeouts(@Nullable Output<OrganizationApplicationUserTimeoutsArgs> timeouts) {
-            $.timeouts = timeouts;
-            return this;
-        }
-
-        public Builder timeouts(OrganizationApplicationUserTimeoutsArgs timeouts) {
-            return timeouts(Output.of(timeouts));
         }
 
         public OrganizationApplicationUserArgs build() {

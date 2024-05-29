@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -116,7 +114,6 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
      * Restricts the scopes for this token.
      */
     public readonly scopes!: pulumi.Output<string[] | undefined>;
-    public readonly timeouts!: pulumi.Output<outputs.OrganizationApplicationUserTokenTimeouts | undefined>;
     /**
      * Prefix of the token.
      */
@@ -153,7 +150,6 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
             resourceInputs["maxAgeSeconds"] = state ? state.maxAgeSeconds : undefined;
             resourceInputs["organizationId"] = state ? state.organizationId : undefined;
             resourceInputs["scopes"] = state ? state.scopes : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
             resourceInputs["tokenPrefix"] = state ? state.tokenPrefix : undefined;
             resourceInputs["userId"] = state ? state.userId : undefined;
         } else {
@@ -169,7 +165,6 @@ export class OrganizationApplicationUserToken extends pulumi.CustomResource {
             resourceInputs["maxAgeSeconds"] = args ? args.maxAgeSeconds : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
             resourceInputs["userId"] = args ? args.userId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["createdManually"] = undefined /*out*/;
@@ -249,7 +244,6 @@ export interface OrganizationApplicationUserTokenState {
      * Restricts the scopes for this token.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts>;
     /**
      * Prefix of the token.
      */
@@ -284,7 +278,6 @@ export interface OrganizationApplicationUserTokenArgs {
      * Restricts the scopes for this token.
      */
     scopes?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.OrganizationApplicationUserTokenTimeouts>;
     /**
      * The ID of the application user the token is created for.
      */

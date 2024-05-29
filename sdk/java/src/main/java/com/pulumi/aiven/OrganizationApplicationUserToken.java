@@ -6,13 +6,12 @@ package com.pulumi.aiven;
 import com.pulumi.aiven.OrganizationApplicationUserTokenArgs;
 import com.pulumi.aiven.Utilities;
 import com.pulumi.aiven.inputs.OrganizationApplicationUserTokenState;
-import com.pulumi.aiven.outputs.OrganizationApplicationUserTokenTimeouts;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -232,14 +231,14 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      * The number of hours after which a token expires. Default session duration is 10 hours.
      * 
      */
-    @Export(name="maxAgeSeconds", refs={Double.class}, tree="[0]")
-    private Output</* @Nullable */ Double> maxAgeSeconds;
+    @Export(name="maxAgeSeconds", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> maxAgeSeconds;
 
     /**
      * @return The number of hours after which a token expires. Default session duration is 10 hours.
      * 
      */
-    public Output<Optional<Double>> maxAgeSeconds() {
+    public Output<Optional<Integer>> maxAgeSeconds() {
         return Codegen.optional(this.maxAgeSeconds);
     }
     /**
@@ -269,12 +268,6 @@ public class OrganizationApplicationUserToken extends com.pulumi.resources.Custo
      */
     public Output<Optional<List<String>>> scopes() {
         return Codegen.optional(this.scopes);
-    }
-    @Export(name="timeouts", refs={OrganizationApplicationUserTokenTimeouts.class}, tree="[0]")
-    private Output</* @Nullable */ OrganizationApplicationUserTokenTimeouts> timeouts;
-
-    public Output<Optional<OrganizationApplicationUserTokenTimeouts>> timeouts() {
-        return Codegen.optional(this.timeouts);
     }
     /**
      * Prefix of the token.

@@ -110,7 +110,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean pgStatMonitorEnable;
     /**
-     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
      * 
      */
     private @Nullable String pgVersion;
@@ -310,7 +310,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgStatMonitorEnable);
     }
     /**
-     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+     * @return Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
      * 
      */
     public Optional<String> pgVersion() {

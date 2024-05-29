@@ -130,7 +130,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Enum: `3`, `4`, `4.1`. Cassandra version.\n"
+                    "description": "Enum: `3`, `4`, `4.1`, and newer. Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -736,7 +736,7 @@
                 },
                 "dragonflyPersistence": {
                     "type": "string",
-                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.\n"
                 },
                 "dragonflySsl": {
                     "type": "boolean",
@@ -1063,7 +1063,7 @@
                 },
                 "flinkVersion": {
                     "type": "string",
-                    "description": "Enum: `1.16`. Flink major version.\n"
+                    "description": "Enum: `1.16`, `1.19`, and newer. Flink major version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -2606,7 +2606,7 @@
                 },
                 "kafkaVersion": {
                     "type": "string",
-                    "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.\n"
+                    "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/KafkaKafkaUserConfigPrivateAccess:KafkaKafkaUserConfigPrivateAccess",
@@ -3586,11 +3586,11 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).\n"
                 },
                 "m3aggregatorVersion": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -3802,7 +3802,7 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).\n"
                 },
                 "m3coordinatorEnableGraphiteCarbonIngest": {
                     "type": "boolean",
@@ -3810,7 +3810,7 @@
                 },
                 "m3dbVersion": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).\n"
                 },
                 "namespaces": {
                     "type": "array",
@@ -4357,7 +4357,7 @@
                 },
                 "mysqlVersion": {
                     "type": "string",
-                    "description": "Enum: `8`. MySQL major version.\n"
+                    "description": "Enum: `8`, and newer. MySQL major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/MySqlMysqlUserConfigPrivateAccess:MySqlMysqlUserConfigPrivateAccess",
@@ -4838,7 +4838,7 @@
                 },
                 "opensearchVersion": {
                     "type": "string",
-                    "description": "Enum: `1`, `2`. OpenSearch major version.\n"
+                    "description": "Enum: `1`, `2`, and newer. OpenSearch major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/OpenSearchOpensearchUserConfigPrivateAccess:OpenSearchOpensearchUserConfigPrivateAccess",
@@ -5398,48 +5398,6 @@
                 "email"
             ]
         },
-        "aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts": {
-            "properties": {
-                "create": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
-                },
-                "delete": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
-                },
-                "read": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
-                },
-                "update": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
-                }
-            },
-            "type": "object"
-        },
-        "aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts": {
-            "properties": {
-                "create": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
-                },
-                "delete": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
-                },
-                "read": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
-                },
-                "update": {
-                    "type": "string",
-                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
-                }
-            },
-            "type": "object"
-        },
         "aiven:index/OrganizationGroupProjectTimeouts:OrganizationGroupProjectTimeouts": {
             "properties": {
                 "create": {
@@ -5771,7 +5729,7 @@
                 },
                 "pgVersion": {
                     "type": "string",
-                    "description": "Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.\n"
+                    "description": "Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.\n"
                 },
                 "pgaudit": {
                     "$ref": "#/types/aiven:index/PgPgUserConfigPgaudit:PgPgUserConfigPgaudit",
@@ -5981,7 +5939,7 @@
                 },
                 "logLinePrefix": {
                     "type": "string",
-                    "description": "Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
+                    "description": "Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.\n"
                 },
                 "logMinDurationStatement": {
                     "type": "integer",
@@ -6544,7 +6502,7 @@
                 },
                 "redisPersistence": {
                     "type": "string",
-                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.\n"
                 },
                 "redisPubsubClientOutputBufferLimit": {
                     "type": "integer",
@@ -6560,7 +6518,7 @@
                 },
                 "redisVersion": {
                     "type": "string",
-                    "description": "Enum: `7.0`. Redis major version.\n"
+                    "description": "Enum: `7.0`, and newer. Redis major version.\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -7184,7 +7142,7 @@
                 },
                 "sslEndpointIdentificationAlgorithm": {
                     "type": "string",
-                    "description": "Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.\n"
+                    "description": "Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.\n"
                 }
             },
             "type": "object",
@@ -7814,7 +7772,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Enum: `3`, `4`, `4.1`. Cassandra version.\n"
+                    "description": "Enum: `3`, `4`, `4.1`, and newer. Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -8083,7 +8041,7 @@
                 },
                 "cassandraVersion": {
                     "type": "string",
-                    "description": "Enum: `3`, `4`, `4.1`. Cassandra version.\n"
+                    "description": "Enum: `3`, `4`, `4.1`, and newer. Cassandra version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -8687,7 +8645,7 @@
                 },
                 "dragonflyPersistence": {
                     "type": "string",
-                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.\n"
                 },
                 "dragonflySsl": {
                     "type": "boolean",
@@ -9045,7 +9003,7 @@
                 },
                 "flinkVersion": {
                     "type": "string",
-                    "description": "Enum: `1.16`. Flink major version.\n"
+                    "description": "Enum: `1.16`, `1.19`, and newer. Flink major version.\n"
                 },
                 "ipFilterObjects": {
                     "type": "array",
@@ -10707,7 +10665,7 @@
                 },
                 "kafkaVersion": {
                     "type": "string",
-                    "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.\n"
+                    "description": "Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getKafkaKafkaUserConfigPrivateAccess:getKafkaKafkaUserConfigPrivateAccess",
@@ -11735,11 +11693,11 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).\n"
                 },
                 "m3aggregatorVersion": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -11973,7 +11931,7 @@
                 },
                 "m3Version": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).\n"
                 },
                 "m3coordinatorEnableGraphiteCarbonIngest": {
                     "type": "boolean",
@@ -11981,7 +11939,7 @@
                 },
                 "m3dbVersion": {
                     "type": "string",
-                    "description": "Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).\n"
+                    "description": "Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).\n"
                 },
                 "namespaces": {
                     "type": "array",
@@ -12572,7 +12530,7 @@
                 },
                 "mysqlVersion": {
                     "type": "string",
-                    "description": "Enum: `8`. MySQL major version.\n"
+                    "description": "Enum: `8`, and newer. MySQL major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getMySqlMysqlUserConfigPrivateAccess:getMySqlMysqlUserConfigPrivateAccess",
@@ -13077,7 +13035,7 @@
                 },
                 "opensearchVersion": {
                     "type": "string",
-                    "description": "Enum: `1`, `2`. OpenSearch major version.\n"
+                    "description": "Enum: `1`, `2`, and newer. OpenSearch major version.\n"
                 },
                 "privateAccess": {
                     "$ref": "#/types/aiven:index/getOpenSearchOpensearchUserConfigPrivateAccess:getOpenSearchOpensearchUserConfigPrivateAccess",
@@ -13938,7 +13896,7 @@
                 },
                 "pgVersion": {
                     "type": "string",
-                    "description": "Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.\n"
+                    "description": "Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.\n"
                 },
                 "pgaudit": {
                     "$ref": "#/types/aiven:index/getPgPgUserConfigPgaudit:getPgPgUserConfigPgaudit",
@@ -14155,7 +14113,7 @@
                 },
                 "logLinePrefix": {
                     "type": "string",
-                    "description": "Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.\n"
+                    "description": "Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.\n"
                 },
                 "logMinDurationStatement": {
                     "type": "integer",
@@ -14739,7 +14697,7 @@
                 },
                 "redisPersistence": {
                     "type": "string",
-                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.\n"
+                    "description": "Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.\n"
                 },
                 "redisPubsubClientOutputBufferLimit": {
                     "type": "integer",
@@ -14755,7 +14713,7 @@
                 },
                 "redisVersion": {
                     "type": "string",
-                    "description": "Enum: `7.0`. Redis major version.\n"
+                    "description": "Enum: `7.0`, and newer. Redis major version.\n"
                 },
                 "serviceLog": {
                     "type": "boolean",
@@ -15458,7 +15416,7 @@
                 },
                 "sslEndpointIdentificationAlgorithm": {
                     "type": "string",
-                    "description": "Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.\n"
+                    "description": "Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.\n"
                 }
             },
             "type": "object",
@@ -24088,6 +24046,10 @@
                     "type": "string",
                     "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n"
                 },
+                "replicationFactor": {
+                    "type": "integer",
+                    "description": "Replication factor, `\u003e= 1`.\n"
+                },
                 "replicationPolicyClass": {
                     "type": "string",
                     "description": "Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.\n"
@@ -24157,6 +24119,10 @@
                     "type": "string",
                     "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                     "willReplaceOnChanges": true
+                },
+                "replicationFactor": {
+                    "type": "integer",
+                    "description": "Replication factor, `\u003e= 1`.\n"
                 },
                 "replicationPolicyClass": {
                     "type": "string",
@@ -24230,6 +24196,10 @@
                         "type": "string",
                         "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "willReplaceOnChanges": true
+                    },
+                    "replicationFactor": {
+                        "type": "integer",
+                        "description": "Replication factor, `\u003e= 1`.\n"
                     },
                     "replicationPolicyClass": {
                         "type": "string",
@@ -25661,7 +25631,11 @@
             "properties": {
                 "email": {
                     "type": "string",
-                    "description": "An email address automatically generated by Aiven to help identify the application user.\n\t\t\tNo notifications are sent to this email.\n"
+                    "description": "An email address automatically generated by Aiven to help identify the application user. No notifications are sent to this email.\n"
+                },
+                "isSuperAdmin": {
+                    "type": "boolean",
+                    "description": "Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.\n"
                 },
                 "name": {
                     "type": "string",
@@ -25670,9 +25644,6 @@
                 "organizationId": {
                     "type": "string",
                     "description": "The ID of the organization the application user belongs to.\n"
-                },
-                "timeouts": {
-                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts"
                 },
                 "userId": {
                     "type": "string",
@@ -25686,16 +25657,18 @@
                 "userId"
             ],
             "inputProperties": {
+                "isSuperAdmin": {
+                    "type": "boolean",
+                    "description": "Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Name of the application user.\n"
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The ID of the organization the application user belongs to.\n"
-                },
-                "timeouts": {
-                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts"
+                    "description": "The ID of the organization the application user belongs to.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -25706,7 +25679,11 @@
                 "properties": {
                     "email": {
                         "type": "string",
-                        "description": "An email address automatically generated by Aiven to help identify the application user.\n\t\t\tNo notifications are sent to this email.\n"
+                        "description": "An email address automatically generated by Aiven to help identify the application user. No notifications are sent to this email.\n"
+                    },
+                    "isSuperAdmin": {
+                        "type": "boolean",
+                        "description": "Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.\n"
                     },
                     "name": {
                         "type": "string",
@@ -25714,10 +25691,8 @@
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The ID of the organization the application user belongs to.\n"
-                    },
-                    "timeouts": {
-                        "$ref": "#/types/aiven:index/OrganizationApplicationUserTimeouts:OrganizationApplicationUserTimeouts"
+                        "description": "The ID of the organization the application user belongs to.\n",
+                        "willReplaceOnChanges": true
                     },
                     "userId": {
                         "type": "string",
@@ -25776,7 +25751,7 @@
                     "description": "User agent of the last request made with this token in human-readable format.\n"
                 },
                 "maxAgeSeconds": {
-                    "type": "number",
+                    "type": "integer",
                     "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n"
                 },
                 "organizationId": {
@@ -25789,9 +25764,6 @@
                         "type": "string"
                     },
                     "description": "Restricts the scopes for this token.\n"
-                },
-                "timeouts": {
-                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts"
                 },
                 "tokenPrefix": {
                     "type": "string",
@@ -25819,33 +25791,36 @@
             "inputProperties": {
                 "description": {
                     "type": "string",
-                    "description": "Description of the token.\n"
+                    "description": "Description of the token.\n",
+                    "willReplaceOnChanges": true
                 },
                 "extendWhenUsed": {
                     "type": "boolean",
-                    "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n"
+                    "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n",
+                    "willReplaceOnChanges": true
                 },
                 "maxAgeSeconds": {
-                    "type": "number",
-                    "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n"
+                    "type": "integer",
+                    "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n",
+                    "willReplaceOnChanges": true
                 },
                 "organizationId": {
                     "type": "string",
-                    "description": "The ID of the organization the application user belongs to.\n"
+                    "description": "The ID of the organization the application user belongs to.\n",
+                    "willReplaceOnChanges": true
                 },
                 "scopes": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Restricts the scopes for this token.\n"
-                },
-                "timeouts": {
-                    "$ref": "#/types/aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts"
+                    "description": "Restricts the scopes for this token.\n",
+                    "willReplaceOnChanges": true
                 },
                 "userId": {
                     "type": "string",
-                    "description": "The ID of the application user the token is created for.\n"
+                    "description": "The ID of the application user the token is created for.\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "requiredInputs": [
@@ -25869,7 +25844,8 @@
                     },
                     "description": {
                         "type": "string",
-                        "description": "Description of the token.\n"
+                        "description": "Description of the token.\n",
+                        "willReplaceOnChanges": true
                     },
                     "expiryTime": {
                         "type": "string",
@@ -25877,7 +25853,8 @@
                     },
                     "extendWhenUsed": {
                         "type": "boolean",
-                        "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n"
+                        "description": "Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.\n",
+                        "willReplaceOnChanges": true
                     },
                     "fullToken": {
                         "type": "string",
@@ -25901,22 +25878,22 @@
                         "description": "User agent of the last request made with this token in human-readable format.\n"
                     },
                     "maxAgeSeconds": {
-                        "type": "number",
-                        "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n"
+                        "type": "integer",
+                        "description": "The number of hours after which a token expires. Default session duration is 10 hours.\n",
+                        "willReplaceOnChanges": true
                     },
                     "organizationId": {
                         "type": "string",
-                        "description": "The ID of the organization the application user belongs to.\n"
+                        "description": "The ID of the organization the application user belongs to.\n",
+                        "willReplaceOnChanges": true
                     },
                     "scopes": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Restricts the scopes for this token.\n"
-                    },
-                    "timeouts": {
-                        "$ref": "#/types/aiven:index/OrganizationApplicationUserTokenTimeouts:OrganizationApplicationUserTokenTimeouts"
+                        "description": "Restricts the scopes for this token.\n",
+                        "willReplaceOnChanges": true
                     },
                     "tokenPrefix": {
                         "type": "string",
@@ -25924,7 +25901,8 @@
                     },
                     "userId": {
                         "type": "string",
-                        "description": "The ID of the application user the token is created for.\n"
+                        "description": "The ID of the application user the token is created for.\n",
+                        "willReplaceOnChanges": true
                     }
                 },
                 "type": "object"
@@ -33180,6 +33158,10 @@
                         "description": "The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.\n",
                         "type": "string"
                     },
+                    "replicationFactor": {
+                        "description": "Replication factor, `\u003e= 1`.\n",
+                        "type": "integer"
+                    },
                     "replicationPolicyClass": {
                         "description": "Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.\n",
                         "type": "string"
@@ -33225,6 +33207,7 @@
                     "enable",
                     "offsetSyncsTopicLocation",
                     "project",
+                    "replicationFactor",
                     "replicationPolicyClass",
                     "serviceName",
                     "sourceCluster",
@@ -34081,7 +34064,7 @@
             }
         },
         "aiven:index/getOrganizationApplicationUser:getOrganizationApplicationUser": {
-            "description": "Gets information about an application user. \n\n**This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it's enabled, set\nthe `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst tfUser = aiven.getOrganizationApplicationUser({\n    organizationId: main.id,\n    userId: \"u123a456b7890c\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\ntf_user = aiven.get_organization_application_user(organization_id=main[\"id\"],\n    user_id=\"u123a456b7890c\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfUser = Aiven.GetOrganizationApplicationUser.Invoke(new()\n    {\n        OrganizationId = main.Id,\n        UserId = \"u123a456b7890c\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganizationApplicationUser(ctx, \u0026aiven.LookupOrganizationApplicationUserArgs{\n\t\t\tOrganizationId: main.Id,\n\t\t\tUserId:         \"u123a456b7890c\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()\n            .organizationId(main.id())\n            .userId(\"u123a456b7890c\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  tfUser:\n    fn::invoke:\n      Function: aiven:getOrganizationApplicationUser\n      Arguments:\n        organizationId: ${main.id}\n        userId: u123a456b7890c\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Gets information about an application user.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as aiven from \"@pulumi/aiven\";\n\nconst tfUser = aiven.getOrganizationApplicationUser({\n    organizationId: main.id,\n    userId: \"u123a456b7890c\",\n});\n```\n```python\nimport pulumi\nimport pulumi_aiven as aiven\n\ntf_user = aiven.get_organization_application_user(organization_id=main[\"id\"],\n    user_id=\"u123a456b7890c\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing Aiven = Pulumi.Aiven;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var tfUser = Aiven.GetOrganizationApplicationUser.Invoke(new()\n    {\n        OrganizationId = main.Id,\n        UserId = \"u123a456b7890c\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-aiven/sdk/v6/go/aiven\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := aiven.LookupOrganizationApplicationUser(ctx, \u0026aiven.LookupOrganizationApplicationUserArgs{\n\t\t\tOrganizationId: main.Id,\n\t\t\tUserId:         \"u123a456b7890c\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.aiven.AivenFunctions;\nimport com.pulumi.aiven.inputs.GetOrganizationApplicationUserArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var tfUser = AivenFunctions.getOrganizationApplicationUser(GetOrganizationApplicationUserArgs.builder()\n            .organizationId(main.id())\n            .userId(\"u123a456b7890c\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  tfUser:\n    fn::invoke:\n      Function: aiven:getOrganizationApplicationUser\n      Arguments:\n        organizationId: ${main.id}\n        userId: u123a456b7890c\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getOrganizationApplicationUser.\n",
                 "properties": {
@@ -34104,12 +34087,16 @@
                 "description": "A collection of values returned by getOrganizationApplicationUser.\n",
                 "properties": {
                     "email": {
-                        "description": "The auto-generated email address of the application user.\n",
+                        "description": "An email address automatically generated by Aiven to help identify the application user. No notifications are sent to this email.\n",
                         "type": "string"
                     },
                     "id": {
                         "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
+                    },
+                    "isSuperAdmin": {
+                        "description": "Makes the application user a super admin. The super admin role has full access to an organization, its billing and settings, and all its organizational units, projects, and services.\n",
+                        "type": "boolean"
                     },
                     "name": {
                         "description": "Name of the application user.\n",
@@ -34126,6 +34113,7 @@
                 },
                 "required": [
                     "email",
+                    "isSuperAdmin",
                     "name",
                     "organizationId",
                     "userId",

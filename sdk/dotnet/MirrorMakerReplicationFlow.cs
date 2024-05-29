@@ -84,6 +84,12 @@ namespace Pulumi.Aiven
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Replication factor, `&gt;= 1`.
+        /// </summary>
+        [Output("replicationFactor")]
+        public Output<int?> ReplicationFactor { get; private set; } = null!;
+
+        /// <summary>
         /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Output("replicationPolicyClass")]
@@ -208,6 +214,12 @@ namespace Pulumi.Aiven
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// Replication factor, `&gt;= 1`.
+        /// </summary>
+        [Input("replicationFactor")]
+        public Input<int>? ReplicationFactor { get; set; }
+
+        /// <summary>
         /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         [Input("replicationPolicyClass", required: true)]
@@ -304,6 +316,12 @@ namespace Pulumi.Aiven
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Replication factor, `&gt;= 1`.
+        /// </summary>
+        [Input("replicationFactor")]
+        public Input<int>? ReplicationFactor { get; set; }
 
         /// <summary>
         /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.

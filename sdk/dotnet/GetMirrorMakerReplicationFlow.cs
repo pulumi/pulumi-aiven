@@ -160,6 +160,10 @@ namespace Pulumi.Aiven
         /// </summary>
         public readonly string Project;
         /// <summary>
+        /// Replication factor, `&gt;= 1`.
+        /// </summary>
+        public readonly int ReplicationFactor;
+        /// <summary>
         /// Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
         /// </summary>
         public readonly string ReplicationPolicyClass;
@@ -206,6 +210,8 @@ namespace Pulumi.Aiven
 
             string project,
 
+            int replicationFactor,
+
             string replicationPolicyClass,
 
             string serviceName,
@@ -228,6 +234,7 @@ namespace Pulumi.Aiven
             Id = id;
             OffsetSyncsTopicLocation = offsetSyncsTopicLocation;
             Project = project;
+            ReplicationFactor = replicationFactor;
             ReplicationPolicyClass = replicationPolicyClass;
             ServiceName = serviceName;
             SourceCluster = sourceCluster;

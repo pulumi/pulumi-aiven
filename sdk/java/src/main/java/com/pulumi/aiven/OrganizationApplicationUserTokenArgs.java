@@ -3,12 +3,11 @@
 
 package com.pulumi.aiven;
 
-import com.pulumi.aiven.inputs.OrganizationApplicationUserTokenTimeoutsArgs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Double;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -55,13 +54,13 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
      * 
      */
     @Import(name="maxAgeSeconds")
-    private @Nullable Output<Double> maxAgeSeconds;
+    private @Nullable Output<Integer> maxAgeSeconds;
 
     /**
      * @return The number of hours after which a token expires. Default session duration is 10 hours.
      * 
      */
-    public Optional<Output<Double>> maxAgeSeconds() {
+    public Optional<Output<Integer>> maxAgeSeconds() {
         return Optional.ofNullable(this.maxAgeSeconds);
     }
 
@@ -95,13 +94,6 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         return Optional.ofNullable(this.scopes);
     }
 
-    @Import(name="timeouts")
-    private @Nullable Output<OrganizationApplicationUserTokenTimeoutsArgs> timeouts;
-
-    public Optional<Output<OrganizationApplicationUserTokenTimeoutsArgs>> timeouts() {
-        return Optional.ofNullable(this.timeouts);
-    }
-
     /**
      * The ID of the application user the token is created for.
      * 
@@ -125,7 +117,6 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
         this.maxAgeSeconds = $.maxAgeSeconds;
         this.organizationId = $.organizationId;
         this.scopes = $.scopes;
-        this.timeouts = $.timeouts;
         this.userId = $.userId;
     }
 
@@ -195,7 +186,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder maxAgeSeconds(@Nullable Output<Double> maxAgeSeconds) {
+        public Builder maxAgeSeconds(@Nullable Output<Integer> maxAgeSeconds) {
             $.maxAgeSeconds = maxAgeSeconds;
             return this;
         }
@@ -206,7 +197,7 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
          * @return builder
          * 
          */
-        public Builder maxAgeSeconds(Double maxAgeSeconds) {
+        public Builder maxAgeSeconds(Integer maxAgeSeconds) {
             return maxAgeSeconds(Output.of(maxAgeSeconds));
         }
 
@@ -260,15 +251,6 @@ public final class OrganizationApplicationUserTokenArgs extends com.pulumi.resou
          */
         public Builder scopes(String... scopes) {
             return scopes(List.of(scopes));
-        }
-
-        public Builder timeouts(@Nullable Output<OrganizationApplicationUserTokenTimeoutsArgs> timeouts) {
-            $.timeouts = timeouts;
-            return this;
-        }
-
-        public Builder timeouts(OrganizationApplicationUserTokenTimeoutsArgs timeouts) {
-            return timeouts(Output.of(timeouts));
         }
 
         /**

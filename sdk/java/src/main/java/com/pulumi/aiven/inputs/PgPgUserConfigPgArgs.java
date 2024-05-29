@@ -304,14 +304,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log formats.
      * 
      */
     @Import(name="logLinePrefix")
     private @Nullable Output<String> logLinePrefix;
 
     /**
-     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log formats.
      * 
      */
     public Optional<Output<String>> logLinePrefix() {
@@ -1225,7 +1225,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log formats.
          * 
          * @return builder
          * 
@@ -1236,7 +1236,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+         * @param logLinePrefix Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log formats.
          * 
          * @return builder
          * 

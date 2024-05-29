@@ -83,6 +83,10 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Replication factor, `>= 1`.
+     */
+    public readonly replicationFactor!: pulumi.Output<number | undefined>;
+    /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
     public readonly replicationPolicyClass!: pulumi.Output<string>;
@@ -133,6 +137,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             resourceInputs["enable"] = state ? state.enable : undefined;
             resourceInputs["offsetSyncsTopicLocation"] = state ? state.offsetSyncsTopicLocation : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
             resourceInputs["replicationPolicyClass"] = state ? state.replicationPolicyClass : undefined;
             resourceInputs["serviceName"] = state ? state.serviceName : undefined;
             resourceInputs["sourceCluster"] = state ? state.sourceCluster : undefined;
@@ -169,6 +174,7 @@ export class MirrorMakerReplicationFlow extends pulumi.CustomResource {
             resourceInputs["enable"] = args ? args.enable : undefined;
             resourceInputs["offsetSyncsTopicLocation"] = args ? args.offsetSyncsTopicLocation : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
             resourceInputs["replicationPolicyClass"] = args ? args.replicationPolicyClass : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["sourceCluster"] = args ? args.sourceCluster : undefined;
@@ -207,6 +213,10 @@ export interface MirrorMakerReplicationFlowState {
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Replication factor, `>= 1`.
+     */
+    replicationFactor?: pulumi.Input<number>;
     /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
@@ -265,6 +275,10 @@ export interface MirrorMakerReplicationFlowArgs {
      * The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
      */
     project: pulumi.Input<string>;
+    /**
+     * Replication factor, `>= 1`.
+     */
+    replicationFactor?: pulumi.Input<number>;
     /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */

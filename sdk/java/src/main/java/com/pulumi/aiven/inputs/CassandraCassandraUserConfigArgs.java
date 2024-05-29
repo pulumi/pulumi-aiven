@@ -91,14 +91,14 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Enum: `3`, `4`, `4.1`. Cassandra version.
+     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
      * 
      */
     @Import(name="cassandraVersion")
     private @Nullable Output<String> cassandraVersion;
 
     /**
-     * @return Enum: `3`, `4`, `4.1`. Cassandra version.
+     * @return Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
      * 
      */
     public Optional<Output<String>> cassandraVersion() {
@@ -410,7 +410,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cassandraVersion Enum: `3`, `4`, `4.1`. Cassandra version.
+         * @param cassandraVersion Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
          * 
          * @return builder
          * 
@@ -421,7 +421,7 @@ public final class CassandraCassandraUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cassandraVersion Enum: `3`, `4`, `4.1`. Cassandra version.
+         * @param cassandraVersion Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
          * 
          * @return builder
          * 

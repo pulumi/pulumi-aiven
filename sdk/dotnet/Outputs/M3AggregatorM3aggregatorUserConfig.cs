@@ -30,11 +30,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
-        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
+        /// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
         /// </summary>
         public readonly string? M3Version;
         /// <summary>
-        /// Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+        /// Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
         /// </summary>
         public readonly string? M3aggregatorVersion;
         /// <summary>

@@ -18,7 +18,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Enum: `1.16`. Flink major version.
+        /// Enum: `1.16`, `1.19`, and newer. Flink major version.
         /// </summary>
         public readonly string? FlinkVersion;
         /// <summary>

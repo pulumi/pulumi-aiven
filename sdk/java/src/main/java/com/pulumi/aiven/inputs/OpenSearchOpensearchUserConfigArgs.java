@@ -232,14 +232,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Enum: `1`, `2`. OpenSearch major version.
+     * Enum: `1`, `2`, and newer. OpenSearch major version.
      * 
      */
     @Import(name="opensearchVersion")
     private @Nullable Output<String> opensearchVersion;
 
     /**
-     * @return Enum: `1`, `2`. OpenSearch major version.
+     * @return Enum: `1`, `2`, and newer. OpenSearch major version.
      * 
      */
     public Optional<Output<String>> opensearchVersion() {
@@ -753,7 +753,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearchVersion Enum: `1`, `2`. OpenSearch major version.
+         * @param opensearchVersion Enum: `1`, `2`, and newer. OpenSearch major version.
          * 
          * @return builder
          * 
@@ -764,7 +764,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param opensearchVersion Enum: `1`, `2`. OpenSearch major version.
+         * @param opensearchVersion Enum: `1`, `2`, and newer. OpenSearch major version.
          * 
          * @return builder
          * 

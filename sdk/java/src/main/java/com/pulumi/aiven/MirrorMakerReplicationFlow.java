@@ -144,6 +144,20 @@ public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResou
         return this.project;
     }
     /**
+     * Replication factor, `&gt;= 1`.
+     * 
+     */
+    @Export(name="replicationFactor", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> replicationFactor;
+
+    /**
+     * @return Replication factor, `&gt;= 1`.
+     * 
+     */
+    public Output<Optional<Integer>> replicationFactor() {
+        return Codegen.optional(this.replicationFactor);
+    }
+    /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
