@@ -117,7 +117,7 @@ namespace Pulumi.Aiven
         /// The number of hours after which a token expires. Default session duration is 10 hours.
         /// </summary>
         [Output("maxAgeSeconds")]
-        public Output<double?> MaxAgeSeconds { get; private set; } = null!;
+        public Output<int?> MaxAgeSeconds { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the organization the application user belongs to.
@@ -130,9 +130,6 @@ namespace Pulumi.Aiven
         /// </summary>
         [Output("scopes")]
         public Output<ImmutableArray<string>> Scopes { get; private set; } = null!;
-
-        [Output("timeouts")]
-        public Output<Outputs.OrganizationApplicationUserTokenTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
         /// Prefix of the token.
@@ -212,7 +209,7 @@ namespace Pulumi.Aiven
         /// The number of hours after which a token expires. Default session duration is 10 hours.
         /// </summary>
         [Input("maxAgeSeconds")]
-        public Input<double>? MaxAgeSeconds { get; set; }
+        public Input<int>? MaxAgeSeconds { get; set; }
 
         /// <summary>
         /// The ID of the organization the application user belongs to.
@@ -231,9 +228,6 @@ namespace Pulumi.Aiven
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
-
-        [Input("timeouts")]
-        public Input<Inputs.OrganizationApplicationUserTokenTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The ID of the application user the token is created for.
@@ -329,7 +323,7 @@ namespace Pulumi.Aiven
         /// The number of hours after which a token expires. Default session duration is 10 hours.
         /// </summary>
         [Input("maxAgeSeconds")]
-        public Input<double>? MaxAgeSeconds { get; set; }
+        public Input<int>? MaxAgeSeconds { get; set; }
 
         /// <summary>
         /// The ID of the organization the application user belongs to.
@@ -348,9 +342,6 @@ namespace Pulumi.Aiven
             get => _scopes ?? (_scopes = new InputList<string>());
             set => _scopes = value;
         }
-
-        [Input("timeouts")]
-        public Input<Inputs.OrganizationApplicationUserTokenTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Prefix of the token.

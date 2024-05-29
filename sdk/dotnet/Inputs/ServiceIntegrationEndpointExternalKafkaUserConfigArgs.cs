@@ -71,7 +71,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? SslClientKey { get; set; }
 
         /// <summary>
-        /// Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+        /// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
         /// </summary>
         [Input("sslEndpointIdentificationAlgorithm")]
         public Input<string>? SslEndpointIdentificationAlgorithm { get; set; }

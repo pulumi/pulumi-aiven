@@ -55,7 +55,7 @@ export interface CassandraCassandraUserConfig {
      */
     cassandra?: outputs.CassandraCassandraUserConfigCassandra;
     /**
-     * Enum: `3`, `4`, `4.1`. Cassandra version.
+     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -490,7 +490,7 @@ export interface DragonflyDragonflyUserConfig {
      */
     cacheMode?: boolean;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     dragonflyPersistence?: string;
     /**
@@ -729,7 +729,7 @@ export interface FlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Enum: `1.16`. Flink major version.
+     * Enum: `1.16`, `1.19`, and newer. Flink major version.
      */
     flinkVersion?: string;
     /**
@@ -865,7 +865,7 @@ export interface GetCassandaCassandraUserConfig {
      */
     cassandra?: outputs.GetCassandaCassandraUserConfigCassandra;
     /**
-     * Enum: `3`, `4`, `4.1`. Cassandra version.
+     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -1047,7 +1047,7 @@ export interface GetCassandraCassandraUserConfig {
      */
     cassandra?: outputs.GetCassandraCassandraUserConfigCassandra;
     /**
-     * Enum: `3`, `4`, `4.1`. Cassandra version.
+     * Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
      */
     cassandraVersion?: string;
     /**
@@ -1452,7 +1452,7 @@ export interface GetDragonflyDragonflyUserConfig {
      */
     cacheMode?: boolean;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     dragonflyPersistence?: string;
     /**
@@ -1691,7 +1691,7 @@ export interface GetFlinkFlinkUserConfig {
      */
     additionalBackupRegions?: string;
     /**
-     * Enum: `1.16`. Flink major version.
+     * Enum: `1.16`, `1.19`, and newer. Flink major version.
      */
     flinkVersion?: string;
     /**
@@ -2867,7 +2867,7 @@ export interface GetKafkaKafkaUserConfig {
      */
     kafkaRestConfig?: outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -3713,11 +3713,11 @@ export interface GetM3AggregatorM3aggregatorUserConfig {
      */
     ipFilters?: string[];
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
      */
     m3Version?: string;
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
      */
     m3aggregatorVersion?: string;
     /**
@@ -3864,7 +3864,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     m3?: outputs.GetM3DbM3dbUserConfigM3;
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
      */
     m3Version?: string;
     /**
@@ -3872,7 +3872,7 @@ export interface GetM3DbM3dbUserConfig {
      */
     m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
      */
     m3dbVersion?: string;
     /**
@@ -4264,7 +4264,7 @@ export interface GetMySqlMysqlUserConfig {
      */
     mysql?: outputs.GetMySqlMysqlUserConfigMysql;
     /**
-     * Enum: `8`. MySQL major version.
+     * Enum: `8`, and newer. MySQL major version.
      */
     mysqlVersion?: string;
     /**
@@ -4658,7 +4658,7 @@ export interface GetOpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.GetOpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`. OpenSearch major version.
+     * Enum: `1`, `2`, and newer. OpenSearch major version.
      */
     opensearchVersion?: string;
     /**
@@ -5335,7 +5335,7 @@ export interface GetPgPgUserConfig {
      */
     pgStatMonitorEnable?: boolean;
     /**
-     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
      */
     pgVersion?: string;
     /**
@@ -5528,7 +5528,7 @@ export interface GetPgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
      */
     logLinePrefix?: string;
     /**
@@ -6005,7 +6005,7 @@ export interface GetRedisRedisUserConfig {
      */
     redisNumberOfDatabases?: number;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     redisPersistence?: string;
     /**
@@ -6021,7 +6021,7 @@ export interface GetRedisRedisUserConfig {
      */
     redisTimeout?: number;
     /**
-     * Enum: `7.0`. Redis major version.
+     * Enum: `7.0`, and newer. Redis major version.
      */
     redisVersion?: string;
     /**
@@ -6491,7 +6491,7 @@ export interface GetServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     sslClientKey?: string;
     /**
-     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: string;
 }
@@ -8038,7 +8038,7 @@ export interface KafkaKafkaUserConfig {
      */
     kafkaRestConfig?: outputs.KafkaKafkaUserConfigKafkaRestConfig;
     /**
-     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
+     * Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      */
     kafkaVersion?: string;
     /**
@@ -8884,11 +8884,11 @@ export interface M3AggregatorM3aggregatorUserConfig {
      */
     ipFilters?: string[];
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
      */
     m3Version?: string;
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
      */
     m3aggregatorVersion?: string;
     /**
@@ -9035,7 +9035,7 @@ export interface M3DbM3dbUserConfig {
      */
     m3?: outputs.M3DbM3dbUserConfigM3;
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
      */
     m3Version?: string;
     /**
@@ -9043,7 +9043,7 @@ export interface M3DbM3dbUserConfig {
      */
     m3coordinatorEnableGraphiteCarbonIngest?: boolean;
     /**
-     * Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+     * Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
      */
     m3dbVersion?: string;
     /**
@@ -9435,7 +9435,7 @@ export interface MySqlMysqlUserConfig {
      */
     mysql?: outputs.MySqlMysqlUserConfigMysql;
     /**
-     * Enum: `8`. MySQL major version.
+     * Enum: `8`, and newer. MySQL major version.
      */
     mysqlVersion?: string;
     /**
@@ -9829,7 +9829,7 @@ export interface OpenSearchOpensearchUserConfig {
      */
     opensearchDashboards?: outputs.OpenSearchOpensearchUserConfigOpensearchDashboards;
     /**
-     * Enum: `1`, `2`. OpenSearch major version.
+     * Enum: `1`, `2`, and newer. OpenSearch major version.
      */
     opensearchVersion?: string;
     /**
@@ -10319,44 +10319,6 @@ export interface OpenSearchTechEmail {
     email: string;
 }
 
-export interface OrganizationApplicationUserTimeouts {
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-     */
-    create?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-     */
-    delete?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-     */
-    read?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-     */
-    update?: string;
-}
-
-export interface OrganizationApplicationUserTokenTimeouts {
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-     */
-    create?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-     */
-    delete?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-     */
-    read?: string;
-    /**
-     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-     */
-    update?: string;
-}
-
 export interface OrganizationGroupProjectTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
@@ -10601,7 +10563,7 @@ export interface PgPgUserConfig {
      */
     pgStatMonitorEnable?: boolean;
     /**
-     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+     * Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
      */
     pgVersion?: string;
     /**
@@ -10794,7 +10756,7 @@ export interface PgPgUserConfigPg {
      */
     logErrorVerbosity?: string;
     /**
-     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
      */
     logLinePrefix?: string;
     /**
@@ -11271,7 +11233,7 @@ export interface RedisRedisUserConfig {
      */
     redisNumberOfDatabases?: number;
     /**
-     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+     * Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
      */
     redisPersistence?: string;
     /**
@@ -11287,7 +11249,7 @@ export interface RedisRedisUserConfig {
      */
     redisTimeout?: number;
     /**
-     * Enum: `7.0`. Redis major version.
+     * Enum: `7.0`, and newer. Redis major version.
      */
     redisVersion?: string;
     /**
@@ -11757,7 +11719,7 @@ export interface ServiceIntegrationEndpointExternalKafkaUserConfig {
      */
     sslClientKey?: string;
     /**
-     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      */
     sslEndpointIdentificationAlgorithm?: string;
 }

@@ -137,14 +137,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+     * Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
     @Import(name="sslEndpointIdentificationAlgorithm")
     private @Nullable Output<String> sslEndpointIdentificationAlgorithm;
 
     /**
-     * @return Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+     * @return Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
      * 
      */
     public Optional<Output<String>> sslEndpointIdentificationAlgorithm() {
@@ -352,7 +352,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslEndpointIdentificationAlgorithm Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+         * @param sslEndpointIdentificationAlgorithm Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslEndpointIdentificationAlgorithm Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+         * @param sslEndpointIdentificationAlgorithm Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
          * 
          * @return builder
          * 

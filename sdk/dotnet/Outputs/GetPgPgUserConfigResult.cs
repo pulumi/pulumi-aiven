@@ -74,7 +74,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? PgStatMonitorEnable;
         /// <summary>
-        /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+        /// Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
         /// </summary>
         public readonly string? PgVersion;
         /// <summary>

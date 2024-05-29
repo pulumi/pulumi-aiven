@@ -116,7 +116,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.OpenSearchOpensearchUserConfigOpensearchDashboardsArgs>? OpensearchDashboards { get; set; }
 
         /// <summary>
-        /// Enum: `1`, `2`. OpenSearch major version.
+        /// Enum: `1`, `2`, and newer. OpenSearch major version.
         /// </summary>
         [Input("opensearchVersion")]
         public Input<string>? OpensearchVersion { get; set; }

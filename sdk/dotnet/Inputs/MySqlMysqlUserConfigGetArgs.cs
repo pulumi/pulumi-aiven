@@ -108,7 +108,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<Inputs.MySqlMysqlUserConfigMysqlGetArgs>? Mysql { get; set; }
 
         /// <summary>
-        /// Enum: `8`. MySQL major version.
+        /// Enum: `8`, and newer. MySQL major version.
         /// </summary>
         [Input("mysqlVersion")]
         public Input<string>? MysqlVersion { get; set; }

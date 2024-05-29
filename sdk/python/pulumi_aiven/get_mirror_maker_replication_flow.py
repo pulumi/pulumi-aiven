@@ -21,7 +21,7 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
         if emit_backward_heartbeats_enabled and not isinstance(emit_backward_heartbeats_enabled, bool):
             raise TypeError("Expected argument 'emit_backward_heartbeats_enabled' to be a bool")
         pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
@@ -40,6 +40,9 @@ class GetMirrorMakerReplicationFlowResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if replication_factor and not isinstance(replication_factor, int):
+            raise TypeError("Expected argument 'replication_factor' to be a int")
+        pulumi.set(__self__, "replication_factor", replication_factor)
         if replication_policy_class and not isinstance(replication_policy_class, str):
             raise TypeError("Expected argument 'replication_policy_class' to be a str")
         pulumi.set(__self__, "replication_policy_class", replication_policy_class)
@@ -112,6 +115,14 @@ class GetMirrorMakerReplicationFlowResult:
         The name of the project this resource belongs to. To set up proper dependencies please refer to this variable as a reference. Changing this property forces recreation of the resource.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="replicationFactor")
+    def replication_factor(self) -> int:
+        """
+        Replication factor, `>= 1`.
+        """
+        return pulumi.get(self, "replication_factor")
 
     @property
     @pulumi.getter(name="replicationPolicyClass")
@@ -190,6 +201,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
             id=self.id,
             offset_syncs_topic_location=self.offset_syncs_topic_location,
             project=self.project,
+            replication_factor=self.replication_factor,
             replication_policy_class=self.replication_policy_class,
             service_name=self.service_name,
             source_cluster=self.source_cluster,
@@ -241,6 +253,7 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         offset_syncs_topic_location=pulumi.get(__ret__, 'offset_syncs_topic_location'),
         project=pulumi.get(__ret__, 'project'),
+        replication_factor=pulumi.get(__ret__, 'replication_factor'),
         replication_policy_class=pulumi.get(__ret__, 'replication_policy_class'),
         service_name=pulumi.get(__ret__, 'service_name'),
         source_cluster=pulumi.get(__ret__, 'source_cluster'),

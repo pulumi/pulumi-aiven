@@ -110,7 +110,7 @@ public final class GetPgPgUserConfigPg {
      */
     private @Nullable String logErrorVerbosity;
     /**
-     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log formats.
      * 
      */
     private @Nullable String logLinePrefix;
@@ -395,7 +395,7 @@ public final class GetPgPgUserConfigPg {
         return Optional.ofNullable(this.logErrorVerbosity);
     }
     /**
-     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+     * @return Enum: `&#39;pid=%p,user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h &#39;`, `&#39;%m [%p] %q[user=%u,db=%d,app=%a] &#39;`. Choose from one of the available log formats.
      * 
      */
     public Optional<String> logLinePrefix() {

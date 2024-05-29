@@ -26,7 +26,7 @@ public final class FlinkFlinkUserConfig {
     @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Enum: `1.16`. Flink major version.
+     * @return Enum: `1.16`, `1.19`, and newer. Flink major version.
      * 
      */
     private @Nullable String flinkVersion;
@@ -83,7 +83,7 @@ public final class FlinkFlinkUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Enum: `1.16`. Flink major version.
+     * @return Enum: `1.16`, `1.19`, and newer. Flink major version.
      * 
      */
     public Optional<String> flinkVersion() {

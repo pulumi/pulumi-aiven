@@ -8,8 +8,6 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
-from . import outputs
-from ._inputs import *
 
 __all__ = ['OrganizationApplicationUserTokenArgs', 'OrganizationApplicationUserToken']
 
@@ -20,16 +18,15 @@ class OrganizationApplicationUserTokenArgs:
                  user_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
-                 max_age_seconds: Optional[pulumi.Input[float]] = None,
-                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']] = None):
+                 max_age_seconds: Optional[pulumi.Input[int]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a OrganizationApplicationUserToken resource.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
-        :param pulumi.Input[float] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -42,8 +39,6 @@ class OrganizationApplicationUserTokenArgs:
             pulumi.set(__self__, "max_age_seconds", max_age_seconds)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
-        if timeouts is not None:
-            pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -95,14 +90,14 @@ class OrganizationApplicationUserTokenArgs:
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[float]]:
+    def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of hours after which a token expires. Default session duration is 10 hours.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[float]]):
+    def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_seconds", value)
 
     @property
@@ -116,15 +111,6 @@ class OrganizationApplicationUserTokenArgs:
     @scopes.setter
     def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
-
-    @property
-    @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]:
-        return pulumi.get(self, "timeouts")
-
-    @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]):
-        pulumi.set(self, "timeouts", value)
 
 
 @pulumi.input_type
@@ -141,10 +127,9 @@ class _OrganizationApplicationUserTokenState:
                  last_used_time: Optional[pulumi.Input[str]] = None,
                  last_user_agent: Optional[pulumi.Input[str]] = None,
                  last_user_agent_human_readable: Optional[pulumi.Input[str]] = None,
-                 max_age_seconds: Optional[pulumi.Input[float]] = None,
+                 max_age_seconds: Optional[pulumi.Input[int]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']] = None,
                  token_prefix: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None):
         """
@@ -160,7 +145,7 @@ class _OrganizationApplicationUserTokenState:
         :param pulumi.Input[str] last_used_time: Timestamp when the access token was last used.
         :param pulumi.Input[str] last_user_agent: User agent of the last request made with this token.
         :param pulumi.Input[str] last_user_agent_human_readable: User agent of the last request made with this token in human-readable format.
-        :param pulumi.Input[float] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
         :param pulumi.Input[str] token_prefix: Prefix of the token.
@@ -194,8 +179,6 @@ class _OrganizationApplicationUserTokenState:
             pulumi.set(__self__, "organization_id", organization_id)
         if scopes is not None:
             pulumi.set(__self__, "scopes", scopes)
-        if timeouts is not None:
-            pulumi.set(__self__, "timeouts", timeouts)
         if token_prefix is not None:
             pulumi.set(__self__, "token_prefix", token_prefix)
         if user_id is not None:
@@ -335,14 +318,14 @@ class _OrganizationApplicationUserTokenState:
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> Optional[pulumi.Input[float]]:
+    def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
         """
         The number of hours after which a token expires. Default session duration is 10 hours.
         """
         return pulumi.get(self, "max_age_seconds")
 
     @max_age_seconds.setter
-    def max_age_seconds(self, value: Optional[pulumi.Input[float]]):
+    def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_age_seconds", value)
 
     @property
@@ -368,15 +351,6 @@ class _OrganizationApplicationUserTokenState:
     @scopes.setter
     def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scopes", value)
-
-    @property
-    @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]:
-        return pulumi.get(self, "timeouts")
-
-    @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['OrganizationApplicationUserTokenTimeoutsArgs']]):
-        pulumi.set(self, "timeouts", value)
 
     @property
     @pulumi.getter(name="tokenPrefix")
@@ -410,10 +384,9 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
-                 max_age_seconds: Optional[pulumi.Input[float]] = None,
+                 max_age_seconds: Optional[pulumi.Input[int]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationApplicationUserTokenTimeoutsArgs']]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -444,7 +417,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of the token.
         :param pulumi.Input[bool] extend_when_used: Extends the token session duration when the token is used. Only applicable if a value is set for `max_age_seconds`.
-        :param pulumi.Input[float] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
         :param pulumi.Input[str] user_id: The ID of the application user the token is created for.
@@ -496,10 +469,9 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  extend_when_used: Optional[pulumi.Input[bool]] = None,
-                 max_age_seconds: Optional[pulumi.Input[float]] = None,
+                 max_age_seconds: Optional[pulumi.Input[int]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationApplicationUserTokenTimeoutsArgs']]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -517,7 +489,6 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["scopes"] = scopes
-            __props__.__dict__["timeouts"] = timeouts
             if user_id is None and not opts.urn:
                 raise TypeError("Missing required property 'user_id'")
             __props__.__dict__["user_id"] = user_id
@@ -554,10 +525,9 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
             last_used_time: Optional[pulumi.Input[str]] = None,
             last_user_agent: Optional[pulumi.Input[str]] = None,
             last_user_agent_human_readable: Optional[pulumi.Input[str]] = None,
-            max_age_seconds: Optional[pulumi.Input[float]] = None,
+            max_age_seconds: Optional[pulumi.Input[int]] = None,
             organization_id: Optional[pulumi.Input[str]] = None,
             scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationApplicationUserTokenTimeoutsArgs']]] = None,
             token_prefix: Optional[pulumi.Input[str]] = None,
             user_id: Optional[pulumi.Input[str]] = None) -> 'OrganizationApplicationUserToken':
         """
@@ -578,7 +548,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         :param pulumi.Input[str] last_used_time: Timestamp when the access token was last used.
         :param pulumi.Input[str] last_user_agent: User agent of the last request made with this token.
         :param pulumi.Input[str] last_user_agent_human_readable: User agent of the last request made with this token in human-readable format.
-        :param pulumi.Input[float] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
+        :param pulumi.Input[int] max_age_seconds: The number of hours after which a token expires. Default session duration is 10 hours.
         :param pulumi.Input[str] organization_id: The ID of the organization the application user belongs to.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Restricts the scopes for this token.
         :param pulumi.Input[str] token_prefix: Prefix of the token.
@@ -602,7 +572,6 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         __props__.__dict__["max_age_seconds"] = max_age_seconds
         __props__.__dict__["organization_id"] = organization_id
         __props__.__dict__["scopes"] = scopes
-        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["token_prefix"] = token_prefix
         __props__.__dict__["user_id"] = user_id
         return OrganizationApplicationUserToken(resource_name, opts=opts, __props__=__props__)
@@ -697,7 +666,7 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxAgeSeconds")
-    def max_age_seconds(self) -> pulumi.Output[Optional[float]]:
+    def max_age_seconds(self) -> pulumi.Output[Optional[int]]:
         """
         The number of hours after which a token expires. Default session duration is 10 hours.
         """
@@ -718,11 +687,6 @@ class OrganizationApplicationUserToken(pulumi.CustomResource):
         Restricts the scopes for this token.
         """
         return pulumi.get(self, "scopes")
-
-    @property
-    @pulumi.getter
-    def timeouts(self) -> pulumi.Output[Optional['outputs.OrganizationApplicationUserTokenTimeouts']]:
-        return pulumi.get(self, "timeouts")
 
     @property
     @pulumi.getter(name="tokenPrefix")

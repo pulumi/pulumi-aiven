@@ -97,7 +97,7 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      * 
      */
     private @Nullable String kafkaVersion;
@@ -243,7 +243,7 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaRestConfig);
     }
     /**
-     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
+     * @return Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
      * 
      */
     public Optional<String> kafkaVersion() {

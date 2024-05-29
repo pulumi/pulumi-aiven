@@ -178,8 +178,6 @@ __all__ = [
     'OpenSearchServiceIntegrationArgs',
     'OpenSearchTagArgs',
     'OpenSearchTechEmailArgs',
-    'OrganizationApplicationUserTimeoutsArgs',
-    'OrganizationApplicationUserTokenTimeoutsArgs',
     'OrganizationGroupProjectTimeoutsArgs',
     'OrganizationTimeoutsArgs',
     'OrganizationUserGroupMemberTimeoutsArgs',
@@ -391,7 +389,7 @@ class CassandraCassandraUserConfigArgs:
         :param pulumi.Input[int] backup_hour: The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
         :param pulumi.Input[int] backup_minute: The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
         :param pulumi.Input['CassandraCassandraUserConfigCassandraArgs'] cassandra: Cassandra configuration values
-        :param pulumi.Input[str] cassandra_version: Enum: `3`, `4`, `4.1`. Cassandra version.
+        :param pulumi.Input[str] cassandra_version: Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
         :param pulumi.Input[Sequence[pulumi.Input['CassandraCassandraUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -498,7 +496,7 @@ class CassandraCassandraUserConfigArgs:
     @pulumi.getter(name="cassandraVersion")
     def cassandra_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `3`, `4`, `4.1`. Cassandra version.
+        Enum: `3`, `4`, `4.1`, and newer. Cassandra version.
         """
         return pulumi.get(self, "cassandra_version")
 
@@ -2047,7 +2045,7 @@ class DragonflyDragonflyUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[bool] cache_mode: Evict entries when getting close to maxmemory limit. The default value is `false`.
-        :param pulumi.Input[str] dragonfly_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param pulumi.Input[str] dragonfly_persistence: Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         :param pulumi.Input[bool] dragonfly_ssl: Require SSL to access Dragonfly. The default value is `true`.
         :param pulumi.Input[Sequence[pulumi.Input['DragonflyDragonflyUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -2112,7 +2110,7 @@ class DragonflyDragonflyUserConfigArgs:
     @pulumi.getter(name="dragonflyPersistence")
     def dragonfly_persistence(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `off`, `rdb`. When persistence is 'rdb', Dragonfly does RDB dumps each 10 minutes. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`, `dfs`. When persistence is 'rdb' or 'dfs', Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         """
         return pulumi.get(self, "dragonfly_persistence")
 
@@ -2912,7 +2910,7 @@ class FlinkFlinkUserConfigArgs:
                  static_ips: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] additional_backup_regions: Additional Cloud Regions for Backup Replication.
-        :param pulumi.Input[str] flink_version: Enum: `1.16`. Flink major version.
+        :param pulumi.Input[str] flink_version: Enum: `1.16`, `1.19`, and newer. Flink major version.
         :param pulumi.Input[Sequence[pulumi.Input['FlinkFlinkUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
@@ -2965,7 +2963,7 @@ class FlinkFlinkUserConfigArgs:
     @pulumi.getter(name="flinkVersion")
     def flink_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `1.16`. Flink major version.
+        Enum: `1.16`, `1.19`, and newer. Flink major version.
         """
         return pulumi.get(self, "flink_version")
 
@@ -7139,7 +7137,7 @@ class KafkaKafkaUserConfigArgs:
         :param pulumi.Input[bool] kafka_rest: Enable Kafka-REST service. The default value is `false`.
         :param pulumi.Input[bool] kafka_rest_authorization: Enable authorization in Kafka-REST service.
         :param pulumi.Input['KafkaKafkaUserConfigKafkaRestConfigArgs'] kafka_rest_config: Kafka REST configuration
-        :param pulumi.Input[str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
+        :param pulumi.Input[str] kafka_version: Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
         :param pulumi.Input['KafkaKafkaUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['KafkaKafkaUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input['KafkaKafkaUserConfigPublicAccessArgs'] public_access: Allow access to selected service ports from the public Internet
@@ -7366,7 +7364,7 @@ class KafkaKafkaUserConfigArgs:
     @pulumi.getter(name="kafkaVersion")
     def kafka_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`. Kafka major version.
+        Enum: `3.1`, `3.2`, `3.3`, `3.4`, `3.5`, `3.6`, `3.7`, and newer. Kafka major version.
         """
         return pulumi.get(self, "kafka_version")
 
@@ -10495,8 +10493,8 @@ class M3AggregatorM3aggregatorUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['M3AggregatorM3aggregatorUserConfigIpFilterObjectArgs']]] ip_filter_objects: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filter_strings: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
-        :param pulumi.Input[str] m3_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
-        :param pulumi.Input[str] m3aggregator_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+        :param pulumi.Input[str] m3_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
+        :param pulumi.Input[str] m3aggregator_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
         """
@@ -10575,7 +10573,7 @@ class M3AggregatorM3aggregatorUserConfigArgs:
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3aggregator_version).
+        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3aggregator_version).
         """
         return pulumi.get(self, "m3_version")
 
@@ -10587,7 +10585,7 @@ class M3AggregatorM3aggregatorUserConfigArgs:
     @pulumi.getter(name="m3aggregatorVersion")
     def m3aggregator_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
         """
         return pulumi.get(self, "m3aggregator_version")
 
@@ -11021,9 +11019,9 @@ class M3DbM3dbUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input['M3DbM3dbUserConfigLimitsArgs'] limits: M3 limits
         :param pulumi.Input['M3DbM3dbUserConfigM3Args'] m3: M3 specific configuration options
-        :param pulumi.Input[str] m3_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
+        :param pulumi.Input[str] m3_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
         :param pulumi.Input[bool] m3coordinator_enable_graphite_carbon_ingest: Enables access to Graphite Carbon plaintext metrics ingestion. It can be enabled only for services inside VPCs. The metrics are written to aggregated namespaces only.
-        :param pulumi.Input[str] m3db_version: Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+        :param pulumi.Input[str] m3db_version: Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
         :param pulumi.Input[Sequence[pulumi.Input['M3DbM3dbUserConfigNamespaceArgs']]] namespaces: List of M3 namespaces
         :param pulumi.Input['M3DbM3dbUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -11164,7 +11162,7 @@ class M3DbM3dbUserConfigArgs:
     @pulumi.getter(name="m3Version")
     def m3_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `1.1`, `1.2`, `1.5`. M3 major version (deprecated, use m3db_version).
+        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (deprecated, use m3db_version).
         """
         return pulumi.get(self, "m3_version")
 
@@ -11188,7 +11186,7 @@ class M3DbM3dbUserConfigArgs:
     @pulumi.getter(name="m3dbVersion")
     def m3db_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `1.1`, `1.2`, `1.5`. M3 major version (the minimum compatible version).
+        Enum: `1.1`, `1.2`, `1.5`, and newer. M3 major version (the minimum compatible version).
         """
         return pulumi.get(self, "m3db_version")
 
@@ -12446,7 +12444,7 @@ class MySqlMysqlUserConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_filters: Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         :param pulumi.Input['MySqlMysqlUserConfigMigrationArgs'] migration: Migrate data from existing server
         :param pulumi.Input['MySqlMysqlUserConfigMysqlArgs'] mysql: mysql.conf configuration values
-        :param pulumi.Input[str] mysql_version: Enum: `8`. MySQL major version.
+        :param pulumi.Input[str] mysql_version: Enum: `8`, and newer. MySQL major version.
         :param pulumi.Input['MySqlMysqlUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['MySqlMysqlUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -12639,7 +12637,7 @@ class MySqlMysqlUserConfigArgs:
     @pulumi.getter(name="mysqlVersion")
     def mysql_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `8`. MySQL major version.
+        Enum: `8`, and newer. MySQL major version.
         """
         return pulumi.get(self, "mysql_version")
 
@@ -13925,7 +13923,7 @@ class OpenSearchOpensearchUserConfigArgs:
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpenidArgs'] openid: OpenSearch OpenID Connect Configuration
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchArgs'] opensearch: OpenSearch settings
         :param pulumi.Input['OpenSearchOpensearchUserConfigOpensearchDashboardsArgs'] opensearch_dashboards: OpenSearch Dashboards settings
-        :param pulumi.Input[str] opensearch_version: Enum: `1`, `2`. OpenSearch major version.
+        :param pulumi.Input[str] opensearch_version: Enum: `1`, `2`, and newer. OpenSearch major version.
         :param pulumi.Input['OpenSearchOpensearchUserConfigPrivateAccessArgs'] private_access: Allow access to selected service ports from private networks
         :param pulumi.Input['OpenSearchOpensearchUserConfigPrivatelinkAccessArgs'] privatelink_access: Allow access to selected service components through Privatelink
         :param pulumi.Input[str] project_to_fork_from: Name of another project to fork a service from. This has effect only when a new service is being created.
@@ -14149,7 +14147,7 @@ class OpenSearchOpensearchUserConfigArgs:
     @pulumi.getter(name="opensearchVersion")
     def opensearch_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `1`, `2`. OpenSearch major version.
+        Enum: `1`, `2`, and newer. OpenSearch major version.
         """
         return pulumi.get(self, "opensearch_version")
 
@@ -15975,148 +15973,6 @@ class OpenSearchTechEmailArgs:
 
 
 @pulumi.input_type
-class OrganizationApplicationUserTimeoutsArgs:
-    def __init__(__self__, *,
-                 create: Optional[pulumi.Input[str]] = None,
-                 delete: Optional[pulumi.Input[str]] = None,
-                 read: Optional[pulumi.Input[str]] = None,
-                 update: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        if create is not None:
-            pulumi.set(__self__, "create", create)
-        if delete is not None:
-            pulumi.set(__self__, "delete", delete)
-        if read is not None:
-            pulumi.set(__self__, "read", read)
-        if update is not None:
-            pulumi.set(__self__, "update", update)
-
-    @property
-    @pulumi.getter
-    def create(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        return pulumi.get(self, "create")
-
-    @create.setter
-    def create(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create", value)
-
-    @property
-    @pulumi.getter
-    def delete(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        return pulumi.get(self, "delete")
-
-    @delete.setter
-    def delete(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "delete", value)
-
-    @property
-    @pulumi.getter
-    def read(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        return pulumi.get(self, "read")
-
-    @read.setter
-    def read(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "read", value)
-
-    @property
-    @pulumi.getter
-    def update(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        return pulumi.get(self, "update")
-
-    @update.setter
-    def update(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update", value)
-
-
-@pulumi.input_type
-class OrganizationApplicationUserTokenTimeoutsArgs:
-    def __init__(__self__, *,
-                 create: Optional[pulumi.Input[str]] = None,
-                 delete: Optional[pulumi.Input[str]] = None,
-                 read: Optional[pulumi.Input[str]] = None,
-                 update: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        :param pulumi.Input[str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        :param pulumi.Input[str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        :param pulumi.Input[str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        if create is not None:
-            pulumi.set(__self__, "create", create)
-        if delete is not None:
-            pulumi.set(__self__, "delete", delete)
-        if read is not None:
-            pulumi.set(__self__, "read", read)
-        if update is not None:
-            pulumi.set(__self__, "update", update)
-
-    @property
-    @pulumi.getter
-    def create(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        return pulumi.get(self, "create")
-
-    @create.setter
-    def create(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create", value)
-
-    @property
-    @pulumi.getter
-    def delete(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-        """
-        return pulumi.get(self, "delete")
-
-    @delete.setter
-    def delete(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "delete", value)
-
-    @property
-    @pulumi.getter
-    def read(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-        """
-        return pulumi.get(self, "read")
-
-    @read.setter
-    def read(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "read", value)
-
-    @property
-    @pulumi.getter
-    def update(self) -> Optional[pulumi.Input[str]]:
-        """
-        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-        """
-        return pulumi.get(self, "update")
-
-    @update.setter
-    def update(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "update", value)
-
-
-@pulumi.input_type
 class OrganizationGroupProjectTimeoutsArgs:
     def __init__(__self__, *,
                  create: Optional[pulumi.Input[str]] = None,
@@ -16849,7 +16705,7 @@ class PgPgUserConfigArgs:
         :param pulumi.Input[bool] pg_read_replica: Should the service which is being forked be a read replica (deprecated, use read_replica service integration instead).
         :param pulumi.Input[str] pg_service_to_fork_from: Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
         :param pulumi.Input[bool] pg_stat_monitor_enable: Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
-        :param pulumi.Input[str] pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+        :param pulumi.Input[str] pg_version: Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
         :param pulumi.Input['PgPgUserConfigPgauditArgs'] pgaudit: System-wide settings for the pgaudit extension
         :param pulumi.Input['PgPgUserConfigPgbouncerArgs'] pgbouncer: PGBouncer connection pooling settings
         :param pulumi.Input['PgPgUserConfigPglookoutArgs'] pglookout: System-wide settings for pglookout
@@ -17128,7 +16984,7 @@ class PgPgUserConfigArgs:
     @pulumi.getter(name="pgVersion")
     def pg_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`. PostgreSQL major version.
+        Enum: `10`, `11`, `12`, `13`, `14`, `15`, `16`, and newer. PostgreSQL major version.
         """
         return pulumi.get(self, "pg_version")
 
@@ -17572,7 +17428,7 @@ class PgPgUserConfigPgArgs:
         :param pulumi.Input[bool] jit: Controls system-wide use of Just-in-Time Compilation (JIT).
         :param pulumi.Input[int] log_autovacuum_min_duration: Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
         :param pulumi.Input[str] log_error_verbosity: Enum: `TERSE`, `DEFAULT`, `VERBOSE`. Controls the amount of detail written in the server log for each message that is logged.
-        :param pulumi.Input[str] log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        :param pulumi.Input[str] log_line_prefix: Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
         :param pulumi.Input[int] log_min_duration_statement: Log statements that take more than this number of milliseconds to run, -1 disables.
         :param pulumi.Input[int] log_temp_files: Log statements for each temporary file created larger than this number of kilobytes, -1 disables.
         :param pulumi.Input[int] max_files_per_process: PostgreSQL maximum number of files that can be open per process.
@@ -17934,7 +17790,7 @@ class PgPgUserConfigPgArgs:
     @pulumi.getter(name="logLinePrefix")
     def log_line_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
         """
         return pulumi.get(self, "log_line_prefix")
 
@@ -19386,11 +19242,11 @@ class RedisRedisUserConfigArgs:
         :param pulumi.Input[str] redis_maxmemory_policy: Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
         :param pulumi.Input[str] redis_notify_keyspace_events: Set notify-keyspace-events option.
         :param pulumi.Input[int] redis_number_of_databases: Set number of Redis databases. Changing this will cause a restart of the Redis service.
-        :param pulumi.Input[str] redis_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        :param pulumi.Input[str] redis_persistence: Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         :param pulumi.Input[int] redis_pubsub_client_output_buffer_limit: Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[bool] redis_ssl: Require SSL to access Redis. The default value is `true`.
         :param pulumi.Input[int] redis_timeout: Redis idle connection timeout in seconds. The default value is `300`.
-        :param pulumi.Input[str] redis_version: Enum: `7.0`. Redis major version.
+        :param pulumi.Input[str] redis_version: Enum: `7.0`, and newer. Redis major version.
         :param pulumi.Input[bool] service_log: Store logs for the service so that they are available in the HTTP API and console.
         :param pulumi.Input[str] service_to_fork_from: Name of another service to fork from. This has effect only when a new service is being created.
         :param pulumi.Input[bool] static_ips: Use static public IP addresses.
@@ -19660,7 +19516,7 @@ class RedisRedisUserConfigArgs:
     @pulumi.getter(name="redisPersistence")
     def redis_persistence(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         """
         return pulumi.get(self, "redis_persistence")
 
@@ -19708,7 +19564,7 @@ class RedisRedisUserConfigArgs:
     @pulumi.getter(name="redisVersion")
     def redis_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `7.0`. Redis major version.
+        Enum: `7.0`, and newer. Redis major version.
         """
         return pulumi.get(self, "redis_version")
 
@@ -21292,7 +21148,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
         :param pulumi.Input[str] ssl_ca_cert: PEM-encoded CA certificate.
         :param pulumi.Input[str] ssl_client_cert: PEM-encoded client certificate.
         :param pulumi.Input[str] ssl_client_key: PEM-encoded client key.
-        :param pulumi.Input[str] ssl_endpoint_identification_algorithm: Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+        :param pulumi.Input[str] ssl_endpoint_identification_algorithm: Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
         """
         pulumi.set(__self__, "bootstrap_servers", bootstrap_servers)
         pulumi.set(__self__, "security_protocol", security_protocol)
@@ -21411,7 +21267,7 @@ class ServiceIntegrationEndpointExternalKafkaUserConfigArgs:
     @pulumi.getter(name="sslEndpointIdentificationAlgorithm")
     def ssl_endpoint_identification_algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+        Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
         """
         return pulumi.get(self, "ssl_endpoint_identification_algorithm")
 

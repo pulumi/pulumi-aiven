@@ -134,7 +134,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RedisNumberOfDatabases { get; set; }
 
         /// <summary>
-        /// Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         /// </summary>
         [Input("redisPersistence")]
         public Input<string>? RedisPersistence { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RedisTimeout { get; set; }
 
         /// <summary>
-        /// Enum: `7.0`. Redis major version.
+        /// Enum: `7.0`, and newer. Redis major version.
         /// </summary>
         [Input("redisVersion")]
         public Input<string>? RedisVersion { get; set; }

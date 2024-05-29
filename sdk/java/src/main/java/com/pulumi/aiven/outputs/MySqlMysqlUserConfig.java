@@ -80,7 +80,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable MySqlMysqlUserConfigMysql mysql;
     /**
-     * @return Enum: `8`. MySQL major version.
+     * @return Enum: `8`, and newer. MySQL major version.
      * 
      */
     private @Nullable String mysqlVersion;
@@ -208,7 +208,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.mysql);
     }
     /**
-     * @return Enum: `8`. MySQL major version.
+     * @return Enum: `8`, and newer. MySQL major version.
      * 
      */
     public Optional<String> mysqlVersion() {

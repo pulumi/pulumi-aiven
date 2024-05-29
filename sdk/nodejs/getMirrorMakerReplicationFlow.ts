@@ -83,6 +83,10 @@ export interface GetMirrorMakerReplicationFlowResult {
      */
     readonly project: string;
     /**
+     * Replication factor, `>= 1`.
+     */
+    readonly replicationFactor: number;
+    /**
      * Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      */
     readonly replicationPolicyClass: string;

@@ -90,7 +90,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? LogErrorVerbosity;
         /// <summary>
-        /// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze etc.
+        /// Enum: `'pid=%p,user=%u,db=%d,app=%a,client=%h '`, `'%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h '`, `'%m [%p] %q[user=%u,db=%d,app=%a] '`. Choose from one of the available log formats.
         /// </summary>
         public readonly string? LogLinePrefix;
         /// <summary>

@@ -66,7 +66,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchDashboards? OpensearchDashboards;
         /// <summary>
-        /// Enum: `1`, `2`. OpenSearch major version.
+        /// Enum: `1`, `2`, and newer. OpenSearch major version.
         /// </summary>
         public readonly string? OpensearchVersion;
         /// <summary>

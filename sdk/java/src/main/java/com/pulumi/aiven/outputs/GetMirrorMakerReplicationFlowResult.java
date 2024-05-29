@@ -44,6 +44,11 @@ public final class GetMirrorMakerReplicationFlowResult {
      */
     private String project;
     /**
+     * @return Replication factor, `&gt;= 1`.
+     * 
+     */
+    private Integer replicationFactor;
+    /**
      * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
@@ -128,6 +133,13 @@ public final class GetMirrorMakerReplicationFlowResult {
         return this.project;
     }
     /**
+     * @return Replication factor, `&gt;= 1`.
+     * 
+     */
+    public Integer replicationFactor() {
+        return this.replicationFactor;
+    }
+    /**
      * @return Replication policy class. The possible values are `org.apache.kafka.connect.mirror.DefaultReplicationPolicy` and `org.apache.kafka.connect.mirror.IdentityReplicationPolicy`. The default value is `org.apache.kafka.connect.mirror.DefaultReplicationPolicy`.
      * 
      */
@@ -199,6 +211,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         private String id;
         private String offsetSyncsTopicLocation;
         private String project;
+        private Integer replicationFactor;
         private String replicationPolicyClass;
         private String serviceName;
         private String sourceCluster;
@@ -216,6 +229,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.id = defaults.id;
     	      this.offsetSyncsTopicLocation = defaults.offsetSyncsTopicLocation;
     	      this.project = defaults.project;
+    	      this.replicationFactor = defaults.replicationFactor;
     	      this.replicationPolicyClass = defaults.replicationPolicyClass;
     	      this.serviceName = defaults.serviceName;
     	      this.sourceCluster = defaults.sourceCluster;
@@ -272,6 +286,14 @@ public final class GetMirrorMakerReplicationFlowResult {
               throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "project");
             }
             this.project = project;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder replicationFactor(Integer replicationFactor) {
+            if (replicationFactor == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "replicationFactor");
+            }
+            this.replicationFactor = replicationFactor;
             return this;
         }
         @CustomType.Setter
@@ -352,6 +374,7 @@ public final class GetMirrorMakerReplicationFlowResult {
             _resultValue.id = id;
             _resultValue.offsetSyncsTopicLocation = offsetSyncsTopicLocation;
             _resultValue.project = project;
+            _resultValue.replicationFactor = replicationFactor;
             _resultValue.replicationPolicyClass = replicationPolicyClass;
             _resultValue.serviceName = serviceName;
             _resultValue.sourceCluster = sourceCluster;

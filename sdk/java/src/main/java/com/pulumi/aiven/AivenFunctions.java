@@ -7848,9 +7848,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an application user.
      * 
-     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7893,9 +7890,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an application user.
-     * 
-     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      * ## Example Usage
      * 
@@ -7940,9 +7934,6 @@ public final class AivenFunctions {
     /**
      * Gets information about an application user.
      * 
-     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
-     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7985,9 +7976,6 @@ public final class AivenFunctions {
     }
     /**
      * Gets information about an application user.
-     * 
-     * **This data source is in the limited availability stage and may change without notice.**  To enable this feature, contact the sales team. After it&#39;s enabled, set
-     * the `PROVIDER_AIVEN_ENABLE_BETA` environment variable to use the data source.
      * 
      * ## Example Usage
      * 

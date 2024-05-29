@@ -46,7 +46,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>
-        /// Enum: `https`, ``. The endpoint identification algorithm to validate server hostname using server certificate.
+        /// Enum: `https`. The endpoint identification algorithm to validate server hostname using server certificate.
         /// </summary>
         public readonly string? SslEndpointIdentificationAlgorithm;
 
