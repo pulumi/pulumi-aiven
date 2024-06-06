@@ -42,6 +42,14 @@ import (
 //					pulumi.String(".*\\.replica"),
 //					pulumi.String("__.*"),
 //				},
+//				ConfigPropertiesExcludes: pulumi.StringArray{
+//					pulumi.String("follower\\.replication\\.throttled\\.replicas"),
+//					pulumi.String("leader\\.replication\\.throttled\\.replicas"),
+//					pulumi.String("message\\.timestamp\\.difference\\.max\\.ms"),
+//					pulumi.String("message\\.timestamp\\.type"),
+//					pulumi.String("unclean\\.leader\\.election\\.enable"),
+//					pulumi.String("min\\.insync\\.replicas"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -60,6 +68,8 @@ import (
 type MirrorMakerReplicationFlow struct {
 	pulumi.CustomResourceState
 
+	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	ConfigPropertiesExcludes pulumi.StringArrayOutput `pulumi:"configPropertiesExcludes"`
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrOutput `pulumi:"emitBackwardHeartbeatsEnabled"`
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -141,6 +151,8 @@ func GetMirrorMakerReplicationFlow(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering MirrorMakerReplicationFlow resources.
 type mirrorMakerReplicationFlowState struct {
+	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled *bool `pulumi:"emitBackwardHeartbeatsEnabled"`
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -172,6 +184,8 @@ type mirrorMakerReplicationFlowState struct {
 }
 
 type MirrorMakerReplicationFlowState struct {
+	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	ConfigPropertiesExcludes pulumi.StringArrayInput
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrInput
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -207,6 +221,8 @@ func (MirrorMakerReplicationFlowState) ElementType() reflect.Type {
 }
 
 type mirrorMakerReplicationFlowArgs struct {
+	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled *bool `pulumi:"emitBackwardHeartbeatsEnabled"`
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -239,6 +255,8 @@ type mirrorMakerReplicationFlowArgs struct {
 
 // The set of arguments for constructing a MirrorMakerReplicationFlow resource.
 type MirrorMakerReplicationFlowArgs struct {
+	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	ConfigPropertiesExcludes pulumi.StringArrayInput
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled pulumi.BoolPtrInput
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -354,6 +372,11 @@ func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutput() M
 
 func (o MirrorMakerReplicationFlowOutput) ToMirrorMakerReplicationFlowOutputWithContext(ctx context.Context) MirrorMakerReplicationFlowOutput {
 	return o
+}
+
+// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+func (o MirrorMakerReplicationFlowOutput) ConfigPropertiesExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MirrorMakerReplicationFlow) pulumi.StringArrayOutput { return v.ConfigPropertiesExcludes }).(pulumi.StringArrayOutput)
 }
 
 // Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.

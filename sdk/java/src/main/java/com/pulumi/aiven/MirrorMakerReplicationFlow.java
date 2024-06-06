@@ -56,6 +56,13 @@ import javax.annotation.Nullable;
  *                 ".*[\\-\\.]internal",
  *                 ".*\\.replica",
  *                 "__.*")
+ *             .configPropertiesExcludes(            
+ *                 "follower\\.replication\\.throttled\\.replicas",
+ *                 "leader\\.replication\\.throttled\\.replicas",
+ *                 "message\\.timestamp\\.difference\\.max\\.ms",
+ *                 "message\\.timestamp\\.type",
+ *                 "unclean\\.leader\\.election\\.enable",
+ *                 "min\\.insync\\.replicas")
  *             .build());
  * 
  *     }
@@ -73,6 +80,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")
 public class MirrorMakerReplicationFlow extends com.pulumi.resources.CustomResource {
+    /**
+     * List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * 
+     */
+    @Export(name="configPropertiesExcludes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> configPropertiesExcludes;
+
+    /**
+     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * 
+     */
+    public Output<Optional<List<String>>> configPropertiesExcludes() {
+        return Codegen.optional(this.configPropertiesExcludes);
+    }
     /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 

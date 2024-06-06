@@ -65,6 +65,8 @@ type LookupMirrorMakerReplicationFlowArgs struct {
 
 // A collection of values returned by getMirrorMakerReplicationFlow.
 type LookupMirrorMakerReplicationFlowResult struct {
+	// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+	ConfigPropertiesExcludes []string `pulumi:"configPropertiesExcludes"`
 	// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
 	EmitBackwardHeartbeatsEnabled bool `pulumi:"emitBackwardHeartbeatsEnabled"`
 	// Whether to emit heartbeats to the target cluster. The default value is `false`.
@@ -139,6 +141,11 @@ func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplica
 
 func (o LookupMirrorMakerReplicationFlowResultOutput) ToLookupMirrorMakerReplicationFlowResultOutputWithContext(ctx context.Context) LookupMirrorMakerReplicationFlowResultOutput {
 	return o
+}
+
+// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+func (o LookupMirrorMakerReplicationFlowResultOutput) ConfigPropertiesExcludes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupMirrorMakerReplicationFlowResult) []string { return v.ConfigPropertiesExcludes }).(pulumi.StringArrayOutput)
 }
 
 // Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.

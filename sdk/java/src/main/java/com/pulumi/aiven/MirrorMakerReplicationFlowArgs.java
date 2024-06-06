@@ -20,6 +20,21 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     public static final MirrorMakerReplicationFlowArgs Empty = new MirrorMakerReplicationFlowArgs();
 
     /**
+     * List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * 
+     */
+    @Import(name="configPropertiesExcludes")
+    private @Nullable Output<List<String>> configPropertiesExcludes;
+
+    /**
+     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * 
+     */
+    public Optional<Output<List<String>>> configPropertiesExcludes() {
+        return Optional.ofNullable(this.configPropertiesExcludes);
+    }
+
+    /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
@@ -232,6 +247,7 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
     private MirrorMakerReplicationFlowArgs() {}
 
     private MirrorMakerReplicationFlowArgs(MirrorMakerReplicationFlowArgs $) {
+        this.configPropertiesExcludes = $.configPropertiesExcludes;
         this.emitBackwardHeartbeatsEnabled = $.emitBackwardHeartbeatsEnabled;
         this.emitHeartbeatsEnabled = $.emitHeartbeatsEnabled;
         this.enable = $.enable;
@@ -264,6 +280,37 @@ public final class MirrorMakerReplicationFlowArgs extends com.pulumi.resources.R
 
         public Builder(MirrorMakerReplicationFlowArgs defaults) {
             $ = new MirrorMakerReplicationFlowArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param configPropertiesExcludes List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configPropertiesExcludes(@Nullable Output<List<String>> configPropertiesExcludes) {
+            $.configPropertiesExcludes = configPropertiesExcludes;
+            return this;
+        }
+
+        /**
+         * @param configPropertiesExcludes List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configPropertiesExcludes(List<String> configPropertiesExcludes) {
+            return configPropertiesExcludes(Output.of(configPropertiesExcludes));
+        }
+
+        /**
+         * @param configPropertiesExcludes List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+         * 
+         * @return builder
+         * 
+         */
+        public Builder configPropertiesExcludes(String... configPropertiesExcludes) {
+            return configPropertiesExcludes(List.of(configPropertiesExcludes));
         }
 
         /**
