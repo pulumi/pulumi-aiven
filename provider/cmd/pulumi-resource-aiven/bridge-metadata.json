@@ -961,6 +961,9 @@
                 "current": "aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow",
                 "majorVersion": 6,
                 "fields": {
+                    "config_properties_exclude": {
+                        "maxItemsOne": false
+                    },
                     "topics": {
                         "maxItemsOne": false
                     },
@@ -2657,6 +2660,9 @@
                 "current": "aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow",
                 "majorVersion": 6,
                 "fields": {
+                    "config_properties_exclude": {
+                        "maxItemsOne": false
+                    },
                     "topics": {
                         "maxItemsOne": false
                     },
