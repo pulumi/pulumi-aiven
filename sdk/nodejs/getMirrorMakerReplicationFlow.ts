@@ -59,6 +59,10 @@ export interface GetMirrorMakerReplicationFlowArgs {
  */
 export interface GetMirrorMakerReplicationFlowResult {
     /**
+     * List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+     */
+    readonly configPropertiesExcludes: string[];
+    /**
      * Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      */
     readonly emitBackwardHeartbeatsEnabled: boolean;

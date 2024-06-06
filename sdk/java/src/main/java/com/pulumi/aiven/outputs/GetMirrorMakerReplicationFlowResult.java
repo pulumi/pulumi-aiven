@@ -14,6 +14,11 @@ import java.util.Objects;
 @CustomType
 public final class GetMirrorMakerReplicationFlowResult {
     /**
+     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * 
+     */
+    private List<String> configPropertiesExcludes;
+    /**
      * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
      */
@@ -90,6 +95,13 @@ public final class GetMirrorMakerReplicationFlowResult {
     private List<String> topicsBlacklists;
 
     private GetMirrorMakerReplicationFlowResult() {}
+    /**
+     * @return List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for &#39;min.insync.replicas&#39; and &#39;unclean.leader.election.enable&#39; set this to: [&#34;follower\\.replication\\.throttled\\.replicas&#34;, &#34;leader\\.replication\\.throttled\\.replicas&#34;, &#34;message\\.timestamp\\.difference\\.max\\.ms&#34;,  &#34;message\\.timestamp\\.type&#34;]
+     * 
+     */
+    public List<String> configPropertiesExcludes() {
+        return this.configPropertiesExcludes;
+    }
     /**
      * @return Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
      * 
@@ -205,6 +217,7 @@ public final class GetMirrorMakerReplicationFlowResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> configPropertiesExcludes;
         private Boolean emitBackwardHeartbeatsEnabled;
         private Boolean emitHeartbeatsEnabled;
         private Boolean enable;
@@ -223,6 +236,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         public Builder() {}
         public Builder(GetMirrorMakerReplicationFlowResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.configPropertiesExcludes = defaults.configPropertiesExcludes;
     	      this.emitBackwardHeartbeatsEnabled = defaults.emitBackwardHeartbeatsEnabled;
     	      this.emitHeartbeatsEnabled = defaults.emitHeartbeatsEnabled;
     	      this.enable = defaults.enable;
@@ -240,6 +254,17 @@ public final class GetMirrorMakerReplicationFlowResult {
     	      this.topicsBlacklists = defaults.topicsBlacklists;
         }
 
+        @CustomType.Setter
+        public Builder configPropertiesExcludes(List<String> configPropertiesExcludes) {
+            if (configPropertiesExcludes == null) {
+              throw new MissingRequiredPropertyException("GetMirrorMakerReplicationFlowResult", "configPropertiesExcludes");
+            }
+            this.configPropertiesExcludes = configPropertiesExcludes;
+            return this;
+        }
+        public Builder configPropertiesExcludes(String... configPropertiesExcludes) {
+            return configPropertiesExcludes(List.of(configPropertiesExcludes));
+        }
         @CustomType.Setter
         public Builder emitBackwardHeartbeatsEnabled(Boolean emitBackwardHeartbeatsEnabled) {
             if (emitBackwardHeartbeatsEnabled == null) {
@@ -368,6 +393,7 @@ public final class GetMirrorMakerReplicationFlowResult {
         }
         public GetMirrorMakerReplicationFlowResult build() {
             final var _resultValue = new GetMirrorMakerReplicationFlowResult();
+            _resultValue.configPropertiesExcludes = configPropertiesExcludes;
             _resultValue.emitBackwardHeartbeatsEnabled = emitBackwardHeartbeatsEnabled;
             _resultValue.emitHeartbeatsEnabled = emitHeartbeatsEnabled;
             _resultValue.enable = enable;

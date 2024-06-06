@@ -39,6 +39,15 @@ namespace Pulumi.Aiven
     ///             ".*\\.replica",
     ///             "__.*",
     ///         },
+    ///         ConfigPropertiesExcludes = new[]
+    ///         {
+    ///             "follower\\.replication\\.throttled\\.replicas",
+    ///             "leader\\.replication\\.throttled\\.replicas",
+    ///             "message\\.timestamp\\.difference\\.max\\.ms",
+    ///             "message\\.timestamp\\.type",
+    ///             "unclean\\.leader\\.election\\.enable",
+    ///             "min\\.insync\\.replicas",
+    ///         },
     ///     });
     /// 
     /// });
@@ -53,6 +62,12 @@ namespace Pulumi.Aiven
     [AivenResourceType("aiven:index/mirrorMakerReplicationFlow:MirrorMakerReplicationFlow")]
     public partial class MirrorMakerReplicationFlow : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// </summary>
+        [Output("configPropertiesExcludes")]
+        public Output<ImmutableArray<string>> ConfigPropertiesExcludes { get; private set; } = null!;
+
         /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>
@@ -183,6 +198,18 @@ namespace Pulumi.Aiven
 
     public sealed class MirrorMakerReplicationFlowArgs : global::Pulumi.ResourceArgs
     {
+        [Input("configPropertiesExcludes")]
+        private InputList<string>? _configPropertiesExcludes;
+
+        /// <summary>
+        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// </summary>
+        public InputList<string> ConfigPropertiesExcludes
+        {
+            get => _configPropertiesExcludes ?? (_configPropertiesExcludes = new InputList<string>());
+            set => _configPropertiesExcludes = value;
+        }
+
         /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>
@@ -287,6 +314,18 @@ namespace Pulumi.Aiven
 
     public sealed class MirrorMakerReplicationFlowState : global::Pulumi.ResourceArgs
     {
+        [Input("configPropertiesExcludes")]
+        private InputList<string>? _configPropertiesExcludes;
+
+        /// <summary>
+        /// List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\.replication\\.throttled\\.replicas", "leader\\.replication\\.throttled\\.replicas", "message\\.timestamp\\.difference\\.max\\.ms",  "message\\.timestamp\\.type"]
+        /// </summary>
+        public InputList<string> ConfigPropertiesExcludes
+        {
+            get => _configPropertiesExcludes ?? (_configPropertiesExcludes = new InputList<string>());
+            set => _configPropertiesExcludes = value;
+        }
+
         /// <summary>
         /// Whether to emit heartbeats to the direction opposite to the flow, i.e. to the source cluster. The default value is `false`.
         /// </summary>

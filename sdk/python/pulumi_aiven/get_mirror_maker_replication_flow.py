@@ -21,7 +21,10 @@ class GetMirrorMakerReplicationFlowResult:
     """
     A collection of values returned by getMirrorMakerReplicationFlow.
     """
-    def __init__(__self__, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+    def __init__(__self__, config_properties_excludes=None, emit_backward_heartbeats_enabled=None, emit_heartbeats_enabled=None, enable=None, id=None, offset_syncs_topic_location=None, project=None, replication_factor=None, replication_policy_class=None, service_name=None, source_cluster=None, sync_group_offsets_enabled=None, sync_group_offsets_interval_seconds=None, target_cluster=None, topics=None, topics_blacklists=None):
+        if config_properties_excludes and not isinstance(config_properties_excludes, list):
+            raise TypeError("Expected argument 'config_properties_excludes' to be a list")
+        pulumi.set(__self__, "config_properties_excludes", config_properties_excludes)
         if emit_backward_heartbeats_enabled and not isinstance(emit_backward_heartbeats_enabled, bool):
             raise TypeError("Expected argument 'emit_backward_heartbeats_enabled' to be a bool")
         pulumi.set(__self__, "emit_backward_heartbeats_enabled", emit_backward_heartbeats_enabled)
@@ -67,6 +70,14 @@ class GetMirrorMakerReplicationFlowResult:
         if topics_blacklists and not isinstance(topics_blacklists, list):
             raise TypeError("Expected argument 'topics_blacklists' to be a list")
         pulumi.set(__self__, "topics_blacklists", topics_blacklists)
+
+    @property
+    @pulumi.getter(name="configPropertiesExcludes")
+    def config_properties_excludes(self) -> Sequence[str]:
+        """
+        List of topic configuration properties and/or regular expressions to not replicate. The properties that are not replicated by default are: `follower.replication.throttled.replicas`, `leader.replication.throttled.replicas`, `message.timestamp.difference.max.ms`, `message.timestamp.type`, `unclean.leader.election.enable`, and `min.insync.replicas`. Setting this overrides the defaults. For example, to enable replication for 'min.insync.replicas' and 'unclean.leader.election.enable' set this to: ["follower\\\\.replication\\\\.throttled\\\\.replicas", "leader\\\\.replication\\\\.throttled\\\\.replicas", "message\\\\.timestamp\\\\.difference\\\\.max\\\\.ms",  "message\\\\.timestamp\\\\.type"]
+        """
+        return pulumi.get(self, "config_properties_excludes")
 
     @property
     @pulumi.getter(name="emitBackwardHeartbeatsEnabled")
@@ -195,6 +206,7 @@ class AwaitableGetMirrorMakerReplicationFlowResult(GetMirrorMakerReplicationFlow
         if False:
             yield self
         return GetMirrorMakerReplicationFlowResult(
+            config_properties_excludes=self.config_properties_excludes,
             emit_backward_heartbeats_enabled=self.emit_backward_heartbeats_enabled,
             emit_heartbeats_enabled=self.emit_heartbeats_enabled,
             enable=self.enable,
@@ -247,6 +259,7 @@ def get_mirror_maker_replication_flow(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('aiven:index/getMirrorMakerReplicationFlow:getMirrorMakerReplicationFlow', __args__, opts=opts, typ=GetMirrorMakerReplicationFlowResult).value
 
     return AwaitableGetMirrorMakerReplicationFlowResult(
+        config_properties_excludes=pulumi.get(__ret__, 'config_properties_excludes'),
         emit_backward_heartbeats_enabled=pulumi.get(__ret__, 'emit_backward_heartbeats_enabled'),
         emit_heartbeats_enabled=pulumi.get(__ret__, 'emit_heartbeats_enabled'),
         enable=pulumi.get(__ret__, 'enable'),
