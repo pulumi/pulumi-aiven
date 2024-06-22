@@ -43,13 +43,11 @@ class AccountArgs:
 
     @property
     @pulumi.getter(name="primaryBillingGroupId")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def primary_billing_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         Billing group id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "primary_billing_group_id")
 
     @primary_billing_group_id.setter
@@ -110,13 +108,11 @@ class _AccountState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""The new Organization resource won't have it, use the built-in ID field instead.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account id
         """
-        warnings.warn("""The new Organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: The new Organization resource won't have it, use the built-in ID field instead.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -137,13 +133,11 @@ class _AccountState:
 
     @property
     @pulumi.getter(name="isAccountOwner")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def is_account_owner(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, user is part of the owners team for this account
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""is_account_owner is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "is_account_owner")
 
     @is_account_owner.setter
@@ -164,13 +158,11 @@ class _AccountState:
 
     @property
     @pulumi.getter(name="ownerTeamId")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def owner_team_id(self) -> Optional[pulumi.Input[str]]:
         """
         Owner team id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""owner_team_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "owner_team_id")
 
     @owner_team_id.setter
@@ -179,13 +171,11 @@ class _AccountState:
 
     @property
     @pulumi.getter(name="primaryBillingGroupId")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def primary_billing_group_id(self) -> Optional[pulumi.Input[str]]:
         """
         Billing group id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "primary_billing_group_id")
 
     @primary_billing_group_id.setter
@@ -360,13 +350,11 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""The new Organization resource won't have it, use the built-in ID field instead.""")
     def account_id(self) -> pulumi.Output[str]:
         """
         Account id
         """
-        warnings.warn("""The new Organization resource won't have it, use the built-in ID field instead.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: The new Organization resource won't have it, use the built-in ID field instead.""")
-
         return pulumi.get(self, "account_id")
 
     @property
@@ -379,13 +367,11 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="isAccountOwner")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def is_account_owner(self) -> pulumi.Output[bool]:
         """
         If true, user is part of the owners team for this account
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""is_account_owner is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "is_account_owner")
 
     @property
@@ -398,24 +384,20 @@ class Account(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ownerTeamId")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def owner_team_id(self) -> pulumi.Output[str]:
         """
         Owner team id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""owner_team_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "owner_team_id")
 
     @property
     @pulumi.getter(name="primaryBillingGroupId")
+    @_utilities.deprecated("""The new Organization resource won't have it, and will not have a replacement.""")
     def primary_billing_group_id(self) -> pulumi.Output[Optional[str]]:
         """
         Billing group id
         """
-        warnings.warn("""The new Organization resource won't have it, and will not have a replacement.""", DeprecationWarning)
-        pulumi.log.warn("""primary_billing_group_id is deprecated: The new Organization resource won't have it, and will not have a replacement.""")
-
         return pulumi.get(self, "primary_billing_group_id")
 
     @property
