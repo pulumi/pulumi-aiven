@@ -87,13 +87,11 @@ class TransitGatewayVpcAttachmentArgs:
 
     @property
     @pulumi.getter(name="peerRegion")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def peer_region(self) -> Optional[pulumi.Input[str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
-
         return pulumi.get(self, "peer_region")
 
     @peer_region.setter
@@ -157,13 +155,11 @@ class _TransitGatewayVpcAttachmentState:
 
     @property
     @pulumi.getter(name="peerRegion")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def peer_region(self) -> Optional[pulumi.Input[str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
-
         return pulumi.get(self, "peer_region")
 
     @peer_region.setter
@@ -417,13 +413,11 @@ class TransitGatewayVpcAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="peerRegion")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def peer_region(self) -> pulumi.Output[Optional[str]]:
         """
         AWS region of the peered VPC (if not in the same region as Aiven VPC)
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""peer_region is deprecated: This field is deprecated and will be removed in the next major release.""")
-
         return pulumi.get(self, "peer_region")
 
     @property

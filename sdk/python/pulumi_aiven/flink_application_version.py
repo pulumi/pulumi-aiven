@@ -116,13 +116,11 @@ class FlinkApplicationVersionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
     def sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         Application sinks
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
-
         return pulumi.get(self, "sinks")
 
     @sinks.setter
@@ -143,13 +141,11 @@ class FlinkApplicationVersionArgs:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `source` instead.""")
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
         Application sources
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
-
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -304,13 +300,11 @@ class _FlinkApplicationVersionState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
     def sinks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSinkArgs']]]]:
         """
         Application sinks
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
-
         return pulumi.get(self, "sinks")
 
     @sinks.setter
@@ -331,13 +325,11 @@ class _FlinkApplicationVersionState:
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `source` instead.""")
     def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FlinkApplicationVersionSourceArgs']]]]:
         """
         Application sources
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
-
         return pulumi.get(self, "sources")
 
     @sources.setter
@@ -670,13 +662,11 @@ class FlinkApplicationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
     def sinks(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSink']]]:
         """
         Application sinks
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Use `sink` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sinks is deprecated: This field is deprecated and will be removed in the next major release. Use `sink` instead.""")
-
         return pulumi.get(self, "sinks")
 
     @property
@@ -689,13 +679,11 @@ class FlinkApplicationVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Use `source` instead.""")
     def sources(self) -> pulumi.Output[Optional[Sequence['outputs.FlinkApplicationVersionSource']]]:
         """
         Application sources
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Use `source` instead.""", DeprecationWarning)
-        pulumi.log.warn("""sources is deprecated: This field is deprecated and will be removed in the next major release. Use `source` instead.""")
-
         return pulumi.get(self, "sources")
 
     @property
