@@ -83,13 +83,11 @@ class BillingGroupArgs:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account ID.
         """
-        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -337,13 +335,11 @@ class _BillingGroupState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Account ID.
         """
-        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -739,13 +735,11 @@ class BillingGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
         Account ID.
         """
-        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
-
         return pulumi.get(self, "account_id")
 
     @property

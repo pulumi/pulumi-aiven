@@ -207,7 +207,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                 isManualConnection: True,
                 requestMessage: default.name,
             }],
-            opts=pulumi.ResourceOptions(depends_on=[privatelink]))
+            opts = pulumi.ResourceOptions(depends_on=[privatelink]))
         approval = aiven.AzurePrivatelinkConnectionApproval("approval",
             project=aiven_project_id,
             service_name=default.service_name,
@@ -277,7 +277,7 @@ class AzurePrivatelinkConnectionApproval(pulumi.CustomResource):
                 isManualConnection: True,
                 requestMessage: default.name,
             }],
-            opts=pulumi.ResourceOptions(depends_on=[privatelink]))
+            opts = pulumi.ResourceOptions(depends_on=[privatelink]))
         approval = aiven.AzurePrivatelinkConnectionApproval("approval",
             project=aiven_project_id,
             service_name=default.service_name,

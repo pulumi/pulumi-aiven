@@ -82,13 +82,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """
-        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -97,13 +95,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="addAccountOwnersAdminAccess")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
     def add_account_owners_admin_access(self) -> Optional[pulumi.Input[bool]]:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
-        pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
-
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @add_account_owners_admin_access.setter
@@ -184,13 +180,11 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="useSourceProjectBillingGroup")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def use_source_project_billing_group(self) -> Optional[pulumi.Input[bool]]:
         """
         Use the same billing group that is used in source project.
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
-
         return pulumi.get(self, "use_source_project_billing_group")
 
     @use_source_project_billing_group.setter
@@ -272,13 +266,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
     def account_id(self) -> Optional[pulumi.Input[str]]:
         """
         Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """
-        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
-
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -287,13 +279,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="addAccountOwnersAdminAccess")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
     def add_account_owners_admin_access(self) -> Optional[pulumi.Input[bool]]:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
-        pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
-
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @add_account_owners_admin_access.setter
@@ -434,13 +424,11 @@ class _ProjectState:
 
     @property
     @pulumi.getter(name="useSourceProjectBillingGroup")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def use_source_project_billing_group(self) -> Optional[pulumi.Input[bool]]:
         """
         Use the same billing group that is used in source project.
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
-
         return pulumi.get(self, "use_source_project_billing_group")
 
     @use_source_project_billing_group.setter
@@ -643,24 +631,20 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountId")
+    @_utilities.deprecated("""Use parent_id instead. This field will be removed in the next major release.""")
     def account_id(self) -> pulumi.Output[Optional[str]]:
         """
         Link a project to an existing account using its account ID. This field is deprecated. Use `parent_id` instead. To set up proper dependencies please refer to this variable as a reference.
         """
-        warnings.warn("""Use parent_id instead. This field will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""account_id is deprecated: Use parent_id instead. This field will be removed in the next major release.""")
-
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="addAccountOwnersAdminAccess")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
     def add_account_owners_admin_access(self) -> pulumi.Output[Optional[bool]]:
         """
         If parent_id is set, grant account owner team admin access to the new project. The default value is `true`.
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""", DeprecationWarning)
-        pulumi.log.warn("""add_account_owners_admin_access is deprecated: This field is deprecated and will be removed in the next major release. Currently, it will always be set to true, regardless of the value set in the manifest.""")
-
         return pulumi.get(self, "add_account_owners_admin_access")
 
     @property
@@ -753,12 +737,10 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useSourceProjectBillingGroup")
+    @_utilities.deprecated("""This field is deprecated and will be removed in the next major release.""")
     def use_source_project_billing_group(self) -> pulumi.Output[Optional[bool]]:
         """
         Use the same billing group that is used in source project.
         """
-        warnings.warn("""This field is deprecated and will be removed in the next major release.""", DeprecationWarning)
-        pulumi.log.warn("""use_source_project_billing_group is deprecated: This field is deprecated and will be removed in the next major release.""")
-
         return pulumi.get(self, "use_source_project_billing_group")
 

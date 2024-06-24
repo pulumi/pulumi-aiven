@@ -146,13 +146,11 @@ class M3AggregatorArgs:
 
     @property
     @pulumi.getter(name="diskSpace")
+    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
-        warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
-
         return pulumi.get(self, "disk_space")
 
     @disk_space.setter
@@ -440,13 +438,11 @@ class _M3AggregatorState:
 
     @property
     @pulumi.getter(name="diskSpace")
+    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space(self) -> Optional[pulumi.Input[str]]:
         """
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
-        warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
-
         return pulumi.get(self, "disk_space")
 
     @disk_space.setter
@@ -1053,13 +1049,11 @@ class M3Aggregator(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="diskSpace")
+    @_utilities.deprecated("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
     def disk_space(self) -> pulumi.Output[Optional[str]]:
         """
         Service disk space. Possible values depend on the service type, the cloud provider and the project. Therefore, reducing will result in the service rebalancing.
         """
-        warnings.warn("""This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""", DeprecationWarning)
-        pulumi.log.warn("""disk_space is deprecated: This will be removed in v5.0.0. Please use `additional_disk_space` to specify the space to be added to the default `disk_space` defined by the plan.""")
-
         return pulumi.get(self, "disk_space")
 
     @property

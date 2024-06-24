@@ -728,13 +728,11 @@ class CassandraCassandraUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -787,13 +785,11 @@ class CassandraCassandraUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -1316,13 +1312,11 @@ class ClickhouseClickhouseUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -1343,13 +1337,11 @@ class ClickhouseClickhouseUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -2327,13 +2319,11 @@ class DragonflyDragonflyUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -3078,13 +3068,11 @@ class FlinkFlinkUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -3113,13 +3101,11 @@ class FlinkFlinkUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -3935,13 +3921,11 @@ class GrafanaGrafanaUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -5468,13 +5452,11 @@ class InfluxDbInfluxdbUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -5511,13 +5493,11 @@ class InfluxDbInfluxdbUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -6214,13 +6194,11 @@ class KafkaConnectKafkaConnectUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -6241,13 +6219,11 @@ class KafkaConnectKafkaConnectUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -7114,13 +7090,11 @@ class KafkaKafkaUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -7157,13 +7131,11 @@ class KafkaKafkaUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -8797,13 +8769,11 @@ class KafkaKafkaUserConfigTieredStorage(dict):
 
     @property
     @pulumi.getter(name="localCache")
+    @_utilities.deprecated("""This property is deprecated.""")
     def local_cache(self) -> Optional['outputs.KafkaKafkaUserConfigTieredStorageLocalCache']:
         """
         Local cache configuration
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""local_cache is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "local_cache")
 
 
@@ -8819,13 +8789,11 @@ class KafkaKafkaUserConfigTieredStorageLocalCache(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This property is deprecated.""")
     def size(self) -> Optional[int]:
         """
         Local cache size in bytes.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""size is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "size")
 
 
@@ -9016,13 +8984,11 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -9043,13 +9009,11 @@ class KafkaMirrorMakerKafkaMirrormakerUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -9890,13 +9854,11 @@ class KafkaTopicConfig(dict):
 
     @property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
+    @_utilities.deprecated("""This field is deprecated and no longer functional.""")
     def unclean_leader_election_enable(self) -> Optional[bool]:
         """
         unclean.leader.election.enable value; This field is deprecated and no longer functional.
         """
-        warnings.warn("""This field is deprecated and no longer functional.""", DeprecationWarning)
-        pulumi.log.warn("""unclean_leader_election_enable is deprecated: This field is deprecated and no longer functional.""")
-
         return pulumi.get(self, "unclean_leader_election_enable")
 
 
@@ -10195,13 +10157,11 @@ class M3AggregatorM3aggregatorUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -10743,13 +10703,11 @@ class M3DbM3dbUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -11434,13 +11392,11 @@ class M3DbM3dbUserConfigRulesMapping(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. Use `namespaces_string` instead.""")
     def namespaces(self) -> Optional[Sequence[str]]:
         """
         This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
         """
-        warnings.warn("""Deprecated. Use `namespaces_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""namespaces is deprecated: Deprecated. Use `namespaces_string` instead.""")
-
         return pulumi.get(self, "namespaces")
 
     @property
@@ -12131,13 +12087,11 @@ class MySqlMysqlUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -13462,13 +13416,11 @@ class OpenSearchOpensearchUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -16101,13 +16053,11 @@ class PgPgUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -16128,13 +16078,11 @@ class PgPgUserConfig(dict):
 
     @property
     @pulumi.getter(name="pgQualstats")
+    @_utilities.deprecated("""This property is deprecated.""")
     def pg_qualstats(self) -> Optional['outputs.PgPgUserConfigPgQualstats']:
         """
         System-wide settings for the pg*qualstats extension
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""pg_qualstats is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "pg_qualstats")
 
     @property
@@ -17201,57 +17149,47 @@ class PgPgUserConfigPgQualstats(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This property is deprecated.""")
     def enabled(self) -> Optional[bool]:
         """
         Enable / Disable pg_qualstats. The default value is `false`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""enabled is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="minErrEstimateNum")
+    @_utilities.deprecated("""This property is deprecated.""")
     def min_err_estimate_num(self) -> Optional[int]:
         """
         Error estimation num threshold to save quals. The default value is `0`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""min_err_estimate_num is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "min_err_estimate_num")
 
     @property
     @pulumi.getter(name="minErrEstimateRatio")
+    @_utilities.deprecated("""This property is deprecated.""")
     def min_err_estimate_ratio(self) -> Optional[int]:
         """
         Error estimation ratio threshold to save quals. The default value is `0`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""min_err_estimate_ratio is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "min_err_estimate_ratio")
 
     @property
     @pulumi.getter(name="trackConstants")
+    @_utilities.deprecated("""This property is deprecated.""")
     def track_constants(self) -> Optional[bool]:
         """
         Enable / Disable pg_qualstats constants tracking. The default value is `true`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""track_constants is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "track_constants")
 
     @property
     @pulumi.getter(name="trackPgCatalog")
+    @_utilities.deprecated("""This property is deprecated.""")
     def track_pg_catalog(self) -> Optional[bool]:
         """
         Track quals on system catalogs too. The default value is `false`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""track_pg_catalog is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "track_pg_catalog")
 
 
@@ -18333,13 +18271,11 @@ class RedisRedisUserConfig(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -21988,13 +21924,11 @@ class GetCassandaCassandraUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -22047,13 +21981,11 @@ class GetCassandaCassandraUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -22493,13 +22425,11 @@ class GetCassandraCassandraUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -22552,13 +22482,11 @@ class GetCassandraCassandraUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -22978,13 +22906,11 @@ class GetClickhouseClickhouseUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -23005,13 +22931,11 @@ class GetClickhouseClickhouseUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -23691,13 +23615,11 @@ class GetDragonflyDragonflyUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -24290,13 +24212,11 @@ class GetFlinkFlinkUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -24325,13 +24245,11 @@ class GetFlinkFlinkUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -25001,13 +24919,11 @@ class GetGrafanaGrafanaUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -26208,13 +26124,11 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -26251,13 +26165,11 @@ class GetInfluxDbInfluxdbUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -26817,13 +26729,11 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -26844,13 +26754,11 @@ class GetKafkaConnectKafkaConnectUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -27510,13 +27418,11 @@ class GetKafkaKafkaUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -27553,13 +27459,11 @@ class GetKafkaKafkaUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -28905,13 +28809,11 @@ class GetKafkaKafkaUserConfigTieredStorageResult(dict):
 
     @property
     @pulumi.getter(name="localCache")
+    @_utilities.deprecated("""This property is deprecated.""")
     def local_cache(self) -> Optional['outputs.GetKafkaKafkaUserConfigTieredStorageLocalCacheResult']:
         """
         Local cache configuration
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""local_cache is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "local_cache")
 
 
@@ -28927,13 +28829,11 @@ class GetKafkaKafkaUserConfigTieredStorageLocalCacheResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This property is deprecated.""")
     def size(self) -> Optional[int]:
         """
         Local cache size in bytes.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""size is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "size")
 
 
@@ -29068,13 +28968,11 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="additionalBackupRegions")
+    @_utilities.deprecated("""This property is deprecated.""")
     def additional_backup_regions(self) -> Optional[str]:
         """
         Additional Cloud Regions for Backup Replication.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""additional_backup_regions is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "additional_backup_regions")
 
     @property
@@ -29095,13 +28993,11 @@ class GetKafkaMirrorMakerKafkaMirrormakerUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -29798,13 +29694,11 @@ class GetKafkaTopicConfigResult(dict):
 
     @property
     @pulumi.getter(name="uncleanLeaderElectionEnable")
+    @_utilities.deprecated("""This field is deprecated and no longer functional.""")
     def unclean_leader_election_enable(self) -> Optional[bool]:
         """
         unclean.leader.election.enable value; This field is deprecated and no longer functional.
         """
-        warnings.warn("""This field is deprecated and no longer functional.""", DeprecationWarning)
-        pulumi.log.warn("""unclean_leader_election_enable is deprecated: This field is deprecated and no longer functional.""")
-
         return pulumi.get(self, "unclean_leader_election_enable")
 
 
@@ -30026,13 +29920,11 @@ class GetM3AggregatorM3aggregatorUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -30454,13 +30346,11 @@ class GetM3DbM3dbUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -31017,13 +30907,11 @@ class GetM3DbM3dbUserConfigRulesMappingResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated. Use `namespaces_string` instead.""")
     def namespaces(self) -> Optional[Sequence[str]]:
         """
         This rule will be used to store the metrics in the given namespace(s). If a namespace is target of rules, the global default aggregation will be automatically disabled. Note that specifying filters that match no namespaces whatsoever will be returned as an error. Filter the namespace by glob (=wildcards).
         """
-        warnings.warn("""Deprecated. Use `namespaces_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""namespaces is deprecated: Deprecated. Use `namespaces_string` instead.""")
-
         return pulumi.get(self, "namespaces")
 
     @property
@@ -31568,13 +31456,11 @@ class GetMySqlMysqlUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -32682,13 +32568,11 @@ class GetOpenSearchOpensearchUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -34645,13 +34529,11 @@ class GetPgPgUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
@@ -34672,13 +34554,11 @@ class GetPgPgUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="pgQualstats")
+    @_utilities.deprecated("""This property is deprecated.""")
     def pg_qualstats(self) -> Optional['outputs.GetPgPgUserConfigPgQualstatsResult']:
         """
         System-wide settings for the pg_qualstats extension
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""pg_qualstats is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "pg_qualstats")
 
     @property
@@ -35596,57 +35476,47 @@ class GetPgPgUserConfigPgQualstatsResult(dict):
 
     @property
     @pulumi.getter
+    @_utilities.deprecated("""This property is deprecated.""")
     def enabled(self) -> Optional[bool]:
         """
         Enable / Disable pg_qualstats. The default value is `false`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""enabled is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="minErrEstimateNum")
+    @_utilities.deprecated("""This property is deprecated.""")
     def min_err_estimate_num(self) -> Optional[int]:
         """
         Error estimation num threshold to save quals. The default value is `0`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""min_err_estimate_num is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "min_err_estimate_num")
 
     @property
     @pulumi.getter(name="minErrEstimateRatio")
+    @_utilities.deprecated("""This property is deprecated.""")
     def min_err_estimate_ratio(self) -> Optional[int]:
         """
         Error estimation ratio threshold to save quals. The default value is `0`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""min_err_estimate_ratio is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "min_err_estimate_ratio")
 
     @property
     @pulumi.getter(name="trackConstants")
+    @_utilities.deprecated("""This property is deprecated.""")
     def track_constants(self) -> Optional[bool]:
         """
         Enable / Disable pg_qualstats constants tracking. The default value is `true`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""track_constants is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "track_constants")
 
     @property
     @pulumi.getter(name="trackPgCatalog")
+    @_utilities.deprecated("""This property is deprecated.""")
     def track_pg_catalog(self) -> Optional[bool]:
         """
         Track quals on system catalogs too. The default value is `false`.
         """
-        warnings.warn("""This property is deprecated.""", DeprecationWarning)
-        pulumi.log.warn("""track_pg_catalog is deprecated: This property is deprecated.""")
-
         return pulumi.get(self, "track_pg_catalog")
 
 
@@ -36490,13 +36360,11 @@ class GetRedisRedisUserConfigResult(dict):
 
     @property
     @pulumi.getter(name="ipFilters")
+    @_utilities.deprecated("""Deprecated. Use `ip_filter_string` instead.""")
     def ip_filters(self) -> Optional[Sequence[str]]:
         """
         Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
         """
-        warnings.warn("""Deprecated. Use `ip_filter_string` instead.""", DeprecationWarning)
-        pulumi.log.warn("""ip_filters is deprecated: Deprecated. Use `ip_filter_string` instead.""")
-
         return pulumi.get(self, "ip_filters")
 
     @property
