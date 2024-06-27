@@ -14,43 +14,52 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationEndpointRsyslogUserConfigResult
     {
         /// <summary>
-        /// PEM encoded CA certificate.
+        /// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? Ca;
         /// <summary>
-        /// PEM encoded client certificate.
+        /// PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? Cert;
         /// <summary>
-        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
         /// </summary>
         public readonly string Format;
         /// <summary>
-        /// PEM encoded client key.
+        /// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+        /// ...
+        /// -----END PRIVATE KEY-----
+        /// `.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Custom syslog message format.
+        /// Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
         /// </summary>
         public readonly string? Logline;
         /// <summary>
-        /// Rsyslog max message size. The default value is `8192`.
+        /// Rsyslog max message size. Default: `8192`.
         /// </summary>
         public readonly int? MaxMessageSize;
         /// <summary>
-        /// Rsyslog server port. The default value is `514`.
+        /// Rsyslog server port. Default: `514`.
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Structured data block for log message.
+        /// Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
         /// </summary>
         public readonly string? Sd;
         /// <summary>
-        /// Rsyslog server IP address or hostname.
+        /// Rsyslog server IP address or hostname. Example: `logs.example.com`.
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// Require TLS. The default value is `true`.
+        /// Require TLS. Default: `true`.
         /// </summary>
         public readonly bool Tls;
 

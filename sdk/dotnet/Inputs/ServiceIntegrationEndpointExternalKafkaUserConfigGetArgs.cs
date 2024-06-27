@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalKafkaUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Bootstrap servers.
+        /// Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
         /// </summary>
         [Input("bootstrapServers", required: true)]
         public Input<string> BootstrapServers { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _saslPlainPassword;
 
         /// <summary>
-        /// Password for SASL PLAIN mechanism in the Kafka server.
+        /// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
         /// </summary>
         public Input<string>? SaslPlainPassword
         {
@@ -41,7 +41,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Username for SASL PLAIN mechanism in the Kafka server.
+        /// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
         /// </summary>
         [Input("saslPlainUsername")]
         public Input<string>? SaslPlainUsername { get; set; }
@@ -53,19 +53,28 @@ namespace Pulumi.Aiven.Inputs
         public Input<string> SecurityProtocol { get; set; } = null!;
 
         /// <summary>
-        /// PEM-encoded CA certificate.
+        /// PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         [Input("sslCaCert")]
         public Input<string>? SslCaCert { get; set; }
 
         /// <summary>
-        /// PEM-encoded client certificate.
+        /// PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         [Input("sslClientCert")]
         public Input<string>? SslClientCert { get; set; }
 
         /// <summary>
-        /// PEM-encoded client key.
+        /// PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+        /// ...
+        /// -----END PRIVATE KEY-----
+        /// `.
         /// </summary>
         [Input("sslClientKey")]
         public Input<string>? SslClientKey { get; set; }

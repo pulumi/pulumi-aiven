@@ -25,7 +25,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerAutoOffsetReset { get; set; }
 
         /// <summary>
-        /// Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+        /// Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
         /// </summary>
         [Input("consumerFetchMaxBytes")]
         public Input<int>? ConsumerFetchMaxBytes { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? ConsumerIsolationLevel { get; set; }
 
         /// <summary>
-        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+        /// Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
         /// </summary>
         [Input("consumerMaxPartitionFetchBytes")]
         public Input<int>? ConsumerMaxPartitionFetchBytes { get; set; }
@@ -67,7 +67,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? OffsetFlushTimeoutMs { get; set; }
 
         /// <summary>
-        /// This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will 'linger' for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+        /// This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
         /// </summary>
         [Input("producerBatchSize")]
         public Input<int>? ProducerBatchSize { get; set; }
@@ -79,19 +79,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }
 
         /// <summary>
-        /// This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will 'linger' for the specified time waiting for more records to show up. Defaults to 0.
+        /// This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
         /// </summary>
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+        /// This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }

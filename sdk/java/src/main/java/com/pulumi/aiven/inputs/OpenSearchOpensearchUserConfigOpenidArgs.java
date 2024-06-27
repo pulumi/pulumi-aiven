@@ -19,14 +19,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     public static final OpenSearchOpensearchUserConfigOpenidArgs Empty = new OpenSearchOpensearchUserConfigOpenidArgs();
 
     /**
-     * The ID of the OpenID Connect client configured in your IdP. Required.
+     * The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     @Import(name="clientId", required=true)
     private Output<String> clientId;
 
     /**
-     * @return The ID of the OpenID Connect client configured in your IdP. Required.
+     * @return The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     public Output<String> clientId() {
@@ -34,14 +34,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The client secret of the OpenID Connect client configured in your IdP. Required.
+     * The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
-     * @return The client secret of the OpenID Connect client configured in your IdP. Required.
+     * @return The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
      * 
      */
     public Output<String> clientSecret() {
@@ -49,14 +49,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      * 
      */
     @Import(name="connectUrl", required=true)
     private Output<String> connectUrl;
 
     /**
-     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+     * @return The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
      * 
      */
     public Output<String> connectUrl() {
@@ -64,14 +64,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+     * @return Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
      * 
      */
     public Output<Boolean> enabled() {
@@ -79,14 +79,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      * 
      */
     @Import(name="header")
     private @Nullable Output<String> header;
 
     /**
-     * @return HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+     * @return HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
      * 
      */
     public Optional<Output<String>> header() {
@@ -94,14 +94,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     * The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
      * 
      */
     @Import(name="jwtHeader")
     private @Nullable Output<String> jwtHeader;
 
     /**
-     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+     * @return The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
      * 
      */
     public Optional<Output<String>> jwtHeader() {
@@ -109,14 +109,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
      * 
      */
     @Import(name="jwtUrlParameter")
     private @Nullable Output<String> jwtUrlParameter;
 
     /**
-     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+     * @return If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
      * 
      */
     public Optional<Output<String>> jwtUrlParameter() {
@@ -124,14 +124,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      * 
      */
     @Import(name="refreshRateLimitCount")
     private @Nullable Output<Integer> refreshRateLimitCount;
 
     /**
-     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+     * @return The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
      * 
      */
     public Optional<Output<Integer>> refreshRateLimitCount() {
@@ -139,14 +139,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      * 
      */
     @Import(name="refreshRateLimitTimeWindowMs")
     private @Nullable Output<Integer> refreshRateLimitTimeWindowMs;
 
     /**
-     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+     * @return The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
      * 
      */
     public Optional<Output<Integer>> refreshRateLimitTimeWindowMs() {
@@ -154,14 +154,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      * 
      */
     @Import(name="rolesKey")
     private @Nullable Output<String> rolesKey;
 
     /**
-     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+     * @return The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
      * 
      */
     public Optional<Output<String>> rolesKey() {
@@ -169,14 +169,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      * 
      */
     @Import(name="scope")
     private @Nullable Output<String> scope;
 
     /**
-     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+     * @return The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
      * 
      */
     public Optional<Output<String>> scope() {
@@ -184,14 +184,14 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
     }
 
     /**
-     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
      * 
      */
     @Import(name="subjectKey")
     private @Nullable Output<String> subjectKey;
 
     /**
-     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+     * @return The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
      * 
      */
     public Optional<Output<String>> subjectKey() {
@@ -234,7 +234,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required.
+         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required.
+         * @param clientId The ID of the OpenID Connect client configured in your IdP. Required. Example: ``.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required.
+         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required.
+         * @param clientSecret The client secret of the OpenID Connect client configured in your IdP. Required. Example: ``.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param connectUrl The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+         * @param connectUrl The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
          * 
          * @return builder
          * 
@@ -287,7 +287,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param connectUrl The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings.
+         * @param connectUrl The URL of your IdP where the Security plugin can find the OpenID Connect metadata/configuration settings. Example: `https://test-account.okta.com/app/exk491jujcVc83LEX697/sso/saml/metadata`.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. The default value is `true`.
+         * @param enabled Enables or disables OpenID Connect authentication for OpenSearch. When enabled, users can authenticate using OpenID Connect with an Identity Provider. Default: `true`.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param header HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+         * @param header HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param header HTTP header name of the JWT token. Optional. Default is Authorization. The default value is `Authorization`.
+         * @param header HTTP header name of the JWT token. Optional. Default is Authorization. Default: `Authorization`.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization.
+         * @param jwtHeader The HTTP header that stores the token. Typically the Authorization header with the Bearer schema: Authorization: Bearer \n\n. Optional. Default is Authorization. Example: `preferred_username`.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional.
+         * @param jwtUrlParameter If the token is not transmitted in the HTTP header, but as an URL parameter, define the name of the parameter here. Optional. Example: `preferred_username`.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param refreshRateLimitCount The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+         * @param refreshRateLimitCount The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param refreshRateLimitCount The maximum number of unknown key IDs in the time frame. Default is 10. Optional. The default value is `10`.
+         * @param refreshRateLimitCount The maximum number of unknown key IDs in the time frame. Default is 10. Optional. Default: `10`.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param refreshRateLimitTimeWindowMs The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+         * @param refreshRateLimitTimeWindowMs The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param refreshRateLimitTimeWindowMs The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). The default value is `10000`.
+         * @param refreshRateLimitTimeWindowMs The time frame to use when checking the maximum number of unknown key IDs, in milliseconds. Optional.Default is 10000 (10 seconds). Default: `10000`.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT.
+         * @param rolesKey The key in the JSON payload that stores the user’s roles. The value of this key must be a comma-separated list of roles. Required only if you want to use roles in the JWT. Example: `roles`.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone.
+         * @param scope The scope of the identity token issued by the IdP. Optional. Default is openid profile email address phone. Example: ``.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class OpenSearchOpensearchUserConfigOpenidArgs extends com.pulumi.r
         }
 
         /**
-         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional.
+         * @param subjectKey The key in the JSON payload that stores the user’s name. If not defined, the subject registered claim is used. Most IdP providers use the preferred_username claim. Optional. Example: `preferred_username`.
          * 
          * @return builder
          * 

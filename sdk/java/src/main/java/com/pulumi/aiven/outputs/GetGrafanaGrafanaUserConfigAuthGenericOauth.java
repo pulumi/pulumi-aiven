@@ -30,12 +30,12 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     private @Nullable List<String> allowedOrganizations;
     /**
-     * @return API URL.
+     * @return API URL. Example: `https://yourprovider.com/api`.
      * 
      */
     private String apiUrl;
     /**
-     * @return Authorization URL.
+     * @return Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      * 
      */
     private String authUrl;
@@ -45,17 +45,17 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     private @Nullable Boolean autoLogin;
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     private String clientId;
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     private String clientSecret;
     /**
-     * @return Name of the OAuth integration.
+     * @return Name of the OAuth integration. Example: `My authentication`.
      * 
      */
     private @Nullable String name;
@@ -65,7 +65,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
      */
     private @Nullable List<String> scopes;
     /**
-     * @return Token URL.
+     * @return Token URL. Example: `https://yourprovider.com/oauth/token`.
      * 
      */
     private String tokenUrl;
@@ -93,14 +93,14 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         return this.allowedOrganizations == null ? List.of() : this.allowedOrganizations;
     }
     /**
-     * @return API URL.
+     * @return API URL. Example: `https://yourprovider.com/api`.
      * 
      */
     public String apiUrl() {
         return this.apiUrl;
     }
     /**
-     * @return Authorization URL.
+     * @return Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
      * 
      */
     public String authUrl() {
@@ -114,21 +114,21 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         return Optional.ofNullable(this.autoLogin);
     }
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public String clientSecret() {
         return this.clientSecret;
     }
     /**
-     * @return Name of the OAuth integration.
+     * @return Name of the OAuth integration. Example: `My authentication`.
      * 
      */
     public Optional<String> name() {
@@ -142,7 +142,7 @@ public final class GetGrafanaGrafanaUserConfigAuthGenericOauth {
         return this.scopes == null ? List.of() : this.scopes;
     }
     /**
-     * @return Token URL.
+     * @return Token URL. Example: `https://yourprovider.com/oauth/token`.
      * 
      */
     public String tokenUrl() {

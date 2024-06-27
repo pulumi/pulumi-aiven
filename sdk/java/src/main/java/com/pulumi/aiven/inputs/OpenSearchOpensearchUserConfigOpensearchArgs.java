@@ -65,14 +65,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Controls the number of shards allowed in the cluster per data node.
+     * Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
     @Import(name="clusterMaxShardsPerNode")
     private @Nullable Output<Integer> clusterMaxShardsPerNode;
 
     /**
-     * @return Controls the number of shards allowed in the cluster per data node.
+     * @return Controls the number of shards allowed in the cluster per data node. Example: `1000`.
      * 
      */
     public Optional<Output<Integer>> clusterMaxShardsPerNode() {
@@ -95,14 +95,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
      */
     @Import(name="emailSenderName")
     private @Nullable Output<String> emailSenderName;
 
     /**
-     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+     * @return Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
      * 
      */
     public Optional<Output<String>> emailSenderName() {
@@ -110,14 +110,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Sender password for Opensearch alerts to authenticate with SMTP server.
+     * Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      * 
      */
     @Import(name="emailSenderPassword")
     private @Nullable Output<String> emailSenderPassword;
 
     /**
-     * @return Sender password for Opensearch alerts to authenticate with SMTP server.
+     * @return Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
      * 
      */
     public Optional<Output<String>> emailSenderPassword() {
@@ -125,14 +125,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Sender username for Opensearch alerts.
+     * Sender username for Opensearch alerts. Example: `jane{@literal @}example.com`.
      * 
      */
     @Import(name="emailSenderUsername")
     private @Nullable Output<String> emailSenderUsername;
 
     /**
-     * @return Sender username for Opensearch alerts.
+     * @return Sender username for Opensearch alerts. Example: `jane{@literal @}example.com`.
      * 
      */
     public Optional<Output<String>> emailSenderUsername() {
@@ -140,14 +140,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Enable/Disable security audit. The default value is `false`.
+     * Enable/Disable security audit. Default: `false`.
      * 
      */
     @Import(name="enableSecurityAudit")
     private @Nullable Output<Boolean> enableSecurityAudit;
 
     /**
-     * @return Enable/Disable security audit. The default value is `false`.
+     * @return Enable/Disable security audit. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> enableSecurityAudit() {
@@ -170,14 +170,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The max size of allowed headers, in bytes.
+     * The max size of allowed headers, in bytes. Example: `8192`.
      * 
      */
     @Import(name="httpMaxHeaderSize")
     private @Nullable Output<Integer> httpMaxHeaderSize;
 
     /**
-     * @return The max size of allowed headers, in bytes.
+     * @return The max size of allowed headers, in bytes. Example: `8192`.
      * 
      */
     public Optional<Output<Integer>> httpMaxHeaderSize() {
@@ -185,14 +185,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The max length of an HTTP URL, in bytes.
+     * The max length of an HTTP URL, in bytes. Example: `4096`.
      * 
      */
     @Import(name="httpMaxInitialLineLength")
     private @Nullable Output<Integer> httpMaxInitialLineLength;
 
     /**
-     * @return The max length of an HTTP URL, in bytes.
+     * @return The max length of an HTTP URL, in bytes. Example: `4096`.
      * 
      */
     public Optional<Output<Integer>> httpMaxInitialLineLength() {
@@ -320,14 +320,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Specifies whether ISM is enabled or not. The default value is `true`.
+     * Specifies whether ISM is enabled or not. Default: `true`.
      * 
      */
     @Import(name="ismEnabled")
     private @Nullable Output<Boolean> ismEnabled;
 
     /**
-     * @return Specifies whether ISM is enabled or not. The default value is `true`.
+     * @return Specifies whether ISM is enabled or not. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> ismEnabled() {
@@ -335,14 +335,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      * 
      */
     @Import(name="ismHistoryEnabled")
     private @Nullable Output<Boolean> ismHistoryEnabled;
 
     /**
-     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+     * @return Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> ismHistoryEnabled() {
@@ -350,14 +350,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * The maximum age before rolling over the audit history index in hours. Default: `24`.
      * 
      */
     @Import(name="ismHistoryMaxAge")
     private @Nullable Output<Integer> ismHistoryMaxAge;
 
     /**
-     * @return The maximum age before rolling over the audit history index in hours. The default value is `24`.
+     * @return The maximum age before rolling over the audit history index in hours. Default: `24`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryMaxAge() {
@@ -365,14 +365,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      * 
      */
     @Import(name="ismHistoryMaxDocs")
     private @Nullable Output<Integer> ismHistoryMaxDocs;
 
     /**
-     * @return The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+     * @return The maximum number of documents before rolling over the audit history index. Default: `2500000`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryMaxDocs() {
@@ -380,14 +380,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * The time between rollover checks for the audit history index in hours. Default: `8`.
      * 
      */
     @Import(name="ismHistoryRolloverCheckPeriod")
     private @Nullable Output<Integer> ismHistoryRolloverCheckPeriod;
 
     /**
-     * @return The time between rollover checks for the audit history index in hours. The default value is `8`.
+     * @return The time between rollover checks for the audit history index in hours. Default: `8`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryRolloverCheckPeriod() {
@@ -395,14 +395,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * How long audit history indices are kept in days. The default value is `30`.
+     * How long audit history indices are kept in days. Default: `30`.
      * 
      */
     @Import(name="ismHistoryRolloverRetentionPeriod")
     private @Nullable Output<Integer> ismHistoryRolloverRetentionPeriod;
 
     /**
-     * @return How long audit history indices are kept in days. The default value is `30`.
+     * @return How long audit history indices are kept in days. Default: `30`.
      * 
      */
     public Optional<Output<Integer>> ismHistoryRolloverRetentionPeriod() {
@@ -455,14 +455,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      * 
      */
     @Import(name="scriptMaxCompilationsRate")
     private @Nullable Output<String> scriptMaxCompilationsRate;
 
     /**
-     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+     * @return Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
      * 
      */
     public Optional<Output<String>> scriptMaxCompilationsRate() {
@@ -470,14 +470,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
     }
 
     /**
-     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
     @Import(name="searchMaxBuckets")
     private @Nullable Output<Integer> searchMaxBuckets;
 
     /**
-     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+     * @return Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
      * 
      */
     public Optional<Output<Integer>> searchMaxBuckets() {
@@ -778,7 +778,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node.
+         * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node. Example: `1000`.
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node.
+         * @param clusterMaxShardsPerNode Controls the number of shards allowed in the cluster per data node. Example: `1000`.
          * 
          * @return builder
          * 
@@ -820,7 +820,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+         * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
          * 
          * @return builder
          * 
@@ -831,7 +831,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+         * @param emailSenderName Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
          * 
          * @return builder
          * 
@@ -841,7 +841,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderPassword Sender password for Opensearch alerts to authenticate with SMTP server.
+         * @param emailSenderPassword Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
          * 
          * @return builder
          * 
@@ -852,7 +852,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderPassword Sender password for Opensearch alerts to authenticate with SMTP server.
+         * @param emailSenderPassword Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
          * 
          * @return builder
          * 
@@ -862,7 +862,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderUsername Sender username for Opensearch alerts.
+         * @param emailSenderUsername Sender username for Opensearch alerts. Example: `jane{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -873,7 +873,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param emailSenderUsername Sender username for Opensearch alerts.
+         * @param emailSenderUsername Sender username for Opensearch alerts. Example: `jane{@literal @}example.com`.
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param enableSecurityAudit Enable/Disable security audit. The default value is `false`.
+         * @param enableSecurityAudit Enable/Disable security audit. Default: `false`.
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param enableSecurityAudit Enable/Disable security audit. The default value is `false`.
+         * @param enableSecurityAudit Enable/Disable security audit. Default: `false`.
          * 
          * @return builder
          * 
@@ -925,7 +925,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param httpMaxHeaderSize The max size of allowed headers, in bytes.
+         * @param httpMaxHeaderSize The max size of allowed headers, in bytes. Example: `8192`.
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param httpMaxHeaderSize The max size of allowed headers, in bytes.
+         * @param httpMaxHeaderSize The max size of allowed headers, in bytes. Example: `8192`.
          * 
          * @return builder
          * 
@@ -946,7 +946,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param httpMaxInitialLineLength The max length of an HTTP URL, in bytes.
+         * @param httpMaxInitialLineLength The max length of an HTTP URL, in bytes. Example: `4096`.
          * 
          * @return builder
          * 
@@ -957,7 +957,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param httpMaxInitialLineLength The max length of an HTTP URL, in bytes.
+         * @param httpMaxInitialLineLength The max length of an HTTP URL, in bytes. Example: `4096`.
          * 
          * @return builder
          * 
@@ -1135,7 +1135,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismEnabled Specifies whether ISM is enabled or not. The default value is `true`.
+         * @param ismEnabled Specifies whether ISM is enabled or not. Default: `true`.
          * 
          * @return builder
          * 
@@ -1146,7 +1146,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismEnabled Specifies whether ISM is enabled or not. The default value is `true`.
+         * @param ismEnabled Specifies whether ISM is enabled or not. Default: `true`.
          * 
          * @return builder
          * 
@@ -1156,7 +1156,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
          * 
          * @return builder
          * 
@@ -1167,7 +1167,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+         * @param ismHistoryEnabled Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
          * 
          * @return builder
          * 
@@ -1177,7 +1177,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. The default value is `24`.
+         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. Default: `24`.
          * 
          * @return builder
          * 
@@ -1188,7 +1188,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. The default value is `24`.
+         * @param ismHistoryMaxAge The maximum age before rolling over the audit history index in hours. Default: `24`.
          * 
          * @return builder
          * 
@@ -1198,7 +1198,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Default: `2500000`.
          * 
          * @return builder
          * 
@@ -1209,7 +1209,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+         * @param ismHistoryMaxDocs The maximum number of documents before rolling over the audit history index. Default: `2500000`.
          * 
          * @return builder
          * 
@@ -1219,7 +1219,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. The default value is `8`.
+         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. Default: `8`.
          * 
          * @return builder
          * 
@@ -1230,7 +1230,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. The default value is `8`.
+         * @param ismHistoryRolloverCheckPeriod The time between rollover checks for the audit history index in hours. Default: `8`.
          * 
          * @return builder
          * 
@@ -1240,7 +1240,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. The default value is `30`.
+         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. Default: `30`.
          * 
          * @return builder
          * 
@@ -1251,7 +1251,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. The default value is `30`.
+         * @param ismHistoryRolloverRetentionPeriod How long audit history indices are kept in days. Default: `30`.
          * 
          * @return builder
          * 
@@ -1334,7 +1334,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param scriptMaxCompilationsRate Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+         * @param scriptMaxCompilationsRate Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
          * 
          * @return builder
          * 
@@ -1345,7 +1345,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param scriptMaxCompilationsRate Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+         * @param scriptMaxCompilationsRate Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
          * 
          * @return builder
          * 
@@ -1355,7 +1355,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+         * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
          * 
          * @return builder
          * 
@@ -1366,7 +1366,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchArgs extends com.pulu
         }
 
         /**
-         * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+         * @param searchMaxBuckets Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
          * 
          * @return builder
          * 

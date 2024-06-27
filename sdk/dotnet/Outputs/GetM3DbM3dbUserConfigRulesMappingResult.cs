@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? Drop;
         /// <summary>
-        /// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator.
+        /// Matching metric names with wildcards (using __name__:wildcard) or matching tags and their (optionally wildcarded) values. For value, ! can be used at start of value for negation, and multiple filters can be supplied using space as separator. Example: `__name__:disk_* host:important-42 mount:!*/sda`.
         /// </summary>
         public readonly string Filter;
         /// <summary>
-        /// The (optional) name of the rule.
+        /// The (optional) name of the rule. Example: `important disk metrics`.
         /// </summary>
         public readonly string? Name;
         /// <summary>

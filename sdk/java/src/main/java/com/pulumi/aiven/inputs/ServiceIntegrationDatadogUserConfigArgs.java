@@ -142,18 +142,33 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
     }
 
     /**
-     * Maximum number of JMX metrics to send.
+     * Maximum number of JMX metrics to send. Example: `2000`.
      * 
      */
     @Import(name="maxJmxMetrics")
     private @Nullable Output<Integer> maxJmxMetrics;
 
     /**
-     * @return Maximum number of JMX metrics to send.
+     * @return Maximum number of JMX metrics to send. Example: `2000`.
      * 
      */
     public Optional<Output<Integer>> maxJmxMetrics() {
         return Optional.ofNullable(this.maxJmxMetrics);
+    }
+
+    /**
+     * List of custom metrics.
+     * 
+     */
+    @Import(name="mirrormakerCustomMetrics")
+    private @Nullable Output<List<String>> mirrormakerCustomMetrics;
+
+    /**
+     * @return List of custom metrics.
+     * 
+     */
+    public Optional<Output<List<String>>> mirrormakerCustomMetrics() {
+        return Optional.ofNullable(this.mirrormakerCustomMetrics);
     }
 
     /**
@@ -198,6 +213,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         this.includeTopics = $.includeTopics;
         this.kafkaCustomMetrics = $.kafkaCustomMetrics;
         this.maxJmxMetrics = $.maxJmxMetrics;
+        this.mirrormakerCustomMetrics = $.mirrormakerCustomMetrics;
         this.opensearch = $.opensearch;
         this.redis = $.redis;
     }
@@ -449,7 +465,7 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param maxJmxMetrics Maximum number of JMX metrics to send.
+         * @param maxJmxMetrics Maximum number of JMX metrics to send. Example: `2000`.
          * 
          * @return builder
          * 
@@ -460,13 +476,44 @@ public final class ServiceIntegrationDatadogUserConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param maxJmxMetrics Maximum number of JMX metrics to send.
+         * @param maxJmxMetrics Maximum number of JMX metrics to send. Example: `2000`.
          * 
          * @return builder
          * 
          */
         public Builder maxJmxMetrics(Integer maxJmxMetrics) {
             return maxJmxMetrics(Output.of(maxJmxMetrics));
+        }
+
+        /**
+         * @param mirrormakerCustomMetrics List of custom metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrormakerCustomMetrics(@Nullable Output<List<String>> mirrormakerCustomMetrics) {
+            $.mirrormakerCustomMetrics = mirrormakerCustomMetrics;
+            return this;
+        }
+
+        /**
+         * @param mirrormakerCustomMetrics List of custom metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrormakerCustomMetrics(List<String> mirrormakerCustomMetrics) {
+            return mirrormakerCustomMetrics(Output.of(mirrormakerCustomMetrics));
+        }
+
+        /**
+         * @param mirrormakerCustomMetrics List of custom metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mirrormakerCustomMetrics(String... mirrormakerCustomMetrics) {
+            return mirrormakerCustomMetrics(List.of(mirrormakerCustomMetrics));
         }
 
         /**

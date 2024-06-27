@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Aiven
 {
     /// <summary>
-    /// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/projects_accounts_access#projects).
+    /// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
     /// 
     /// ## Example Usage
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.Aiven
         public Output<string> EstimatedBalance { get; private set; } = null!;
 
         /// <summary>
-        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Output("parentId")]
         public Output<string?> ParentId { get; private set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Aiven
         public Input<string>? DefaultCloud { get; set; }
 
         /// <summary>
-        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }
@@ -313,7 +313,7 @@ namespace Pulumi.Aiven
         public Input<string>? EstimatedBalance { get; set; }
 
         /// <summary>
-        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+        /// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
         /// </summary>
         [Input("parentId")]
         public Input<string>? ParentId { get; set; }

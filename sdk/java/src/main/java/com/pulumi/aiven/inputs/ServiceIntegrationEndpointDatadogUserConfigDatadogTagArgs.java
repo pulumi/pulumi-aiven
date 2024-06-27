@@ -17,14 +17,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
     public static final ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs Empty = new ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs();
 
     /**
-     * Optional tag explanation.
+     * Optional tag explanation. Example: `Used to tag primary replica metrics`.
      * 
      */
     @Import(name="comment")
     private @Nullable Output<String> comment;
 
     /**
-     * @return Optional tag explanation.
+     * @return Optional tag explanation. Example: `Used to tag primary replica metrics`.
      * 
      */
     public Optional<Output<String>> comment() {
@@ -32,14 +32,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
     }
 
     /**
-     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     @Import(name="tag", required=true)
     private Output<String> tag;
 
     /**
-     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     public Output<String> tag() {
@@ -72,7 +72,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
         }
 
         /**
-         * @param comment Optional tag explanation.
+         * @param comment Optional tag explanation. Example: `Used to tag primary replica metrics`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
         }
 
         /**
-         * @param comment Optional tag explanation.
+         * @param comment Optional tag explanation. Example: `Used to tag primary replica metrics`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
         }
 
         /**
-         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTagArgs ext
         }
 
         /**
-         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+         * @param tag Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
          * 
          * @return builder
          * 

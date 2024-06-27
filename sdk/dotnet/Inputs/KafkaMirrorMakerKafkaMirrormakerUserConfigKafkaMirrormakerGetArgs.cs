@@ -19,31 +19,31 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? EmitCheckpointsEnabled { get; set; }
 
         /// <summary>
-        /// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+        /// Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
         /// </summary>
         [Input("emitCheckpointsIntervalSeconds")]
         public Input<int>? EmitCheckpointsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+        /// Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
         /// </summary>
         [Input("groups")]
         public Input<string>? Groups { get; set; }
 
         /// <summary>
-        /// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+        /// Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
         /// </summary>
         [Input("groupsExclude")]
         public Input<string>? GroupsExclude { get; set; }
 
         /// <summary>
-        /// How out-of-sync a remote partition can be before it is resynced.
+        /// How out-of-sync a remote partition can be before it is resynced. Example: `100`.
         /// </summary>
         [Input("offsetLagMax")]
         public Input<int>? OffsetLagMax { get; set; }
 
         /// <summary>
-        /// Whether to periodically check for new consumer groups. Defaults to 'true'.
+        /// Whether to periodically check for new consumer groups. Defaults to `true`.
         /// </summary>
         [Input("refreshGroupsEnabled")]
         public Input<bool>? RefreshGroupsEnabled { get; set; }
@@ -55,7 +55,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<int>? RefreshGroupsIntervalSeconds { get; set; }
 
         /// <summary>
-        /// Whether to periodically check for new topics and partitions. Defaults to 'true'.
+        /// Whether to periodically check for new topics and partitions. Defaults to `true`.
         /// </summary>
         [Input("refreshTopicsEnabled")]
         public Input<bool>? RefreshTopicsEnabled { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SyncGroupOffsetsEnabled { get; set; }
 
         /// <summary>
-        /// Frequency at which consumer group offsets are synced (default: 60, every minute).
+        /// Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
         /// </summary>
         [Input("syncGroupOffsetsIntervalSeconds")]
         public Input<int>? SyncGroupOffsetsIntervalSeconds { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SyncTopicConfigsEnabled { get; set; }
 
         /// <summary>
-        /// 'tasks.max' is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+        /// `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
         /// </summary>
         [Input("tasksMaxPerCpu")]
         public Input<int>? TasksMaxPerCpu { get; set; }

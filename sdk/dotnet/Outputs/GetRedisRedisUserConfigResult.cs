@@ -18,15 +18,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? AdditionalBackupRegions;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRedisRedisUserConfigIpFilterObjectResult> IpFilterObjects;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilterStrings;
         /// <summary>
-        /// Allow incoming connections from CIDR address block, e.g. '10.20.0.0/16'.
+        /// Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
         /// </summary>
         public readonly ImmutableArray<string> IpFilters;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPrivatelinkAccessResult? PrivatelinkAccess;
         /// <summary>
-        /// Name of another project to fork a service from. This has effect only when a new service is being created.
+        /// Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
         /// </summary>
         public readonly string? ProjectToForkFrom;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetRedisRedisUserConfigPublicAccessResult? PublicAccess;
         /// <summary>
-        /// Name of the basebackup to restore in forked service.
+        /// Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
         /// </summary>
         public readonly string? RecoveryBasebackupName;
         /// <summary>
@@ -58,19 +58,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RedisAclChannelsDefault;
         /// <summary>
-        /// Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+        /// Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
         /// </summary>
         public readonly int? RedisIoThreads;
         /// <summary>
-        /// LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+        /// LFU maxmemory-policy counter decay time in minutes. Default: `1`.
         /// </summary>
         public readonly int? RedisLfuDecayTime;
         /// <summary>
-        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+        /// Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
         /// </summary>
         public readonly int? RedisLfuLogFactor;
         /// <summary>
-        /// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+        /// Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
         /// </summary>
         public readonly string? RedisMaxmemoryPolicy;
         /// <summary>
@@ -78,23 +78,23 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? RedisNotifyKeyspaceEvents;
         /// <summary>
-        /// Set number of Redis databases. Changing this will cause a restart of the Redis service.
+        /// Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
         /// </summary>
         public readonly int? RedisNumberOfDatabases;
         /// <summary>
-        /// Enum: `off`, `rdb`. When persistence is 'rdb', Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is 'off', no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
+        /// Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can't be forked.
         /// </summary>
         public readonly string? RedisPersistence;
         /// <summary>
-        /// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+        /// Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
         /// </summary>
         public readonly int? RedisPubsubClientOutputBufferLimit;
         /// <summary>
-        /// Require SSL to access Redis. The default value is `true`.
+        /// Require SSL to access Redis. Default: `true`.
         /// </summary>
         public readonly bool? RedisSsl;
         /// <summary>
-        /// Redis idle connection timeout in seconds. The default value is `300`.
+        /// Redis idle connection timeout in seconds. Default: `300`.
         /// </summary>
         public readonly int? RedisTimeout;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? ServiceLog;
         /// <summary>
-        /// Name of another service to fork from. This has effect only when a new service is being created.
+        /// Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
         /// </summary>
         public readonly string? ServiceToForkFrom;
         /// <summary>

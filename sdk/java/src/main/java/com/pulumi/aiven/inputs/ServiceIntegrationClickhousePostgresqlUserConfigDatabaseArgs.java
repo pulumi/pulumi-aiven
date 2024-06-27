@@ -16,14 +16,14 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
     public static final ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs Empty = new ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs();
 
     /**
-     * PostgreSQL database to expose. The default value is `defaultdb`.
+     * PostgreSQL database to expose. Default: `defaultdb`.
      * 
      */
     @Import(name="database")
     private @Nullable Output<String> database;
 
     /**
-     * @return PostgreSQL database to expose. The default value is `defaultdb`.
+     * @return PostgreSQL database to expose. Default: `defaultdb`.
      * 
      */
     public Optional<Output<String>> database() {
@@ -31,14 +31,14 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
     }
 
     /**
-     * PostgreSQL schema to expose. The default value is `public`.
+     * PostgreSQL schema to expose. Default: `public`.
      * 
      */
     @Import(name="schema")
     private @Nullable Output<String> schema;
 
     /**
-     * @return PostgreSQL schema to expose. The default value is `public`.
+     * @return PostgreSQL schema to expose. Default: `public`.
      * 
      */
     public Optional<Output<String>> schema() {
@@ -71,7 +71,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
         }
 
         /**
-         * @param database PostgreSQL database to expose. The default value is `defaultdb`.
+         * @param database PostgreSQL database to expose. Default: `defaultdb`.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
         }
 
         /**
-         * @param database PostgreSQL database to expose. The default value is `defaultdb`.
+         * @param database PostgreSQL database to expose. Default: `defaultdb`.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
         }
 
         /**
-         * @param schema PostgreSQL schema to expose. The default value is `public`.
+         * @param schema PostgreSQL schema to expose. Default: `public`.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabaseArgs 
         }
 
         /**
-         * @param schema PostgreSQL schema to expose. The default value is `public`.
+         * @param schema PostgreSQL schema to expose. Default: `public`.
          * 
          * @return builder
          * 

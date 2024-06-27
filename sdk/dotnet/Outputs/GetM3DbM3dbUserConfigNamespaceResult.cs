@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetM3DbM3dbUserConfigNamespaceResult
     {
         /// <summary>
-        /// The name of the namespace.
+        /// The name of the namespace. Example: `default`.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.GetM3DbM3dbUserConfigNamespaceOptionsResult? Options;
         /// <summary>
-        /// The resolution for an aggregated namespace.
+        /// The resolution for an aggregated namespace. Example: `30s`.
         /// </summary>
         public readonly string? Resolution;
         /// <summary>

@@ -39,14 +39,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<RedisRedisUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<RedisRedisUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -54,14 +54,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -69,7 +69,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -80,7 +80,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -137,14 +137,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<Output<String>> projectToForkFrom() {
@@ -167,14 +167,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<Output<String>> recoveryBasebackupName() {
@@ -197,14 +197,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      * 
      */
     @Import(name="redisIoThreads")
     private @Nullable Output<Integer> redisIoThreads;
 
     /**
-     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+     * @return Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
      * 
      */
     public Optional<Output<Integer>> redisIoThreads() {
@@ -212,14 +212,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      * 
      */
     @Import(name="redisLfuDecayTime")
     private @Nullable Output<Integer> redisLfuDecayTime;
 
     /**
-     * @return LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+     * @return LFU maxmemory-policy counter decay time in minutes. Default: `1`.
      * 
      */
     public Optional<Output<Integer>> redisLfuDecayTime() {
@@ -227,14 +227,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      * 
      */
     @Import(name="redisLfuLogFactor")
     private @Nullable Output<Integer> redisLfuLogFactor;
 
     /**
-     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+     * @return Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
      * 
      */
     public Optional<Output<Integer>> redisLfuLogFactor() {
@@ -242,14 +242,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     @Import(name="redisMaxmemoryPolicy")
     private @Nullable Output<String> redisMaxmemoryPolicy;
 
     /**
-     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+     * @return Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
      * 
      */
     public Optional<Output<String>> redisMaxmemoryPolicy() {
@@ -272,14 +272,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      * 
      */
     @Import(name="redisNumberOfDatabases")
     private @Nullable Output<Integer> redisNumberOfDatabases;
 
     /**
-     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service.
+     * @return Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
      * 
      */
     public Optional<Output<Integer>> redisNumberOfDatabases() {
@@ -287,14 +287,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     @Import(name="redisPersistence")
     private @Nullable Output<String> redisPersistence;
 
     /**
-     * @return Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     public Optional<Output<String>> redisPersistence() {
@@ -302,14 +302,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      * 
      */
     @Import(name="redisPubsubClientOutputBufferLimit")
     private @Nullable Output<Integer> redisPubsubClientOutputBufferLimit;
 
     /**
-     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+     * @return Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
      * 
      */
     public Optional<Output<Integer>> redisPubsubClientOutputBufferLimit() {
@@ -317,14 +317,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Require SSL to access Redis. The default value is `true`.
+     * Require SSL to access Redis. Default: `true`.
      * 
      */
     @Import(name="redisSsl")
     private @Nullable Output<Boolean> redisSsl;
 
     /**
-     * @return Require SSL to access Redis. The default value is `true`.
+     * @return Require SSL to access Redis. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> redisSsl() {
@@ -332,14 +332,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Redis idle connection timeout in seconds. The default value is `300`.
+     * Redis idle connection timeout in seconds. Default: `300`.
      * 
      */
     @Import(name="redisTimeout")
     private @Nullable Output<Integer> redisTimeout;
 
     /**
-     * @return Redis idle connection timeout in seconds. The default value is `300`.
+     * @return Redis idle connection timeout in seconds. Default: `300`.
      * 
      */
     public Optional<Output<Integer>> redisTimeout() {
@@ -377,14 +377,14 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> serviceToForkFrom() {
@@ -476,7 +476,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -487,7 +487,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -538,7 +538,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -655,7 +655,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -686,7 +686,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -697,7 +697,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -728,7 +728,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisIoThreads Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+         * @param redisIoThreads Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
          * 
          * @return builder
          * 
@@ -739,7 +739,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisIoThreads Set Redis IO thread count. Changing this will cause a restart of the Redis service.
+         * @param redisIoThreads Set Redis IO thread count. Changing this will cause a restart of the Redis service. Example: `1`.
          * 
          * @return builder
          * 
@@ -749,7 +749,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisLfuDecayTime LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+         * @param redisLfuDecayTime LFU maxmemory-policy counter decay time in minutes. Default: `1`.
          * 
          * @return builder
          * 
@@ -760,7 +760,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisLfuDecayTime LFU maxmemory-policy counter decay time in minutes. The default value is `1`.
+         * @param redisLfuDecayTime LFU maxmemory-policy counter decay time in minutes. Default: `1`.
          * 
          * @return builder
          * 
@@ -770,7 +770,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisLfuLogFactor Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+         * @param redisLfuLogFactor Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
          * 
          * @return builder
          * 
@@ -781,7 +781,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisLfuLogFactor Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. The default value is `10`.
+         * @param redisLfuLogFactor Counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory-policies. Default: `10`.
          * 
          * @return builder
          * 
@@ -791,7 +791,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
          * 
          * @return builder
          * 
@@ -802,7 +802,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. The default value is `noeviction`.
+         * @param redisMaxmemoryPolicy Enum: `noeviction`, `allkeys-lru`, `volatile-lru`, `allkeys-random`, `volatile-random`, `volatile-ttl`, `volatile-lfu`, `allkeys-lfu`. Redis maxmemory-policy. Default: `noeviction`.
          * 
          * @return builder
          * 
@@ -833,7 +833,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisNumberOfDatabases Set number of Redis databases. Changing this will cause a restart of the Redis service.
+         * @param redisNumberOfDatabases Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
          * 
          * @return builder
          * 
@@ -844,7 +844,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisNumberOfDatabases Set number of Redis databases. Changing this will cause a restart of the Redis service.
+         * @param redisNumberOfDatabases Set number of Redis databases. Changing this will cause a restart of the Redis service. Example: `16`.
          * 
          * @return builder
          * 
@@ -854,7 +854,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+         * @param redisPersistence Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -865,7 +865,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPersistence Enum: `off`, `rdb`. When persistence is &#39;rdb&#39;, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+         * @param redisPersistence Enum: `off`, `rdb`. When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -875,7 +875,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPubsubClientOutputBufferLimit Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+         * @param redisPubsubClientOutputBufferLimit Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
          * 
          * @return builder
          * 
@@ -886,7 +886,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisPubsubClientOutputBufferLimit Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
+         * @param redisPubsubClientOutputBufferLimit Set output buffer limit for pub / sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan. Example: `64`.
          * 
          * @return builder
          * 
@@ -896,7 +896,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisSsl Require SSL to access Redis. The default value is `true`.
+         * @param redisSsl Require SSL to access Redis. Default: `true`.
          * 
          * @return builder
          * 
@@ -907,7 +907,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisSsl Require SSL to access Redis. The default value is `true`.
+         * @param redisSsl Require SSL to access Redis. Default: `true`.
          * 
          * @return builder
          * 
@@ -917,7 +917,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisTimeout Redis idle connection timeout in seconds. The default value is `300`.
+         * @param redisTimeout Redis idle connection timeout in seconds. Default: `300`.
          * 
          * @return builder
          * 
@@ -928,7 +928,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param redisTimeout Redis idle connection timeout in seconds. The default value is `300`.
+         * @param redisTimeout Redis idle connection timeout in seconds. Default: `300`.
          * 
          * @return builder
          * 
@@ -980,7 +980,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -991,7 +991,7 @@ public final class RedisRedisUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 

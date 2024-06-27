@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GrafanaGrafanaUserConfigIpFilterObject {
     /**
-     * @return Description for IP filter list entry.
+     * @return Description for IP filter list entry. Example: `Production service IP range`.
      * 
      */
     private @Nullable String description;
     /**
-     * @return CIDR address block.
+     * @return CIDR address block. Example: `10.20.0.0/16`.
      * 
      */
     private String network;
 
     private GrafanaGrafanaUserConfigIpFilterObject() {}
     /**
-     * @return Description for IP filter list entry.
+     * @return Description for IP filter list entry. Example: `Production service IP range`.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return CIDR address block.
+     * @return CIDR address block. Example: `10.20.0.0/16`.
      * 
      */
     public String network() {

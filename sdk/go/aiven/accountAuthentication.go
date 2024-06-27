@@ -12,9 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **This resource is deprecated**.
-//
 // Creates and manages an authentication method.
+//
+// > **This resource is deprecated**
+// To set up an identity provider as an authentication method for your organization,
+// [use the Aiven Console](https://aiven.io/docs/platform/howto/saml/add-identity-providers).
+// It guides you through the steps and explains the settings.
 //
 // ## Import
 //

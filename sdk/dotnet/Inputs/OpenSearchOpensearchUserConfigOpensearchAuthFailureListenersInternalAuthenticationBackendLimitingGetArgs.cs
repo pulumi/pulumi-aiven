@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of login attempts allowed before login is blocked.
+        /// The number of login attempts allowed before login is blocked. Example: `10`.
         /// </summary>
         [Input("allowedTries")]
         public Input<int>? AllowedTries { get; set; }
@@ -25,25 +25,25 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? AuthenticationBackend { get; set; }
 
         /// <summary>
-        /// The duration of time that login remains blocked after a failed login.
+        /// The duration of time that login remains blocked after a failed login. Example: `600`.
         /// </summary>
         [Input("blockExpirySeconds")]
         public Input<int>? BlockExpirySeconds { get; set; }
 
         /// <summary>
-        /// internal*authentication*backend*limiting.max*blocked_clients.
+        /// internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
         /// </summary>
         [Input("maxBlockedClients")]
         public Input<int>? MaxBlockedClients { get; set; }
 
         /// <summary>
-        /// The maximum number of tracked IP addresses that have failed login.
+        /// The maximum number of tracked IP addresses that have failed login. Example: `100000`.
         /// </summary>
         [Input("maxTrackedClients")]
         public Input<int>? MaxTrackedClients { get; set; }
 
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced.
+        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
         /// </summary>
         [Input("timeWindowSeconds")]
         public Input<int>? TimeWindowSeconds { get; set; }

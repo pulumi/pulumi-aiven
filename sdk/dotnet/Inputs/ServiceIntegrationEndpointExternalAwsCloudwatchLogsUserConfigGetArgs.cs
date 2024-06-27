@@ -12,29 +12,49 @@ namespace Pulumi.Aiven.Inputs
 
     public sealed class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
-        /// </summary>
         [Input("accessKey", required: true)]
-        public Input<string> AccessKey { get; set; } = null!;
+        private Input<string>? _accessKey;
 
         /// <summary>
-        /// AWS CloudWatch log group name.
+        /// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
+        /// </summary>
+        public Input<string>? AccessKey
+        {
+            get => _accessKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// AWS CloudWatch log group name. Example: `my-log-group`.
         /// </summary>
         [Input("logGroupName")]
         public Input<string>? LogGroupName { get; set; }
 
         /// <summary>
-        /// AWS region.
+        /// AWS region. Example: `us-east-1`.
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
-        /// <summary>
-        /// AWS secret key.
-        /// </summary>
         [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        private Input<string>? _secretKey;
+
+        /// <summary>
+        /// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
+        /// </summary>
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigGetArgs()
         {

@@ -31,13 +31,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Client ID from provider.
+        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
-        /// Client secret from provider.
+        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;

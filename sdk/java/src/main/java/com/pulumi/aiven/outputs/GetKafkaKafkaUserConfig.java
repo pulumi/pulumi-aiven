@@ -7,6 +7,7 @@ import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigIpFilterObject;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafka;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaAuthenticationMethods;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectConfig;
+import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaConnectSecretProvider;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigKafkaRestConfig;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.GetKafkaKafkaUserConfigPrivatelinkAccess;
@@ -38,22 +39,22 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable Boolean aivenKafkaTopicMessages;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     private @Nullable String customDomain;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -72,7 +73,7 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Enable Kafka Connect service. Default: `false`.
      * 
      */
     private @Nullable Boolean kafkaConnect;
@@ -81,8 +82,9 @@ public final class GetKafkaKafkaUserConfig {
      * 
      */
     private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+    private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Enable Kafka-REST service. Default: `false`.
      * 
      */
     private @Nullable Boolean kafkaRest;
@@ -102,6 +104,11 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable String kafkaVersion;
     /**
+     * @return Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * 
+     */
+    private @Nullable Boolean letsencryptSaslPrivatelink;
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -117,7 +124,7 @@ public final class GetKafkaKafkaUserConfig {
      */
     private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
     /**
-     * @return Enable Schema-Registry service. The default value is `false`.
+     * @return Enable Schema-Registry service. Default: `false`.
      * 
      */
     private @Nullable Boolean schemaRegistry;
@@ -162,28 +169,28 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.aivenKafkaTopicMessages);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<String> customDomain() {
         return Optional.ofNullable(this.customDomain);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<GetKafkaKafkaUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -208,7 +215,7 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaAuthenticationMethods);
     }
     /**
-     * @return Enable Kafka Connect service. The default value is `false`.
+     * @return Enable Kafka Connect service. Default: `false`.
      * 
      */
     public Optional<Boolean> kafkaConnect() {
@@ -221,8 +228,11 @@ public final class GetKafkaKafkaUserConfig {
     public Optional<GetKafkaKafkaUserConfigKafkaConnectConfig> kafkaConnectConfig() {
         return Optional.ofNullable(this.kafkaConnectConfig);
     }
+    public List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders() {
+        return this.kafkaConnectSecretProviders == null ? List.of() : this.kafkaConnectSecretProviders;
+    }
     /**
-     * @return Enable Kafka-REST service. The default value is `false`.
+     * @return Enable Kafka-REST service. Default: `false`.
      * 
      */
     public Optional<Boolean> kafkaRest() {
@@ -250,6 +260,13 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.kafkaVersion);
     }
     /**
+     * @return Use Letsencrypt CA for Kafka SASL via Privatelink.
+     * 
+     */
+    public Optional<Boolean> letsencryptSaslPrivatelink() {
+        return Optional.ofNullable(this.letsencryptSaslPrivatelink);
+    }
+    /**
      * @return Allow access to selected service ports from private networks
      * 
      */
@@ -271,7 +288,7 @@ public final class GetKafkaKafkaUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Enable Schema-Registry service. The default value is `false`.
+     * @return Enable Schema-Registry service. Default: `false`.
      * 
      */
     public Optional<Boolean> schemaRegistry() {
@@ -325,10 +342,12 @@ public final class GetKafkaKafkaUserConfig {
         private @Nullable GetKafkaKafkaUserConfigKafkaAuthenticationMethods kafkaAuthenticationMethods;
         private @Nullable Boolean kafkaConnect;
         private @Nullable GetKafkaKafkaUserConfigKafkaConnectConfig kafkaConnectConfig;
+        private @Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders;
         private @Nullable Boolean kafkaRest;
         private @Nullable Boolean kafkaRestAuthorization;
         private @Nullable GetKafkaKafkaUserConfigKafkaRestConfig kafkaRestConfig;
         private @Nullable String kafkaVersion;
+        private @Nullable Boolean letsencryptSaslPrivatelink;
         private @Nullable GetKafkaKafkaUserConfigPrivateAccess privateAccess;
         private @Nullable GetKafkaKafkaUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable GetKafkaKafkaUserConfigPublicAccess publicAccess;
@@ -350,10 +369,12 @@ public final class GetKafkaKafkaUserConfig {
     	      this.kafkaAuthenticationMethods = defaults.kafkaAuthenticationMethods;
     	      this.kafkaConnect = defaults.kafkaConnect;
     	      this.kafkaConnectConfig = defaults.kafkaConnectConfig;
+    	      this.kafkaConnectSecretProviders = defaults.kafkaConnectSecretProviders;
     	      this.kafkaRest = defaults.kafkaRest;
     	      this.kafkaRestAuthorization = defaults.kafkaRestAuthorization;
     	      this.kafkaRestConfig = defaults.kafkaRestConfig;
     	      this.kafkaVersion = defaults.kafkaVersion;
+    	      this.letsencryptSaslPrivatelink = defaults.letsencryptSaslPrivatelink;
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
@@ -434,6 +455,15 @@ public final class GetKafkaKafkaUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder kafkaConnectSecretProviders(@Nullable List<GetKafkaKafkaUserConfigKafkaConnectSecretProvider> kafkaConnectSecretProviders) {
+
+            this.kafkaConnectSecretProviders = kafkaConnectSecretProviders;
+            return this;
+        }
+        public Builder kafkaConnectSecretProviders(GetKafkaKafkaUserConfigKafkaConnectSecretProvider... kafkaConnectSecretProviders) {
+            return kafkaConnectSecretProviders(List.of(kafkaConnectSecretProviders));
+        }
+        @CustomType.Setter
         public Builder kafkaRest(@Nullable Boolean kafkaRest) {
 
             this.kafkaRest = kafkaRest;
@@ -455,6 +485,12 @@ public final class GetKafkaKafkaUserConfig {
         public Builder kafkaVersion(@Nullable String kafkaVersion) {
 
             this.kafkaVersion = kafkaVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder letsencryptSaslPrivatelink(@Nullable Boolean letsencryptSaslPrivatelink) {
+
+            this.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             return this;
         }
         @CustomType.Setter
@@ -517,10 +553,12 @@ public final class GetKafkaKafkaUserConfig {
             _resultValue.kafkaAuthenticationMethods = kafkaAuthenticationMethods;
             _resultValue.kafkaConnect = kafkaConnect;
             _resultValue.kafkaConnectConfig = kafkaConnectConfig;
+            _resultValue.kafkaConnectSecretProviders = kafkaConnectSecretProviders;
             _resultValue.kafkaRest = kafkaRest;
             _resultValue.kafkaRestAuthorization = kafkaRestAuthorization;
             _resultValue.kafkaRestConfig = kafkaRestConfig;
             _resultValue.kafkaVersion = kafkaVersion;
+            _resultValue.letsencryptSaslPrivatelink = letsencryptSaslPrivatelink;
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;

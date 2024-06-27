@@ -16,14 +16,14 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
     public static final PgPgUserConfigTimescaledbArgs Empty = new PgPgUserConfigTimescaledbArgs();
 
     /**
-     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+     * The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
      * 
      */
     @Import(name="maxBackgroundWorkers")
     private @Nullable Output<Integer> maxBackgroundWorkers;
 
     /**
-     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+     * @return The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
      * 
      */
     public Optional<Output<Integer>> maxBackgroundWorkers() {
@@ -55,7 +55,7 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxBackgroundWorkers The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+         * @param maxBackgroundWorkers The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PgPgUserConfigTimescaledbArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxBackgroundWorkers The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. The default value is `16`.
+         * @param maxBackgroundWorkers The number of background workers for timescaledb operations. You should configure this setting to the sum of your number of databases and the total number of concurrent background workers you want running at any given point in time. Default: `16`.
          * 
          * @return builder
          * 

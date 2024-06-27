@@ -13,31 +13,31 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Controls how long we wait before expiring stale data.
+        /// Controls how long we wait before expiring stale data. Example: `5m`.
         /// </summary>
         [Input("blockDataExpiryDuration")]
         public Input<string>? BlockDataExpiryDuration { get; set; }
 
         /// <summary>
-        /// Controls how long to keep a block in memory before flushing to a fileset on disk.
+        /// Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
         /// </summary>
         [Input("blocksizeDuration")]
         public Input<string>? BlocksizeDuration { get; set; }
 
         /// <summary>
-        /// Controls how far into the future writes to the namespace will be accepted.
+        /// Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
         /// </summary>
         [Input("bufferFutureDuration")]
         public Input<string>? BufferFutureDuration { get; set; }
 
         /// <summary>
-        /// Controls how far into the past writes to the namespace will be accepted.
+        /// Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
         /// </summary>
         [Input("bufferPastDuration")]
         public Input<string>? BufferPastDuration { get; set; }
 
         /// <summary>
-        /// Controls the duration of time that M3DB will retain data for the namespace.
+        /// Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
         /// </summary>
         [Input("retentionPeriodDuration")]
         public Input<string>? RetentionPeriodDuration { get; set; }

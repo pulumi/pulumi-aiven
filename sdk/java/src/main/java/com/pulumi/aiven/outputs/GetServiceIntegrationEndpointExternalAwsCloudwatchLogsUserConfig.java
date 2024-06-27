@@ -13,50 +13,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig {
     /**
-     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     private String accessKey;
     /**
-     * @return AWS CloudWatch log group name.
+     * @return AWS CloudWatch log group name. Example: `my-log-group`.
      * 
      */
     private @Nullable String logGroupName;
     /**
-     * @return AWS region.
+     * @return AWS region. Example: `us-east-1`.
      * 
      */
     private String region;
     /**
-     * @return AWS secret key.
+     * @return AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     private String secretKey;
 
     private GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig() {}
     /**
-     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return AWS CloudWatch log group name.
+     * @return AWS CloudWatch log group name. Example: `my-log-group`.
      * 
      */
     public Optional<String> logGroupName() {
         return Optional.ofNullable(this.logGroupName);
     }
     /**
-     * @return AWS region.
+     * @return AWS region. Example: `us-east-1`.
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return AWS secret key.
+     * @return AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public String secretKey() {

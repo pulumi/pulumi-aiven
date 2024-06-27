@@ -46,9 +46,13 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> KafkaCustomMetrics;
         /// <summary>
-        /// Maximum number of JMX metrics to send.
+        /// Maximum number of JMX metrics to send. Example: `2000`.
         /// </summary>
         public readonly int? MaxJmxMetrics;
+        /// <summary>
+        /// List of custom metrics.
+        /// </summary>
+        public readonly ImmutableArray<string> MirrormakerCustomMetrics;
         /// <summary>
         /// Datadog Opensearch Options
         /// </summary>
@@ -78,6 +82,8 @@ namespace Pulumi.Aiven.Outputs
 
             int? maxJmxMetrics,
 
+            ImmutableArray<string> mirrormakerCustomMetrics,
+
             Outputs.ServiceIntegrationDatadogUserConfigOpensearch? opensearch,
 
             Outputs.ServiceIntegrationDatadogUserConfigRedis? redis)
@@ -91,6 +97,7 @@ namespace Pulumi.Aiven.Outputs
             IncludeTopics = includeTopics;
             KafkaCustomMetrics = kafkaCustomMetrics;
             MaxJmxMetrics = maxJmxMetrics;
+            MirrormakerCustomMetrics = mirrormakerCustomMetrics;
             Opensearch = opensearch;
             Redis = redis;
         }

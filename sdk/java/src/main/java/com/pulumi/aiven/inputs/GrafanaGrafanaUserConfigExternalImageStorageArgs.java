@@ -15,14 +15,14 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
     public static final GrafanaGrafanaUserConfigExternalImageStorageArgs Empty = new GrafanaGrafanaUserConfigExternalImageStorageArgs();
 
     /**
-     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public Output<String> accessKey() {
@@ -30,14 +30,14 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
     }
 
     /**
-     * Bucket URL for S3.
+     * Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      * 
      */
     @Import(name="bucketUrl", required=true)
     private Output<String> bucketUrl;
 
     /**
-     * @return Bucket URL for S3.
+     * @return Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      * 
      */
     public Output<String> bucketUrl() {
@@ -60,14 +60,14 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
     }
 
     /**
-     * S3 secret key.
+     * S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return S3 secret key.
+     * @return S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public Output<String> secretKey() {
@@ -102,7 +102,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param accessKey S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+         * @param accessKey S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -113,7 +113,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param accessKey S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+         * @param accessKey S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param bucketUrl Bucket URL for S3.
+         * @param bucketUrl Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param bucketUrl Bucket URL for S3.
+         * @param bucketUrl Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param secretKey S3 secret key.
+         * @param secretKey S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -176,7 +176,7 @@ public final class GrafanaGrafanaUserConfigExternalImageStorageArgs extends com.
         }
 
         /**
-         * @param secretKey S3 secret key.
+         * @param secretKey S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 

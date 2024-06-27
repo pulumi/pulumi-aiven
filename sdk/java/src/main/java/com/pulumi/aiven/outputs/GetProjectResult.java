@@ -59,7 +59,7 @@ public final class GetProjectResult {
      */
     private String id;
     /**
-     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     private String parentId;
@@ -154,7 +154,7 @@ public final class GetProjectResult {
         return this.id;
     }
     /**
-     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * @return Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      * 
      */
     public String parentId() {

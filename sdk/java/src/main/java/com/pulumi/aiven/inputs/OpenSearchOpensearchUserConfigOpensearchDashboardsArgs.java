@@ -17,14 +17,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     public static final OpenSearchOpensearchUserConfigOpensearchDashboardsArgs Empty = new OpenSearchOpensearchUserConfigOpensearchDashboardsArgs();
 
     /**
-     * Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * Enable or disable OpenSearch Dashboards. Default: `true`.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable or disable OpenSearch Dashboards. The default value is `true`.
+     * @return Enable or disable OpenSearch Dashboards. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -32,14 +32,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     }
 
     /**
-     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      * 
      */
     @Import(name="maxOldSpaceSize")
     private @Nullable Output<Integer> maxOldSpaceSize;
 
     /**
-     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+     * @return Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
      * 
      */
     public Optional<Output<Integer>> maxOldSpaceSize() {
@@ -47,14 +47,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
     }
 
     /**
-     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
     @Import(name="opensearchRequestTimeout")
     private @Nullable Output<Integer> opensearchRequestTimeout;
 
     /**
-     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+     * @return Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
      * 
      */
     public Optional<Output<Integer>> opensearchRequestTimeout() {
@@ -88,7 +88,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param enabled Enable or disable OpenSearch Dashboards. The default value is `true`.
+         * @param enabled Enable or disable OpenSearch Dashboards. Default: `true`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param enabled Enable or disable OpenSearch Dashboards. The default value is `true`.
+         * @param enabled Enable or disable OpenSearch Dashboards. Default: `true`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param maxOldSpaceSize Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+         * @param maxOldSpaceSize Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param maxOldSpaceSize Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. The default value is `128`.
+         * @param maxOldSpaceSize Limits the maximum amount of memory (in MiB) the OpenSearch Dashboards process can use. This sets the max*old*space_size option of the nodejs running the OpenSearch Dashboards. Note: the memory reserved by OpenSearch Dashboards is not available for OpenSearch. Default: `128`.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param opensearchRequestTimeout Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+         * @param opensearchRequestTimeout Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchDashboardsArgs extend
         }
 
         /**
-         * @param opensearchRequestTimeout Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. The default value is `30000`.
+         * @param opensearchRequestTimeout Timeout in milliseconds for requests made by OpenSearch Dashboards towards OpenSearch. Default: `30000`.
          * 
          * @return builder
          * 

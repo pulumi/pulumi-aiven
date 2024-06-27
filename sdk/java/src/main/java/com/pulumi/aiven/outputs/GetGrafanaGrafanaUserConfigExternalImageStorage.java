@@ -11,12 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetGrafanaGrafanaUserConfigExternalImageStorage {
     /**
-     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      * 
      */
     private String accessKey;
     /**
-     * @return Bucket URL for S3.
+     * @return Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      * 
      */
     private String bucketUrl;
@@ -26,21 +26,21 @@ public final class GetGrafanaGrafanaUserConfigExternalImageStorage {
      */
     private String provider;
     /**
-     * @return S3 secret key.
+     * @return S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     private String secretKey;
 
     private GetGrafanaGrafanaUserConfigExternalImageStorage() {}
     /**
-     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions.
+     * @return S3 access key. Requires permissions to the S3 bucket for the s3:PutObject and s3:PutObjectAcl actions. Example: `AAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return Bucket URL for S3.
+     * @return Bucket URL for S3. Example: `https://grafana.s3-ap-southeast-2.amazonaws.com/`.
      * 
      */
     public String bucketUrl() {
@@ -54,7 +54,7 @@ public final class GetGrafanaGrafanaUserConfigExternalImageStorage {
         return this.provider;
     }
     /**
-     * @return S3 secret key.
+     * @return S3 secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public String secretKey() {

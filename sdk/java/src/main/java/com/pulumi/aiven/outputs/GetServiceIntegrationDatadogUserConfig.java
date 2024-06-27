@@ -58,10 +58,15 @@ public final class GetServiceIntegrationDatadogUserConfig {
      */
     private @Nullable List<String> kafkaCustomMetrics;
     /**
-     * @return Maximum number of JMX metrics to send.
+     * @return Maximum number of JMX metrics to send. Example: `2000`.
      * 
      */
     private @Nullable Integer maxJmxMetrics;
+    /**
+     * @return List of custom metrics.
+     * 
+     */
+    private @Nullable List<String> mirrormakerCustomMetrics;
     /**
      * @return Datadog Opensearch Options
      * 
@@ -131,11 +136,18 @@ public final class GetServiceIntegrationDatadogUserConfig {
         return this.kafkaCustomMetrics == null ? List.of() : this.kafkaCustomMetrics;
     }
     /**
-     * @return Maximum number of JMX metrics to send.
+     * @return Maximum number of JMX metrics to send. Example: `2000`.
      * 
      */
     public Optional<Integer> maxJmxMetrics() {
         return Optional.ofNullable(this.maxJmxMetrics);
+    }
+    /**
+     * @return List of custom metrics.
+     * 
+     */
+    public List<String> mirrormakerCustomMetrics() {
+        return this.mirrormakerCustomMetrics == null ? List.of() : this.mirrormakerCustomMetrics;
     }
     /**
      * @return Datadog Opensearch Options
@@ -170,6 +182,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
         private @Nullable List<String> includeTopics;
         private @Nullable List<String> kafkaCustomMetrics;
         private @Nullable Integer maxJmxMetrics;
+        private @Nullable List<String> mirrormakerCustomMetrics;
         private @Nullable GetServiceIntegrationDatadogUserConfigOpensearch opensearch;
         private @Nullable GetServiceIntegrationDatadogUserConfigRedis redis;
         public Builder() {}
@@ -184,6 +197,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
     	      this.includeTopics = defaults.includeTopics;
     	      this.kafkaCustomMetrics = defaults.kafkaCustomMetrics;
     	      this.maxJmxMetrics = defaults.maxJmxMetrics;
+    	      this.mirrormakerCustomMetrics = defaults.mirrormakerCustomMetrics;
     	      this.opensearch = defaults.opensearch;
     	      this.redis = defaults.redis;
         }
@@ -261,6 +275,15 @@ public final class GetServiceIntegrationDatadogUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder mirrormakerCustomMetrics(@Nullable List<String> mirrormakerCustomMetrics) {
+
+            this.mirrormakerCustomMetrics = mirrormakerCustomMetrics;
+            return this;
+        }
+        public Builder mirrormakerCustomMetrics(String... mirrormakerCustomMetrics) {
+            return mirrormakerCustomMetrics(List.of(mirrormakerCustomMetrics));
+        }
+        @CustomType.Setter
         public Builder opensearch(@Nullable GetServiceIntegrationDatadogUserConfigOpensearch opensearch) {
 
             this.opensearch = opensearch;
@@ -283,6 +306,7 @@ public final class GetServiceIntegrationDatadogUserConfig {
             _resultValue.includeTopics = includeTopics;
             _resultValue.kafkaCustomMetrics = kafkaCustomMetrics;
             _resultValue.maxJmxMetrics = maxJmxMetrics;
+            _resultValue.mirrormakerCustomMetrics = mirrormakerCustomMetrics;
             _resultValue.opensearch = opensearch;
             _resultValue.redis = redis;
             return _resultValue;

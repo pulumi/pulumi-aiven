@@ -13,25 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgbouncerGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
+        /// If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
         /// </summary>
         [Input("autodbIdleTimeout")]
         public Input<int>? AutodbIdleTimeout { get; set; }
 
         /// <summary>
-        /// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+        /// Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
         /// </summary>
         [Input("autodbMaxDbConnections")]
         public Input<int>? AutodbMaxDbConnections { get; set; }
 
         /// <summary>
-        /// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
+        /// Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
         /// </summary>
         [Input("autodbPoolMode")]
         public Input<string>? AutodbPoolMode { get; set; }
 
         /// <summary>
-        /// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. The default value is `0`.
+        /// If non-zero then create automatically a pool of that size per user when a pool doesn't exist. Default: `0`.
         /// </summary>
         [Input("autodbPoolSize")]
         public Input<int>? AutodbPoolSize { get; set; }
@@ -49,25 +49,25 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+        /// Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
         /// </summary>
         [Input("minPoolSize")]
         public Input<int>? MinPoolSize { get; set; }
 
         /// <summary>
-        /// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+        /// If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
         /// </summary>
         [Input("serverIdleTimeout")]
         public Input<int>? ServerIdleTimeout { get; set; }
 
         /// <summary>
-        /// The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+        /// The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
         /// </summary>
         [Input("serverLifetime")]
         public Input<int>? ServerLifetime { get; set; }
 
         /// <summary>
-        /// Run server*reset*query (DISCARD ALL) in all pooling modes. The default value is `false`.
+        /// Run server*reset*query (DISCARD ALL) in all pooling modes. Default: `false`.
         /// </summary>
         [Input("serverResetQueryAlways")]
         public Input<bool>? ServerResetQueryAlways { get; set; }

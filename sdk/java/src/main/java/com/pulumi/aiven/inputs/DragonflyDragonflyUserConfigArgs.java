@@ -23,14 +23,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     public static final DragonflyDragonflyUserConfigArgs Empty = new DragonflyDragonflyUserConfigArgs();
 
     /**
-     * Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * Evict entries when getting close to maxmemory limit. Default: `false`.
      * 
      */
     @Import(name="cacheMode")
     private @Nullable Output<Boolean> cacheMode;
 
     /**
-     * @return Evict entries when getting close to maxmemory limit. The default value is `false`.
+     * @return Evict entries when getting close to maxmemory limit. Default: `false`.
      * 
      */
     public Optional<Output<Boolean>> cacheMode() {
@@ -38,14 +38,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Enum: `off`, `rdb`, `dfs`. When persistence is &#39;rdb&#39; or &#39;dfs&#39;, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     @Import(name="dragonflyPersistence")
     private @Nullable Output<String> dragonflyPersistence;
 
     /**
-     * @return Enum: `off`, `rdb`, `dfs`. When persistence is &#39;rdb&#39; or &#39;dfs&#39;, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+     * @return Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
      * 
      */
     public Optional<Output<String>> dragonflyPersistence() {
@@ -53,14 +53,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Require SSL to access Dragonfly. The default value is `true`.
+     * Require SSL to access Dragonfly. Default: `true`.
      * 
      */
     @Import(name="dragonflySsl")
     private @Nullable Output<Boolean> dragonflySsl;
 
     /**
-     * @return Require SSL to access Dragonfly. The default value is `true`.
+     * @return Require SSL to access Dragonfly. Default: `true`.
      * 
      */
     public Optional<Output<Boolean>> dragonflySsl() {
@@ -68,14 +68,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<DragonflyDragonflyUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<DragonflyDragonflyUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -83,14 +83,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -98,7 +98,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -109,7 +109,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -166,14 +166,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<Output<String>> projectToForkFrom() {
@@ -196,14 +196,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<Output<String>> recoveryBasebackupName() {
@@ -226,14 +226,14 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
     }
 
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> serviceToForkFrom() {
@@ -294,7 +294,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cacheMode Evict entries when getting close to maxmemory limit. The default value is `false`.
+         * @param cacheMode Evict entries when getting close to maxmemory limit. Default: `false`.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param cacheMode Evict entries when getting close to maxmemory limit. The default value is `false`.
+         * @param cacheMode Evict entries when getting close to maxmemory limit. Default: `false`.
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dragonflyPersistence Enum: `off`, `rdb`, `dfs`. When persistence is &#39;rdb&#39; or &#39;dfs&#39;, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+         * @param dragonflyPersistence Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dragonflyPersistence Enum: `off`, `rdb`, `dfs`. When persistence is &#39;rdb&#39; or &#39;dfs&#39;, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is &#39;off&#39;, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
+         * @param dragonflyPersistence Enum: `off`, `rdb`, `dfs`. When persistence is `rdb` or `dfs`, Dragonfly does RDB or DFS dumps every 10 minutes. Dumps are done according to the backup schedule for backup purposes. When persistence is `off`, no RDB/DFS dumps or backups are done, so data can be lost at any moment if the service is restarted for any reason, or if the service is powered off. Also, the service can&#39;t be forked.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dragonflySsl Require SSL to access Dragonfly. The default value is `true`.
+         * @param dragonflySsl Require SSL to access Dragonfly. Default: `true`.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param dragonflySsl Require SSL to access Dragonfly. The default value is `true`.
+         * @param dragonflySsl Require SSL to access Dragonfly. Default: `true`.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -378,7 +378,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -388,7 +388,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -399,7 +399,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -409,7 +409,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -525,7 +525,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -567,7 +567,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -578,7 +578,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -609,7 +609,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class DragonflyDragonflyUserConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 

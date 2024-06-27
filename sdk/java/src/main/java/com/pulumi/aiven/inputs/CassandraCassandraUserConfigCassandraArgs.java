@@ -17,14 +17,14 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
     public static final CassandraCassandraUserConfigCassandraArgs Empty = new CassandraCassandraUserConfigCassandraArgs();
 
     /**
-     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      * 
      */
     @Import(name="batchSizeFailThresholdInKb")
     private @Nullable Output<Integer> batchSizeFailThresholdInKb;
 
     /**
-     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      * 
      */
     public Optional<Output<Integer>> batchSizeFailThresholdInKb() {
@@ -32,14 +32,14 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
     }
 
     /**
-     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      * 
      */
     @Import(name="batchSizeWarnThresholdInKb")
     private @Nullable Output<Integer> batchSizeWarnThresholdInKb;
 
     /**
-     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      * 
      */
     public Optional<Output<Integer>> batchSizeWarnThresholdInKb() {
@@ -47,14 +47,14 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
     }
 
     /**
-     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      * 
      */
     @Import(name="datacenter")
     private @Nullable Output<String> datacenter;
 
     /**
-     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      * 
      */
     public Optional<Output<String>> datacenter() {
@@ -88,7 +88,7 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         }
 
         /**
-         * @param batchSizeFailThresholdInKb Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+         * @param batchSizeFailThresholdInKb Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         }
 
         /**
-         * @param batchSizeFailThresholdInKb Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+         * @param batchSizeFailThresholdInKb Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         }
 
         /**
-         * @param batchSizeWarnThresholdInKb Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+         * @param batchSizeWarnThresholdInKb Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         }
 
         /**
-         * @param batchSizeWarnThresholdInKb Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+         * @param batchSizeWarnThresholdInKb Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         }
 
         /**
-         * @param datacenter Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+         * @param datacenter Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class CassandraCassandraUserConfigCassandraArgs extends com.pulumi.
         }
 
         /**
-         * @param datacenter Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+         * @param datacenter Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
          * 
          * @return builder
          * 

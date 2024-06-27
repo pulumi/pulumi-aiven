@@ -173,7 +173,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  user_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Adds and manages users in a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups).
+        Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
 
         ## Example Usage
 
@@ -210,7 +210,7 @@ class OrganizationUserGroupMember(pulumi.CustomResource):
                  args: OrganizationUserGroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Adds and manages users in a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups).
+        Adds and manages users in a [user group](https://aiven.io/docs/platform/howto/list-groups).
 
         ## Example Usage
 

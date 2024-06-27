@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationEndpointDatadogUserConfigDatadogTag {
     /**
-     * @return Optional tag explanation.
+     * @return Optional tag explanation. Example: `Used to tag primary replica metrics`.
      * 
      */
     private @Nullable String comment;
     /**
-     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     private String tag;
 
     private ServiceIntegrationEndpointDatadogUserConfigDatadogTag() {}
     /**
-     * @return Optional tag explanation.
+     * @return Optional tag explanation. Example: `Used to tag primary replica metrics`.
      * 
      */
     public Optional<String> comment() {
         return Optional.ofNullable(this.comment);
     }
     /**
-     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix &#39;aiven-&#39; are reserved for Aiven.
+     * @return Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
      * 
      */
     public String tag() {

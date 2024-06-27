@@ -8,6 +8,7 @@ import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigKafkaConnect;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPrivateAccess;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPrivatelinkAccess;
 import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigPublicAccess;
+import com.pulumi.aiven.outputs.KafkaConnectKafkaConnectUserConfigSecretProvider;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
 import java.lang.String;
@@ -28,17 +29,17 @@ public final class KafkaConnectKafkaConnectUserConfig {
     @Deprecated /* This property is deprecated. */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -66,6 +67,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
      * 
      */
     private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+    private @Nullable List<KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders;
     /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
@@ -90,21 +92,21 @@ public final class KafkaConnectKafkaConnectUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<KafkaConnectKafkaConnectUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -142,6 +144,9 @@ public final class KafkaConnectKafkaConnectUserConfig {
     public Optional<KafkaConnectKafkaConnectUserConfigPublicAccess> publicAccess() {
         return Optional.ofNullable(this.publicAccess);
     }
+    public List<KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders() {
+        return this.secretProviders == null ? List.of() : this.secretProviders;
+    }
     /**
      * @return Store logs for the service so that they are available in the HTTP API and console.
      * 
@@ -174,6 +179,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivateAccess privateAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPrivatelinkAccess privatelinkAccess;
         private @Nullable KafkaConnectKafkaConnectUserConfigPublicAccess publicAccess;
+        private @Nullable List<KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders;
         private @Nullable Boolean serviceLog;
         private @Nullable Boolean staticIps;
         public Builder() {}
@@ -187,6 +193,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
     	      this.privateAccess = defaults.privateAccess;
     	      this.privatelinkAccess = defaults.privatelinkAccess;
     	      this.publicAccess = defaults.publicAccess;
+    	      this.secretProviders = defaults.secretProviders;
     	      this.serviceLog = defaults.serviceLog;
     	      this.staticIps = defaults.staticIps;
         }
@@ -249,6 +256,15 @@ public final class KafkaConnectKafkaConnectUserConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder secretProviders(@Nullable List<KafkaConnectKafkaConnectUserConfigSecretProvider> secretProviders) {
+
+            this.secretProviders = secretProviders;
+            return this;
+        }
+        public Builder secretProviders(KafkaConnectKafkaConnectUserConfigSecretProvider... secretProviders) {
+            return secretProviders(List.of(secretProviders));
+        }
+        @CustomType.Setter
         public Builder serviceLog(@Nullable Boolean serviceLog) {
 
             this.serviceLog = serviceLog;
@@ -270,6 +286,7 @@ public final class KafkaConnectKafkaConnectUserConfig {
             _resultValue.privateAccess = privateAccess;
             _resultValue.privatelinkAccess = privatelinkAccess;
             _resultValue.publicAccess = publicAccess;
+            _resultValue.secretProviders = secretProviders;
             _resultValue.serviceLog = serviceLog;
             _resultValue.staticIps = staticIps;
             return _resultValue;

@@ -17,14 +17,29 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     public static final ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs Empty = new ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs();
 
     /**
-     * The minimum amount of data the server should return for a fetch request.
+     * Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     * 
+     */
+    @Import(name="consumerAutoOffsetReset")
+    private @Nullable Output<String> consumerAutoOffsetReset;
+
+    /**
+     * @return Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+     * 
+     */
+    public Optional<Output<String>> consumerAutoOffsetReset() {
+        return Optional.ofNullable(this.consumerAutoOffsetReset);
+    }
+
+    /**
+     * The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
     @Import(name="consumerFetchMinBytes")
     private @Nullable Output<Integer> consumerFetchMinBytes;
 
     /**
-     * @return The minimum amount of data the server should return for a fetch request.
+     * @return The minimum amount of data the server should return for a fetch request. Example: `1024`.
      * 
      */
     public Optional<Output<Integer>> consumerFetchMinBytes() {
@@ -32,14 +47,29 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * The batch size in bytes producer will attempt to collect before publishing to broker.
+     * Set consumer max.poll.records. The default is 500. Example: `500`.
+     * 
+     */
+    @Import(name="consumerMaxPollRecords")
+    private @Nullable Output<Integer> consumerMaxPollRecords;
+
+    /**
+     * @return Set consumer max.poll.records. The default is 500. Example: `500`.
+     * 
+     */
+    public Optional<Output<Integer>> consumerMaxPollRecords() {
+        return Optional.ofNullable(this.consumerMaxPollRecords);
+    }
+
+    /**
+     * The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      * 
      */
     @Import(name="producerBatchSize")
     private @Nullable Output<Integer> producerBatchSize;
 
     /**
-     * @return The batch size in bytes producer will attempt to collect before publishing to broker.
+     * @return The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
      * 
      */
     public Optional<Output<Integer>> producerBatchSize() {
@@ -47,14 +77,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * The amount of bytes producer can use for buffering data before publishing to broker.
+     * The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      * 
      */
     @Import(name="producerBufferMemory")
     private @Nullable Output<Integer> producerBufferMemory;
 
     /**
-     * @return The amount of bytes producer can use for buffering data before publishing to broker.
+     * @return The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
      * 
      */
     public Optional<Output<Integer>> producerBufferMemory() {
@@ -62,14 +92,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     @Import(name="producerCompressionType")
     private @Nullable Output<String> producerCompressionType;
 
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<Output<String>> producerCompressionType() {
@@ -77,14 +107,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * The linger time (ms) for waiting new data to arrive for publishing.
+     * The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      * 
      */
     @Import(name="producerLingerMs")
     private @Nullable Output<Integer> producerLingerMs;
 
     /**
-     * @return The linger time (ms) for waiting new data to arrive for publishing.
+     * @return The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
      * 
      */
     public Optional<Output<Integer>> producerLingerMs() {
@@ -92,14 +122,14 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     }
 
     /**
-     * The maximum request size in bytes.
+     * The maximum request size in bytes. Example: `1048576`.
      * 
      */
     @Import(name="producerMaxRequestSize")
     private @Nullable Output<Integer> producerMaxRequestSize;
 
     /**
-     * @return The maximum request size in bytes.
+     * @return The maximum request size in bytes. Example: `1048576`.
      * 
      */
     public Optional<Output<Integer>> producerMaxRequestSize() {
@@ -109,7 +139,9 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs() {}
 
     private ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs(ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs $) {
+        this.consumerAutoOffsetReset = $.consumerAutoOffsetReset;
         this.consumerFetchMinBytes = $.consumerFetchMinBytes;
+        this.consumerMaxPollRecords = $.consumerMaxPollRecords;
         this.producerBatchSize = $.producerBatchSize;
         this.producerBufferMemory = $.producerBufferMemory;
         this.producerCompressionType = $.producerCompressionType;
@@ -136,7 +168,28 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request.
+         * @param consumerAutoOffsetReset Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerAutoOffsetReset(@Nullable Output<String> consumerAutoOffsetReset) {
+            $.consumerAutoOffsetReset = consumerAutoOffsetReset;
+            return this;
+        }
+
+        /**
+         * @param consumerAutoOffsetReset Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerAutoOffsetReset(String consumerAutoOffsetReset) {
+            return consumerAutoOffsetReset(Output.of(consumerAutoOffsetReset));
+        }
+
+        /**
+         * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request. Example: `1024`.
          * 
          * @return builder
          * 
@@ -147,7 +200,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request.
+         * @param consumerFetchMinBytes The minimum amount of data the server should return for a fetch request. Example: `1024`.
          * 
          * @return builder
          * 
@@ -157,7 +210,28 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerBatchSize The batch size in bytes producer will attempt to collect before publishing to broker.
+         * @param consumerMaxPollRecords Set consumer max.poll.records. The default is 500. Example: `500`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerMaxPollRecords(@Nullable Output<Integer> consumerMaxPollRecords) {
+            $.consumerMaxPollRecords = consumerMaxPollRecords;
+            return this;
+        }
+
+        /**
+         * @param consumerMaxPollRecords Set consumer max.poll.records. The default is 500. Example: `500`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder consumerMaxPollRecords(Integer consumerMaxPollRecords) {
+            return consumerMaxPollRecords(Output.of(consumerMaxPollRecords));
+        }
+
+        /**
+         * @param producerBatchSize The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
          * 
          * @return builder
          * 
@@ -168,7 +242,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerBatchSize The batch size in bytes producer will attempt to collect before publishing to broker.
+         * @param producerBatchSize The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
          * 
          * @return builder
          * 
@@ -178,7 +252,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker.
+         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
          * 
          * @return builder
          * 
@@ -189,7 +263,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker.
+         * @param producerBufferMemory The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
          * 
          * @return builder
          * 
@@ -199,7 +273,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -210,7 +284,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+         * @param producerCompressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
          * 
          * @return builder
          * 
@@ -220,7 +294,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerLingerMs The linger time (ms) for waiting new data to arrive for publishing.
+         * @param producerLingerMs The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
          * 
          * @return builder
          * 
@@ -231,7 +305,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerLingerMs The linger time (ms) for waiting new data to arrive for publishing.
+         * @param producerLingerMs The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
          * 
          * @return builder
          * 
@@ -241,7 +315,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerMaxRequestSize The maximum request size in bytes.
+         * @param producerMaxRequestSize The maximum request size in bytes. Example: `1048576`.
          * 
          * @return builder
          * 
@@ -252,7 +326,7 @@ public final class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerA
         }
 
         /**
-         * @param producerMaxRequestSize The maximum request size in bytes.
+         * @param producerMaxRequestSize The maximum request size in bytes. Example: `1048576`.
          * 
          * @return builder
          * 

@@ -19,14 +19,20 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     public static final ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalElasticsearchLogsUserConfigArgs();
 
     /**
-     * PEM encoded CA certificate.
+     * PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="ca")
     private @Nullable Output<String> ca;
 
     /**
-     * @return PEM encoded CA certificate.
+     * @return PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> ca() {
@@ -34,14 +40,14 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     }
 
     /**
-     * Maximum number of days of logs to keep. The default value is `3`.
+     * Maximum number of days of logs to keep. Default: `3`.
      * 
      */
     @Import(name="indexDaysMax")
     private @Nullable Output<Integer> indexDaysMax;
 
     /**
-     * @return Maximum number of days of logs to keep. The default value is `3`.
+     * @return Maximum number of days of logs to keep. Default: `3`.
      * 
      */
     public Optional<Output<Integer>> indexDaysMax() {
@@ -49,14 +55,14 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     }
 
     /**
-     * Elasticsearch index prefix. The default value is `logs`.
+     * Elasticsearch index prefix. Default: `logs`.
      * 
      */
     @Import(name="indexPrefix", required=true)
     private Output<String> indexPrefix;
 
     /**
-     * @return Elasticsearch index prefix. The default value is `logs`.
+     * @return Elasticsearch index prefix. Default: `logs`.
      * 
      */
     public Output<String> indexPrefix() {
@@ -64,14 +70,14 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     }
 
     /**
-     * Elasticsearch request timeout limit. The default value is `10.0`.
+     * Elasticsearch request timeout limit. Default: `10.0`.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Double> timeout;
 
     /**
-     * @return Elasticsearch request timeout limit. The default value is `10.0`.
+     * @return Elasticsearch request timeout limit. Default: `10.0`.
      * 
      */
     public Optional<Output<Double>> timeout() {
@@ -79,14 +85,14 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
     }
 
     /**
-     * Elasticsearch connection URL.
+     * Elasticsearch connection URL. Example: `https://user:passwd{@literal @}logs.example.com/`.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Elasticsearch connection URL.
+     * @return Elasticsearch connection URL. Example: `https://user:passwd{@literal @}logs.example.com/`.
      * 
      */
     public Output<String> url() {
@@ -122,7 +128,10 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param ca PEM encoded CA certificate.
+         * @param ca PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -133,7 +142,10 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param ca PEM encoded CA certificate.
+         * @param ca PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -143,7 +155,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param indexDaysMax Maximum number of days of logs to keep. The default value is `3`.
+         * @param indexDaysMax Maximum number of days of logs to keep. Default: `3`.
          * 
          * @return builder
          * 
@@ -154,7 +166,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param indexDaysMax Maximum number of days of logs to keep. The default value is `3`.
+         * @param indexDaysMax Maximum number of days of logs to keep. Default: `3`.
          * 
          * @return builder
          * 
@@ -164,7 +176,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param indexPrefix Elasticsearch index prefix. The default value is `logs`.
+         * @param indexPrefix Elasticsearch index prefix. Default: `logs`.
          * 
          * @return builder
          * 
@@ -175,7 +187,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param indexPrefix Elasticsearch index prefix. The default value is `logs`.
+         * @param indexPrefix Elasticsearch index prefix. Default: `logs`.
          * 
          * @return builder
          * 
@@ -185,7 +197,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param timeout Elasticsearch request timeout limit. The default value is `10.0`.
+         * @param timeout Elasticsearch request timeout limit. Default: `10.0`.
          * 
          * @return builder
          * 
@@ -196,7 +208,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param timeout Elasticsearch request timeout limit. The default value is `10.0`.
+         * @param timeout Elasticsearch request timeout limit. Default: `10.0`.
          * 
          * @return builder
          * 
@@ -206,7 +218,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param url Elasticsearch connection URL.
+         * @param url Elasticsearch connection URL. Example: `https://user:passwd{@literal @}logs.example.com/`.
          * 
          * @return builder
          * 
@@ -217,7 +229,7 @@ public final class ServiceIntegrationEndpointExternalElasticsearchLogsUserConfig
         }
 
         /**
-         * @param url Elasticsearch connection URL.
+         * @param url Elasticsearch connection URL. Example: `https://user:passwd{@literal @}logs.example.com/`.
          * 
          * @return builder
          * 

@@ -13,49 +13,49 @@ namespace Pulumi.Aiven.Inputs
     public sealed class GrafanaGrafanaUserConfigDateFormatsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default time zone for user preferences. Value 'browser' uses browser local time zone.
+        /// Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
         /// </summary>
         [Input("defaultTimezone")]
         public Input<string>? DefaultTimezone { get; set; }
 
         /// <summary>
-        /// Moment.js style format string for cases where full date is shown.
+        /// Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
         /// </summary>
         [Input("fullDate")]
         public Input<string>? FullDate { get; set; }
 
         /// <summary>
-        /// Moment.js style format string used when a time requiring day accuracy is shown.
+        /// Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
         /// </summary>
         [Input("intervalDay")]
         public Input<string>? IntervalDay { get; set; }
 
         /// <summary>
-        /// Moment.js style format string used when a time requiring hour accuracy is shown.
+        /// Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
         /// </summary>
         [Input("intervalHour")]
         public Input<string>? IntervalHour { get; set; }
 
         /// <summary>
-        /// Moment.js style format string used when a time requiring minute accuracy is shown.
+        /// Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
         /// </summary>
         [Input("intervalMinute")]
         public Input<string>? IntervalMinute { get; set; }
 
         /// <summary>
-        /// Moment.js style format string used when a time requiring month accuracy is shown.
+        /// Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
         /// </summary>
         [Input("intervalMonth")]
         public Input<string>? IntervalMonth { get; set; }
 
         /// <summary>
-        /// Moment.js style format string used when a time requiring second accuracy is shown.
+        /// Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
         /// </summary>
         [Input("intervalSecond")]
         public Input<string>? IntervalSecond { get; set; }
 
         /// <summary>
-        /// Moment.js style format string used when a time requiring year accuracy is shown.
+        /// Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
         /// </summary>
         [Input("intervalYear")]
         public Input<string>? IntervalYear { get; set; }

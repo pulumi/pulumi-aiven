@@ -13,37 +13,49 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationKafkaMirrormakerUserConfigKafkaMirrormakerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The minimum amount of data the server should return for a fetch request.
+        /// Enum: `earliest`, `latest`. Set where consumer starts to consume data. Value `earliest`: Start replication from the earliest offset. Value `latest`: Start replication from the latest offset. Default is `earliest`.
+        /// </summary>
+        [Input("consumerAutoOffsetReset")]
+        public Input<string>? ConsumerAutoOffsetReset { get; set; }
+
+        /// <summary>
+        /// The minimum amount of data the server should return for a fetch request. Example: `1024`.
         /// </summary>
         [Input("consumerFetchMinBytes")]
         public Input<int>? ConsumerFetchMinBytes { get; set; }
 
         /// <summary>
-        /// The batch size in bytes producer will attempt to collect before publishing to broker.
+        /// Set consumer max.poll.records. The default is 500. Example: `500`.
+        /// </summary>
+        [Input("consumerMaxPollRecords")]
+        public Input<int>? ConsumerMaxPollRecords { get; set; }
+
+        /// <summary>
+        /// The batch size in bytes producer will attempt to collect before publishing to broker. Example: `1024`.
         /// </summary>
         [Input("producerBatchSize")]
         public Input<int>? ProducerBatchSize { get; set; }
 
         /// <summary>
-        /// The amount of bytes producer can use for buffering data before publishing to broker.
+        /// The amount of bytes producer can use for buffering data before publishing to broker. Example: `8388608`.
         /// </summary>
         [Input("producerBufferMemory")]
         public Input<int>? ProducerBufferMemory { get; set; }
 
         /// <summary>
-        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs ('gzip', 'snappy', 'lz4', 'zstd'). It additionally accepts 'none' which is the default and equivalent to no compression.
+        /// Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
         /// </summary>
         [Input("producerCompressionType")]
         public Input<string>? ProducerCompressionType { get; set; }
 
         /// <summary>
-        /// The linger time (ms) for waiting new data to arrive for publishing.
+        /// The linger time (ms) for waiting new data to arrive for publishing. Example: `100`.
         /// </summary>
         [Input("producerLingerMs")]
         public Input<int>? ProducerLingerMs { get; set; }
 
         /// <summary>
-        /// The maximum request size in bytes.
+        /// The maximum request size in bytes. Example: `1048576`.
         /// </summary>
         [Input("producerMaxRequestSize")]
         public Input<int>? ProducerMaxRequestSize { get; set; }

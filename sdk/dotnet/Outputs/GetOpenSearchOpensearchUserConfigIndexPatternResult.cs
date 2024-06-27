@@ -14,15 +14,15 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigIndexPatternResult
     {
         /// <summary>
-        /// Maximum number of indexes to keep.
+        /// Maximum number of indexes to keep. Example: `3`.
         /// </summary>
         public readonly int MaxIndexCount;
         /// <summary>
-        /// fnmatch pattern.
+        /// fnmatch pattern. Example: `logs_*_foo_*`.
         /// </summary>
         public readonly string Pattern;
         /// <summary>
-        /// Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+        /// Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
         /// </summary>
         public readonly string? SortingAlgorithm;
 

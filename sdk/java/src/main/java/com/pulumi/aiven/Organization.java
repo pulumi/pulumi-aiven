@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
+ * Creates and manages an [organization](https://aiven.io/docs/platform/concepts/orgs-units-projects).
  * 
  * ## Example Usage
  * 

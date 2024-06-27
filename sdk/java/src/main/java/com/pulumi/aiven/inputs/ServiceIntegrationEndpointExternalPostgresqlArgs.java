@@ -18,14 +18,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     public static final ServiceIntegrationEndpointExternalPostgresqlArgs Empty = new ServiceIntegrationEndpointExternalPostgresqlArgs();
 
     /**
-     * Default database.
+     * Default database. Example: `testdb`.
      * 
      */
     @Import(name="defaultDatabase")
     private @Nullable Output<String> defaultDatabase;
 
     /**
-     * @return Default database.
+     * @return Default database. Example: `testdb`.
      * 
      */
     public Optional<Output<String>> defaultDatabase() {
@@ -33,14 +33,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * Hostname or IP address of the server.
+     * Hostname or IP address of the server. Example: `my.server.com`.
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return Hostname or IP address of the server.
+     * @return Hostname or IP address of the server. Example: `my.server.com`.
      * 
      */
     public Output<String> host() {
@@ -48,14 +48,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * Password.
+     * Password. Example: `jjKk45Nnd`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password.
+     * @return Password. Example: `jjKk45Nnd`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -63,14 +63,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * Port number of the server.
+     * Port number of the server. Example: `5432`.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return Port number of the server.
+     * @return Port number of the server. Example: `5432`.
      * 
      */
     public Output<Integer> port() {
@@ -78,14 +78,20 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * Client certificate.
+     * Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="sslClientCertificate")
     private @Nullable Output<String> sslClientCertificate;
 
     /**
-     * @return Client certificate.
+     * @return Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> sslClientCertificate() {
@@ -93,14 +99,18 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * Client key.
+     * Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      * 
      */
     @Import(name="sslClientKey")
     private @Nullable Output<String> sslClientKey;
 
     /**
-     * @return Client key.
+     * @return Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      * 
      */
     public Optional<Output<String>> sslClientKey() {
@@ -108,14 +118,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      * 
      */
     @Import(name="sslMode")
     private @Nullable Output<String> sslMode;
 
     /**
-     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      * 
      */
     public Optional<Output<String>> sslMode() {
@@ -123,14 +133,20 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * SSL Root Cert.
+     * SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="sslRootCert")
     private @Nullable Output<String> sslRootCert;
 
     /**
-     * @return SSL Root Cert.
+     * @return SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> sslRootCert() {
@@ -138,14 +154,14 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
     }
 
     /**
-     * User name.
+     * User name. Example: `myname`.
      * 
      */
     @Import(name="username", required=true)
     private Output<String> username;
 
     /**
-     * @return User name.
+     * @return User name. Example: `myname`.
      * 
      */
     public Output<String> username() {
@@ -185,7 +201,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param defaultDatabase Default database.
+         * @param defaultDatabase Default database. Example: `testdb`.
          * 
          * @return builder
          * 
@@ -196,7 +212,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param defaultDatabase Default database.
+         * @param defaultDatabase Default database. Example: `testdb`.
          * 
          * @return builder
          * 
@@ -206,7 +222,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param host Hostname or IP address of the server.
+         * @param host Hostname or IP address of the server. Example: `my.server.com`.
          * 
          * @return builder
          * 
@@ -217,7 +233,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param host Hostname or IP address of the server.
+         * @param host Hostname or IP address of the server. Example: `my.server.com`.
          * 
          * @return builder
          * 
@@ -227,7 +243,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param password Password.
+         * @param password Password. Example: `jjKk45Nnd`.
          * 
          * @return builder
          * 
@@ -238,7 +254,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param password Password.
+         * @param password Password. Example: `jjKk45Nnd`.
          * 
          * @return builder
          * 
@@ -248,7 +264,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param port Port number of the server.
+         * @param port Port number of the server. Example: `5432`.
          * 
          * @return builder
          * 
@@ -259,7 +275,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param port Port number of the server.
+         * @param port Port number of the server. Example: `5432`.
          * 
          * @return builder
          * 
@@ -269,7 +285,10 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslClientCertificate Client certificate.
+         * @param sslClientCertificate Client certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -280,7 +299,10 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslClientCertificate Client certificate.
+         * @param sslClientCertificate Client certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -290,7 +312,9 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslClientKey Client key.
+         * @param sslClientKey Client key. Example: `-----BEGIN PRIVATE KEY-----
+         * ...
+         * -----END PRIVATE KEY-----`.
          * 
          * @return builder
          * 
@@ -301,7 +325,9 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslClientKey Client key.
+         * @param sslClientKey Client key. Example: `-----BEGIN PRIVATE KEY-----
+         * ...
+         * -----END PRIVATE KEY-----`.
          * 
          * @return builder
          * 
@@ -311,7 +337,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslMode Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+         * @param sslMode Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
          * 
          * @return builder
          * 
@@ -322,7 +348,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslMode Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+         * @param sslMode Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
          * 
          * @return builder
          * 
@@ -332,7 +358,10 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslRootCert SSL Root Cert.
+         * @param sslRootCert SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -343,7 +372,10 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param sslRootCert SSL Root Cert.
+         * @param sslRootCert SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -353,7 +385,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param username User name.
+         * @param username User name. Example: `myname`.
          * 
          * @return builder
          * 
@@ -364,7 +396,7 @@ public final class ServiceIntegrationEndpointExternalPostgresqlArgs extends com.
         }
 
         /**
-         * @param username User name.
+         * @param username User name. Example: `myname`.
          * 
          * @return builder
          * 

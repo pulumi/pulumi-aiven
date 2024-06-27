@@ -16,7 +16,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _datadogApiKey;
 
         /// <summary>
-        /// Datadog API key.
+        /// Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
         /// </summary>
         public Input<string>? DatadogApiKey
         {
@@ -47,19 +47,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? DisableConsumerStats { get; set; }
 
         /// <summary>
-        /// Number of separate instances to fetch kafka consumer statistics with.
+        /// Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
         /// </summary>
         [Input("kafkaConsumerCheckInstances")]
         public Input<int>? KafkaConsumerCheckInstances { get; set; }
 
         /// <summary>
-        /// Number of seconds that datadog will wait to get consumer statistics from brokers.
+        /// Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
         /// </summary>
         [Input("kafkaConsumerStatsTimeout")]
         public Input<int>? KafkaConsumerStatsTimeout { get; set; }
 
         /// <summary>
-        /// Maximum number of partition contexts to send.
+        /// Maximum number of partition contexts to send. Example: `32000`.
         /// </summary>
         [Input("maxPartitionContexts")]
         public Input<int>? MaxPartitionContexts { get; set; }

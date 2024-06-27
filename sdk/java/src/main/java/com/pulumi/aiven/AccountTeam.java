@@ -14,12 +14,16 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * **This resource is deprecated.** Use `aiven.OrganizationUserGroup` instead.
+ * 
  * Creates and manages a team.
  * 
- * &gt; **Teams are becoming groups**
- * Groups are an easier way to control access to your organization&#39;s projects and
- * services for a group of users.
- * Migrate your teams to groups.
+ * &gt; **Teams have been deprecated and are being migrated to groups**
+ * **On 2 September 2024** the Account Owners team will transition to super admin. Super admin have full access to the organization.
+ * The Account Owners and super admin are synced, so the removal of the Account Owners team will have no impact on your day to day operations.
+ * **From 4 November 2024** you won&#39;t be able to create new teams or update existing ones. Existing teams will be migrated to groups after
+ * this date. **On 2 December 2024** all teams will be deleted and the teams feature will be completely removed. View the
+ * migration guide for more information on the changes and migrating to groups.
  * 
  * ## Example Usage
  * 

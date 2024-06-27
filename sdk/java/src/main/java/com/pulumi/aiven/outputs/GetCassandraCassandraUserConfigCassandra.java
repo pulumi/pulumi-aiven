@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCassandraCassandraUserConfigCassandra {
     /**
-     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      * 
      */
     private @Nullable Integer batchSizeFailThresholdInKb;
     /**
-     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      * 
      */
     private @Nullable Integer batchSizeWarnThresholdInKb;
     /**
-     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      * 
      */
     private @Nullable String datacenter;
 
     private GetCassandraCassandraUserConfigCassandra() {}
     /**
-     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default.
+     * @return Fail any multiple-partition batch exceeding this value. 50kb (10x warn threshold) by default. Example: `50`.
      * 
      */
     public Optional<Integer> batchSizeFailThresholdInKb() {
         return Optional.ofNullable(this.batchSizeFailThresholdInKb);
     }
     /**
-     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability.
+     * @return Log a warning message on any multiple-partition batch size exceeding this value.5kb per batch by default.Caution should be taken on increasing the size of this thresholdas it can lead to node instability. Example: `5`.
      * 
      */
     public Optional<Integer> batchSizeWarnThresholdInKb() {
         return Optional.ofNullable(this.batchSizeWarnThresholdInKb);
     }
     /**
-     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service.
+     * @return Name of the datacenter to which nodes of this service belong. Can be set only when creating the service. Example: `my-service-google-west1`.
      * 
      */
     public Optional<String> datacenter() {

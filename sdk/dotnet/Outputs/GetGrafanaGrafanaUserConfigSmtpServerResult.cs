@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetGrafanaGrafanaUserConfigSmtpServerResult
     {
         /// <summary>
-        /// Address used for sending emails.
+        /// Address used for sending emails. Example: `yourgrafanauser@yourdomain.example.com`.
         /// </summary>
         public readonly string FromAddress;
         /// <summary>
@@ -22,15 +22,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? FromName;
         /// <summary>
-        /// Server hostname or IP.
+        /// Server hostname or IP. Example: `smtp.example.com`.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Password for SMTP authentication.
+        /// Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// SMTP server port.
+        /// SMTP server port. Example: `25`.
         /// </summary>
         public readonly int Port;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? StarttlsPolicy;
         /// <summary>
-        /// Username for SMTP authentication.
+        /// Username for SMTP authentication. Example: `smtpuser`.
         /// </summary>
         public readonly string? Username;
 

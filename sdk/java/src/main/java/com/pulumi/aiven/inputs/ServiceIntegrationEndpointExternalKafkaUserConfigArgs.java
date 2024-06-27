@@ -17,14 +17,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     public static final ServiceIntegrationEndpointExternalKafkaUserConfigArgs Empty = new ServiceIntegrationEndpointExternalKafkaUserConfigArgs();
 
     /**
-     * Bootstrap servers.
+     * Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      * 
      */
     @Import(name="bootstrapServers", required=true)
     private Output<String> bootstrapServers;
 
     /**
-     * @return Bootstrap servers.
+     * @return Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
      * 
      */
     public Output<String> bootstrapServers() {
@@ -47,14 +47,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * Password for SASL PLAIN mechanism in the Kafka server.
+     * Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     @Import(name="saslPlainPassword")
     private @Nullable Output<String> saslPlainPassword;
 
     /**
-     * @return Password for SASL PLAIN mechanism in the Kafka server.
+     * @return Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     public Optional<Output<String>> saslPlainPassword() {
@@ -62,14 +62,14 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * Username for SASL PLAIN mechanism in the Kafka server.
+     * Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     @Import(name="saslPlainUsername")
     private @Nullable Output<String> saslPlainUsername;
 
     /**
-     * @return Username for SASL PLAIN mechanism in the Kafka server.
+     * @return Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
      * 
      */
     public Optional<Output<String>> saslPlainUsername() {
@@ -92,14 +92,20 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * PEM-encoded CA certificate.
+     * PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="sslCaCert")
     private @Nullable Output<String> sslCaCert;
 
     /**
-     * @return PEM-encoded CA certificate.
+     * @return PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> sslCaCert() {
@@ -107,14 +113,20 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * PEM-encoded client certificate.
+     * PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     @Import(name="sslClientCert")
     private @Nullable Output<String> sslClientCert;
 
     /**
-     * @return PEM-encoded client certificate.
+     * @return PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<Output<String>> sslClientCert() {
@@ -122,14 +134,20 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
     }
 
     /**
-     * PEM-encoded client key.
+     * PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     @Import(name="sslClientKey")
     private @Nullable Output<String> sslClientKey;
 
     /**
-     * @return PEM-encoded client key.
+     * @return PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     public Optional<Output<String>> sslClientKey() {
@@ -184,7 +202,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param bootstrapServers Bootstrap servers.
+         * @param bootstrapServers Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
          * 
          * @return builder
          * 
@@ -195,7 +213,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param bootstrapServers Bootstrap servers.
+         * @param bootstrapServers Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
          * 
          * @return builder
          * 
@@ -226,7 +244,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslPlainPassword Password for SASL PLAIN mechanism in the Kafka server.
+         * @param saslPlainPassword Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
          * 
          * @return builder
          * 
@@ -237,7 +255,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslPlainPassword Password for SASL PLAIN mechanism in the Kafka server.
+         * @param saslPlainPassword Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
          * 
          * @return builder
          * 
@@ -247,7 +265,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslPlainUsername Username for SASL PLAIN mechanism in the Kafka server.
+         * @param saslPlainUsername Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
          * 
          * @return builder
          * 
@@ -258,7 +276,7 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param saslPlainUsername Username for SASL PLAIN mechanism in the Kafka server.
+         * @param saslPlainUsername Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
          * 
          * @return builder
          * 
@@ -289,7 +307,10 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslCaCert PEM-encoded CA certificate.
+         * @param sslCaCert PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -300,7 +321,10 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslCaCert PEM-encoded CA certificate.
+         * @param sslCaCert PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -310,7 +334,10 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientCert PEM-encoded client certificate.
+         * @param sslClientCert PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -321,7 +348,10 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientCert PEM-encoded client certificate.
+         * @param sslClientCert PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+         * ...
+         * -----END CERTIFICATE-----
+         * `.
          * 
          * @return builder
          * 
@@ -331,7 +361,10 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientKey PEM-encoded client key.
+         * @param sslClientKey PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+         * ...
+         * -----END PRIVATE KEY-----
+         * `.
          * 
          * @return builder
          * 
@@ -342,7 +375,10 @@ public final class ServiceIntegrationEndpointExternalKafkaUserConfigArgs extends
         }
 
         /**
-         * @param sslClientKey PEM-encoded client key.
+         * @param sslClientKey PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+         * ...
+         * -----END PRIVATE KEY-----
+         * `.
          * 
          * @return builder
          * 

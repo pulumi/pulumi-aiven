@@ -15,14 +15,14 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
     public static final ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs Empty = new ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtraMetricArgs();
 
     /**
-     * Identifier of a value in the metric.
+     * Identifier of a value in the metric. Example: `used`.
      * 
      */
     @Import(name="field", required=true)
     private Output<String> field;
 
     /**
-     * @return Identifier of a value in the metric.
+     * @return Identifier of a value in the metric. Example: `used`.
      * 
      */
     public Output<String> field() {
@@ -30,14 +30,14 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
     }
 
     /**
-     * Identifier of the metric.
+     * Identifier of the metric. Example: `java.lang:Memory`.
      * 
      */
     @Import(name="metric", required=true)
     private Output<String> metric;
 
     /**
-     * @return Identifier of the metric.
+     * @return Identifier of the metric. Example: `java.lang:Memory`.
      * 
      */
     public Output<String> metric() {
@@ -70,7 +70,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
         }
 
         /**
-         * @param field Identifier of a value in the metric.
+         * @param field Identifier of a value in the metric. Example: `used`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
         }
 
         /**
-         * @param field Identifier of a value in the metric.
+         * @param field Identifier of a value in the metric. Example: `used`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
         }
 
         /**
-         * @param metric Identifier of the metric.
+         * @param metric Identifier of the metric. Example: `java.lang:Memory`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class ServiceIntegrationExternalAwsCloudwatchMetricsUserConfigExtra
         }
 
         /**
-         * @param metric Identifier of the metric.
+         * @param metric Identifier of the metric. Example: `java.lang:Memory`.
          * 
          * @return builder
          * 

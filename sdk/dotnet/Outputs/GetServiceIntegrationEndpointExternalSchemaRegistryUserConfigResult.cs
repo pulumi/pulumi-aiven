@@ -18,15 +18,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string Authentication;
         /// <summary>
-        /// Basic authentication password.
+        /// Basic authentication password. Example: `Zm9vYg==`.
         /// </summary>
         public readonly string? BasicAuthPassword;
         /// <summary>
-        /// Basic authentication user name.
+        /// Basic authentication user name. Example: `avnadmin`.
         /// </summary>
         public readonly string? BasicAuthUsername;
         /// <summary>
-        /// Schema Registry URL.
+        /// Schema Registry URL. Example: `https://schema-registry.kafka.company.com:28419`.
         /// </summary>
         public readonly string Url;
 

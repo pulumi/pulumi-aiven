@@ -17,14 +17,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
     public static final ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs Empty = new ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigArgs();
 
     /**
-     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     @Import(name="accessKey", required=true)
     private Output<String> accessKey;
 
     /**
-     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+     * @return AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public Output<String> accessKey() {
@@ -32,14 +32,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
     }
 
     /**
-     * AWS CloudWatch log group name.
+     * AWS CloudWatch log group name. Example: `my-log-group`.
      * 
      */
     @Import(name="logGroupName")
     private @Nullable Output<String> logGroupName;
 
     /**
-     * @return AWS CloudWatch log group name.
+     * @return AWS CloudWatch log group name. Example: `my-log-group`.
      * 
      */
     public Optional<Output<String>> logGroupName() {
@@ -47,14 +47,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
     }
 
     /**
-     * AWS region.
+     * AWS region. Example: `us-east-1`.
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return AWS region.
+     * @return AWS region. Example: `us-east-1`.
      * 
      */
     public Output<String> region() {
@@ -62,14 +62,14 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
     }
 
     /**
-     * AWS secret key.
+     * AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     @Import(name="secretKey", required=true)
     private Output<String> secretKey;
 
     /**
-     * @return AWS secret key.
+     * @return AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public Output<String> secretKey() {
@@ -104,7 +104,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param accessKey AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+         * @param accessKey AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param accessKey AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+         * @param accessKey AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param logGroupName AWS CloudWatch log group name.
+         * @param logGroupName AWS CloudWatch log group name. Example: `my-log-group`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param logGroupName AWS CloudWatch log group name.
+         * @param logGroupName AWS CloudWatch log group name. Example: `my-log-group`.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param region AWS region.
+         * @param region AWS region. Example: `us-east-1`.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param region AWS region.
+         * @param region AWS region. Example: `us-east-1`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param secretKey AWS secret key.
+         * @param secretKey AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfig
         }
 
         /**
-         * @param secretKey AWS secret key.
+         * @param secretKey AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
          * 
          * @return builder
          * 

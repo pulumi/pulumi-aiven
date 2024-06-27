@@ -15,14 +15,14 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs ext
     public static final ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs Empty = new ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs();
 
     /**
-     * Name of the topic.
+     * Name of the topic. Example: `topic_name`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Name of the topic.
+     * @return Name of the topic. Example: `topic_name`.
      * 
      */
     public Output<String> name() {
@@ -54,7 +54,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs ext
         }
 
         /**
-         * @param name Name of the topic.
+         * @param name Name of the topic. Example: `topic_name`.
          * 
          * @return builder
          * 
@@ -65,7 +65,7 @@ public final class ServiceIntegrationClickhouseKafkaUserConfigTableTopicArgs ext
         }
 
         /**
-         * @param name Name of the topic.
+         * @param name Name of the topic. Example: `topic_name`.
          * 
          * @return builder
          * 

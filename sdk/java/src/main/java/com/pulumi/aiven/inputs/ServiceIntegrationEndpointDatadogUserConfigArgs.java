@@ -21,14 +21,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     public static final ServiceIntegrationEndpointDatadogUserConfigArgs Empty = new ServiceIntegrationEndpointDatadogUserConfigArgs();
 
     /**
-     * Datadog API key.
+     * Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      * 
      */
     @Import(name="datadogApiKey", required=true)
     private Output<String> datadogApiKey;
 
     /**
-     * @return Datadog API key.
+     * @return Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
      * 
      */
     public Output<String> datadogApiKey() {
@@ -66,14 +66,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
-     * Number of separate instances to fetch kafka consumer statistics with.
+     * Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
     @Import(name="kafkaConsumerCheckInstances")
     private @Nullable Output<Integer> kafkaConsumerCheckInstances;
 
     /**
-     * @return Number of separate instances to fetch kafka consumer statistics with.
+     * @return Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
      * 
      */
     public Optional<Output<Integer>> kafkaConsumerCheckInstances() {
@@ -81,14 +81,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
-     * Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      * 
      */
     @Import(name="kafkaConsumerStatsTimeout")
     private @Nullable Output<Integer> kafkaConsumerStatsTimeout;
 
     /**
-     * @return Number of seconds that datadog will wait to get consumer statistics from brokers.
+     * @return Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
      * 
      */
     public Optional<Output<Integer>> kafkaConsumerStatsTimeout() {
@@ -96,14 +96,14 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
     }
 
     /**
-     * Maximum number of partition contexts to send.
+     * Maximum number of partition contexts to send. Example: `32000`.
      * 
      */
     @Import(name="maxPartitionContexts")
     private @Nullable Output<Integer> maxPartitionContexts;
 
     /**
-     * @return Maximum number of partition contexts to send.
+     * @return Maximum number of partition contexts to send. Example: `32000`.
      * 
      */
     public Optional<Output<Integer>> maxPartitionContexts() {
@@ -156,7 +156,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogApiKey Datadog API key.
+         * @param datadogApiKey Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param datadogApiKey Datadog API key.
+         * @param datadogApiKey Datadog API key. Example: `848f30907c15c55d601fe45487cce9b6`.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with.
+         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with.
+         * @param kafkaConsumerCheckInstances Number of separate instances to fetch kafka consumer statistics with. Example: `8`.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers.
+         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers.
+         * @param kafkaConsumerStatsTimeout Number of seconds that datadog will wait to get consumer statistics from brokers. Example: `60`.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param maxPartitionContexts Maximum number of partition contexts to send.
+         * @param maxPartitionContexts Maximum number of partition contexts to send. Example: `32000`.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class ServiceIntegrationEndpointDatadogUserConfigArgs extends com.p
         }
 
         /**
-         * @param maxPartitionContexts Maximum number of partition contexts to send.
+         * @param maxPartitionContexts Maximum number of partition contexts to send. Example: `32000`.
          * 
          * @return builder
          * 

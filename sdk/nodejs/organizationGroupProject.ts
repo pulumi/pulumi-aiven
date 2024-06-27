@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Adds and manages a [group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
+ * Adds and manages a [group](https://aiven.io/docs/platform/howto/list-groups) of users as [members of a project](https://aiven.io/docs/platform/reference/project-member-privileges).
  *
  * ## Example Usage
  *

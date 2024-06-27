@@ -18,14 +18,14 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
     public static final OpenSearchOpensearchUserConfigIndexPatternArgs Empty = new OpenSearchOpensearchUserConfigIndexPatternArgs();
 
     /**
-     * Maximum number of indexes to keep.
+     * Maximum number of indexes to keep. Example: `3`.
      * 
      */
     @Import(name="maxIndexCount", required=true)
     private Output<Integer> maxIndexCount;
 
     /**
-     * @return Maximum number of indexes to keep.
+     * @return Maximum number of indexes to keep. Example: `3`.
      * 
      */
     public Output<Integer> maxIndexCount() {
@@ -33,14 +33,14 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
     }
 
     /**
-     * fnmatch pattern.
+     * fnmatch pattern. Example: `logs_*_foo_*`.
      * 
      */
     @Import(name="pattern", required=true)
     private Output<String> pattern;
 
     /**
-     * @return fnmatch pattern.
+     * @return fnmatch pattern. Example: `logs_*_foo_*`.
      * 
      */
     public Output<String> pattern() {
@@ -48,14 +48,14 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
     }
 
     /**
-     * Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+     * Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
      * 
      */
     @Import(name="sortingAlgorithm")
     private @Nullable Output<String> sortingAlgorithm;
 
     /**
-     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+     * @return Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
      * 
      */
     public Optional<Output<String>> sortingAlgorithm() {
@@ -89,7 +89,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param maxIndexCount Maximum number of indexes to keep.
+         * @param maxIndexCount Maximum number of indexes to keep. Example: `3`.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param maxIndexCount Maximum number of indexes to keep.
+         * @param maxIndexCount Maximum number of indexes to keep. Example: `3`.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param pattern fnmatch pattern.
+         * @param pattern fnmatch pattern. Example: `logs_*_foo_*`.
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param pattern fnmatch pattern.
+         * @param pattern fnmatch pattern. Example: `logs_*_foo_*`.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param sortingAlgorithm Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+         * @param sortingAlgorithm Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class OpenSearchOpensearchUserConfigIndexPatternArgs extends com.pu
         }
 
         /**
-         * @param sortingAlgorithm Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. The default value is `creation_date`.
+         * @param sortingAlgorithm Enum: `alphabetical`, `creation_date`. Deletion sorting algorithm. Default: `creation_date`.
          * 
          * @return builder
          * 

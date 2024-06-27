@@ -76,14 +76,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      * 
      */
     @Import(name="alertingMaxAnnotationsToKeep")
     private @Nullable Output<Integer> alertingMaxAnnotationsToKeep;
 
     /**
-     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+     * @return Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
      * 
      */
     public Optional<Output<Integer>> alertingMaxAnnotationsToKeep() {
@@ -211,14 +211,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     @Import(name="cookieSamesite")
     private @Nullable Output<String> cookieSamesite;
 
     /**
-     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+     * @return Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
      * 
      */
     public Optional<Output<String>> cookieSamesite() {
@@ -226,14 +226,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -256,14 +256,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
     @Import(name="dashboardsMinRefreshInterval")
     private @Nullable Output<String> dashboardsMinRefreshInterval;
 
     /**
-     * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+     * @return Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
      * 
      */
     public Optional<Output<String>> dashboardsMinRefreshInterval() {
@@ -271,14 +271,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Dashboard versions to keep per dashboard.
+     * Dashboard versions to keep per dashboard. Example: `20`.
      * 
      */
     @Import(name="dashboardsVersionsToKeep")
     private @Nullable Output<Integer> dashboardsVersionsToKeep;
 
     /**
-     * @return Dashboard versions to keep per dashboard.
+     * @return Dashboard versions to keep per dashboard. Example: `20`.
      * 
      */
     public Optional<Output<Integer>> dashboardsVersionsToKeep() {
@@ -286,14 +286,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Send &#39;X-Grafana-User&#39; header to data source.
+     * Send `X-Grafana-User` header to data source.
      * 
      */
     @Import(name="dataproxySendUserHeader")
     private @Nullable Output<Boolean> dataproxySendUserHeader;
 
     /**
-     * @return Send &#39;X-Grafana-User&#39; header to data source.
+     * @return Send `X-Grafana-User` header to data source.
      * 
      */
     public Optional<Output<Boolean>> dataproxySendUserHeader() {
@@ -301,14 +301,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Timeout for data proxy requests in seconds.
+     * Timeout for data proxy requests in seconds. Example: `30`.
      * 
      */
     @Import(name="dataproxyTimeout")
     private @Nullable Output<Integer> dataproxyTimeout;
 
     /**
-     * @return Timeout for data proxy requests in seconds.
+     * @return Timeout for data proxy requests in seconds. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> dataproxyTimeout() {
@@ -376,14 +376,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Google Analytics ID.
+     * Google Analytics ID. Example: `UA-123456-4`.
      * 
      */
     @Import(name="googleAnalyticsUaId")
     private @Nullable Output<String> googleAnalyticsUaId;
 
     /**
-     * @return Google Analytics ID.
+     * @return Google Analytics ID. Example: `UA-123456-4`.
      * 
      */
     public Optional<Output<String>> googleAnalyticsUaId() {
@@ -391,14 +391,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<GrafanaGrafanaUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<GrafanaGrafanaUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -406,14 +406,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -421,7 +421,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -432,7 +432,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -504,14 +504,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<Output<String>> projectToForkFrom() {
@@ -534,14 +534,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<Output<String>> recoveryBasebackupName() {
@@ -564,14 +564,14 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> serviceToForkFrom() {
@@ -797,7 +797,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingMaxAnnotationsToKeep Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+         * @param alertingMaxAnnotationsToKeep Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param alertingMaxAnnotationsToKeep Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations.
+         * @param alertingMaxAnnotationsToKeep Max number of alert annotations that Grafana stores. 0 (default) keeps all alert annotations. Example: `0`.
          * 
          * @return builder
          * 
@@ -986,7 +986,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
          * 
          * @return builder
          * 
@@ -997,7 +997,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: &#39;strict&#39; prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. &#39;lax&#39; is the default value.
+         * @param cookieSamesite Enum: `lax`, `strict`, `none`. Cookie SameSite attribute: `strict` prevents sending cookie for cross-site requests, effectively disabling direct linking from other sites to Grafana. `lax` is the default value.
          * 
          * @return builder
          * 
@@ -1007,7 +1007,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -1018,7 +1018,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -1049,7 +1049,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dashboardsMinRefreshInterval Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+         * @param dashboardsMinRefreshInterval Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
          * 
          * @return builder
          * 
@@ -1060,7 +1060,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dashboardsMinRefreshInterval Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h.
+         * @param dashboardsMinRefreshInterval Signed sequence of decimal numbers, followed by a unit suffix (ms, s, m, h, d), e.g. 30s, 1h. Example: `5s`.
          * 
          * @return builder
          * 
@@ -1070,7 +1070,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dashboardsVersionsToKeep Dashboard versions to keep per dashboard.
+         * @param dashboardsVersionsToKeep Dashboard versions to keep per dashboard. Example: `20`.
          * 
          * @return builder
          * 
@@ -1081,7 +1081,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dashboardsVersionsToKeep Dashboard versions to keep per dashboard.
+         * @param dashboardsVersionsToKeep Dashboard versions to keep per dashboard. Example: `20`.
          * 
          * @return builder
          * 
@@ -1091,7 +1091,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dataproxySendUserHeader Send &#39;X-Grafana-User&#39; header to data source.
+         * @param dataproxySendUserHeader Send `X-Grafana-User` header to data source.
          * 
          * @return builder
          * 
@@ -1102,7 +1102,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dataproxySendUserHeader Send &#39;X-Grafana-User&#39; header to data source.
+         * @param dataproxySendUserHeader Send `X-Grafana-User` header to data source.
          * 
          * @return builder
          * 
@@ -1112,7 +1112,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dataproxyTimeout Timeout for data proxy requests in seconds.
+         * @param dataproxyTimeout Timeout for data proxy requests in seconds. Example: `30`.
          * 
          * @return builder
          * 
@@ -1123,7 +1123,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param dataproxyTimeout Timeout for data proxy requests in seconds.
+         * @param dataproxyTimeout Timeout for data proxy requests in seconds. Example: `30`.
          * 
          * @return builder
          * 
@@ -1217,7 +1217,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param googleAnalyticsUaId Google Analytics ID.
+         * @param googleAnalyticsUaId Google Analytics ID. Example: `UA-123456-4`.
          * 
          * @return builder
          * 
@@ -1228,7 +1228,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param googleAnalyticsUaId Google Analytics ID.
+         * @param googleAnalyticsUaId Google Analytics ID. Example: `UA-123456-4`.
          * 
          * @return builder
          * 
@@ -1238,7 +1238,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -1249,7 +1249,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -1259,7 +1259,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -1269,7 +1269,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -1280,7 +1280,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -1290,7 +1290,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -1300,7 +1300,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -1315,7 +1315,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -1329,7 +1329,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -1427,7 +1427,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -1438,7 +1438,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -1469,7 +1469,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -1480,7 +1480,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -1511,7 +1511,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -1522,7 +1522,7 @@ public final class GrafanaGrafanaUserConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 

@@ -43,13 +43,13 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// API URL.
+        /// API URL. Example: `https://yourprovider.com/api`.
         /// </summary>
         [Input("apiUrl", required: true)]
         public Input<string> ApiUrl { get; set; } = null!;
 
         /// <summary>
-        /// Authorization URL.
+        /// Authorization URL. Example: `https://yourprovider.com/oauth/authorize`.
         /// </summary>
         [Input("authUrl", required: true)]
         public Input<string> AuthUrl { get; set; } = null!;
@@ -61,19 +61,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? AutoLogin { get; set; }
 
         /// <summary>
-        /// Client ID from provider.
+        /// Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
         /// </summary>
         [Input("clientId", required: true)]
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
-        /// Client secret from provider.
+        /// Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
 
         /// <summary>
-        /// Name of the OAuth integration.
+        /// Name of the OAuth integration. Example: `My authentication`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -91,7 +91,7 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Token URL.
+        /// Token URL. Example: `https://yourprovider.com/oauth/token`.
         /// </summary>
         [Input("tokenUrl", required: true)]
         public Input<string> TokenUrl { get; set; } = null!;

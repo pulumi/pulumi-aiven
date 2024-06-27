@@ -58,15 +58,15 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? GatherTableSchema;
         /// <summary>
-        /// Truncates digest text from perf_events_statements into this many characters.
+        /// Truncates digest text from perf_events_statements into this many characters. Example: `120`.
         /// </summary>
         public readonly int? PerfEventsStatementsDigestTextLimit;
         /// <summary>
-        /// Limits metrics from perf_events_statements.
+        /// Limits metrics from perf_events_statements. Example: `250`.
         /// </summary>
         public readonly int? PerfEventsStatementsLimit;
         /// <summary>
-        /// Only include perf_events_statements whose last seen is less than this many seconds.
+        /// Only include perf_events_statements whose last seen is less than this many seconds. Example: `86400`.
         /// </summary>
         public readonly int? PerfEventsStatementsTimeLimit;
 

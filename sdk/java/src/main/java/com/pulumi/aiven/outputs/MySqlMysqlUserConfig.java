@@ -31,37 +31,37 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable String adminPassword;
     /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * @return Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     private @Nullable String adminUsername;
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     private @Nullable Integer backupHour;
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     private @Nullable Integer backupMinute;
     /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      * 
      */
     private @Nullable Integer binlogRetentionPeriod;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -95,7 +95,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable MySqlMysqlUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -105,7 +105,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable MySqlMysqlUserConfigPublicAccess publicAccess;
     /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     private @Nullable String recoveryTargetTime;
@@ -115,7 +115,7 @@ public final class MySqlMysqlUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
@@ -141,49 +141,49 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.adminPassword);
     }
     /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * @return Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     public Optional<Integer> backupMinute() {
         return Optional.ofNullable(this.backupMinute);
     }
     /**
-     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector.
+     * @return The minimum amount of time in seconds to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default for example if using the MySQL Debezium Kafka connector. Example: `600`.
      * 
      */
     public Optional<Integer> binlogRetentionPeriod() {
         return Optional.ofNullable(this.binlogRetentionPeriod);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<MySqlMysqlUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -229,7 +229,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -243,7 +243,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     public Optional<String> recoveryTargetTime() {
@@ -257,7 +257,7 @@ public final class MySqlMysqlUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {

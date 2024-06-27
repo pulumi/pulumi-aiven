@@ -31,12 +31,12 @@ public final class GrafanaGrafanaUserConfigAuthGithub {
      */
     private @Nullable Boolean autoLogin;
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     private String clientId;
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     private String clientSecret;
@@ -74,14 +74,14 @@ public final class GrafanaGrafanaUserConfigAuthGithub {
         return Optional.ofNullable(this.autoLogin);
     }
     /**
-     * @return Client ID from provider.
+     * @return Client ID from provider. Example: `b1ba0bf54a4c2c0a1c29`.
      * 
      */
     public String clientId() {
         return this.clientId;
     }
     /**
-     * @return Client secret from provider.
+     * @return Client secret from provider. Example: `bfa6gea4f129076761dcba8ce5e1e406bd83af7b`.
      * 
      */
     public String clientSecret() {

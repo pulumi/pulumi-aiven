@@ -16,14 +16,14 @@ public final class PgPgUserConfigPglookoutArgs extends com.pulumi.resources.Reso
     public static final PgPgUserConfigPglookoutArgs Empty = new PgPgUserConfigPglookoutArgs();
 
     /**
-     * Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      * 
      */
     @Import(name="maxFailoverReplicationTimeLag")
     private @Nullable Output<Integer> maxFailoverReplicationTimeLag;
 
     /**
-     * @return Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+     * @return Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
      * 
      */
     public Optional<Output<Integer>> maxFailoverReplicationTimeLag() {
@@ -55,7 +55,7 @@ public final class PgPgUserConfigPglookoutArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param maxFailoverReplicationTimeLag Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+         * @param maxFailoverReplicationTimeLag Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class PgPgUserConfigPglookoutArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param maxFailoverReplicationTimeLag Number of seconds of master unavailability before triggering database failover to standby. The default value is `60`.
+         * @param maxFailoverReplicationTimeLag Number of seconds of master unavailability before triggering database failover to standby. Default: `60`.
          * 
          * @return builder
          * 

@@ -19,27 +19,27 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     private @Nullable Boolean emitCheckpointsEnabled;
     /**
-     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      * 
      */
     private @Nullable Integer emitCheckpointsIntervalSeconds;
     /**
-     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      * 
      */
     private @Nullable String groups;
     /**
-     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      * 
      */
     private @Nullable String groupsExclude;
     /**
-     * @return How out-of-sync a remote partition can be before it is resynced.
+     * @return How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      * 
      */
     private @Nullable Integer offsetLagMax;
     /**
-     * @return Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * @return Whether to periodically check for new consumer groups. Defaults to `true`.
      * 
      */
     private @Nullable Boolean refreshGroupsEnabled;
@@ -49,7 +49,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     private @Nullable Integer refreshGroupsIntervalSeconds;
     /**
-     * @return Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * @return Whether to periodically check for new topics and partitions. Defaults to `true`.
      * 
      */
     private @Nullable Boolean refreshTopicsEnabled;
@@ -64,7 +64,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     private @Nullable Boolean syncGroupOffsetsEnabled;
     /**
-     * @return Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      * 
      */
     private @Nullable Integer syncGroupOffsetsIntervalSeconds;
@@ -74,7 +74,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
      */
     private @Nullable Boolean syncTopicConfigsEnabled;
     /**
-     * @return &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * @return `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      * 
      */
     private @Nullable Integer tasksMaxPerCpu;
@@ -88,35 +88,35 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
         return Optional.ofNullable(this.emitCheckpointsEnabled);
     }
     /**
-     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      * 
      */
     public Optional<Integer> emitCheckpointsIntervalSeconds() {
         return Optional.ofNullable(this.emitCheckpointsIntervalSeconds);
     }
     /**
-     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      * 
      */
     public Optional<String> groups() {
         return Optional.ofNullable(this.groups);
     }
     /**
-     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      * 
      */
     public Optional<String> groupsExclude() {
         return Optional.ofNullable(this.groupsExclude);
     }
     /**
-     * @return How out-of-sync a remote partition can be before it is resynced.
+     * @return How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      * 
      */
     public Optional<Integer> offsetLagMax() {
         return Optional.ofNullable(this.offsetLagMax);
     }
     /**
-     * @return Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * @return Whether to periodically check for new consumer groups. Defaults to `true`.
      * 
      */
     public Optional<Boolean> refreshGroupsEnabled() {
@@ -130,7 +130,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
         return Optional.ofNullable(this.refreshGroupsIntervalSeconds);
     }
     /**
-     * @return Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * @return Whether to periodically check for new topics and partitions. Defaults to `true`.
      * 
      */
     public Optional<Boolean> refreshTopicsEnabled() {
@@ -151,7 +151,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
         return Optional.ofNullable(this.syncGroupOffsetsEnabled);
     }
     /**
-     * @return Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      * 
      */
     public Optional<Integer> syncGroupOffsetsIntervalSeconds() {
@@ -165,7 +165,7 @@ public final class GetKafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormaker
         return Optional.ofNullable(this.syncTopicConfigsEnabled);
     }
     /**
-     * @return &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * @return `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      * 
      */
     public Optional<Integer> tasksMaxPerCpu() {

@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class M3DbM3dbUserConfigLimits
     {
         /// <summary>
-        /// The maximum number of blocks that can be read in a given lookback period.
+        /// The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
         /// </summary>
         public readonly int? MaxRecentlyQueriedSeriesBlocks;
         /// <summary>
-        /// The maximum number of disk bytes that can be read in a given lookback period.
+        /// The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
         /// </summary>
         public readonly int? MaxRecentlyQueriedSeriesDiskBytesRead;
         /// <summary>
-        /// The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
+        /// The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
         /// </summary>
         public readonly string? MaxRecentlyQueriedSeriesLookback;
         /// <summary>
-        /// The maximum number of docs fetched in single query.
+        /// The maximum number of docs fetched in single query. Example: `100000`.
         /// </summary>
         public readonly int? QueryDocs;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly bool? QueryRequireExhaustive;
         /// <summary>
-        /// The maximum number of series fetched in single query.
+        /// The maximum number of series fetched in single query. Example: `100000`.
         /// </summary>
         public readonly int? QuerySeries;
 

@@ -13,25 +13,25 @@ namespace Pulumi.Aiven.Inputs
     public sealed class M3DbM3dbUserConfigLimitsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The maximum number of blocks that can be read in a given lookback period.
+        /// The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
         /// </summary>
         [Input("maxRecentlyQueriedSeriesBlocks")]
         public Input<int>? MaxRecentlyQueriedSeriesBlocks { get; set; }
 
         /// <summary>
-        /// The maximum number of disk bytes that can be read in a given lookback period.
+        /// The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
         /// </summary>
         [Input("maxRecentlyQueriedSeriesDiskBytesRead")]
         public Input<int>? MaxRecentlyQueriedSeriesDiskBytesRead { get; set; }
 
         /// <summary>
-        /// The lookback period for 'max*recently*queried*series*blocks' and 'max*recently*queried*series*disk*bytes*read'.
+        /// The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
         /// </summary>
         [Input("maxRecentlyQueriedSeriesLookback")]
         public Input<string>? MaxRecentlyQueriedSeriesLookback { get; set; }
 
         /// <summary>
-        /// The maximum number of docs fetched in single query.
+        /// The maximum number of docs fetched in single query. Example: `100000`.
         /// </summary>
         [Input("queryDocs")]
         public Input<int>? QueryDocs { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? QueryRequireExhaustive { get; set; }
 
         /// <summary>
-        /// The maximum number of series fetched in single query.
+        /// The maximum number of series fetched in single query. Example: `100000`.
         /// </summary>
         [Input("querySeries")]
         public Input<int>? QuerySeries { get; set; }

@@ -34,14 +34,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      * 
      */
     @Import(name="compressionType")
     private @Nullable Output<String> compressionType;
 
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
      * 
      */
     public Optional<Output<String>> compressionType() {
@@ -49,14 +49,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      * 
      */
     @Import(name="connectionsMaxIdleMs")
     private @Nullable Output<Integer> connectionsMaxIdleMs;
 
     /**
-     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+     * @return Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
      * 
      */
     public Optional<Output<Integer>> connectionsMaxIdleMs() {
@@ -79,14 +79,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      * 
      */
     @Import(name="groupInitialRebalanceDelayMs")
     private @Nullable Output<Integer> groupInitialRebalanceDelayMs;
 
     /**
-     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+     * @return The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
      * 
      */
     public Optional<Output<Integer>> groupInitialRebalanceDelayMs() {
@@ -94,14 +94,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      * 
      */
     @Import(name="groupMaxSessionTimeoutMs")
     private @Nullable Output<Integer> groupMaxSessionTimeoutMs;
 
     /**
-     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * @return The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
      * 
      */
     public Optional<Output<Integer>> groupMaxSessionTimeoutMs() {
@@ -109,14 +109,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      * 
      */
     @Import(name="groupMinSessionTimeoutMs")
     private @Nullable Output<Integer> groupMinSessionTimeoutMs;
 
     /**
-     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+     * @return The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
      * 
      */
     public Optional<Output<Integer>> groupMinSessionTimeoutMs() {
@@ -124,14 +124,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * How long are delete records retained?
+     * How long are delete records retained? Example: `86400000`.
      * 
      */
     @Import(name="logCleanerDeleteRetentionMs")
     private @Nullable Output<Integer> logCleanerDeleteRetentionMs;
 
     /**
-     * @return How long are delete records retained?
+     * @return How long are delete records retained? Example: `86400000`.
      * 
      */
     public Optional<Output<Integer>> logCleanerDeleteRetentionMs() {
@@ -154,14 +154,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      * 
      */
     @Import(name="logCleanerMinCleanableRatio")
     private @Nullable Output<Double> logCleanerMinCleanableRatio;
 
     /**
-     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+     * @return Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
      * 
      */
     public Optional<Output<Double>> logCleanerMinCleanableRatio() {
@@ -199,14 +199,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of messages accumulated on a log partition before messages are flushed to disk.
+     * The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      * 
      */
     @Import(name="logFlushIntervalMessages")
     private @Nullable Output<Integer> logFlushIntervalMessages;
 
     /**
-     * @return The number of messages accumulated on a log partition before messages are flushed to disk.
+     * @return The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
      * 
      */
     public Optional<Output<Integer>> logFlushIntervalMessages() {
@@ -229,14 +229,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The interval with which Kafka adds an entry to the offset index.
+     * The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      * 
      */
     @Import(name="logIndexIntervalBytes")
     private @Nullable Output<Integer> logIndexIntervalBytes;
 
     /**
-     * @return The interval with which Kafka adds an entry to the offset index.
+     * @return The interval with which Kafka adds an entry to the offset index. Example: `4096`.
      * 
      */
     public Optional<Output<Integer>> logIndexIntervalBytes() {
@@ -244,14 +244,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum size in bytes of the offset index.
+     * The maximum size in bytes of the offset index. Example: `10485760`.
      * 
      */
     @Import(name="logIndexSizeMaxBytes")
     private @Nullable Output<Integer> logIndexSizeMaxBytes;
 
     /**
-     * @return The maximum size in bytes of the offset index.
+     * @return The maximum size in bytes of the offset index. Example: `10485760`.
      * 
      */
     public Optional<Output<Integer>> logIndexSizeMaxBytes() {
@@ -439,14 +439,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The amount of time to wait before deleting a file from the filesystem.
+     * The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      * 
      */
     @Import(name="logSegmentDeleteDelayMs")
     private @Nullable Output<Integer> logSegmentDeleteDelayMs;
 
     /**
-     * @return The amount of time to wait before deleting a file from the filesystem.
+     * @return The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
      * 
      */
     public Optional<Output<Integer>> logSegmentDeleteDelayMs() {
@@ -469,14 +469,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum number of incremental fetch sessions that the broker will maintain.
+     * The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      * 
      */
     @Import(name="maxIncrementalFetchSessionCacheSlots")
     private @Nullable Output<Integer> maxIncrementalFetchSessionCacheSlots;
 
     /**
-     * @return The maximum number of incremental fetch sessions that the broker will maintain.
+     * @return The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
      * 
      */
     public Optional<Output<Integer>> maxIncrementalFetchSessionCacheSlots() {
@@ -484,14 +484,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum size of message that the server can receive.
+     * The maximum size of message that the server can receive. Example: `1048588`.
      * 
      */
     @Import(name="messageMaxBytes")
     private @Nullable Output<Integer> messageMaxBytes;
 
     /**
-     * @return The maximum size of message that the server can receive.
+     * @return The maximum size of message that the server can receive. Example: `1048588`.
      * 
      */
     public Optional<Output<Integer>> messageMaxBytes() {
@@ -499,14 +499,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      * 
      */
     @Import(name="minInsyncReplicas")
     private @Nullable Output<Integer> minInsyncReplicas;
 
     /**
-     * @return When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+     * @return When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
      * 
      */
     public Optional<Output<Integer>> minInsyncReplicas() {
@@ -529,14 +529,14 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Log retention window in minutes for offsets topic.
+     * Log retention window in minutes for offsets topic. Example: `10080`.
      * 
      */
     @Import(name="offsetsRetentionMinutes")
     private @Nullable Output<Integer> offsetsRetentionMinutes;
 
     /**
-     * @return Log retention window in minutes for offsets topic.
+     * @return Log retention window in minutes for offsets topic. Example: `10080`.
      * 
      */
     public Optional<Output<Integer>> offsetsRetentionMinutes() {
@@ -799,7 +799,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
          * 
          * @return builder
          * 
@@ -810,7 +810,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;uncompressed&#39; which is equivalent to no compression; and &#39;producer&#39; which means retain the original compression codec set by the producer.
+         * @param compressionType Enum: `gzip`, `snappy`, `lz4`, `zstd`, `uncompressed`, `producer`. Specify the final compression type for a given topic. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `uncompressed` which is equivalent to no compression; and `producer` which means retain the original compression codec set by the producer.
          * 
          * @return builder
          * 
@@ -820,7 +820,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectionsMaxIdleMs Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+         * @param connectionsMaxIdleMs Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
          * 
          * @return builder
          * 
@@ -831,7 +831,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectionsMaxIdleMs Idle connections timeout: the server socket processor threads close the connections that idle for longer than this.
+         * @param connectionsMaxIdleMs Idle connections timeout: the server socket processor threads close the connections that idle for longer than this. Example: `540000`.
          * 
          * @return builder
          * 
@@ -862,7 +862,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+         * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
          * 
          * @return builder
          * 
@@ -873,7 +873,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
+         * @param groupInitialRebalanceDelayMs The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time. Example: `3000`.
          * 
          * @return builder
          * 
@@ -883,7 +883,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * @param groupMaxSessionTimeoutMs The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `1800000`.
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupMinSessionTimeoutMs The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * @param groupMinSessionTimeoutMs The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
          * 
          * @return builder
          * 
@@ -915,7 +915,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupMinSessionTimeoutMs The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
+         * @param groupMinSessionTimeoutMs The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures. Example: `6000`.
          * 
          * @return builder
          * 
@@ -925,7 +925,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerDeleteRetentionMs How long are delete records retained?
+         * @param logCleanerDeleteRetentionMs How long are delete records retained? Example: `86400000`.
          * 
          * @return builder
          * 
@@ -936,7 +936,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerDeleteRetentionMs How long are delete records retained?
+         * @param logCleanerDeleteRetentionMs How long are delete records retained? Example: `86400000`.
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerMinCleanableRatio Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+         * @param logCleanerMinCleanableRatio Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
          * 
          * @return builder
          * 
@@ -978,7 +978,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logCleanerMinCleanableRatio Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option.
+         * @param logCleanerMinCleanableRatio Controls log compactor frequency. Larger value means more frequent compactions but also more space wasted for logs. Consider setting log.cleaner.max.compaction.lag.ms to enforce compactions sooner, instead of setting a very high value for this option. Example: `0.5`.
          * 
          * @return builder
          * 
@@ -1030,7 +1030,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk.
+         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk.
+         * @param logFlushIntervalMessages The number of messages accumulated on a log partition before messages are flushed to disk. Example: `9223372036854775807`.
          * 
          * @return builder
          * 
@@ -1072,7 +1072,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logIndexIntervalBytes The interval with which Kafka adds an entry to the offset index.
+         * @param logIndexIntervalBytes The interval with which Kafka adds an entry to the offset index. Example: `4096`.
          * 
          * @return builder
          * 
@@ -1083,7 +1083,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logIndexIntervalBytes The interval with which Kafka adds an entry to the offset index.
+         * @param logIndexIntervalBytes The interval with which Kafka adds an entry to the offset index. Example: `4096`.
          * 
          * @return builder
          * 
@@ -1093,7 +1093,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index.
+         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index. Example: `10485760`.
          * 
          * @return builder
          * 
@@ -1104,7 +1104,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index.
+         * @param logIndexSizeMaxBytes The maximum size in bytes of the offset index. Example: `10485760`.
          * 
          * @return builder
          * 
@@ -1366,7 +1366,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logSegmentDeleteDelayMs The amount of time to wait before deleting a file from the filesystem.
+         * @param logSegmentDeleteDelayMs The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
          * 
          * @return builder
          * 
@@ -1377,7 +1377,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param logSegmentDeleteDelayMs The amount of time to wait before deleting a file from the filesystem.
+         * @param logSegmentDeleteDelayMs The amount of time to wait before deleting a file from the filesystem. Example: `60000`.
          * 
          * @return builder
          * 
@@ -1408,7 +1408,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxIncrementalFetchSessionCacheSlots The maximum number of incremental fetch sessions that the broker will maintain.
+         * @param maxIncrementalFetchSessionCacheSlots The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
          * 
          * @return builder
          * 
@@ -1419,7 +1419,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxIncrementalFetchSessionCacheSlots The maximum number of incremental fetch sessions that the broker will maintain.
+         * @param maxIncrementalFetchSessionCacheSlots The maximum number of incremental fetch sessions that the broker will maintain. Example: `1000`.
          * 
          * @return builder
          * 
@@ -1429,7 +1429,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param messageMaxBytes The maximum size of message that the server can receive.
+         * @param messageMaxBytes The maximum size of message that the server can receive. Example: `1048588`.
          * 
          * @return builder
          * 
@@ -1440,7 +1440,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param messageMaxBytes The maximum size of message that the server can receive.
+         * @param messageMaxBytes The maximum size of message that the server can receive. Example: `1048588`.
          * 
          * @return builder
          * 
@@ -1450,7 +1450,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+         * @param minInsyncReplicas When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
          * 
          * @return builder
          * 
@@ -1461,7 +1461,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minInsyncReplicas When a producer sets acks to &#39;all&#39; (or &#39;-1&#39;), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful.
+         * @param minInsyncReplicas When a producer sets acks to `all` (or `-1`), min.insync.replicas specifies the minimum number of replicas that must acknowledge a write for the write to be considered successful. Example: `1`.
          * 
          * @return builder
          * 
@@ -1492,7 +1492,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param offsetsRetentionMinutes Log retention window in minutes for offsets topic.
+         * @param offsetsRetentionMinutes Log retention window in minutes for offsets topic. Example: `10080`.
          * 
          * @return builder
          * 
@@ -1503,7 +1503,7 @@ public final class KafkaKafkaUserConfigKafkaArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param offsetsRetentionMinutes Log retention window in minutes for offsets topic.
+         * @param offsetsRetentionMinutes Log retention window in minutes for offsets topic. Example: `10080`.
          * 
          * @return builder
          * 

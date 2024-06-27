@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetKafkaKafkaUserConfigTieredStorageLocalCacheResult
     {
         /// <summary>
-        /// Local cache size in bytes.
+        /// Local cache size in bytes. Example: `1073741824`.
         /// </summary>
         public readonly int? Size;
 

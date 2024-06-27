@@ -17,7 +17,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     public static final PgPgUserConfigPgQualstatsArgs Empty = new PgPgUserConfigPgQualstatsArgs();
 
     /**
-     * Enable / Disable pg_qualstats. The default value is `false`.
+     * Enable / Disable pg_qualstats. Default: `false`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -28,7 +28,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable / Disable pg_qualstats. The default value is `false`.
+     * @return Enable / Disable pg_qualstats. Default: `false`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -40,7 +40,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Error estimation num threshold to save quals. The default value is `0`.
+     * Error estimation num threshold to save quals. Default: `0`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -51,7 +51,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     private @Nullable Output<Integer> minErrEstimateNum;
 
     /**
-     * @return Error estimation num threshold to save quals. The default value is `0`.
+     * @return Error estimation num threshold to save quals. Default: `0`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -63,7 +63,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Error estimation ratio threshold to save quals. The default value is `0`.
+     * Error estimation ratio threshold to save quals. Default: `0`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -74,7 +74,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     private @Nullable Output<Integer> minErrEstimateRatio;
 
     /**
-     * @return Error estimation ratio threshold to save quals. The default value is `0`.
+     * @return Error estimation ratio threshold to save quals. Default: `0`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -86,7 +86,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+     * Enable / Disable pg_qualstats constants tracking. Default: `true`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -97,7 +97,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     private @Nullable Output<Boolean> trackConstants;
 
     /**
-     * @return Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+     * @return Enable / Disable pg_qualstats constants tracking. Default: `true`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -109,7 +109,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Track quals on system catalogs too. The default value is `false`.
+     * Track quals on system catalogs too. Default: `false`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -120,7 +120,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
     private @Nullable Output<Boolean> trackPgCatalog;
 
     /**
-     * @return Track quals on system catalogs too. The default value is `false`.
+     * @return Track quals on system catalogs too. Default: `false`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -160,7 +160,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Enable / Disable pg_qualstats. The default value is `false`.
+         * @param enabled Enable / Disable pg_qualstats. Default: `false`.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enabled Enable / Disable pg_qualstats. The default value is `false`.
+         * @param enabled Enable / Disable pg_qualstats. Default: `false`.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minErrEstimateNum Error estimation num threshold to save quals. The default value is `0`.
+         * @param minErrEstimateNum Error estimation num threshold to save quals. Default: `0`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minErrEstimateNum Error estimation num threshold to save quals. The default value is `0`.
+         * @param minErrEstimateNum Error estimation num threshold to save quals. Default: `0`.
          * 
          * @return builder
          * 
@@ -218,7 +218,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minErrEstimateRatio Error estimation ratio threshold to save quals. The default value is `0`.
+         * @param minErrEstimateRatio Error estimation ratio threshold to save quals. Default: `0`.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minErrEstimateRatio Error estimation ratio threshold to save quals. The default value is `0`.
+         * @param minErrEstimateRatio Error estimation ratio threshold to save quals. Default: `0`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param trackConstants Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+         * @param trackConstants Enable / Disable pg_qualstats constants tracking. Default: `true`.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param trackConstants Enable / Disable pg_qualstats constants tracking. The default value is `true`.
+         * @param trackConstants Enable / Disable pg_qualstats constants tracking. Default: `true`.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param trackPgCatalog Track quals on system catalogs too. The default value is `false`.
+         * @param trackPgCatalog Track quals on system catalogs too. Default: `false`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class PgPgUserConfigPgQualstatsArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param trackPgCatalog Track quals on system catalogs too. The default value is `false`.
+         * @param trackPgCatalog Track quals on system catalogs too. Default: `false`.
          * 
          * @return builder
          * 

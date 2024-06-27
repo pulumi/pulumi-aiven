@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationDatadogUserConfigRedisGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable command_stats option in the agent's configuration. The default value is `false`.
+        /// Enable command_stats option in the agent's configuration. Default: `false`.
         /// </summary>
         [Input("commandStatsEnabled")]
         public Input<bool>? CommandStatsEnabled { get; set; }

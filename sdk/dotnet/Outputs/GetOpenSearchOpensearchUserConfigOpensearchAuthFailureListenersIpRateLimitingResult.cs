@@ -14,23 +14,23 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetOpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimitingResult
     {
         /// <summary>
-        /// The number of login attempts allowed before login is blocked.
+        /// The number of login attempts allowed before login is blocked. Example: `10`.
         /// </summary>
         public readonly int? AllowedTries;
         /// <summary>
-        /// The duration of time that login remains blocked after a failed login.
+        /// The duration of time that login remains blocked after a failed login. Example: `600`.
         /// </summary>
         public readonly int? BlockExpirySeconds;
         /// <summary>
-        /// The maximum number of blocked IP addresses.
+        /// The maximum number of blocked IP addresses. Example: `100000`.
         /// </summary>
         public readonly int? MaxBlockedClients;
         /// <summary>
-        /// The maximum number of tracked IP addresses that have failed login.
+        /// The maximum number of tracked IP addresses that have failed login. Example: `100000`.
         /// </summary>
         public readonly int? MaxTrackedClients;
         /// <summary>
-        /// The window of time in which the value for `allowed_tries` is enforced.
+        /// The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
         /// </summary>
         public readonly int? TimeWindowSeconds;
         /// <summary>

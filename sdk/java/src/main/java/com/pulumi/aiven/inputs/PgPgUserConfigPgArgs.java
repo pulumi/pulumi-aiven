@@ -49,14 +49,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      * 
      */
     @Import(name="autovacuumFreezeMaxAge")
     private @Nullable Output<Integer> autovacuumFreezeMaxAge;
 
     /**
-     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+     * @return Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
      * 
      */
     public Optional<Output<Integer>> autovacuumFreezeMaxAge() {
@@ -154,14 +154,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      * 
      */
     @Import(name="bgwriterDelay")
     private @Nullable Output<Integer> bgwriterDelay;
 
     /**
-     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+     * @return Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
      * 
      */
     public Optional<Output<Integer>> bgwriterDelay() {
@@ -169,14 +169,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      * 
      */
     @Import(name="bgwriterFlushAfter")
     private @Nullable Output<Integer> bgwriterFlushAfter;
 
     /**
-     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+     * @return Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
      * 
      */
     public Optional<Output<Integer>> bgwriterFlushAfter() {
@@ -184,14 +184,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      * 
      */
     @Import(name="bgwriterLruMaxpages")
     private @Nullable Output<Integer> bgwriterLruMaxpages;
 
     /**
-     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+     * @return In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
      * 
      */
     public Optional<Output<Integer>> bgwriterLruMaxpages() {
@@ -199,14 +199,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      * 
      */
     @Import(name="bgwriterLruMultiplier")
     private @Nullable Output<Double> bgwriterLruMultiplier;
 
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
      * 
      */
     public Optional<Output<Double>> bgwriterLruMultiplier() {
@@ -214,14 +214,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      * 
      */
     @Import(name="deadlockTimeout")
     private @Nullable Output<Integer> deadlockTimeout;
 
     /**
-     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+     * @return This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
      * 
      */
     public Optional<Output<Integer>> deadlockTimeout() {
@@ -559,14 +559,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
     @Import(name="pgPartmanBgwDotInterval")
     private @Nullable Output<Integer> pgPartmanBgwDotInterval;
 
     /**
-     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks.
+     * @return Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
      * 
      */
     public Optional<Output<Integer>> pgPartmanBgwDotInterval() {
@@ -574,14 +574,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * Controls which role to use for pg_partman&#39;s scheduled background tasks. Example: `myrolename`.
      * 
      */
     @Import(name="pgPartmanBgwDotRole")
     private @Nullable Output<String> pgPartmanBgwDotRole;
 
     /**
-     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks.
+     * @return Controls which role to use for pg_partman&#39;s scheduled background tasks. Example: `myrolename`.
      * 
      */
     public Optional<Output<String>> pgPartmanBgwDotRole() {
@@ -604,14 +604,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Sets the maximum number of buckets.
+     * Sets the maximum number of buckets. Example: `10`.
      * 
      */
     @Import(name="pgStatMonitorDotPgsmMaxBuckets")
     private @Nullable Output<Integer> pgStatMonitorDotPgsmMaxBuckets;
 
     /**
-     * @return Sets the maximum number of buckets.
+     * @return Sets the maximum number of buckets. Example: `10`.
      * 
      */
     public Optional<Output<Integer>> pgStatMonitorDotPgsmMaxBuckets() {
@@ -634,14 +634,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      * 
      */
     @Import(name="tempFileLimit")
     private @Nullable Output<Integer> tempFileLimit;
 
     /**
-     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited.
+     * @return PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
      * 
      */
     public Optional<Output<Integer>> tempFileLimit() {
@@ -649,14 +649,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * PostgreSQL service timezone.
+     * PostgreSQL service timezone. Example: `Europe/Helsinki`.
      * 
      */
     @Import(name="timezone")
     private @Nullable Output<String> timezone;
 
     /**
-     * @return PostgreSQL service timezone.
+     * @return PostgreSQL service timezone. Example: `Europe/Helsinki`.
      * 
      */
     public Optional<Output<String>> timezone() {
@@ -664,14 +664,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      * 
      */
     @Import(name="trackActivityQuerySize")
     private @Nullable Output<Integer> trackActivityQuerySize;
 
     /**
-     * @return Specifies the number of bytes reserved to track the currently executing command for each active session.
+     * @return Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
      * 
      */
     public Optional<Output<Integer>> trackActivityQuerySize() {
@@ -724,14 +724,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      * 
      */
     @Import(name="walSenderTimeout")
     private @Nullable Output<Integer> walSenderTimeout;
 
     /**
-     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+     * @return Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
      * 
      */
     public Optional<Output<Integer>> walSenderTimeout() {
@@ -739,14 +739,14 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      * 
      */
     @Import(name="walWriterDelay")
     private @Nullable Output<Integer> walWriterDelay;
 
     /**
-     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+     * @return WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
      * 
      */
     public Optional<Output<Integer>> walWriterDelay() {
@@ -868,7 +868,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
          * 
          * @return builder
          * 
@@ -879,7 +879,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
+         * @param autovacuumFreezeMaxAge Specifies the maximum age (in transactions) that a table&#39;s pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted. Example: `200000000`.
          * 
          * @return builder
          * 
@@ -1015,7 +1015,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
          * 
          * @return builder
          * 
@@ -1026,7 +1026,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200.
+         * @param bgwriterDelay Specifies the delay between activity rounds for the background writer in milliseconds. Default is 200. Example: `200`.
          * 
          * @return builder
          * 
@@ -1036,7 +1036,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
          * 
          * @return builder
          * 
@@ -1047,7 +1047,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
+         * @param bgwriterFlushAfter Whenever more than bgwriter*flush*after bytes have been written by the background writer, attempt to force the OS to issue these writes to the underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback. Example: `512`.
          * 
          * @return builder
          * 
@@ -1057,7 +1057,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
          * 
          * @return builder
          * 
@@ -1068,7 +1068,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100.
+         * @param bgwriterLruMaxpages In each round, no more than this many buffers will be written by the background writer. Setting this to zero disables background writing. Default is 100. Example: `100`.
          * 
          * @return builder
          * 
@@ -1078,7 +1078,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
          * 
          * @return builder
          * 
@@ -1089,7 +1089,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter*lru*multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter*lru*maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0. Example: `2.0`.
          * 
          * @return builder
          * 
@@ -1099,7 +1099,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
          * 
          * @return builder
          * 
@@ -1110,7 +1110,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
+         * @param deadlockTimeout This is the amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition. Example: `1000`.
          * 
          * @return builder
          * 
@@ -1582,7 +1582,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgPartmanBgwDotInterval Sets the time interval to run pg_partman&#39;s scheduled tasks.
+         * @param pgPartmanBgwDotInterval Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
          * 
          * @return builder
          * 
@@ -1593,7 +1593,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgPartmanBgwDotInterval Sets the time interval to run pg_partman&#39;s scheduled tasks.
+         * @param pgPartmanBgwDotInterval Sets the time interval to run pg_partman&#39;s scheduled tasks. Example: `3600`.
          * 
          * @return builder
          * 
@@ -1603,7 +1603,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgPartmanBgwDotRole Controls which role to use for pg_partman&#39;s scheduled background tasks.
+         * @param pgPartmanBgwDotRole Controls which role to use for pg_partman&#39;s scheduled background tasks. Example: `myrolename`.
          * 
          * @return builder
          * 
@@ -1614,7 +1614,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgPartmanBgwDotRole Controls which role to use for pg_partman&#39;s scheduled background tasks.
+         * @param pgPartmanBgwDotRole Controls which role to use for pg_partman&#39;s scheduled background tasks. Example: `myrolename`.
          * 
          * @return builder
          * 
@@ -1645,7 +1645,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets.
+         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets. Example: `10`.
          * 
          * @return builder
          * 
@@ -1656,7 +1656,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets.
+         * @param pgStatMonitorDotPgsmMaxBuckets Sets the maximum number of buckets. Example: `10`.
          * 
          * @return builder
          * 
@@ -1687,7 +1687,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tempFileLimit PostgreSQL temporary file limit in KiB, -1 for unlimited.
+         * @param tempFileLimit PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
          * 
          * @return builder
          * 
@@ -1698,7 +1698,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tempFileLimit PostgreSQL temporary file limit in KiB, -1 for unlimited.
+         * @param tempFileLimit PostgreSQL temporary file limit in KiB, -1 for unlimited. Example: `5000000`.
          * 
          * @return builder
          * 
@@ -1708,7 +1708,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param timezone PostgreSQL service timezone.
+         * @param timezone PostgreSQL service timezone. Example: `Europe/Helsinki`.
          * 
          * @return builder
          * 
@@ -1719,7 +1719,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param timezone PostgreSQL service timezone.
+         * @param timezone PostgreSQL service timezone. Example: `Europe/Helsinki`.
          * 
          * @return builder
          * 
@@ -1729,7 +1729,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session.
+         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
          * 
          * @return builder
          * 
@@ -1740,7 +1740,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session.
+         * @param trackActivityQuerySize Specifies the number of bytes reserved to track the currently executing command for each active session. Example: `1024`.
          * 
          * @return builder
          * 
@@ -1813,7 +1813,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param walSenderTimeout Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+         * @param walSenderTimeout Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
          * 
          * @return builder
          * 
@@ -1824,7 +1824,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param walSenderTimeout Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout.
+         * @param walSenderTimeout Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Example: `60000`.
          * 
          * @return builder
          * 
@@ -1834,7 +1834,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param walWriterDelay WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+         * @param walWriterDelay WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
          * 
          * @return builder
          * 
@@ -1845,7 +1845,7 @@ public final class PgPgUserConfigPgArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param walWriterDelay WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance.
+         * @param walWriterDelay WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance. Example: `50`.
          * 
          * @return builder
          * 

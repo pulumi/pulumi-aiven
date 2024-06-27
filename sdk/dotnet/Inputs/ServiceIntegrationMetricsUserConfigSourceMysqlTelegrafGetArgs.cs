@@ -79,19 +79,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? GatherTableSchema { get; set; }
 
         /// <summary>
-        /// Truncates digest text from perf*events*statements into this many characters.
+        /// Truncates digest text from perf*events*statements into this many characters. Example: `120`.
         /// </summary>
         [Input("perfEventsStatementsDigestTextLimit")]
         public Input<int>? PerfEventsStatementsDigestTextLimit { get; set; }
 
         /// <summary>
-        /// Limits metrics from perf*events*statements.
+        /// Limits metrics from perf*events*statements. Example: `250`.
         /// </summary>
         [Input("perfEventsStatementsLimit")]
         public Input<int>? PerfEventsStatementsLimit { get; set; }
 
         /// <summary>
-        /// Only include perf*events*statements whose last seen is less than this many seconds.
+        /// Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
         /// </summary>
         [Input("perfEventsStatementsTimeLimit")]
         public Input<int>? PerfEventsStatementsTimeLimit { get; set; }

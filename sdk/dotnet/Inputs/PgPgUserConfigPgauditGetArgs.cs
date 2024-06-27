@@ -13,73 +13,73 @@ namespace Pulumi.Aiven.Inputs
     public sealed class PgPgUserConfigPgauditGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. The default value is `false`.
+        /// Enable pgaudit extension. When enabled, pgaudit extension will be automatically installed.Otherwise, extension will be uninstalled but auditing configurations will be preserved. Default: `false`.
         /// </summary>
         [Input("featureEnabled")]
         public Input<bool>? FeatureEnabled { get; set; }
 
         /// <summary>
-        /// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. The default value is `true`.
+        /// Specifies that session logging should be enabled in the casewhere all relations in a statement are in pg_catalog. Default: `true`.
         /// </summary>
         [Input("logCatalog")]
         public Input<bool>? LogCatalog { get; set; }
 
         /// <summary>
-        /// Specifies whether log messages will be visible to a client process such as psql. The default value is `false`.
+        /// Specifies whether log messages will be visible to a client process such as psql. Default: `false`.
         /// </summary>
         [Input("logClient")]
         public Input<bool>? LogClient { get; set; }
 
         /// <summary>
-        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. The default value is `log`.
+        /// Enum: `debug1`, `debug2`, `debug3`, `debug4`, `debug5`, `info`, `notice`, `warning`, `log`. Specifies the log level that will be used for log entries. Default: `log`.
         /// </summary>
         [Input("logLevel")]
         public Input<string>? LogLevel { get; set; }
 
         /// <summary>
-        /// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. The default value is `-1`.
+        /// Crop parameters representation and whole statements if they exceed this threshold. A (default) value of -1 disable the truncation. Default: `-1`.
         /// </summary>
         [Input("logMaxStringLength")]
         public Input<int>? LogMaxStringLength { get; set; }
 
         /// <summary>
-        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. The default value is `true`.
+        /// This GUC allows to turn off logging nested statements, that is, statements that are executed as part of another ExecutorRun. Default: `true`.
         /// </summary>
         [Input("logNestedStatements")]
         public Input<bool>? LogNestedStatements { get; set; }
 
         /// <summary>
-        /// Specifies that audit logging should include the parameters that were passed with the statement. The default value is `false`.
+        /// Specifies that audit logging should include the parameters that were passed with the statement. Default: `false`.
         /// </summary>
         [Input("logParameter")]
         public Input<bool>? LogParameter { get; set; }
 
         /// <summary>
-        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. The default value is `0`.
+        /// Specifies that parameter values longer than this setting (in bytes) should not be logged, but replaced with \n\n. Default: `0`.
         /// </summary>
         [Input("logParameterMaxSize")]
         public Input<int>? LogParameterMaxSize { get; set; }
 
         /// <summary>
-        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. The default value is `false`.
+        /// Specifies whether session audit logging should create a separate log entry for each relation (TABLE, VIEW, etc.) referenced in a SELECT or DML statement. Default: `false`.
         /// </summary>
         [Input("logRelation")]
         public Input<bool>? LogRelation { get; set; }
 
         /// <summary>
-        /// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. The default value is `false`.
+        /// Specifies that audit logging should include the rows retrieved or affected by a statement. When enabled the rows field will be included after the parameter field. Default: `false`.
         /// </summary>
         [Input("logRows")]
         public Input<bool>? LogRows { get; set; }
 
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters (if enabled). The default value is `true`.
+        /// Specifies whether logging will include the statement text and parameters (if enabled). Default: `true`.
         /// </summary>
         [Input("logStatement")]
         public Input<bool>? LogStatement { get; set; }
 
         /// <summary>
-        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. The default value is `false`.
+        /// Specifies whether logging will include the statement text and parameters with the first log entry for a statement/substatement combination or with every entry. Default: `false`.
         /// </summary>
         [Input("logStatementOnce")]
         public Input<bool>? LogStatementOnce { get; set; }
@@ -90,6 +90,7 @@ namespace Pulumi.Aiven.Inputs
         /// <summary>
         /// Specifies which classes of statements will be logged by session audit logging.
         /// </summary>
+        [Obsolete(@"This property is deprecated.")]
         public InputList<string> Logs
         {
             get => _logs ?? (_logs = new InputList<string>());

@@ -16,14 +16,14 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
     public static final M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs Empty = new M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs();
 
     /**
-     * Controls how long we wait before expiring stale data.
+     * Controls how long we wait before expiring stale data. Example: `5m`.
      * 
      */
     @Import(name="blockDataExpiryDuration")
     private @Nullable Output<String> blockDataExpiryDuration;
 
     /**
-     * @return Controls how long we wait before expiring stale data.
+     * @return Controls how long we wait before expiring stale data. Example: `5m`.
      * 
      */
     public Optional<Output<String>> blockDataExpiryDuration() {
@@ -31,14 +31,14 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
     }
 
     /**
-     * Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      * 
      */
     @Import(name="blocksizeDuration")
     private @Nullable Output<String> blocksizeDuration;
 
     /**
-     * @return Controls how long to keep a block in memory before flushing to a fileset on disk.
+     * @return Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
      * 
      */
     public Optional<Output<String>> blocksizeDuration() {
@@ -46,14 +46,14 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
     }
 
     /**
-     * Controls how far into the future writes to the namespace will be accepted.
+     * Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     @Import(name="bufferFutureDuration")
     private @Nullable Output<String> bufferFutureDuration;
 
     /**
-     * @return Controls how far into the future writes to the namespace will be accepted.
+     * @return Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     public Optional<Output<String>> bufferFutureDuration() {
@@ -61,14 +61,14 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
     }
 
     /**
-     * Controls how far into the past writes to the namespace will be accepted.
+     * Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     @Import(name="bufferPastDuration")
     private @Nullable Output<String> bufferPastDuration;
 
     /**
-     * @return Controls how far into the past writes to the namespace will be accepted.
+     * @return Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
      * 
      */
     public Optional<Output<String>> bufferPastDuration() {
@@ -76,14 +76,14 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
     }
 
     /**
-     * Controls the duration of time that M3DB will retain data for the namespace.
+     * Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      * 
      */
     @Import(name="retentionPeriodDuration")
     private @Nullable Output<String> retentionPeriodDuration;
 
     /**
-     * @return Controls the duration of time that M3DB will retain data for the namespace.
+     * @return Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
      * 
      */
     public Optional<Output<String>> retentionPeriodDuration() {
@@ -119,7 +119,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param blockDataExpiryDuration Controls how long we wait before expiring stale data.
+         * @param blockDataExpiryDuration Controls how long we wait before expiring stale data. Example: `5m`.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param blockDataExpiryDuration Controls how long we wait before expiring stale data.
+         * @param blockDataExpiryDuration Controls how long we wait before expiring stale data. Example: `5m`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param blocksizeDuration Controls how long to keep a block in memory before flushing to a fileset on disk.
+         * @param blocksizeDuration Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param blocksizeDuration Controls how long to keep a block in memory before flushing to a fileset on disk.
+         * @param blocksizeDuration Controls how long to keep a block in memory before flushing to a fileset on disk. Example: `2h`.
          * 
          * @return builder
          * 
@@ -161,7 +161,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param bufferFutureDuration Controls how far into the future writes to the namespace will be accepted.
+         * @param bufferFutureDuration Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param bufferFutureDuration Controls how far into the future writes to the namespace will be accepted.
+         * @param bufferFutureDuration Controls how far into the future writes to the namespace will be accepted. Example: `10m`.
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param bufferPastDuration Controls how far into the past writes to the namespace will be accepted.
+         * @param bufferPastDuration Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param bufferPastDuration Controls how far into the past writes to the namespace will be accepted.
+         * @param bufferPastDuration Controls how far into the past writes to the namespace will be accepted. Example: `10m`.
          * 
          * @return builder
          * 
@@ -203,7 +203,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param retentionPeriodDuration Controls the duration of time that M3DB will retain data for the namespace.
+         * @param retentionPeriodDuration Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class M3DbM3dbUserConfigNamespaceOptionsRetentionOptionsArgs extend
         }
 
         /**
-         * @param retentionPeriodDuration Controls the duration of time that M3DB will retain data for the namespace.
+         * @param retentionPeriodDuration Controls the duration of time that M3DB will retain data for the namespace. Example: `48h`.
          * 
          * @return builder
          * 

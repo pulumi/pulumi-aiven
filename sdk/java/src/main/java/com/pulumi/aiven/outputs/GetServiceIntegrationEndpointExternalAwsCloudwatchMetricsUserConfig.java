@@ -11,50 +11,50 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig {
     /**
-     * @return AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     private String accessKey;
     /**
-     * @return AWS CloudWatch Metrics Namespace.
+     * @return AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      * 
      */
     private String namespace;
     /**
-     * @return AWS region.
+     * @return AWS region. Example: `us-east-1`.
      * 
      */
     private String region;
     /**
-     * @return AWS secret key.
+     * @return AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     private String secretKey;
 
     private GetServiceIntegrationEndpointExternalAwsCloudwatchMetricsUserConfig() {}
     /**
-     * @return AWS access key. Required permissions are cloudwatch:PutMetricData.
+     * @return AWS access key. Required permissions are cloudwatch:PutMetricData. Example: `AAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public String accessKey() {
         return this.accessKey;
     }
     /**
-     * @return AWS CloudWatch Metrics Namespace.
+     * @return AWS CloudWatch Metrics Namespace. Example: `my-metrics-namespace`.
      * 
      */
     public String namespace() {
         return this.namespace;
     }
     /**
-     * @return AWS region.
+     * @return AWS region. Example: `us-east-1`.
      * 
      */
     public String region() {
         return this.region;
     }
     /**
-     * @return AWS secret key.
+     * @return AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
      * 
      */
     public String secretKey() {

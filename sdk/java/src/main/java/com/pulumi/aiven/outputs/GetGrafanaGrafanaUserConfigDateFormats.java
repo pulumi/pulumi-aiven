@@ -12,98 +12,98 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetGrafanaGrafanaUserConfigDateFormats {
     /**
-     * @return Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+     * @return Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      * 
      */
     private @Nullable String defaultTimezone;
     /**
-     * @return Moment.js style format string for cases where full date is shown.
+     * @return Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      * 
      */
     private @Nullable String fullDate;
     /**
-     * @return Moment.js style format string used when a time requiring day accuracy is shown.
+     * @return Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      * 
      */
     private @Nullable String intervalDay;
     /**
-     * @return Moment.js style format string used when a time requiring hour accuracy is shown.
+     * @return Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      * 
      */
     private @Nullable String intervalHour;
     /**
-     * @return Moment.js style format string used when a time requiring minute accuracy is shown.
+     * @return Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      * 
      */
     private @Nullable String intervalMinute;
     /**
-     * @return Moment.js style format string used when a time requiring month accuracy is shown.
+     * @return Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      * 
      */
     private @Nullable String intervalMonth;
     /**
-     * @return Moment.js style format string used when a time requiring second accuracy is shown.
+     * @return Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      * 
      */
     private @Nullable String intervalSecond;
     /**
-     * @return Moment.js style format string used when a time requiring year accuracy is shown.
+     * @return Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      * 
      */
     private @Nullable String intervalYear;
 
     private GetGrafanaGrafanaUserConfigDateFormats() {}
     /**
-     * @return Default time zone for user preferences. Value &#39;browser&#39; uses browser local time zone.
+     * @return Default time zone for user preferences. Value `browser` uses browser local time zone. Example: `Europe/Helsinki`.
      * 
      */
     public Optional<String> defaultTimezone() {
         return Optional.ofNullable(this.defaultTimezone);
     }
     /**
-     * @return Moment.js style format string for cases where full date is shown.
+     * @return Moment.js style format string for cases where full date is shown. Example: `YYYY MM DD`.
      * 
      */
     public Optional<String> fullDate() {
         return Optional.ofNullable(this.fullDate);
     }
     /**
-     * @return Moment.js style format string used when a time requiring day accuracy is shown.
+     * @return Moment.js style format string used when a time requiring day accuracy is shown. Example: `MM/DD`.
      * 
      */
     public Optional<String> intervalDay() {
         return Optional.ofNullable(this.intervalDay);
     }
     /**
-     * @return Moment.js style format string used when a time requiring hour accuracy is shown.
+     * @return Moment.js style format string used when a time requiring hour accuracy is shown. Example: `MM/DD HH:mm`.
      * 
      */
     public Optional<String> intervalHour() {
         return Optional.ofNullable(this.intervalHour);
     }
     /**
-     * @return Moment.js style format string used when a time requiring minute accuracy is shown.
+     * @return Moment.js style format string used when a time requiring minute accuracy is shown. Example: `HH:mm`.
      * 
      */
     public Optional<String> intervalMinute() {
         return Optional.ofNullable(this.intervalMinute);
     }
     /**
-     * @return Moment.js style format string used when a time requiring month accuracy is shown.
+     * @return Moment.js style format string used when a time requiring month accuracy is shown. Example: `YYYY-MM`.
      * 
      */
     public Optional<String> intervalMonth() {
         return Optional.ofNullable(this.intervalMonth);
     }
     /**
-     * @return Moment.js style format string used when a time requiring second accuracy is shown.
+     * @return Moment.js style format string used when a time requiring second accuracy is shown. Example: `HH:mm:ss`.
      * 
      */
     public Optional<String> intervalSecond() {
         return Optional.ofNullable(this.intervalSecond);
     }
     /**
-     * @return Moment.js style format string used when a time requiring year accuracy is shown.
+     * @return Moment.js style format string used when a time requiring year accuracy is shown. Example: `YYYY`.
      * 
      */
     public Optional<String> intervalYear() {

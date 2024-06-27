@@ -18,14 +18,14 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     public static final M3DbM3dbUserConfigLimitsArgs Empty = new M3DbM3dbUserConfigLimitsArgs();
 
     /**
-     * The maximum number of blocks that can be read in a given lookback period.
+     * The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      * 
      */
     @Import(name="maxRecentlyQueriedSeriesBlocks")
     private @Nullable Output<Integer> maxRecentlyQueriedSeriesBlocks;
 
     /**
-     * @return The maximum number of blocks that can be read in a given lookback period.
+     * @return The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
      * 
      */
     public Optional<Output<Integer>> maxRecentlyQueriedSeriesBlocks() {
@@ -33,14 +33,14 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum number of disk bytes that can be read in a given lookback period.
+     * The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      * 
      */
     @Import(name="maxRecentlyQueriedSeriesDiskBytesRead")
     private @Nullable Output<Integer> maxRecentlyQueriedSeriesDiskBytesRead;
 
     /**
-     * @return The maximum number of disk bytes that can be read in a given lookback period.
+     * @return The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
      * 
      */
     public Optional<Output<Integer>> maxRecentlyQueriedSeriesDiskBytesRead() {
@@ -48,14 +48,14 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
+     * The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
      * 
      */
     @Import(name="maxRecentlyQueriedSeriesLookback")
     private @Nullable Output<String> maxRecentlyQueriedSeriesLookback;
 
     /**
-     * @return The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
+     * @return The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
      * 
      */
     public Optional<Output<String>> maxRecentlyQueriedSeriesLookback() {
@@ -63,14 +63,14 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum number of docs fetched in single query.
+     * The maximum number of docs fetched in single query. Example: `100000`.
      * 
      */
     @Import(name="queryDocs")
     private @Nullable Output<Integer> queryDocs;
 
     /**
-     * @return The maximum number of docs fetched in single query.
+     * @return The maximum number of docs fetched in single query. Example: `100000`.
      * 
      */
     public Optional<Output<Integer>> queryDocs() {
@@ -93,14 +93,14 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum number of series fetched in single query.
+     * The maximum number of series fetched in single query. Example: `100000`.
      * 
      */
     @Import(name="querySeries")
     private @Nullable Output<Integer> querySeries;
 
     /**
-     * @return The maximum number of series fetched in single query.
+     * @return The maximum number of series fetched in single query. Example: `100000`.
      * 
      */
     public Optional<Output<Integer>> querySeries() {
@@ -137,7 +137,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxRecentlyQueriedSeriesBlocks The maximum number of blocks that can be read in a given lookback period.
+         * @param maxRecentlyQueriedSeriesBlocks The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
          * 
          * @return builder
          * 
@@ -148,7 +148,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxRecentlyQueriedSeriesBlocks The maximum number of blocks that can be read in a given lookback period.
+         * @param maxRecentlyQueriedSeriesBlocks The maximum number of blocks that can be read in a given lookback period. Example: `20000`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxRecentlyQueriedSeriesDiskBytesRead The maximum number of disk bytes that can be read in a given lookback period.
+         * @param maxRecentlyQueriedSeriesDiskBytesRead The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxRecentlyQueriedSeriesDiskBytesRead The maximum number of disk bytes that can be read in a given lookback period.
+         * @param maxRecentlyQueriedSeriesDiskBytesRead The maximum number of disk bytes that can be read in a given lookback period. Example: `104857600`.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxRecentlyQueriedSeriesLookback The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
+         * @param maxRecentlyQueriedSeriesLookback The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxRecentlyQueriedSeriesLookback The lookback period for &#39;max*recently*queried*series*blocks&#39; and &#39;max*recently*queried*series*disk*bytes*read&#39;.
+         * @param maxRecentlyQueriedSeriesLookback The lookback period for `max_recently_queried_series_blocks` and `max_recently_queried_series_disk_bytes_read`. Example: `15s`.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param queryDocs The maximum number of docs fetched in single query.
+         * @param queryDocs The maximum number of docs fetched in single query. Example: `100000`.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param queryDocs The maximum number of docs fetched in single query.
+         * @param queryDocs The maximum number of docs fetched in single query. Example: `100000`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param querySeries The maximum number of series fetched in single query.
+         * @param querySeries The maximum number of series fetched in single query. Example: `100000`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class M3DbM3dbUserConfigLimitsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param querySeries The maximum number of series fetched in single query.
+         * @param querySeries The maximum number of series fetched in single query. Example: `100000`.
          * 
          * @return builder
          * 

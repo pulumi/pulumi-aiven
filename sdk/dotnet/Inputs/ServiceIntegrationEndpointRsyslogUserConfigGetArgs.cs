@@ -13,61 +13,70 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointRsyslogUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PEM encoded CA certificate.
+        /// PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         [Input("ca")]
         public Input<string>? Ca { get; set; }
 
         /// <summary>
-        /// PEM encoded client certificate.
+        /// PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         [Input("cert")]
         public Input<string>? Cert { get; set; }
 
         /// <summary>
-        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+        /// Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
 
         /// <summary>
-        /// PEM encoded client key.
+        /// PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+        /// ...
+        /// -----END PRIVATE KEY-----
+        /// `.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
         /// <summary>
-        /// Custom syslog message format.
+        /// Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
         /// </summary>
         [Input("logline")]
         public Input<string>? Logline { get; set; }
 
         /// <summary>
-        /// Rsyslog max message size. The default value is `8192`.
+        /// Rsyslog max message size. Default: `8192`.
         /// </summary>
         [Input("maxMessageSize")]
         public Input<int>? MaxMessageSize { get; set; }
 
         /// <summary>
-        /// Rsyslog server port. The default value is `514`.
+        /// Rsyslog server port. Default: `514`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// Structured data block for log message.
+        /// Structured data block for log message. Example: `TOKEN tag="LiteralValue"`.
         /// </summary>
         [Input("sd")]
         public Input<string>? Sd { get; set; }
 
         /// <summary>
-        /// Rsyslog server IP address or hostname.
+        /// Rsyslog server IP address or hostname. Example: `logs.example.com`.
         /// </summary>
         [Input("server", required: true)]
         public Input<string> Server { get; set; } = null!;
 
         /// <summary>
-        /// Require TLS. The default value is `true`.
+        /// Require TLS. Default: `true`.
         /// </summary>
         [Input("tls", required: true)]
         public Input<bool> Tls { get; set; } = null!;

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/projects_accounts_access#projects).
+ * Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
  *
  * ## Example Usage
  *
@@ -92,7 +92,7 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly estimatedBalance!: pulumi.Output<string>;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     public readonly parentId!: pulumi.Output<string | undefined>;
     /**
@@ -213,7 +213,7 @@ export interface ProjectState {
      */
     estimatedBalance?: pulumi.Input<string>;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**
@@ -269,7 +269,7 @@ export interface ProjectArgs {
      */
     defaultCloud?: pulumi.Input<string>;
     /**
-     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+     * Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
      */
     parentId?: pulumi.Input<string>;
     /**

@@ -13,19 +13,19 @@ namespace Pulumi.Aiven.Inputs
     public sealed class RedisRedisUserConfigMigrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database name for bootstrapping the initial connection.
+        /// Database name for bootstrapping the initial connection. Example: `defaultdb`.
         /// </summary>
         [Input("dbname")]
         public Input<string>? Dbname { get; set; }
 
         /// <summary>
-        /// Hostname or IP address of the server where to migrate data from.
+        /// Hostname or IP address of the server where to migrate data from. Example: `my.server.com`.
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
 
         /// <summary>
-        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment).
+        /// Comma-separated list of databases, which should be ignored during migration (supported by MySQL and PostgreSQL only at the moment). Example: `db1,db2`.
         /// </summary>
         [Input("ignoreDbs")]
         public Input<string>? IgnoreDbs { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Password for authentication with the server where to migrate data from.
+        /// Password for authentication with the server where to migrate data from. Example: `jjKk45Nnd`.
         /// </summary>
         public Input<string>? Password
         {
@@ -53,19 +53,19 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Port number of the server where to migrate data from.
+        /// Port number of the server where to migrate data from. Example: `1234`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The server where to migrate data from is secured with SSL. The default value is `true`.
+        /// The server where to migrate data from is secured with SSL. Default: `true`.
         /// </summary>
         [Input("ssl")]
         public Input<bool>? Ssl { get; set; }
 
         /// <summary>
-        /// User name for authentication with the server where to migrate data from.
+        /// User name for authentication with the server where to migrate data from. Example: `myname`.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

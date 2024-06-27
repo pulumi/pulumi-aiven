@@ -37,17 +37,17 @@ public final class PgPgUserConfig {
      */
     private @Nullable String adminPassword;
     /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * @return Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     private @Nullable String adminUsername;
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     private @Nullable Integer backupHour;
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     private @Nullable Integer backupMinute;
@@ -57,17 +57,17 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean enableIpv6;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<PgPgUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -100,12 +100,12 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean pgReadReplica;
     /**
-     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String pgServiceToForkFrom;
     /**
-     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      * 
      */
     private @Nullable Boolean pgStatMonitorEnable;
@@ -117,7 +117,11 @@ public final class PgPgUserConfig {
     /**
      * @return System-wide settings for the pgaudit extension
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     private @Nullable PgPgUserConfigPgaudit pgaudit;
     /**
      * @return PGBouncer connection pooling settings
@@ -140,7 +144,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable PgPgUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -150,7 +154,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable PgPgUserConfigPublicAccess publicAccess;
     /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     private @Nullable String recoveryTargetTime;
@@ -160,12 +164,12 @@ public final class PgPgUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
      * 
      */
     private @Nullable Double sharedBuffersPercentage;
@@ -190,7 +194,7 @@ public final class PgPgUserConfig {
      */
     private @Nullable String variant;
     /**
-     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      * 
      */
     private @Nullable Integer workMem;
@@ -211,21 +215,21 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.adminPassword);
     }
     /**
-     * @return Custom username for admin user. This must be set only when a new service is being created.
+     * @return Custom username for admin user. This must be set only when a new service is being created. Example: `avnadmin`.
      * 
      */
     public Optional<String> adminUsername() {
         return Optional.ofNullable(this.adminUsername);
     }
     /**
-     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The hour of day (in UTC) when backup for the service is started. New backup is only started if previous backup has already completed. Example: `3`.
      * 
      */
     public Optional<Integer> backupHour() {
         return Optional.ofNullable(this.backupHour);
     }
     /**
-     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed.
+     * @return The minute of an hour when backup for the service is started. New backup is only started if previous backup has already completed. Example: `30`.
      * 
      */
     public Optional<Integer> backupMinute() {
@@ -239,21 +243,21 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.enableIpv6);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<PgPgUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -296,14 +300,14 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.pgReadReplica);
     }
     /**
-     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created.
+     * @return Name of the PG Service from which to fork (deprecated, use service*to*fork_from). This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> pgServiceToForkFrom() {
         return Optional.ofNullable(this.pgServiceToForkFrom);
     }
     /**
-     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. The default value is `false`.
+     * @return Enable the pg*stat*monitor extension. Enabling this extension will cause the cluster to be restarted.When this extension is enabled, pg*stat*statements results for utility commands are unreliable. Default: `false`.
      * 
      */
     public Optional<Boolean> pgStatMonitorEnable() {
@@ -319,7 +323,11 @@ public final class PgPgUserConfig {
     /**
      * @return System-wide settings for the pgaudit extension
      * 
+     * @deprecated
+     * This property is deprecated.
+     * 
      */
+    @Deprecated /* This property is deprecated. */
     public Optional<PgPgUserConfigPgaudit> pgaudit() {
         return Optional.ofNullable(this.pgaudit);
     }
@@ -352,7 +360,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -366,7 +374,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Recovery target time when forking a service. This has effect only when a new service is being created.
+     * @return Recovery target time when forking a service. This has effect only when a new service is being created. Example: `2019-01-01 23:34:45`.
      * 
      */
     public Optional<String> recoveryTargetTime() {
@@ -380,14 +388,14 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {
         return Optional.ofNullable(this.serviceToForkFrom);
     }
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value. Example: `41.5`.
      * 
      */
     public Optional<Double> sharedBuffersPercentage() {
@@ -422,7 +430,7 @@ public final class PgPgUserConfig {
         return Optional.ofNullable(this.variant);
     }
     /**
-     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB).
+     * @return Sets the maximum amount of memory to be used by a query operation (such as a sort or hash table) before writing to temporary disk files, in MB. Default is 1MB + 0.075% of total RAM (up to 32MB). Example: `4`.
      * 
      */
     public Optional<Integer> workMem() {

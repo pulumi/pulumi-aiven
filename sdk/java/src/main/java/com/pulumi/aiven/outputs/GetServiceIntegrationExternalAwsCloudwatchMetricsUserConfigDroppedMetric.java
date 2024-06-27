@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric {
     /**
-     * @return Identifier of a value in the metric.
+     * @return Identifier of a value in the metric. Example: `used`.
      * 
      */
     private String field;
     /**
-     * @return Identifier of the metric.
+     * @return Identifier of the metric. Example: `java.lang:Memory`.
      * 
      */
     private String metric;
 
     private GetServiceIntegrationExternalAwsCloudwatchMetricsUserConfigDroppedMetric() {}
     /**
-     * @return Identifier of a value in the metric.
+     * @return Identifier of a value in the metric. Example: `used`.
      * 
      */
     public String field() {
         return this.field;
     }
     /**
-     * @return Identifier of the metric.
+     * @return Identifier of the metric. Example: `java.lang:Memory`.
      * 
      */
     public String metric() {

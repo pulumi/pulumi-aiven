@@ -16,14 +16,14 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
     public static final ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs Empty = new ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs();
 
     /**
-     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
      * 
      */
     @Import(name="configStorageTopic")
     private @Nullable Output<String> configStorageTopic;
 
     /**
-     * @return The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+     * @return The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
      * 
      */
     public Optional<Output<String>> configStorageTopic() {
@@ -31,14 +31,14 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
     }
 
     /**
-     * A unique string that identifies the Connect cluster group this worker belongs to.
+     * A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
      * 
      */
     @Import(name="groupId")
     private @Nullable Output<String> groupId;
 
     /**
-     * @return A unique string that identifies the Connect cluster group this worker belongs to.
+     * @return A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
      * 
      */
     public Optional<Output<String>> groupId() {
@@ -46,14 +46,14 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
     }
 
     /**
-     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
      * 
      */
     @Import(name="offsetStorageTopic")
     private @Nullable Output<String> offsetStorageTopic;
 
     /**
-     * @return The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+     * @return The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
      * 
      */
     public Optional<Output<String>> offsetStorageTopic() {
@@ -61,14 +61,14 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
     }
 
     /**
-     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
      * 
      */
     @Import(name="statusStorageTopic")
     private @Nullable Output<String> statusStorageTopic;
 
     /**
-     * @return The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+     * @return The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
      * 
      */
     public Optional<Output<String>> statusStorageTopic() {
@@ -103,7 +103,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param configStorageTopic The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+         * @param configStorageTopic The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param configStorageTopic The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id.
+         * @param configStorageTopic The name of the topic where connector and task configuration data are stored.This must be the same for all workers with the same group_id. Example: `__connect_configs`.
          * 
          * @return builder
          * 
@@ -124,7 +124,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param groupId A unique string that identifies the Connect cluster group this worker belongs to.
+         * @param groupId A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param groupId A unique string that identifies the Connect cluster group this worker belongs to.
+         * @param groupId A unique string that identifies the Connect cluster group this worker belongs to. Example: `connect`.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param offsetStorageTopic The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+         * @param offsetStorageTopic The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param offsetStorageTopic The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id.
+         * @param offsetStorageTopic The name of the topic where connector and task configuration offsets are stored.This must be the same for all workers with the same group_id. Example: `__connect_offsets`.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param statusStorageTopic The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+         * @param statusStorageTopic The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ServiceIntegrationKafkaConnectUserConfigKafkaConnectArgs exte
         }
 
         /**
-         * @param statusStorageTopic The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id.
+         * @param statusStorageTopic The name of the topic where connector and task configuration status updates are stored.This must be the same for all workers with the same group_id. Example: `__connect_status`.
          * 
          * @return builder
          * 

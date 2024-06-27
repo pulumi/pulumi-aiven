@@ -17,14 +17,14 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
     public static final M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs Empty = new M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs();
 
     /**
-     * The resolution for the matching namespace.
+     * The resolution for the matching namespace. Example: `30s`.
      * 
      */
     @Import(name="resolution", required=true)
     private Output<String> resolution;
 
     /**
-     * @return The resolution for the matching namespace.
+     * @return The resolution for the matching namespace. Example: `30s`.
      * 
      */
     public Output<String> resolution() {
@@ -32,14 +32,14 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
     }
 
     /**
-     * The retention period of the matching namespace.
+     * The retention period of the matching namespace. Example: `48h`.
      * 
      */
     @Import(name="retention")
     private @Nullable Output<String> retention;
 
     /**
-     * @return The retention period of the matching namespace.
+     * @return The retention period of the matching namespace. Example: `48h`.
      * 
      */
     public Optional<Output<String>> retention() {
@@ -72,7 +72,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
         }
 
         /**
-         * @param resolution The resolution for the matching namespace.
+         * @param resolution The resolution for the matching namespace. Example: `30s`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
         }
 
         /**
-         * @param resolution The resolution for the matching namespace.
+         * @param resolution The resolution for the matching namespace. Example: `30s`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
         }
 
         /**
-         * @param retention The retention period of the matching namespace.
+         * @param retention The retention period of the matching namespace. Example: `48h`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class M3DbM3dbUserConfigRulesMappingNamespacesObjectArgs extends co
         }
 
         /**
-         * @param retention The retention period of the matching namespace.
+         * @param retention The retention period of the matching namespace. Example: `48h`.
          * 
          * @return builder
          * 

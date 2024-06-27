@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationClickhouseKafkaUserConfigTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        /// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
         /// </summary>
         [Input("autoOffsetReset")]
         public Input<string>? AutoOffsetReset { get; set; }
@@ -31,61 +31,61 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+        /// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
         /// </summary>
         [Input("dataFormat", required: true)]
         public Input<string> DataFormat { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
         /// </summary>
         [Input("dateTimeInputFormat")]
         public Input<string>? DateTimeInputFormat { get; set; }
 
         /// <summary>
-        /// Kafka consumers group. The default value is `clickhouse`.
+        /// Kafka consumers group. Default: `clickhouse`.
         /// </summary>
         [Input("groupName", required: true)]
         public Input<string> GroupName { get; set; } = null!;
 
         /// <summary>
-        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
         /// </summary>
         [Input("handleErrorMode")]
         public Input<string>? HandleErrorMode { get; set; }
 
         /// <summary>
-        /// Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+        /// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
         /// </summary>
         [Input("maxBlockSize")]
         public Input<int>? MaxBlockSize { get; set; }
 
         /// <summary>
-        /// The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+        /// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
         /// </summary>
         [Input("maxRowsPerMessage")]
         public Input<int>? MaxRowsPerMessage { get; set; }
 
         /// <summary>
-        /// Name of the table.
+        /// Name of the table. Example: `events`.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The number of consumers per table per replica. The default value is `1`.
+        /// The number of consumers per table per replica. Default: `1`.
         /// </summary>
         [Input("numConsumers")]
         public Input<int>? NumConsumers { get; set; }
 
         /// <summary>
-        /// Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+        /// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
         /// </summary>
         [Input("pollMaxBatchSize")]
         public Input<int>? PollMaxBatchSize { get; set; }
 
         /// <summary>
-        /// Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+        /// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
         /// </summary>
         [Input("skipBrokenMessages")]
         public Input<int>? SkipBrokenMessages { get; set; }

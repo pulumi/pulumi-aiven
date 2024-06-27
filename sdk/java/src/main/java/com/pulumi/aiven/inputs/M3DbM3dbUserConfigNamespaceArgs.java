@@ -18,14 +18,14 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
     public static final M3DbM3dbUserConfigNamespaceArgs Empty = new M3DbM3dbUserConfigNamespaceArgs();
 
     /**
-     * The name of the namespace.
+     * The name of the namespace. Example: `default`.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The name of the namespace.
+     * @return The name of the namespace. Example: `default`.
      * 
      */
     public Output<String> name() {
@@ -48,14 +48,14 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
     }
 
     /**
-     * The resolution for an aggregated namespace.
+     * The resolution for an aggregated namespace. Example: `30s`.
      * 
      */
     @Import(name="resolution")
     private @Nullable Output<String> resolution;
 
     /**
-     * @return The resolution for an aggregated namespace.
+     * @return The resolution for an aggregated namespace. Example: `30s`.
      * 
      */
     public Optional<Output<String>> resolution() {
@@ -105,7 +105,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the namespace.
+         * @param name The name of the namespace. Example: `default`.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param name The name of the namespace.
+         * @param name The name of the namespace. Example: `default`.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param resolution The resolution for an aggregated namespace.
+         * @param resolution The resolution for an aggregated namespace. Example: `30s`.
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class M3DbM3dbUserConfigNamespaceArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param resolution The resolution for an aggregated namespace.
+         * @param resolution The resolution for an aggregated namespace. Example: `30s`.
          * 
          * @return builder
          * 

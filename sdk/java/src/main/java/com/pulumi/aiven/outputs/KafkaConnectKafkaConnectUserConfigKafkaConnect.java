@@ -23,7 +23,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable String consumerAutoOffsetReset;
     /**
-     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      * 
      */
     private @Nullable Integer consumerFetchMaxBytes;
@@ -33,7 +33,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable String consumerIsolationLevel;
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      * 
      */
     private @Nullable Integer consumerMaxPartitionFetchBytes;
@@ -58,7 +58,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable Integer offsetFlushTimeoutMs;
     /**
-     * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will &#39;linger&#39; for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      * 
      */
     private @Nullable Integer producerBatchSize;
@@ -68,17 +68,17 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
      */
     private @Nullable Integer producerBufferMemory;
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     private @Nullable String producerCompressionType;
     /**
-     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      * 
      */
     private @Nullable Integer producerLingerMs;
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      * 
      */
     private @Nullable Integer producerMaxRequestSize;
@@ -109,7 +109,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.consumerAutoOffsetReset);
     }
     /**
-     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum.
+     * @return Records are fetched in batches by the consumer, and if the first record batch in the first non-empty partition of the fetch is larger than this value, the record batch will still be returned to ensure that the consumer can make progress. As such, this is not a absolute maximum. Example: `52428800`.
      * 
      */
     public Optional<Integer> consumerFetchMaxBytes() {
@@ -123,7 +123,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.consumerIsolationLevel);
     }
     /**
-     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress.
+     * @return Records are fetched in batches by the consumer.If the first record batch in the first non-empty partition of the fetch is larger than this limit, the batch will still be returned to ensure that the consumer can make progress. Example: `1048576`.
      * 
      */
     public Optional<Integer> consumerMaxPartitionFetchBytes() {
@@ -158,7 +158,7 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.offsetFlushTimeoutMs);
     }
     /**
-     * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will &#39;linger&#39; for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
+     * @return This setting gives the upper bound of the batch size to be sent. If there are fewer than this many bytes accumulated for this partition, the producer will `linger` for the linger.ms time waiting for more records to show up. A batch size of zero will disable batching entirely (defaults to 16384).
      * 
      */
     public Optional<Integer> producerBatchSize() {
@@ -172,21 +172,21 @@ public final class KafkaConnectKafkaConnectUserConfigKafkaConnect {
         return Optional.ofNullable(this.producerBufferMemory);
     }
     /**
-     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (&#39;gzip&#39;, &#39;snappy&#39;, &#39;lz4&#39;, &#39;zstd&#39;). It additionally accepts &#39;none&#39; which is the default and equivalent to no compression.
+     * @return Enum: `gzip`, `snappy`, `lz4`, `zstd`, `none`. Specify the default compression type for producers. This configuration accepts the standard compression codecs (`gzip`, `snappy`, `lz4`, `zstd`). It additionally accepts `none` which is the default and equivalent to no compression.
      * 
      */
     public Optional<String> producerCompressionType() {
         return Optional.ofNullable(this.producerCompressionType);
     }
     /**
-     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will &#39;linger&#39; for the specified time waiting for more records to show up. Defaults to 0.
+     * @return This setting gives the upper bound on the delay for batching: once there is batch.size worth of records for a partition it will be sent immediately regardless of this setting, however if there are fewer than this many bytes accumulated for this partition the producer will `linger` for the specified time waiting for more records to show up. Defaults to 0.
      * 
      */
     public Optional<Integer> producerLingerMs() {
         return Optional.ofNullable(this.producerLingerMs);
     }
     /**
-     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.
+     * @return This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests. Example: `1048576`.
      * 
      */
     public Optional<Integer> producerMaxRequestSize() {

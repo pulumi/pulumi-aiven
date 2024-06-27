@@ -44,14 +44,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     @Import(name="customDomain")
     private @Nullable Output<String> customDomain;
 
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<Output<String>> customDomain() {
@@ -104,14 +104,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<OpenSearchOpensearchUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -119,14 +119,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -134,7 +134,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -145,7 +145,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -172,14 +172,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Use index_patterns instead. The default value is `0`.
+     * Use index_patterns instead. Default: `0`.
      * 
      */
     @Import(name="maxIndexCount")
     private @Nullable Output<Integer> maxIndexCount;
 
     /**
-     * @return Use index_patterns instead. The default value is `0`.
+     * @return Use index_patterns instead. Default: `0`.
      * 
      */
     public Optional<Output<Integer>> maxIndexCount() {
@@ -277,14 +277,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Name of another project to fork a service from. This has effect only when a new service is being created.
+     * Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     @Import(name="projectToForkFrom")
     private @Nullable Output<String> projectToForkFrom;
 
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<Output<String>> projectToForkFrom() {
@@ -307,14 +307,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Name of the basebackup to restore in forked service.
+     * Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     @Import(name="recoveryBasebackupName")
     private @Nullable Output<String> recoveryBasebackupName;
 
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<Output<String>> recoveryBasebackupName() {
@@ -352,14 +352,14 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
     }
 
     /**
-     * Name of another service to fork from. This has effect only when a new service is being created.
+     * Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     @Import(name="serviceToForkFrom")
     private @Nullable Output<String> serviceToForkFrom;
 
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<Output<String>> serviceToForkFrom() {
@@ -449,7 +449,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+         * @param customDomain Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -605,7 +605,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -620,7 +620,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxIndexCount Use index_patterns instead. The default value is `0`.
+         * @param maxIndexCount Use index_patterns instead. Default: `0`.
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param maxIndexCount Use index_patterns instead. The default value is `0`.
+         * @param maxIndexCount Use index_patterns instead. Default: `0`.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created.
+         * @param projectToForkFrom Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
          * 
          * @return builder
          * 
@@ -858,7 +858,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -869,7 +869,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param recoveryBasebackupName Name of the basebackup to restore in forked service.
+         * @param recoveryBasebackupName Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
          * 
          * @return builder
          * 
@@ -921,7 +921,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 
@@ -932,7 +932,7 @@ public final class OpenSearchOpensearchUserConfigArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created.
+         * @param serviceToForkFrom Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
          * 
          * @return builder
          * 

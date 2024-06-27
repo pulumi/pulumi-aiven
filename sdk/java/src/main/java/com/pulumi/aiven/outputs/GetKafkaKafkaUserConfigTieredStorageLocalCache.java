@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetKafkaKafkaUserConfigTieredStorageLocalCache {
     /**
-     * @return Local cache size in bytes.
+     * @return Local cache size in bytes. Example: `1073741824`.
      * 
      * @deprecated
      * This property is deprecated.
@@ -23,7 +23,7 @@ public final class GetKafkaKafkaUserConfigTieredStorageLocalCache {
 
     private GetKafkaKafkaUserConfigTieredStorageLocalCache() {}
     /**
-     * @return Local cache size in bytes.
+     * @return Local cache size in bytes. Example: `1073741824`.
      * 
      * @deprecated
      * This property is deprecated.

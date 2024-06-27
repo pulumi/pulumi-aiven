@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceIntegrationClickhousePostgresqlUserConfigDatabase {
     /**
-     * @return PostgreSQL database to expose. The default value is `defaultdb`.
+     * @return PostgreSQL database to expose. Default: `defaultdb`.
      * 
      */
     private @Nullable String database;
     /**
-     * @return PostgreSQL schema to expose. The default value is `public`.
+     * @return PostgreSQL schema to expose. Default: `public`.
      * 
      */
     private @Nullable String schema;
 
     private ServiceIntegrationClickhousePostgresqlUserConfigDatabase() {}
     /**
-     * @return PostgreSQL database to expose. The default value is `defaultdb`.
+     * @return PostgreSQL database to expose. Default: `defaultdb`.
      * 
      */
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
     /**
-     * @return PostgreSQL schema to expose. The default value is `public`.
+     * @return PostgreSQL schema to expose. Default: `public`.
      * 
      */
     public Optional<String> schema() {

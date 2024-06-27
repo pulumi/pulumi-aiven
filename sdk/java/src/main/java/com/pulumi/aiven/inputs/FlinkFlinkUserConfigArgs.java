@@ -59,14 +59,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     @Import(name="ipFilterObjects")
     private @Nullable Output<List<FlinkFlinkUserConfigIpFilterObjectArgs>> ipFilterObjects;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public Optional<Output<List<FlinkFlinkUserConfigIpFilterObjectArgs>>> ipFilterObjects() {
@@ -74,14 +74,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     @Import(name="ipFilterStrings")
     private @Nullable Output<List<String>> ipFilterStrings;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public Optional<Output<List<String>>> ipFilterStrings() {
@@ -89,7 +89,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -100,7 +100,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<String>> ipFilters;
 
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -112,14 +112,14 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+     * Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
      * 
      */
     @Import(name="numberOfTaskSlots")
     private @Nullable Output<Integer> numberOfTaskSlots;
 
     /**
-     * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+     * @return Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
      * 
      */
     public Optional<Output<Integer>> numberOfTaskSlots() {
@@ -254,7 +254,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -275,7 +275,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+         * @param ipFilterObjects Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -306,7 +306,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilterStrings Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -331,7 +331,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -345,7 +345,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param ipFilters Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+         * @param ipFilters Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param numberOfTaskSlots Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+         * @param numberOfTaskSlots Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class FlinkFlinkUserConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param numberOfTaskSlots Task slots per node. For a 3 node plan, total number of task slots is 3x this value.
+         * @param numberOfTaskSlots Task slots per node. For a 3 node plan, total number of task slots is 3x this value. Example: `1`.
          * 
          * @return builder
          * 

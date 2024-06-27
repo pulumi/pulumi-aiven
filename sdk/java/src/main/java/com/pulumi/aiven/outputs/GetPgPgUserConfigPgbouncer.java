@@ -15,22 +15,22 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPgPgUserConfigPgbouncer {
     /**
-     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
+     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
      * 
      */
     private @Nullable Integer autodbIdleTimeout;
     /**
-     * @return Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * @return Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
      * 
      */
     private @Nullable Integer autodbMaxDbConnections;
     /**
-     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
+     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
      * 
      */
     private @Nullable String autodbPoolMode;
     /**
-     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. The default value is `0`.
+     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. Default: `0`.
      * 
      */
     private @Nullable Integer autodbPoolSize;
@@ -40,50 +40,50 @@ public final class GetPgPgUserConfigPgbouncer {
      */
     private @Nullable List<String> ignoreStartupParameters;
     /**
-     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      * 
      */
     private @Nullable Integer minPoolSize;
     /**
-     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      * 
      */
     private @Nullable Integer serverIdleTimeout;
     /**
-     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
      * 
      */
     private @Nullable Integer serverLifetime;
     /**
-     * @return Run server_reset_query (DISCARD ALL) in all pooling modes. The default value is `false`.
+     * @return Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
     private @Nullable Boolean serverResetQueryAlways;
 
     private GetPgPgUserConfigPgbouncer() {}
     /**
-     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). The default value is `3600`.
+     * @return If the automatically created database pools have been unused this many seconds, they are freed. If 0 then timeout is disabled. (seconds). Default: `3600`.
      * 
      */
     public Optional<Integer> autodbIdleTimeout() {
         return Optional.ofNullable(this.autodbIdleTimeout);
     }
     /**
-     * @return Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited.
+     * @return Do not allow more than this many server connections per database (regardless of user). Setting it to 0 means unlimited. Example: `0`.
      * 
      */
     public Optional<Integer> autodbMaxDbConnections() {
         return Optional.ofNullable(this.autodbMaxDbConnections);
     }
     /**
-     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. The default value is `transaction`.
+     * @return Enum: `session`, `transaction`, `statement`. PGBouncer pool mode. Default: `transaction`.
      * 
      */
     public Optional<String> autodbPoolMode() {
         return Optional.ofNullable(this.autodbPoolMode);
     }
     /**
-     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. The default value is `0`.
+     * @return If non-zero then create automatically a pool of that size per user when a pool doesn&#39;t exist. Default: `0`.
      * 
      */
     public Optional<Integer> autodbPoolSize() {
@@ -97,28 +97,28 @@ public final class GetPgPgUserConfigPgbouncer {
         return this.ignoreStartupParameters == null ? List.of() : this.ignoreStartupParameters;
     }
     /**
-     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. The default value is `0`.
+     * @return Add more server connections to pool if below this number. Improves behavior when usual load comes suddenly back after period of total inactivity. The value is effectively capped at the pool size. Default: `0`.
      * 
      */
     public Optional<Integer> minPoolSize() {
         return Optional.ofNullable(this.minPoolSize);
     }
     /**
-     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). The default value is `600`.
+     * @return If a server connection has been idle more than this many seconds it will be dropped. If 0 then timeout is disabled. (seconds). Default: `600`.
      * 
      */
     public Optional<Integer> serverIdleTimeout() {
         return Optional.ofNullable(this.serverIdleTimeout);
     }
     /**
-     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds). The default value is `3600`.
+     * @return The pooler will close an unused server connection that has been connected longer than this. (seconds). Default: `3600`.
      * 
      */
     public Optional<Integer> serverLifetime() {
         return Optional.ofNullable(this.serverLifetime);
     }
     /**
-     * @return Run server_reset_query (DISCARD ALL) in all pooling modes. The default value is `false`.
+     * @return Run server_reset_query (DISCARD ALL) in all pooling modes. Default: `false`.
      * 
      */
     public Optional<Boolean> serverResetQueryAlways() {

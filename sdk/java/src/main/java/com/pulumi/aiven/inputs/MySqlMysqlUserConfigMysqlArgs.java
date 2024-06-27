@@ -19,14 +19,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     public static final MySqlMysqlUserConfigMysqlArgs Empty = new MySqlMysqlUserConfigMysqlArgs();
 
     /**
-     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      * 
      */
     @Import(name="connectTimeout")
     private @Nullable Output<Integer> connectTimeout;
 
     /**
-     * @return The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+     * @return The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
      * 
      */
     public Optional<Output<Integer>> connectTimeout() {
@@ -34,14 +34,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or &#39;SYSTEM&#39; to use the MySQL server default.
+     * Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
      * 
      */
     @Import(name="defaultTimeZone")
     private @Nullable Output<String> defaultTimeZone;
 
     /**
-     * @return Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or &#39;SYSTEM&#39; to use the MySQL server default.
+     * @return Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
      * 
      */
     public Optional<Output<String>> defaultTimeZone() {
@@ -49,14 +49,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      * 
      */
     @Import(name="groupConcatMaxLen")
     private @Nullable Output<Integer> groupConcatMaxLen;
 
     /**
-     * @return The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+     * @return The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
      * 
      */
     public Optional<Output<Integer>> groupConcatMaxLen() {
@@ -64,14 +64,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The time, in seconds, before cached statistics expire.
+     * The time, in seconds, before cached statistics expire. Example: `86400`.
      * 
      */
     @Import(name="informationSchemaStatsExpiry")
     private @Nullable Output<Integer> informationSchemaStatsExpiry;
 
     /**
-     * @return The time, in seconds, before cached statistics expire.
+     * @return The time, in seconds, before cached statistics expire. Example: `86400`.
      * 
      */
     public Optional<Output<Integer>> informationSchemaStatsExpiry() {
@@ -79,14 +79,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      * 
      */
     @Import(name="innodbChangeBufferMaxSize")
     private @Nullable Output<Integer> innodbChangeBufferMaxSize;
 
     /**
-     * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+     * @return Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> innodbChangeBufferMaxSize() {
@@ -94,14 +94,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
      * 
      */
     @Import(name="innodbFlushNeighbors")
     private @Nullable Output<Integer> innodbFlushNeighbors;
 
     /**
-     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+     * @return Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
      * 
      */
     public Optional<Output<Integer>> innodbFlushNeighbors() {
@@ -109,14 +109,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      * 
      */
     @Import(name="innodbFtMinTokenSize")
     private @Nullable Output<Integer> innodbFtMinTokenSize;
 
     /**
-     * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+     * @return Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
      * 
      */
     public Optional<Output<Integer>> innodbFtMinTokenSize() {
@@ -124,14 +124,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      * 
      */
     @Import(name="innodbFtServerStopwordTable")
     private @Nullable Output<String> innodbFtServerStopwordTable;
 
     /**
-     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+     * @return This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
      * 
      */
     public Optional<Output<String>> innodbFtServerStopwordTable() {
@@ -139,14 +139,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      * 
      */
     @Import(name="innodbLockWaitTimeout")
     private @Nullable Output<Integer> innodbLockWaitTimeout;
 
     /**
-     * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+     * @return The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
      * 
      */
     public Optional<Output<Integer>> innodbLockWaitTimeout() {
@@ -154,14 +154,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
      * 
      */
     @Import(name="innodbLogBufferSize")
     private @Nullable Output<Integer> innodbLogBufferSize;
 
     /**
-     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+     * @return The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
      * 
      */
     public Optional<Output<Integer>> innodbLogBufferSize() {
@@ -169,14 +169,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
      * 
      */
     @Import(name="innodbOnlineAlterLogMaxSize")
     private @Nullable Output<Integer> innodbOnlineAlterLogMaxSize;
 
     /**
-     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+     * @return The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
      * 
      */
     public Optional<Output<Integer>> innodbOnlineAlterLogMaxSize() {
@@ -199,14 +199,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      * 
      */
     @Import(name="innodbReadIoThreads")
     private @Nullable Output<Integer> innodbReadIoThreads;
 
     /**
-     * @return The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * @return The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      * 
      */
     public Optional<Output<Integer>> innodbReadIoThreads() {
@@ -229,14 +229,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
      * 
      */
     @Import(name="innodbThreadConcurrency")
     private @Nullable Output<Integer> innodbThreadConcurrency;
 
     /**
-     * @return Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+     * @return Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
      * 
      */
     public Optional<Output<Integer>> innodbThreadConcurrency() {
@@ -244,14 +244,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      * 
      */
     @Import(name="innodbWriteIoThreads")
     private @Nullable Output<Integer> innodbWriteIoThreads;
 
     /**
-     * @return The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+     * @return The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
      * 
      */
     public Optional<Output<Integer>> innodbWriteIoThreads() {
@@ -259,14 +259,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of seconds the server waits for activity on an interactive connection before closing it.
+     * The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
      * 
      */
     @Import(name="interactiveTimeout")
     private @Nullable Output<Integer> interactiveTimeout;
 
     /**
-     * @return The number of seconds the server waits for activity on an interactive connection before closing it.
+     * @return The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
      * 
      */
     public Optional<Output<Integer>> interactiveTimeout() {
@@ -289,14 +289,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+     * The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
      * 
      */
     @Import(name="longQueryTime")
     private @Nullable Output<Double> longQueryTime;
 
     /**
-     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+     * @return The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
      * 
      */
     public Optional<Output<Double>> longQueryTime() {
@@ -304,14 +304,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
      * 
      */
     @Import(name="maxAllowedPacket")
     private @Nullable Output<Integer> maxAllowedPacket;
 
     /**
-     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+     * @return Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
      * 
      */
     public Optional<Output<Integer>> maxAllowedPacket() {
@@ -319,14 +319,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
      * 
      */
     @Import(name="maxHeapTableSize")
     private @Nullable Output<Integer> maxHeapTableSize;
 
     /**
-     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+     * @return Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
      * 
      */
     public Optional<Output<Integer>> maxHeapTableSize() {
@@ -334,14 +334,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      * 
      */
     @Import(name="netBufferLength")
     private @Nullable Output<Integer> netBufferLength;
 
     /**
-     * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+     * @return Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
      * 
      */
     public Optional<Output<Integer>> netBufferLength() {
@@ -349,14 +349,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of seconds to wait for more data from a connection before aborting the read.
+     * The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
      * 
      */
     @Import(name="netReadTimeout")
     private @Nullable Output<Integer> netReadTimeout;
 
     /**
-     * @return The number of seconds to wait for more data from a connection before aborting the read.
+     * @return The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> netReadTimeout() {
@@ -364,14 +364,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      * 
      */
     @Import(name="netWriteTimeout")
     private @Nullable Output<Integer> netWriteTimeout;
 
     /**
-     * @return The number of seconds to wait for a block to be written to a connection before aborting the write.
+     * @return The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
      * 
      */
     public Optional<Output<Integer>> netWriteTimeout() {
@@ -394,14 +394,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
      * 
      */
     @Import(name="sortBufferSize")
     private @Nullable Output<Integer> sortBufferSize;
 
     /**
-     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+     * @return Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
      * 
      */
     public Optional<Output<Integer>> sortBufferSize() {
@@ -409,14 +409,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
      * 
      */
     @Import(name="sqlMode")
     private @Nullable Output<String> sqlMode;
 
     /**
-     * @return Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+     * @return Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
      * 
      */
     public Optional<Output<String>> sqlMode() {
@@ -439,14 +439,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+     * Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
      * 
      */
     @Import(name="tmpTableSize")
     private @Nullable Output<Integer> tmpTableSize;
 
     /**
-     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+     * @return Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
      * 
      */
     public Optional<Output<Integer>> tmpTableSize() {
@@ -454,14 +454,14 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      * 
      */
     @Import(name="waitTimeout")
     private @Nullable Output<Integer> waitTimeout;
 
     /**
-     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it.
+     * @return The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
      * 
      */
     public Optional<Output<Integer>> waitTimeout() {
@@ -522,7 +522,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectTimeout The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+         * @param connectTimeout The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param connectTimeout The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+         * @param connectTimeout The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param defaultTimeZone Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or &#39;SYSTEM&#39; to use the MySQL server default.
+         * @param defaultTimeZone Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param defaultTimeZone Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or &#39;SYSTEM&#39; to use the MySQL server default.
+         * @param defaultTimeZone Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupConcatMaxLen The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+         * @param groupConcatMaxLen The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param groupConcatMaxLen The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+         * @param groupConcatMaxLen The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param informationSchemaStatsExpiry The time, in seconds, before cached statistics expire.
+         * @param informationSchemaStatsExpiry The time, in seconds, before cached statistics expire. Example: `86400`.
          * 
          * @return builder
          * 
@@ -596,7 +596,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param informationSchemaStatsExpiry The time, in seconds, before cached statistics expire.
+         * @param informationSchemaStatsExpiry The time, in seconds, before cached statistics expire. Example: `86400`.
          * 
          * @return builder
          * 
@@ -606,7 +606,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+         * @param innodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
          * 
          * @return builder
          * 
@@ -617,7 +617,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+         * @param innodbChangeBufferMaxSize Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
          * 
          * @return builder
          * 
@@ -627,7 +627,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+         * @param innodbFlushNeighbors Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFtMinTokenSize Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+         * @param innodbFtMinTokenSize Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
          * 
          * @return builder
          * 
@@ -659,7 +659,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFtMinTokenSize Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+         * @param innodbFtMinTokenSize Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
          * 
          * @return builder
          * 
@@ -669,7 +669,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFtServerStopwordTable This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+         * @param innodbFtServerStopwordTable This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
          * 
          * @return builder
          * 
@@ -680,7 +680,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbFtServerStopwordTable This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+         * @param innodbFtServerStopwordTable This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
          * 
          * @return builder
          * 
@@ -690,7 +690,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLockWaitTimeout The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+         * @param innodbLockWaitTimeout The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
          * 
          * @return builder
          * 
@@ -701,7 +701,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLockWaitTimeout The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+         * @param innodbLockWaitTimeout The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
          * 
          * @return builder
          * 
@@ -711,7 +711,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
          * 
          * @return builder
          * 
@@ -722,7 +722,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+         * @param innodbLogBufferSize The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
          * 
          * @return builder
          * 
@@ -732,7 +732,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
          * 
          * @return builder
          * 
@@ -743,7 +743,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+         * @param innodbOnlineAlterLogMaxSize The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
          * 
          * @return builder
          * 
@@ -774,7 +774,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbReadIoThreads The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * @param innodbReadIoThreads The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
          * 
          * @return builder
          * 
@@ -785,7 +785,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbReadIoThreads The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * @param innodbReadIoThreads The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
          * 
          * @return builder
          * 
@@ -816,7 +816,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbThreadConcurrency Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+         * @param innodbThreadConcurrency Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
          * 
          * @return builder
          * 
@@ -827,7 +827,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbThreadConcurrency Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+         * @param innodbThreadConcurrency Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
          * 
          * @return builder
          * 
@@ -837,7 +837,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbWriteIoThreads The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * @param innodbWriteIoThreads The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
          * 
          * @return builder
          * 
@@ -848,7 +848,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param innodbWriteIoThreads The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+         * @param innodbWriteIoThreads The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
          * 
          * @return builder
          * 
@@ -858,7 +858,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interactiveTimeout The number of seconds the server waits for activity on an interactive connection before closing it.
+         * @param interactiveTimeout The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
          * 
          * @return builder
          * 
@@ -869,7 +869,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param interactiveTimeout The number of seconds the server waits for activity on an interactive connection before closing it.
+         * @param interactiveTimeout The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
          * 
          * @return builder
          * 
@@ -900,7 +900,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
          * 
          * @return builder
          * 
@@ -911,7 +911,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+         * @param longQueryTime The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
          * 
          * @return builder
          * 
@@ -921,7 +921,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
          * 
          * @return builder
          * 
@@ -932,7 +932,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+         * @param maxAllowedPacket Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
          * 
          * @return builder
          * 
@@ -942,7 +942,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
          * 
          * @return builder
          * 
@@ -953,7 +953,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+         * @param maxHeapTableSize Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
          * 
          * @return builder
          * 
@@ -963,7 +963,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netBufferLength Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+         * @param netBufferLength Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
          * 
          * @return builder
          * 
@@ -974,7 +974,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netBufferLength Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+         * @param netBufferLength Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
          * 
          * @return builder
          * 
@@ -984,7 +984,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netReadTimeout The number of seconds to wait for more data from a connection before aborting the read.
+         * @param netReadTimeout The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
          * 
          * @return builder
          * 
@@ -995,7 +995,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netReadTimeout The number of seconds to wait for more data from a connection before aborting the read.
+         * @param netReadTimeout The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
          * 
          * @return builder
          * 
@@ -1005,7 +1005,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netWriteTimeout The number of seconds to wait for a block to be written to a connection before aborting the write.
+         * @param netWriteTimeout The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
          * 
          * @return builder
          * 
@@ -1016,7 +1016,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param netWriteTimeout The number of seconds to wait for a block to be written to a connection before aborting the write.
+         * @param netWriteTimeout The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
          * 
          * @return builder
          * 
@@ -1047,7 +1047,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
          * 
          * @return builder
          * 
@@ -1058,7 +1058,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+         * @param sortBufferSize Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
          * 
          * @return builder
          * 
@@ -1068,7 +1068,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sqlMode Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+         * @param sqlMode Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
          * 
          * @return builder
          * 
@@ -1079,7 +1079,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sqlMode Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+         * @param sqlMode Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
          * 
          * @return builder
          * 
@@ -1110,7 +1110,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
          * 
          * @return builder
          * 
@@ -1121,7 +1121,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+         * @param tmpTableSize Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
          * 
          * @return builder
          * 
@@ -1131,7 +1131,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it.
+         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
          * 
          * @return builder
          * 
@@ -1142,7 +1142,7 @@ public final class MySqlMysqlUserConfigMysqlArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it.
+         * @param waitTimeout The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
          * 
          * @return builder
          * 

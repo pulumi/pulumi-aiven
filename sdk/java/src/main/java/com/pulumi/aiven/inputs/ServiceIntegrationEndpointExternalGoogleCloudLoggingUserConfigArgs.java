@@ -15,14 +15,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     public static final ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs Empty = new ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfigArgs();
 
     /**
-     * Google Cloud Logging log id.
+     * Google Cloud Logging log id. Example: `syslog`.
      * 
      */
     @Import(name="logId", required=true)
     private Output<String> logId;
 
     /**
-     * @return Google Cloud Logging log id.
+     * @return Google Cloud Logging log id. Example: `syslog`.
      * 
      */
     public Output<String> logId() {
@@ -30,14 +30,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     }
 
     /**
-     * GCP project id.
+     * GCP project id. Example: `snappy-photon-12345`.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return GCP project id.
+     * @return GCP project id. Example: `snappy-photon-12345`.
      * 
      */
     public Output<String> projectId() {
@@ -45,14 +45,14 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
     }
 
     /**
-     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
      * 
      */
     @Import(name="serviceAccountCredentials", required=true)
     private Output<String> serviceAccountCredentials;
 
     /**
-     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+     * @return This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
      * 
      */
     public Output<String> serviceAccountCredentials() {
@@ -86,7 +86,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param logId Google Cloud Logging log id.
+         * @param logId Google Cloud Logging log id. Example: `syslog`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param logId Google Cloud Logging log id.
+         * @param logId Google Cloud Logging log id. Example: `syslog`.
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param projectId GCP project id.
+         * @param projectId GCP project id. Example: `snappy-photon-12345`.
          * 
          * @return builder
          * 
@@ -118,7 +118,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param projectId GCP project id.
+         * @param projectId GCP project id. Example: `snappy-photon-12345`.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ServiceIntegrationEndpointExternalGoogleCloudLoggingUserConfi
         }
 
         /**
-         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys.
+         * @param serviceAccountCredentials This is a JSON object with the fields documented in https://cloud.google.com/iam/docs/creating-managing-service-account-keys. Example: `{&#34;type&#34;: &#34;service_account&#34;, ...`.
          * 
          * @return builder
          * 

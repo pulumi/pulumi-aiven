@@ -14,110 +14,126 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalPostgresql {
     /**
-     * @return Default database.
+     * @return Default database. Example: `testdb`.
      * 
      */
     private @Nullable String defaultDatabase;
     /**
-     * @return Hostname or IP address of the server.
+     * @return Hostname or IP address of the server. Example: `my.server.com`.
      * 
      */
     private String host;
     /**
-     * @return Password.
+     * @return Password. Example: `jjKk45Nnd`.
      * 
      */
     private @Nullable String password;
     /**
-     * @return Port number of the server.
+     * @return Port number of the server. Example: `5432`.
      * 
      */
     private Integer port;
     /**
-     * @return Client certificate.
+     * @return Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String sslClientCertificate;
     /**
-     * @return Client key.
+     * @return Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      * 
      */
     private @Nullable String sslClientKey;
     /**
-     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      * 
      */
     private @Nullable String sslMode;
     /**
-     * @return SSL Root Cert.
+     * @return SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String sslRootCert;
     /**
-     * @return User name.
+     * @return User name. Example: `myname`.
      * 
      */
     private String username;
 
     private GetServiceIntegrationEndpointExternalPostgresql() {}
     /**
-     * @return Default database.
+     * @return Default database. Example: `testdb`.
      * 
      */
     public Optional<String> defaultDatabase() {
         return Optional.ofNullable(this.defaultDatabase);
     }
     /**
-     * @return Hostname or IP address of the server.
+     * @return Hostname or IP address of the server. Example: `my.server.com`.
      * 
      */
     public String host() {
         return this.host;
     }
     /**
-     * @return Password.
+     * @return Password. Example: `jjKk45Nnd`.
      * 
      */
     public Optional<String> password() {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Port number of the server.
+     * @return Port number of the server. Example: `5432`.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return Client certificate.
+     * @return Client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> sslClientCertificate() {
         return Optional.ofNullable(this.sslClientCertificate);
     }
     /**
-     * @return Client key.
+     * @return Client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----`.
      * 
      */
     public Optional<String> sslClientKey() {
         return Optional.ofNullable(this.sslClientKey);
     }
     /**
-     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+     * @return Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
      * 
      */
     public Optional<String> sslMode() {
         return Optional.ofNullable(this.sslMode);
     }
     /**
-     * @return SSL Root Cert.
+     * @return SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> sslRootCert() {
         return Optional.ofNullable(this.sslRootCert);
     }
     /**
-     * @return User name.
+     * @return User name. Example: `myname`.
      * 
      */
     public String username() {

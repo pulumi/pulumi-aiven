@@ -15,122 +15,140 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationEndpointRsyslogUserConfig {
     /**
-     * @return PEM encoded CA certificate.
+     * @return PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String ca;
     /**
-     * @return PEM encoded client certificate.
+     * @return PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String cert;
     /**
-     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      * 
      */
     private String format;
     /**
-     * @return PEM encoded client key.
+     * @return PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     private @Nullable String key;
     /**
-     * @return Custom syslog message format.
+     * @return Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      * 
      */
     private @Nullable String logline;
     /**
-     * @return Rsyslog max message size. The default value is `8192`.
+     * @return Rsyslog max message size. Default: `8192`.
      * 
      */
     private @Nullable Integer maxMessageSize;
     /**
-     * @return Rsyslog server port. The default value is `514`.
+     * @return Rsyslog server port. Default: `514`.
      * 
      */
     private Integer port;
     /**
-     * @return Structured data block for log message.
+     * @return Structured data block for log message. Example: `TOKEN tag=&#34;LiteralValue&#34;`.
      * 
      */
     private @Nullable String sd;
     /**
-     * @return Rsyslog server IP address or hostname.
+     * @return Rsyslog server IP address or hostname. Example: `logs.example.com`.
      * 
      */
     private String server;
     /**
-     * @return Require TLS. The default value is `true`.
+     * @return Require TLS. Default: `true`.
      * 
      */
     private Boolean tls;
 
     private GetServiceIntegrationEndpointRsyslogUserConfig() {}
     /**
-     * @return PEM encoded CA certificate.
+     * @return PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
     /**
-     * @return PEM encoded client certificate.
+     * @return PEM encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> cert() {
         return Optional.ofNullable(this.cert);
     }
     /**
-     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. The default value is `rfc5424`.
+     * @return Enum: `rfc5424`, `rfc3164`, `custom`. Message format. Default: `rfc5424`.
      * 
      */
     public String format() {
         return this.format;
     }
     /**
-     * @return PEM encoded client key.
+     * @return PEM encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+     * ...
+     * -----END PRIVATE KEY-----
+     * `.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Custom syslog message format.
+     * @return Custom syslog message format. Example: `&lt;%pri%&gt;%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%`.
      * 
      */
     public Optional<String> logline() {
         return Optional.ofNullable(this.logline);
     }
     /**
-     * @return Rsyslog max message size. The default value is `8192`.
+     * @return Rsyslog max message size. Default: `8192`.
      * 
      */
     public Optional<Integer> maxMessageSize() {
         return Optional.ofNullable(this.maxMessageSize);
     }
     /**
-     * @return Rsyslog server port. The default value is `514`.
+     * @return Rsyslog server port. Default: `514`.
      * 
      */
     public Integer port() {
         return this.port;
     }
     /**
-     * @return Structured data block for log message.
+     * @return Structured data block for log message. Example: `TOKEN tag=&#34;LiteralValue&#34;`.
      * 
      */
     public Optional<String> sd() {
         return Optional.ofNullable(this.sd);
     }
     /**
-     * @return Rsyslog server IP address or hostname.
+     * @return Rsyslog server IP address or hostname. Example: `logs.example.com`.
      * 
      */
     public String server() {
         return this.server;
     }
     /**
-     * @return Require TLS. The default value is `true`.
+     * @return Require TLS. Default: `true`.
      * 
      */
     public Boolean tls() {

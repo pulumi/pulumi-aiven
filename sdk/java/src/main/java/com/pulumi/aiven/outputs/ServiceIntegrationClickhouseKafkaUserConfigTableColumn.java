@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class ServiceIntegrationClickhouseKafkaUserConfigTableColumn {
     /**
-     * @return Column name.
+     * @return Column name. Example: `key`.
      * 
      */
     private String name;
     /**
-     * @return Column type.
+     * @return Column type. Example: `UInt64`.
      * 
      */
     private String type;
 
     private ServiceIntegrationClickhouseKafkaUserConfigTableColumn() {}
     /**
-     * @return Column name.
+     * @return Column name. Example: `key`.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Column type.
+     * @return Column type. Example: `UInt64`.
      * 
      */
     public String type() {

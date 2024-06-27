@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationClickhouseKafkaUserConfigTableResult
     {
         /// <summary>
-        /// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. The default value is `earliest`.
+        /// Enum: `smallest`, `earliest`, `beginning`, `largest`, `latest`, `end`. Action to take when there is no initial offset in offset store or the desired offset is out of range. Default: `earliest`.
         /// </summary>
         public readonly string? AutoOffsetReset;
         /// <summary>
@@ -22,43 +22,43 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceIntegrationClickhouseKafkaUserConfigTableColumnResult> Columns;
         /// <summary>
-        /// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`. Message data format. The default value is `JSONEachRow`.
+        /// Enum: `Avro`, `CSV`, `JSONAsString`, `JSONCompactEachRow`, `JSONCompactStringsEachRow`, `JSONEachRow`, `JSONStringsEachRow`, `MsgPack`, `TSKV`, `TSV`, `TabSeparated`, `RawBLOB`, `AvroConfluent`, `Parquet`. Message data format. Default: `JSONEachRow`.
         /// </summary>
         public readonly string DataFormat;
         /// <summary>
-        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. The default value is `basic`.
+        /// Enum: `basic`, `best_effort`, `best_effort_us`. Method to read DateTime from text input formats. Default: `basic`.
         /// </summary>
         public readonly string? DateTimeInputFormat;
         /// <summary>
-        /// Kafka consumers group. The default value is `clickhouse`.
+        /// Kafka consumers group. Default: `clickhouse`.
         /// </summary>
         public readonly string GroupName;
         /// <summary>
-        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. The default value is `default`.
+        /// Enum: `default`, `stream`. How to handle errors for Kafka engine. Default: `default`.
         /// </summary>
         public readonly string? HandleErrorMode;
         /// <summary>
-        /// Number of row collected by poll(s) for flushing data from Kafka. The default value is `0`.
+        /// Number of row collected by poll(s) for flushing data from Kafka. Default: `0`.
         /// </summary>
         public readonly int? MaxBlockSize;
         /// <summary>
-        /// The maximum number of rows produced in one kafka message for row-based formats. The default value is `1`.
+        /// The maximum number of rows produced in one kafka message for row-based formats. Default: `1`.
         /// </summary>
         public readonly int? MaxRowsPerMessage;
         /// <summary>
-        /// Name of the table.
+        /// Name of the table. Example: `events`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The number of consumers per table per replica. The default value is `1`.
+        /// The number of consumers per table per replica. Default: `1`.
         /// </summary>
         public readonly int? NumConsumers;
         /// <summary>
-        /// Maximum amount of messages to be polled in a single Kafka poll. The default value is `0`.
+        /// Maximum amount of messages to be polled in a single Kafka poll. Default: `0`.
         /// </summary>
         public readonly int? PollMaxBatchSize;
         /// <summary>
-        /// Skip at least this number of broken messages from Kafka topic per block. The default value is `0`.
+        /// Skip at least this number of broken messages from Kafka topic per block. Default: `0`.
         /// </summary>
         public readonly int? SkipBrokenMessages;
         /// <summary>

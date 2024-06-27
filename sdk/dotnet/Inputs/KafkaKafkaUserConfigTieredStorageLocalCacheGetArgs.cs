@@ -13,7 +13,7 @@ namespace Pulumi.Aiven.Inputs
     public sealed class KafkaKafkaUserConfigTieredStorageLocalCacheGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Local cache size in bytes.
+        /// Local cache size in bytes. Example: `1073741824`.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

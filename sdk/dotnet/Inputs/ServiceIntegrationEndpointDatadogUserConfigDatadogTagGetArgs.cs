@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointDatadogUserConfigDatadogTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional tag explanation.
+        /// Optional tag explanation. Example: `Used to tag primary replica metrics`.
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
 
         /// <summary>
-        /// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix 'aiven-' are reserved for Aiven.
+        /// Tag format and usage are described here: https://docs.datadoghq.com/getting_started/tagging. Tags with prefix `aiven-` are reserved for Aiven. Example: `replica:primary`.
         /// </summary>
         [Input("tag", required: true)]
         public Input<string> Tag { get; set; } = null!;

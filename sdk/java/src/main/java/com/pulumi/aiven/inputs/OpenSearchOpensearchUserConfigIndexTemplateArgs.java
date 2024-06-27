@@ -16,14 +16,14 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
     public static final OpenSearchOpensearchUserConfigIndexTemplateArgs Empty = new OpenSearchOpensearchUserConfigIndexTemplateArgs();
 
     /**
-     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      * 
      */
     @Import(name="mappingNestedObjectsLimit")
     private @Nullable Output<Integer> mappingNestedObjectsLimit;
 
     /**
-     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      * 
      */
     public Optional<Output<Integer>> mappingNestedObjectsLimit() {
@@ -31,14 +31,14 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
     }
 
     /**
-     * The number of replicas each primary shard has.
+     * The number of replicas each primary shard has. Example: `1`.
      * 
      */
     @Import(name="numberOfReplicas")
     private @Nullable Output<Integer> numberOfReplicas;
 
     /**
-     * @return The number of replicas each primary shard has.
+     * @return The number of replicas each primary shard has. Example: `1`.
      * 
      */
     public Optional<Output<Integer>> numberOfReplicas() {
@@ -46,14 +46,14 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
     }
 
     /**
-     * The number of primary shards that an index should have.
+     * The number of primary shards that an index should have. Example: `1`.
      * 
      */
     @Import(name="numberOfShards")
     private @Nullable Output<Integer> numberOfShards;
 
     /**
-     * @return The number of primary shards that an index should have.
+     * @return The number of primary shards that an index should have. Example: `1`.
      * 
      */
     public Optional<Output<Integer>> numberOfShards() {
@@ -87,7 +87,7 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
         }
 
         /**
-         * @param mappingNestedObjectsLimit The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+         * @param mappingNestedObjectsLimit The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
         }
 
         /**
-         * @param mappingNestedObjectsLimit The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+         * @param mappingNestedObjectsLimit The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
         }
 
         /**
-         * @param numberOfReplicas The number of replicas each primary shard has.
+         * @param numberOfReplicas The number of replicas each primary shard has. Example: `1`.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
         }
 
         /**
-         * @param numberOfReplicas The number of replicas each primary shard has.
+         * @param numberOfReplicas The number of replicas each primary shard has. Example: `1`.
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
         }
 
         /**
-         * @param numberOfShards The number of primary shards that an index should have.
+         * @param numberOfShards The number of primary shards that an index should have. Example: `1`.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class OpenSearchOpensearchUserConfigIndexTemplateArgs extends com.p
         }
 
         /**
-         * @param numberOfShards The number of primary shards that an index should have.
+         * @param numberOfShards The number of primary shards that an index should have. Example: `1`.
          * 
          * @return builder
          * 

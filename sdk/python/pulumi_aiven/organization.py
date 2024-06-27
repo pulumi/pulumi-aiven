@@ -142,7 +142,7 @@ class Organization(pulumi.CustomResource):
                  timeouts: Optional[pulumi.Input[pulumi.InputType['OrganizationTimeoutsArgs']]] = None,
                  __props__=None):
         """
-        Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
+        Creates and manages an [organization](https://aiven.io/docs/platform/concepts/orgs-units-projects).
 
         ## Example Usage
 
@@ -170,7 +170,7 @@ class Organization(pulumi.CustomResource):
                  args: Optional[OrganizationArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
+        Creates and manages an [organization](https://aiven.io/docs/platform/concepts/orgs-units-projects).
 
         ## Example Usage
 

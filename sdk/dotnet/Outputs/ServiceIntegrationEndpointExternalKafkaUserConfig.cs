@@ -14,7 +14,7 @@ namespace Pulumi.Aiven.Outputs
     public sealed class ServiceIntegrationEndpointExternalKafkaUserConfig
     {
         /// <summary>
-        /// Bootstrap servers.
+        /// Bootstrap servers. Example: `10.0.0.1:9092,10.0.0.2:9092`.
         /// </summary>
         public readonly string BootstrapServers;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string? SaslMechanism;
         /// <summary>
-        /// Password for SASL PLAIN mechanism in the Kafka server.
+        /// Password for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
         /// </summary>
         public readonly string? SaslPlainPassword;
         /// <summary>
-        /// Username for SASL PLAIN mechanism in the Kafka server.
+        /// Username for SASL PLAIN mechanism in the Kafka server. Example: `admin`.
         /// </summary>
         public readonly string? SaslPlainUsername;
         /// <summary>
@@ -34,15 +34,24 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly string SecurityProtocol;
         /// <summary>
-        /// PEM-encoded CA certificate.
+        /// PEM-encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? SslCaCert;
         /// <summary>
-        /// PEM-encoded client certificate.
+        /// PEM-encoded client certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         public readonly string? SslClientCert;
         /// <summary>
-        /// PEM-encoded client key.
+        /// PEM-encoded client key. Example: `-----BEGIN PRIVATE KEY-----
+        /// ...
+        /// -----END PRIVATE KEY-----
+        /// `.
         /// </summary>
         public readonly string? SslClientKey;
         /// <summary>

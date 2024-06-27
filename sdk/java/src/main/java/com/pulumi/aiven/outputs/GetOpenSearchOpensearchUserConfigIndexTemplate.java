@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetOpenSearchOpensearchUserConfigIndexTemplate {
     /**
-     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      * 
      */
     private @Nullable Integer mappingNestedObjectsLimit;
     /**
-     * @return The number of replicas each primary shard has.
+     * @return The number of replicas each primary shard has. Example: `1`.
      * 
      */
     private @Nullable Integer numberOfReplicas;
     /**
-     * @return The number of primary shards that an index should have.
+     * @return The number of primary shards that an index should have. Example: `1`.
      * 
      */
     private @Nullable Integer numberOfShards;
 
     private GetOpenSearchOpensearchUserConfigIndexTemplate() {}
     /**
-     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000.
+     * @return The maximum number of nested JSON objects that a single document can contain across all nested types. This limit helps to prevent out of memory errors when a document contains too many nested objects. Default is 10000. Example: `10000`.
      * 
      */
     public Optional<Integer> mappingNestedObjectsLimit() {
         return Optional.ofNullable(this.mappingNestedObjectsLimit);
     }
     /**
-     * @return The number of replicas each primary shard has.
+     * @return The number of replicas each primary shard has. Example: `1`.
      * 
      */
     public Optional<Integer> numberOfReplicas() {
         return Optional.ofNullable(this.numberOfReplicas);
     }
     /**
-     * @return The number of primary shards that an index should have.
+     * @return The number of primary shards that an index should have. Example: `1`.
      * 
      */
     public Optional<Integer> numberOfShards() {

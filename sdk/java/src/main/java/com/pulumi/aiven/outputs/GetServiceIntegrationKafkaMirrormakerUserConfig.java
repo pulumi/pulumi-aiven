@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
     /**
-     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
+     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      * 
      */
     private @Nullable String clusterAlias;
@@ -25,7 +25,7 @@ public final class GetServiceIntegrationKafkaMirrormakerUserConfig {
 
     private GetServiceIntegrationKafkaMirrormakerUserConfig() {}
     /**
-     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, &#39;.&#39;, &#39;_&#39;, and &#39;-&#39;.
+     * @return The alias under which the Kafka cluster is known to MirrorMaker. Can contain the following symbols: ASCII alphanumerics, `.`, `_`, and `-`. Example: `kafka-abc`.
      * 
      */
     public Optional<String> clusterAlias() {

@@ -15,62 +15,68 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig {
     /**
-     * @return PEM encoded CA certificate.
+     * @return PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     private @Nullable String ca;
     /**
-     * @return Maximum number of days of logs to keep. The default value is `3`.
+     * @return Maximum number of days of logs to keep. Default: `3`.
      * 
      */
     private @Nullable Integer indexDaysMax;
     /**
-     * @return OpenSearch index prefix. The default value is `logs`.
+     * @return OpenSearch index prefix. Default: `logs`.
      * 
      */
     private String indexPrefix;
     /**
-     * @return OpenSearch request timeout limit. The default value is `10.0`.
+     * @return OpenSearch request timeout limit. Default: `10.0`.
      * 
      */
     private @Nullable Double timeout;
     /**
-     * @return OpenSearch connection URL.
+     * @return OpenSearch connection URL. Example: `https://user:passwd{@literal @}logs.example.com/`.
      * 
      */
     private String url;
 
     private GetServiceIntegrationEndpointExternalOpensearchLogsUserConfig() {}
     /**
-     * @return PEM encoded CA certificate.
+     * @return PEM encoded CA certificate. Example: `-----BEGIN CERTIFICATE-----
+     * ...
+     * -----END CERTIFICATE-----
+     * `.
      * 
      */
     public Optional<String> ca() {
         return Optional.ofNullable(this.ca);
     }
     /**
-     * @return Maximum number of days of logs to keep. The default value is `3`.
+     * @return Maximum number of days of logs to keep. Default: `3`.
      * 
      */
     public Optional<Integer> indexDaysMax() {
         return Optional.ofNullable(this.indexDaysMax);
     }
     /**
-     * @return OpenSearch index prefix. The default value is `logs`.
+     * @return OpenSearch index prefix. Default: `logs`.
      * 
      */
     public String indexPrefix() {
         return this.indexPrefix;
     }
     /**
-     * @return OpenSearch request timeout limit. The default value is `10.0`.
+     * @return OpenSearch request timeout limit. Default: `10.0`.
      * 
      */
     public Optional<Double> timeout() {
         return Optional.ofNullable(this.timeout);
     }
     /**
-     * @return OpenSearch connection URL.
+     * @return OpenSearch connection URL. Example: `https://user:passwd{@literal @}logs.example.com/`.
      * 
      */
     public String url() {

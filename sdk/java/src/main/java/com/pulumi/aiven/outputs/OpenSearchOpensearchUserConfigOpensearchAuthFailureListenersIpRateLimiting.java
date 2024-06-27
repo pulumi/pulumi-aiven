@@ -13,27 +13,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting {
     /**
-     * @return The number of login attempts allowed before login is blocked.
+     * @return The number of login attempts allowed before login is blocked. Example: `10`.
      * 
      */
     private @Nullable Integer allowedTries;
     /**
-     * @return The duration of time that login remains blocked after a failed login.
+     * @return The duration of time that login remains blocked after a failed login. Example: `600`.
      * 
      */
     private @Nullable Integer blockExpirySeconds;
     /**
-     * @return The maximum number of blocked IP addresses.
+     * @return The maximum number of blocked IP addresses. Example: `100000`.
      * 
      */
     private @Nullable Integer maxBlockedClients;
     /**
-     * @return The maximum number of tracked IP addresses that have failed login.
+     * @return The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      * 
      */
     private @Nullable Integer maxTrackedClients;
     /**
-     * @return The window of time in which the value for `allowed_tries` is enforced.
+     * @return The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
      * 
      */
     private @Nullable Integer timeWindowSeconds;
@@ -45,35 +45,35 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
 
     private OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersIpRateLimiting() {}
     /**
-     * @return The number of login attempts allowed before login is blocked.
+     * @return The number of login attempts allowed before login is blocked. Example: `10`.
      * 
      */
     public Optional<Integer> allowedTries() {
         return Optional.ofNullable(this.allowedTries);
     }
     /**
-     * @return The duration of time that login remains blocked after a failed login.
+     * @return The duration of time that login remains blocked after a failed login. Example: `600`.
      * 
      */
     public Optional<Integer> blockExpirySeconds() {
         return Optional.ofNullable(this.blockExpirySeconds);
     }
     /**
-     * @return The maximum number of blocked IP addresses.
+     * @return The maximum number of blocked IP addresses. Example: `100000`.
      * 
      */
     public Optional<Integer> maxBlockedClients() {
         return Optional.ofNullable(this.maxBlockedClients);
     }
     /**
-     * @return The maximum number of tracked IP addresses that have failed login.
+     * @return The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      * 
      */
     public Optional<Integer> maxTrackedClients() {
         return Optional.ofNullable(this.maxTrackedClients);
     }
     /**
-     * @return The window of time in which the value for `allowed_tries` is enforced.
+     * @return The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
      * 
      */
     public Optional<Integer> timeWindowSeconds() {

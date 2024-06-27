@@ -14,19 +14,19 @@ namespace Pulumi.Aiven.Outputs
     public sealed class GetServiceIntegrationEndpointExternalAwsCloudwatchLogsUserConfigResult
     {
         /// <summary>
-        /// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams.
+        /// AWS access key. Required permissions are logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents and logs:DescribeLogStreams. Example: `AAAAAAAAAAAAAAAAAAAA`.
         /// </summary>
         public readonly string AccessKey;
         /// <summary>
-        /// AWS CloudWatch log group name.
+        /// AWS CloudWatch log group name. Example: `my-log-group`.
         /// </summary>
         public readonly string? LogGroupName;
         /// <summary>
-        /// AWS region.
+        /// AWS region. Example: `us-east-1`.
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// AWS secret key.
+        /// AWS secret key. Example: `AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA`.
         /// </summary>
         public readonly string SecretKey;
 

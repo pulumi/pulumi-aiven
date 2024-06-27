@@ -13,67 +13,67 @@ namespace Pulumi.Aiven.Inputs
     public sealed class MySqlMysqlUserConfigMysqlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake.
+        /// The number of seconds that the mysqld server waits for a connect packet before responding with Bad handshake. Example: `10`.
         /// </summary>
         [Input("connectTimeout")]
         public Input<int>? ConnectTimeout { get; set; }
 
         /// <summary>
-        /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or 'SYSTEM' to use the MySQL server default.
+        /// Default server time zone as an offset from UTC (from -12:00 to +12:00), a time zone name, or `SYSTEM` to use the MySQL server default. Example: `+03:00`.
         /// </summary>
         [Input("defaultTimeZone")]
         public Input<string>? DefaultTimeZone { get; set; }
 
         /// <summary>
-        /// The maximum permitted result length in bytes for the GROUP_CONCAT() function.
+        /// The maximum permitted result length in bytes for the GROUP_CONCAT() function. Example: `1024`.
         /// </summary>
         [Input("groupConcatMaxLen")]
         public Input<int>? GroupConcatMaxLen { get; set; }
 
         /// <summary>
-        /// The time, in seconds, before cached statistics expire.
+        /// The time, in seconds, before cached statistics expire. Example: `86400`.
         /// </summary>
         [Input("informationSchemaStatsExpiry")]
         public Input<int>? InformationSchemaStatsExpiry { get; set; }
 
         /// <summary>
-        /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25.
+        /// Maximum size for the InnoDB change buffer, as a percentage of the total size of the buffer pool. Default is 25. Example: `30`.
         /// </summary>
         [Input("innodbChangeBufferMaxSize")]
         public Input<int>? InnodbChangeBufferMaxSize { get; set; }
 
         /// <summary>
-        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent.
+        /// Specifies whether flushing a page from the InnoDB buffer pool also flushes other dirty pages in the same extent (default is 1): 0 - dirty pages in the same extent are not flushed, 1 - flush contiguous dirty pages in the same extent, 2 - flush dirty pages in the same extent. Example: `0`.
         /// </summary>
         [Input("innodbFlushNeighbors")]
         public Input<int>? InnodbFlushNeighbors { get; set; }
 
         /// <summary>
-        /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service.
+        /// Minimum length of words that are stored in an InnoDB FULLTEXT index. Changing this parameter will lead to a restart of the MySQL service. Example: `3`.
         /// </summary>
         [Input("innodbFtMinTokenSize")]
         public Input<int>? InnodbFtMinTokenSize { get; set; }
 
         /// <summary>
-        /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables.
+        /// This option is used to specify your own InnoDB FULLTEXT index stopword list for all InnoDB tables. Example: `db_name/table_name`.
         /// </summary>
         [Input("innodbFtServerStopwordTable")]
         public Input<string>? InnodbFtServerStopwordTable { get; set; }
 
         /// <summary>
-        /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120.
+        /// The length of time in seconds an InnoDB transaction waits for a row lock before giving up. Default is 120. Example: `50`.
         /// </summary>
         [Input("innodbLockWaitTimeout")]
         public Input<int>? InnodbLockWaitTimeout { get; set; }
 
         /// <summary>
-        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk.
+        /// The size in bytes of the buffer that InnoDB uses to write to the log files on disk. Example: `16777216`.
         /// </summary>
         [Input("innodbLogBufferSize")]
         public Input<int>? InnodbLogBufferSize { get; set; }
 
         /// <summary>
-        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables.
+        /// The upper limit in bytes on the size of the temporary log files used during online DDL operations for InnoDB tables. Example: `134217728`.
         /// </summary>
         [Input("innodbOnlineAlterLogMaxSize")]
         public Input<int>? InnodbOnlineAlterLogMaxSize { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? InnodbPrintAllDeadlocks { get; set; }
 
         /// <summary>
-        /// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// The number of I/O threads for read operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         /// </summary>
         [Input("innodbReadIoThreads")]
         public Input<int>? InnodbReadIoThreads { get; set; }
@@ -97,19 +97,19 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? InnodbRollbackOnTimeout { get; set; }
 
         /// <summary>
-        /// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit).
+        /// Defines the maximum number of threads permitted inside of InnoDB. Default is 0 (infinite concurrency - no limit). Example: `10`.
         /// </summary>
         [Input("innodbThreadConcurrency")]
         public Input<int>? InnodbThreadConcurrency { get; set; }
 
         /// <summary>
-        /// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service.
+        /// The number of I/O threads for write operations in InnoDB. Default is 4. Changing this parameter will lead to a restart of the MySQL service. Example: `10`.
         /// </summary>
         [Input("innodbWriteIoThreads")]
         public Input<int>? InnodbWriteIoThreads { get; set; }
 
         /// <summary>
-        /// The number of seconds the server waits for activity on an interactive connection before closing it.
+        /// The number of seconds the server waits for activity on an interactive connection before closing it. Example: `3600`.
         /// </summary>
         [Input("interactiveTimeout")]
         public Input<int>? InteractiveTimeout { get; set; }
@@ -121,37 +121,37 @@ namespace Pulumi.Aiven.Inputs
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s.
+        /// The slow*query*logs work as SQL statements that take more than long*query*time seconds to execute. Default is 10s. Example: `10`.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }
 
         /// <summary>
-        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M).
+        /// Size of the largest message in bytes that can be received by the server. Default is 67108864 (64M). Example: `67108864`.
         /// </summary>
         [Input("maxAllowedPacket")]
         public Input<int>? MaxAllowedPacket { get; set; }
 
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M).
+        /// Limits the size of internal in-memory tables. Also set tmp*table*size. Default is 16777216 (16M). Example: `16777216`.
         /// </summary>
         [Input("maxHeapTableSize")]
         public Input<int>? MaxHeapTableSize { get; set; }
 
         /// <summary>
-        /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service.
+        /// Start sizes of connection buffer and result buffer. Default is 16384 (16K). Changing this parameter will lead to a restart of the MySQL service. Example: `16384`.
         /// </summary>
         [Input("netBufferLength")]
         public Input<int>? NetBufferLength { get; set; }
 
         /// <summary>
-        /// The number of seconds to wait for more data from a connection before aborting the read.
+        /// The number of seconds to wait for more data from a connection before aborting the read. Example: `30`.
         /// </summary>
         [Input("netReadTimeout")]
         public Input<int>? NetReadTimeout { get; set; }
 
         /// <summary>
-        /// The number of seconds to wait for a block to be written to a connection before aborting the write.
+        /// The number of seconds to wait for a block to be written to a connection before aborting the write. Example: `30`.
         /// </summary>
         [Input("netWriteTimeout")]
         public Input<int>? NetWriteTimeout { get; set; }
@@ -163,13 +163,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SlowQueryLog { get; set; }
 
         /// <summary>
-        /// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K).
+        /// Sort buffer size in bytes for ORDER BY optimization. Default is 262144 (256K). Example: `262144`.
         /// </summary>
         [Input("sortBufferSize")]
         public Input<int>? SortBufferSize { get; set; }
 
         /// <summary>
-        /// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned.
+        /// Global SQL mode. Set to empty to use MySQL server defaults. When creating a new service and not setting this field Aiven default SQL mode (strict, SQL standard compliant) will be assigned. Example: `ANSI,TRADITIONAL`.
         /// </summary>
         [Input("sqlMode")]
         public Input<string>? SqlMode { get; set; }
@@ -181,13 +181,13 @@ namespace Pulumi.Aiven.Inputs
         public Input<bool>? SqlRequirePrimaryKey { get; set; }
 
         /// <summary>
-        /// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M).
+        /// Limits the size of internal in-memory tables. Also set max*heap*table_size. Default is 16777216 (16M). Example: `16777216`.
         /// </summary>
         [Input("tmpTableSize")]
         public Input<int>? TmpTableSize { get; set; }
 
         /// <summary>
-        /// The number of seconds the server waits for activity on a noninteractive connection before closing it.
+        /// The number of seconds the server waits for activity on a noninteractive connection before closing it. Example: `28800`.
         /// </summary>
         [Input("waitTimeout")]
         public Input<int>? WaitTimeout { get; set; }

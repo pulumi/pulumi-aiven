@@ -33,14 +33,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      * 
      */
     @Import(name="emitCheckpointsIntervalSeconds")
     private @Nullable Output<Integer> emitCheckpointsIntervalSeconds;
 
     /**
-     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+     * @return Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
      * 
      */
     public Optional<Output<Integer>> emitCheckpointsIntervalSeconds() {
@@ -48,14 +48,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      * 
      */
     @Import(name="groups")
     private @Nullable Output<String> groups;
 
     /**
-     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+     * @return Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
      * 
      */
     public Optional<Output<String>> groups() {
@@ -63,14 +63,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      * 
      */
     @Import(name="groupsExclude")
     private @Nullable Output<String> groupsExclude;
 
     /**
-     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+     * @return Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
      * 
      */
     public Optional<Output<String>> groupsExclude() {
@@ -78,14 +78,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * How out-of-sync a remote partition can be before it is resynced.
+     * How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      * 
      */
     @Import(name="offsetLagMax")
     private @Nullable Output<Integer> offsetLagMax;
 
     /**
-     * @return How out-of-sync a remote partition can be before it is resynced.
+     * @return How out-of-sync a remote partition can be before it is resynced. Example: `100`.
      * 
      */
     public Optional<Output<Integer>> offsetLagMax() {
@@ -93,14 +93,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * Whether to periodically check for new consumer groups. Defaults to `true`.
      * 
      */
     @Import(name="refreshGroupsEnabled")
     private @Nullable Output<Boolean> refreshGroupsEnabled;
 
     /**
-     * @return Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+     * @return Whether to periodically check for new consumer groups. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> refreshGroupsEnabled() {
@@ -123,14 +123,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * Whether to periodically check for new topics and partitions. Defaults to `true`.
      * 
      */
     @Import(name="refreshTopicsEnabled")
     private @Nullable Output<Boolean> refreshTopicsEnabled;
 
     /**
-     * @return Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+     * @return Whether to periodically check for new topics and partitions. Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> refreshTopicsEnabled() {
@@ -168,14 +168,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      * 
      */
     @Import(name="syncGroupOffsetsIntervalSeconds")
     private @Nullable Output<Integer> syncGroupOffsetsIntervalSeconds;
 
     /**
-     * @return Frequency at which consumer group offsets are synced (default: 60, every minute).
+     * @return Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
      * 
      */
     public Optional<Output<Integer>> syncGroupOffsetsIntervalSeconds() {
@@ -198,14 +198,14 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
     }
 
     /**
-     * &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      * 
      */
     @Import(name="tasksMaxPerCpu")
     private @Nullable Output<Integer> tasksMaxPerCpu;
 
     /**
-     * @return &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+     * @return `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
      * 
      */
     public Optional<Output<Integer>> tasksMaxPerCpu() {
@@ -270,7 +270,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param emitCheckpointsIntervalSeconds Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+         * @param emitCheckpointsIntervalSeconds Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param emitCheckpointsIntervalSeconds Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute).
+         * @param emitCheckpointsIntervalSeconds Frequency at which consumer group offset checkpoints are emitted (default: 60, every minute). Example: `60`.
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param groups Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+         * @param groups Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param groups Consumer groups to replicate. Supports comma-separated group IDs and regexes.
+         * @param groups Consumer groups to replicate. Supports comma-separated group IDs and regexes. Example: `.*`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param groupsExclude Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+         * @param groupsExclude Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param groupsExclude Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes.
+         * @param groupsExclude Exclude groups. Supports comma-separated group IDs and regexes. Excludes take precedence over includes. Example: `console-consumer-.*,connect-.*,__.*`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param offsetLagMax How out-of-sync a remote partition can be before it is resynced.
+         * @param offsetLagMax How out-of-sync a remote partition can be before it is resynced. Example: `100`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param offsetLagMax How out-of-sync a remote partition can be before it is resynced.
+         * @param offsetLagMax How out-of-sync a remote partition can be before it is resynced. Example: `100`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param refreshGroupsEnabled Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+         * @param refreshGroupsEnabled Whether to periodically check for new consumer groups. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param refreshGroupsEnabled Whether to periodically check for new consumer groups. Defaults to &#39;true&#39;.
+         * @param refreshGroupsEnabled Whether to periodically check for new consumer groups. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param refreshTopicsEnabled Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+         * @param refreshTopicsEnabled Whether to periodically check for new topics and partitions. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param refreshTopicsEnabled Whether to periodically check for new topics and partitions. Defaults to &#39;true&#39;.
+         * @param refreshTopicsEnabled Whether to periodically check for new topics and partitions. Defaults to `true`.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param syncGroupOffsetsIntervalSeconds Frequency at which consumer group offsets are synced (default: 60, every minute).
+         * @param syncGroupOffsetsIntervalSeconds Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param syncGroupOffsetsIntervalSeconds Frequency at which consumer group offsets are synced (default: 60, every minute).
+         * @param syncGroupOffsetsIntervalSeconds Frequency at which consumer group offsets are synced (default: 60, every minute). Example: `60`.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param tasksMaxPerCpu &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+         * @param tasksMaxPerCpu `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class KafkaMirrorMakerKafkaMirrormakerUserConfigKafkaMirrormakerArg
         }
 
         /**
-         * @param tasksMaxPerCpu &#39;tasks.max&#39; is set to this multiplied by the number of CPUs in the service. The default value is `1`.
+         * @param tasksMaxPerCpu `tasks.max` is set to this multiplied by the number of CPUs in the service. Default: `1`.
          * 
          * @return builder
          * 

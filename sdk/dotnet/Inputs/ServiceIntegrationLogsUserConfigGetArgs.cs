@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationLogsUserConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Elasticsearch index retention limit. The default value is `3`.
+        /// Elasticsearch index retention limit. Default: `3`.
         /// </summary>
         [Input("elasticsearchIndexDaysMax")]
         public Input<int>? ElasticsearchIndexDaysMax { get; set; }
 
         /// <summary>
-        /// Elasticsearch index prefix. The default value is `logs`.
+        /// Elasticsearch index prefix. Default: `logs`.
         /// </summary>
         [Input("elasticsearchIndexPrefix")]
         public Input<string>? ElasticsearchIndexPrefix { get; set; }

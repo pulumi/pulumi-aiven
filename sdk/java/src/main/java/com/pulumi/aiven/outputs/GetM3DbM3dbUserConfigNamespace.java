@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetM3DbM3dbUserConfigNamespace {
     /**
-     * @return The name of the namespace.
+     * @return The name of the namespace. Example: `default`.
      * 
      */
     private String name;
@@ -24,7 +24,7 @@ public final class GetM3DbM3dbUserConfigNamespace {
      */
     private @Nullable GetM3DbM3dbUserConfigNamespaceOptions options;
     /**
-     * @return The resolution for an aggregated namespace.
+     * @return The resolution for an aggregated namespace. Example: `30s`.
      * 
      */
     private @Nullable String resolution;
@@ -36,7 +36,7 @@ public final class GetM3DbM3dbUserConfigNamespace {
 
     private GetM3DbM3dbUserConfigNamespace() {}
     /**
-     * @return The name of the namespace.
+     * @return The name of the namespace. Example: `default`.
      * 
      */
     public String name() {
@@ -50,7 +50,7 @@ public final class GetM3DbM3dbUserConfigNamespace {
         return Optional.ofNullable(this.options);
     }
     /**
-     * @return The resolution for an aggregated namespace.
+     * @return The resolution for an aggregated namespace. Example: `30s`.
      * 
      */
     public Optional<String> resolution() {

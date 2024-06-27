@@ -13,13 +13,13 @@ namespace Pulumi.Aiven.Inputs
     public sealed class ServiceIntegrationEndpointExternalPostgresqlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Default database.
+        /// Default database. Example: `testdb`.
         /// </summary>
         [Input("defaultDatabase")]
         public Input<string>? DefaultDatabase { get; set; }
 
         /// <summary>
-        /// Hostname or IP address of the server.
+        /// Hostname or IP address of the server. Example: `my.server.com`.
         /// </summary>
         [Input("host", required: true)]
         public Input<string> Host { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.Aiven.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// Password.
+        /// Password. Example: `jjKk45Nnd`.
         /// </summary>
         public Input<string>? Password
         {
@@ -41,37 +41,45 @@ namespace Pulumi.Aiven.Inputs
         }
 
         /// <summary>
-        /// Port number of the server.
+        /// Port number of the server. Example: `5432`.
         /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// Client certificate.
+        /// Client certificate. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         [Input("sslClientCertificate")]
         public Input<string>? SslClientCertificate { get; set; }
 
         /// <summary>
-        /// Client key.
+        /// Client key. Example: `-----BEGIN PRIVATE KEY-----
+        /// ...
+        /// -----END PRIVATE KEY-----`.
         /// </summary>
         [Input("sslClientKey")]
         public Input<string>? SslClientKey { get; set; }
 
         /// <summary>
-        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL Mode. The default value is `verify-full`.
+        /// Enum: `disable`, `allow`, `prefer`, `require`, `verify-ca`, `verify-full`. SSL mode to use for the connection.  Please note that Aiven requires TLS for all connections to external PostgreSQL services. Default: `verify-full`.
         /// </summary>
         [Input("sslMode")]
         public Input<string>? SslMode { get; set; }
 
         /// <summary>
-        /// SSL Root Cert.
+        /// SSL Root Cert. Example: `-----BEGIN CERTIFICATE-----
+        /// ...
+        /// -----END CERTIFICATE-----
+        /// `.
         /// </summary>
         [Input("sslRootCert")]
         public Input<string>? SslRootCert { get; set; }
 
         /// <summary>
-        /// User name.
+        /// User name. Example: `myname`.
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;

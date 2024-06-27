@@ -19,14 +19,14 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
     public static final GrafanaGrafanaUserConfigSmtpServerArgs Empty = new GrafanaGrafanaUserConfigSmtpServerArgs();
 
     /**
-     * Address used for sending emails.
+     * Address used for sending emails. Example: `yourgrafanauser{@literal @}yourdomain.example.com`.
      * 
      */
     @Import(name="fromAddress", required=true)
     private Output<String> fromAddress;
 
     /**
-     * @return Address used for sending emails.
+     * @return Address used for sending emails. Example: `yourgrafanauser{@literal @}yourdomain.example.com`.
      * 
      */
     public Output<String> fromAddress() {
@@ -49,14 +49,14 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
     }
 
     /**
-     * Server hostname or IP.
+     * Server hostname or IP. Example: `smtp.example.com`.
      * 
      */
     @Import(name="host", required=true)
     private Output<String> host;
 
     /**
-     * @return Server hostname or IP.
+     * @return Server hostname or IP. Example: `smtp.example.com`.
      * 
      */
     public Output<String> host() {
@@ -64,14 +64,14 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
     }
 
     /**
-     * Password for SMTP authentication.
+     * Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return Password for SMTP authentication.
+     * @return Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -79,14 +79,14 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
     }
 
     /**
-     * SMTP server port.
+     * SMTP server port. Example: `25`.
      * 
      */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
     /**
-     * @return SMTP server port.
+     * @return SMTP server port. Example: `25`.
      * 
      */
     public Output<Integer> port() {
@@ -124,14 +124,14 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
     }
 
     /**
-     * Username for SMTP authentication.
+     * Username for SMTP authentication. Example: `smtpuser`.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username for SMTP authentication.
+     * @return Username for SMTP authentication. Example: `smtpuser`.
      * 
      */
     public Optional<Output<String>> username() {
@@ -170,7 +170,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param fromAddress Address used for sending emails.
+         * @param fromAddress Address used for sending emails. Example: `yourgrafanauser{@literal @}yourdomain.example.com`.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param fromAddress Address used for sending emails.
+         * @param fromAddress Address used for sending emails. Example: `yourgrafanauser{@literal @}yourdomain.example.com`.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param host Server hostname or IP.
+         * @param host Server hostname or IP. Example: `smtp.example.com`.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param host Server hostname or IP.
+         * @param host Server hostname or IP. Example: `smtp.example.com`.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param password Password for SMTP authentication.
+         * @param password Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param password Password for SMTP authentication.
+         * @param password Password for SMTP authentication. Example: `ein0eemeev5eeth3Ahfu`.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param port SMTP server port.
+         * @param port SMTP server port. Example: `25`.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param port SMTP server port.
+         * @param port SMTP server port. Example: `25`.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param username Username for SMTP authentication.
+         * @param username Username for SMTP authentication. Example: `smtpuser`.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class GrafanaGrafanaUserConfigSmtpServerArgs extends com.pulumi.res
         }
 
         /**
-         * @param username Username for SMTP authentication.
+         * @param username Username for SMTP authentication. Example: `smtpuser`.
          * 
          * @return builder
          * 

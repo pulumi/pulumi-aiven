@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/projects_accounts_access#projects).
+// Creates and manages an [Aiven project](https://aiven.io/docs/platform/concepts/orgs-units-projects#projects).
 //
 // ## Example Usage
 //
@@ -69,7 +69,7 @@ type Project struct {
 	DefaultCloud pulumi.StringPtrOutput `pulumi:"defaultCloud"`
 	// The monthly running estimate for this project for the current billing period.
 	EstimatedBalance pulumi.StringOutput `pulumi:"estimatedBalance"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrOutput `pulumi:"parentId"`
 	// The payment type used for this project. For example,`card`.
 	PaymentMethod pulumi.StringOutput `pulumi:"paymentMethod"`
@@ -142,7 +142,7 @@ type projectState struct {
 	DefaultCloud *string `pulumi:"defaultCloud"`
 	// The monthly running estimate for this project for the current billing period.
 	EstimatedBalance *string `pulumi:"estimatedBalance"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
 	// The payment type used for this project. For example,`card`.
 	PaymentMethod *string `pulumi:"paymentMethod"`
@@ -179,7 +179,7 @@ type ProjectState struct {
 	DefaultCloud pulumi.StringPtrInput
 	// The monthly running estimate for this project for the current billing period.
 	EstimatedBalance pulumi.StringPtrInput
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
 	// The payment type used for this project. For example,`card`.
 	PaymentMethod pulumi.StringPtrInput
@@ -214,7 +214,7 @@ type projectArgs struct {
 	CopyFromProject *string `pulumi:"copyFromProject"`
 	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud *string `pulumi:"defaultCloud"`
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId *string `pulumi:"parentId"`
 	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project string `pulumi:"project"`
@@ -244,7 +244,7 @@ type ProjectArgs struct {
 	CopyFromProject pulumi.StringPtrInput
 	// Default cloud provider and region where services are hosted. This can be changed after the project is created and will not affect existing services.
 	DefaultCloud pulumi.StringPtrInput
-	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+	// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 	ParentId pulumi.StringPtrInput
 	// The name of the project. Names must be globally unique among all Aiven customers and cannot be changed later without destroying and re-creating the project, including all sub-resources.
 	Project pulumi.StringInput
@@ -389,7 +389,7 @@ func (o ProjectOutput) EstimatedBalance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.EstimatedBalance }).(pulumi.StringOutput)
 }
 
-// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/projects_accounts_access) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
+// Link a project to an [organization, organizational unit,](https://aiven.io/docs/platform/concepts/orgs-units-projects) or account by using its ID. To set up proper dependencies please refer to this variable as a reference.
 func (o ProjectOutput) ParentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.ParentId }).(pulumi.StringPtrOutput)
 }

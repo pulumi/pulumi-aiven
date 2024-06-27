@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * Creates and manages a [user group](https://aiven.io/docs/platform/concepts/projects_accounts_access#groups) in an organization.
+ * Creates and manages a [user group](https://aiven.io/docs/platform/howto/list-groups) in an organization.
  * 
  * ## Example Usage
  * 

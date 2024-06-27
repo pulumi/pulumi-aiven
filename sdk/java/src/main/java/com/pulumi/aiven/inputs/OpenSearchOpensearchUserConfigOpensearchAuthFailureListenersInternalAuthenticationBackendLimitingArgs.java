@@ -17,14 +17,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     public static final OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs Empty = new OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersInternalAuthenticationBackendLimitingArgs();
 
     /**
-     * The number of login attempts allowed before login is blocked.
+     * The number of login attempts allowed before login is blocked. Example: `10`.
      * 
      */
     @Import(name="allowedTries")
     private @Nullable Output<Integer> allowedTries;
 
     /**
-     * @return The number of login attempts allowed before login is blocked.
+     * @return The number of login attempts allowed before login is blocked. Example: `10`.
      * 
      */
     public Optional<Output<Integer>> allowedTries() {
@@ -47,14 +47,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * The duration of time that login remains blocked after a failed login.
+     * The duration of time that login remains blocked after a failed login. Example: `600`.
      * 
      */
     @Import(name="blockExpirySeconds")
     private @Nullable Output<Integer> blockExpirySeconds;
 
     /**
-     * @return The duration of time that login remains blocked after a failed login.
+     * @return The duration of time that login remains blocked after a failed login. Example: `600`.
      * 
      */
     public Optional<Output<Integer>> blockExpirySeconds() {
@@ -62,14 +62,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * internal*authentication*backend*limiting.max*blocked_clients.
+     * internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
      * 
      */
     @Import(name="maxBlockedClients")
     private @Nullable Output<Integer> maxBlockedClients;
 
     /**
-     * @return internal*authentication*backend*limiting.max*blocked_clients.
+     * @return internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
      * 
      */
     public Optional<Output<Integer>> maxBlockedClients() {
@@ -77,14 +77,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * The maximum number of tracked IP addresses that have failed login.
+     * The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      * 
      */
     @Import(name="maxTrackedClients")
     private @Nullable Output<Integer> maxTrackedClients;
 
     /**
-     * @return The maximum number of tracked IP addresses that have failed login.
+     * @return The maximum number of tracked IP addresses that have failed login. Example: `100000`.
      * 
      */
     public Optional<Output<Integer>> maxTrackedClients() {
@@ -92,14 +92,14 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
     }
 
     /**
-     * The window of time in which the value for `allowed_tries` is enforced.
+     * The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
      * 
      */
     @Import(name="timeWindowSeconds")
     private @Nullable Output<Integer> timeWindowSeconds;
 
     /**
-     * @return The window of time in which the value for `allowed_tries` is enforced.
+     * @return The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
      * 
      */
     public Optional<Output<Integer>> timeWindowSeconds() {
@@ -152,7 +152,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param allowedTries The number of login attempts allowed before login is blocked.
+         * @param allowedTries The number of login attempts allowed before login is blocked. Example: `10`.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param allowedTries The number of login attempts allowed before login is blocked.
+         * @param allowedTries The number of login attempts allowed before login is blocked. Example: `10`.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param blockExpirySeconds The duration of time that login remains blocked after a failed login.
+         * @param blockExpirySeconds The duration of time that login remains blocked after a failed login. Example: `600`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param blockExpirySeconds The duration of time that login remains blocked after a failed login.
+         * @param blockExpirySeconds The duration of time that login remains blocked after a failed login. Example: `600`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param maxBlockedClients internal*authentication*backend*limiting.max*blocked_clients.
+         * @param maxBlockedClients internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param maxBlockedClients internal*authentication*backend*limiting.max*blocked_clients.
+         * @param maxBlockedClients internal*authentication*backend*limiting.max*blocked_clients. Example: `100000`.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param maxTrackedClients The maximum number of tracked IP addresses that have failed login.
+         * @param maxTrackedClients The maximum number of tracked IP addresses that have failed login. Example: `100000`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param maxTrackedClients The maximum number of tracked IP addresses that have failed login.
+         * @param maxTrackedClients The maximum number of tracked IP addresses that have failed login. Example: `100000`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param timeWindowSeconds The window of time in which the value for `allowed_tries` is enforced.
+         * @param timeWindowSeconds The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class OpenSearchOpensearchUserConfigOpensearchAuthFailureListenersI
         }
 
         /**
-         * @param timeWindowSeconds The window of time in which the value for `allowed_tries` is enforced.
+         * @param timeWindowSeconds The window of time in which the value for `allowed_tries` is enforced. Example: `3600`.
          * 
          * @return builder
          * 

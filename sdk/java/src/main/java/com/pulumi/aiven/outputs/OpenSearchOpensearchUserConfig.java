@@ -30,7 +30,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable String additionalBackupRegions;
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     private @Nullable String customDomain;
@@ -50,17 +50,17 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable OpenSearchOpensearchUserConfigIndexTemplate indexTemplate;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     private @Nullable List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     private @Nullable List<String> ipFilterStrings;
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -74,7 +74,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable Boolean keepIndexRefreshInterval;
     /**
-     * @return Use index_patterns instead. The default value is `0`.
+     * @return Use index_patterns instead. Default: `0`.
      * 
      */
     private @Nullable Integer maxIndexCount;
@@ -109,7 +109,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable OpenSearchOpensearchUserConfigPrivatelinkAccess privatelinkAccess;
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     private @Nullable String projectToForkFrom;
@@ -119,7 +119,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable OpenSearchOpensearchUserConfigPublicAccess publicAccess;
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     private @Nullable String recoveryBasebackupName;
@@ -134,7 +134,7 @@ public final class OpenSearchOpensearchUserConfig {
      */
     private @Nullable Boolean serviceLog;
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     private @Nullable String serviceToForkFrom;
@@ -153,7 +153,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.additionalBackupRegions);
     }
     /**
-     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name.
+     * @return Serve the web frontend using a custom CNAME pointing to the Aiven DNS name. Example: `grafana.example.org`.
      * 
      */
     public Optional<String> customDomain() {
@@ -181,21 +181,21 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.indexTemplate);
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`
      * 
      */
     public List<OpenSearchOpensearchUserConfigIpFilterObject> ipFilterObjects() {
         return this.ipFilterObjects == null ? List.of() : this.ipFilterObjects;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      */
     public List<String> ipFilterStrings() {
         return this.ipFilterStrings == null ? List.of() : this.ipFilterStrings;
     }
     /**
-     * @return Allow incoming connections from CIDR address block, e.g. &#39;10.20.0.0/16&#39;.
+     * @return Allow incoming connections from CIDR address block, e.g. `10.20.0.0/16`.
      * 
      * @deprecated
      * Deprecated. Use `ip_filter_string` instead.
@@ -213,7 +213,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.keepIndexRefreshInterval);
     }
     /**
-     * @return Use index_patterns instead. The default value is `0`.
+     * @return Use index_patterns instead. Default: `0`.
      * 
      */
     public Optional<Integer> maxIndexCount() {
@@ -262,7 +262,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.privatelinkAccess);
     }
     /**
-     * @return Name of another project to fork a service from. This has effect only when a new service is being created.
+     * @return Name of another project to fork a service from. This has effect only when a new service is being created. Example: `anotherprojectname`.
      * 
      */
     public Optional<String> projectToForkFrom() {
@@ -276,7 +276,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.publicAccess);
     }
     /**
-     * @return Name of the basebackup to restore in forked service.
+     * @return Name of the basebackup to restore in forked service. Example: `backup-20191112t091354293891z`.
      * 
      */
     public Optional<String> recoveryBasebackupName() {
@@ -297,7 +297,7 @@ public final class OpenSearchOpensearchUserConfig {
         return Optional.ofNullable(this.serviceLog);
     }
     /**
-     * @return Name of another service to fork from. This has effect only when a new service is being created.
+     * @return Name of another service to fork from. This has effect only when a new service is being created. Example: `anotherservicename`.
      * 
      */
     public Optional<String> serviceToForkFrom() {

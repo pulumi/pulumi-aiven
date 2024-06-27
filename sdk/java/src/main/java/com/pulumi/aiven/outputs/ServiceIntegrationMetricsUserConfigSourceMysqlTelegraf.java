@@ -68,17 +68,17 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
      */
     private @Nullable Boolean gatherTableSchema;
     /**
-     * @return Truncates digest text from perf*events*statements into this many characters.
+     * @return Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      * 
      */
     private @Nullable Integer perfEventsStatementsDigestTextLimit;
     /**
-     * @return Limits metrics from perf*events*statements.
+     * @return Limits metrics from perf*events*statements. Example: `250`.
      * 
      */
     private @Nullable Integer perfEventsStatementsLimit;
     /**
-     * @return Only include perf*events*statements whose last seen is less than this many seconds.
+     * @return Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      * 
      */
     private @Nullable Integer perfEventsStatementsTimeLimit;
@@ -162,21 +162,21 @@ public final class ServiceIntegrationMetricsUserConfigSourceMysqlTelegraf {
         return Optional.ofNullable(this.gatherTableSchema);
     }
     /**
-     * @return Truncates digest text from perf*events*statements into this many characters.
+     * @return Truncates digest text from perf*events*statements into this many characters. Example: `120`.
      * 
      */
     public Optional<Integer> perfEventsStatementsDigestTextLimit() {
         return Optional.ofNullable(this.perfEventsStatementsDigestTextLimit);
     }
     /**
-     * @return Limits metrics from perf*events*statements.
+     * @return Limits metrics from perf*events*statements. Example: `250`.
      * 
      */
     public Optional<Integer> perfEventsStatementsLimit() {
         return Optional.ofNullable(this.perfEventsStatementsLimit);
     }
     /**
-     * @return Only include perf*events*statements whose last seen is less than this many seconds.
+     * @return Only include perf*events*statements whose last seen is less than this many seconds. Example: `86400`.
      * 
      */
     public Optional<Integer> perfEventsStatementsTimeLimit() {

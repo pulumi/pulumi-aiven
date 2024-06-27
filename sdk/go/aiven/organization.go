@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates and manages an [organization](https://aiven.io/docs/platform/concepts/projects_accounts_access).
+// Creates and manages an [organization](https://aiven.io/docs/platform/concepts/orgs-units-projects).
 //
 // ## Example Usage
 //

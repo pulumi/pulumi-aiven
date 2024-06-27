@@ -26,7 +26,7 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly Outputs.OpenSearchOpensearchUserConfigOpensearchAuthFailureListeners? AuthFailureListeners;
         /// <summary>
-        /// Controls the number of shards allowed in the cluster per data node.
+        /// Controls the number of shards allowed in the cluster per data node. Example: `1000`.
         /// </summary>
         public readonly int? ClusterMaxShardsPerNode;
         /// <summary>
@@ -34,19 +34,19 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? ClusterRoutingAllocationNodeConcurrentRecoveries;
         /// <summary>
-        /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore.
+        /// Sender name placeholder to be used in Opensearch Dashboards and Opensearch keystore. Example: `alert-sender`.
         /// </summary>
         public readonly string? EmailSenderName;
         /// <summary>
-        /// Sender password for Opensearch alerts to authenticate with SMTP server.
+        /// Sender password for Opensearch alerts to authenticate with SMTP server. Example: `very-secure-mail-password`.
         /// </summary>
         public readonly string? EmailSenderPassword;
         /// <summary>
-        /// Sender username for Opensearch alerts.
+        /// Sender username for Opensearch alerts. Example: `jane@example.com`.
         /// </summary>
         public readonly string? EmailSenderUsername;
         /// <summary>
-        /// Enable/Disable security audit. The default value is `false`.
+        /// Enable/Disable security audit. Default: `false`.
         /// </summary>
         public readonly bool? EnableSecurityAudit;
         /// <summary>
@@ -54,11 +54,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? HttpMaxContentLength;
         /// <summary>
-        /// The max size of allowed headers, in bytes.
+        /// The max size of allowed headers, in bytes. Example: `8192`.
         /// </summary>
         public readonly int? HttpMaxHeaderSize;
         /// <summary>
-        /// The max length of an HTTP URL, in bytes.
+        /// The max length of an HTTP URL, in bytes. Example: `4096`.
         /// </summary>
         public readonly int? HttpMaxInitialLineLength;
         /// <summary>
@@ -94,27 +94,27 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly int? IndicesRecoveryMaxConcurrentFileChunks;
         /// <summary>
-        /// Specifies whether ISM is enabled or not. The default value is `true`.
+        /// Specifies whether ISM is enabled or not. Default: `true`.
         /// </summary>
         public readonly bool? IsmEnabled;
         /// <summary>
-        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. The default value is `true`.
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`.
         /// </summary>
         public readonly bool? IsmHistoryEnabled;
         /// <summary>
-        /// The maximum age before rolling over the audit history index in hours. The default value is `24`.
+        /// The maximum age before rolling over the audit history index in hours. Default: `24`.
         /// </summary>
         public readonly int? IsmHistoryMaxAge;
         /// <summary>
-        /// The maximum number of documents before rolling over the audit history index. The default value is `2500000`.
+        /// The maximum number of documents before rolling over the audit history index. Default: `2500000`.
         /// </summary>
         public readonly int? IsmHistoryMaxDocs;
         /// <summary>
-        /// The time between rollover checks for the audit history index in hours. The default value is `8`.
+        /// The time between rollover checks for the audit history index in hours. Default: `8`.
         /// </summary>
         public readonly int? IsmHistoryRolloverCheckPeriod;
         /// <summary>
-        /// How long audit history indices are kept in days. The default value is `30`.
+        /// How long audit history indices are kept in days. Default: `30`.
         /// </summary>
         public readonly int? IsmHistoryRolloverRetentionPeriod;
         /// <summary>
@@ -130,11 +130,11 @@ namespace Pulumi.Aiven.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ReindexRemoteWhitelists;
         /// <summary>
-        /// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context.
+        /// Script compilation circuit breaker limits the number of inline script compilations within a period of time. Default is use-context. Example: `75/5m`.
         /// </summary>
         public readonly string? ScriptMaxCompilationsRate;
         /// <summary>
-        /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined.
+        /// Maximum number of aggregation buckets allowed in a single response. OpenSearch default value is used when this is not defined. Example: `10000`.
         /// </summary>
         public readonly int? SearchMaxBuckets;
         /// <summary>
