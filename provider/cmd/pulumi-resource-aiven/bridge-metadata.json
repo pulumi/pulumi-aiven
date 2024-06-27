@@ -613,6 +613,19 @@
                                 "kafka_connect_config": {
                                     "maxItemsOne": true
                                 },
+                                "kafka_connect_secret_providers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "vault": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
@@ -693,6 +706,19 @@
                                 },
                                 "public_access": {
                                     "maxItemsOne": true
+                                },
+                                "secret_providers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "vault": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1472,6 +1498,9 @@
                                     "maxItemsOne": false
                                 },
                                 "kafka_custom_metrics": {
+                                    "maxItemsOne": false
+                                },
+                                "mirrormaker_custom_metrics": {
                                     "maxItemsOne": false
                                 },
                                 "opensearch": {
@@ -2312,6 +2341,19 @@
                                 "kafka_connect_config": {
                                     "maxItemsOne": true
                                 },
+                                "kafka_connect_secret_providers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "vault": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                },
                                 "kafka_rest_config": {
                                     "maxItemsOne": true
                                 },
@@ -2392,6 +2434,19 @@
                                 },
                                 "public_access": {
                                     "maxItemsOne": true
+                                },
+                                "secret_providers": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "aws": {
+                                                "maxItemsOne": true
+                                            },
+                                            "vault": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -3158,6 +3213,9 @@
                                     "maxItemsOne": false
                                 },
                                 "kafka_custom_metrics": {
+                                    "maxItemsOne": false
+                                },
+                                "mirrormaker_custom_metrics": {
                                     "maxItemsOne": false
                                 },
                                 "opensearch": {
